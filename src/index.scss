@@ -1,0 +1,147 @@
+// TODOs
+// Get the real fonts and colors or of the real tumblr
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+/*****************************************Variables********************************************/
+//RGB Colors
+$color-primary: rgb(28, 231, 131);
+$color-primary-light: lighten($color-primary, 0.15);
+$color-primary-dark: darken($color-primary, 0.15);
+$color-secondary: #ffb900;
+$color-secondary-light: lighten($color-secondary, 0.15);
+$color-secondary-dark: darken($color-secondary, 0.15);
+$color-tertiary: #2998ff;
+$color-tertiary-light: lighten($color-tertiary, 0.15);
+$color-tertiary-dark: darken($color-tertiary, 0.15);
+//Gray Level Colors
+$color-white: #fff;
+$color-gray-light-1: #eee;
+$color-gray-light-2: #ccc;
+$color-gray-dark-1: #999;
+$color-gray-dark-2: #777;
+$color-gray-dark-3: #333;
+$color-black: #000;
+//Font Defaults
+$default-font-size: 1.6rem;
+$default-font-color: $color-black;
+$default-font-weight: 500;
+
+/*****************************************Useful Mixins******************************************/
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*
+0                : 600px(37.5em)      ==> phone
+600px(37.5em)    : 900px(56.25em)     ==> portrait tablet
+900px(56.25em)   : 1200px(75em)       ==> landscape tablet
+1200px(75em)     : 1800px(112.5em)    ==> desktop (initial design)
+Above 1800px(112.5em)                 ==> large screens
+*/
+
+/*
+$BreakPoint argument choices
+phone
+tab-port
+tab-land
+big-desktop
+*/
+
+@mixin respond($BreakPoint) {
+  @if $BreakPoint==phone {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $BreakPoint==tab-port {
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $BreakPoint==tab-land {
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $BreakPoint==big-desktop {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
+
+//******************************************BASE(RESET)********************************************/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  @include respond(tab-land) {
+    /* landscape tablet => 1rem = 9px */
+    font-size: 56.25%;
+  }
+  @include respond(tab-port) {
+    /* portrait tablet and phone => 1rem = 8px */
+    font-size: 50%;
+  }
+  @include respond(big-desktop) {
+    /* big desktop 1rem => 12px */
+    font-size: 75%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  &:focus {
+    outline: none;
+  }
+}
+button {
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+ul {
+  list-style-type: none;
+}
+
+img {
+  width: 100%;
+}
+
+//*******************************************TYPOGRAPHY*******************************************/
+body {
+  font-family: 'Rubik', sans-serif;
+  font-size: $default-font-size;
+  font-weight: $default-font-weight;
+  line-height: 1.7;
+  color: $default-font-color;
+}
