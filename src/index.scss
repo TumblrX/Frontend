@@ -25,7 +25,14 @@ $color-black: #000;
 $default-font-size: 1.6rem;
 $default-font-color: $color-black;
 $default-font-weight: 500;
-
+//Post Colors
+$bg-color-text: rgb(255, 255, 255);
+$bg-color-photo: rgb(255, 73, 47);
+$bg-color-quote: rgb(255, 138, 0);
+$bg-color-link: rgb(0, 207, 53);
+$bg-color-chat: rgb(0, 184, 255);
+$bg-color-audio: rgb(124, 92, 255);
+$bg-color-video: rgb(255, 98, 206);
 /*****************************************Useful Mixins******************************************/
 @mixin clearfix {
   &::after {
