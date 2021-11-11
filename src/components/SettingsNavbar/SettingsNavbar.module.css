@@ -3,8 +3,8 @@
   padding: 0;
 }
 
-body{
-    background-color: #001935;
+body {
+  background-color: #001935;
 }
 
 .nav-bar {
@@ -19,7 +19,12 @@ body{
   border-bottom: 1px solid gray;
   font: 20px sans-serif;
   padding: 7px;
-  
+  cursor: pointer;
+}
+
+.nav-bar-slot:hover{
+    background-color: #53515185;
+    
 }
 
 .nav-bar-slot > div:nth-child(2) {
