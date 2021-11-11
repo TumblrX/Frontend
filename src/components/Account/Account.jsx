@@ -21,8 +21,8 @@ export class Account extends Component {
               <input type="password" placeholder="Confirm Password" />
 
               <div>
-                <button id={styles["cancel-button"]}>cancel</button>
-                <button id={styles["save-button"]}>save</button>
+                <button className={styles["cancel-button"]}>cancel</button>
+                <button className={styles["save-button"]}>save</button>
               </div>
               <div>
                 <input type="checkbox" name="" style={{ marginRight: "6px" }} />
@@ -46,8 +46,8 @@ export class Account extends Component {
               <input type="password" placeholder="Confirm Password" />
 
               <div>
-                <button id={styles["cancel-button"]}>cancel</button>
-                <button id={styles["save-button"]}>save</button>
+                <button className={styles["cancel-button"]}>cancel</button>
+                <button className={styles["save-button"]}>save</button>
               </div>
             </div>
             <div>

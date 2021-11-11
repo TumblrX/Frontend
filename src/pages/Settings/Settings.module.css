@@ -1,33 +1,36 @@
-.contanier{
-    display: grid;
-    width: 60%;
-    margin: 40px auto;
-    
-    grid-template-columns: 1fr 300px;
-    gap: 20px ;
-    
-    
+.contanier {
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+  gap: 20px;
+  min-width: 700px;
+  
+ 
 }
 
-.aside-bar{
-    grid-column: 2/span 1;
+.aside-bar {
+  width: 20%;
+  max-width: 300px;
+  
 }
 
-.left-side{
-    background-color: white;
-    min-width: 700px;
+.left-side {
+  background-color: white;
+  width: 60%;
+  max-width: 700px;
+  border-radius: 5px;
+  
 }
 
-.account{
-    background-color: white;
-    border-radius: 4px;
+.account {
+  background-color: white;
+  border-radius: 4px;
 }
 
-@media (max-width:1000px) {
-    .contanier{
-        grid-template-columns: 1fr 30%;
-        width: calc(100% - 20px);
-        min-width: 300px;
-        margin: 0 auto;
-    }
+
+
+@media (max-width: 1000px) {
+  .contanier {
+   
+  }
 }

@@ -35,7 +35,7 @@ input[type="checkbox"]{
     background-image: url("../../assets/Images/pen-filled-diagonal-writing-tool.png");
 }
 
-#cancel-button{
+.cancel-button{
     width: fit-content;
     height: fit-content;
     background-color: gray;
@@ -46,7 +46,7 @@ input[type="checkbox"]{
     margin-right: 5px;
 }
 
-#save-button,.add-button{
+.save-button,.add-button{
     
     width: fit-content;
     height: fit-content;
