@@ -9,7 +9,7 @@ import styles from "./SettingsNavbar.module.css";
 export default class SettingsNavbar extends Component {
   render() {
     return (
-      <div>
+      <aside>
         <a href="/settings/account">
           <div className={styles["nav-bar-slot"]}>
             <div>Account</div>
@@ -34,7 +34,18 @@ export default class SettingsNavbar extends Component {
             <div>Personalization and data management</div>
           </div>
         </a>
-      </div>
+        <div className={styles.blogs}>Blogs</div>
+        <div className={`${styles["blog-slot"]}`}>
+          <div>
+            <img src="" alt="" />
+            <div>
+              <div>youngdev</div>
+              <div className={styles["small-text"]}>Thebrownboy</div>
+            </div>
+          </div>
+        </div>
+        <a href="/new/blog" className={styles["small-text"]}>create a new blog </a>
+      </aside>
     );
   }
 }

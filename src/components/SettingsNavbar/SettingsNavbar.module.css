@@ -22,13 +22,47 @@ body {
   cursor: pointer;
 }
 
-.nav-bar-slot:hover{
-    background-color: #53515185;
-    
+.nav-bar-slot:hover {
+  background-color: #53515185;
+}
+
+.blogs {
+  margin-top: 20px;
+  color: white;
+  font: 20px sans-serif;
+  border-bottom: 3px solid #ffffff29;
+  padding: 7px;
 }
 
 .nav-bar-slot > div:nth-child(2) {
   font: 13px sans-serif;
   color: gray;
   margin-top: 3px;
+}
+
+a:nth-child(4) > div {
+  border-bottom: none;
+}
+
+.blog-slot {
+  display: flex;
+  border-bottom: 1px solid gray;
+}
+
+.blog-slot > div {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font: 20px sans-serif;
+  padding: 7px;
+}
+
+.small-text {
+  font: 13px sans-serif;
+  color: gray;
+  margin-top: 3px;
+}
+
+a.small-text {
+  padding: 7px;
 }
