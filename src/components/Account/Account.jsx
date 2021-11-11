@@ -53,6 +53,11 @@ export class Account extends Component {
         .getElementsByClassName(`${styles["password-section-buttons"]}`)[0]
         .classList.toggle(`${styles.hidden}`);
     }
+    document.querySelectorAll(`form >div`).forEach((element) => {
+      element.style.opacity = "1";
+    });
+
+    document.querySelectorAll(`form`)[0].style.pointerEvents = "all";
   };
 
   formAction = (event) => {
@@ -88,6 +93,17 @@ export class Account extends Component {
       document
         .getElementsByClassName(`${styles["icon-photo"]}`)[0]
         .classList.toggle(`${styles.hidden}`);
+
+      let changeEmailSection = document.getElementsByClassName(
+        `${styles["change-email-section"]}`
+      )[0];
+      let entireForm = document.getElementsByTagName("form")[0];
+      entireForm.style.pointerEvents = "none";
+      document.querySelectorAll(`form >div`).forEach((element) => {
+        element.style.opacity = "0.5";
+      });
+      changeEmailSection.style.pointerEvents = "all";
+      changeEmailSection.style.opacity = "1";
     } else if (
       event.target === imgs[1] ||
       event.target.className === `${styles["dots"]}` ||
@@ -105,6 +121,16 @@ export class Account extends Component {
       document
         .getElementsByClassName(`${styles["icon-photo"]}`)[1]
         .classList.toggle(`${styles.hidden}`);
+      let entireForm = document.getElementsByTagName("form")[0];
+      entireForm.style.pointerEvents = "none";
+      document.querySelectorAll(`form >div`).forEach((element) => {
+        element.style.opacity = "0.5";
+      });
+      let changePasswordSection = document.getElementsByClassName(
+        `${styles["password-box"]}`
+      )[0];
+      changePasswordSection.style.pointerEvents = "all";
+      changePasswordSection.style.opacity = "1";
     } else if (event.target === imgs[2]) {
       document.getElementsByClassName(
         `${styles["section-message"]}`
