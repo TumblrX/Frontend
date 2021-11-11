@@ -1,6 +1,8 @@
 👌Done 
 
-adding event handler to the Password box and its edit icon 
+adding event handler to the Add Filter to posts 
+
+
 
 ✔️To do 
 

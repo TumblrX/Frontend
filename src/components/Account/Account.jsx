@@ -57,19 +57,24 @@ export class Account extends Component {
     } else if (event.target === imgs[2]) {
       document.getElementsByClassName(
         `${styles["section-message"]}`
-      )[2].style.display = "none";
+      )[3].style.display = "none";
 
-      //   document.getElementsByName(
-      //     `${styles["section-message"]}`
-      //   )[2].style.display = "none";
       let tagsFilterBox = document.getElementsByClassName(
         `${styles["tags-filter-box"]}`
       )[0];
 
       tagsFilterBox.classList.toggle(`${styles["tags-filter-box"]}`);
-      tagsFilterBox.style.display="flex"
+      tagsFilterBox.style.display = "flex";
     } else {
-      console.log(4);
+      document.getElementsByClassName(
+        `${styles["section-message"]}`
+      )[5].style.display = "none";
+      let postsFilterBox = document.getElementsByClassName(
+        `${styles["posts-filter-box"]}`
+      )[0];
+
+      postsFilterBox.classList.toggle(`${styles["posts-filter-box"]}`);
+      postsFilterBox.style.display = "flex";
     }
   };
   render() {
