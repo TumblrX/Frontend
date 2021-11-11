@@ -3,6 +3,13 @@
   padding: 0;
 }
 
+:root{
+  --main-padding:7px; 
+  --main-font:20px;
+  --small-text-font:13px ; 
+  --slot-border-thickness:1px;
+}
+
 body {
   background-color: #001935;
 }
@@ -16,9 +23,9 @@ body {
   flex-direction: column;
   color: white;
   text-transform: capitalize;
-  border-bottom: 1px solid gray;
-  font: 20px sans-serif;
-  padding: 7px;
+  border-bottom: var(--slot-border-thickness) solid gray;
+  font: var(--main-font) sans-serif;
+  padding: var(--main-padding);
   cursor: pointer;
 }
 
@@ -29,13 +36,13 @@ body {
 .blogs {
   margin-top: 20px;
   color: white;
-  font: 20px sans-serif;
+  font: var(--main-font) sans-serif;
   border-bottom: 3px solid #ffffff29;
-  padding: 7px;
+  padding: var(--main-padding);
 }
 
 .nav-bar-slot > div:nth-child(2) {
-  font: 13px sans-serif;
+  font: var(--small-text-font) sans-serif;
   color: gray;
   margin-top: 3px;
 }
@@ -46,23 +53,23 @@ a:nth-child(4) > div {
 
 .blog-slot {
   display: flex;
-  border-bottom: 1px solid gray;
+  border-bottom: var(--slot-border-thickness) solid gray;
 }
 
 .blog-slot > div {
   display: flex;
   flex-direction: column;
   color: white;
-  font: 20px sans-serif;
-  padding: 7px;
+  font: var(--main-font) sans-serif;
+  padding: var(--main-padding);
 }
 
 .small-text {
-  font: 13px sans-serif;
+  font: var(--small-text-font) sans-serif;
   color: gray;
   margin-top: 3px;
 }
 
 a.small-text {
-  padding: 7px;
+  padding: var(--main-padding);
 }
