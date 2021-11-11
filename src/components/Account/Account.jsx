@@ -40,6 +40,9 @@ export class Account extends Component {
       document
         .querySelector("#email-box")
         .classList.toggle(`${styles["before-focus-on-edit"]}`);
+      document
+        .getElementsByClassName(`${styles["icon-photo"]}`)[0]
+        .classList.toggle(`${styles.hidden}`);
     } else if (
       event.target === imgs[1] ||
       event.target.className === `${styles["dots"]}` ||
@@ -54,6 +57,9 @@ export class Account extends Component {
           // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
           //How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
         });
+      document
+        .getElementsByClassName(`${styles["icon-photo"]}`)[1]
+        .classList.toggle(`${styles.hidden}`);
     } else if (event.target === imgs[2]) {
       document.getElementsByClassName(
         `${styles["section-message"]}`

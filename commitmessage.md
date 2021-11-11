@@ -1,6 +1,6 @@
 👌Done 
 
-adding event handler to the Add Filter to posts 
+the edit icon was not be hidden after a click on it , it has been solved 🛠️
 
 
 
