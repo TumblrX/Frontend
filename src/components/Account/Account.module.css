@@ -43,6 +43,7 @@ input[type="checkbox"] {
   padding: 8px;
   font-size: 20px;
   margin-right: 5px;
+  margin-bottom: 15px;
 }
 
 .save-button,
