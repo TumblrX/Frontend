@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Account.module.css";
-
+import pen from "../../assets/Images/pencil-64x64.png"
 /**
  * Component to render the Account settings in the Settings page
  * @author Abdalla Mahmoud
@@ -13,7 +13,7 @@ export class Account extends Component {
       <div className={styles["account-container"]}>
         <h1 className="title">Account</h1>
         <hr />
-        <form action="" id="email">
+        <form action="">
           <div className={styles["email-box"]}>
             <div className={styles["title"]}>Email</div>
             <div className={styles["input-fields"]}>
@@ -29,14 +29,17 @@ export class Account extends Component {
                 <span>Let people find your blogs through this address. </span>
               </div>
             </div>
-            <div>
-              <img
-                src="../../assets/Images/pen-filled-diagonal-writing-tool.png"
-                alt="failed to get it "
-              />
-            </div>
+            
+            <img src={pen} className={styles["icon-photo"]} alt=" can't load " />
+            
           </div>
           <hr />
+          {/*  
+        
+            *********
+        
+        
+          */}
 
           <div className={styles["password-box"]}>
             <div className={styles["title"]}>Password</div>
@@ -50,14 +53,14 @@ export class Account extends Component {
                 <button className={styles["save-button"]}>save</button>
               </div>
             </div>
-            <div>
-              <img
-                src="../../assets/Images/pen-filled-diagonal-writing-tool.png"
-                alt="failed to get it "
-              />
-            </div>
+           
+              <img src={pen} className={styles["icon-photo"]} alt=" can't load " />
+            
           </div>
           <hr />
+
+
+          {/*  */}
           <div className={styles["security-box"]}>
             <div className={styles["title"]}>Security</div>
             <div className={styles["security-section"]}>
@@ -93,7 +96,7 @@ export class Account extends Component {
           <hr />
           <div className={styles["filtering-section"]}>
             <div className={styles["title"]}>Filtering</div>
-            <div style={{width:"80%"}}>
+            <div style={{ width: "80%" }}>
               <div>
                 <span>
                   Filtered Tags{" "}

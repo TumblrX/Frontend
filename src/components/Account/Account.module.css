@@ -8,14 +8,21 @@
 
 .email-box,.password-box,.security-box,.filtering-section{
     display: flex;
-    justify-content: space-between;
+   
     margin-bottom: 10px;
+}
+
+.email-box{
+    position: relative;
+}
+.password-box{
+    position: relative;
 }
 
 .input-fields{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
 }
 
 input{
@@ -29,10 +36,7 @@ input{
 
 input[type="checkbox"]{
     display: inline;
-}
-
-.pen-icon{
-    background-image: url("../../assets/Images/pen-filled-diagonal-writing-tool.png");
+    
 }
 
 .cancel-button{
@@ -67,6 +71,7 @@ h1{
 
 .title{
     width: 15%;
+    margin-right: 2%;
 }
 
 hr{
@@ -83,4 +88,12 @@ hr{
 
 .security-section{
     width: 80%;
+}
+
+
+.icon-photo{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 0;
 }
