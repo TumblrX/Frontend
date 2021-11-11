@@ -1,0 +1,10 @@
+.contanier{
+    display: grid;
+    width: 80%;
+    margin:40px auto ;
+    grid-template-columns: 1fr 300px;
+}
+
+.aside-bar{
+    grid-column: 2/span 1;
+}
