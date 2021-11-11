@@ -25,7 +25,7 @@ export class Account extends Component {
                 <button id={styles["save-button"]}>save</button>
               </div>
               <div>
-                <input type="checkbox" name="" style={{marginRight:"6px"}}/>
+                <input type="checkbox" name="" style={{ marginRight: "6px" }} />
                 <span>Let people find your blogs through this address. </span>
               </div>
             </div>
@@ -61,8 +61,11 @@ export class Account extends Component {
           <div className={styles["security-box"]}>
             <div className={styles["title"]}>Security</div>
             <div className={styles["security-section"]}>
-              <div style={{display:"flex"}}>
-                <input type="checkbox" style={{marginTop:"6px",marginRight:"6px"}} />
+              <div style={{ display: "flex" }}>
+                <input
+                  type="checkbox"
+                  style={{ marginTop: "6px", marginRight: "6px" }}
+                />
                 <div className={styles["security-description"]}>
                   <div>Email me about account activity</div>
                   <div>
@@ -71,8 +74,11 @@ export class Account extends Component {
                   </div>
                 </div>
               </div>
-              <div style={{display:"flex"}}>
-                <input type="checkbox" style={{marginTop:"6px",marginRight:"6px"}}/>
+              <div style={{ display: "flex" }}>
+                <input
+                  type="checkbox"
+                  style={{ marginTop: "6px", marginRight: "6px" }}
+                />
                 <div>
                   <div>Two-factor authentication</div>
                   <div>
@@ -85,6 +91,43 @@ export class Account extends Component {
             </div>
           </div>
           <hr />
+          <div className={styles["filtering-section"]}>
+            <div className={styles["title"]}>Filtering</div>
+            <div style={{width:"80%"}}>
+              <div>
+                <span>
+                  Filtered Tags{" "}
+                  <a href="/help" style={{ textDecoration: "underline" }}>
+                    (Help)
+                  </a>
+                </span>
+                <div style={{ display: "flex" }}>
+                  <input
+                    type="text"
+                    placeholder="Add a Filter"
+                    style={{ marginRight: "10px" }}
+                  />
+                  <button className={styles["add-button"]}>Add</button>
+                </div>
+              </div>
+              <div>
+                <span>
+                  Filtered Post Content{" "}
+                  <a href="/help" style={{ textDecoration: "underline" }}>
+                    (Help)
+                  </a>
+                </span>
+                <div style={{ display: "flex" }}>
+                  <input
+                    type="text"
+                    placeholder="Add a Filter"
+                    style={{ marginRight: "10px" }}
+                  />
+                  <button className={styles["add-button"]}>Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     );

@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 
-.email-box,.password-box,.security-box{
+.email-box,.password-box,.security-box,.filtering-section{
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -46,7 +46,7 @@ input[type="checkbox"]{
     margin-right: 5px;
 }
 
-#save-button{
+#save-button,.add-button{
     
     width: fit-content;
     height: fit-content;
