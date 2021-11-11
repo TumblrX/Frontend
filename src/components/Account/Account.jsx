@@ -27,15 +27,33 @@ export class Account extends Component {
   iconClick = (event) => {
     let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
     if (event.target.id === "email-box" || event.target === imgs[0]) {
-      document.querySelectorAll(`.${styles.hidden}`).forEach((element) => {
-        element.classList.toggle(`${styles.hidden}`);
-      });
+      document
+        .querySelectorAll(
+          `.${styles["change-email-section"]} .${styles.hidden}`
+        )
+        .forEach((element) => {
+          element.classList.toggle(`${styles.hidden}`);
+          // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
+          //How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
+        });
+
+      document
+        .querySelector("#email-box")
+        .classList.toggle(`${styles["before-focus-on-edit"]}`);
     } else if (
       event.target === imgs[1] ||
       event.target.className === `${styles["dots"]}` ||
       event.target.parentElement.className === `${styles["dots"]}`
     ) {
-      console.log(2);
+      document.getElementsByClassName(`${styles["dots"]}`)[0].style.display =
+        "none";
+      document
+        .querySelectorAll(`.${styles["password-box"]} .${styles.hidden}`)
+        .forEach((element) => {
+          element.classList.toggle(`${styles.hidden}`);
+          // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
+          //How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
+        });
     } else if (event.target === imgs[2]) {
       console.log(3);
     } else {
