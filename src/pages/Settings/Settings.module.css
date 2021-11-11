@@ -4,14 +4,11 @@
   justify-content: center;
   gap: 20px;
   min-width: 700px;
-  
- 
 }
 
 .aside-bar {
   width: 20%;
   max-width: 300px;
-  
 }
 
 .left-side {
@@ -19,7 +16,6 @@
   width: 60%;
   max-width: 700px;
   border-radius: 5px;
-  
 }
 
 .account {
@@ -27,10 +23,15 @@
   border-radius: 4px;
 }
 
-
-
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .contanier {
-   
+    gap: 5%;
+    width: 100vw;
+  }
+  .aside-bar {
+    width: 25%;
+  }
+  .left-side {
+    width: 70%;
   }
 }
