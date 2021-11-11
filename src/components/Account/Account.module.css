@@ -6,9 +6,10 @@
     margin: 0 auto;
 }
 
-.email-box,.password-box{
+.email-box,.password-box,.security-box{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .input-fields{
@@ -65,5 +66,21 @@ h1{
 }
 
 .title{
-    width: 10%;
+    width: 15%;
+}
+
+hr{
+    margin-bottom: 10px;
+    border: none;
+    height: 1px;
+    background-color: #dad8d8;
+}
+
+.security-section,.security-description{
+    display: flex;
+    flex-direction: column;
+}
+
+.security-section{
+    width: 50%;
 }

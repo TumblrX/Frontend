@@ -36,24 +36,51 @@ export class Account extends Component {
               />
             </div>
           </div>
-          <div>
-            <div className={styles["password-box"]}>
-              <div>Password</div>
-              <div className={styles["input-fields"]}>
-                <input type="password" name="" placeholder="Current Password" />
-                <input type="password" placeholder="New Password" />
-                <input type="password" placeholder="Confirm Password" />
+          <hr />
 
-                <div>
-                  <button id={styles["cancel-button"]}>cancel</button>
-                  <button id={styles["save-button"]}>save</button>
+          <div className={styles["password-box"]}>
+            <div className={styles["title"]}>Password</div>
+            <div className={styles["input-fields"]}>
+              <input type="password" name="" placeholder="Current Password" />
+              <input type="password" placeholder="New Password" />
+              <input type="password" placeholder="Confirm Password" />
+
+              <div>
+                <button id={styles["cancel-button"]}>cancel</button>
+                <button id={styles["save-button"]}>save</button>
+              </div>
+            </div>
+            <div>
+              <img
+                src="../../assets/Images/pen-filled-diagonal-writing-tool.png"
+                alt="failed to get it "
+              />
+            </div>
+          </div>
+          <hr />
+          <div className={styles["security-box"]}>
+            <div className={styles["title"]}>Security</div>
+            <div className={styles["security-section"]}>
+              <div style={{display:"flex"}}>
+                <input type="checkbox" />
+                <div className={styles["security-description"]}>
+                  <div>Email me about account activity</div>
+                  <div>
+                    You will receive an email when someone logs into your
+                    account or a new app is authorized
+                  </div>
                 </div>
               </div>
-              <div>
-                <img
-                  src="../../assets/Images/pen-filled-diagonal-writing-tool.png"
-                  alt="failed to get it "
-                />
+              <div style={{display:"flex"}}>
+                <input type="checkbox" />
+                <div>
+                  <div>Two-factor authentication</div>
+                  <div>
+                    Enabling two factor authentication makes it extra difficult
+                    for anyone other than you to access your account. Learn
+                    more.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
