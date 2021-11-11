@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Account.module.css";
-import pen from "../../assets/Images/pencil-64x64.png"
+import pen from "../../assets/Images/pencil-64x64.png";
 /**
  * Component to render the Account settings in the Settings page
  * @author Abdalla Mahmoud
@@ -29,9 +29,12 @@ export class Account extends Component {
                 <span>Let people find your blogs through this address. </span>
               </div>
             </div>
-            
-            <img src={pen} className={styles["icon-photo"]} alt=" can't load " />
-            
+
+            <img
+              src={pen}
+              className={styles["icon-photo"]}
+              alt=" can't load "
+            />
           </div>
           <hr />
           {/*  
@@ -53,12 +56,14 @@ export class Account extends Component {
                 <button className={styles["save-button"]}>save</button>
               </div>
             </div>
-           
-              <img src={pen} className={styles["icon-photo"]} alt=" can't load " />
-            
+
+            <img
+              src={pen}
+              className={styles["icon-photo"]}
+              alt=" can't load "
+            />
           </div>
           <hr />
-
 
           {/*  */}
           <div className={styles["security-box"]}>
@@ -94,17 +99,30 @@ export class Account extends Component {
             </div>
           </div>
           <hr />
+
           <div className={styles["filtering-section"]}>
             <div className={styles["title"]}>Filtering</div>
             <div style={{ width: "80%" }}>
               <div>
-                <span>
-                  Filtered Tags{" "}
-                  <a href="/help" style={{ textDecoration: "underline" }}>
-                    (Help)
-                  </a>
-                </span>
-                <div style={{ display: "flex" }}>
+                <div>
+                  <span>
+                    Filtered Tags{" "}
+                    <a href="/help" style={{ textDecoration: "underline" }}>
+                      (Help)
+                    </a>
+                  </span>
+                </div>
+
+                <div>
+                  You're not filtering any tags
+                  <img
+                    src={pen}
+                    className={styles["icon-photo"]}
+                    alt="can't load"
+                  />
+                </div>
+
+                <div style={{ display: "none" }}>
                   <input
                     type="text"
                     placeholder="Add a Filter"
@@ -120,7 +138,16 @@ export class Account extends Component {
                     (Help)
                   </a>
                 </span>
-                <div style={{ display: "flex" }}>
+
+                <div>
+                  You're not filtering any posts
+                  <img
+                    src={pen}
+                    className={styles["icon-photo"]}
+                    alt="can't load"
+                  />
+                </div>
+                <div style={{ display: "none" }}>
                   <input
                     type="text"
                     placeholder="Add a Filter"

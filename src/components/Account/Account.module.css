@@ -8,16 +8,12 @@
 
 .email-box,.password-box,.security-box,.filtering-section{
     display: flex;
-   
     margin-bottom: 10px;
+    position: relative;
 }
 
-.email-box{
-    position: relative;
-}
-.password-box{
-    position: relative;
-}
+
+
 
 .input-fields{
     display: flex;
