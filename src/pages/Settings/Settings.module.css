@@ -1,7 +1,8 @@
 .contanier{
     display: grid;
     width: 60%;
-    margin:40px auto;
+    margin: 40px auto;
+    
     grid-template-columns: 1fr 300px;
     gap: 20px ;
     
@@ -14,6 +15,7 @@
 
 .left-side{
     background-color: white;
+    min-width: 700px;
 }
 
 .account{

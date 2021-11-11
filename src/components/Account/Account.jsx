@@ -15,7 +15,7 @@ export class Account extends Component {
         <hr />
         <form action="" id="email">
           <div className={styles["email-box"]}>
-            <div>Email</div>
+            <div className={styles["title"]}>Email</div>
             <div className={styles["input-fields"]}>
               <input type="email" name="" value="abdalla@abdalla.com" />
               <input type="password" placeholder="Confirm Password" />
@@ -34,6 +34,27 @@ export class Account extends Component {
                 src="../../assets/Images/pen-filled-diagonal-writing-tool.png"
                 alt="failed to get it "
               />
+            </div>
+          </div>
+          <div>
+            <div className={styles["password-box"]}>
+              <div>Password</div>
+              <div className={styles["input-fields"]}>
+                <input type="password" name="" placeholder="Current Password" />
+                <input type="password" placeholder="New Password" />
+                <input type="password" placeholder="Confirm Password" />
+
+                <div>
+                  <button id={styles["cancel-button"]}>cancel</button>
+                  <button id={styles["save-button"]}>save</button>
+                </div>
+              </div>
+              <div>
+                <img
+                  src="../../assets/Images/pen-filled-diagonal-writing-tool.png"
+                  alt="failed to get it "
+                />
+              </div>
             </div>
           </div>
         </form>

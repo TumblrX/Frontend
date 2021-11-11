@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 
-.email-box{
+.email-box,.password-box{
     display: flex;
     justify-content: space-between;
 }
@@ -14,6 +14,7 @@
 .input-fields{
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 
 input{
@@ -61,4 +62,8 @@ h1{
     font-family: sans-serif;
     padding-bottom: 10px;
     font-weight: 100;
+}
+
+.title{
+    width: 10%;
 }
