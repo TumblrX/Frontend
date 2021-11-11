@@ -8,6 +8,40 @@ import pen from "../../assets/Images/pencil-64x64.png";
  * @component
  */
 export class Account extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  /**
+   * handle the event of clicking on the edit icon
+   * if the target element is the first pen icon or the email box that means the action will be performed on Email section
+   * if the target element is the second pen icon or ANY dot of the dot "div span" or the div its self
+   * it means the action will be performed on password section
+   * if the target element is the third pen icon the filter on tags will be affected
+   * if the target element is the forth pen icon the filrter on posts will be  affected
+   * @param {event} event - the click event itself will be passed
+   */
+
+  iconClick = (event) => {
+    let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
+    if (event.target.id === "email-box" || event.target === imgs[0]) {
+      document.querySelectorAll(`.${styles.hidden}`).forEach((element) => {
+        element.classList.toggle(`${styles.hidden}`);
+      });
+    } else if (
+      event.target === imgs[1] ||
+      event.target.className === `${styles["dots"]}` ||
+      event.target.parentElement.className === `${styles["dots"]}`
+    ) {
+      console.log(2);
+    } else if (event.target === imgs[2]) {
+      console.log(3);
+    } else {
+      console.log(4);
+    }
+  };
   render() {
     return (
       <div className={styles["account-container"]}>
@@ -18,6 +52,8 @@ export class Account extends Component {
             <div className={styles["title"]}>Email</div>
             <div className={styles["input-fields"]}>
               <input
+                onClick={this.iconClick}
+                id="email-box"
                 type="email"
                 value="abdalla@abdalla.com"
                 className={styles["before-focus-on-edit"]}
@@ -36,7 +72,10 @@ export class Account extends Component {
               </div>
               <div style={{ display: "flex" }}>
                 <input type="checkbox" name="" style={{ marginRight: "6px" }} />
-                <div className={styles["user-message"]} style={{marginTop: "-2px"}}>
+                <div
+                  className={styles["user-message"]}
+                  style={{ marginTop: "-2px" }}
+                >
                   Let people find your blogs through this address.{" "}
                 </div>
               </div>
@@ -44,6 +83,7 @@ export class Account extends Component {
 
             <img
               src={pen}
+              onClick={this.iconClick}
               className={styles["icon-photo"]}
               alt=" can't load "
             />
@@ -58,7 +98,7 @@ export class Account extends Component {
 
           <div className={styles["password-box"]}>
             <div className={styles["title"]}>Password</div>
-            <div className={styles["dots"]}>
+            <div className={styles["dots"]} onClick={this.iconClick}>
               <span></span>
               <span></span>
               <span></span>
@@ -79,6 +119,7 @@ export class Account extends Component {
 
             <img
               src={pen}
+              onClick={this.iconClick}
               className={styles["icon-photo"]}
               alt=" can't load "
             />
@@ -116,10 +157,7 @@ export class Account extends Component {
                   <div className={styles["user-message"]}>
                     Enabling two factor authentication makes it extra difficult
                     for anyone other than you to access your account.
-                    <a
-                      href="/learnmore"
-                      className={styles["anchor"]}
-                    >
+                    <a href="/learnmore" className={styles["anchor"]}>
                       {" "}
                       Learn more.
                     </a>
@@ -149,6 +187,7 @@ export class Account extends Component {
                   You're not filtering any tags
                   <img
                     src={pen}
+                    onClick={this.iconClick}
                     className={styles["icon-photo"]}
                     alt="can't load"
                   />
@@ -178,6 +217,7 @@ export class Account extends Component {
                   You're not filtering any posts
                   <img
                     src={pen}
+                    onClick={this.iconClick}
                     className={styles["icon-photo"]}
                     alt="can't load"
                   />
