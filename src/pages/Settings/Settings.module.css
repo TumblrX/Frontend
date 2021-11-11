@@ -1,6 +1,6 @@
 .contanier{
     display: grid;
-    width: 80%;
+    width: 60%;
     margin:40px auto ;
     grid-template-columns: 1fr 300px;
 }

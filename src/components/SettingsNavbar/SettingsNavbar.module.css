@@ -3,11 +3,13 @@
   padding: 0;
 }
 
-:root{
-  --main-padding:7px; 
-  --main-font:20px;
-  --small-text-font:13px ; 
-  --slot-border-thickness:1px;
+:root {
+  --main-padding: 6px;
+  --main-font: 15px;
+  --small-text-font: 13px;
+  --slot-border-thickness: 1px;
+  --main-color: white;
+  --background-on-hover: #53515185;
 }
 
 body {
@@ -21,22 +23,27 @@ body {
 .nav-bar-slot {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--main-color);
   text-transform: capitalize;
   border-bottom: var(--slot-border-thickness) solid gray;
-  font: var(--main-font) sans-serif;
+  font:bold var(--main-font) sans-serif;
   padding: var(--main-padding);
   cursor: pointer;
+  
+}
+
+.nav-bar-slot >div{
+  margin-bottom: 3px;
 }
 
 .nav-bar-slot:hover {
-  background-color: #53515185;
+  background-color: var(--background-on-hover);
 }
 
 .blogs {
   margin-top: 20px;
-  color: white;
-  font: var(--main-font) sans-serif;
+  color: var(--main-color);
+  font: var(--main-font) sans-serif bold;
   border-bottom: 3px solid #ffffff29;
   padding: var(--main-padding);
 }
@@ -56,11 +63,15 @@ a:nth-child(4) > div {
   border-bottom: var(--slot-border-thickness) solid gray;
 }
 
+.blog-slot:hover {
+  background-color: var(--background-on-hover);
+}
+
 .blog-slot > div {
   display: flex;
   flex-direction: column;
-  color: white;
-  font: var(--main-font) sans-serif;
+  color: var(--main-color);
+  font: var(--main-font) sans-serif bold ;
   padding: var(--main-padding);
 }
 
