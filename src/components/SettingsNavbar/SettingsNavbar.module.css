@@ -43,7 +43,7 @@ body {
 .blogs {
   margin-top: 20px;
   color: var(--main-color);
-  font: var(--main-font) sans-serif bold;
+  font:bold var(--main-font) sans-serif ;
   border-bottom: 3px solid #ffffff29;
   padding: var(--main-padding);
 }
@@ -71,7 +71,7 @@ a:nth-child(4) > div {
   display: flex;
   flex-direction: column;
   color: var(--main-color);
-  font: var(--main-font) sans-serif bold ;
+  font: bold var(--main-font) sans-serif  ;
   padding: var(--main-padding);
 }
 

@@ -12,7 +12,7 @@ export default class Settings extends Component {
   render() {
     return (
       <div className={styles["contanier"]}>
-        <div>Account</div>
+        <div >Account</div>
         <div className={styles["aside-bar"]}>
           <SettingsNavbar />
         </div>
