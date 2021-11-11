@@ -2,11 +2,13 @@
     display: flex;
     background-color: white;
     flex-direction: column;
+    width: calc(100% - 40px);
+    margin: 0 auto;
 }
 
 .email-box{
     display: flex;
-
+    justify-content: space-between;
 }
 
 .input-fields{
@@ -20,6 +22,7 @@ input{
     padding: 5px 4px;
     font-size: 18px;
     opacity: .5;
+    outline: none;
 }
 
 input[type="checkbox"]{
@@ -51,4 +54,11 @@ input[type="checkbox"]{
     padding: 8px;
     font-size: 20px;
     margin-right: 5px;
+}
+
+h1{
+    color: #7e7c7c85;
+    font-family: sans-serif;
+    padding-bottom: 10px;
+    font-weight: 100;
 }
