@@ -1,0 +1,54 @@
+.account-container{
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+}
+
+.email-box{
+    display: flex;
+
+}
+
+.input-fields{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    display: block;
+    margin-bottom: 15px;
+    padding: 5px 4px;
+    font-size: 18px;
+    opacity: .5;
+}
+
+input[type="checkbox"]{
+    display: inline;
+}
+
+.pen-icon{
+    background-image: url("../../assets/Images/pen-filled-diagonal-writing-tool.png");
+}
+
+#cancel-button{
+    width: fit-content;
+    height: fit-content;
+    background-color: gray;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+#save-button{
+    
+    width: fit-content;
+    height: fit-content;
+    background-color: #00bcd4;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 20px;
+    margin-right: 5px;
+}

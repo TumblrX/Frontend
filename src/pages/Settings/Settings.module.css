@@ -11,12 +11,16 @@
     grid-column: 2/span 1;
 }
 
-
+.account{
+    background-color: white;
+    border-radius: 4px;
+}
 
 @media (max-width:1000px) {
     .contanier{
+        grid-template-columns: 1fr 30%;
         width: calc(100% - 20px);
-        min-width: calc(100vw - 20px);
+        min-width: 300px;
         margin: 0 auto;
     }
 }
