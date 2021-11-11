@@ -1,11 +1,11 @@
 👌Done 
 
-- Hide the input Fields of Email ,password  and Filtering sections 
+customize user  and section messages 
 
 ✔️To do 
 
-- customize user messages
-- add Event handlers 
-- create json server  
+add Event handlers 
+
+create json server  
 
  

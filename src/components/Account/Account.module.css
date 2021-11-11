@@ -1,113 +1,135 @@
-.account-container{
-    display: flex;
-    background-color: white;
-    flex-direction: column;
-    width: calc(100% - 40px);
-    margin: 0 auto;
+.account-container {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  width: calc(100% - 40px);
+  margin: 0 auto;
 }
 
-.change-email-section,.password-box,.security-box,.filtering-section{
-    display: flex;
-    margin-bottom: 10px;
-    position: relative;
+.change-email-section,
+.password-box,
+.security-box,
+.filtering-section {
+  display: flex;
+  margin-bottom: 10px;
+  position: relative;
 }
 
-
-
-
-.input-fields{
-    display: flex;
-    flex-direction: column;
-    width: 70%;
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
 
-input{
-    display: block;
+input {
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px 4px;
+  font-size: 18px;
+  opacity: 0.5;
+  outline: none;
+}
+
+input[type="checkbox"] {
+  display: inline;
+}
+
+.cancel-button {
+  width: fit-content;
+  height: fit-content;
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.save-button,
+.add-button {
+  width: fit-content;
+  height: fit-content;
+  background-color: #00bcd4;
+  color: white;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+h1 {
+  color: #7e7c7c85;
+  font-family: sans-serif;
+  padding-bottom: 10px;
+  font-weight: 100;
+}
+
+.title {
+  width: 15%;
+  margin-right: 2%;
+}
+
+hr {
+  margin-bottom: 10px;
+  border: none;
+  height: 1px;
+  background-color: #dad8d8;
+}
+
+.security-section,
+.security-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.security-section {
+  width: 80%;
+}
+
+.icon-photo {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.before-focus-on-edit {
+  border: none;
+}
+
+.dots > span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: black;
+  display: inline-block;
+  margin-right: 1px;
+}
+
+.user-message{
+    color: gray;
+    font-size: 1.2rem;
+}
+
+.section-message{
+    font: 300 1.6rem sans-serif; 
+    color:#000000b5;
     margin-bottom: 15px;
-    padding: 5px 4px;
-    font-size: 18px;
-    opacity: .5;
-    outline: none;
+    margin-top: 5px;
 }
 
-input[type="checkbox"]{
-    display: inline;
-    
-}
-
-.cancel-button{
-    width: fit-content;
-    height: fit-content;
-    background-color: gray;
-    color: white;
-    border-radius: 5px;
-    padding: 8px;
-    font-size: 20px;
-    margin-right: 5px;
-}
-
-.save-button,.add-button{
-    
-    width: fit-content;
-    height: fit-content;
-    background-color: #00bcd4;
-    color: white;
-    border-radius: 5px;
-    padding: 8px;
-    font-size: 20px;
-    margin-right: 5px;
-}
-
-h1{
-    color: #7e7c7c85;
-    font-family: sans-serif;
-    padding-bottom: 10px;
-    font-weight: 100;
-}
-
-.title{
-    width: 15%;
-    margin-right: 2%;
-}
-
-hr{
-    margin-bottom: 10px;
-    border: none;
-    height: 1px;
-    background-color: #dad8d8;
-}
-
-.security-section,.security-description{
-    display: flex;
-    flex-direction: column;
-}
-
-.security-section{
-    width: 80%;
-}
-
-
-.icon-photo{
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    right: 0;
-}
-
-
-.hidden{
-    display: none;
-}
-
-.before-focus-on-edit{
-    border: none;
-}
-
-.dots >span{
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: black;
+.filter-message{
+    color: gray;
     display: inline-block;
-    margin-right: 1px;
+    margin-bottom: 15px;
 }
+
+.anchor{
+    text-decoration: underline;
+    color: inherit;
+}
+

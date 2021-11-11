@@ -34,9 +34,11 @@ export class Account extends Component {
                 <button className={styles["cancel-button"]}>cancel</button>
                 <button className={styles["save-button"]}>save</button>
               </div>
-              <div>
+              <div style={{ display: "flex" }}>
                 <input type="checkbox" name="" style={{ marginRight: "6px" }} />
-                <span>Let people find your blogs through this address. </span>
+                <div className={styles["user-message"]} style={{marginTop: "-2px"}}>
+                  Let people find your blogs through this address.{" "}
+                </div>
               </div>
             </div>
 
@@ -87,30 +89,40 @@ export class Account extends Component {
           <div className={styles["security-box"]}>
             <div className={styles["title"]}>Security</div>
             <div className={styles["security-section"]}>
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", marginBottom: "30px" }}>
                 <input
                   type="checkbox"
                   style={{ marginTop: "6px", marginRight: "6px" }}
                 />
                 <div className={styles["security-description"]}>
-                  <div>Email me about account activity</div>
-                  <div>
+                  <div className={styles["section-message"]}>
+                    Email me about account activity
+                  </div>
+                  <div className={styles["user-message"]}>
                     You will receive an email when someone logs into your
                     account or a new app is authorized
                   </div>
                 </div>
               </div>
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", marginBottom: "30px" }}>
                 <input
                   type="checkbox"
                   style={{ marginTop: "6px", marginRight: "6px" }}
                 />
                 <div>
-                  <div>Two-factor authentication</div>
-                  <div>
+                  <div className={styles["section-message"]}>
+                    Two-factor authentication
+                  </div>
+                  <div className={styles["user-message"]}>
                     Enabling two factor authentication makes it extra difficult
-                    for anyone other than you to access your account. Learn
-                    more.
+                    for anyone other than you to access your account.
+                    <a
+                      href="/learnmore"
+                      className={styles["anchor"]}
+                    >
+                      {" "}
+                      Learn more.
+                    </a>
                   </div>
                 </div>
               </div>
@@ -123,15 +135,17 @@ export class Account extends Component {
             <div style={{ width: "80%" }}>
               <div>
                 <div>
-                  <span>
+                  <span
+                    className={`${styles["section-message"]} ${styles["filter-message"]}`}
+                  >
                     Filtered Tags{" "}
-                    <a href="/help" style={{ textDecoration: "underline" }}>
+                    <a href="/help" className={styles["anchor"]}>
                       (Help)
                     </a>
                   </span>
                 </div>
 
-                <div>
+                <div className={styles["section-message"]}>
                   You're not filtering any tags
                   <img
                     src={pen}
@@ -150,14 +164,17 @@ export class Account extends Component {
                 </div>
               </div>
               <div>
-                <span>
+                <span
+                  style={{ color: "gray" }}
+                  className={`${styles["section-message"]} ${styles["filter-message"]}`}
+                >
                   Filtered Post Content{" "}
-                  <a href="/help" style={{ textDecoration: "underline" }}>
+                  <a href="/help" className={styles["anchor"]}>
                     (Help)
                   </a>
                 </span>
 
-                <div>
+                <div className={styles["section-message"]}>
                   You're not filtering any posts
                   <img
                     src={pen}
