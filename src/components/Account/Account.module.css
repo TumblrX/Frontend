@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 
-.email-box,.password-box,.security-box,.filtering-section{
+.change-email-section,.password-box,.security-box,.filtering-section{
     display: flex;
     margin-bottom: 10px;
     position: relative;
@@ -92,4 +92,21 @@ hr{
     height: 15px;
     position: absolute;
     right: 0;
+}
+
+.hidden{
+    display: none;
+}
+
+.before-focus-on-edit{
+    border: none;
+}
+
+.dots >span{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: black;
+    display: inline-block;
+    margin-right: 1px;
 }

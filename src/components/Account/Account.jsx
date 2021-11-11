@@ -14,13 +14,23 @@ export class Account extends Component {
         <h1 className="title">Account</h1>
         <hr />
         <form action="">
-          <div className={styles["email-box"]}>
+          <div className={styles["change-email-section"]}>
             <div className={styles["title"]}>Email</div>
             <div className={styles["input-fields"]}>
-              <input type="email" name="" value="abdalla@abdalla.com" />
-              <input type="password" placeholder="Confirm Password" />
+              <input
+                type="email"
+                value="abdalla@abdalla.com"
+                className={styles["before-focus-on-edit"]}
+              />
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                className={styles.hidden}
+              />
 
-              <div>
+              <div
+                className={`${styles.hidden} ${styles["email-section-buttons"]}`}
+              >
                 <button className={styles["cancel-button"]}>cancel</button>
                 <button className={styles["save-button"]}>save</button>
               </div>
@@ -46,7 +56,15 @@ export class Account extends Component {
 
           <div className={styles["password-box"]}>
             <div className={styles["title"]}>Password</div>
-            <div className={styles["input-fields"]}>
+            <div className={styles["dots"]}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div className={`${styles["input-fields"]} ${styles.hidden}`}>
               <input type="password" name="" placeholder="Current Password" />
               <input type="password" placeholder="New Password" />
               <input type="password" placeholder="Confirm Password" />
