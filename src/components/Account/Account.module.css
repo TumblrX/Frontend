@@ -36,12 +36,12 @@ input[type="checkbox"] {
 
 .cancel-button {
   width: fit-content;
-  height: fit-content;
+  height: 30px;
   background-color: gray;
   color: white;
   border-radius: 5px;
-  padding: 8px;
-  font-size: 20px;
+  padding: 5px;
+  font-size: 15px;
   margin-right: 5px;
   margin-bottom: 15px;
 }
@@ -49,12 +49,13 @@ input[type="checkbox"] {
 .save-button,
 .add-button {
   width: fit-content;
-  height: fit-content;
+  height: -moz-fit-content;
+  height: 30px;
   background-color: #00bcd4;
   color: white;
   border-radius: 5px;
-  padding: 8px;
-  font-size: 20px;
+  padding: 5px;
+  font-size: 15px;
   margin-right: 5px;
 }
 
@@ -94,7 +95,9 @@ hr {
   right: 0;
 }
 
-.hidden {
+.hidden,
+.tags-filter-box,
+.posts-filter-box {
   display: none;
 }
 
@@ -111,26 +114,25 @@ hr {
   margin-right: 1px;
 }
 
-.user-message{
-    color: gray;
-    font-size: 1.2rem;
+.user-message {
+  color: gray;
+  font-size: 1.2rem;
 }
 
-.section-message{
-    font: 300 1.6rem sans-serif; 
-    color:#000000b5;
-    margin-bottom: 15px;
-    margin-top: 5px;
+.section-message {
+  font: 300 1.6rem sans-serif;
+  color: #000000b5;
+  margin-bottom: 15px;
+  margin-top: 5px;
 }
 
-.filter-message{
-    color: gray;
-    display: inline-block;
-    margin-bottom: 15px;
+.filter-message {
+  color: gray;
+  display: inline-block;
+  margin-bottom: 15px;
 }
 
-.anchor{
-    text-decoration: underline;
-    color: inherit;
+.anchor {
+  text-decoration: underline;
+  color: inherit;
 }
-

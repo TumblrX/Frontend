@@ -1,10 +1,10 @@
 👌Done 
 
-customize user  and section messages 
+adding event handler to the Password box and its edit icon 
 
 ✔️To do 
 
-add Event handlers 
+adding the rest of handlers
 
 create json server  
 

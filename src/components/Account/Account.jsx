@@ -55,7 +55,19 @@ export class Account extends Component {
           //How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
         });
     } else if (event.target === imgs[2]) {
-      console.log(3);
+      document.getElementsByClassName(
+        `${styles["section-message"]}`
+      )[2].style.display = "none";
+
+      //   document.getElementsByName(
+      //     `${styles["section-message"]}`
+      //   )[2].style.display = "none";
+      let tagsFilterBox = document.getElementsByClassName(
+        `${styles["tags-filter-box"]}`
+      )[0];
+
+      tagsFilterBox.classList.toggle(`${styles["tags-filter-box"]}`);
+      tagsFilterBox.style.display="flex"
     } else {
       console.log(4);
     }
@@ -211,7 +223,7 @@ export class Account extends Component {
                   />
                 </div>
 
-                <div style={{ display: "none" }}>
+                <div className={styles["tags-filter-box"]}>
                   <input
                     type="text"
                     placeholder="Add a Filter"
@@ -240,7 +252,7 @@ export class Account extends Component {
                     alt="can't load"
                   />
                 </div>
-                <div style={{ display: "none" }}>
+                <div className={styles["posts-filter-box"]}>
                   <input
                     type="text"
                     placeholder="Add a Filter"
