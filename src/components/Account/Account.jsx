@@ -13,6 +13,51 @@ export class Account extends Component {
 
     this.state = {};
   }
+  /**
+   *
+   * @param {*} event
+   */
+  cancelButtonClick = (event) => {
+    let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
+    if (event.target === allButtons[0]) {
+      document
+        .querySelector(
+          `.${styles["change-email-section"]} input[type="password"]`
+        )
+        .classList.toggle(`${styles.hidden}`);
+      document
+        .querySelector(`.${styles["change-email-section"]} input[type="email"]`)
+        .classList.toggle(`${styles["before-focus-on-edit"]}`);
+      document
+        .getElementsByClassName(`${styles["email-section-buttons"]}`)[0]
+        .classList.toggle(`${styles.hidden}`);
+      document
+        .getElementsByTagName("img")[0]
+        .classList.toggle(`${styles.hidden}`);
+    } else {
+      document.getElementsByClassName(`${styles["dots"]}`)[0].style.display =
+        "block";
+      document
+        .querySelectorAll(`.${styles["password-box"]} input`)
+        .forEach((element) => {
+          element.classList.toggle(`${styles.hidden}`);
+          // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
+          //How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
+        });
+
+      document
+        .getElementsByTagName("img")[1]
+        .classList.toggle(`${styles.hidden}`);
+
+      document
+        .getElementsByClassName(`${styles["password-section-buttons"]}`)[0]
+        .classList.toggle(`${styles.hidden}`);
+    }
+  };
+
+  formAction = (event) => {
+    event.preventDefault();
+  };
 
   /**
    * handle the event of clicking on the edit icon
@@ -88,7 +133,7 @@ export class Account extends Component {
       <div className={styles["account-container"]}>
         <h1 className="title">Account</h1>
         <hr />
-        <form action="">
+        <form action="" onSubmit={this.formAction}>
           <div className={styles["change-email-section"]}>
             <div className={styles["title"]}>Email</div>
             <div className={styles["input-fields"]}>
@@ -108,7 +153,12 @@ export class Account extends Component {
               <div
                 className={`${styles.hidden} ${styles["email-section-buttons"]}`}
               >
-                <button className={styles["cancel-button"]}>cancel</button>
+                <button
+                  onClick={this.cancelButtonClick}
+                  className={styles["cancel-button"]}
+                >
+                  cancel
+                </button>
                 <button className={styles["save-button"]}>save</button>
               </div>
               <div style={{ display: "flex" }}>
@@ -152,8 +202,13 @@ export class Account extends Component {
               <input type="password" placeholder="New Password" />
               <input type="password" placeholder="Confirm Password" />
 
-              <div>
-                <button className={styles["cancel-button"]}>cancel</button>
+              <div className={styles["password-section-buttons"]}>
+                <button
+                  onClick={this.cancelButtonClick}
+                  className={styles["cancel-button"]}
+                >
+                  cancel
+                </button>
                 <button className={styles["save-button"]}>save</button>
               </div>
             </div>
