@@ -21,6 +21,8 @@ export class Account extends Component {
       twoFactorAuth: false,
       filteredTags: [],
       filteredPosts: [],
+      newPassword: "",
+      newConfirmedPassword: "",
     };
     /**
      * it will hold the data of the current user
@@ -38,6 +40,12 @@ export class Account extends Component {
    * @param {event} event
    */
   cancelButtonClick = (event) => {
+    // if the user entered invalid email or password then cancel the operation
+    // remove the transition "immediate change " but you should put it again
+    document.querySelectorAll(".error-message").forEach((element) => {
+      element.style.visibility = "hidden";
+      element.style.transition = "none";
+    });
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
     if (event.target === allButtons[0]) {
       document
@@ -92,19 +100,23 @@ export class Account extends Component {
     if (event.target === saveButtons[0]) {
       console.log("done");
       if (this.state.email === this.previousData.email) {
-        console.log("you should change the email");
+        document.getElementsByClassName(
+          `${styles["error-email-message"]}`
+        )[0].style.visibility = "unset";
       } else {
         this.data.email = this.state.email;
         if (this.state.password !== this.state.confirmedPassword) {
-          console.log("you should you password correctly ")
-          return ; 
+          document.getElementsByClassName(
+            `${styles["error-password-message"]}`
+          )[0].style.visibility = "unset";
+          return;
         }
         axios
           .put("http://localhost:3000/users/1", {
             ...this.data,
           })
           .then((res) => {
-            window.location.reload();
+            //window.location.reload();
           })
           .catch((err) => {
             console.log(err);
@@ -112,6 +124,31 @@ export class Account extends Component {
           });
       }
     } else {
+      if (this.state.confirmedPassword !== this.state.password) {
+        document.getElementsByClassName(
+          `${styles["error-current-password"]}`
+        )[0].style.visibility = "unset";
+      } else if (this.state.newPassword.length < 10) {
+          // one condition for test 
+        document.getElementsByClassName(
+          `${styles["error-new-password"]}`
+        )[0].style.visibility = "unset";
+      } else if (this.state.newPassword !== this.state.newConfirmedPassword) {
+        document.getElementsByClassName(
+          `${styles["error-confirm-password"]}`
+        )[0].style.visibility = "unset";
+      } else {
+        this.data.password = this.state.newPassword;
+        console.log(this.data)
+        axios
+          .post("http://localhost:3000/users/1", ...this.data)
+          .then((res) => {
+            //window.location.reload();
+          })
+          .catch((err) => {
+            console.log("error");
+          });
+      }
     }
 
     event.preventDefault();
@@ -143,6 +180,11 @@ export class Account extends Component {
    */
 
   iconClick = (event) => {
+    document.querySelectorAll(".error-message").forEach((element) => {
+      element.style.transition = "0.5s .1s linear";
+    });
+
+    // if they set to zero
     let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
     if (event.target.id === "email-box" || event.target === imgs[0]) {
       document
@@ -224,13 +266,27 @@ export class Account extends Component {
   };
 
   changeInput = (event) => {
-
+    document.querySelectorAll(".error-message").forEach((element) => {
+      // if the user enter invalid input then try to enter new values
+      element.style.visibility = "hidden";
+    });
     if (event.target.type === "email") {
       this.setState(() => {
         return { email: event.target.value };
       });
-    }
-    else{
+    } else if (event.target.id === "currentpassword") {
+      this.setState(() => {
+        return { confirmedPassword: event.target.value };
+      });
+    } else if (event.target.id === "newpassword") {
+      this.setState(() => {
+        return { newPassword: event.target.value };
+      });
+    } else if (event.target.id === "confirmpassword") {
+      this.setState(() => {
+        return { newConfirmedPassword: event.target.value };
+      });
+    } else {
       this.setState(() => {
         return { confirmedPassword: event.target.value };
       });
@@ -253,6 +309,9 @@ export class Account extends Component {
                 onChange={this.changeInput}
                 className={styles["before-focus-on-edit"]}
               />
+              <div className={`${styles["error-email-message"]} error-message`}>
+                change your Email
+              </div>
               <input
                 type="password"
                 placeholder="Confirm Password"
@@ -260,6 +319,12 @@ export class Account extends Component {
                 value={this.state.confirmedPassword}
                 onChange={this.changeInput}
               />
+
+              <div
+                className={`${styles["error-password-message"]} error-message`}
+              >
+                Please Enter the correct password
+              </div>
 
               <div
                 className={`${styles.hidden} ${styles["email-section-buttons"]}`}
@@ -316,9 +381,41 @@ export class Account extends Component {
               <span></span>
             </div>
             <div className={`${styles["input-fields"]} ${styles.hidden}`}>
-              <input type="password" name="" placeholder="Current Password" />
-              <input type="password" placeholder="New Password" />
-              <input type="password" placeholder="Confirm Password" />
+              <input
+                id="currentpassword"
+                type="password"
+                name=""
+                placeholder="Current Password"
+                value={this.state.confirmedPassword}
+                onChange={this.changeInput}
+              />
+              <div
+                className={`${styles["error-current-password"]} error-message `}
+              >
+                Please Enter your password Correctly
+              </div>
+              <input
+                id="newpassword"
+                type="password"
+                placeholder="New Password"
+                value={this.state.newPassword}
+                onChange={this.changeInput}
+              />
+              <div className={`${styles["error-new-password"]} error-message`}>
+                Please Enter Strong Password
+              </div>
+              <input
+                id="confirmpassword"
+                type="password"
+                placeholder="Confirm Password"
+                value={this.state.newConfirmedPassword}
+                onChange={this.changeInput}
+              />
+              <div
+                className={`${styles["error-confirm-password"]} error-message`}
+              >
+                Please Enter Identical Passwords
+              </div>
 
               <div className={styles["password-section-buttons"]}>
                 <button

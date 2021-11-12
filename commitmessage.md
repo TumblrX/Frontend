@@ -1,12 +1,11 @@
 👌Done 
 
-- Add validation on the password and email 
-- [note] some validation will be done in back end but it has been mimic-ed in the front side  
+-  add user messages for changing the password 
 
 ✔️To do 
 
-- add a user message for the validation 
-- use regex to check the char entered by user 
+- beatify the code and divide it into components
+- use regex to check the char entered by user  in email and password 
 
  
 

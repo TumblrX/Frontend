@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   width: 70%;
+  position: relative;
 }
 
 input {
@@ -28,6 +29,7 @@ input {
   font-size: 14px;
   opacity: 0.5;
   outline: none;
+  margin-right: 5px;
 }
 
 input[type="checkbox"] {
@@ -138,4 +140,44 @@ hr {
 }
 .email-section-buttons,
 .password-section-buttons {
+}
+
+.error-email-message,
+.error-password-message,
+.error-current-password,
+.error-new-password,
+.error-confirm-password {
+  visibility: hidden;
+  position: absolute;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: red;
+  color: white;
+  font-family: sans-serif;
+  border-radius: 4px;
+  right: -40%;
+  text-align: center;
+  transition: 0.5s 0.1s linear;
+  padding: 5px;
+}
+
+.error-password-message {
+  bottom: 53%;
+  right: -67%;
+}
+
+.error-current-password {
+  right: -71.5%;
+}
+
+.error-new-password {
+  top: 25%;
+  right: -60%;
+}
+
+.error-confirm-password {
+  top: 50%;
+  right: -65%;
 }
