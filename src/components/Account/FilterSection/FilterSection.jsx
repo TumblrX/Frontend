@@ -10,6 +10,38 @@ import pen from "../../../assets/Images/pencil-64x64.png";
  */
 export class FilterSection extends Component {
   /**
+   * this function handle the event handler on edit button icon
+   * @param {event} event
+   * @return {void} return nothing it just an event handler
+   */
+  iconClick = (event) => {
+    let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
+
+    if (event.target === imgs[2]) {
+      document.getElementsByClassName(
+        `${styles["section-message"]}`
+      )[3].style.display = "none";
+
+      let tagsFilterBox = document.getElementsByClassName(
+        `${styles["tags-filter-box"]}`
+      )[0];
+
+      tagsFilterBox.classList.toggle(`${styles["tags-filter-box"]}`);
+      tagsFilterBox.style.display = "flex";
+    } else {
+      document.getElementsByClassName(
+        `${styles["section-message"]}`
+      )[5].style.display = "none";
+      let postsFilterBox = document.getElementsByClassName(
+        `${styles["posts-filter-box"]}`
+      )[0];
+
+      postsFilterBox.classList.toggle(`${styles["posts-filter-box"]}`);
+      postsFilterBox.style.display = "flex";
+    }
+  };
+
+  /**
    * this function is responsible render the Email section
    * @returns {jsx} return jsx to be renderd
    */
