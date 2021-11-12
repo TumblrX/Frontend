@@ -13,7 +13,7 @@ class EmailSection extends Component {
       password: "",
       confirmedPassword: "",
     };
-    let data, previousData;
+    // let data, previousData;
   }
   formAction = (event) => {
     let saveButtons = document.getElementsByClassName(
@@ -149,7 +149,7 @@ class EmailSection extends Component {
   };
   render() {
     return (
-      <div>
+      <>
         <div className={styles["change-email-section"]}>
           <div className={styles["title"]}>Email</div>
           <div className={styles["input-fields"]}>
@@ -216,7 +216,7 @@ class EmailSection extends Component {
           />
         </div>
         <hr />
-      </div>
+      </>
     );
   }
 }

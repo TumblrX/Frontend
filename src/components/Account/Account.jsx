@@ -218,7 +218,7 @@ export class Account extends Component {
         element.style.opacity = "0.5";
       });
       changeEmailSection.style.pointerEvents = "all";
-      changeEmailSection.style.opacity = "1";
+      changeEmailSection.style.opacity = "1"; 
     } else if (
       event.target === imgs[1] ||
       event.target.className === `${styles["dots"]}` ||
