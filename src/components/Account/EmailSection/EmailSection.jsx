@@ -40,7 +40,7 @@ class EmailSection extends Component {
        */
       confirmedPassword: "",
     };
-    // let data, previousData;
+    let  previousData,Data;
   }
   /**
    * this function handle the click on the save button in the email section
@@ -58,17 +58,19 @@ class EmailSection extends Component {
     if (event.target === saveButtons[0]) {
       console.log("done");
       if (this.state.email === this.previousData.email) {
+        console.log(this.state.email,this.previousData.email)
         document.getElementsByClassName(
           `${styles["error-email-message"]}`
         )[0].style.visibility = "unset";
       } else {
-        this.data.email = this.state.email;
+        
         if (this.state.password !== this.state.confirmedPassword) {
           document.getElementsByClassName(
             `${styles["error-password-message"]}`
           )[0].style.visibility = "unset";
           return;
         }
+        this.data.email=this.state.email
         axios
           .put("http://localhost:3000/users/1", {
             ...this.data,
@@ -83,6 +85,7 @@ class EmailSection extends Component {
       }
     }
   };
+
 
   /**
    * this function handle the event handler on cancel button on the editing email section
@@ -125,6 +128,9 @@ class EmailSection extends Component {
 
     document.querySelectorAll(`form`)[0].style.pointerEvents = "all";
   };
+
+
+
   /**
    * @function
    * retreive the data from the backend when the component mounted
@@ -143,6 +149,8 @@ class EmailSection extends Component {
         });
       })
       .catch();
+
+      console.log("I am in Did mout ")
   }
   /**
    * this function handle the event handler on edit button icon
