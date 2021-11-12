@@ -138,6 +138,11 @@ class EmailSection extends Component {
       })
       .catch();
   }
+  /**
+   * this function handle the event handler on edit button icon
+   * @param {event} event
+   * @return {void} return nothing it just an event handler
+   */
   iconClick = (event) => {
     document.querySelectorAll(".error-message").forEach((element) => {
       element.style.transition = "0.5s .1s linear";
@@ -175,6 +180,7 @@ class EmailSection extends Component {
       changeEmailSection.style.opacity = "1";
     }
   };
+
   /**
    * this function handle any change in the states
    * @function
