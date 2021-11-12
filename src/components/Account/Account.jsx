@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styles from "./Account.module.css";
-import pen from "../../assets/Images/pencil-64x64.png";
 import axios from "axios";
+
+import FilterSection from "./FilterSection/FilterSection";
 import EmailSection from "./EmailSection/EmailSection";
 import PasswordSection from "./PasswordSection/PasswordSection";
 import SecuritySection from "./SecuritySection/SecuritySection";
@@ -45,7 +46,7 @@ export class Account extends Component {
   cancelButtonClick = (event) => {
     // if the user entered invalid email or password then cancel the operation
     // remove the transition "immediate change " but you should put it again
-    // so it will when the user click on the edit button agian 
+    // so it will when the user click on the edit button agian
     document.querySelectorAll(".error-message").forEach((element) => {
       element.style.visibility = "hidden";
       element.style.transition = "none";
@@ -149,7 +150,7 @@ export class Account extends Component {
             ...this.data,
           })
           .then((res) => {
-            window.location.reload(); 
+            window.location.reload();
           })
           .catch((err) => {
             console.log(err);
@@ -220,7 +221,7 @@ export class Account extends Component {
         element.style.opacity = "0.5";
       });
       changeEmailSection.style.pointerEvents = "all";
-      changeEmailSection.style.opacity = "1"; 
+      changeEmailSection.style.opacity = "1";
     } else if (
       event.target === imgs[1] ||
       event.target.className === `${styles["dots"]}` ||
@@ -304,90 +305,14 @@ export class Account extends Component {
       <div className={styles["account-container"]}>
         <h1 className="title">Account</h1>
         <hr />
-        <form action="" onSubmit={this.formAction}>
-          <EmailSection/>
-          {/*  
-        
-            *********
-        
-        
-          */}
+        <form action="">
+          <EmailSection />
 
-          <PasswordSection/>
+          <PasswordSection />
 
-          {/*  */}
-          
-          <SecuritySection/>
-          
-          <div className={styles["filtering-section"]}>
-            <div className={styles["title"]}>Filtering</div>
-            <div style={{ width: "80%" }}>
-              <div>
-                <div>
-                  <span
-                    className={`${styles["section-message"]} ${styles["filter-message"]}`}
-                  >
-                    Filtered Tags{" "}
-                    <a href="/help" className={styles["anchor"]}>
-                      (Help)
-                    </a>
-                  </span>
-                </div>
+          <SecuritySection />
 
-                <div className={styles["section-message"]}>
-                  You're not filtering any tags
-                  <img
-                    src={pen}
-                    onClick={this.iconClick}
-                    className={styles["icon-photo"]}
-                    alt="can't load"
-                  />
-                </div>
-
-                <div className={styles["tags-filter-box"]}>
-                  <input
-                    type="text"
-                    placeholder="Add a Filter"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <button type="button" className={styles["add-button"]}>
-                    Add
-                  </button>
-                </div>
-              </div>
-              <div>
-                <span
-                  style={{ color: "gray" }}
-                  className={`${styles["section-message"]} ${styles["filter-message"]}`}
-                >
-                  Filtered Post Content{" "}
-                  <a href="/help" className={styles["anchor"]}>
-                    (Help)
-                  </a>
-                </span>
-
-                <div className={styles["section-message"]}>
-                  You're not filtering any posts
-                  <img
-                    src={pen}
-                    onClick={this.iconClick}
-                    className={styles["icon-photo"]}
-                    alt="can't load"
-                  />
-                </div>
-                <div className={styles["posts-filter-box"]}>
-                  <input
-                    type="text"
-                    placeholder="Add a Filter"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <button type="button" className={styles["add-button"]}>
-                    Add
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <FilterSection />
         </form>
       </div>
     );

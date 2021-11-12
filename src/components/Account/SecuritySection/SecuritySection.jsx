@@ -2,6 +2,10 @@ import styles from "../Account.module.css";
 
 import React from "react";
 
+/**
+ * function that is used to render the Security section
+ * @returns {jsx}
+ */
 function SecuritySection() {
   return (
     <>
