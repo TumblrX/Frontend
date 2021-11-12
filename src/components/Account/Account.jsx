@@ -27,6 +27,11 @@ export class Account extends Component {
      * @object
      */
     let data;
+    /**
+     * this will hold the previous email for the validations
+     * @string
+     */
+    let previousEmail;
   }
   /**
    * handler of all cancel Buttons that are in the account page
@@ -79,28 +84,49 @@ export class Account extends Component {
    * @param {event} event
    */
   formAction = (event) => {
+    let saveButtons = document.getElementsByClassName(
+      `${styles["save-button"]}`
+    );
+    console.log(saveButtons[0]);
+    console.log(event.target);
+    if (event.target === saveButtons[0]) {
+      console.log("done");
+      if (this.state.email === this.previousEmail) {
+        console.log("you should change the email");
+      } else {
+        this.data.email=this.state.email
+        axios
+          .put("http://localhost:3000/users/1", {
+            ...this.data
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    } else {
+    }
+
     event.preventDefault();
-    axios
-      .get("http://localhost:3000/users/1")
-      .then((response) => {
-        console.log(response);
-      })
-      .catch();
   };
 
   componentDidMount() {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
-        console.log(response.data)
+        this.data=response.data
         this.setState(() => {
-          return { 
-              email: response.data.email,
-              password:response.data.password
-        };
+          return {
+            email: response.data.email,
+            password: response.data.password,
+          };
         });
       })
       .catch();
+
+    this.previousEmail = this.state.email;
   }
   /**
    * handle the event of clicking on the edit icon
@@ -192,6 +218,12 @@ export class Account extends Component {
       postsFilterBox.style.display = "flex";
     }
   };
+
+  changeEmail = (event) => {
+    this.setState(() => {
+      return { email: event.target.value };
+    });
+  };
   render() {
     return (
       <div className={styles["account-container"]}>
@@ -206,6 +238,7 @@ export class Account extends Component {
                 id="email-box"
                 type="email"
                 value={this.state.email}
+                onChange={this.changeEmail}
                 className={styles["before-focus-on-edit"]}
               />
               <input
@@ -224,7 +257,13 @@ export class Account extends Component {
                 >
                   cancel
                 </button>
-                <button className={styles["save-button"]}>save</button>
+                <button
+                  onClick={this.formAction}
+                  type="button"
+                  className={styles["save-button"]}
+                >
+                  save
+                </button>
               </div>
               <div style={{ display: "flex" }}>
                 <input type="checkbox" name="" style={{ marginRight: "6px" }} />
