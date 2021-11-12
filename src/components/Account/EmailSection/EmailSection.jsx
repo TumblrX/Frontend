@@ -51,11 +51,11 @@ class EmailSection extends Component {
   /**
    * this data used to send data to backend
    * @function
-   * @param {object} data this it will contain the data send to the backend 
+   * @param {object} data this it will contain the data send to the backend
    * @returns
    */
   sendData(data) {
-   
+    // sends checkboxes data only
     this.data.settings.letPeopleFindBlogByEmail =
       this.state.letPeopleFindThroughEmail;
     axios
@@ -63,7 +63,7 @@ class EmailSection extends Component {
         ...this.data,
       })
       .then((res) => {
-        
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -100,8 +100,18 @@ class EmailSection extends Component {
           )[0].style.visibility = "unset";
           return;
         }
-        this.data.email = this.state.email;
-        window.location.reload(); 
+        this.data.email=this.state.email
+        axios
+          .put("http://localhost:3000/users/1", {
+            ...this.data,
+          })
+          .then((res) => {
+            window.location.reload();
+          })
+          .catch((err) => {
+            console.log(err);
+            // validations from backend .
+          });
       }
     }
   };
@@ -146,10 +156,10 @@ class EmailSection extends Component {
     });
 
     document.querySelectorAll(`form`)[0].style.pointerEvents = "all";
-    // the change that has happen will be ignored 
-    this.setState(()=>{
-      return { email:this.previousData.email}
-    })
+    // the change that has happen will be ignored
+    this.setState(() => {
+      return { email: this.previousData.email };
+    });
   };
 
   /**
@@ -183,10 +193,6 @@ class EmailSection extends Component {
       .catch(() => {
         console.log("error");
       });
-
-    window.onbeforeunload = () => {
-      this.sendData();
-    };
   }
   /**
    * this function handle the event handler on edit button icon

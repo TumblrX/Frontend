@@ -86,7 +86,7 @@ export class PasswordSection extends Component {
             ...this.data,
           })
           .then((res) => {
-            window.location.reload();
+           window.location.reload(); 
           })
           .catch((err) => {
             console.log(err);
