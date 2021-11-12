@@ -63,7 +63,7 @@ class EmailSection extends Component {
         ...this.data,
       })
       .then((res) => {
-        window.location.reload();
+        
       })
       .catch((err) => {
         console.log(err);
@@ -101,7 +101,7 @@ class EmailSection extends Component {
           return;
         }
         this.data.email = this.state.email;
-        this.sendData(this.data);
+        window.location.reload(); 
       }
     }
   };
@@ -146,6 +146,10 @@ class EmailSection extends Component {
     });
 
     document.querySelectorAll(`form`)[0].style.pointerEvents = "all";
+    // the change that has happen will be ignored 
+    this.setState(()=>{
+      return { email:this.previousData.email}
+    })
   };
 
   /**
