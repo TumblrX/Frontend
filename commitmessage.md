@@ -1,10 +1,10 @@
 👌Done 
 
--  add functional documentation for the email section 
+-  Fixing the error that the user can enter his previous password , now user can't enter it again
 
 ✔️To do 
 
-- Add Password section as a separated component
+- add handler to Filtering section if it is required to be implemented 
 
  
 
