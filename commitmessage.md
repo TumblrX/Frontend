@@ -1,10 +1,11 @@
 👌Done 
 
--  Fixing the error that the user can enter his previous password , now user can't enter it again
+-  adding delete account button 
 
 ✔️To do 
 
 - add handler to Filtering section if it is required to be implemented 
+- routing and other pages 
 
  
 
