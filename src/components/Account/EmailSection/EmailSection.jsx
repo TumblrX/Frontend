@@ -5,16 +5,44 @@ import pen from "../../../assets/Images/pencil-64x64.png";
 import axios from "axios";
 
 class EmailSection extends Component {
+  /**
+   * @constructor
+   *
+   * @public
+   *
+   * @param {object} props any props sent from parent component
+   */
   constructor(props) {
     super(props);
 
     this.state = {
+      /**
+       * string for previous or edit email
+       * @type {string}
+       */
       email: "",
+
+      /**
+       * string for previous password
+       * @type {string}
+       */
       password: "",
+
+      /**
+       * string for password that the user will enter to confirm changing email
+       * @type {string}
+       */
       confirmedPassword: "",
     };
     // let data, previousData;
   }
+  /**
+   * this function handle the click on the save button in the email section
+   * @function
+   *
+   * @param {event} event
+   * @returns {void} return nothing , it just a click event handler
+   */
   formAction = (event) => {
     let saveButtons = document.getElementsByClassName(
       `${styles["save-button"]}`
@@ -49,6 +77,13 @@ class EmailSection extends Component {
       }
     }
   };
+
+  /**
+   * this function handle the event handler on cancel button on the editing email section
+   * @function
+   * @param {event} event  it takes the click item as an event
+   * @return {void} returns nothing it just an event handler
+   */
   cancelButtonClick = (event) => {
     // if the user entered invalid email or password then cancel the operation
     // remove the transition "immediate change " but you should put it again
@@ -64,15 +99,19 @@ class EmailSection extends Component {
           `.${styles["change-email-section"]} input[type="password"]`
         )
         .classList.toggle(`${styles.hidden}`);
+      //hide the password box
       document
         .querySelector(`.${styles["change-email-section"]} input[type="email"]`)
         .classList.toggle(`${styles["before-focus-on-edit"]}`);
+      //remove the borders from the email box by toggle the class
       document
         .getElementsByClassName(`${styles["email-section-buttons"]}`)[0]
         .classList.toggle(`${styles.hidden}`);
+      // hide the buttons
       document
         .getElementsByTagName("img")[0]
         .classList.toggle(`${styles.hidden}`);
+      // display the edit icon again
     }
     document.querySelectorAll(`form >div`).forEach((element) => {
       element.style.opacity = "1";
@@ -80,6 +119,10 @@ class EmailSection extends Component {
 
     document.querySelectorAll(`form`)[0].style.pointerEvents = "all";
   };
+  /**
+   * @function
+   * retreive the data from the backend when the component mounted
+   */
   componentDidMount() {
     axios
       .get("http://localhost:3000/users/1")
@@ -132,6 +175,12 @@ class EmailSection extends Component {
       changeEmailSection.style.opacity = "1";
     }
   };
+  /**
+   * this function handle any change in the states
+   * @function
+   * @param {event} event
+   * @returns {void}
+   */
   changeInput = (event) => {
     document.querySelectorAll(".error-message").forEach((element) => {
       // if the user enter invalid input then try to enter new values
@@ -147,6 +196,11 @@ class EmailSection extends Component {
       });
     }
   };
+
+  /**
+   * this function is responsible render the Email section
+   * @returns {jsx} return jsx to be renderd
+   */
   render() {
     return (
       <>
