@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./Account.module.css";
 import pen from "../../assets/Images/pencil-64x64.png";
 import axios from "axios";
+import EmailSection from "./EmailSection/EmailSection";
 /**
  * Component to render the Account settings in the Settings page
  * @author Abdalla Mahmoud
@@ -42,6 +43,7 @@ export class Account extends Component {
   cancelButtonClick = (event) => {
     // if the user entered invalid email or password then cancel the operation
     // remove the transition "immediate change " but you should put it again
+    // so it will when the user click on the edit button agian 
     document.querySelectorAll(".error-message").forEach((element) => {
       element.style.visibility = "hidden";
       element.style.transition = "none";
@@ -301,71 +303,7 @@ export class Account extends Component {
         <h1 className="title">Account</h1>
         <hr />
         <form action="" onSubmit={this.formAction}>
-          <div className={styles["change-email-section"]}>
-            <div className={styles["title"]}>Email</div>
-            <div className={styles["input-fields"]}>
-              <input
-                onClick={this.iconClick}
-                id="email-box"
-                type="email"
-                value={this.state.email}
-                onChange={this.changeInput}
-                className={styles["before-focus-on-edit"]}
-              />
-              <div className={`${styles["error-email-message"]} error-message`}>
-                change your Email
-              </div>
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                className={styles.hidden}
-                value={this.state.confirmedPassword}
-                onChange={this.changeInput}
-              />
-
-              <div
-                className={`${styles["error-password-message"]} error-message`}
-              >
-                Please Enter the correct password
-              </div>
-
-              <div
-                className={`${styles.hidden} ${styles["email-section-buttons"]}`}
-              >
-                <button
-                  onClick={this.cancelButtonClick}
-                  className={styles["cancel-button"]}
-                  type="button"
-                >
-                  cancel
-                </button>
-                <button
-                  onClick={this.formAction}
-                  type="button"
-                  className={styles["save-button"]}
-                >
-                  save
-                </button>
-              </div>
-              <div style={{ display: "flex" }}>
-                <input type="checkbox" name="" style={{ marginRight: "6px" }} />
-                <div
-                  className={styles["user-message"]}
-                  style={{ marginTop: "-2px" }}
-                >
-                  Let people find your blogs through this address.{" "}
-                </div>
-              </div>
-            </div>
-
-            <img
-              src={pen}
-              onClick={this.iconClick}
-              className={styles["icon-photo"]}
-              alt=" can't load "
-            />
-          </div>
-          <hr />
+          <EmailSection/>
           {/*  
         
             *********
