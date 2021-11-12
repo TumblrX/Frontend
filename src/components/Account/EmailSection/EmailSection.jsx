@@ -75,6 +75,8 @@ class EmailSection extends Component {
           return;
         }
         this.data.email = this.state.email;
+        this.data.settings.letPeopleFindBlogByEmail =
+          this.state.letPeopleFindThroughEmail;
         axios
           .put("http://localhost:3000/users/1", {
             ...this.data,
@@ -142,16 +144,23 @@ class EmailSection extends Component {
       .then((response) => {
         this.data = response.data;
         this.previousData = response.data;
-        this.setState(() => {
-          return {
-            email: response.data.email,
-            password: response.data.password,
-          };
-        });
+        console.log(this.data.settings);
+        this.setState(
+          () => {
+            return {
+              email: response.data.email,
+              password: response.data.password,
+              letPeopleFindThroughEmail:
+                response.data.settings.letPeopleFindBlogByEmail,
+            };
+          },
+          () => {
+            document.querySelectorAll(`input[type="checkbox"]`)[0].checked =
+              this.state.letPeopleFindThroughEmail;
+          }
+        );
       })
       .catch();
-
-    console.log("I am in Did mout ");
   }
   /**
    * this function handle the event handler on edit button icon
@@ -221,6 +230,7 @@ class EmailSection extends Component {
       });
     }
   };
+  componentWillUnmount() {}
 
   /**
    * this function is responsible render the Email section

@@ -1,10 +1,13 @@
 {
   "users": [
     {
-      "email": "abdalla@tumblr.com1",
+      "email": "abdalla@tumblr.com",
       "id": "1",
       "password": "testtesttest11",
-      "user": "abdalla"
+      "user": "abdalla",
+      "settings": {
+        "letPeopleFindBlogByEmail": true
+      }
     }
   ]
 }
