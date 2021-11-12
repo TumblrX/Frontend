@@ -25,6 +25,12 @@ export class Account extends Component {
           <SecuritySection />
 
           <FilterSection />
+
+          <div style={{display:"flex",justifyContent:"flex-end"}}>
+            <a href="/delete">
+            <button className={styles["delete-account-button"]}>Delete account</button>
+            </a>
+          </div>
         </form>
       </div>
     );

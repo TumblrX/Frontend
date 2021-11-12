@@ -181,3 +181,21 @@ hr {
   top: 50%;
   right: -65%;
 }
+
+.delete-account-button{
+  margin: 20px 0;
+  border: 1px solid gray;
+  color: gray;
+  padding: 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+.delete-account-button:hover{
+  background-color: #e60000a6;
+  color : white ; 
+  border: none;
+}
+
+
