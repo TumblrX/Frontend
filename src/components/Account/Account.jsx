@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./Account.module.css";
 import pen from "../../assets/Images/pencil-64x64.png";
+import axios from "axios";
 /**
  * Component to render the Account settings in the Settings page
  * @author Abdalla Mahmoud
@@ -11,11 +12,25 @@ export class Account extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      email: "",
+      password: "",
+      confirmedPassword: "",
+      findByEmail: false,
+      emailAboutActivity: false,
+      twoFactorAuth: false,
+      filteredTags: [],
+      filteredPosts: [],
+    };
+    /**
+     * it will hold the data of the current user
+     * @object
+     */
+    let data;
   }
   /**
-   *
-   * @param {*} event
+   * handler of all cancel Buttons that are in the account page
+   * @param {event} event
    */
   cancelButtonClick = (event) => {
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
@@ -59,11 +74,34 @@ export class Account extends Component {
 
     document.querySelectorAll(`form`)[0].style.pointerEvents = "all";
   };
-
+  /**
+   * this function will handle the form action after submitting any data
+   * @param {event} event
+   */
   formAction = (event) => {
     event.preventDefault();
+    axios
+      .get("http://localhost:3000/users/1")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch();
   };
 
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/users/1")
+      .then((response) => {
+        console.log(response.data)
+        this.setState(() => {
+          return { 
+              email: response.data.email,
+              password:response.data.password
+        };
+        });
+      })
+      .catch();
+  }
   /**
    * handle the event of clicking on the edit icon
    * if the target element is the first pen icon or the email box that means the action will be performed on Email section
@@ -167,7 +205,7 @@ export class Account extends Component {
                 onClick={this.iconClick}
                 id="email-box"
                 type="email"
-                value="abdalla@abdalla.com"
+                value={this.state.email}
                 className={styles["before-focus-on-edit"]}
               />
               <input
@@ -182,6 +220,7 @@ export class Account extends Component {
                 <button
                   onClick={this.cancelButtonClick}
                   className={styles["cancel-button"]}
+                  type="button"
                 >
                   cancel
                 </button>
@@ -232,6 +271,7 @@ export class Account extends Component {
                 <button
                   onClick={this.cancelButtonClick}
                   className={styles["cancel-button"]}
+                  type="button"
                 >
                   cancel
                 </button>
