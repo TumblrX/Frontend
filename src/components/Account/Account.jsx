@@ -129,7 +129,7 @@ export class Account extends Component {
           `${styles["error-current-password"]}`
         )[0].style.visibility = "unset";
       } else if (this.state.newPassword.length < 10) {
-          // one condition for test 
+        // one condition for test
         document.getElementsByClassName(
           `${styles["error-new-password"]}`
         )[0].style.visibility = "unset";
@@ -139,14 +139,17 @@ export class Account extends Component {
         )[0].style.visibility = "unset";
       } else {
         this.data.password = this.state.newPassword;
-        console.log(this.data)
+        console.log(this.data);
         axios
-          .post("http://localhost:3000/users/1", ...this.data)
+          .put("http://localhost:3000/users/1", {
+            ...this.data,
+          })
           .then((res) => {
-            //window.location.reload();
+            window.location.reload(); 
           })
           .catch((err) => {
-            console.log("error");
+            console.log(err);
+            // validations from backend .
           });
       }
     }
@@ -425,7 +428,13 @@ export class Account extends Component {
                 >
                   cancel
                 </button>
-                <button className={styles["save-button"]}>save</button>
+                <button
+                  type="button"
+                  onClick={this.formAction}
+                  className={styles["save-button"]}
+                >
+                  save
+                </button>
               </div>
             </div>
 
@@ -511,7 +520,9 @@ export class Account extends Component {
                     placeholder="Add a Filter"
                     style={{ marginRight: "10px" }}
                   />
-                  <button className={styles["add-button"]}>Add</button>
+                  <button type="button" className={styles["add-button"]}>
+                    Add
+                  </button>
                 </div>
               </div>
               <div>
@@ -540,7 +551,9 @@ export class Account extends Component {
                     placeholder="Add a Filter"
                     style={{ marginRight: "10px" }}
                   />
-                  <button className={styles["add-button"]}>Add</button>
+                  <button type="button" className={styles["add-button"]}>
+                    Add
+                  </button>
                 </div>
               </div>
             </div>

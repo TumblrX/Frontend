@@ -1,6 +1,6 @@
 👌Done 
 
--  add user messages for changing the password 
+-  sending the changed password to json server correctly
 
 ✔️To do 
 
