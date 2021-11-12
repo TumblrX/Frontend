@@ -47,6 +47,29 @@ class EmailSection extends Component {
     };
     let previousData, Data;
   }
+
+  /**
+   * this data used to send data to backend
+   * @function
+   * @param {object} data this it will contain the data send to the backend 
+   * @returns
+   */
+  sendData(data) {
+   
+    this.data.settings.letPeopleFindBlogByEmail =
+      this.state.letPeopleFindThroughEmail;
+    axios
+      .put("http://localhost:3000/users/1", {
+        ...this.data,
+      })
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+        // validations from backend .
+      });
+  }
   /**
    * this function handle the click on the save button in the email section
    * @function
@@ -62,7 +85,10 @@ class EmailSection extends Component {
     console.log(event.target);
     if (event.target === saveButtons[0]) {
       console.log("done");
-      if (this.state.email === this.previousData.email) {
+      if (
+        this.state.email === this.previousData.email ||
+        this.state.email === ""
+      ) {
         console.log(this.state.email, this.previousData.email);
         document.getElementsByClassName(
           `${styles["error-email-message"]}`
@@ -75,19 +101,7 @@ class EmailSection extends Component {
           return;
         }
         this.data.email = this.state.email;
-        this.data.settings.letPeopleFindBlogByEmail =
-          this.state.letPeopleFindThroughEmail;
-        axios
-          .put("http://localhost:3000/users/1", {
-            ...this.data,
-          })
-          .then((res) => {
-            window.location.reload();
-          })
-          .catch((err) => {
-            console.log(err);
-            // validations from backend .
-          });
+        this.sendData(this.data);
       }
     }
   };
@@ -139,12 +153,14 @@ class EmailSection extends Component {
    * retreive the data from the backend when the component mounted
    */
   componentDidMount() {
+    console.log("Yese I MAFKLdsf;dsaf;dlsaf;kldsa;sda");
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
         this.data = response.data;
         this.previousData = response.data;
         console.log(this.data.settings);
+        console.log(this.data.email);
         this.setState(
           () => {
             return {
@@ -160,7 +176,13 @@ class EmailSection extends Component {
           }
         );
       })
-      .catch();
+      .catch(() => {
+        console.log("error");
+      });
+
+    window.onbeforeunload = () => {
+      this.sendData();
+    };
   }
   /**
    * this function handle the event handler on edit button icon
@@ -230,7 +252,6 @@ class EmailSection extends Component {
       });
     }
   };
-  componentWillUnmount() {}
 
   /**
    * this function is responsible render the Email section
