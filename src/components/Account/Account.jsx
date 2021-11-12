@@ -31,7 +31,7 @@ export class Account extends Component {
      * this will hold the previous email for the validations
      * @string
      */
-    let previousEmail;
+    let previousData;
   }
   /**
    * handler of all cancel Buttons that are in the account page
@@ -91,19 +91,24 @@ export class Account extends Component {
     console.log(event.target);
     if (event.target === saveButtons[0]) {
       console.log("done");
-      if (this.state.email === this.previousEmail) {
+      if (this.state.email === this.previousData.email) {
         console.log("you should change the email");
       } else {
-        this.data.email=this.state.email
+        this.data.email = this.state.email;
+        if (this.state.password !== this.state.confirmedPassword) {
+          console.log("you should you password correctly ")
+          return ; 
+        }
         axios
           .put("http://localhost:3000/users/1", {
-            ...this.data
+            ...this.data,
           })
           .then((res) => {
-            console.log(res);
+            window.location.reload();
           })
           .catch((err) => {
             console.log(err);
+            // validations from backend .
           });
       }
     } else {
@@ -116,7 +121,8 @@ export class Account extends Component {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
-        this.data=response.data
+        this.data = response.data;
+        this.previousData = response.data;
         this.setState(() => {
           return {
             email: response.data.email,
@@ -125,8 +131,6 @@ export class Account extends Component {
         });
       })
       .catch();
-
-    this.previousEmail = this.state.email;
   }
   /**
    * handle the event of clicking on the edit icon
@@ -219,10 +223,18 @@ export class Account extends Component {
     }
   };
 
-  changeEmail = (event) => {
-    this.setState(() => {
-      return { email: event.target.value };
-    });
+  changeInput = (event) => {
+
+    if (event.target.type === "email") {
+      this.setState(() => {
+        return { email: event.target.value };
+      });
+    }
+    else{
+      this.setState(() => {
+        return { confirmedPassword: event.target.value };
+      });
+    }
   };
   render() {
     return (
@@ -238,13 +250,15 @@ export class Account extends Component {
                 id="email-box"
                 type="email"
                 value={this.state.email}
-                onChange={this.changeEmail}
+                onChange={this.changeInput}
                 className={styles["before-focus-on-edit"]}
               />
               <input
                 type="password"
                 placeholder="Confirm Password"
                 className={styles.hidden}
+                value={this.state.confirmedPassword}
+                onChange={this.changeInput}
               />
 
               <div
