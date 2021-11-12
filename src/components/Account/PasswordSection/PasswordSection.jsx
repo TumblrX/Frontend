@@ -61,11 +61,19 @@ export class PasswordSection extends Component {
         document.getElementsByClassName(
           `${styles["error-current-password"]}`
         )[0].style.visibility = "unset";
-      } else if (this.state.newPassword.length < 10) {
+      } else if (
+        this.state.newPassword.length < 10 ||
+        this.state.password === this.state.newPassword
+      ) {
         // one condition for test
-        document.getElementsByClassName(
-          `${styles["error-new-password"]}`
-        )[0].style.visibility = "unset";
+        if (this.state.newPassword.length < 10)
+          document.getElementsByClassName(
+            `${styles["error-new-password"]}`
+          )[0].style.visibility = "unset";
+        else
+          document.getElementsByClassName(
+            `${styles["error-new-password"]}`
+          )[1].style.visibility = "unset";
       } else if (this.state.newPassword !== this.state.newConfirmedPassword) {
         document.getElementsByClassName(
           `${styles["error-confirm-password"]}`
@@ -264,6 +272,9 @@ export class PasswordSection extends Component {
             />
             <div className={`${styles["error-new-password"]} error-message`}>
               Please Enter Strong Password
+            </div>
+            <div className={`${styles["error-new-password"]} error-message`}>
+              Please Don't enter you previous Password
             </div>
             <input
               id="confirmpassword"
