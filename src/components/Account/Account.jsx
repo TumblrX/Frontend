@@ -3,6 +3,7 @@ import styles from "./Account.module.css";
 import pen from "../../assets/Images/pencil-64x64.png";
 import axios from "axios";
 import EmailSection from "./EmailSection/EmailSection";
+import PasswordSection from "./PasswordSection/PasswordSection";
 /**
  * Component to render the Account settings in the Settings page
  * @author Abdalla Mahmoud
@@ -311,79 +312,7 @@ export class Account extends Component {
         
           */}
 
-          <div className={styles["password-box"]}>
-            <div className={styles["title"]}>Password</div>
-            <div className={styles["dots"]} onClick={this.iconClick}>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div className={`${styles["input-fields"]} ${styles.hidden}`}>
-              <input
-                id="currentpassword"
-                type="password"
-                name=""
-                placeholder="Current Password"
-                value={this.state.confirmedPassword}
-                onChange={this.changeInput}
-              />
-              <div
-                className={`${styles["error-current-password"]} error-message `}
-              >
-                Please Enter your password Correctly
-              </div>
-              <input
-                id="newpassword"
-                type="password"
-                placeholder="New Password"
-                value={this.state.newPassword}
-                onChange={this.changeInput}
-              />
-              <div className={`${styles["error-new-password"]} error-message`}>
-                Please Enter Strong Password
-              </div>
-              <input
-                id="confirmpassword"
-                type="password"
-                placeholder="Confirm Password"
-                value={this.state.newConfirmedPassword}
-                onChange={this.changeInput}
-              />
-              <div
-                className={`${styles["error-confirm-password"]} error-message`}
-              >
-                Please Enter Identical Passwords
-              </div>
-
-              <div className={styles["password-section-buttons"]}>
-                <button
-                  onClick={this.cancelButtonClick}
-                  className={styles["cancel-button"]}
-                  type="button"
-                >
-                  cancel
-                </button>
-                <button
-                  type="button"
-                  onClick={this.formAction}
-                  className={styles["save-button"]}
-                >
-                  save
-                </button>
-              </div>
-            </div>
-
-            <img
-              src={pen}
-              onClick={this.iconClick}
-              className={styles["icon-photo"]}
-              alt=" can't load "
-            />
-          </div>
-          <hr />
+          <PasswordSection/>
 
           {/*  */}
           <div className={styles["security-box"]}>

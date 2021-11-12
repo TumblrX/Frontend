@@ -5,12 +5,12 @@ import pen from "../../../assets/Images/pencil-64x64.png";
 import axios from "axios";
 
 /**
- * component to render the email section on the account settings
+ * Component to render the Password section on the Account section
+ *
  * @author Abdalla Mahmoud
- * @component
+ * @Component
  */
-
-class EmailSection extends Component {
+export class PasswordSection extends Component {
   /**
    * @constructor
    *
@@ -23,24 +23,26 @@ class EmailSection extends Component {
 
     this.state = {
       /**
-       * string for previous or edit email
-       * @type {string}
-       */
-      email: "",
-
-      /**
        * string for previous password
        * @type {string}
        */
       password: "",
-
       /**
        * string for password that the user will enter to confirm changing email
        * @type {string}
        */
       confirmedPassword: "",
+      /**
+       * string for the new password
+       * @type {string}
+       */
+      newPassword: "",
+      /**
+       * confirmed new password
+       * @type {string}
+       */
+      newConfirmedPassword: "",
     };
-    // let data, previousData;
   }
   /**
    * this function handle the click on the save button in the email section
@@ -53,22 +55,24 @@ class EmailSection extends Component {
     let saveButtons = document.getElementsByClassName(
       `${styles["save-button"]}`
     );
-    console.log(saveButtons[0]);
-    console.log(event.target);
-    if (event.target === saveButtons[0]) {
-      console.log("done");
-      if (this.state.email === this.previousData.email) {
+
+    if (event.target === saveButtons[1]) {
+      if (this.state.confirmedPassword !== this.state.password) {
         document.getElementsByClassName(
-          `${styles["error-email-message"]}`
+          `${styles["error-current-password"]}`
+        )[0].style.visibility = "unset";
+      } else if (this.state.newPassword.length < 10) {
+        // one condition for test
+        document.getElementsByClassName(
+          `${styles["error-new-password"]}`
+        )[0].style.visibility = "unset";
+      } else if (this.state.newPassword !== this.state.newConfirmedPassword) {
+        document.getElementsByClassName(
+          `${styles["error-confirm-password"]}`
         )[0].style.visibility = "unset";
       } else {
-        this.data.email = this.state.email;
-        if (this.state.password !== this.state.confirmedPassword) {
-          document.getElementsByClassName(
-            `${styles["error-password-message"]}`
-          )[0].style.visibility = "unset";
-          return;
-        }
+        this.data.password = this.state.newPassword;
+        console.log(this.data);
         axios
           .put("http://localhost:3000/users/1", {
             ...this.data,
@@ -90,35 +94,36 @@ class EmailSection extends Component {
    * @param {event} event  it takes the click item as an event
    * @return {void} returns nothing it just an event handler
    */
+
   cancelButtonClick = (event) => {
-    // if the user entered invalid email or password then cancel the operation
-    // remove the transition "immediate change " but you should put it again
-    // so it will when the user click on the edit button agian
     document.querySelectorAll(".error-message").forEach((element) => {
       element.style.visibility = "hidden";
       element.style.transition = "none";
     });
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
-    if (event.target === allButtons[0]) {
+    if (event.target === allButtons[1]) {
+      document.getElementsByClassName(`${styles["dots"]}`)[0].style.display =
+        "block";
       document
-        .querySelector(
-          `.${styles["change-email-section"]} input[type="password"]`
-        )
+        .querySelectorAll(`.${styles["password-box"]} input`)
+        .forEach((element) => {
+          element.classList.toggle(`${styles.hidden}`);
+          // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
+          //How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
+        });
+
+      document
+        .getElementsByTagName("img")[1]
         .classList.toggle(`${styles.hidden}`);
-      //hide the password box
+
       document
-        .querySelector(`.${styles["change-email-section"]} input[type="email"]`)
-        .classList.toggle(`${styles["before-focus-on-edit"]}`);
-      //remove the borders from the email box by toggle the class
-      document
-        .getElementsByClassName(`${styles["email-section-buttons"]}`)[0]
+        .getElementsByClassName(`${styles["password-section-buttons"]}`)[0]
         .classList.toggle(`${styles.hidden}`);
-      // hide the buttons
-      document
-        .getElementsByTagName("img")[0]
-        .classList.toggle(`${styles.hidden}`);
-      // display the edit icon again
     }
+    document.querySelectorAll(`form >div`).forEach((element) => {
+      element.style.opacity = "1";
+    });
+
     document.querySelectorAll(`form >div`).forEach((element) => {
       element.style.opacity = "1";
     });
@@ -144,6 +149,7 @@ class EmailSection extends Component {
       })
       .catch();
   }
+
   /**
    * this function handle the event handler on edit button icon
    * @param {event} event
@@ -153,37 +159,34 @@ class EmailSection extends Component {
     document.querySelectorAll(".error-message").forEach((element) => {
       element.style.transition = "0.5s .1s linear";
     });
-
-    // if they set to zero
     let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
-    if (event.target.id === "email-box" || event.target === imgs[0]) {
+    if (
+      event.target === imgs[1] ||
+      event.target.className === `${styles["dots"]}` ||
+      event.target.parentElement.className === `${styles["dots"]}`
+    ) {
+      document.getElementsByClassName(`${styles["dots"]}`)[0].style.display =
+        "none";
       document
-        .querySelectorAll(
-          `.${styles["change-email-section"]} .${styles.hidden}`
-        )
+        .querySelectorAll(`.${styles["password-box"]} .${styles.hidden}`)
         .forEach((element) => {
           element.classList.toggle(`${styles.hidden}`);
           // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
           //How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
         });
-
       document
-        .querySelector("#email-box")
-        .classList.remove(`${styles["before-focus-on-edit"]}`);
-      document
-        .getElementsByClassName(`${styles["icon-photo"]}`)[0]
+        .getElementsByClassName(`${styles["icon-photo"]}`)[1]
         .classList.toggle(`${styles.hidden}`);
-
-      let changeEmailSection = document.getElementsByClassName(
-        `${styles["change-email-section"]}`
-      )[0];
       let entireForm = document.getElementsByTagName("form")[0];
       entireForm.style.pointerEvents = "none";
       document.querySelectorAll(`form >div`).forEach((element) => {
         element.style.opacity = "0.5";
       });
-      changeEmailSection.style.pointerEvents = "all";
-      changeEmailSection.style.opacity = "1";
+      let changePasswordSection = document.getElementsByClassName(
+        `${styles["password-box"]}`
+      )[0];
+      changePasswordSection.style.pointerEvents = "all";
+      changePasswordSection.style.opacity = "1";
     }
   };
 
@@ -198,11 +201,23 @@ class EmailSection extends Component {
       // if the user enter invalid input then try to enter new values
       element.style.visibility = "hidden";
     });
-    if (event.target.type === "email") {
+    document.querySelectorAll(".error-message").forEach((element) => {
+      // if the user enter invalid input then try to enter new values
+      element.style.visibility = "hidden";
+    });
+    if (event.target.id === "currentpassword") {
       this.setState(() => {
-        return { email: event.target.value };
+        return { confirmedPassword: event.target.value };
       });
-    } else if (event.target.id === "emailcurrentpassword") {
+    } else if (event.target.id === "newpassword") {
+      this.setState(() => {
+        return { newPassword: event.target.value };
+      });
+    } else if (event.target.id === "confirmpassword") {
+      this.setState(() => {
+        return { newConfirmedPassword: event.target.value };
+      });
+    } else {
       this.setState(() => {
         return { confirmedPassword: event.target.value };
       });
@@ -216,38 +231,54 @@ class EmailSection extends Component {
   render() {
     return (
       <>
-        <div className={styles["change-email-section"]}>
-          <div className={styles["title"]}>Email</div>
-          <div className={styles["input-fields"]}>
+        <div className={styles["password-box"]}>
+          <div className={styles["title"]}>Password</div>
+          <div className={styles["dots"]} onClick={this.iconClick}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div className={`${styles["input-fields"]} ${styles.hidden}`}>
             <input
-              onClick={this.iconClick}
-              id="email-box"
-              type="email"
-              value={this.state.email}
-              onChange={this.changeInput}
-              className={styles["before-focus-on-edit"]}
-            />
-            <div className={`${styles["error-email-message"]} error-message`}>
-              change your Email
-            </div>
-            <input
+              id="currentpassword"
               type="password"
-              placeholder="Confirm Password"
-              className={styles.hidden}
+              name=""
+              placeholder="Current Password"
               value={this.state.confirmedPassword}
               onChange={this.changeInput}
-              id="emailcurrentpassword"
             />
-
             <div
-              className={`${styles["error-password-message"]} error-message`}
+              className={`${styles["error-current-password"]} error-message `}
             >
-              Please Enter the correct password
+              Please Enter your password Correctly
+            </div>
+            <input
+              id="newpassword"
+              type="password"
+              placeholder="New Password"
+              value={this.state.newPassword}
+              onChange={this.changeInput}
+            />
+            <div className={`${styles["error-new-password"]} error-message`}>
+              Please Enter Strong Password
+            </div>
+            <input
+              id="confirmpassword"
+              type="password"
+              placeholder="Confirm Password"
+              value={this.state.newConfirmedPassword}
+              onChange={this.changeInput}
+            />
+            <div
+              className={`${styles["error-confirm-password"]} error-message`}
+            >
+              Please Enter Identical Passwords
             </div>
 
-            <div
-              className={`${styles.hidden} ${styles["email-section-buttons"]}`}
-            >
+            <div className={styles["password-section-buttons"]}>
               <button
                 onClick={this.cancelButtonClick}
                 className={styles["cancel-button"]}
@@ -256,21 +287,12 @@ class EmailSection extends Component {
                 cancel
               </button>
               <button
-                onClick={this.formAction}
                 type="button"
+                onClick={this.formAction}
                 className={styles["save-button"]}
               >
                 save
               </button>
-            </div>
-            <div style={{ display: "flex" }}>
-              <input type="checkbox" name="" style={{ marginRight: "6px" }} />
-              <div
-                className={styles["user-message"]}
-                style={{ marginTop: "-2px" }}
-              >
-                Let people find your blogs through this address.{" "}
-              </div>
             </div>
           </div>
 
@@ -287,4 +309,4 @@ class EmailSection extends Component {
   }
 }
 
-export default EmailSection;
+export default PasswordSection;
