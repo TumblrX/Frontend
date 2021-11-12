@@ -157,7 +157,7 @@ export class Account extends Component {
 
       document
         .querySelector("#email-box")
-        .classList.toggle(`${styles["before-focus-on-edit"]}`);
+        .classList.remove(`${styles["before-focus-on-edit"]}`);
       document
         .getElementsByClassName(`${styles["icon-photo"]}`)[0]
         .classList.toggle(`${styles.hidden}`);

@@ -1,15 +1,12 @@
 👌Done 
 
-- create json server 
--  creating the state object 
-- setting the email value with the email in the database 
-- setting the value of the password with value in the database 
+- Add validation on the password and email 
+- [note] some validation will be done in back end but it has been mimic-ed in the front side  
 
 ✔️To do 
 
-- divide  parts of the account settings into components and use one css-file for that 
-- change email and password with a post request to the db.json 
-- render the filtered tags and posts  
+- add a user message for the validation 
+- use regex to check the char entered by user 
 
  
 
