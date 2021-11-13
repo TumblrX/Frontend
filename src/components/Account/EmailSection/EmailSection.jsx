@@ -47,29 +47,6 @@ class EmailSection extends Component {
     };
     let previousData, Data;
   }
-
-  /**
-   * this data used to send data to backend
-   * @function
-   * @param {object} data this it will contain the data send to the backend
-   * @returns
-   */
-  sendData(data) {
-    // sends checkboxes data only
-    this.data.settings.letPeopleFindBlogByEmail =
-      this.state.letPeopleFindThroughEmail;
-    axios
-      .put("http://localhost:3000/users/1", {
-        ...this.data,
-      })
-      .then((res) => {
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-        // validations from backend .
-      });
-  }
   /**
    * this function handle the click on the save button in the email section
    * @function
@@ -100,18 +77,9 @@ class EmailSection extends Component {
           )[0].style.visibility = "unset";
           return;
         }
-        this.data.email=this.state.email
-        axios
-          .put("http://localhost:3000/users/1", {
-            ...this.data,
-          })
-          .then((res) => {
-            window.location.reload();
-          })
-          .catch((err) => {
-            console.log(err);
-            // validations from backend .
-          });
+        let sentData = { email: this.state.email };
+
+        this.props.sendData(sentData);
       }
     }
   };
@@ -257,9 +225,17 @@ class EmailSection extends Component {
         return { confirmedPassword: event.target.value };
       });
     } else {
-      this.setState(() => {
-        return { letPeopleFindThroughEmail: event.target.checked };
-      });
+      this.setState(
+        () => {
+          return { letPeopleFindThroughEmail: event.target.checked };
+        },
+        () => {
+          let sentData = {
+            letPeopleFindBlogByEmail: this.state.letPeopleFindThroughEmail,
+          };
+          axios.patch("http://localhost:3000/users/1",sentData);
+        }
+      );
     }
   };
 

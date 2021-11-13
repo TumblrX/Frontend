@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Account.module.css";
-
+import axios from "axios";
 import FilterSection from "./FilterSection/FilterSection";
 import EmailSection from "./EmailSection/EmailSection";
 import PasswordSection from "./PasswordSection/PasswordSection";
@@ -12,23 +12,37 @@ import SecuritySection from "./SecuritySection/SecuritySection";
  * @component
  */
 export class Account extends Component {
+  sendData(data) {
+    axios
+      .patch("http://localhost:3000/users/1", data)
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+        // validations from backend .
+      });
+  }
+
   render() {
     return (
       <div className={styles["account-container"]}>
         <h1 className="title">Account</h1>
         <hr />
         <form action="">
-          <EmailSection />
+          <EmailSection sendData={this.sendData} />
 
-          <PasswordSection />
+          <PasswordSection sendData={this.sendData} />
 
-          <SecuritySection />
+          <SecuritySection sendData={this.sendData} />
 
-          <FilterSection />
+          <FilterSection sendData={this.sendData} />
 
-          <div style={{display:"flex",justifyContent:"flex-end"}}>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <a href="/delete">
-            <button className={styles["delete-account-button"]}>Delete account</button>
+              <button className={styles["delete-account-button"]}>
+                Delete account
+              </button>
             </a>
           </div>
         </form>

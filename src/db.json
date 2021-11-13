@@ -1,13 +1,14 @@
 {
   "users": [
     {
-      "email": "test@test.com",
+      "email": "test@test.com11",
       "id": "1",
-      "password": "testtesttest1",
+      "password": "testtesttest11111",
       "user": "abdalla",
       "settings": {
-        "letPeopleFindBlogByEmail": false
-      }
+        "letPeopleFindBlogByEmail": true
+      },
+      "letPeopleFindBlogByEmail": true
     }
   ]
 }

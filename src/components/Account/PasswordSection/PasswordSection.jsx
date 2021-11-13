@@ -79,19 +79,21 @@ export class PasswordSection extends Component {
           `${styles["error-confirm-password"]}`
         )[0].style.visibility = "unset";
       } else {
-        this.data.password = this.state.newPassword;
-        console.log(this.data);
-        axios
-          .put("http://localhost:3000/users/1", {
-            ...this.data,
-          })
-          .then((res) => {
-           window.location.reload(); 
-          })
-          .catch((err) => {
-            console.log(err);
-            // validations from backend .
-          });
+        
+        let sentData={"password":this.state.newPassword}; 
+        this.props.sendData(sentData); 
+        // console.log(this.data);
+        // axios
+        //   .put("http://localhost:3000/users/1", {
+        //     ...this.data,
+        //   })
+        //   .then((res) => {
+        //    window.location.reload(); 
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //     // validations from backend .
+        //   });
       }
     }
   };
