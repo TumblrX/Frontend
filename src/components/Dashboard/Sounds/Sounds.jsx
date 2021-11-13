@@ -18,8 +18,8 @@ export class Sounds extends Component {
       .get("http://localhost:3000/users/1")
       .then((response) => {
         document.querySelectorAll(`input[type="checkbox"]`)[1].checked =
-          response.data.settings.messagingSounds;
-        checkboxState = response.data.settings.messagingSounds;
+          response.data.messagingSounds;
+        checkboxState = response.data.messagingSounds;
       })
       .catch((err) => {});
   };

@@ -12,10 +12,7 @@ class Interface extends Component {
     checkboxState = !checkboxState;
 
     let sentData = {
-      
-          
-        enableEndLessScrolling: checkboxState,
-     
+      enableEndLessScrolling: checkboxState,
     };
     this.props.sendData(sentData);
   };
@@ -23,10 +20,10 @@ class Interface extends Component {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
-        console.log(response.data.settings.enableEndLessScrolling);
+        console.log(response.data.enableEndLessScrolling);
         document.querySelectorAll(`input[type="checkbox"]`)[0].checked =
-          response.data.settings.enableEndLessScrolling;
-        checkboxState = response.data.settings.enableEndLessScrolling;
+          response.data.enableEndLessScrolling;
+        checkboxState = response.data.enableEndLessScrolling;
       })
       .catch((err) => {});
   };

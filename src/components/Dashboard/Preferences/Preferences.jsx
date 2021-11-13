@@ -3,6 +3,8 @@ import styles from "../Dashboard.module.css";
 import axios from "axios";
 let checkboxStates = [false, false, false, false];
 class Preferences extends Component {
+
+    
   checkBoxClick = (event) => {
     console.log("i am in ");
     let boxes = document.querySelectorAll(".preferences input");
@@ -39,16 +41,17 @@ class Preferences extends Component {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
-        document.querySelectorAll(".preferences input")[0].checked =
+        let boxes =  document.querySelectorAll(".preferences input");
+        boxes[0].checked =
           response.data.bestStuffFirst;
         checkboxStates[0] = response.data.bestStuffFirst;
-        document.querySelectorAll(".preferences input")[1].checked =
+        boxes[1].checked =
           response.data.includeStuffInorbit;
         checkboxStates[1] = response.data.includeStuffInorbit;
-        document.querySelectorAll(".preferences input")[2].checked =
+        boxes[2].checked =
           response.data.EnableColorizedTags;
         checkboxStates[2] = response.data.EnableColorizedTags;
-        document.querySelectorAll(".preferences input")[3].checked =
+        boxes[3].checked =
           response.data.includeFollowedTagPosts;
         checkboxStates[3] = response.data.includeFollowedTagPosts;
       })

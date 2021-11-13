@@ -6,14 +6,14 @@
       "password": "testtesttest11111",
       "user": "abdalla",
       "letPeopleFindBlogByEmail": true,
-      "emailAboutAccountActivity": false,
-      "twoFactorAuthentication": false,
-      "enableEndLessScrolling": true,
+      "emailAboutAccountActivity": true,
+      "twoFactorAuthentication": true,
+      "enableEndLessScrolling": false,
       "messagingSounds": false,
-      "bestStuffFirst": true,
+      "bestStuffFirst": false,
       "includeStuffInorbit": false,
-      "EnableColorizedTags": true,
-      "includeFollowedTagPosts": true
+      "EnableColorizedTags": false,
+      "includeFollowedTagPosts": false
     }
   ]
 }

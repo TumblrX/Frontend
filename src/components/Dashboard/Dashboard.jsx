@@ -4,7 +4,6 @@ import Interface from './Interface/Interface'
 import Sounds from './Sounds/Sounds'
 import Preferences from './Preferences/Preferences'
 import axios from 'axios'
-import Account from '../Account/Account'
 class Dashboard extends Component {
 
     sendData(data){
@@ -15,12 +14,11 @@ class Dashboard extends Component {
             <div className={styles["dashboard-container"]}>
                 <h1 className={styles["header"]}>Dashboard</h1>
                 <hr />
-                {/* <Interface sendData={this.sendData}/>
+                <Interface sendData={this.sendData}/>
                 <hr />
                 <Sounds sendData={this.sendData}/>
                 <hr />
-                <Preferences sendData={this.sendData}/> */}
-                <Account/>
+                <Preferences sendData={this.sendData}/>
                
             </div>
         )
