@@ -8,24 +8,15 @@
 
 ### features :
 
-- [ ] changing email 📧
-
-- [ ] Let people find your blogs through this address. 🕵️
-
-- [ ] changing password 🔑
-
-- [ ] two-factor Authentication 🔐
-
-- [ ] Filtering 🌪️
-
-- [ ] deleting accounts ❌
-
+- [x] changing email 📧
+- [x] Let people find your blogs through this address. 🕵️
+- [x] changing password 🔑
+- [ ] ~~two factor Authentication 🔐~~-
+- [ ] ~~Filtering~~ 🌪~~️~~
+- [x] deleting accounts ❌
 - [ ] appearance settings
-
 - [ ] Email about account activity 📥
-
-- [ ] Conversational notifications 🔔
-
+- [ ] ~~-Conversational notifications 🔔~~-
 - [ ] Privacy
 
   - [ ] Let others see that you're active 🟢
