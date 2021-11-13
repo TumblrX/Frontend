@@ -1,6 +1,34 @@
+import axios from "axios";
 import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
+/**
+ * this variable works as a state , there is no mean to put state here in this
+ * component , for performance concerns
+ * @type {boolean}
+ */
+let checkboxState;
 class Interface extends Component {
+  checkBoxClick = () => {
+    checkboxState = !checkboxState;
+
+    let sentData = {
+      settings: {
+        enableEndLessScrolling: checkboxState,
+      },
+    };
+    this.props.sendData(sentData);
+  };
+  componentDidMount = () => {
+    axios
+      .get("http://localhost:3000/users/1")
+      .then((response) => {
+        console.log(response.data.settings.enableEndLessScrolling);
+        document.querySelectorAll(`input[type="checkbox"]`)[0].checked =
+          response.data.settings.enableEndLessScrolling;
+        checkboxState = response.data.settings.enableEndLessScrolling;
+      })
+      .catch((err) => {});
+  };
   render() {
     return (
       <>
@@ -11,6 +39,7 @@ class Interface extends Component {
               <input
                 type="checkbox"
                 style={{ marginTop: "6px", marginRight: "6px" }}
+                onClick={this.checkBoxClick}
               />
               <div className={styles["description"]}>
                 <div className={styles["section-message"]}>
