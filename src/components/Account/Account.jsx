@@ -27,7 +27,7 @@ export class Account extends Component {
   render() {
     return (
       <div className={styles["account-container"]}>
-        <h1 className="title">Account</h1>
+        <h1 className={styles["header"]}>Account</h1>
         <hr />
         <form action="">
           <EmailSection sendData={this.sendData} />

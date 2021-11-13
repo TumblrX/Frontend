@@ -233,7 +233,7 @@ class EmailSection extends Component {
           let sentData = {
             letPeopleFindBlogByEmail: this.state.letPeopleFindThroughEmail,
           };
-          axios.patch("http://localhost:3000/users/1",sentData);
+          axios.patch("http://localhost:3000/users/1", sentData);
         }
       );
     }

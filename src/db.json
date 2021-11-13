@@ -6,9 +6,11 @@
       "password": "testtesttest11111",
       "user": "abdalla",
       "settings": {
-        "letPeopleFindBlogByEmail": true
-      },
-      "letPeopleFindBlogByEmail": true
+        "letPeopleFindBlogByEmail": true,
+        "emailAboutAccountActivity":false,
+        "twoFactorAuthentication":false
+      }
+      
     }
   ]
 }
