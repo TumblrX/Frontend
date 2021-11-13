@@ -7,9 +7,9 @@ export class Sounds extends Component {
     checkboxState = !checkboxState;
 
     let sentData = {
-      settings: {
+     
         messagingSounds: checkboxState,
-      },
+      
     };
     this.props.sendData(sentData);
   };

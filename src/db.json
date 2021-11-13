@@ -5,17 +5,15 @@
       "id": "1",
       "password": "testtesttest11111",
       "user": "abdalla",
-      "settings": {
-        "letPeopleFindBlogByEmail": true,
-        "emailAboutAccountActivity": false,
-        "twoFactorAuthentication": false,
-        "enableEndLessScrolling": true,
-        "messagingSounds": false,
-        "bestStuffFirst": true,
-        "includeStuffInorbit": false,
-        "EnableColorizedTags": true,
-        "includeFollowedTagPosts": false
-      }
+      "letPeopleFindBlogByEmail": true,
+      "emailAboutAccountActivity": false,
+      "twoFactorAuthentication": false,
+      "enableEndLessScrolling": true,
+      "messagingSounds": false,
+      "bestStuffFirst": true,
+      "includeStuffInorbit": false,
+      "EnableColorizedTags": true,
+      "includeFollowedTagPosts": true
     }
   ]
 }

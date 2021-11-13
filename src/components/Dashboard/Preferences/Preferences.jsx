@@ -16,28 +16,20 @@ class Preferences extends Component {
     if (event.target === boxes[0]) {
       console.log("i am in 111 ");
       sentData = {
-        settings: {
-          bestStuffFirst: checkboxStates[0],
-        },
+        bestStuffFirst: checkboxStates[0],
       };
     } else if (event.target === boxes[1]) {
       console.log("i am in 2222");
       sentData = {
-        settings: {
-          includeStuffInorbit: checkboxStates[1],
-        },
+        includeStuffInorbit: checkboxStates[1],
       };
     } else if (event.target === boxes[2]) {
       sentData = {
-        settings: {
-          EnableColorizedTags: checkboxStates[2],
-        },
+        EnableColorizedTags: checkboxStates[2],
       };
     } else {
       sentData = {
-        settings: {
-          includeFollowedTagPosts: checkboxStates[3],
-        },
+        includeFollowedTagPosts: checkboxStates[3],
       };
     }
 
@@ -48,17 +40,17 @@ class Preferences extends Component {
       .get("http://localhost:3000/users/1")
       .then((response) => {
         document.querySelectorAll(".preferences input")[0].checked =
-          response.data.settings.bestStuffFirst;
-        checkboxStates[0] = response.data.settings.bestStuffFirst;
+          response.data.bestStuffFirst;
+        checkboxStates[0] = response.data.bestStuffFirst;
         document.querySelectorAll(".preferences input")[1].checked =
-          response.data.settings.includeStuffInorbit;
-        checkboxStates[1] = response.data.settings.includeStuffInorbit;
+          response.data.includeStuffInorbit;
+        checkboxStates[1] = response.data.includeStuffInorbit;
         document.querySelectorAll(".preferences input")[2].checked =
-          response.data.settings.EnableColorizedTags;
-        checkboxStates[2] = response.data.settings.EnableColorizedTags;
+          response.data.EnableColorizedTags;
+        checkboxStates[2] = response.data.EnableColorizedTags;
         document.querySelectorAll(".preferences input")[3].checked =
-          response.data.settings.includeFollowedTagPosts;
-        checkboxStates[3] = response.data.settings.includeFollowedTagPosts;
+          response.data.includeFollowedTagPosts;
+        checkboxStates[3] = response.data.includeFollowedTagPosts;
       })
       .catch((err) => {});
   };

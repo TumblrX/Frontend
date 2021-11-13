@@ -12,9 +12,10 @@ class Interface extends Component {
     checkboxState = !checkboxState;
 
     let sentData = {
-      settings: {
+      
+          
         enableEndLessScrolling: checkboxState,
-      },
+     
     };
     this.props.sendData(sentData);
   };

@@ -1,15 +1,10 @@
 👌Done 
 
-- adding the Dashboard settings 
-- adding interface 
-- adding sounds 
-- adding preferences 
+- adding  event handlers for all button in dashboard  
 
 ✔️To-do
 
-1. all css common classes should be placed in a general place and all the file should access it and takes the properties from it 
-
-2. adding event handlers on the check buttons 
+1. fixing the error in the json server , when you send the data to the server it overwrite the previous settings data  
 
    
 

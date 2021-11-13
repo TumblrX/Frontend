@@ -149,7 +149,7 @@ class EmailSection extends Component {
               email: response.data.email,
               password: response.data.password,
               letPeopleFindThroughEmail:
-                response.data.settings.letPeopleFindBlogByEmail,
+                response.data.letPeopleFindBlogByEmail,
             };
           },
           () => {
