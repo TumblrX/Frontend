@@ -1,15 +1,16 @@
 👌Done 
 
--  customize the notification section, give the sections their width height etc .
+-  add notification form 
 
 ✔️To-do
 
-1. give the elements their font-size colors and so on 
+1. customize the  notification form  
+
+2. add event handlers to it 
 
    
 
 
- 
 
- 
+
 

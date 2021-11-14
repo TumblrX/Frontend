@@ -21,6 +21,40 @@ export class Notifictions extends Component {
             <img className={styles["icon-photo"]} src={pen} alt="" />
           </div>
         </div>
+
+        <form action="" style={{ margin: "20px auto" }}>
+          <div style={{ display: "flex" }}>
+            <div>Email me about </div>
+            <div>
+              <div style={{ display: "flex" }}>
+                <input type="checkbox" />
+                <div>New Followers</div>
+              </div>
+              <div style={{ display: "flex" }}>
+                <input type="checkbox" />
+                <div>New replies</div>
+              </div>
+              <div style={{ display: "flex" }}>
+                <input type="checkbox" />
+                <div>Mentions</div>
+              </div>
+              <div style={{ display: "flex" }}>
+                <input type="checkbox" />
+                <div>Answered Asks</div>
+              </div>
+            </div>
+          </div>
+          <div style={{ display: "flex" }}>
+            <div> Notifications</div>
+            <div>
+              <select name="" id="">
+                <option value="">From nobody</option>
+                <option value="">From people you follow</option>
+                <option value="">From everyone</option>
+              </select>
+            </div>
+          </div>
+        </form>
       </div>
     );
   }
