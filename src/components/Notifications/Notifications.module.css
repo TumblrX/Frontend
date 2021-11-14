@@ -1,9 +1,27 @@
 .icon-photo {
-    width: 15px;
-    height: 15px;
-  }
+  width: 15px;
+  height: 15px;
+}
 
-.notification-section{
-    display: flex;
-    justify-content: space-between;
+.notification-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-info {
+  display: flex;
+  flex-shrink: 0;
+  width: 40%;
+}
+
+.edit-section {
+  flex-shrink: 0;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.user-img{
+    width: 10%;
+    height: 100%;
 }
