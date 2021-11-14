@@ -2,15 +2,43 @@ import React, { Component } from "react";
 import styles from "./Notifications.module.css";
 import pen from "../../assets/Images/pencil-64x64.png";
 import userPhoto from "../../assets/Images/myphoto.jpg";
+import axios from "axios";
 export class Notifictions extends Component {
+  constructor(props) {
+    super(props);
 
-  editButtonOnClick(){
-    document.querySelector("form").style.display="block"
+    this.state = {
+      EmailUserAboutNewFollowersBox: false,
+      EmailUserAboutNewRepliesBox: false,
+      EmailUserAboutNewMentionsBox: false,
+      EmailUserAboutNewAnsweredAsksBox: false,
+    };
   }
 
-  cancelButtonOnClick(event){
-    document.querySelector("form").style.display="none"
-    event.preventDefault(); 
+  editButtonOnClick() {
+    document.querySelector("form").style.display = "block";
+  }
+
+  cancelButtonOnClick(event) {
+    document.querySelector("form").style.display = "none";
+    event.preventDefault();
+  }
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/users/1")
+      .then((response) => {
+        console.log(response.data.notificationsSettings);
+        this.setState(() => {
+          return {
+            EmailUserAboutNewFollowersBox:
+              response.data.notificationsSettings.EmailUserAboutNewMentions,
+            
+          };
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   render() {
     return (
@@ -27,12 +55,17 @@ export class Notifictions extends Component {
               {" "}
               Some notification and some emails
             </div>
-            <img className={styles["icon-photo"]} src={pen} alt=""  onClick={this.editButtonOnClick}/>
+            <img
+              className={styles["icon-photo"]}
+              src={pen}
+              alt=""
+              onClick={this.editButtonOnClick}
+            />
           </div>
         </div>
 
-        <form action="" style={{ display:"none" }}>
-          <div style={{ display: "flex",justifyContent: "space-around" }}>
+        <form action="" style={{ display: "none" }}>
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div>Email me about </div>
             <div>
               <div style={{ display: "flex" }}>
@@ -53,9 +86,18 @@ export class Notifictions extends Component {
               </div>
             </div>
           </div>
-          <div style={{ display: "flex" ,justifyContent: "space-around", marginTop:"20px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              marginTop: "20px",
+            }}
+          >
             <div> Notifications</div>
-            <div style={{marginBottom:"15px"}}className={styles["selected"]}>
+            <div
+              style={{ marginBottom: "15px" }}
+              className={styles["selected"]}
+            >
               <select name="" id="">
                 <option value="">From nobody</option>
                 <option value="">From people you follow</option>
@@ -63,11 +105,18 @@ export class Notifictions extends Component {
               </select>
             </div>
           </div>
-          <div style={{
-            display:"flex",
-            justifyContent:"center"
-          }}>
-            <button onClick={this.cancelButtonOnClick} className={styles["cancel-button"]}>Cancel</button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <button
+              onClick={this.cancelButtonOnClick}
+              className={styles["cancel-button"]}
+            >
+              Cancel
+            </button>
             <button className={styles["save-button"]}>Save</button>
           </div>
         </form>

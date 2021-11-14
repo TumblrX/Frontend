@@ -13,7 +13,13 @@
       "bestStuffFirst": false,
       "includeStuffInorbit": false,
       "EnableColorizedTags": false,
-      "includeFollowedTagPosts": false
+      "includeFollowedTagPosts": false,
+      "notificationsSettings": {
+        "EmailUserAboutNewFollowers": false,
+        "EmailUserAboutNewReplies": false,
+        "EmailUserAboutMentions": false,
+        "EmailUserAboutNewAnsweredAsks": false
+      }
     }
   ]
 }
