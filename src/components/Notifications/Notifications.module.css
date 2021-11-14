@@ -1,7 +1,7 @@
 .icon-photo {
   width: 15px;
   height: 15px;
-
+  cursor: pointer;
 }
 
 .notification-container {
@@ -40,7 +40,6 @@
   margin-right: 3%;
   object-fit: cover;
   border-radius: 3px;
-
 }
 
 .header {
@@ -50,7 +49,55 @@
   font-weight: 100;
 }
 
+.user-name {
+}
 
-.user-name{
-    
+input[type="checkbox"] {
+  margin-top: 6px;
+}
+
+select {
+  border: none;
+  background: transparent;
+  outline: none;
+  appearance: none;
+  position: relative;
+}
+
+.selected {
+  position: relative;
+}
+.selected::after {
+  content: "^";
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 15px;
+  font-size: 30px;
+  right: 27px;
+  transform: rotate(180deg);
+}
+
+.cancel-button {
+  width: fit-content;
+  height: 30px;
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+}
+
+.save-button {
+  width: fit-content;
+  height: -moz-fit-content;
+  height: 30px;
+  background-color: #00bcd4;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 5px;
 }

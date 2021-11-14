@@ -17,6 +17,7 @@ export default class Settings extends Component {
       <div className={styles["contanier"]}>
         <div className={styles["left-side"]}>
           <Notifictions/>
+          
         </div>
         <div className={styles["aside-bar"]}>
           <SettingsNavbar />

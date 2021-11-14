@@ -22,8 +22,8 @@ export class Notifictions extends Component {
           </div>
         </div>
 
-        <form action="" style={{ margin: "20px auto" }}>
-          <div style={{ display: "flex" }}>
+        <form action="" style={{  }}>
+          <div style={{ display: "flex",justifyContent: "space-around" }}>
             <div>Email me about </div>
             <div>
               <div style={{ display: "flex" }}>
@@ -44,15 +44,22 @@ export class Notifictions extends Component {
               </div>
             </div>
           </div>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex" ,justifyContent: "space-around", marginTop:"20px" }}>
             <div> Notifications</div>
-            <div>
+            <div style={{marginBottom:"15px"}}className={styles["selected"]}>
               <select name="" id="">
                 <option value="">From nobody</option>
                 <option value="">From people you follow</option>
                 <option value="">From everyone</option>
               </select>
             </div>
+          </div>
+          <div style={{
+            display:"flex",
+            justifyContent:"center"
+          }}>
+            <button className={styles["cancel-button"]}>Cancel</button>
+            <button className={styles["save-button"]}>Save</button>
           </div>
         </form>
       </div>
