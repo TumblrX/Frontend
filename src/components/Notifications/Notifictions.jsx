@@ -3,6 +3,15 @@ import styles from "./Notifications.module.css";
 import pen from "../../assets/Images/pencil-64x64.png";
 import userPhoto from "../../assets/Images/myphoto.jpg";
 export class Notifictions extends Component {
+
+  editButtonOnClick(){
+    document.querySelector("form").style.display="block"
+  }
+
+  cancelButtonOnClick(event){
+    document.querySelector("form").style.display="none"
+    event.preventDefault(); 
+  }
   render() {
     return (
       <div className={styles["notification-container"]}>
@@ -18,11 +27,11 @@ export class Notifictions extends Component {
               {" "}
               Some notification and some emails
             </div>
-            <img className={styles["icon-photo"]} src={pen} alt="" />
+            <img className={styles["icon-photo"]} src={pen} alt=""  onClick={this.editButtonOnClick}/>
           </div>
         </div>
 
-        <form action="" style={{  }}>
+        <form action="" style={{ display:"none" }}>
           <div style={{ display: "flex",justifyContent: "space-around" }}>
             <div>Email me about </div>
             <div>
@@ -58,7 +67,7 @@ export class Notifictions extends Component {
             display:"flex",
             justifyContent:"center"
           }}>
-            <button className={styles["cancel-button"]}>Cancel</button>
+            <button onClick={this.cancelButtonOnClick} className={styles["cancel-button"]}>Cancel</button>
             <button className={styles["save-button"]}>Save</button>
           </div>
         </form>

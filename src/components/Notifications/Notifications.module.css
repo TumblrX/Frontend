@@ -62,6 +62,8 @@ select {
   outline: none;
   appearance: none;
   position: relative;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .selected {
@@ -72,10 +74,11 @@ select {
   width: 15px;
   height: 15px;
   position: absolute;
-  top: 15px;
+  top: 11px;
   font-size: 30px;
-  right: 27px;
+  right: -2px;
   transform: rotate(180deg);
+  color: #00bcd4;
 }
 
 .cancel-button {
@@ -88,6 +91,7 @@ select {
   font-size: 15px;
   margin-right: 5px;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .save-button {
@@ -100,4 +104,5 @@ select {
   padding: 5px;
   font-size: 15px;
   margin-right: 5px;
+  cursor: pointer;
 }
