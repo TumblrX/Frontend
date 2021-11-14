@@ -1,0 +1,9 @@
+.icon-photo {
+    width: 15px;
+    height: 15px;
+  }
+
+.notification-section{
+    display: flex;
+    justify-content: space-between;
+}
