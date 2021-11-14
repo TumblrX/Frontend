@@ -1,14 +1,13 @@
 👌Done 
 
--  fixing the error in the json server , when you send the data to the server it overwrite the previous settings data  
+-  customize the notification section, give the sections their width height etc .
 
 ✔️To-do
 
-1. routing
-
-2. handle Css files 
+1. give the elements their font-size colors and so on 
 
    
+
 
  
 
