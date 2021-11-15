@@ -1,6 +1,7 @@
 👌Done 
 
--  🛠️ fixing the some issues in the notifications section , the issue was that the data comes from the server as it is put in the server , then the method `Ojbect.keys()` and `Object.values()` was used this methods sort the keys alphabetically  , then a for loop with the index used so the data was put wrongly the object that holds it in the component . 
+-  adding the user image navbar 
+-  customize the Settings and adding some styles , both the user image on the notification side and on the navbar will have fixed size the first one 28px * 28px and the other one 37 * 37 px respectively 
 
 ✔️To-do
 

@@ -35,8 +35,8 @@
 }
 
 .user-img {
-  width: 12%;
-  height: 75%;
+  width: 28px;
+  height: 28px;
   margin-right: 3%;
   object-fit: cover;
   border-radius: 3px;
