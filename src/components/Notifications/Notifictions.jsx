@@ -29,7 +29,7 @@ export class Notifictions extends Component {
         !userSettings.EmailUserAboutNewMentionsBox;
     } else if (event.target === checkboxes[4]) {
       userSettings.EmailUserAboutNewAnsweredAsksBox =
-        !userSettings.EmailUserAboutNewMentionsBox;
+        !userSettings.EmailUserAboutNewAnsweredAsksBox;
     } else {
       console.log(event.target.value);
       if (event.target.value === "1") {

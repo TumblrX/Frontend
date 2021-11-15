@@ -16,10 +16,10 @@
       "includeFollowedTagPosts": false,
       "notificationsSettings": {
         "EmailUserAboutNewFollowersBox": true,
-        "EmailUserAboutNewRepliesBox": false,
-        "EmailUserAboutNewMentionsBox": false,
+        "EmailUserAboutNewRepliesBox": true,
+        "EmailUserAboutNewMentionsBox": true,
         "EmailUserAboutNewAnsweredAsksBox": false,
-        "NotificationSettingsFor": "From people you follow",
+        "NotificationSettingsFor": "From nobody",
         "ApplySettingsForAllBlogs": false
       }
     }
