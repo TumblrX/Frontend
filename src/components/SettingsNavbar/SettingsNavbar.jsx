@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./SettingsNavbar.module.css";
+import { Link } from "react-router-dom";
 /**
  * Component to render the navbar of the settings page
  * @author Abdalla Mahmoud
@@ -10,41 +11,48 @@ export default class SettingsNavbar extends Component {
   render() {
     return (
       <aside>
-        <a href="/settings/account">
+        <Link to="/settings/account">
           <div className={styles["nav-bar-slot"]}>
             <div>Account</div>
             <div>The essentials</div>
           </div>
-        </a>
-        <a href="/settings/dashboard">
+        </Link>
+
+        <Link to="/settings/dashboard">
           <div className={styles["nav-bar-slot"]}>
             <div>Dashboard</div>
             <div>Appearance options,text editor</div>
           </div>
-        </a>
-        <a href="/settings/notifications">
+        </Link>
+
+        <Link to="/settings/notifications">
           <div className={styles["nav-bar-slot"]}>
             <div>Notifications</div>
             <div>Via email &amp; mobile </div>
           </div>
-        </a>
-        <a href="/settings/privacy">
+        </Link>
+        {/* <Link to="/settings/privacy">
           <div className={styles["nav-bar-slot"]}>
             <div>Privacy</div>
             <div>Personalization and data management</div>
           </div>
-        </a>
+        </Link> */}
+
         <div className={styles.blogs}>Blogs</div>
-        <div className={`${styles["blog-slot"]}`}>
-          <div>
-            <img src="" alt="" />
+        <Link to="/settings/blog/youngdev">
+          <div className={`${styles["blog-slot"]}`}>
             <div>
-              <div>youngdev</div>
-              <div className={styles["small-text"]}>Thebrownboy</div>
+              <img src="" alt="" />
+              <div>
+                <div>youngdev</div>
+                <div className={styles["small-text"]}>Thebrownboy</div>
+              </div>
             </div>
           </div>
-        </div>
-        <a href="/new/blog" className={styles["small-text"]}>create a new blog </a>
+        </Link>
+        <Link to="/new/blog">
+          <div className={styles["small-text"]}> create a new blog </div>
+        </Link>
       </aside>
     );
   }
