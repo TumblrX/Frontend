@@ -17,10 +17,18 @@ export class Notifictions extends Component {
 
   editButtonOnClick() {
     document.querySelector("form").style.display = "block";
+    document.querySelector(`.${styles["icon-photo"]}`).style.display = "none";
+    document.querySelector(`.${styles["icon-photo"]}`).previousSibling.style.display = "none";
+    document.querySelector(`.${styles["edit-after-click"]}`).style.display =
+      "flex";
   }
 
   cancelButtonOnClick(event) {
     document.querySelector("form").style.display = "none";
+    document.querySelector(`.${styles["icon-photo"]}`).style.display = "block";
+    document.querySelector(`.${styles["icon-photo"]}`).previousSibling.style.display = "block";
+    document.querySelector(`.${styles["edit-after-click"]}`).style.display =
+      "none";
     event.preventDefault();
   }
   componentDidMount() {
@@ -32,7 +40,6 @@ export class Notifictions extends Component {
           return {
             EmailUserAboutNewFollowersBox:
               response.data.notificationsSettings.EmailUserAboutNewMentions,
-            
           };
         });
       })
@@ -55,12 +62,20 @@ export class Notifictions extends Component {
               {" "}
               Some notification and some emails
             </div>
+
             <img
               className={styles["icon-photo"]}
               src={pen}
               alt=""
               onClick={this.editButtonOnClick}
             />
+            <div
+              style={{ display: "none" }}
+              className={styles["edit-after-click"]}
+            >
+              <input type="checkbox" />
+              <div>Apply settings to all blogs </div>
+            </div>
           </div>
         </div>
 

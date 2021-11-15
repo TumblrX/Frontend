@@ -106,3 +106,8 @@ select {
   margin-right: 5px;
   cursor: pointer;
 }
+
+.edit-after-click{
+  font: 100  1.4rem sans-serif;
+  color: gray ;
+}

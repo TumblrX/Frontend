@@ -1,6 +1,6 @@
 👌Done 
 
--  add buttons to the form 
+-  add the states for the check boxes 
 
 ✔️To-do
 
