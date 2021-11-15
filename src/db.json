@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "email": "test@test.com11",
+      "email": "abdalla@tumblr.test",
       "id": "1",
-      "password": "testtesttest11111",
+      "password": "testtesttest111111",
       "user": "abdalla",
       "letPeopleFindBlogByEmail": true,
       "emailAboutAccountActivity": true,
@@ -18,8 +18,8 @@
         "EmailUserAboutNewFollowersBox": true,
         "EmailUserAboutNewRepliesBox": false,
         "EmailUserAboutNewMentionsBox": false,
-        "EmailUserAboutNewAnsweredAsksBox": true,
-        "NotificationSettingsFor": "From nobody",
+        "EmailUserAboutNewAnsweredAsksBox": false,
+        "NotificationSettingsFor": "From people you follow",
         "ApplySettingsForAllBlogs": false
       }
     }

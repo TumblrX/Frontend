@@ -8,8 +8,8 @@ let userSettings = {
   EmailUserAboutNewRepliesBox: false,
   EmailUserAboutNewMentionsBox: false,
   EmailUserAboutNewAnsweredAsksBox: false,
-  ApplySettingsForAllBlogs: false,
   NotificationSettingsFor: "From people you follow",
+  ApplySettingsForAllBlogs: false,
 };
 export class Notifictions extends Component {
   inputsOnChange = (event) => {
@@ -76,12 +76,20 @@ export class Notifictions extends Component {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
-        userSettings = response.data.notificationsSettings;
+        console.log(response.data.notificationsSettings); 
+        userSettings = response.data.notificationsSettings; 
         let userBoxes = document.querySelectorAll(`input[type="checkbox"]`);
         userSettings.ApplySettingsForAllBlogs = false;
-        for (let i = 1; i < userBoxes.length; i++) {
-          userBoxes[i].checked = Object.values(userSettings)[i];
-        }
+        userBoxes[1].checked = userSettings["EmailUserAboutNewFollowersBox"];
+        userBoxes[2].checked=userSettings["EmailUserAboutNewRepliesBox"];
+        userBoxes[3].checked=userSettings["EmailUserAboutNewMentionsBox"];
+        userBoxes[4].checked=userSettings["EmailUserAboutNewAnsweredAsksBox"]; 
+        
+        // object is sorted by the names 
+        // for (let i = 1; i < userBoxes.length; i++) {
+        //   userBoxes[i].checked = Object.values(userSettings)[i];
+        //   console.log(userBoxes[i],Object.keys(userSettings)[i],Object.values(userSettings)[i]); 
+        // }
         let selectionBox = document.querySelector("select");
         if (userSettings.NotificationSettingsFor === "From nobody") {
           selectionBox.value = 1;
