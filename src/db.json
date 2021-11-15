@@ -15,10 +15,12 @@
       "EnableColorizedTags": false,
       "includeFollowedTagPosts": false,
       "notificationsSettings": {
-        "EmailUserAboutNewFollowers": false,
-        "EmailUserAboutNewReplies": false,
-        "EmailUserAboutMentions": false,
-        "EmailUserAboutNewAnsweredAsks": false
+        "EmailUserAboutNewFollowersBox": true,
+        "EmailUserAboutNewRepliesBox": true,
+        "EmailUserAboutNewMentionsBox": true,
+        "EmailUserAboutNewAnsweredAsksBox": true,
+        "ApplySettingsForAllBlogs": true,
+        "NotificationSettingsFor": "From people you follow"
       }
     }
   ]

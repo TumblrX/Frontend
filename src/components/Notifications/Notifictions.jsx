@@ -8,11 +8,17 @@ let userSettings = {
   EmailUserAboutNewRepliesBox: false,
   EmailUserAboutNewMentionsBox: false,
   EmailUserAboutNewAnsweredAsksBox: false,
+  ApplySettingsForAllBlogs: false,
+  NotificationSettingsFor: "From people you follow",
 };
 export class Notifictions extends Component {
-  checkboxesOnChange = (event) => {
+  inputsOnChange = (event) => {
     let checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
-    if (event.target === checkboxes[1]) {
+
+    if (event.target === checkboxes[0]) {
+      userSettings.ApplySettingsForAllBlogs =
+        !userSettings.ApplySettingsForAllBlogs;
+    } else if (event.target === checkboxes[1]) {
       userSettings.EmailUserAboutNewFollowersBox =
         !userSettings.EmailUserAboutNewFollowersBox;
     } else if (event.target === checkboxes[2]) {
@@ -21,9 +27,16 @@ export class Notifictions extends Component {
     } else if (event.target === checkboxes[3]) {
       userSettings.EmailUserAboutNewMentionsBox =
         !userSettings.EmailUserAboutNewMentionsBox;
-    } else {
+    } else if (event.target === checkboxes[4]) {
       userSettings.EmailUserAboutNewAnsweredAsksBox =
         !userSettings.EmailUserAboutNewMentionsBox;
+    } else {
+      console.log(event.target.value)
+      if (event.target.value === "1")
+        userSettings.NotificationSettingsFor = "From nobody";
+      else if (event.target.value === "2")
+        userSettings.NotificationSettingsFor = "From people you follow";
+      else userSettings.NotificationSettingsFor = "From everyone";
     }
   };
   editButtonOnClick() {
@@ -59,16 +72,24 @@ export class Notifictions extends Component {
       .get("http://localhost:3000/users/1")
       .then((response) => {
         console.log(response.data.notificationsSettings);
-        this.setState(() => {
-          return {
-            EmailUserAboutNewFollowersBox:
-              response.data.notificationsSettings.EmailUserAboutNewMentions,
-          };
-        });
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+  formAction() {
+    let sentData = { notificationsSettings: userSettings };
+    axios
+      .patch("http://localhost:3000/users/1", sentData)
+      .then((res) => {
+        // window.location.reload();
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+        // validations from backend .
+      });
+    this.preventDefault();
   }
   render() {
     return (
@@ -96,7 +117,11 @@ export class Notifictions extends Component {
               style={{ display: "none" }}
               className={styles["edit-after-click"]}
             >
-              <input type="checkbox" onClick={this.applyForAllButtonOnClick} />
+              <input
+                onChange={this.inputsOnChange}
+                type="checkbox"
+                onClick={this.applyForAllButtonOnClick}
+              />
               <div style={{ height: "fit-content", marginTop: "6px" }}>
                 Apply settings to all blogs{" "}
               </div>
@@ -104,35 +129,29 @@ export class Notifictions extends Component {
           </div>
         </div>
 
-        <form
-          action=""
-          style={{ display: "none", marginTop: "20px", color: "#444" }}
-        >
+        <form style={{ display: "none", marginTop: "20px", color: "#444" }}>
           <div style={{ display: "flex" }}>
             <div className={styles["notification-section-title"]}>
               Email me about{" "}
             </div>
             <div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" onChange={this.checkboxesOnChange} />
+                <input type="checkbox" onChange={this.inputsOnChange} />
                 <div className={styles["notification-selection"]}>
                   New Followers
                 </div>
               </div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" onChange={this.checkboxesOnChange} />
+                <input type="checkbox" onChange={this.inputsOnChange} />
                 <div className={styles["notification-selection"]}>
                   New replies
                 </div>
               </div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" onChange={this.checkboxesOnChange} />
+                <input type="checkbox" onChange={this.inputsOnChange} />
                 <div className={styles["notification-selection"]}>Mentions</div>
               </div>
-              <div
-                style={{ display: "flex" }}
-                onChange={this.checkboxesOnChange}
-              >
+              <div style={{ display: "flex" }} onChange={this.inputsOnChange}>
                 <input type="checkbox" />
                 <div className={styles["notification-selection"]}>
                   Answered Asks
@@ -155,10 +174,10 @@ export class Notifictions extends Component {
               className={styles["selected"]}
             >
               <div style={{ display: "flex", alignItems: "center" }}>
-                <select name="" id="">
-                  <option value="">From nobody</option>
-                  <option value="">From people you follow</option>
-                  <option value="">From everyone</option>
+                <select name="" id="" onChange={this.inputsOnChange}>
+                  <option value="1">From nobody</option>
+                  <option value="2">From people you follow</option>
+                  <option value="3">From everyone</option>
                 </select>
                 <div className={styles["arrow"]}>^</div>
               </div>
@@ -177,7 +196,9 @@ export class Notifictions extends Component {
             >
               Cancel
             </button>
-            <button className={styles["save-button"]}>Save</button>
+            <button onClick={this.formAction} className={styles["save-button"]}>
+              Save
+            </button>
           </div>
         </form>
       </div>
