@@ -1,16 +1,15 @@
 👌Done 
 
--  add event handler to values of the checkboxes on the form 
--  Replace the states with regular variables there is no meaning for using state on checkboxes , the component will be rendered every time any change happens on the component if states used so no need for that ! 
+-   add event handlers to Form 
+-  connect with the json server with form data 
 
 ✔️To-do
 
-2. add event handlers to Form 
+1. customize the arrow on the selection box 
 
-2. connect with the json server with form data 
+2. Adding routing settings page 
 
    
-
 
 
 

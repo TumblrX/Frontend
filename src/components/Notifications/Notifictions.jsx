@@ -31,7 +31,7 @@ export class Notifictions extends Component {
       userSettings.EmailUserAboutNewAnsweredAsksBox =
         !userSettings.EmailUserAboutNewMentionsBox;
     } else {
-      console.log(event.target.value)
+      console.log(event.target.value);
       if (event.target.value === "1")
         userSettings.NotificationSettingsFor = "From nobody";
       else if (event.target.value === "2")
@@ -71,7 +71,18 @@ export class Notifictions extends Component {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
-        console.log(response.data.notificationsSettings);
+        userSettings = response.data.notificationsSettings;
+        let userBoxes = document.querySelectorAll(`input[type="checkbox"]`);
+        userSettings.ApplySettingsForAllBlogs=false ; 
+        for (let i = 1; i < userBoxes.length; i++) {
+          userBoxes[i].checked = Object.values(userSettings)[i];
+        }
+        let selectionBox = document.querySelector("select");
+        if (userSettings.NotificationSettingsFor === "From nobody")
+          selectionBox.value = 1;
+        if (userSettings.NotificationSettingsFor === "From people you follow")
+          selectionBox.value = 2;
+        else selectionBox.value = 3;
       })
       .catch((err) => {
         console.log(err);
