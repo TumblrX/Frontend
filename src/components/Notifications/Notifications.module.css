@@ -80,13 +80,17 @@ select {
   transform: rotate(180deg);
   color: #00bcd4;
 } */
-.arrow{
-  
+.arrow {
+  margin-bottom: -15px;
+  margin-left: 3px;
+  position: relative;
+  cursor: pointer;
   width: 15px;
   height: 15px;
   font-size: 30px;
   transform: rotate(180deg);
   color: #00bcd4;
+  right: 0;
 }
 
 .cancel-button {
@@ -129,7 +133,7 @@ select {
 
 .notification-selection {
   font: 600 1.6rem sans-serif;
-  
+
   height: fit-content;
   margin-top: 4px;
 }

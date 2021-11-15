@@ -32,11 +32,16 @@ export class Notifictions extends Component {
         !userSettings.EmailUserAboutNewMentionsBox;
     } else {
       console.log(event.target.value);
-      if (event.target.value === "1")
+      if (event.target.value === "1") {
         userSettings.NotificationSettingsFor = "From nobody";
-      else if (event.target.value === "2")
+        document.querySelector(`.${styles["arrow"]}`).style.left = "-55px";
+      } else if (event.target.value === "2") {
         userSettings.NotificationSettingsFor = "From people you follow";
-      else userSettings.NotificationSettingsFor = "From everyone";
+        document.querySelector(`.${styles["arrow"]}`).style.left = "0";
+      } else {
+        userSettings.NotificationSettingsFor = "From everyone";
+        document.querySelector(`.${styles["arrow"]}`).style.left = "-50px";
+      }
     }
   };
   editButtonOnClick() {
@@ -73,16 +78,22 @@ export class Notifictions extends Component {
       .then((response) => {
         userSettings = response.data.notificationsSettings;
         let userBoxes = document.querySelectorAll(`input[type="checkbox"]`);
-        userSettings.ApplySettingsForAllBlogs=false ; 
+        userSettings.ApplySettingsForAllBlogs = false;
         for (let i = 1; i < userBoxes.length; i++) {
           userBoxes[i].checked = Object.values(userSettings)[i];
         }
         let selectionBox = document.querySelector("select");
-        if (userSettings.NotificationSettingsFor === "From nobody")
+        if (userSettings.NotificationSettingsFor === "From nobody") {
           selectionBox.value = 1;
-        if (userSettings.NotificationSettingsFor === "From people you follow")
+          selectionBox.nextElementSibling.style.left = "-55px";
+        }
+        if (userSettings.NotificationSettingsFor === "From people you follow") {
           selectionBox.value = 2;
-        else selectionBox.value = 3;
+          selectionBox.nextElementSibling.style.left = "0";
+        } else {
+          selectionBox.value = 3;
+          selectionBox.nextElementSibling.style.left = "-50px";
+        }
       })
       .catch((err) => {
         console.log(err);

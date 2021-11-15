@@ -19,7 +19,7 @@
         "EmailUserAboutNewRepliesBox": false,
         "EmailUserAboutNewMentionsBox": false,
         "EmailUserAboutNewAnsweredAsksBox": true,
-        "NotificationSettingsFor": "From people you follow",
+        "NotificationSettingsFor": "From nobody",
         "ApplySettingsForAllBlogs": false
       }
     }

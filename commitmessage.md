@@ -1,7 +1,10 @@
 👌Done 
 
--   add event handlers to Form 
--  connect with the json server with form data 
+-  handle issues on the handler 
+
+- handle issues on sending the data 
+
+  
 
 ✔️To-do
 
