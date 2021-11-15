@@ -18,7 +18,9 @@ export class Notifictions extends Component {
   editButtonOnClick() {
     document.querySelector("form").style.display = "block";
     document.querySelector(`.${styles["icon-photo"]}`).style.display = "none";
-    document.querySelector(`.${styles["icon-photo"]}`).previousSibling.style.display = "none";
+    document.querySelector(
+      `.${styles["icon-photo"]}`
+    ).previousSibling.style.display = "none";
     document.querySelector(`.${styles["edit-after-click"]}`).style.display =
       "flex";
   }
@@ -26,10 +28,20 @@ export class Notifictions extends Component {
   cancelButtonOnClick(event) {
     document.querySelector("form").style.display = "none";
     document.querySelector(`.${styles["icon-photo"]}`).style.display = "block";
-    document.querySelector(`.${styles["icon-photo"]}`).previousSibling.style.display = "block";
+    document.querySelector(
+      `.${styles["icon-photo"]}`
+    ).previousSibling.style.display = "block";
     document.querySelector(`.${styles["edit-after-click"]}`).style.display =
       "none";
     event.preventDefault();
+  }
+
+  applyForAllButtonOnClick(event) {
+    let saveButton = document.querySelector(`.${styles["save-button"]}`);
+    if (saveButton.innerHTML === "Save") saveButton.innerHTML = "Save For All ";
+    else {
+      saveButton.innerHTML = "Save";
+    }
   }
   componentDidMount() {
     axios
@@ -73,15 +85,17 @@ export class Notifictions extends Component {
               style={{ display: "none" }}
               className={styles["edit-after-click"]}
             >
-              <input type="checkbox" />
-              <div>Apply settings to all blogs </div>
+              <input type="checkbox" onClick={this.applyForAllButtonOnClick} />
+              <div style={{height:"fit-content",marginTop:"6px" }}>Apply settings to all blogs </div>
             </div>
           </div>
         </div>
 
-        <form action="" style={{ display: "none" }}>
-          <div style={{ display: "flex", justifyContent: "space-around" }}>
-            <div>Email me about </div>
+        <form action="" style={{ display: "none", marginTop: "20px" }}>
+          <div style={{ display: "flex" }}>
+            <div className={styles["notification-section-title"]}>
+              Email me about{" "}
+            </div>
             <div>
               <div style={{ display: "flex" }}>
                 <input type="checkbox" />
@@ -104,11 +118,13 @@ export class Notifictions extends Component {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-around",
-              marginTop: "20px",
+              margin: "15px 0 ",
             }}
           >
-            <div> Notifications</div>
+            <div className={styles["notification-section-title"]} style={{}}>
+              {" "}
+              Notifications
+            </div>
             <div
               style={{ marginBottom: "15px" }}
               className={styles["selected"]}
@@ -122,8 +138,9 @@ export class Notifictions extends Component {
           </div>
           <div
             style={{
-              display: "flex",
-              justifyContent: "center",
+              marginLeft:"35%"
+              // this is margin to be indented  with the sections above 
+              // 35% = 30% margin left of the title above + 30% width of the title above 
             }}
           >
             <button

@@ -1,18 +1,15 @@
 👌Done 
 
--  add the states for the check boxes 
+-  customize the notifications  section and adding some css styles 
 
 ✔️To-do
 
-1. add event handler to edit icon 
-
 2. add event handlers to Form 
 
-3. connect with the json server with form data 
-
-4. add cancel and submit button 
+2. connect with the json server with form data 
 
    
+
 
 
 

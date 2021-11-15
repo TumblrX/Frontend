@@ -30,7 +30,7 @@
   flex-shrink: 0;
   display: flex;
   width: 50%;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -110,4 +110,12 @@ select {
 .edit-after-click{
   font: 100  1.4rem sans-serif;
   color: gray ;
+}
+
+
+.notification-section-title{
+  margin-left:  5%;
+  width: 30%;
+  white-space: nowrap;
+
 }
