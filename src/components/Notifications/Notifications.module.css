@@ -69,7 +69,7 @@ select {
 .selected {
   position: relative;
 }
-.selected::after {
+/* .selected::after {
   content: "^";
   width: 15px;
   height: 15px;
@@ -77,6 +77,14 @@ select {
   top: 11px;
   font-size: 30px;
   right: -2px;
+  transform: rotate(180deg);
+  color: #00bcd4;
+} */
+.arrow{
+  
+  width: 15px;
+  height: 15px;
+  font-size: 30px;
   transform: rotate(180deg);
   color: #00bcd4;
 }
@@ -107,15 +115,21 @@ select {
   cursor: pointer;
 }
 
-.edit-after-click{
-  font: 100  1.4rem sans-serif;
-  color: gray ;
+.edit-after-click {
+  font: 100 1.4rem sans-serif;
+  color: gray;
 }
 
-
-.notification-section-title{
-  margin-left:  5%;
+.notification-section-title {
+  margin-left: 5%;
   width: 30%;
   white-space: nowrap;
+  font: 600 1.8rem sans-serif;
+}
 
+.notification-selection {
+  font: 600 1.6rem sans-serif;
+  
+  height: fit-content;
+  margin-top: 4px;
 }

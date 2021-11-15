@@ -3,18 +3,29 @@ import styles from "./Notifications.module.css";
 import pen from "../../assets/Images/pencil-64x64.png";
 import userPhoto from "../../assets/Images/myphoto.jpg";
 import axios from "axios";
+let userSettings = {
+  EmailUserAboutNewFollowersBox: false,
+  EmailUserAboutNewRepliesBox: false,
+  EmailUserAboutNewMentionsBox: false,
+  EmailUserAboutNewAnsweredAsksBox: false,
+};
 export class Notifictions extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      EmailUserAboutNewFollowersBox: false,
-      EmailUserAboutNewRepliesBox: false,
-      EmailUserAboutNewMentionsBox: false,
-      EmailUserAboutNewAnsweredAsksBox: false,
-    };
-  }
-
+  checkboxesOnChange = (event) => {
+    let checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
+    if (event.target === checkboxes[1]) {
+      userSettings.EmailUserAboutNewFollowersBox =
+        !userSettings.EmailUserAboutNewFollowersBox;
+    } else if (event.target === checkboxes[2]) {
+      userSettings.EmailUserAboutNewRepliesBox =
+        !userSettings.EmailUserAboutNewRepliesBox;
+    } else if (event.target === checkboxes[3]) {
+      userSettings.EmailUserAboutNewMentionsBox =
+        !userSettings.EmailUserAboutNewMentionsBox;
+    } else {
+      userSettings.EmailUserAboutNewAnsweredAsksBox =
+        !userSettings.EmailUserAboutNewMentionsBox;
+    }
+  };
   editButtonOnClick() {
     document.querySelector("form").style.display = "block";
     document.querySelector(`.${styles["icon-photo"]}`).style.display = "none";
@@ -86,32 +97,46 @@ export class Notifictions extends Component {
               className={styles["edit-after-click"]}
             >
               <input type="checkbox" onClick={this.applyForAllButtonOnClick} />
-              <div style={{height:"fit-content",marginTop:"6px" }}>Apply settings to all blogs </div>
+              <div style={{ height: "fit-content", marginTop: "6px" }}>
+                Apply settings to all blogs{" "}
+              </div>
             </div>
           </div>
         </div>
 
-        <form action="" style={{ display: "none", marginTop: "20px" }}>
+        <form
+          action=""
+          style={{ display: "none", marginTop: "20px", color: "#444" }}
+        >
           <div style={{ display: "flex" }}>
             <div className={styles["notification-section-title"]}>
               Email me about{" "}
             </div>
             <div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" />
-                <div>New Followers</div>
+                <input type="checkbox" onChange={this.checkboxesOnChange} />
+                <div className={styles["notification-selection"]}>
+                  New Followers
+                </div>
               </div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" />
-                <div>New replies</div>
+                <input type="checkbox" onChange={this.checkboxesOnChange} />
+                <div className={styles["notification-selection"]}>
+                  New replies
+                </div>
               </div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" />
-                <div>Mentions</div>
+                <input type="checkbox" onChange={this.checkboxesOnChange} />
+                <div className={styles["notification-selection"]}>Mentions</div>
               </div>
-              <div style={{ display: "flex" }}>
+              <div
+                style={{ display: "flex" }}
+                onChange={this.checkboxesOnChange}
+              >
                 <input type="checkbox" />
-                <div>Answered Asks</div>
+                <div className={styles["notification-selection"]}>
+                  Answered Asks
+                </div>
               </div>
             </div>
           </div>
@@ -129,18 +154,21 @@ export class Notifictions extends Component {
               style={{ marginBottom: "15px" }}
               className={styles["selected"]}
             >
-              <select name="" id="">
-                <option value="">From nobody</option>
-                <option value="">From people you follow</option>
-                <option value="">From everyone</option>
-              </select>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <select name="" id="">
+                  <option value="">From nobody</option>
+                  <option value="">From people you follow</option>
+                  <option value="">From everyone</option>
+                </select>
+                <div className={styles["arrow"]}>^</div>
+              </div>
             </div>
           </div>
           <div
             style={{
-              marginLeft:"35%"
-              // this is margin to be indented  with the sections above 
-              // 35% = 30% margin left of the title above + 30% width of the title above 
+              marginLeft: "35%",
+              // this is margin to be indented  with the sections above
+              // 35% = 30% margin left of the title above + 30% width of the title above
             }}
           >
             <button
