@@ -14,10 +14,9 @@
 - [ ] ~~two factor Authentication 🔐~~-
 - [ ] ~~Filtering~~ 🌪~~️~~
 - [x] deleting accounts ❌
-- [ ] appearance settings
-- [ ] Email about account activity 📥
+- [x] appearance settings
+- [x] Email about account activity 📥
 - [ ] ~~-Conversational notifications 🔔~~-
-- [ ] Privacy
-
-  - [ ] Let others see that you're active 🟢
-  - [ ] Improved search 🔍
+- [ ] ~~Privacy~~
+  - [ ] ~~Let others see that you're active 🟢~~
+  - [ ] ~~Improved search 🔍~~
