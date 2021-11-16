@@ -56,7 +56,7 @@ class EmailSection extends Component {
   formAction = (event) => {
     /**
      * @type {Array<Element>}
-     * get the save button 
+     * get the save button
      */
     let saveButtons = document.getElementsByClassName(
       `${styles["save-button"]}`
@@ -80,7 +80,7 @@ class EmailSection extends Component {
         }
         /**
          * @type{object } sentData
-         * object for the data that will be sent to the server 
+         * object for the data that will be sent to the server
          */
         let sentData = { email: this.state.email };
 
@@ -105,7 +105,7 @@ class EmailSection extends Component {
     });
     /**
      * @type {Array<Element>}
-     * get all Cancel buttons 
+     * get all Cancel buttons
      */
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
     if (event.target === allButtons[0]) {
@@ -157,8 +157,7 @@ class EmailSection extends Component {
             return {
               email: response.data.email,
               password: response.data.password,
-              letPeopleFindThroughEmail:
-                response.data.letPeopleFindBlogByEmail,
+              letPeopleFindThroughEmail: response.data.letPeopleFindBlogByEmail,
             };
           },
           () => {
@@ -183,8 +182,8 @@ class EmailSection extends Component {
 
     // if they set to zero
     /**
-     * @type {Array<Element>} 
-     * array to get the icon photo 
+     * @type {Array<Element>}
+     * array to get the icon photo
      */
     let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
     if (event.target.id === "email-box" || event.target === imgs[0]) {
@@ -207,7 +206,7 @@ class EmailSection extends Component {
 
       /**
        * @type {Array<Element>}
-       * get the Email section 
+       * get the Email section
        */
       let changeEmailSection = document.getElementsByClassName(
         `${styles["change-email-section"]}`
@@ -249,7 +248,7 @@ class EmailSection extends Component {
         () => {
           /**
            * @type {object}
-           * the data that will be sent to the server 
+           * the data that will be sent to the server
            */
           let sentData = {
             letPeopleFindBlogByEmail: this.state.letPeopleFindThroughEmail,
@@ -274,6 +273,7 @@ class EmailSection extends Component {
             <input
               onClick={this.iconClick}
               id="email-box"
+              data-testid="email-box"
               type="email"
               value={this.state.email}
               onChange={this.changeInput}

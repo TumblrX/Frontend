@@ -1,12 +1,14 @@
-import EmailSection from "../EmailSection"
-import { render, screen, cleanup } from "@testing-library/react";
+import EmailSection from "../EmailSection";
+import { cleanup, render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 
 
-
-test("Should render Email Component", () => {
-  render(<EmailSection/>);
-
-  const EmailSection = screen.getByTestId("Email"); 
-  expect(EmailSection).toBeInTheDocument(); 
+beforeEach(()=>{
+  cleanup()
+})
+test("renders learn react link", () => {
+  render(<EmailSection />);
+  const linkElement = screen.getByTestId(/email-box/i);
+  expect(linkElement).toBeInTheDocument();
 });
