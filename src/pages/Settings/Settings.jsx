@@ -13,6 +13,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
  *
  */
 export default class Settings extends Component {
+  /**
+   * this function is responsible render the Settings page
+   * @function
+   * @returns {jsx} return jsx to be renderd
+   */
   render() {
     return (
       <Router>
@@ -28,7 +33,6 @@ export default class Settings extends Component {
               <Route path="/settings/notifications" exact>
                 <Notifictions />
               </Route>
-             
             </Switch>
           </div>
           <div className={styles["aside-bar"]}>

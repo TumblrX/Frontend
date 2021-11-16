@@ -1,17 +1,11 @@
 👌Done 
 
--  adding the user image navbar 
--  customize the Settings and adding some styles , both the user image on the notification side and on the navbar will have fixed size the first one 28px * 28px and the other one 37 * 37 px respectively 
+-  complete the Functional Docs of the PasswordSection.jsx ,SecuritySection.jsx, interface.jsx  , preferences.jsx, sound.jsx,notifications.jsx,SettingsNavbar.jsx,Settings.jsx
 
 ✔️To-do
 
-1. adding validations on the User inputs 
-
-2. adding unit testing 
-
-3. adding functional documentation 
-
-   
+1. adding validations on the User inputs  
+2. complete the unit test 
 
 
 

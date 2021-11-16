@@ -3,16 +3,27 @@ import axios from "axios";
 import React, { Component } from "react";
 
 /**
- * function that is used to render the Security section
- * @returns {jsx}
+ * @type {Array<boolean>}
+ * this value represents the sates of the checkboxes in a specific time
+ * no need to have states no need to render the element every time the user click on the checkbox
  */
 let checkboxStates = [false, false];
 
 class SecuritySection extends Component {
+  /**
+   * @function
+   * @param {void}
+   * @returns {void}
+   * retreive the data from the backend when the component mounted
+   */
   componentDidMount() {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
+        /**
+         * @type {Array<Element>}
+         * get all the check boxes in the security container
+         */
         let boxes = document.querySelectorAll(".security-container input");
         boxes[0].checked = response.data.emailAboutAccountActivity;
         checkboxStates[0] = response.data.emailAboutAccountActivity;
@@ -21,8 +32,24 @@ class SecuritySection extends Component {
       })
       .catch((err) => {});
   }
+  /**
+   * @function
+   * @param {event} event
+   * @returns {void}
+   * a function for do action will click on check box on the security section  
+   */
+
   checkBoxClick = (event) => {
+    /**
+     * @type {Array<Element>}
+     * get all the check boxes in the security container
+     */
     let boxes = document.querySelectorAll(".security-container input");
+
+    /**
+     * @type {object}
+     * the data that will be sent to the server 
+     */
     let sentData;
     boxes.forEach((element, index) => {
       if (event.target === element) {
@@ -30,7 +57,6 @@ class SecuritySection extends Component {
       }
     });
     if (event.target === boxes[0]) {
-      console.log("i am in 111 ");
       sentData = {
         emailAboutAccountActivity: checkboxStates[0],
       };

@@ -1,18 +1,39 @@
 import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
 import axios from "axios";
+/**
+ * @type {boolean}
+ * this var will have the current state of the checkbox 
+ */
 let checkboxState;
+
+/**
+ * component to render the interface on the sound section 
+ * @author Abdalla Mahmoud
+ * @component
+ */
 export class Sounds extends Component {
+  /**
+   * @function
+   * @param {void }
+   * @returns {void }
+   * check if the check button has been clicked and send its value to the server
+   */
   checkBoxClick = () => {
     checkboxState = !checkboxState;
 
     let sentData = {
-     
-        messagingSounds: checkboxState,
-      
+      messagingSounds: checkboxState,
     };
     this.props.sendData(sentData);
   };
+
+  /**
+   * @function
+   * @param {void}
+   * @returns {void}
+   * retreive the data from the backend when the component mounted
+   */
   componentDidMount = () => {
     axios
       .get("http://localhost:3000/users/1")
@@ -23,6 +44,11 @@ export class Sounds extends Component {
       })
       .catch((err) => {});
   };
+  /**
+   * this function is responsible render the sounds  section
+   * @function
+   * @returns {jsx} return jsx to be renderd
+   */
   render() {
     return (
       <>

@@ -52,6 +52,10 @@ export class PasswordSection extends Component {
    * @returns {void} return nothing , it just a click event handler
    */
   formAction = (event) => {
+    /**
+     * @type {Array<Element>} 
+     * get save buttons 
+     */
     let saveButtons = document.getElementsByClassName(
       `${styles["save-button"]}`
     );
@@ -82,18 +86,6 @@ export class PasswordSection extends Component {
         
         let sentData={"password":this.state.newPassword}; 
         this.props.sendData(sentData); 
-        // console.log(this.data);
-        // axios
-        //   .put("http://localhost:3000/users/1", {
-        //     ...this.data,
-        //   })
-        //   .then((res) => {
-        //    window.location.reload(); 
-        //   })
-        //   .catch((err) => {
-        //     console.log(err);
-        //     // validations from backend .
-        //   });
       }
     }
   };
@@ -110,6 +102,10 @@ export class PasswordSection extends Component {
       element.style.visibility = "hidden";
       element.style.transition = "none";
     });
+    /**
+     * @type {Array<Element>} 
+     * all cancel buttons 
+     */
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
     if (event.target === allButtons[1]) {
       document.getElementsByClassName(`${styles["dots"]}`)[0].style.display =
@@ -142,6 +138,8 @@ export class PasswordSection extends Component {
   };
   /**
    * @function
+   * @param {void }
+   * @returns {void}
    * retreive the data from the backend when the component mounted
    */
   componentDidMount() {
@@ -169,6 +167,10 @@ export class PasswordSection extends Component {
     document.querySelectorAll(".error-message").forEach((element) => {
       element.style.transition = "0.5s .1s linear";
     });
+    /**
+     * @type {Array<Element>}
+     * get all icon images 
+     */
     let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
     if (
       event.target === imgs[1] ||
@@ -187,11 +189,19 @@ export class PasswordSection extends Component {
       document
         .getElementsByClassName(`${styles["icon-photo"]}`)[1]
         .classList.toggle(`${styles.hidden}`);
+      /**
+       * @type {Element}
+       * the form of the Account 
+       */
       let entireForm = document.getElementsByTagName("form")[0];
       entireForm.style.pointerEvents = "none";
       document.querySelectorAll(`form >div`).forEach((element) => {
         element.style.opacity = "0.5";
       });
+      /**
+       * @type {Array<Element>} 
+       * get the section for changing password 
+       */
       let changePasswordSection = document.getElementsByClassName(
         `${styles["password-box"]}`
       )[0];

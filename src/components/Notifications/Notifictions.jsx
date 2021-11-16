@@ -3,6 +3,12 @@ import styles from "./Notifications.module.css";
 import pen from "../../assets/Images/pencil-64x64.png";
 import userPhoto from "../../assets/Images/myphoto.jpg";
 import axios from "axios";
+
+/**
+ * @type {object}
+ * this object hold the current state of the checkboxes of the notifications settigns
+ * no need for states no need from rendering after every change in the checkboxes
+ */
 let userSettings = {
   EmailUserAboutNewFollowersBox: false,
   EmailUserAboutNewRepliesBox: false,
@@ -11,8 +17,24 @@ let userSettings = {
   NotificationSettingsFor: "From people you follow",
   ApplySettingsForAllBlogs: false,
 };
+
+/**
+ * component to render the interface on the Notifications section
+ * @author Abdalla Mahmoud
+ * @component
+ */
 export class Notifictions extends Component {
+  /**
+   *
+   * @param {event} event
+   * @returns {void}
+   * this function is responsible for changing the value of the states ojbect
+   */
   inputsOnChange = (event) => {
+    /**
+     * @type {Array<Element>}
+     * get all the checkboxes input in the notifications section
+     */
     let checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
 
     if (event.target === checkboxes[0]) {
@@ -31,7 +53,6 @@ export class Notifictions extends Component {
       userSettings.EmailUserAboutNewAnsweredAsksBox =
         !userSettings.EmailUserAboutNewAnsweredAsksBox;
     } else {
-      console.log(event.target.value);
       if (event.target.value === "1") {
         userSettings.NotificationSettingsFor = "From nobody";
         document.querySelector(`.${styles["arrow"]}`).style.left = "-55px";
@@ -44,7 +65,13 @@ export class Notifictions extends Component {
       }
     }
   };
-  editButtonOnClick() {
+  /**
+   * @function
+   * @param {event } event
+   * @returns {void}
+   * handle the action when the edit button is clicked
+   */
+  editButtonOnClick(event) {
     document.querySelector("form").style.display = "block";
     document.querySelector(`.${styles["icon-photo"]}`).style.display = "none";
     document.querySelector(
@@ -53,7 +80,12 @@ export class Notifictions extends Component {
     document.querySelector(`.${styles["edit-after-click"]}`).style.display =
       "flex";
   }
-
+  /**
+   * @function
+   * @param {void }
+   * @returns {void}
+   * handle the action when the cancel button is clicked
+   */
   cancelButtonOnClick(event) {
     document.querySelector("form").style.display = "none";
     document.querySelector(`.${styles["icon-photo"]}`).style.display = "block";
@@ -65,6 +97,12 @@ export class Notifictions extends Component {
     event.preventDefault();
   }
 
+  /**
+   * @function
+   * @param {event }
+   * @returns {void}
+   * handle the action when the "Apply on All" button is clicked
+   */
   applyForAllButtonOnClick(event) {
     let saveButton = document.querySelector(`.${styles["save-button"]}`);
     if (saveButton.innerHTML === "Save") saveButton.innerHTML = "Save For All ";
@@ -72,24 +110,29 @@ export class Notifictions extends Component {
       saveButton.innerHTML = "Save";
     }
   }
+  /**
+   * @function
+   * @param {void}
+   * @returns {void}
+   * retreive the data from the backend when the component mounted
+   */
   componentDidMount() {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
-        console.log(response.data.notificationsSettings); 
-        userSettings = response.data.notificationsSettings; 
+        console.log(response.data.notificationsSettings);
+        userSettings = response.data.notificationsSettings;
         let userBoxes = document.querySelectorAll(`input[type="checkbox"]`);
         userSettings.ApplySettingsForAllBlogs = false;
         userBoxes[1].checked = userSettings["EmailUserAboutNewFollowersBox"];
-        userBoxes[2].checked=userSettings["EmailUserAboutNewRepliesBox"];
-        userBoxes[3].checked=userSettings["EmailUserAboutNewMentionsBox"];
-        userBoxes[4].checked=userSettings["EmailUserAboutNewAnsweredAsksBox"]; 
-        
-        // object is sorted by the names 
-        // for (let i = 1; i < userBoxes.length; i++) {
-        //   userBoxes[i].checked = Object.values(userSettings)[i];
-        //   console.log(userBoxes[i],Object.keys(userSettings)[i],Object.values(userSettings)[i]); 
-        // }
+        userBoxes[2].checked = userSettings["EmailUserAboutNewRepliesBox"];
+        userBoxes[3].checked = userSettings["EmailUserAboutNewMentionsBox"];
+        userBoxes[4].checked = userSettings["EmailUserAboutNewAnsweredAsksBox"];
+
+        /**
+         * @type {Array<Element>}
+         * get the selection box
+         */
         let selectionBox = document.querySelector("select");
         if (userSettings.NotificationSettingsFor === "From nobody") {
           selectionBox.value = 1;
@@ -107,6 +150,12 @@ export class Notifictions extends Component {
         console.log(err);
       });
   }
+  /**
+   * @function
+   * @param {void  }
+   * @returns {void}
+   * this function handle the Action when the user submit the data
+   */
   formAction() {
     let sentData = { notificationsSettings: userSettings };
     axios
@@ -121,6 +170,11 @@ export class Notifictions extends Component {
       });
     this.preventDefault();
   }
+  /**
+   * this function is responsible render the Preferences seciton
+   * @function
+   * @returns {jsx} return jsx to be renderd
+   */
   render() {
     return (
       <div className={styles["notification-container"]}>

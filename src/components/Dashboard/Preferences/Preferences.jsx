@@ -1,14 +1,37 @@
 import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
 import axios from "axios";
-let checkboxStates = [false, false, false, false];
-class Preferences extends Component {
 
-    
+/**
+ * @type {Array<boolean>}
+ * this array will have the states of the chekcboxes in the prefernces section
+ */
+let checkboxStates = [false, false, false, false];
+
+/**
+ * component to render the interface on the Preferences  section
+ * @author Abdalla Mahmoud
+ * @component
+ */
+class Preferences extends Component {
+  /**
+   * @function
+   * @param {void }
+   * @returns {void }
+   * check if the check button has been clicked and send its value to the server
+   */
   checkBoxClick = (event) => {
-    console.log("i am in ");
+    /**
+     * @type {Array<Element>}
+     * get the buttons that is in the prefernces section
+     */
     let boxes = document.querySelectorAll(".preferences input");
     console.log(boxes);
+    /**
+     * @type{object } sentData
+     * object for the data that will be sent to the server
+     */
+
     let sentData;
     boxes.forEach((element, index) => {
       if (event.target === element) {
@@ -37,26 +60,33 @@ class Preferences extends Component {
 
     this.props.sendData(sentData);
   };
+  /**
+   * @function
+   * @param {void}
+   * @returns {void}
+   * retreive the data from the backend when the component mounted
+   */
   componentDidMount = () => {
     axios
       .get("http://localhost:3000/users/1")
       .then((response) => {
-        let boxes =  document.querySelectorAll(".preferences input");
-        boxes[0].checked =
-          response.data.bestStuffFirst;
+        let boxes = document.querySelectorAll(".preferences input");
+        boxes[0].checked = response.data.bestStuffFirst;
         checkboxStates[0] = response.data.bestStuffFirst;
-        boxes[1].checked =
-          response.data.includeStuffInorbit;
+        boxes[1].checked = response.data.includeStuffInorbit;
         checkboxStates[1] = response.data.includeStuffInorbit;
-        boxes[2].checked =
-          response.data.EnableColorizedTags;
+        boxes[2].checked = response.data.EnableColorizedTags;
         checkboxStates[2] = response.data.EnableColorizedTags;
-        boxes[3].checked =
-          response.data.includeFollowedTagPosts;
+        boxes[3].checked = response.data.includeFollowedTagPosts;
         checkboxStates[3] = response.data.includeFollowedTagPosts;
       })
       .catch((err) => {});
   };
+  /**
+   * this function is responsible render the Preferences seciton
+   * @function
+   * @returns {jsx} return jsx to be renderd
+   */
   render() {
     return (
       <>

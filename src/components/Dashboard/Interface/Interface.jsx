@@ -7,15 +7,39 @@ import styles from "../Dashboard.module.css";
  * @type {boolean}
  */
 let checkboxState;
+
+/**
+ * component to render the interface on the Dashboard settings
+ * @author Abdalla Mahmoud
+ * @component
+ */
+
 class Interface extends Component {
+  /**
+   * @function
+   * @param {void }
+   * @returns {void }
+   * check if the check button has been clicked and send its value to the server
+   */
   checkBoxClick = () => {
     checkboxState = !checkboxState;
+    /**
+     * @type{object } sentData
+     * object for the data that will be sent to the server
+     */
 
     let sentData = {
       enableEndLessScrolling: checkboxState,
     };
     this.props.sendData(sentData);
   };
+
+  /**
+   * @function
+   * @param {void}
+   * @returns {void}
+   * retreive the data from the backend when the component mounted
+   */
   componentDidMount = () => {
     axios
       .get("http://localhost:3000/users/1")
@@ -27,6 +51,11 @@ class Interface extends Component {
       })
       .catch((err) => {});
   };
+  /**
+   * this function is responsible render the interface section
+   * @function
+   * @returns {jsx} return jsx to be renderd
+   */
   render() {
     return (
       <>
