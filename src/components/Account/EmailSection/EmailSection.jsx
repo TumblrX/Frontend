@@ -45,7 +45,6 @@ class EmailSection extends Component {
        */
       letPeopleFindThroughEmail: false,
     };
-    let previousData, Data;
   }
   /**
    * this function handle the click on the save button in the email section
@@ -55,11 +54,13 @@ class EmailSection extends Component {
    * @returns {void} return nothing , it just a click event handler
    */
   formAction = (event) => {
+    /**
+     * @type {Array<Element>}
+     * get the save button 
+     */
     let saveButtons = document.getElementsByClassName(
       `${styles["save-button"]}`
     );
-    console.log(saveButtons[0]);
-    console.log(event.target);
     if (event.target === saveButtons[0]) {
       console.log("done");
       if (
@@ -77,6 +78,10 @@ class EmailSection extends Component {
           )[0].style.visibility = "unset";
           return;
         }
+        /**
+         * @type{object } sentData
+         * object for the data that will be sent to the server 
+         */
         let sentData = { email: this.state.email };
 
         this.props.sendData(sentData);
@@ -98,6 +103,10 @@ class EmailSection extends Component {
       element.style.visibility = "hidden";
       element.style.transition = "none";
     });
+    /**
+     * @type {Array<Element>}
+     * get all Cancel buttons 
+     */
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
     if (event.target === allButtons[0]) {
       document
@@ -132,6 +141,8 @@ class EmailSection extends Component {
 
   /**
    * @function
+   * @param {void}
+   * @returns {void}
    * retreive the data from the backend when the component mounted
    */
   componentDidMount() {
@@ -141,8 +152,6 @@ class EmailSection extends Component {
       .then((response) => {
         this.data = response.data;
         this.previousData = response.data;
-        console.log(this.data.settings);
-        console.log(this.data.email);
         this.setState(
           () => {
             return {
@@ -173,6 +182,10 @@ class EmailSection extends Component {
     });
 
     // if they set to zero
+    /**
+     * @type {Array<Element>} 
+     * array to get the icon photo 
+     */
     let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
     if (event.target.id === "email-box" || event.target === imgs[0]) {
       document
@@ -192,6 +205,10 @@ class EmailSection extends Component {
         .getElementsByClassName(`${styles["icon-photo"]}`)[0]
         .classList.toggle(`${styles.hidden}`);
 
+      /**
+       * @type {Array<Element>}
+       * get the Email section 
+       */
       let changeEmailSection = document.getElementsByClassName(
         `${styles["change-email-section"]}`
       )[0];
@@ -230,6 +247,10 @@ class EmailSection extends Component {
           return { letPeopleFindThroughEmail: event.target.checked };
         },
         () => {
+          /**
+           * @type {object}
+           * the data that will be sent to the server 
+           */
           let sentData = {
             letPeopleFindBlogByEmail: this.state.letPeopleFindThroughEmail,
           };
@@ -241,6 +262,7 @@ class EmailSection extends Component {
 
   /**
    * this function is responsible render the Email section
+   * @function
    * @returns {jsx} return jsx to be renderd
    */
   render() {
