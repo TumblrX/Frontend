@@ -182,7 +182,12 @@ export class Notifictions extends Component {
         <hr />
         <div className={styles["notification-section"]}>
           <div className={styles["user-info"]}>
-            <img src={userPhoto} alt="" className={styles["user-img"]} />
+            <img
+              src={userPhoto}
+              alt=""
+              className={styles["user-img"]}
+              data-testid="avatar-icon"
+            />
             <div className={styles["user-name"]}>Thebrownboy</div>
           </div>
           <div className={styles["edit-section"]}>
@@ -196,6 +201,7 @@ export class Notifictions extends Component {
               src={pen}
               alt=""
               onClick={this.editButtonOnClick}
+              data-testid="notifications-section-edit-button"
             />
             <div
               style={{ display: "none" }}
@@ -205,6 +211,7 @@ export class Notifictions extends Component {
                 onChange={this.inputsOnChange}
                 type="checkbox"
                 onClick={this.applyForAllButtonOnClick}
+                data-testid="apply-for-all-checkbox"
               />
               <div style={{ height: "fit-content", marginTop: "6px" }}>
                 Apply settings to all blogs{" "}
@@ -213,30 +220,45 @@ export class Notifictions extends Component {
           </div>
         </div>
 
-        <form style={{ display: "none", marginTop: "20px", color: "#444" }}>
+        <form
+          style={{ display: "none", marginTop: "20px", color: "#444" }}
+          data-testid="notifications-form"
+        >
           <div style={{ display: "flex" }}>
             <div className={styles["notification-section-title"]}>
               Email me about{" "}
             </div>
             <div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" onChange={this.inputsOnChange} />
+                <input
+                  type="checkbox"
+                  onChange={this.inputsOnChange}
+                  data-testid="new-followers-checkbox"
+                />
                 <div className={styles["notification-selection"]}>
                   New Followers
                 </div>
               </div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" onChange={this.inputsOnChange} />
+                <input
+                  type="checkbox"
+                  onChange={this.inputsOnChange}
+                  data-testid="new-replies-checkbox"
+                />
                 <div className={styles["notification-selection"]}>
                   New replies
                 </div>
               </div>
               <div style={{ display: "flex" }}>
-                <input type="checkbox" onChange={this.inputsOnChange} />
+                <input
+                  type="checkbox"
+                  onChange={this.inputsOnChange}
+                  data-testid="mentions-checkbox"
+                />
                 <div className={styles["notification-selection"]}>Mentions</div>
               </div>
               <div style={{ display: "flex" }} onChange={this.inputsOnChange}>
-                <input type="checkbox" />
+                <input type="checkbox" data-testid="answered-asks-checkbox" />
                 <div className={styles["notification-selection"]}>
                   Answered Asks
                 </div>
@@ -258,7 +280,12 @@ export class Notifictions extends Component {
               className={styles["selected"]}
             >
               <div style={{ display: "flex", alignItems: "center" }}>
-                <select name="" id="" onChange={this.inputsOnChange}>
+                <select
+                  name=""
+                  id=""
+                  onChange={this.inputsOnChange}
+                  data-testid="notifications-selection-box"
+                >
                   <option value="1">From nobody</option>
                   <option value="2">From people you follow</option>
                   <option value="3">From everyone</option>
@@ -277,10 +304,15 @@ export class Notifictions extends Component {
             <button
               onClick={this.cancelButtonOnClick}
               className={styles["cancel-button"]}
+              data-testid="notifications-cancel-button"
             >
               Cancel
             </button>
-            <button onClick={this.formAction} className={styles["save-button"]}>
+            <button
+              onClick={this.formAction}
+              className={styles["save-button"]}
+              data-testid="notifications-save-button"
+            >
               Save
             </button>
           </div>

@@ -1,6 +1,6 @@
 👌Done 
 
--  adding unit tests on the whole Account component 
+-  adding unit tests on the whole Notifications  component 
 
 ✔️To-do
 
