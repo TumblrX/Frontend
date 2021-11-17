@@ -11,6 +11,7 @@ import axios from "axios";
  */
 
 class EmailSection extends Component {
+  
   /**
    * @constructor
    *
@@ -45,6 +46,7 @@ class EmailSection extends Component {
        */
       letPeopleFindThroughEmail: false,
     };
+    
   }
   /**
    * this function handle the click on the save button in the email section
@@ -289,6 +291,7 @@ class EmailSection extends Component {
               value={this.state.confirmedPassword}
               onChange={this.changeInput}
               id="emailcurrentpassword"
+              data-testid="password-box"
             />
 
             <div
@@ -299,11 +302,13 @@ class EmailSection extends Component {
 
             <div
               className={`${styles.hidden} ${styles["email-section-buttons"]}`}
+              data-testid="buttons-container"
             >
               <button
                 onClick={this.cancelButtonClick}
                 className={styles["cancel-button"]}
                 type="button"
+                data-testid="email-cancel-button"
               >
                 cancel
               </button>
@@ -315,7 +320,7 @@ class EmailSection extends Component {
                 save
               </button>
             </div>
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex",alignItems:"center" }}>
               <input
                 type="checkbox"
                 name=""
@@ -325,7 +330,7 @@ class EmailSection extends Component {
               />
               <div
                 className={styles["user-message"]}
-                style={{ marginTop: "-2px" }}
+                style={{ marginTop: "-9px" }}
               >
                 Let people find your blogs through this address.{" "}
               </div>
@@ -337,6 +342,7 @@ class EmailSection extends Component {
             onClick={this.iconClick}
             className={styles["icon-photo"]}
             alt=" can't load "
+            data-testid="email-edit-button"
           />
         </div>
         <hr />

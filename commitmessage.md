@@ -1,11 +1,12 @@
 👌Done 
 
--  complete the Functional Docs of the PasswordSection.jsx ,SecuritySection.jsx, interface.jsx  , preferences.jsx, sound.jsx,notifications.jsx,SettingsNavbar.jsx,Settings.jsx
+-  adding unit tests on the Email section component 
 
 ✔️To-do
 
 1. adding validations on the User inputs  
-2. complete the unit test 
+2. adding for the rest components 
+3. adding more tests on that component 
 
 
 
