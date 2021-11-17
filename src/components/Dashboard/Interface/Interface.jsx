@@ -67,6 +67,7 @@ class Interface extends Component {
                 type="checkbox"
                 style={{ marginTop: "6px", marginRight: "6px" }}
                 onClick={this.checkBoxClick}
+                data-testid="enable-endless-scrolling-checkbox"
               />
               <div className={styles["description"]}>
                 <div className={styles["section-message"]}>

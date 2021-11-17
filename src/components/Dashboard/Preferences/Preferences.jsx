@@ -98,6 +98,7 @@ class Preferences extends Component {
                 type="checkbox"
                 style={{ marginTop: "6px", marginRight: "6px" }}
                 onClick={this.checkBoxClick}
+                data-testid="best-stuff-first-checkbox"
               />
               <div className={styles["description"]}>
                 <div className={styles["section-message"]}>
@@ -113,6 +114,7 @@ class Preferences extends Component {
                 type="checkbox"
                 style={{ marginTop: "6px", marginRight: "6px" }}
                 onClick={this.checkBoxClick}
+                data-testid="include-stuff-checkbox"
               />
               <div className={styles["description"]}>
                 <div className={styles["section-message"]}>
@@ -128,6 +130,7 @@ class Preferences extends Component {
                 type="checkbox"
                 style={{ marginTop: "6px", marginRight: "6px" }}
                 onClick={this.checkBoxClick}
+                data-testid="enable-colorized-tags-checkbox"
               />
               <div className={styles["description"]}>
                 <div className={styles["section-message"]}>
@@ -145,6 +148,7 @@ class Preferences extends Component {
                 type="checkbox"
                 style={{ marginTop: "6px", marginRight: "6px" }}
                 onClick={this.checkBoxClick}
+                data-testid="include-followed-tag-checkbox"
               />
               <div className={styles["description"]}>
                 <div className={styles["section-message"]}>

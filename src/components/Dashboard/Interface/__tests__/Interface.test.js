@@ -1,5 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import Interface from "../Interface"
 
 
 
@@ -8,6 +9,7 @@ beforeEach(()=>{
 })
 
 test("renders learn react link", () => {
-  expect(true).toBe(true); 
+  render(<Interface/>);
+  expect(screen.getByTestId("enable-endless-scrolling-checkbox")).toBeVisible(); 
   
 });

@@ -1,13 +1,12 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import Sounds from "../Sounds";
 
-
-
-beforeEach(()=>{
-  cleanup()
-})
+beforeEach(() => {
+  cleanup();
+});
 
 test("renders learn react link", () => {
-  expect(true).toBe(true); 
-  
+  render(<Sounds />);
+  expect(screen.getByTestId("messageing-sounds-checkbox")).toBeVisible();
 });

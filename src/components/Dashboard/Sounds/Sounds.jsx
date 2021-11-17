@@ -3,12 +3,12 @@ import styles from "../Dashboard.module.css";
 import axios from "axios";
 /**
  * @type {boolean}
- * this var will have the current state of the checkbox 
+ * this var will have the current state of the checkbox
  */
 let checkboxState;
 
 /**
- * component to render the interface on the sound section 
+ * component to render the interface on the sound section
  * @author Abdalla Mahmoud
  * @component
  */
@@ -60,6 +60,7 @@ export class Sounds extends Component {
                 type="checkbox"
                 style={{ marginTop: "6px", marginRight: "6px" }}
                 onClick={this.checkBoxClick}
+                data-testid="messageing-sounds-checkbox"
               />
               <div className={styles["description"]}>
                 <div className={styles["section-message"]}>
