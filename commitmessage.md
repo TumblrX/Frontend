@@ -1,12 +1,12 @@
 👌Done 
 
--  adding unit tests on the Email section component 
+-  adding unit tests on the password section component 
 
 ✔️To-do
 
 1. adding validations on the User inputs  
-2. adding for the rest components 
-3. adding more tests on that component 
+2. adding unit testing  for the rest components 
+3. adding more tests on password and email components  
 
 
 

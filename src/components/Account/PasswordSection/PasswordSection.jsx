@@ -53,8 +53,8 @@ export class PasswordSection extends Component {
    */
   formAction = (event) => {
     /**
-     * @type {Array<Element>} 
-     * get save buttons 
+     * @type {Array<Element>}
+     * get save buttons
      */
     let saveButtons = document.getElementsByClassName(
       `${styles["save-button"]}`
@@ -83,9 +83,8 @@ export class PasswordSection extends Component {
           `${styles["error-confirm-password"]}`
         )[0].style.visibility = "unset";
       } else {
-        
-        let sentData={"password":this.state.newPassword}; 
-        this.props.sendData(sentData); 
+        let sentData = { password: this.state.newPassword };
+        this.props.sendData(sentData);
       }
     }
   };
@@ -103,8 +102,8 @@ export class PasswordSection extends Component {
       element.style.transition = "none";
     });
     /**
-     * @type {Array<Element>} 
-     * all cancel buttons 
+     * @type {Array<Element>}
+     * all cancel buttons
      */
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
     if (event.target === allButtons[1]) {
@@ -169,7 +168,7 @@ export class PasswordSection extends Component {
     });
     /**
      * @type {Array<Element>}
-     * get all icon images 
+     * get all icon images
      */
     let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
     if (
@@ -191,7 +190,7 @@ export class PasswordSection extends Component {
         .classList.toggle(`${styles.hidden}`);
       /**
        * @type {Element}
-       * the form of the Account 
+       * the form of the Account
        */
       let entireForm = document.getElementsByTagName("form")[0];
       entireForm.style.pointerEvents = "none";
@@ -199,8 +198,8 @@ export class PasswordSection extends Component {
         element.style.opacity = "0.5";
       });
       /**
-       * @type {Array<Element>} 
-       * get the section for changing password 
+       * @type {Array<Element>}
+       * get the section for changing password
        */
       let changePasswordSection = document.getElementsByClassName(
         `${styles["password-box"]}`
@@ -253,7 +252,11 @@ export class PasswordSection extends Component {
       <>
         <div className={styles["password-box"]}>
           <div className={styles["title"]}>Password</div>
-          <div className={styles["dots"]} onClick={this.iconClick}>
+          <div
+            className={styles["dots"]}
+            onClick={this.iconClick}
+            data-testid="dots"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -261,7 +264,7 @@ export class PasswordSection extends Component {
             <span></span>
             <span></span>
           </div>
-          <div className={`${styles["input-fields"]} ${styles.hidden}`}>
+          <div className={`${styles["input-fields"]} ${styles.hidden}`} data-testid="password-section-input-field">
             <input
               id="currentpassword"
               type="password"
@@ -269,6 +272,7 @@ export class PasswordSection extends Component {
               placeholder="Current Password"
               value={this.state.confirmedPassword}
               onChange={this.changeInput}
+              data-testid="currentpassword-box"
             />
             <div
               className={`${styles["error-current-password"]} error-message `}
@@ -281,6 +285,7 @@ export class PasswordSection extends Component {
               placeholder="New Password"
               value={this.state.newPassword}
               onChange={this.changeInput}
+              data-testid="newpassword-box"
             />
             <div className={`${styles["error-new-password"]} error-message`}>
               Please Enter Strong Password
@@ -294,6 +299,7 @@ export class PasswordSection extends Component {
               placeholder="Confirm Password"
               value={this.state.newConfirmedPassword}
               onChange={this.changeInput}
+              data-testid="confirmpassword-box"
             />
             <div
               className={`${styles["error-confirm-password"]} error-message`}
@@ -301,7 +307,7 @@ export class PasswordSection extends Component {
               Please Enter Identical Passwords
             </div>
 
-            <div className={styles["password-section-buttons"]}>
+            <div className={styles["password-section-buttons"]} data-testid="password-buttons-container">
               <button
                 onClick={this.cancelButtonClick}
                 className={styles["cancel-button"]}
@@ -324,6 +330,7 @@ export class PasswordSection extends Component {
             onClick={this.iconClick}
             className={styles["icon-photo"]}
             alt=" can't load "
+            data-testid="password-edit-button"
           />
         </div>
         <hr />
