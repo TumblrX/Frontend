@@ -80,6 +80,7 @@ class SecuritySection extends Component {
                 type="checkbox"
                 style={{ marginTop: "6px", marginRight: "6px" }}
                 onClick={this.checkBoxClick}
+                data-testid="email-user-about-activity-checkbox"
               />
               <div className={styles["security-description"]}>
                 <div className={styles["section-message"]}>
