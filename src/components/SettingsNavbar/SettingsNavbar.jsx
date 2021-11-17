@@ -10,7 +10,7 @@ import userPhoto from "../../assets/Images/myphoto.jpg";
  */
 export default class SettingsNavbar extends Component {
   /**
-   * this function is responsible render the SettingsNavBar  
+   * this function is responsible render the SettingsNavBar
    * @function
    * @returns {jsx} return jsx to be renderd
    */
@@ -48,7 +48,12 @@ export default class SettingsNavbar extends Component {
         <Link to="/settings/blog/youngdev">
           <div className={`${styles["blog-slot"]}`}>
             <div style={{ display: "flex" }}>
-              <img src={userPhoto} alt="" className={styles["user-img"]} />
+              <img
+                src={userPhoto}
+                alt=""
+                className={styles["user-img"]}
+                data-testid="navbar-avatar"
+              />
               <div>
                 <div>youngdev</div>
                 <div className={styles["small-text"]}>Thebrownboy</div>

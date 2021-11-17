@@ -169,6 +169,7 @@ export class Notifictions extends Component {
         // validations from backend .
       });
     this.preventDefault();
+    
   }
   /**
    * this function is responsible render the Preferences seciton

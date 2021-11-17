@@ -1,6 +1,6 @@
 👌Done 
 
--  adding unit tests on the whole Notifications  component 
+-  Finishing the initial   unit testing 
 
 ✔️To-do
 
