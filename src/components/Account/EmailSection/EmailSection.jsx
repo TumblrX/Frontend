@@ -269,7 +269,7 @@ class EmailSection extends Component {
   render() {
     return (
       <>
-        <div className={styles["change-email-section"]}>
+        <div data-testid="email-section" className={styles["change-email-section"]}>
           <div className={styles["title"]}>Email</div>
           <div className={styles["input-fields"]}>
             <input

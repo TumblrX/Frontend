@@ -72,7 +72,7 @@ class SecuritySection extends Component {
   render() {
     return (
       <>
-        <div className={`${styles["security-box"]} security-container`}>
+        <div data-testid="security-seciton" className={`${styles["security-box"]} security-container`}>
           <div className={styles["title"]}>Security</div>
           <div className={styles["security-section"]}>
             <div style={{ display: "flex", marginBottom: "30px" }}>

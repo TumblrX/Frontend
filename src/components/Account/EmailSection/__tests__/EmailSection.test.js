@@ -26,19 +26,19 @@ test("hide cancel and save buttons",()=>{
 })
 
 
-// test("on user click the buttons container is displayed",()=>{
-//   render(<Account/>)
-//   // Account should be renderd beacuse the test that is run 
-//   // tests click on the edit button , and the  code 
-//   // has query to the form element which will not be renderd 
-//   // if you render only the EmailSection 
-//   const editButton = screen.getByTestId("email-edit-button"); 
-//   expect(editButton).toBeVisible(); 
-//   userEvent.click(editButton);
-//   // jest.mock("../EmailSection")
-//   // const iconClick=jest.mock(); 
-//   // expect(iconClick).toHaveBeenCalledTimes(0); 
-//   const sectionContainsAllButtons = screen.getByTestId(/buttons-container/i); 
-//   expect(sectionContainsAllButtons).not.toHaveClass("hidden"); 
-// })
+test("on user click the buttons container is displayed",()=>{
+  render(<Account/>)
+  // Account should be renderd beacuse the test that is run 
+  // tests click on the edit button , and the  code 
+  // has query to the form element which will not be renderd 
+  // if you render only the EmailSection 
+  const editButton = screen.getByTestId("email-edit-button"); 
+  expect(editButton).toBeVisible(); 
+  userEvent.click(editButton);
+  // jest.mock("../EmailSection")
+  // const iconClick=jest.mock(); 
+  // expect(iconClick).toHaveBeenCalledTimes(0); 
+  const sectionContainsAllButtons = screen.getByTestId(/buttons-container/i); 
+  expect(sectionContainsAllButtons).not.toHaveClass("hidden"); 
+})
 

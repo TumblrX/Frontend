@@ -250,7 +250,7 @@ export class PasswordSection extends Component {
   render() {
     return (
       <>
-        <div className={styles["password-box"]}>
+        <div  data-testid="password-section"className={styles["password-box"]}>
           <div className={styles["title"]}>Password</div>
           <div
             className={styles["dots"]}
@@ -307,7 +307,7 @@ export class PasswordSection extends Component {
               Please Enter Identical Passwords
             </div>
 
-            <div className={styles["password-section-buttons"]} data-testid="password-buttons-container">
+            <div className={styles["password-section-buttons"]} >
               <button
                 onClick={this.cancelButtonClick}
                 className={styles["cancel-button"]}

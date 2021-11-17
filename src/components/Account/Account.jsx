@@ -40,7 +40,7 @@ export class Account extends Component {
 
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <a href="/delete">
-              <button className={styles["delete-account-button"]}>
+              <button data-testid="delete-account-button" className={styles["delete-account-button"]}>
                 Delete account
               </button>
             </a>

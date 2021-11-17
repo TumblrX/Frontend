@@ -1,6 +1,6 @@
 👌Done 
 
--  adding unit tests on the Security section component 
+-  adding unit tests on the whole Account component 
 
 ✔️To-do
 

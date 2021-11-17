@@ -9,13 +9,13 @@ import Account from "../../Account"
 beforeEach(()=>{
   cleanup()
 })
-// test("render dots from the user", () => {
-//   // it is not a silly test because test is clickable 
-//   render(<PasswordSection />);
-//   const dots = screen.getByTestId("dots");
-//   expect(dots).toBeVisible();
-//   //expect(passBox).toHaveClass("hidden");
-// });
+test("render dots from the user", () => {
+  // it is not a silly test because test is clickable 
+  render(<PasswordSection />);
+  const dots = screen.getByTestId("dots");
+  expect(dots).toBeVisible();
+  //expect(passBox).toHaveClass("hidden");
+});
 
 test("hide cancel and save buttons",()=>{
   render(<PasswordSection/>)
