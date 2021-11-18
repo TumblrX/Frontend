@@ -1,0 +1,56 @@
+@import '../../index';
+.text {
+  color: rgb(89, 89, 89);
+  display: flex;
+}
+.avatar {
+  margin-right: 3rem;
+  border-radius: 0.3rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.form {
+  background-color: $color-white;
+  border-radius: 0.3rem;
+  padding: 1.5rem;
+  min-height: 14rem;
+  min-width: 50rem;
+  header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    div {
+      color: $color-black;
+      font-size: 1.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      position: relative;
+      svg {
+        margin-left: 0.5rem;
+        margin-bottom: -0.5rem;
+      }
+      ul {
+        color: $color-black;
+        width: 20rem;
+        font-size: 1.4rem;
+        background-color: $color-white;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0.3rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        left: 0%;
+        top: 110%;
+        li {
+          padding: 0.8rem;
+          &:hover {
+            background-color: #eee;
+          }
+        }
+      }
+    }
+  }
+}

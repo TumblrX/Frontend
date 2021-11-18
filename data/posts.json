@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1234567891234567,
+      "blog": {
+        "Standard API Short Blog Info object": "goes here"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Hello world!"
+        }
+      ]
+    }
+  ]
+}

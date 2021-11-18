@@ -1,10 +1,10 @@
-// TODOs
-// Get the real fonts and colors or of the real tumblr
+// TODO: Get the real fonts and colors or of the real tumblr
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 /*****************************************Variables********************************************/
 //RGB Colors
-$color-primary: rgb(28, 231, 131);
+$color-primary: rgb(0, 25, 53);
 $color-primary-light: lighten($color-primary, 0.15);
 $color-primary-dark: darken($color-primary, 0.15);
 $color-secondary: #ffb900;
@@ -130,12 +130,14 @@ a {
     outline: none;
   }
 }
+
 button {
   border: none;
   &:focus {
     outline: none;
   }
 }
+
 ul {
   list-style-type: none;
 }

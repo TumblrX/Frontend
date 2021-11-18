@@ -1,0 +1,22 @@
+@import '../../../index.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  input {
+    outline: none;
+    border: none;
+    border: 1.5px dashed rgb(201, 199, 199);
+    height: 9rem;
+    background-color: rgb(242, 242, 242);
+    font-size: 1.6rem;
+    padding: 0 3rem;
+  }
+  .actions {
+    border-top: 1px solid rgb(233, 232, 232);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

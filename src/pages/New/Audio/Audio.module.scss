@@ -1,0 +1,37 @@
+@import '../../../index.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  .control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    input {
+      outline: none;
+      border: none;
+      margin: 1.5rem 0;
+      font-size: 1.6rem;
+      width: 95%;
+    }
+    .icon {
+      position: relative;
+      width: 5%;
+      input {
+        position: absolute;
+        top: -50%;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+      }
+    }
+  }
+  .actions {
+    border-top: 1px solid rgb(233, 232, 232);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

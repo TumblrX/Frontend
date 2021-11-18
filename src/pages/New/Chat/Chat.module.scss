@@ -1,0 +1,33 @@
+@import '../../../index.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  textarea {
+    resize: none;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    color: rgb(89, 89, 89);
+  }
+  input {
+    outline: none;
+    border: none;
+  }
+  input:first-child {
+    margin-bottom: 1.2rem;
+    font-size: 4rem;
+  }
+  input:nth-child(3) {
+    margin: 1rem 0;
+    font-size: 1.4rem;
+  }
+  .actions {
+    border-top: 1px solid rgb(233, 232, 232);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
