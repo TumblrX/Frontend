@@ -1,6 +1,9 @@
 /*
     button variables 
 */
+/*
+    input vars  
+*/
 .account-container {
   display: flex;
   flex-direction: column;
@@ -29,7 +32,7 @@
 input {
   display: block;
   margin-bottom: 15px;
-  padding: 5px 4px;
+  padding: 5px 5px;
   font-size: 14px;
   opacity: 0.5;
   outline: none;

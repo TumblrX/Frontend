@@ -38,12 +38,12 @@
 
 input {
   display: block;
-  margin-bottom: 15px;
-  padding: 5px 4px;
-  font-size: 14px;
-  opacity: 0.5;
+  margin-bottom: $input-margin-bottom;
+  padding: $input-top-bottom-padding $input-left-right-padding;
+  font-size: $input-font-size;
+  opacity:$input-opacity;
   outline: none;
-  margin-right: 5px;
+  margin-right: $input-margin-right;
 }
 
 input[type="checkbox"] {
@@ -70,16 +70,16 @@ input[type="checkbox"] {
 }
 
 .header {
-  color: #7e7c7c85;
-  font-family: sans-serif;
-  padding: 10px;
-  font-weight: 100;
+  color: $header-color;
+  font-family: $header-font-family;
+  padding: $header-padding;
+  font-weight:$header-font-weight;
 }
 /* should be in a general place  */
 
 .title {
-  width: 15%;
-  margin-right: 2%;
+  width: $title-width;
+  margin-right:$title-margin-right;
 }
 
 hr {
