@@ -1,0 +1,22 @@
+{
+  "createBlog": [
+    {
+      "id": 1,
+      "handle": "",
+      "title": "",
+      "isPrivate": false,
+      "settings": {
+        "blogPassword": ""
+      }
+    },
+    {
+      "handle": "ahmedmma",
+      "title": "ahmedmahmoud",
+      "isPrivate": false,
+      "settings": {
+        "blogPassword": ""
+      },
+      "id": 2
+    }
+  ]
+}
