@@ -1,0 +1,116 @@
+@import '../../scss/style.scss';
+
+* {
+    @include font(0, #fff, 0);
+    text-align: center;
+}
+
+
+.body {
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.7) url("../../assets/Images/background.jpg");
+    background-size: cover;
+    background-blend-mode: darken;
+    padding: 50px 0;
+
+    //screens 
+    // 565  ==> 300
+    // 827  ==> 
+    .container {
+        @include dimensions(300px, 0);
+        @include flex_box(0, center, column);
+        margin: auto;
+
+        h2 {
+            @include dimensions(100%, 0);
+            @include font(80px, 0, bold);
+            margin: 0px 0 4px 0;
+            padding: 0 5px;
+        }
+
+        form {
+            @include dimensions(100%,0);
+
+            #incorrectUser {
+                @include font(.875rem, #fff, 400);
+                background: rgba(0, 0, 0, .25);
+                border-radius: 3px;
+                margin: -5px 0 10px 0;
+                padding: 14px 15px;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            input[type='email'],
+            input[type='password'] {
+                @include dimensions(100%, 46px);
+                @include font(.875rem, #000, 400);
+                @include input-default ;
+                margin-bottom: 7px;
+                text-align: start;
+                padding: 11px 13px;
+               
+                &::placeholder {
+                    @include font(1rem, 0, 0);
+                }
+            }
+
+            p {
+                @include font(0.75rem, 0, 0);
+                margin: 10px 0;
+                line-height: 1.25rem;
+            }
+
+            input[type='submit'] {
+                @include dimensions(100%, 42px);
+                @include font(1rem, #000, 700);
+                @include btn-default;
+                margin: 10px 0 0 0;
+                padding: 5px;
+                background: #00b8ff;
+            }
+
+            .bigParagraphe {
+                @include font(1rem, 0, 0);
+                text-align: center;
+
+                #forgetPassword {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        #or {
+            @include flex_box(space-around, center, 0);
+            @include dimensions(100%, 3px);
+            margin-bottom: 15px;
+
+            hr {
+                @include dimensions(100%, 0);
+                display: inline-block;
+            }
+
+            p {
+                @include font(15px, 0, 0);
+                padding: 0 7px;
+            }
+        }
+
+        button {
+            @include dimensions(100%, 42px);
+            @include flex_box(center, center, 0);
+            @include btn-default;
+            margin-bottom: 6px;
+            background: #fff;
+
+            span {
+                @include font(1rem, #000, 700);
+                margin-left: 8px;
+            }
+        }
+
+    }
+
+}

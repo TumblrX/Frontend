@@ -1,84 +1,15 @@
 {
-  "forgotPassword": [
-    {
-      "id": 1,
-      "email": ""
-    },
-    {
-      "email": "wbyecevyinolvfdvfdsbsdgjniiv@sdvft.com",
-      "id": 2
-    },
-    {
-      "email": "wbyecevyinolvfdvfdsbsdgjniiv@sdvft.com",
-      "id": 3
-    },
-    {
-      "email": "wbyecevyinolvfdvfdsbsdgjniiv@sdvft.com",
-      "id": 4
-    },
-    {
-      "email": "",
-      "id": 5
-    },
-    {
-      "email": "",
-      "id": 6
-    },
-    {
-      "email": "",
-      "id": 7
-    },
-    {
-      "email": "",
-      "id": 8
-    },
-    {
-      "email": "",
-      "id": 9
-    },
-    {
-      "email": "",
-      "id": 10
-    },
-    {
-      "email": "taher@gmail.com",
-      "id": 11
-    },
-    {
-      "email": "wbyecevyinolgjniiv@sdvft.com",
-      "id": 12
-    },
-    {
-      "email": "taher@gmail.com",
-      "id": 13
-    },
-    {
-      "email": "nsfwsonneoelelfevf@sdvft.com",
-      "id": 14
-    },
-    {
-      "email": "xcpgyhxlkqcqzmswfa@mrvpm.net",
-      "id": 15
-    },
-    {
-      "email": "wbyecevyinolvfdvfdsbsdgjniiv@sdvft.com",
-      "id": 16
-    },
-    {
-      "email": "xcpgyhxlkqcqzmswfa@mrvpm.net",
-      "id": 17
-    },
-    {
-      "email": "xcpgyhxlkqcqzmswfa@mrvpm.net",
-      "id": 18
-    },
-    {
-      "email": "wbyecevyinolgjniiv@sdvft.com",
-      "id": 19
-    },
-    {
-      "email": "ttttm@gmail.com",
-      "id": 20
-    }
-  ]
+    "forgotPassword": [
+        {
+            "id": 1,
+            "email": ""
+        }
+    ],
+    "login": [
+        {
+            "email": "taher@gmail.com",
+            "password": "vvsb",
+            "id": 2
+        }
+    ]
 }

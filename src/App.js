@@ -38,6 +38,9 @@ const App = () => {
         <Route exact path='/forgetPassword'>
           <ForgetPassword />
         </Route>
+        <Route exact path='/login'>
+          <LoginPage />
+        </Route>
         <Route path='*'>
           <NotFound />
         </Route>
