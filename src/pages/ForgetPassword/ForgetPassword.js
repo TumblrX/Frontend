@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import forgetPasswordStyle from './ForgetPassword.module.scss';
 import api from '../../api/api'
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 export default function ForgetPassword() {
 
@@ -8,22 +10,37 @@ export default function ForgetPassword() {
     const [hideConfirm, setHideConfirm] = useState(true);
     const [hideError, setHideError] = useState(true);
     const [hideEmptyEmail, setHideEmptyEmail] = useState(true);
+    const [hideRecaptchaError, setHideRecaptchaError] = useState(true);
+    const [recaptcha, setRecaptcha] = useState(false);
 
     const forgetPasswordHandler = (e) => {
         e.preventDefault();
-        if (e.target.email.value !== "") {
-            forgetPassword(e.target.email.value);
-            setHideEmptyEmail(true);
+
+        if (e.target.email && e.target.email.value !== "") {
+            if (recaptcha == false) {
+                setHideRecaptchaError(false);
+                setHideEmptyEmail(true);
+                setHideError(true);
+            }
+            else {
+                forgetPassword(e.target.email.value);
+                setHideEmptyEmail(true);
+                setHideRecaptchaError(true);
+                setRecaptcha(false);
+            }
         }
         else {
             setHideEmptyEmail(false);
+            setHideRecaptchaError(true);
+
         }
     }
+
 
     const canceHandler = (e) => {
         e.preventDefault();
         setHideEmptyEmail(true);
-        // go to login again
+        // go to login again      
     }
 
     const doneHandler = (e) => {
@@ -52,27 +69,50 @@ export default function ForgetPassword() {
         console.log(email)
     }
 
+    function onChange(value) {
+        console.log("Captcha value:", value);
+        setRecaptcha(!recaptcha);
+    }
+
     return (
-        <div className={forgetPasswordStyle.body}>
-            <div className={forgetPasswordStyle.container}>
-                <h2>tumblr</h2>
+        <div data-testid="body" className={forgetPasswordStyle.body}>
+            <div data-testid="container" className={forgetPasswordStyle.container}>
+                <h2 data-testid="h2" >tumblr</h2>
                 {!hideForm &&
                     (
-                        <form onSubmit={forgetPasswordHandler}>
+                        <form data-testid="form" onSubmit={forgetPasswordHandler}>
+                            
+                            <input data-testid="email" type="email" name="email" id="email" placeholder="Email" />
+
                             {!hideError &&
                                 (
-                                    <p id="error" >There was an error submitting your request.</p>
+                                    <p data-testid="error" id="error" >There was an error submitting your request.</p>
                                 )
                             }
-                            <input type="email" name="email" id="email" placeholder="Email" />
+
+                            {!hideRecaptchaError &&
+                                (
+                                    <p data-testid="recaptchaError"  name="recaptchaError" >There was an error submitting your request.</p>
+                                )
+                            }
+
 
                             {!hideEmptyEmail && (
-                                <p id="error" >Please enter your email address. </p>
+                                <p id="error" data-testid="error" >Please enter your email address.</p>
                             )}
 
+                            <div data-testid="recaptcha"     
+                            
+                            className={forgetPasswordStyle.recaptcha}>
+                                <ReCAPTCHA
+                                    sitekey="6Le9C0YdAAAAAK5iSBhKrlLEGV6av3COAi5l8sC6"
+                                    onChange={onChange}
+                                />
+                            </div>
+
                             <div className={forgetPasswordStyle.buttons}>
-                                <button onClick={canceHandler}> Cancel </button>
-                                <input type="submit" value="Reset password" />
+                                <button data-testid="cancel" onClick={canceHandler} > Cancel </button>
+                                <input data-testid="reset" name="reset" type="submit" value="Reset password" />
                             </div>
                         </form>
                     )
@@ -80,7 +120,7 @@ export default function ForgetPassword() {
 
                 {!hideConfirm &&
                     (
-                        <div id={forgetPasswordStyle.confirmation} >
+                        <div data-testid="confirmation" id={forgetPasswordStyle.confirmation} >
                             <p>
                                 We've sent you an email with instructions to reset your password.
                                 <br /> <br />
