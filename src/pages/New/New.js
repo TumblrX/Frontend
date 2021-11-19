@@ -1,3 +1,9 @@
+/**
+ * This is the /new page
+ * @module New
+ * @author Yousef Elshabrawy
+ */
+
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { useHistory, Link } from 'react-router-dom';

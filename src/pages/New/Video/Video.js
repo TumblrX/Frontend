@@ -1,3 +1,8 @@
+/**
+ * This is the /new/video page
+ * @module Video
+ * @author Yousef Elshabrawy
+ */
 import React, { useEffect, useState } from 'react';
 import { RiVideoAddFill } from 'react-icons/ri';
 import { GiSpiderWeb } from 'react-icons/gi';

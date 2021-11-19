@@ -1,3 +1,9 @@
+/**
+ * This is the /new/chat page
+ * @module Chat
+ * @author Yousef Elshabrawy
+ */
+
 import React, { useState, useEffect } from 'react';
 import classes from './Chat.module.scss';
 import FormCard from '../../../components/NewPost/FormCard';

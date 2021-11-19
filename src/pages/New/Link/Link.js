@@ -1,3 +1,8 @@
+/**
+ * This is the /new/link page
+ * @module Link
+ * @author Yousef Elshabrawy
+ */
 import React, { useState, useEffect } from 'react';
 import classes from './Link.module.scss';
 import api from '../../../api/api';

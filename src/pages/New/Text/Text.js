@@ -4,30 +4,21 @@
 // 3. validate the inputs values(remember dealing with #)
 // 4. install uuid to generate ids
 // 5. redirect after post
+
+/**
+ * This is the /new/text page
+ * @module Text
+ * @author Yousef Elshabrawy
+ */
+
 import React, { useEffect, useState } from 'react';
 import classes from './Text.module.scss';
 import FormCard from '../../../components/NewPost/FormCard';
 import PostButton from '../../../components/NewPost/PostButton';
 import CloseButton from '../../../components/NewPost/CloseButton';
 import api from '../../../api/api';
-// import EditorJs from '@editorjs/editorjs';
-// import Header from '@editorjs/header';
-// import List from '@editorjs/list';
-const NewText = (props) => {
-  // const config = {
-  //   holder: 'text',
-  //   tools: {
-  //     header: {
-  //       class: Header,
-  //       inlineToolbar: ['link'],
-  //     },
-  //     list: {
-  //       class: List,
-  //       inlineToolbar: true,
-  //     },
-  //   },
-  // };
-  // const textEditor = new EditorJs(config);
+
+const NewText = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [tags, setTags] = useState('');
@@ -76,21 +67,6 @@ const NewText = (props) => {
           onChange={textChangeHandler}
           value={text}
         />
-        {/* <div id='text'></div> */}
-        {/* <button
-        onClick={() => {
-          textEditor
-            .save()
-            .then((outputData) => {
-              console.log('Text data: ', outputData);
-            })
-            .catch((error) => {
-              console.log('Saving failed: ', error);
-            });
-        }}
-      >
-        Submit
-      </button> */}
         <input
           type='text'
           placeholder='#tags'

@@ -1,3 +1,8 @@
+/**
+ * This is the /new/quote page
+ * @module Quote
+ * @author Yousef Elshabrawy
+ */
 import React, { useEffect, useState } from 'react';
 import classes from './Quote.module.scss';
 import api from '../../../api/api';
