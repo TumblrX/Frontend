@@ -1,0 +1,38 @@
+.contanier {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    gap: 20px;
+    min-width: 700px;
+  }
+  
+  .aside-bar {
+    width: 20%;
+    max-width: 300px;
+  }
+  
+  .left-side {
+    background-color: rgb(0, 25, 53);
+    width: 70%;
+    max-width: 700px;
+    border-radius: 5px;
+  }
+  
+  .account {
+    background-color: white;
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 800px) {
+    .contanier {
+      gap: 5%;
+      width: 100vw;
+    }
+    .aside-bar {
+      width: 25%;
+    }
+    .left-side {
+      width: 70%;
+    }
+  }
+  
