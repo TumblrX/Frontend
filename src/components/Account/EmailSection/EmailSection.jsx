@@ -11,7 +11,6 @@ import axios from "axios";
  */
 
 class EmailSection extends Component {
-  
   /**
    * @constructor
    *
@@ -46,7 +45,6 @@ class EmailSection extends Component {
        */
       letPeopleFindThroughEmail: false,
     };
-    
   }
   /**
    * this function handle the click on the save button in the email section
@@ -110,6 +108,7 @@ class EmailSection extends Component {
      * get all Cancel buttons
      */
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
+    console.log(document.querySelector(`#email-section-buttons`));
     if (event.target === allButtons[0]) {
       document
         .querySelector(
@@ -119,10 +118,9 @@ class EmailSection extends Component {
       //hide the password box
       document
         .querySelector(`.${styles["change-email-section"]} input[type="email"]`)
-        .classList.toggle(`${styles["before-focus-on-edit"]}`);
-      //remove the borders from the email box by toggle the class
+        .classList.toggle(`${styles["before-focus-on-edit"]}`); //remove the borders from the email box by toggle the class
       document
-        .getElementsByClassName(`${styles["email-section-buttons"]}`)[0]
+        .querySelector(`#email-section-buttons`)
         .classList.toggle(`${styles.hidden}`);
       // hide the buttons
       document
@@ -269,7 +267,10 @@ class EmailSection extends Component {
   render() {
     return (
       <>
-        <div data-testid="email-section" className={styles["change-email-section"]}>
+        <div
+          data-testid="email-section"
+          className={styles["change-email-section"]}
+        >
           <div className={styles["title"]}>Email</div>
           <div className={styles["input-fields"]}>
             <input
@@ -301,8 +302,9 @@ class EmailSection extends Component {
             </div>
 
             <div
-              className={`${styles.hidden} ${styles["email-section-buttons"]}`}
+              className={`${styles.hidden}`}
               data-testid="buttons-container"
+              id="email-section-buttons"
             >
               <button
                 onClick={this.cancelButtonClick}
@@ -320,7 +322,7 @@ class EmailSection extends Component {
                 save
               </button>
             </div>
-            <div style={{ display: "flex",alignItems:"center" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <input
                 type="checkbox"
                 name=""

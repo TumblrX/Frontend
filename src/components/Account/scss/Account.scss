@@ -1,30 +1,40 @@
-/*
-    button variables 
-*/
-.account-container {
+@import "./variables";
+
+@mixin displayFlex($flex-direction: row) {
   display: flex;
-  flex-direction: column;
+  @if ($flex-direction==column) {
+    flex-direction: column;
+    //  it could be flex-direction:$flex-direction without if
+    // but if the direction is row it will put flex-direction:row in the css file
+    // it is the default so it should not be written and @if will not write it in the file
+  }
+}
+
+.account-container {
+  @include displayFlex(column);
   background-color: white;
   width: calc(100% - 40px);
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 .change-email-section,
 .password-box,
 .security-box,
 .filtering-section {
-  display: flex;
+  @include displayFlex();
   margin-bottom: 10px;
-  position: relative; }
-
+  position: relative;
+}
 /* should be in a general place 
      and should have one name for exapmple section-box 
      and given to all the boxes 
   */
+
 .input-fields {
-  display: flex;
-  flex-direction: column;
+  @include displayFlex(column);
   width: 70%;
-  position: relative; }
+  position: relative;
+}
 
 input {
   display: block;
@@ -33,93 +43,111 @@ input {
   font-size: 14px;
   opacity: 0.5;
   outline: none;
-  margin-right: 5px; }
+  margin-right: 5px;
+}
 
 input[type="checkbox"] {
-  display: inline; }
+  display: inline;
+}
 
-.cancel-button, .save-button,
-.add-button {
+.cancel-button {
   width: fit-content;
-  height: 30px;
-  background-color: gray;
-  color: white;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 15px;
-  margin-right: 5px;
-  margin-bottom: 15px;
-  cursor: pointer; }
+  height: $button-height;
+  background-color: $cancel-button-background;
+  color: $button-color;
+  border-radius: $button-border-radius;
+  padding: $button-padding;
+  font-size: $button-font-size;
+  margin-right: $button-margin-right;
+  margin-bottom: $button-margin-bottom;
+  cursor: pointer;
+}
 
 .save-button,
 .add-button {
-  background-color: #00bcd4; }
+  @extend .cancel-button;
+  background-color: #00bcd4;
+}
 
 .header {
   color: #7e7c7c85;
   font-family: sans-serif;
   padding: 10px;
-  font-weight: 100; }
-
+  font-weight: 100;
+}
 /* should be in a general place  */
+
 .title {
   width: 15%;
-  margin-right: 2%; }
+  margin-right: 2%;
+}
 
 hr {
   margin-bottom: 10px;
   border: none;
   height: 1px;
-  background-color: #dad8d8; }
+  background-color: #dad8d8;
+}
 
 .security-section,
 .security-description {
-  display: flex;
-  flex-direction: column; }
+  @include displayFlex(column);
+}
 
 .security-section {
-  width: 80%; }
+  width: 80%;
+}
 
 .icon-photo {
   width: 15px;
   height: 15px;
   position: absolute;
-  right: 0; }
+  right: 0;
+}
 
 .hidden,
 .tags-filter-box,
 .posts-filter-box {
-  display: none; }
+  display: none;
+}
 
 .before-focus-on-edit {
-  border: none; }
+  border: none;
+}
 
-.dots span {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: black;
-  display: inline-block;
-  margin-right: 1px; }
+.dots {
+  span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: black;
+    display: inline-block;
+    margin-right: 1px;
+  }
+}
 
 .user-message {
   color: gray;
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+}
 
 .section-message {
   font: 300 1.6rem sans-serif;
   color: #000000b5;
   margin-bottom: 15px;
-  margin-top: 5px; }
+  margin-top: 5px;
+}
 
 .filter-message {
   color: gray;
   display: inline-block;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 
 .anchor {
   text-decoration: underline;
-  color: inherit; }
+  color: inherit;
+}
 
 .error-email-message,
 .error-password-message,
@@ -139,22 +167,27 @@ hr {
   right: -40%;
   text-align: center;
   transition: 0.5s 0.1s linear;
-  padding: 5px; }
+  padding: 5px;
+}
 
 .error-password-message {
   bottom: 53%;
-  right: -67%; }
+  right: -67%;
+}
 
 .error-current-password {
-  right: -71.5%; }
+  right: -71.5%;
+}
 
 .error-new-password {
   top: 25%;
-  right: -60%; }
+  right: -60%;
+}
 
 .error-confirm-password {
   top: 50%;
-  right: -65%; }
+  right: -65%;
+}
 
 .delete-account-button {
   margin: 20px 0;
@@ -162,8 +195,11 @@ hr {
   color: gray;
   padding: 7px;
   border-radius: 4px;
-  cursor: pointer; }
-  .delete-account-button:hover {
+  cursor: pointer;
+  &:hover {
     background-color: #e60000a6;
     color: white;
-    border: none; }
+    border: none;
+  }
+}
+

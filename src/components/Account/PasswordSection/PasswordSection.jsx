@@ -122,7 +122,7 @@ export class PasswordSection extends Component {
         .classList.toggle(`${styles.hidden}`);
 
       document
-        .getElementsByClassName(`${styles["password-section-buttons"]}`)[0]
+        .querySelector(`#password-section-buttons`)
         .classList.toggle(`${styles.hidden}`);
     }
     document.querySelectorAll(`form >div`).forEach((element) => {
@@ -307,7 +307,7 @@ export class PasswordSection extends Component {
               Please Enter Identical Passwords
             </div>
 
-            <div className={styles["password-section-buttons"]} >
+            <div id="password-section-buttons" >
               <button
                 onClick={this.cancelButtonClick}
                 className={styles["cancel-button"]}
