@@ -3,12 +3,12 @@
     {
       "email": "abdalla@tumblr.comtest",
       "id": "1",
-      "password": "testtesttest111111",
+      "password": "testtesttest1",
       "user": "abdalla",
       "letPeopleFindBlogByEmail": false,
       "emailAboutAccountActivity": false,
       "twoFactorAuthentication": false,
-      "enableEndLessScrolling": true,
+      "enableEndLessScrolling": false,
       "messagingSounds": true,
       "bestStuffFirst": true,
       "includeStuffInorbit": true,
@@ -21,7 +21,8 @@
         "EmailUserAboutNewAnsweredAsksBox": false,
         "NotificationSettingsFor": "From nobody",
         "ApplySettingsForAllBlogs": true
-      }
+      },
+      "true": ""
     }
   ]
 }
