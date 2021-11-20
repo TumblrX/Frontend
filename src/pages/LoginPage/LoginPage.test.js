@@ -47,3 +47,18 @@ describe('Check that the page renders correctly', () => {
     expect(error).toBeFalsy();
   });
 });
+
+/*
+describe('Check the validity of submissions', () => {
+   test('check that error message appears when input is empty', async () => {
+    await act(async () => {
+      const { getByTestId } = render(<LoginPage />);
+      const btn = getByTestId('login');
+      await fireEvent.click(btn);
+      const error = screen.getByText('You do have to fill this stuff out, you know.');
+      expect(error).toBeInTheDocument();
+    });
+  });
+
+});
+*/

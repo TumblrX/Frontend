@@ -23,12 +23,13 @@ export default function LoginPage() {
         email,
         password,
       });
-      // setEmptyFileds(false);
-      // here we must set token
       setCookie(response.data.email);
       // go to dashboard
     } catch (err) {
-      // setEmptyFileds(true);
+      setHideFillData(true);
+      setHideFillEmail(true);
+      setHideFillPassword(true);
+      setHideWrongData(false);
     }
   };
 
@@ -39,10 +40,31 @@ export default function LoginPage() {
 */
   const loginHandler = (e) => {
     e.preventDefault();
-    login({
-      email: e.target.email.value,
-      password: e.target.password.value,
-    });
+    if (e.target && e.target.email.value !== '' && e.target.password.value !== '') {
+      setHideFillData(true);
+      setHideFillEmail(true);
+      setHideFillPassword(true);
+      setHideWrongData(true);
+      login({
+        email: e.target.email.value,
+        password: e.target.password.value,
+      });
+    } else if (e.target.email.value === '' && e.target.password.value === '') {
+      setHideFillData(false);
+      setHideFillEmail(true);
+      setHideFillPassword(true);
+      setHideWrongData(true);
+    } else if (e.target.email.value !== '') {
+      setHideFillData(true);
+      setHideFillEmail(true);
+      setHideFillPassword(false);
+      setHideWrongData(true);
+    } else {
+      setHideFillData(true);
+      setHideFillEmail(false);
+      setHideFillPassword(true);
+      setHideWrongData(true);
+    }
   };
 
   return (
@@ -71,7 +93,7 @@ export default function LoginPage() {
               <div data-testid="wrongData" id={loginPageStyle.incorrectUser}>Your email or password were incorrect.</div>
             )}
 
-          <input type="email" name="email" id="email" placeholder="Email" />
+          <input data-testid="email" type="email" name="email" id="email" placeholder="Email" />
           <input type="password" name="password" id="password" placeholder="Password" />
           <p>
             By clicking &quot;log in&quot;, or continuing with the other options below,
@@ -84,9 +106,9 @@ export default function LoginPage() {
             {' '}
             <a href="#"> Privacy Policy </a>
           </p>
-          <input type="submit" value="Log in" />
+          <input data-testid="login" id="login" type="submit" value="Log in" />
           <p className={loginPageStyle.bigParagraphe}>
-            <a href="#" id={loginPageStyle.forgetPassword}> Forgot your password?</a>
+            <a href="/forgetPassword" id={loginPageStyle.forgetPassword}> Forgot your password?</a>
           </p>
         </form>
         <div id={loginPageStyle.or}>

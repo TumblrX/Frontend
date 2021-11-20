@@ -42,7 +42,7 @@ describe('Check that the page renders correctly', () => {
   });
 });
 
-describe('Check the validity of submissions', () => {
+describe.skip('Check the validity of submissions', () => {
   test('check that error message appears when input is empty', () => {
     render(<ForgetPassword />);
     const btn = screen.getByTestId('reset');
