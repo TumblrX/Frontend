@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { FaTumblr } from 'react-icons/fa';
-import api from '../../api/getPost'
+import React, { Component } from 'react';
+import api from '../../api/api'
 import './Posts.css'
 // import './test.css'
 

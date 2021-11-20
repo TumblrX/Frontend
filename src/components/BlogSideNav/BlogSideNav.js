@@ -1,6 +1,6 @@
-import React ,{useEffect,useRef} from "react";
-import styles from "./BlogSideNav.module.css";
-import { Link } from "react-router-dom";
+import React  from 'react';
+import styles from './BlogSideNav.module.scss';
+import { Link } from 'react-router-dom';
 //import userPhoto from "../../assets/Images/myphoto.jpg";
 
 /**
@@ -14,40 +14,38 @@ function BlogSideNav(){
 
     return (
       <aside>
-         <div  className={styles["nav-bar-first"]}>
+         <div  className={styles.navBarFirst}>
             <div>Ahmedmma</div>
             <div>Untitled</div>
           </div>
-        <Link to="/blog">
-          <div  className={styles["nav-bar-slot"]}>
+        <Link to='/blog'>
+          <div  className={styles.navBarSlot}>
             <div>Posts</div>
           </div>
         </Link>
 
-        <Link to="/blog/followers">
-          <div className={styles["nav-bar-slot"]}>
+        <Link to='/blog/followers'>
+          <div className={styles.navBarSlot}>
             <div>Followers</div>
           </div>
         </Link>
 
         <Link to="/blog/activity">
-          <div className={styles["nav-bar-slot"]}>
+          <div className={styles.navBarSlot}>
             <div>Activity</div>
           </div>
         </Link>
 
         <Link to="/blog/drafts">
-          <div className={styles["nav-bar-slot"]}>
+          <div className={styles.navBarSlot}>
             <div>Drafts</div>
           </div>
         </Link>
         <Link to="settings/blog">
-          <div className={styles["nav-bar-slot"]}>
+          <div className={styles.navBarSlot}>
             <div>Edit Appearance</div>
           </div>
         </Link>
-       
-
         <div className={styles.blogs}>Radar</div>
       </aside>
     );

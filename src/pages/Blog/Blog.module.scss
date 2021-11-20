@@ -1,0 +1,30 @@
+.contanier {
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+  gap: 20px;
+  min-width: 700px;
+  .leftSide {
+    background-color: rgb(0, 25, 53);
+    width: 70%;
+    max-width: 700px;
+    border-radius: 5px;
+  }
+  .asideBar {
+    width: 20%;
+    max-width: 300px;
+  }
+} 
+@media (max-width: 800px) {
+  .contanier {
+    gap: 5%;
+    width: 100vw;
+    .asideBar {
+      width: 25%;
+    }
+    .leftSide {
+      width: 70%;
+    }
+ }
+}
+  
