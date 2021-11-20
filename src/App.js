@@ -1,10 +1,10 @@
 import React from 'react';
-import CreateBlog from './pages/CreateBlog/CreateBlog.jsx';
+import CreateBlog from './pages/CreateBlog/CreateBlog.js';
 
-const App = () => {
+const App = function () {
   return (
     <div>
-    <CreateBlog />
+      <CreateBlog />
     </div>
   );
 };

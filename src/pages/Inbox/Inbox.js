@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Inbox = () => {
+const Inbox = function () {
   return <div>Inbox</div>;
 };
 

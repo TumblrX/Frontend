@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import  createReducer  from './createBlog'
+import createReducer from './createBlog';
 
 export default configureStore({
   reducer: {
-    create: createReducer
+    create: createReducer,
   },
 });
