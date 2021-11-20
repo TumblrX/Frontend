@@ -7,58 +7,50 @@
 .icon-photo {
   width: 15px;
   height: 15px;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .notification-container {
   display: flex;
   flex-direction: column;
   background-color: white;
   width: calc(100% - 40px);
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .notification-section {
   display: flex;
   justify-content: space-between;
   color: #444;
   font-size: 14px;
-  height: 50px;
-}
+  height: 50px; }
 
 .user-info {
   display: flex;
   flex-shrink: 0;
   width: 40%;
-  align-items: center;
-}
+  align-items: center; }
 
 .edit-section {
   flex-shrink: 0;
   display: flex;
   width: 50%;
   justify-content: flex-end;
-  align-items: center;
-}
+  align-items: center; }
 
 .user-img {
   width: 28px;
   height: 28px;
   margin-right: 3%;
   object-fit: cover;
-  border-radius: 3px;
-}
+  border-radius: 3px; }
 
 .header {
   color: #7e7c7c85;
   font-family: sans-serif;
   padding: 10px;
-  font-weight: 100;
-}
+  font-weight: 100; }
 
 input[type="checkbox"] {
-  margin-top: 6px;
-}
+  margin-top: 6px; }
 
 select {
   border: none;
@@ -67,12 +59,10 @@ select {
   appearance: none;
   position: relative;
   cursor: pointer;
-  z-index: 1;
-}
+  z-index: 1; }
 
 .selected {
-  position: relative;
-}
+  position: relative; }
 
 /* .selected::after {
     content: "^";
@@ -95,11 +85,9 @@ select {
   font-size: 30px;
   transform: rotate(180deg);
   color: #00bcd4;
-  right: 0;
-}
+  right: 0; }
 
-.cancel-button,
-.save-button,
+.cancel-button, .save-button,
 .add-button {
   width: fit-content;
   height: 30px;
@@ -110,28 +98,32 @@ select {
   font-size: 15px;
   margin-right: 5px;
   margin-bottom: 15px;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .save-button,
 .add-button {
-  background-color: #00bcd4;
-}
+  background-color: #00bcd4; }
 
 .edit-after-click {
   font: 100 1.4rem sans-serif;
-  color: gray;
-}
+  color: gray; }
 
 .notification-section-title {
   margin-left: 5%;
   width: 30%;
   white-space: nowrap;
-  font: 600 1.8rem sans-serif;
-}
+  font: 600 1.8rem sans-serif; }
 
 .notification-selection {
   font: 600 1.6rem sans-serif;
   height: fit-content;
-  margin-top: 4px;
-}
+  margin-top: 4px; }
+
+.input-box {
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px 5px;
+  font-size: 14px;
+  opacity: 0.5;
+  outline: none;
+  margin-right: 5px; }

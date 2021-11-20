@@ -62,6 +62,7 @@ function Sounds(props) {
               onClick={checkBoxClick}
               data-testid="messageing-sounds-checkbox"
               value={checkBoxState.state}
+              className={`${styles["input-box"]}`}
             />
             <div className={styles["description"]}>
               <div className={styles["section-message"]}>Messaging sounds</div>

@@ -60,3 +60,13 @@
   color: gray;
   font-size: 1.2rem;
 }
+
+.input-box {
+  display: block;
+  margin-bottom: $input-margin-bottom;
+  padding: $input-top-bottom-padding $input-left-right-padding;
+  font-size: $input-font-size;
+  opacity: $input-opacity;
+  outline: none;
+  margin-right: $input-margin-right;
+}

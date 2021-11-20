@@ -50,3 +50,13 @@
   color: gray;
   font-size: 1.2rem;
 }
+
+.input-box {
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px 5px;
+  font-size: 14px;
+  opacity: 0.5;
+  outline: none;
+  margin-right: 5px;
+}

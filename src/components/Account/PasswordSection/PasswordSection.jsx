@@ -238,6 +238,7 @@ function PasswordSection(props) {
             value={passwordInfo.confirmedPassword}
             onChange={changeInput}
             data-testid="currentpassword-box"
+            className={`${styles["input-box"]}`}
           />
           <div className={`${styles["error-current-password"]} error-message `}>
             Please Enter your password Correctly
@@ -249,6 +250,7 @@ function PasswordSection(props) {
             value={passwordInfo.newPassword}
             onChange={changeInput}
             data-testid="newpassword-box"
+            className={`${styles["input-box"]}`}
           />
           <div className={`${styles["error-new-password"]} error-message`}>
             Please Enter Strong Password
@@ -263,6 +265,7 @@ function PasswordSection(props) {
             value={passwordInfo.newConfirmedPassword}
             onChange={changeInput}
             data-testid="confirmpassword-box"
+            className={`${styles["input-box"]}`}
           />
           <div className={`${styles["error-confirm-password"]} error-message`}>
             Please Enter Identical Passwords

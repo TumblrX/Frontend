@@ -238,6 +238,7 @@ function Notifictions() {
               type="checkbox"
               onClick={applyForAllButtonOnClick}
               data-testid="apply-for-all-checkbox"
+              className={`${styles["input-box"]}`}
             />
             <div style={{ height: "fit-content", marginTop: "6px" }}>
               Apply settings to all blogs{" "}
@@ -260,6 +261,7 @@ function Notifictions() {
                 type="checkbox"
                 onChange={inputsOnChange}
                 data-testid="new-followers-checkbox"
+                className={`${styles["input-box"]}`}
               />
               <div className={styles["notification-selection"]}>
                 New Followers
@@ -270,6 +272,7 @@ function Notifictions() {
                 type="checkbox"
                 onChange={inputsOnChange}
                 data-testid="new-replies-checkbox"
+                className={`${styles["input-box"]}`}
               />
               <div className={styles["notification-selection"]}>
                 New replies
@@ -280,11 +283,16 @@ function Notifictions() {
                 type="checkbox"
                 onChange={inputsOnChange}
                 data-testid="mentions-checkbox"
+                className={`${styles["input-box"]}`}
               />
               <div className={styles["notification-selection"]}>Mentions</div>
             </div>
             <div style={{ display: "flex" }} onChange={inputsOnChange}>
-              <input type="checkbox" data-testid="answered-asks-checkbox" />
+              <input
+                type="checkbox"
+                data-testid="answered-asks-checkbox"
+                className={`${styles["input-box"]}`}
+              />
               <div className={styles["notification-selection"]}>
                 Answered Asks
               </div>

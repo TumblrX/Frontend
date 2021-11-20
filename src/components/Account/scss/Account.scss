@@ -36,12 +36,12 @@
   position: relative;
 }
 
-input {
+.input-box {
   display: block;
   margin-bottom: $input-margin-bottom;
   padding: $input-top-bottom-padding $input-left-right-padding;
   font-size: $input-font-size;
-  opacity:$input-opacity;
+  opacity: $input-opacity;
   outline: none;
   margin-right: $input-margin-right;
 }
@@ -73,13 +73,13 @@ input[type="checkbox"] {
   color: $header-color;
   font-family: $header-font-family;
   padding: $header-padding;
-  font-weight:$header-font-weight;
+  font-weight: $header-font-weight;
 }
 /* should be in a general place  */
 
 .title {
   width: $title-width;
-  margin-right:$title-margin-right;
+  margin-right: $title-margin-right;
 }
 
 hr {
@@ -202,4 +202,3 @@ hr {
     border: none;
   }
 }
-

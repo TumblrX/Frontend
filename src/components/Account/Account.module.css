@@ -4,6 +4,16 @@
 /*
     input vars  
 */
+/*
+
+ header vars -- Accoutnt dashborad etc..
+*/
+/*
+title 
+*/
+/*
+ hr vars 
+*/
 .account-container {
   display: flex;
   flex-direction: column;
@@ -29,7 +39,7 @@
   width: 70%;
   position: relative; }
 
-input {
+.input-box {
   display: block;
   margin-bottom: 15px;
   padding: 5px 5px;

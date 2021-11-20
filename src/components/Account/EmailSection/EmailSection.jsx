@@ -237,7 +237,7 @@ function EmailSection(props) {
             type="email"
             value={emailInfo.email}
             onChange={changeInput}
-            className={styles["before-focus-on-edit"]}
+            className={`${styles["before-focus-on-edit"]} ${styles["input-box"]} `}
           />
           <div className={`${styles["error-email-message"]} error-message`}>
             change your Email
@@ -245,7 +245,7 @@ function EmailSection(props) {
           <input
             type="password"
             placeholder="Confirm Password"
-            className={styles.hidden}
+            className={`${styles.hidden} ${styles["input-box"]}`}
             value={emailInfo.confirmedPassword}
             onChange={changeInput}
             id="emailcurrentpassword"
@@ -284,6 +284,7 @@ function EmailSection(props) {
               style={{ marginRight: "6px" }}
               value={emailInfo.letPeopleFindThroughEmail}
               onChange={changeInput}
+              className={`${styles["input-box"]}`}
             />
             <div
               className={styles["user-message"]}

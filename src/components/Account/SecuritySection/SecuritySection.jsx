@@ -103,6 +103,7 @@ function SecuritySection(props) {
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               data-testid="email-user-about-activity-checkbox"
+              className={`${styles["input-box"]}`}
               // value={checkboxesStates.EmailUserAbout}
             />
             <div className={styles["security-description"]}>
@@ -120,6 +121,7 @@ function SecuritySection(props) {
               type="checkbox"
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
+              className={`${styles["input-box"]}`}
               // value={checkboxesStates.TwoFactorAuth}
             />
             <div>

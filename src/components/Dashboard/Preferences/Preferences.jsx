@@ -130,6 +130,7 @@ function Preferences(props) {
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               data-testid="best-stuff-first-checkbox"
+              className={`${styles["input-box"]}`}
             />
             <div className={styles["description"]}>
               <div className={styles["section-message"]}>Best Stuff First</div>
@@ -144,6 +145,7 @@ function Preferences(props) {
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               data-testid="include-stuff-checkbox"
+              className={`${styles["input-box"]}`}
             />
             <div className={styles["description"]}>
               <div className={styles["section-message"]}>
@@ -160,6 +162,7 @@ function Preferences(props) {
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               data-testid="enable-colorized-tags-checkbox"
+              className={`${styles["input-box"]}`}
             />
             <div className={styles["description"]}>
               <div className={styles["section-message"]}>
@@ -178,6 +181,7 @@ function Preferences(props) {
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               data-testid="include-followed-tag-checkbox"
+              className={`${styles["input-box"]}`}
             />
             <div className={styles["description"]}>
               <div className={styles["section-message"]}>
