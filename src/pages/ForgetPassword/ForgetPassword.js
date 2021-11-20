@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-multiple-empty-lines */
 import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -22,9 +24,9 @@ export default function ForgetPassword() {
   const forgetPassword = async (email) => {
     try {
       // eslint-disable-next-line no-unused-vars
-      const response = await api.post('/forgotPassword', {
+      /* const response = await api.post('/forgotPassword', {
         email,
-      });
+      }); */
 
       setHideForm(true);
       setHideConfirm(false);
@@ -34,8 +36,8 @@ export default function ForgetPassword() {
     }
   };
 
-  
-/**
+
+  /**
  * @description Check that the user enter a valid data reseting his password
  * @param {MyEvent} e - The observable event.
  * @listens MyEvent
