@@ -36,11 +36,12 @@ export class Account extends Component {
 
           <SecuritySection sendData={this.sendData} />
 
-          
-
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <a href="/delete">
-              <button data-testid="delete-account-button" className={styles["delete-account-button"]}>
+              <button
+                data-testid="delete-account-button"
+                className={styles["delete-account-button"]}
+              >
                 Delete account
               </button>
             </a>

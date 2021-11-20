@@ -1,4 +1,32 @@
-import styles from "../Account.module.css";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Account/SecuritySection/SecuritySection.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Account/SecuritySection/SecuritySection.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import styles from "../Account.module.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
@@ -24,7 +52,7 @@ function SecuritySection(props) {
   const checkBoxClick = (event) => {
     /**
      * get all the check boxes in the security container
-     * @type {Array<Element>}
+     * @type {Array&lt;Element>}
      *
      */
     let boxes = document.querySelectorAll(".security-container input");
@@ -90,56 +118,79 @@ function SecuritySection(props) {
 
   useEffect(componentDidMount, []);
   return (
-    <>
-      <div
+    &lt;>
+      &lt;div
         data-testid="security-seciton"
         className={`${styles["security-box"]} security-container`}
       >
-        <div className={styles["title"]}>Security</div>
-        <div className={styles["security-section"]}>
-          <div style={{ display: "flex", marginBottom: "30px" }}>
-            <input
+        &lt;div className={styles["title"]}>Security&lt;/div>
+        &lt;div className={styles["security-section"]}>
+          &lt;div style={{ display: "flex", marginBottom: "30px" }}>
+            &lt;input
               type="checkbox"
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               data-testid="email-user-about-activity-checkbox"
               // value={checkboxesStates.EmailUserAbout}
             />
-            <div className={styles["security-description"]}>
-              <div className={styles["section-message"]}>
+            &lt;div className={styles["security-description"]}>
+              &lt;div className={styles["section-message"]}>
                 Email me about account activity
-              </div>
-              <div className={styles["user-message"]}>
+              &lt;/div>
+              &lt;div className={styles["user-message"]}>
                 You will receive an email when someone logs into your account or
                 a new app is authorized
-              </div>
-            </div>
-          </div>
-          <div style={{ display: "flex", marginBottom: "30px" }}>
-            <input
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+          &lt;div style={{ display: "flex", marginBottom: "30px" }}>
+            &lt;input
               type="checkbox"
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               // value={checkboxesStates.TwoFactorAuth}
             />
-            <div>
-              <div className={styles["section-message"]}>
+            &lt;div>
+              &lt;div className={styles["section-message"]}>
                 Two-factor authentication
-              </div>
-              <div className={styles["user-message"]}>
+              &lt;/div>
+              &lt;div className={styles["user-message"]}>
                 Enabling two factor authentication makes it extra difficult for
                 anyone other than you to access your account.
-                <a href="/learnmore" className={styles["anchor"]}>
+                &lt;a href="/learnmore" className={styles["anchor"]}>
                   {" "}
                   Learn more.
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+                &lt;/a>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/>
   );
 }
 
 export default SecuritySection;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Account.html">Account</a></li><li><a href="FilterSection.html">FilterSection</a></li><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EmailSection">EmailSection</a></li><li><a href="global.html#Interface">Interface</a></li><li><a href="global.html#Notifictions">Notifictions</a></li><li><a href="global.html#PasswordSection">PasswordSection</a></li><li><a href="global.html#Preferences">Preferences</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#SecuritySection">SecuritySection</a></li><li><a href="global.html#Settings">Settings</a></li><li><a href="global.html#Sounds">Sounds</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Nov 20 2021 17:51:39 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

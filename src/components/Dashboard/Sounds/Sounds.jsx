@@ -31,10 +31,11 @@ function Sounds(props) {
   }, [checkBoxState, props]);
 
   /**
-   * @function
+   * retreive the data from the backend when the component mounted
+   * @type {function}
    * @param {void}
    * @returns {void}
-   * retreive the data from the backend when the component mounted
+   *
    */
   const componentDidMount = () => {
     axios

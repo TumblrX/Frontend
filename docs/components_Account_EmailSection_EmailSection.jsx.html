@@ -1,4 +1,32 @@
-import React, { useState, useEffect } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Account/EmailSection/EmailSection.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Account/EmailSection/EmailSection.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from "react";
 
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
@@ -29,7 +57,7 @@ function EmailSection(props) {
   const formAction = (event) => {
     /**
      * get the save button
-     * @type {Array<Element>}
+     * @type {Array&lt;Element>}
      *
      */
     let saveButtons = document.getElementsByClassName(
@@ -79,7 +107,7 @@ function EmailSection(props) {
     });
     /**
      * get all Cancel buttons
-     * @type {Array<Element>}
+     * @type {Array&lt;Element>}
      */
     let allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
     console.log(document.querySelector(`#email-section-buttons`));
@@ -155,7 +183,7 @@ function EmailSection(props) {
     // if they set to zero
     /**
      * array to get the icon photo
-     * @type {Array<Element>}
+     * @type {Array&lt;Element>}
      *
      */
     let imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
@@ -179,7 +207,7 @@ function EmailSection(props) {
 
       /**
        * get the Email section
-       * @type {Array<Element>}
+       * @type {Array&lt;Element>}
        *
        */
       let changeEmailSection = document.getElementsByClassName(
@@ -223,14 +251,14 @@ function EmailSection(props) {
   };
 
   return (
-    <>
-      <div
+    &lt;>
+      &lt;div
         data-testid="email-section"
         className={styles["change-email-section"]}
       >
-        <div className={styles["title"]}>Email</div>
-        <div className={styles["input-fields"]}>
-          <input
+        &lt;div className={styles["title"]}>Email&lt;/div>
+        &lt;div className={styles["input-fields"]}>
+          &lt;input
             onClick={iconClick}
             id="email-box"
             data-testid="email-box"
@@ -239,10 +267,10 @@ function EmailSection(props) {
             onChange={changeInput}
             className={styles["before-focus-on-edit"]}
           />
-          <div className={`${styles["error-email-message"]} error-message`}>
+          &lt;div className={`${styles["error-email-message"]} error-message`}>
             change your Email
-          </div>
-          <input
+          &lt;/div>
+          &lt;input
             type="password"
             placeholder="Confirm Password"
             className={styles.hidden}
@@ -252,59 +280,82 @@ function EmailSection(props) {
             data-testid="password-box"
           />
 
-          <div className={`${styles["error-password-message"]} error-message`}>
+          &lt;div className={`${styles["error-password-message"]} error-message`}>
             Please Enter the correct password
-          </div>
+          &lt;/div>
 
-          <div
+          &lt;div
             className={`${styles.hidden}`}
             data-testid="buttons-container"
             id="email-section-buttons"
           >
-            <button
+            &lt;button
               onClick={cancelButtonClick}
               className={styles["cancel-button"]}
               type="button"
               data-testid="email-cancel-button"
             >
               cancel
-            </button>
-            <button
+            &lt;/button>
+            &lt;button
               onClick={formAction}
               type="button"
               className={styles["save-button"]}
             >
               save
-            </button>
-          </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <input
+            &lt;/button>
+          &lt;/div>
+          &lt;div style={{ display: "flex", alignItems: "center" }}>
+            &lt;input
               type="checkbox"
               name=""
               style={{ marginRight: "6px" }}
               value={emailInfo.letPeopleFindThroughEmail}
               onChange={changeInput}
             />
-            <div
+            &lt;div
               className={styles["user-message"]}
               style={{ marginTop: "-9px" }}
             >
               Let people find your blogs through this address.{" "}
-            </div>
-          </div>
-        </div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
 
-        <img
+        &lt;img
           src={pen}
           onClick={iconClick}
           className={styles["icon-photo"]}
           alt=" can't load "
           data-testid="email-edit-button"
         />
-      </div>
-      <hr />
-    </>
+      &lt;/div>
+      &lt;hr />
+    &lt;/>
   );
 }
 
 export default EmailSection;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Account.html">Account</a></li><li><a href="FilterSection.html">FilterSection</a></li><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EmailSection">EmailSection</a></li><li><a href="global.html#Interface">Interface</a></li><li><a href="global.html#Notifictions">Notifictions</a></li><li><a href="global.html#PasswordSection">PasswordSection</a></li><li><a href="global.html#Preferences">Preferences</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#SecuritySection">SecuritySection</a></li><li><a href="global.html#Settings">Settings</a></li><li><a href="global.html#Sounds">Sounds</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Nov 20 2021 17:51:39 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

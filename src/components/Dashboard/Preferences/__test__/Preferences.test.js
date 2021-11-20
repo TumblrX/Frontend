@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Preferences from "./Preferences";
+import Preferences from "../Preferences";
 
 beforeEach(() => {
   cleanup();
