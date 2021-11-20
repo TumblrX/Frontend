@@ -1,31 +1,27 @@
-import React, { Component, Fragment } from 'react';
-import { FaTumblr } from 'react-icons/fa';
-import api from '../../api/getPost'
-import './Dashboard.css'
-// import './test.css'
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
+import React, { useState, useEffect } from 'react';
+import api from '../../api/getPost';
+import './Dashboard.css';
 
+const Dashboard = function () {
+  const [posts, setPosts] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [isInfinte, setIsInfinite] = useState(false);
+  // const [exploreBlogs, setExploreBlogs] = useState([]);
+  const [ismounted, setIsMounted] = useState(false);
 
-class Dashboard extends Component {
-  state = {
-    posts:[] , 
-    pageNum :1 , 
-    isInfinte: 0,
-    exploreBlogs:[],
-    ismounted:false
-  }
-  componentDidMount() {
-    this.fetchPosts();
-    this.state.ismounted =true;
-  }
-  fetchPosts  =()=> {
+  const fetchPosts = () => {
     const fetchPost = async () => {
       try {
         const response = await api.get('/posts');
-        this.setState({posts:response.data}) ;
-        console.log(this.state.posts)
+        // this.setState({ posts: response.data });
+        setPosts(response.data);
+        console.log(posts);
       } catch (err) {
         if (err.response) {
-          // Not in the 200 response range 
+          // Not in the 200 response range
           console.log(err.response.data);
           console.log(err.response.status);
           console.log(err.response.headers);
@@ -33,96 +29,113 @@ class Dashboard extends Component {
           console.log(`Error: ${err.message}`);
         }
       }
-    }
+    };
     fetchPost();
-  }
-  showPosts  = ()=> {    
-    if(this.state.isInfinte){
-      var firstPost = 0; 
-      var lastPost  = this.state.posts.length ; 
-    }else {
-      var lastPost  = this.state.pageNum *10 ; 
-      var firstPost = lastPost -10;
+  };
+
+  useEffect(() => {
+    fetchPosts();
+    setIsMounted(true);
+  }, []);
+
+  const showPosts = () => {
+    let firstPost;
+    let lastPost;
+    if (isInfinte) {
+      firstPost = 0;
+      lastPost = posts.length;
+    } else {
+      lastPost = pageNum * 10;
+      firstPost = lastPost - 10;
     }
     return (
-      this.state.posts.slice(firstPost,lastPost).map( (post,index) => 
-        <div className='post row' key={index} data-testid={`testPost${index}`}>
-          <div className="logo"> 
-          
+      // eslint-disable-next-line block-scoped-var
+      posts.slice(firstPost, lastPost).map((post, index) => (
+        <div className="post row" key={index} data-testid={`testPost${index}`}>
+          <div className="logo" />
+          <div className="postDatailes">
+            <div>
+              {' '}
+              id =
+              {post.id}
+            </div>
+            <div>
+              {' '}
+              title=
+              {post.title}
+            </div>
+            <div>
+              {' '}
+              datatime=
+              {post.datetime}
+            </div>
+            <div>
+              {' '}
+              body =
+              {post.body}
+            </div>
           </div>
-          <div className='postDatailes'> 
-            <div >  id ={post.id} </div>
-            <div > title= {post.title} </div>
-            <div > datatime=  {post.datetime} </div>
-            <div > body = {post.body} </div>
-          </div>            
         </div>
-        
-      )
-  )}
-  handleNext =()=>{
-    this.setState({
-      pageNum: this.state.pageNum+1
-    })
-  }
-  handlePrevious =()=>{
-    this.setState({
-      pageNum:this.state.pageNum-1
-    })
-  }
-  
-  render() {
-    return (
-      <div className='parent' >  
-        <div  className='Navbar' data-testid='testNavbar'>
-          Test Navbar
-        </div>
-        <div  className='container'>
+      ))
+    );
+  };
 
-          <div className='mainClass row'>
-            {/* --------------- Start posts ---------------------- */}
-            <div className='posts' data-testid='testPostContainer'>    
-              <div className='insertPost row' > 
-                <div className="insertLogo">
-                </div>
-                <div className='insertPostDetails'>
-                  insertPost
-                </div>
+  const handleNext = () => {
+    setPageNum(pageNum + 1);
+  };
+
+  const handlePrevious = () => {
+    setPageNum(pageNum - 1);
+  };
+  return (
+    <div className="parent">
+      <div className="Navbar" data-testid="testNavbar">
+        Test Navbar
+      </div>
+      <div className="container">
+
+        <div className="mainClass row">
+          {/* --------------- Start posts ---------------------- */}
+          <div className="posts" data-testid="testPostContainer">
+            <div className="insertPost row">
+              <div className="insertLogo" />
+              <div className="insertPostDetails">
+                insertPost
               </div>
-              {   this.state.ismounted && this.showPosts()}
-              <div className='navigate-btns row'>
-                {
-                  (this.state.pageNum !==1 && !this.state.isInfinte) &&
-                  <button className='previous-btn' onClick={()=> this.handlePrevious()}> &lt; Previous   </button>
+            </div>
+            { ismounted && showPosts()}
+            <div className="navigate-btns row">
+              {
+                  (pageNum !== 1 && !isInfinte)
+                  && <button className="previous-btn" onClick={() => handlePrevious()}> &lt; Previous   </button>
                 }
-                {
-                  (this.state.pageNum*10 < this.state.posts.length &&
-                    !this.state.isInfinte
-                    ) &&
-                    <button className='next-btn' onClick={()=> this.handleNext()}> Next &gt;  </button>
+              {
+                  (pageNum * 10 < posts.length
+                    && !isInfinte
+                  )
+                    && <button className="next-btn" onClick={() => handleNext()}> Next &gt;  </button>
                   }
-              </div>
-            </div> 
-            {/* --------------- End posts ---------------------- */}
-
-            {/* --------------- Start explore  ---------------------- */}
-            <div className='explore'  data-testid='testExplore'>  
-              <div className='checkBlogs' > 
-                Check Theses Blogs
-                <hr /> 
-                <a> Explore all of Tumblr </a>
-              </div>
-              <div className='radar' > 
-                Radar
-                <hr />
-              </div>
-            </div> 
-            {/* --------------- End explore  ---------------------- */}
+            </div>
           </div>
+          {/* --------------- End posts ---------------------- */}
+
+          {/* --------------- Start explore  ---------------------- */}
+          <div className="explore" data-testid="testExplore">
+            <div className="checkBlogs">
+              Check Theses Blogs
+              <hr />
+              <p> Explore all of Tumblr </p>
+            </div>
+            <div className="radar">
+              Radar
+              <hr />
+            </div>
+          </div>
+          {/* --------------- End explore  ---------------------- */}
         </div>
       </div>
-    )};
-}
-
+    </div>
+  );
+};
 
 export default Dashboard;
