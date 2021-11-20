@@ -13,48 +13,78 @@ export default function ForgetPassword() {
   const [hideRecaptchaError, setHideRecaptchaError] = useState(true);
   const [recaptcha, setRecaptcha] = useState(false);
 
+  /**
+ * @description Send request to send the reset password mail to the user
+ * @param {string} email - email of the user
+ * @param {string} password - password of the user
+*/
+
+  const forgetPassword = async (email) => {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const response = await api.post('/forgotPassword', {
+        email,
+      });
+
+      setHideForm(true);
+      setHideConfirm(false);
+      setHideError(true);
+    } catch (err) {
+      setHideError(false);
+    }
+  };
+
+  
+/**
+ * @description Check that the user enter a valid data reseting his password
+ * @param {MyEvent} e - The observable event.
+ * @listens MyEvent
+*/
   const forgetPasswordHandler = (e) => {
     e.preventDefault();
-
-    const forgetPassword = async (email) => {
-      try {
-        // eslint-disable-next-line no-unused-vars
-        const response = await api.post('/forgotPassword', {
-          email,
-        });
-
-        setHideForm(true);
-        setHideConfirm(false);
-        setHideError(true);
-      } catch (err) {
-        setHideError(false);
-      }
-    };
-
-
+    /**
+     * in case of valid email processed to check on recaptcha
+     */
     if (e.target.email && e.target.email.value !== '') {
       if (recaptcha === false) {
+        /**
+       * in case  that recaptcha not checked show error
+       */
         setHideRecaptchaError(false);
         setHideEmptyEmail(true);
         setHideError(true);
       } else {
+        /**
+         * if valid email and recaptcha is checked send succsseded
+         */
         forgetPassword(e.target.email.value);
         setHideEmptyEmail(true);
         setHideRecaptchaError(true);
         setRecaptcha(false);
       }
     } else {
+      /**
+       * if no email show an error
+       */
       setHideEmptyEmail(false);
       setHideRecaptchaError(true);
     }
   };
-
+  /**
+ * @description When user presses cancel it return back to the login page
+ * @param {MyEvent} e - The observable event.
+ * @listens MyEvent
+*/
   const canceHandler = (e) => {
     e.preventDefault();
     setHideEmptyEmail(true);
     // go to login again
   };
-
+  /**
+ * @description When user presses done it return back to the main page
+ * @param {MyEvent} e - The observable event.
+ * @listens MyEvent
+*/
   const doneHandler = (e) => {
     e.preventDefault();
     setHideForm(false);

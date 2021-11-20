@@ -10,9 +10,17 @@ export default function LoginPage() {
   const [hideFillPassword, setHideFillPassword] = useState(true);
   const [hideWrongData, setHideWrongData] = useState(true);
 
-  const login = async (userData) => {
+  /**
+ * @description Verify that the user is authorized to login in
+ * @param {string} email - email of the user
+ * @param {string} password - password of the user
+*/
+  const login = async (email, password) => {
     try {
-      const response = await api.post('/login', userData);
+      const response = await api.post('/login', {
+        email,
+        password,
+      });
       // setEmptyFileds(false);
       // here we must set token
       setCookie(response.data.email);
@@ -22,6 +30,11 @@ export default function LoginPage() {
     }
   };
 
+  /**
+ * @description Check that the user enter a valid data during login and procced to login if valid
+ * @param {MyEvent} e - The observable event.
+ * @listens MyEvent
+*/
   const loginHandler = (e) => {
     e.preventDefault();
     login({
