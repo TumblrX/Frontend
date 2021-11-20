@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "email": "abdalla@tumblr.comtest",
+      "email": "abdalla@tumblr.comtest1",
       "id": "1",
-      "password": "testtesttest1",
+      "password": "testtesttest11",
       "user": "abdalla",
       "letPeopleFindBlogByEmail": true,
-      "emailAboutAccountActivity": true,
-      "twoFactorAuthentication": true,
-      "enableEndLessScrolling": false,
+      "emailAboutAccountActivity": false,
+      "twoFactorAuthentication": false,
+      "enableEndLessScrolling": true,
       "messagingSounds": false,
       "bestStuffFirst": true,
       "includeStuffInorbit": false,
@@ -18,9 +18,9 @@
         "EmailUserAboutNewFollowersBox": false,
         "EmailUserAboutNewRepliesBox": false,
         "EmailUserAboutNewMentionsBox": false,
-        "EmailUserAboutNewAnsweredAsksBox": false,
-        "NotificationSettingsFor": "From nobody",
-        "ApplySettingsForAllBlogs": true
+        "EmailUserAboutNewAnsweredAsksBox": true,
+        "NotificationSettingsFor": "From everyone",
+        "ApplySettingsForAllBlogs": false
       }
     }
   ]

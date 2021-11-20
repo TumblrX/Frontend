@@ -49,7 +49,6 @@ function EmailSection(props) {
          */
         let sentData = {
           email: emailInfo.email,
-          letPeopleFindBlogByEmail: emailInfo.letPeopleFindBlogByEmail,
         };
 
         props.sendData(sentData);
@@ -203,11 +202,15 @@ function EmailSection(props) {
     } else if (event.target.id === "emailcurrentpassword") {
       updateInfo({ ...emailInfo, confirmedPassword: event.target.value });
     } else {
-      console.log(event.target.checked)
+      let sentData = {
+        letPeopleFindBlogByEmail: event.target.checked,
+      };
+      axios.patch("http://localhost:3000/users/1", sentData);
       updateInfo({
         ...emailInfo,
         letPeopleFindBlogByEmail: event.target.checked,
       });
+
     }
   };
 
