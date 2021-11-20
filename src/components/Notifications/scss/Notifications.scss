@@ -1,25 +1,30 @@
-/*
-    icon-photo
-*/
-/*
-    button variables 
-*/
+@import "./variables";
+
+@mixin displayFlex($flex-direction: row) {
+  display: flex;
+  @if ($flex-direction==column) {
+    flex-direction: column;
+    //  it could be flex-direction:$flex-direction without if
+    // but if the direction is row it will put flex-direction:row in the css file
+    // it is the default so it should not be written and @if will not write it in the file
+  }
+}
+
 .icon-photo {
-  width: 15px;
-  height: 15px;
+  width: $icon-photo-dim;
+  height: $icon-photo-dim;
   cursor: pointer;
 }
 
 .notification-container {
-  display: flex;
-  flex-direction: column;
+  @include displayFlex(column);
   background-color: white;
+
   width: calc(100% - 40px);
   margin: 0 auto;
 }
-
 .notification-section {
-  display: flex;
+  @include displayFlex(row);
   justify-content: space-between;
   color: #444;
   font-size: 14px;
@@ -27,7 +32,7 @@
 }
 
 .user-info {
-  display: flex;
+  @include displayFlex(row);
   flex-shrink: 0;
   width: 40%;
   align-items: center;
@@ -35,7 +40,7 @@
 
 .edit-section {
   flex-shrink: 0;
-  display: flex;
+  @include displayFlex(row);
   width: 50%;
   justify-content: flex-end;
   align-items: center;
@@ -56,6 +61,9 @@
   font-weight: 100;
 }
 
+.user-name {
+}
+
 input[type="checkbox"] {
   margin-top: 6px;
 }
@@ -73,7 +81,6 @@ select {
 .selected {
   position: relative;
 }
-
 /* .selected::after {
     content: "^";
     width: 15px;
@@ -98,24 +105,23 @@ select {
   right: 0;
 }
 
-.cancel-button,
-.save-button,
-.add-button {
+.cancel-button {
   width: fit-content;
-  height: 30px;
-  background-color: gray;
-  color: white;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 15px;
-  margin-right: 5px;
-  margin-bottom: 15px;
+  height: $button-height;
+  background-color: $cancel-button-background;
+  color: $button-color;
+  border-radius: $button-border-radius;
+  padding: $button-padding;
+  font-size: $button-font-size;
+  margin-right: $button-margin-right;
+  margin-bottom: $button-margin-bottom;
   cursor: pointer;
 }
 
 .save-button,
 .add-button {
-  background-color: #00bcd4;
+  @extend .cancel-button;
+  background-color: $button-background;
 }
 
 .edit-after-click {
@@ -132,6 +138,7 @@ select {
 
 .notification-selection {
   font: 600 1.6rem sans-serif;
+
   height: fit-content;
   margin-top: 4px;
 }

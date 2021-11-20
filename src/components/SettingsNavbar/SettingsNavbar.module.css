@@ -1,95 +1,75 @@
+/*
+user img 
+*/
 * {
   margin: 0;
-  padding: 0;
-}
-
-:root {
-  --main-padding: 6px;
-  --main-font: 15px;
-  --small-text-font: 13px;
-  --slot-border-thickness: 1px;
-  --main-color: white;
-  --background-on-hover: #53515185;
-}
+  padding: 0; }
 
 body {
-  background-color: #001935;
-}
+  background-color: #001935; }
 
 .nav-bar {
-  display: flex;
-}
+  display: flex; }
 
 .nav-bar-slot {
   display: flex;
   flex-direction: column;
   color: var(--main-color);
+  color: white;
   text-transform: capitalize;
-  border-bottom: var(--slot-border-thickness) solid gray;
-  font: bold var(--main-font) sans-serif;
-  padding: var(--main-padding);
-  cursor: pointer;
-}
+  border-bottom: 1px solid gray;
+  font: bold 15px sans-serif;
+  padding: 6px;
+  cursor: pointer; }
 
 .nav-bar-slot > div {
-  margin-bottom: 3px;
-}
+  margin-bottom: 3px; }
 
 .nav-bar-slot:hover {
-  background-color: var(--background-on-hover);
-}
+  background-color: #53515185; }
 
 .blogs {
   margin-top: 20px;
-  color: var(--main-color);
-  font: bold var(--main-font) sans-serif;
+  color: white;
+  font: bold 15px sans-serif;
   border-bottom: 3px solid #ffffff29;
-  padding: var(--main-padding);
-}
+  padding: 6px; }
 
 .nav-bar-slot > div:nth-child(2) {
-  font: var(--small-text-font) sans-serif;
+  font: 13px sans-serif;
   color: gray;
-  margin-top: 3px;
-}
+  margin-top: 3px; }
 
 a:nth-child(4) > div {
-  border-bottom: none;
-}
+  border-bottom: none; }
 
 .blog-slot {
   display: flex;
-  border-bottom: var(--slot-border-thickness) solid gray;
-}
+  border-bottom: 1px solid gray; }
 
 .blog-slot:hover {
-  background-color: var(--background-on-hover);
-}
+  background-color: #53515185; }
 
 .blog-slot > div {
   display: flex;
   justify-content: flex-start;
-  color: var(--main-color);
-  font: bold var(--main-font) sans-serif;
-  padding: var(--main-padding);
+  color: white;
+  font: bold 15px sans-serif;
+  padding: 6px;
   height: 62px;
-  align-items: center;
-}
+  align-items: center; }
 
 .small-text {
-  font: var(--small-text-font) sans-serif;
+  font: 13px sans-serif;
   color: gray;
-  margin-top: 3px;
-}
+  margin-top: 3px; }
 
 a.small-text {
-  padding: var(--main-padding);
-}
+  padding: 6px; }
 
 .user-img {
-  width:37px;
+  width: 37px;
   height: 37px;
-  margin-right:10px;
+  margin-right: 10px;
   object-fit: cover;
-  border-radius: 5px;
-}
+  border-radius: 5px; }

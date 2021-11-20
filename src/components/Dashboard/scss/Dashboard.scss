@@ -1,15 +1,27 @@
-/* you should arrange these classes to have one css file  */
-.dashboard-container {
+@import "./variables";
+
+@mixin displayFlex($flex-direction: row) {
   display: flex;
-  flex-direction: column;
+  @if ($flex-direction==column) {
+    flex-direction: column;
+    //  it could be flex-direction:$flex-direction without if
+    // but if the direction is row it will put flex-direction:row in the css file
+    // it is the default so it should not be written and @if will not write it in the file
+  }
+}
+
+/* you should arrange these classes to have one css file  */
+
+.dashboard-container {
+  @include displayFlex(column);
   background-color: white;
   width: calc(100% - 40px);
   margin: 0 auto;
 }
-
 /* this class and account-conatiner should be put in css file of the settings page 
      it should be general
   */
+
 .header {
   color: #7e7c7c85;
   font-family: sans-serif;
@@ -18,7 +30,7 @@
 }
 
 .section {
-  display: flex;
+  @include displayFlex(row);
   margin-bottom: 10px;
   position: relative;
 }
@@ -30,13 +42,11 @@
 }
 
 .section-form {
-  display: flex;
-  flex-direction: column;
+  @include displayFlex(column);
 }
 
 .description {
-  display: flex;
-  flex-direction: column;
+  @include displayFlex(column);
 }
 
 .section-message {

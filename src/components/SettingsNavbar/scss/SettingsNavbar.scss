@@ -1,0 +1,102 @@
+@import "./variables";
+
+@mixin displayFlex($flex-direction: row) {
+  display: flex;
+  @if ($flex-direction==column) {
+    flex-direction: column;
+    //  it could be flex-direction:$flex-direction without if
+    // but if the direction is row it will put flex-direction:row in the css file
+    // it is the default so it should not be written and @if will not write it in the file
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #001935;
+}
+
+.nav-bar {
+  @include displayFlex(row);
+}
+
+.nav-bar-slot {
+  @include displayFlex(column);
+  color: var(--main-color);
+  color: $main-color;
+  text-transform: capitalize;
+  border-bottom: $slot-border-thickness solid gray;
+  font: bold $main-font sans-serif;
+  padding: $main-padding;
+  cursor: pointer;
+}
+
+.nav-bar-slot > div {
+  margin-bottom: 3px;
+}
+
+.nav-bar-slot {
+  &:hover {
+    background-color: $background-on-hover;
+  }
+}
+
+.blogs {
+  margin-top: 20px;
+  color: $main-color;
+  font: bold $main-font sans-serif;
+  border-bottom: 3px solid #ffffff29;
+  padding: $main-padding;
+}
+
+.nav-bar-slot > div:nth-child(2) {
+  font: $small-text-font sans-serif;
+  color: gray;
+  margin-top: 3px;
+}
+
+a:nth-child(4) > div {
+  border-bottom: none;
+}
+
+.blog-slot {
+  @include displayFlex(row);
+  border-bottom: $slot-border-thickness solid gray;
+}
+
+.blog-slot {
+  &:hover {
+    background-color: $background-on-hover;
+  }
+}
+
+.blog-slot > div {
+  @include displayFlex(row);
+  justify-content: flex-start;
+  color: $main-color;
+  font: bold $main-font sans-serif;
+  padding: $main-padding;
+  height: 62px;
+  align-items: center;
+}
+
+.small-text {
+  font: $small-text-font sans-serif;
+  color: gray;
+  margin-top: 3px;
+}
+
+a.small-text {
+  padding: $main-padding;
+}
+
+.user-img {
+  width: $user-img-dim;
+  height: $user-img-dim;
+  margin-right: $user-img-margin-right;
+  object-fit: cover;
+  border-radius: $user-img-border-radius;
+}

@@ -24,7 +24,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scssAccount": "node-sass  src/components/Account/scss/Account.scss   src/components/Account/Account.module.css "
+    "scssAccount": "node-sass  src/components/Account/scss/Account.scss   src/components/Account/Account.module.css ",
+    "scssDashboard": "node-sass  src/components/Dashboard/scss/Dashboard.scss   src/components/Dashboard/Dashboard.module.css ",
+    "scssNotifications": "node-sass  src/components/Notifications/scss/Notifications.scss   src/components/Notifications/Notifications.module.css ",
+    "scssSettingsNavbar": "node-sass  src/components/SettingsNavbar/scss/SettingsNavbar.scss   src/components/SettingsNavbar/SettingsNavbar.module.css "
   },
   "eslintConfig": {
     "extends": [
