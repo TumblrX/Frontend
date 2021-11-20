@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+
 import React, { useCallback } from 'react';
 import Recaptcha from 'react-recaptcha';
 import { Link } from 'react-router-dom';
@@ -19,6 +19,11 @@ const CreateBlog = function () {
   const {
     blogHandle, blogTitle, blogIsPrivate, blogPassword, isRobot,
   } = useSelector((state) => state.create);
+
+ 
+ 
+  
+
   const dispatch = useDispatch();
   /**
    * this function makes a post request to the json server
@@ -62,6 +67,8 @@ const CreateBlog = function () {
   const verifyCallback = (Response) => {
     if (Response) {
       dispatch(setIsRobot(false));
+      const errorRobotCheck = document.getElementById('error_robot_check');
+      errorRobotCheck.style.display='none'
     }
   };
   const expiredCallback = (Response) => {
@@ -89,9 +96,10 @@ const CreateBlog = function () {
    */
   const handleURLChange = (event) => {
     const error = document.getElementById('errors');
+    const errorURLEmpty = document.getElementById('error_url_empty');
+    const errorURLContainsInvalid = document.getElementById('error_url_contains_invalid');
     const submitButton = document.getElementById('submit_button');
     const dashesError = document.getElementById('error_url_hyphen_starts_with');
-    const errorURLContainsInvalid = document.getElementById('error_url_contains_invalid');
     submitButton.disabled = false;
     dashesError.style.display = 'none';
     error.style.display = 'none';
@@ -99,7 +107,7 @@ const CreateBlog = function () {
     const url = event.target.value;
     dispatch(setBlogHandle(url));
     if (url[0] === '-' || url[url.length - 1] === '-') {
-      error.style.display = 'block';
+     error.style.display = 'block';
       dashesError.style.display = 'list-item';
       submitButton.disabled = true;
     }
@@ -107,6 +115,9 @@ const CreateBlog = function () {
       error.style.display = 'block';
       errorURLContainsInvalid.style.display = 'list-item';
       submitButton.disabled = true;
+    }
+    if(url.length>0){
+      errorURLEmpty.style.display='none'
     }
   };
   /**
@@ -116,8 +127,17 @@ const CreateBlog = function () {
    * @return {void} return nothing it just an event handler
    */
   const handleTitleChange = (event) => {
-    dispatch(setBlogTitle(event.target.value));
+    const errorTitleEmpty = document.getElementById('error_title_empty');
+    const errorTitleSmall = document.getElementById('error_title_small');
+    const title=event.target.value
+    dispatch(setBlogTitle(title));
     console.log(blogTitle);
+    if(title.length>0){
+      errorTitleEmpty.style.display='none'
+    }
+    if(title.length>6){
+      errorTitleSmall.style.display='none'
+    }
   };
   /**
    * this function handle the event of changing Password input to keep it in sync with the state
@@ -126,8 +146,17 @@ const CreateBlog = function () {
    * @return {void} return nothing it just an event handler
    */
   const handlePasswordChange = (event) => {
+    const errorPasswordEmpty = document.getElementById('error_password_empty');
+    const errorPasswordSmall = document.getElementById('error_password_small');
     dispatch(setBlogPrivacy(true));
-    dispatch(setBlogPassword(event.target.value));
+    const password=event.target.value
+    dispatch(setBlogPassword(password));
+    if(password.length>0){
+      errorPasswordEmpty.style.display='none'
+    }
+    if(password.length>6){
+      errorPasswordSmall.style.display='none'
+    }
   };
   /**
    * this function handle the event of changing url input to keep it in sync with the state
@@ -142,8 +171,8 @@ const CreateBlog = function () {
     const error = document.getElementById('errors');
     const errorURLEmpty = document.getElementById('error_url_empty');
     const errorTitleEmpty = document.getElementById('error_title_empty');
-    const errorPasswordEmpty = document.getElementById('error_password_empty');
     const errorTitleSmall = document.getElementById('error_title_small');
+    const errorPasswordEmpty = document.getElementById('error_password_empty');
     const errorPasswordSmall = document.getElementById('error_password_small');
     const errorRobotCheck = document.getElementById('error_robot_check');
     error.style.display = 'none';
@@ -210,7 +239,7 @@ const CreateBlog = function () {
   return (
     <div className={styles.baseContanier}>
       <div className={styles.contanier}>
-        <div className={styles.clear}>
+        <div className={styles.content}>
           <h1>
             Create a new
             {blogIsPrivate ? 'Private' : ''}
@@ -249,7 +278,7 @@ const CreateBlog = function () {
                 id="error_url_hyphen_starts_with"
                 style={{ display: 'none' }}
               >
-                Can't do dashes at the start or end. Middles only.
+                Can not do dashes at the start or end. Middles only.
               </li>
               <li
                 id="error_url_contains_invalid"
@@ -261,13 +290,13 @@ const CreateBlog = function () {
                 id="error_url_empty"
                 style={{ display: 'none' }}
               >
-                URL can't be empty.
+                URL can not be empty.
               </li>
               <li
                 id="error_title_empty"
                 style={{ display: 'none' }}
               >
-                Title can't be empty.
+                Title can not be empty.
               </li>
               <li
                 id="error_title_small"
@@ -279,7 +308,7 @@ const CreateBlog = function () {
                 id="error_password_empty"
                 style={{ display: 'none' }}
               >
-                Password can't be empty.
+                Password can not be empty.
               </li>
               <li
                 id="error_password_small"
@@ -291,7 +320,7 @@ const CreateBlog = function () {
                 id="error_robot_check"
                 style={{ display: 'none' }}
               >
-                You need to verify that you're a real person.
+                You need to verify that you are a real person.
               </li>
             </ul>
           </div>

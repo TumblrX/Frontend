@@ -12,5 +12,5 @@
 - [x] Page UI  
 - [x] State managment with Redux Toolkit
 - [x] Function Documentation  
-- [ ] Convert from css to scss  
+- [X] Convert from css to scss  
 - [ ] Unit testing
