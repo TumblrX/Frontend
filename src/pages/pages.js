@@ -7,7 +7,8 @@ import New from './New/New';
 import NotFound from './NotFound/NotFound';
 import LoginPage from './LoginPage/LoginPage';
 import ForgetPassword from './ForgetPassword/ForgetPassword';
+import CreateBlog from './CreateBlog/CreateBlog';
 
 export {
-  NotFound, Dashboard, Explore, Inbox, New, LoginPage, ForgetPassword,
+  NotFound, Dashboard, Explore, Inbox, New, LoginPage, ForgetPassword, CreateBlog,
 };

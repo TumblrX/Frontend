@@ -9,6 +9,8 @@ import {
   New,
   LoginPage,
   ForgetPassword,
+  CreateBlog,
+
 } from './pages/pages';
 import { NavBar, ExploreLayout } from './components/Layouts/Layouts';
 
@@ -40,6 +42,9 @@ const App = function () {
       </Route>
       <Route exact path="/login">
         <LoginPage />
+      </Route>
+      <Route exact path="/new/blog">
+        <CreateBlog />
       </Route>
       <Route path="*">
         <NotFound />
