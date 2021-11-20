@@ -68,7 +68,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className={loginPageStyle.body}>
+    <div className={loginPageStyle.bodyLogin}>
       <div className={loginPageStyle.container}>
         <h2 data-testid="h2"> tumblr </h2>
         <form data-testid="form" onSubmit={loginHandler}>

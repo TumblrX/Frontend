@@ -1,25 +1,23 @@
 @import '../../scss/style.scss';
 
-* {
-    @include font(0, #fff, 0);
-    text-align: center;
-}
 
-
-.body {
+.bodyLogin {
     min-height: 100vh;
     background: rgba(0, 0, 0, 0.7) url("../../assets/Images/background.jpg");
     background-size: cover;
     background-blend-mode: darken;
     padding: 50px 0;
+    @include font(0, #fff, 0);
+    text-align: center;
 
-    //screens 
-    // 565  ==> 300
-    // 827  ==> 
     .container {
         @include dimensions(300px, 0);
         @include flex_box(0, center, column);
         margin: auto;
+
+        a {
+            color: #fff;
+        }
 
         h2 {
             @include dimensions(100%, 0);
@@ -104,6 +102,10 @@
             @include btn-default;
             margin-bottom: 6px;
             background: #fff;
+            
+            .reset{
+
+            }
 
             span {
                 @include font(1rem, #000, 700);
@@ -120,7 +122,7 @@
 @media (max-width: 300px) {
 
 
-    .body {
+    .bodyLogin {
         .container {
             @include dimensions(100vw, 0);
 

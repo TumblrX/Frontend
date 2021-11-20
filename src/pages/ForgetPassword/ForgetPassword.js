@@ -100,7 +100,7 @@ export default function ForgetPassword() {
   }
 
   return (
-    <div data-testid="body" className={forgetPasswordStyle.body}>
+    <div data-testid="body" className={forgetPasswordStyle.bodyForget}>
       <div data-testid="container" className={forgetPasswordStyle.container}>
         <h2 data-testid="h2">tumblr</h2>
         {!hideForm
@@ -136,7 +136,7 @@ export default function ForgetPassword() {
 
                       <div className={forgetPasswordStyle.buttons}>
                         <button type="button" data-testid="cancel" onClick={canceHandler}> Cancel </button>
-                        <input data-testid="reset" name="reset" type="submit" value="Reset password" />
+                        <input className={forgetPasswordStyle.reset} data-testid="reset" name="reset" type="submit" value="Reset password" />
                       </div>
                     </form>
                     )}
