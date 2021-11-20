@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateBlog from './pages/CreateBlog/CreateBlog.js';
+import CreateBlog from './pages/CreateBlog/CreateBlog';
 
 const App = function () {
   return (

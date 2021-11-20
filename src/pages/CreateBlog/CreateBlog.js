@@ -1,4 +1,3 @@
-
 import React, { useCallback } from 'react';
 import Recaptcha from 'react-recaptcha';
 import { Link } from 'react-router-dom';
@@ -19,10 +18,6 @@ const CreateBlog = function () {
   const {
     blogHandle, blogTitle, blogIsPrivate, blogPassword, isRobot,
   } = useSelector((state) => state.create);
-
- 
- 
-  
 
   const dispatch = useDispatch();
   /**
@@ -68,7 +63,7 @@ const CreateBlog = function () {
     if (Response) {
       dispatch(setIsRobot(false));
       const errorRobotCheck = document.getElementById('error_robot_check');
-      errorRobotCheck.style.display='none'
+      errorRobotCheck.style.display = 'none';
     }
   };
   const expiredCallback = (Response) => {
@@ -107,7 +102,7 @@ const CreateBlog = function () {
     const url = event.target.value;
     dispatch(setBlogHandle(url));
     if (url[0] === '-' || url[url.length - 1] === '-') {
-     error.style.display = 'block';
+      error.style.display = 'block';
       dashesError.style.display = 'list-item';
       submitButton.disabled = true;
     }
@@ -116,8 +111,8 @@ const CreateBlog = function () {
       errorURLContainsInvalid.style.display = 'list-item';
       submitButton.disabled = true;
     }
-    if(url.length>0){
-      errorURLEmpty.style.display='none'
+    if (url.length > 0) {
+      errorURLEmpty.style.display = 'none';
     }
   };
   /**
@@ -129,14 +124,14 @@ const CreateBlog = function () {
   const handleTitleChange = (event) => {
     const errorTitleEmpty = document.getElementById('error_title_empty');
     const errorTitleSmall = document.getElementById('error_title_small');
-    const title=event.target.value
+    const title = event.target.value;
     dispatch(setBlogTitle(title));
     console.log(blogTitle);
-    if(title.length>0){
-      errorTitleEmpty.style.display='none'
+    if (title.length > 0) {
+      errorTitleEmpty.style.display = 'none';
     }
-    if(title.length>6){
-      errorTitleSmall.style.display='none'
+    if (title.length > 6) {
+      errorTitleSmall.style.display = 'none';
     }
   };
   /**
@@ -149,13 +144,13 @@ const CreateBlog = function () {
     const errorPasswordEmpty = document.getElementById('error_password_empty');
     const errorPasswordSmall = document.getElementById('error_password_small');
     dispatch(setBlogPrivacy(true));
-    const password=event.target.value
+    const password = event.target.value;
     dispatch(setBlogPassword(password));
-    if(password.length>0){
-      errorPasswordEmpty.style.display='none'
+    if (password.length > 0) {
+      errorPasswordEmpty.style.display = 'none';
     }
-    if(password.length>6){
-      errorPasswordSmall.style.display='none'
+    if (password.length > 6) {
+      errorPasswordSmall.style.display = 'none';
     }
   };
   /**

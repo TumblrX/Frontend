@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import classes from './Explore.module.scss';
 
-const Explore = function (props) {
-  return <main className={classes.main}>{props.children}</main>;
+const Explore = function ({ children }) {
+  return <main className={classes.main}>{children}</main>;
 };
 
 export default Explore;
