@@ -7,8 +7,7 @@ import {
   Explore,
   Inbox,
   New,
-  LoginPage,
-  ForgetPassword,
+  LoginPage
 } from './pages/pages';
 import { NavBar, ExploreLayout } from './components/Layouts/Layouts';
 
@@ -34,9 +33,6 @@ const App = function () {
       </Route>
       <Route exact path="/new">
         <New />
-      </Route>
-      <Route exact path="/forgetPassword">
-        <ForgetPassword />
       </Route>
       <Route exact path="/login">
         <LoginPage />
