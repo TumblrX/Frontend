@@ -29,7 +29,7 @@
         }
 
         form {
-            @include dimensions(100%,0);
+            @include dimensions(100%, 0);
 
             #incorrectUser {
                 @include font(.875rem, #fff, 400);
@@ -47,11 +47,11 @@
             input[type='password'] {
                 @include dimensions(100%, 46px);
                 @include font(.875rem, #000, 400);
-                @include input-default ;
+                @include input-default;
                 margin-bottom: 7px;
                 text-align: start;
                 padding: 11px 13px;
-               
+
                 &::placeholder {
                     @include font(1rem, 0, 0);
                 }
@@ -111,6 +111,65 @@
             }
         }
 
+    }
+
+}
+
+
+
+@media (max-width: 300px) {
+
+
+    .body {
+        .container {
+            @include dimensions(100vw, 0);
+
+            h2 {
+                @include font(23vw, 0, 0);
+            }
+
+            form #incorrectUser {
+                @include font(5vw, #fff, 400);
+
+            }
+
+            input[type='email'],
+            input[type='password'] {
+                @include font(5vw, #000, 400);
+                padding: 5px 7px;
+
+                &::placeholder {
+                    @include font(5vw, 0, 0);
+                }
+            }
+
+            p {
+                @include font(4.5vw, 0, 0);
+                line-height: 1rem;
+            }
+
+            input[type='submit'] {
+                @include font(5vw, #000, 700);
+            }
+
+            .bigParagraphe {
+                @include font(5vw, 0, 0);
+
+            }
+        }
+
+        #or p {
+            @include font(5vw, 0, 0);
+        }
+    }
+
+    button {
+        @include dimensions(100%, 42px);
+        @include font (7vw, 0, 0);
+
+        span {
+            @include font(5vw, #000, 700);
+        }
     }
 
 }
