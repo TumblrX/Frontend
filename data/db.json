@@ -1,0 +1,31 @@
+{
+  "forgotPassword": [
+    {
+      "id": 1,
+      "email": ""
+    }
+  ],
+  "login": [
+    {
+      "email": "taher@gmail.com",
+      "password": "vvsb",
+      "id": 2
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 3
+    }
+],
+"createBlog": [
+    {
+      "id": 1,
+      "handle": "",
+      "title": "",
+      "isPrivate": false,
+      "settings": {
+        "blogPassword": ""
+      }
+    }
+  ]
+}
