@@ -48,13 +48,13 @@
 .mainClass .posts .post {
   border: 3px solid #001935;
   margin-bottom: 15px;
+  position: relative;
 }
 .mainClass .posts .post .logo {
   width: 64px;
   height: 64px;
   margin-right: 20px;
   background-color: #888;
-
   position: -webkit-sticky;
   position: sticky;
   top: 0;
