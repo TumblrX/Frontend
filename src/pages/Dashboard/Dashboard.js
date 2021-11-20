@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTumblr } from 'react-icons/fa';
 
-const Dashboard = () => {
+const Dashboard = function () {
   return (
     <div>
       Hello from
