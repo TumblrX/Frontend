@@ -66,7 +66,7 @@ function Interface(props) {
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               data-testid="enable-endless-scrolling-checkbox"
-              value={checkBoxState.state}
+              // value={checkBoxState.state}
             />
             <div className={styles["description"]}>
               <div className={styles["section-message"]}>

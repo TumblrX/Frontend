@@ -194,7 +194,7 @@ function PasswordSection(props) {
 
   return (
     <>
-      {/* <div data-testid="password-section" className={styles["password-box"]}>
+      <div data-testid="password-section" className={styles["password-box"]}>
         <div className={styles["title"]}>Password</div>
         <div className={styles["dots"]} onClick={iconClick} data-testid="dots">
           <span></span>
@@ -272,7 +272,7 @@ function PasswordSection(props) {
           data-testid="password-edit-button"
         />
       </div>
-      <hr /> */}
+      <hr />
     </>
   );
 }

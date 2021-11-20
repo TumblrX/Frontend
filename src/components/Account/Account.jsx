@@ -36,7 +36,7 @@ export class Account extends Component {
 
           <SecuritySection sendData={this.sendData} />
 
-          <FilterSection sendData={this.sendData} />
+          
 
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <a href="/delete">

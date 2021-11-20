@@ -83,7 +83,7 @@ function SecuritySection(props) {
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
               data-testid="email-user-about-activity-checkbox"
-              value={checkboxesStates.EmailUserAbout}
+              // value={checkboxesStates.EmailUserAbout}
             />
             <div className={styles["security-description"]}>
               <div className={styles["section-message"]}>
@@ -100,7 +100,7 @@ function SecuritySection(props) {
               type="checkbox"
               style={{ marginTop: "6px", marginRight: "6px" }}
               onClick={checkBoxClick}
-              value={checkboxesStates.TwoFactorAuth}
+              // value={checkboxesStates.TwoFactorAuth}
             />
             <div>
               <div className={styles["section-message"]}>
@@ -118,7 +118,6 @@ function SecuritySection(props) {
           </div>
         </div>
       </div>
-      <hr />
     </>
   );
 }
