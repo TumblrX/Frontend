@@ -9,11 +9,13 @@ class Dashboard extends Component {
   state = {
     posts:[] , 
     pageNum :1 , 
-    isInfinte: 1,
-    exploreBlogs:[]
+    isInfinte: 0,
+    exploreBlogs:[],
+    ismounted:false
   }
   componentDidMount() {
     this.fetchPosts();
+    this.state.ismounted =true;
   }
   fetchPosts  =()=> {
     const fetchPost = async () => {
@@ -40,11 +42,11 @@ class Dashboard extends Component {
       var lastPost  = this.state.posts.length ; 
     }else {
       var lastPost  = this.state.pageNum *10 ; 
-      var firstPost = lastPost -10 ; 
+      var firstPost = lastPost -10;
     }
     return (
       this.state.posts.slice(firstPost,lastPost).map( (post,index) => 
-        <div className='post row'>
+        <div className='post row' key={index} data-testid={`testPost${index}`}>
           <div className="logo"> 
           
           </div>
@@ -72,49 +74,51 @@ class Dashboard extends Component {
   render() {
     return (
       <div className='parent' >  
-        <div className='Navbar'>
+        <div  className='Navbar' data-testid='testNavbar'>
           Test Navbar
         </div>
-        <div className='mainClass row container'>
-          {/* --------------- Start posts ---------------------- */}
-          <div className='posts'>    
-            <div className='insertPost row' > 
-              <div className="insertLogo">
+        <div  className='container'>
 
+          <div className='mainClass row'>
+            {/* --------------- Start posts ---------------------- */}
+            <div className='posts' data-testid='testPostContainer'>    
+              <div className='insertPost row' > 
+                <div className="insertLogo">
+                </div>
+                <div className='insertPostDetails'>
+                  insertPost
+                </div>
               </div>
-              <div className='insertPostDetails'>
-                insertPost
+              {   this.state.ismounted && this.showPosts()}
+              <div className='navigate-btns row'>
+                {
+                  (this.state.pageNum !==1 && !this.state.isInfinte) &&
+                  <button className='previous-btn' onClick={()=> this.handlePrevious()}> &lt; Previous   </button>
+                }
+                {
+                  (this.state.pageNum*10 < this.state.posts.length &&
+                    !this.state.isInfinte
+                    ) &&
+                    <button className='next-btn' onClick={()=> this.handleNext()}> Next &gt;  </button>
+                  }
               </div>
-            </div>
-            {this.showPosts()}
-            <div className='navigate-btns row'>
-              {
-                (this.state.pageNum !==1 && !this.state.isInfinte) &&
-                <button className='previous-btn' onClick={()=> this.handlePrevious()}> &lt; Previous   </button>
-              }
-              {
-                (this.state.pageNum*10 < this.state.posts.length &&
-                  !this.state.isInfinte
-                  ) &&
-                <button className='next-btn' onClick={()=> this.handleNext()}> Next &gt;  </button>
-              }
-            </div>
-          </div> 
-          {/* --------------- End posts ---------------------- */}
+            </div> 
+            {/* --------------- End posts ---------------------- */}
 
-          {/* --------------- Start explore  ---------------------- */}
-          <div className='explore'>  
-            <div className='checkBlogs' > 
-              Check Theses Blogs
-              <hr /> 
-              <a> Explore all of Tumblr </a>
-            </div>
-            <div className='radar' > 
-              Radar
-              <hr />
-            </div>
-          </div> 
-          {/* --------------- End explore  ---------------------- */}
+            {/* --------------- Start explore  ---------------------- */}
+            <div className='explore'  data-testid='testExplore'>  
+              <div className='checkBlogs' > 
+                Check Theses Blogs
+                <hr /> 
+                <a> Explore all of Tumblr </a>
+              </div>
+              <div className='radar' > 
+                Radar
+                <hr />
+              </div>
+            </div> 
+            {/* --------------- End explore  ---------------------- */}
+          </div>
         </div>
       </div>
     )};

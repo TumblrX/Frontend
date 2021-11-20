@@ -1,18 +1,25 @@
+$bg : #001935 ;
+$post-bg : #888;
+$font-color : #000;
+
+
 *{
     box-sizing: border-box;
+    color: $font-color;
 }
 
 .parent {
-    // min-height:  6000px; 
-    background-color: #001935; 
+    width: 100vw;
+    background-color: $bg; 
 }
 
 .Navbar {
     height : 50px; 
+    width: 100%;
     background-color: #888;
     text-align: center;
     margin-bottom: 50px;
-    border: 3px solid #001935;
+    border: 3px solid $bg;
 }
 .row {
     display: flex;
@@ -23,41 +30,41 @@
 }
 
 .mainClass {
-    background-color: #001935;
+    background-color: $bg;
     .posts {
         width: 60%;
         margin-right: 5%;
         .insertPost{
             height: 100px;
-            border: 3px solid #001935;
+            border: 3px solid $bg;
             margin-bottom: 15px;
             .insertLogo {
                 width: 64px;
                 height: 64px;
                 margin-right: 20px;
-                background-color: #888;
+                background-color: $post-bg;
             }
             .insertPostDetails {
-                background-color: #888;
+                background-color: $post-bg;
                 width: 100%;
             }
         }
         .post{
-            border: 3px solid #001935;
+            border: 3px solid $bg;
             margin-bottom: 15px;
             position: relative;
             .logo {
                 width: 64px;
                 height: 64px;
                 margin-right: 20px;
-                background-color: #888;
+                background-color: $post-bg;
 
                 position: -webkit-sticky;
                 position: sticky;
                 top: 0;
             }
             .postDatailes {
-                background-color: #888;
+                background-color: $post-bg;
                 width: 100%;
             }
         }
@@ -90,19 +97,21 @@
         justify-content:right;
         .checkBlogs{
             height: 200px;
-            background-color: #888;
-            border: 3px solid #001935;
+            background-color: $post-bg;
+            border: 3px solid $bg;
         }
         .radar{
             height: 200px;
-            background-color: transparent;
-            border: 3px solid #001935;
-            background-color: #888;
+            border: 3px solid $bg;
+            background-color: $post-bg;
         }
     }
 }
 
+@media only screen and (max-width : 990 ) {
+    
+    .explore {
+        display: none;
+    }
 
-
-
-
+}

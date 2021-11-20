@@ -1,13 +1,16 @@
 * {
   box-sizing: border-box;
+  color: #000;
 }
 
 .parent {
+  width: 100vw;
   background-color: #001935;
 }
 
 .Navbar {
   height: 50px;
+  width: 100%;
   background-color: #888;
   text-align: center;
   margin-bottom: 50px;
@@ -48,13 +51,13 @@
 .mainClass .posts .post {
   border: 3px solid #001935;
   margin-bottom: 15px;
+  position: relative;
 }
 .mainClass .posts .post .logo {
   width: 64px;
   height: 64px;
   margin-right: 20px;
   background-color: #888;
-
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -96,9 +99,14 @@
 }
 .mainClass .explore .radar {
   height: 200px;
-  background-color: transparent;
   border: 3px solid #001935;
   background-color: #888;
+}
+
+@media only screen and (max-width: 990) {
+  .explore {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=Dashboard.css.map */
