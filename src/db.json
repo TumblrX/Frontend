@@ -9,7 +9,7 @@
       "emailAboutAccountActivity": false,
       "twoFactorAuthentication": false,
       "enableEndLessScrolling": false,
-      "messagingSounds": false,
+      "messagingSounds": true,
       "bestStuffFirst": true,
       "includeStuffInorbit": true,
       "EnableColorizedTags": true,
@@ -21,8 +21,7 @@
         "EmailUserAboutNewAnsweredAsksBox": false,
         "NotificationSettingsFor": "From nobody",
         "ApplySettingsForAllBlogs": true
-      },
-      "true": ""
+      }
     }
   ]
 }
