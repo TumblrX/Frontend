@@ -4,18 +4,21 @@ import api from '../../api/api'
 
 export default function LoginPage() {
 
-  const [emptyFileds, setEmptyFileds] = useState(false);
   const [cookie, setCookie] = useState("");
+  const [hideFillData, setHideFillData] = useState(true);
+  const [hideFillEmail, setHideFillEmail] = useState(true);
+  const [hideFillPassword, setHideFillPassword] = useState(true);
+  const [hideWrongData, setHideWrongData] = useState(true);
 
   const login = async (userData) => {
     try {
       const response = await api.post('/login', userData);
-      setEmptyFileds(false);
+      // setEmptyFileds(false);
       // here we must set token
       setCookie(response.data.email);
       // go to dashboard
     } catch (err) {
-      setEmptyFileds(true);
+      // setEmptyFileds(true);
       console.log("Error message: " + err.message);
     }
   }
@@ -31,13 +34,33 @@ export default function LoginPage() {
   return (
     <div className={loginPageStyle.body} >
       <div className={loginPageStyle.container} >
-        <h2 > tumblr </h2>
-        <form onSubmit={loginHandler} >
-          {emptyFileds &&
+        <h2 data-testid="h2"> tumblr </h2>
+        <form data-testid="form" onSubmit={loginHandler} >
+
+          {!hideFillData &&
             (
-              <div id={loginPageStyle.incorrectUser} > Your email or password were incorrect.</div>
+              <div data-testid="emptyData" id={loginPageStyle.incorrectUser} >You do have to fill this stuff out, you know.</div>
             )
           }
+
+          {!hideFillEmail &&
+            (
+              <div data-testid="emptyEmail" id={loginPageStyle.incorrectUser} >You forgot to enter your email!</div>
+            )
+          }
+
+          {!hideFillPassword &&
+            (
+              <div data-testid="emptyPassword" id={loginPageStyle.incorrectUser} >You forgot to enter your password!</div>
+            )
+          }
+
+          {!hideWrongData &&
+            (
+              <div data-testid="wrongData" id={loginPageStyle.incorrectUser} >Your email or password were incorrect.</div>
+            )
+          }
+
           <input type="email" name="email" id="email" placeholder="Email" />
           <input type="password" name="password" id="password" placeholder="Password" />
           <p>
