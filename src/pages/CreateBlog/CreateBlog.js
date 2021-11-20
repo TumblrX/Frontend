@@ -235,25 +235,25 @@ const CreateBlog = function () {
     <div className={styles.baseContanier}>
       <div className={styles.contanier}>
         <div className={styles.content}>
-          <h1>
+          <h1 className={styles.h1}>
             Create a new
             {blogIsPrivate ? 'Private' : ''}
             {' '}
             blog
           </h1>
           <div className={styles.blurb}>
-            <p>
+            <p className={styles.p}>
               This additional blog can be managed by multiple authors or set to private.
             </p>
-            <p>
+            <p className={styles.p}>
               <strong>Note</strong>
               : If you want to Like posts or Follow other users with this blog identity,
               you must log out and create a separate account.
             </p>
-            <p>
+            <p className={styles.p}>
               Learn more about
               {' '}
-              <a href="https://tumblr.zendesk.com/hc/en-us/sections/205853348-Blog-management">Primary vs. Secondary blog features here</a>
+              <a href="https://tumblr.zendesk.com/hc/en-us/sections/205853348-Blog-management" className={styles.a}>Primary vs. Secondary blog features here</a>
               .
             </p>
           </div>
@@ -262,64 +262,73 @@ const CreateBlog = function () {
             className={styles.errors_wrapper}
             style={{ display: 'none' }}
           >
-            <ul>
+            <ul className={styles.ul}>
               <li
                 id="error_url_taken"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 Blog url is not available!
               </li>
               <li
                 id="error_url_hyphen_starts_with"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 Can not do dashes at the start or end. Middles only.
               </li>
               <li
                 id="error_url_contains_invalid"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 Letters, numbers, and dashes only please.
               </li>
               <li
                 id="error_url_empty"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 URL can not be empty.
               </li>
               <li
                 id="error_title_empty"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 Title can not be empty.
               </li>
               <li
                 id="error_title_small"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 Title must be 6 char at least.
               </li>
               <li
                 id="error_password_empty"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 Password can not be empty.
               </li>
               <li
                 id="error_password_small"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 Password must be 6 char at least.
               </li>
               <li
                 id="error_robot_check"
                 style={{ display: 'none' }}
+                className={styles.li}
               >
                 You need to verify that you are a real person.
               </li>
             </ul>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.firstSection}>
               <div className={styles.innerLeftColumn}>
                 Title
@@ -355,6 +364,7 @@ const CreateBlog = function () {
                     />
                     <label
                       htmlFor="new_group_name"
+                      className={styles.label}
                     >
                       .tumblr.com
                     </label>
@@ -373,24 +383,33 @@ const CreateBlog = function () {
                   border="0"
                   cellSpacing="0"
                   cellPadding="0"
+                  className={styles.table}
                 >
-                  <tbody>
-                    <tr>
-                      <td valign="top">
+                  <tbody className={styles.tbody}>
+                    <tr className={styles.tr}>
+                      <td
+                        valign="top"
+                        className={styles.td}
+                      >
                         <input
                           type="checkbox"
                           id="password_protected_checkbox"
                           checked={blogIsPrivate}
                           onChange={handleCheckChange}
+                          className={styles.checkBox}
                         />
                       </td>
-                      <td valign="top">
+                      <td
+                        valign="top"
+                        className={styles.td}
+                      >
                         <label
                           htmlFor="password_protected_checkbox"
+                          className={styles.label}
                         >
                           Password protect this blog
                         </label>
-                        <p>
+                        <p className={styles.p}>
                           This blog can only be viewed by people who enter this password:
                         </p>
                       </td>
@@ -409,7 +428,7 @@ const CreateBlog = function () {
               </div>
             </div>
             <div className={styles.secondSection}>
-              <div style={{ marginBottom: '4px' }}>
+              <div style={{ marginBottom: '4px', textAlign: 'left' }}>
                 Are you a robot?
               </div>
               <Recaptcha
@@ -433,7 +452,7 @@ const CreateBlog = function () {
                 className={`${styles.chrome} ${styles.big} ${styles.blue}`}
                 id="submit_button"
               >
-                <span id="submit_button_text">
+                <span id="submit_button_text" className={styles.span}>
                   Create
                   {' '}
                   {blogIsPrivate ? 'Private' : ''}
