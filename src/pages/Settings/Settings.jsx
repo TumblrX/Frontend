@@ -12,34 +12,34 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
  * @component
  *
  */
-export default class Settings extends Component {
-  /**
-   * this function is responsible render the Settings page
-   * @function
-   * @returns {jsx} return jsx to be renderd
-   */
-  render() {
-    return (
-      <Router>
-        <div className={styles["contanier"]}>
-          <div className={styles["left-side"]}>
-            <Switch>
-              <Route path="/settings/account" exact>
-                <Account />
-              </Route>
-              <Route path="/settings/dashboard" exact>
-                <Dashboard />
-              </Route>
-              <Route path="/settings/notifications" exact>
-                <Notifictions />
-              </Route>
-            </Switch>
-          </div>
-          <div className={styles["aside-bar"]}>
-            <SettingsNavbar />
-          </div>
+/**
+ * this function is responsible render the Settings page
+ * @function
+ * @returns {jsx} return jsx to be renderd
+ */
+function Settings() {
+  return (
+    <Router>
+      <div className={styles["contanier"]}>
+        <div className={styles["left-side"]}>
+          <Switch>
+            <Route path="/settings/account" exact>
+              <Account />
+            </Route>
+            <Route path="/settings/dashboard" exact>
+              <Dashboard />
+            </Route>
+            <Route path="/settings/notifications" exact>
+              <Notifictions />
+            </Route>
+          </Switch>
         </div>
-      </Router>
-    );
-  }
+        <div className={styles["aside-bar"]}>
+          <SettingsNavbar />
+        </div>
+      </div>
+    </Router>
+  );
 }
+
+export default Settings;
