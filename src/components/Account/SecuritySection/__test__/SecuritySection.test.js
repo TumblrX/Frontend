@@ -1,4 +1,4 @@
-import SecuritySection from "../securitySection";
+import SecuritySection from "../SecuritySection";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
