@@ -4,6 +4,8 @@
 
 /*****************************************Variables********************************************/
 //RGB Colors
+
+/*
 $color-primary: rgb(28, 231, 131);
 $color-primary-light: lighten($color-primary, 0.15);
 $color-primary-dark: darken($color-primary, 0.15);
@@ -25,8 +27,9 @@ $color-black: #000;
 $default-font-size: 1.6rem;
 $default-font-color: $color-black;
 $default-font-weight: 500;
-
+*/
 /*****************************************Useful Mixins******************************************/
+/*
 @mixin clearfix {
   &::after {
     content: '';
@@ -41,7 +44,7 @@ $default-font-weight: 500;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+*/
 /*
 0                : 600px(37.5em)      ==> phone
 600px(37.5em)    : 900px(56.25em)     ==> portrait tablet
@@ -58,7 +61,7 @@ tab-land
 big-desktop
 */
 
-@mixin respond($BreakPoint) {
+/*@mixin respond($BreakPoint) {
   @if $BreakPoint==phone {
     @media (max-width: 37.5em) {
       @content;
@@ -80,9 +83,10 @@ big-desktop
     }
   }
 }
-
+*/
 //******************************************BASE(RESET)********************************************/
 
+/*
 *,
 *::after,
 *::before {
@@ -90,19 +94,21 @@ big-desktop
   padding: 0;
   box-sizing: inherit;
 }
+*/
 
+/*
 html {
   font-size: 62.5%;
   @include respond(tab-land) {
-    /* landscape tablet => 1rem = 9px */
+    // landscape tablet => 1rem = 9px 
     font-size: 56.25%;
   }
   @include respond(tab-port) {
-    /* portrait tablet and phone => 1rem = 8px */
+    // portrait tablet and phone => 1rem = 8px 
     font-size: 50%;
   }
   @include respond(big-desktop) {
-    /* big desktop 1rem => 12px */
+    // big desktop 1rem => 12px 
     font-size: 75%;
   }
 }
@@ -136,8 +142,9 @@ ul {
 img {
   width: 100%;
 }
-
+*/
 //*******************************************TYPOGRAPHY*******************************************/
+/*
 body {
   font-family: 'Rubik', sans-serif;
   font-size: $default-font-size;
@@ -145,3 +152,4 @@ body {
   line-height: 1.7;
   color: $default-font-color;
 }
+*/

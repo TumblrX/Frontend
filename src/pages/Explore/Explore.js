@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Explore = () => {
+const Explore = function () {
   return <div>Explore</div>;
 };
 
