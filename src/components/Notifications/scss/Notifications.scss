@@ -1,0 +1,155 @@
+@import "./variables";
+
+@mixin displayFlex($flex-direction: row) {
+  display: flex;
+  @if ($flex-direction==column) {
+    flex-direction: column;
+    //  it could be flex-direction:$flex-direction without if
+    // but if the direction is row it will put flex-direction:row in the css file
+    // it is the default so it should not be written and @if will not write it in the file
+  }
+}
+
+.icon-photo {
+  width: $icon-photo-dim;
+  height: $icon-photo-dim;
+  cursor: pointer;
+}
+
+.notification-container {
+  @include displayFlex(column);
+  background-color: white;
+
+  width: calc(100% - 40px);
+  margin: 0 auto;
+}
+.notification-section {
+  @include displayFlex(row);
+  justify-content: space-between;
+  color: #444;
+  height: 50px;
+  font: bold sans-serif 15px;
+}
+
+.user-info {
+  @include displayFlex(row);
+  flex-shrink: 0;
+  width: 40%;
+  align-items: center;
+}
+
+.edit-section {
+  flex-shrink: 0;
+  @include displayFlex(row);
+  width: 50%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.user-img {
+  width: 28px;
+  height: 28px;
+  margin-right: 3%;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.header {
+  color: #7e7c7c85;
+  font-family: sans-serif;
+  padding: 10px;
+  font-weight: 100;
+}
+
+.user-name {
+}
+
+input[type="checkbox"] {
+  margin-top: 6px;
+}
+
+select {
+  border: none;
+  background: transparent;
+  outline: none;
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.selected {
+  position: relative;
+}
+/* .selected::after {
+    content: "^";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 11px;
+    font-size: 30px;
+    right: -2px;
+    transform: rotate(180deg);
+    color: #00bcd4;
+  } */
+.arrow {
+  margin-bottom: -15px;
+  margin-left: 3px;
+  position: relative;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  font-size: 30px;
+  transform: rotate(180deg);
+  color: #00bcd4;
+  right: 0;
+}
+
+.cancel-button {
+  width: fit-content;
+  height: $button-height;
+  background-color: $cancel-button-background;
+  color: $button-color;
+  border-radius: $button-border-radius;
+  padding: $button-padding;
+  font-size: $button-font-size;
+  margin-right: $button-margin-right;
+  margin-bottom: $button-margin-bottom;
+  border: none;
+  cursor: pointer;
+}
+
+.save-button,
+.add-button {
+  @extend .cancel-button;
+  background-color: $button-background;
+}
+
+.edit-after-click {
+  font: 100 0.9rem sans-serif;
+  color: gray;
+}
+
+.notification-section-title {
+  margin-left: 5%;
+  width: 30%;
+  white-space: nowrap;
+  font: 600 1rem sans-serif;
+}
+
+.notification-selection {
+  font: 600 1rem sans-serif;
+
+  height: fit-content;
+  margin-top: 4px;
+}
+
+.input-box {
+  display: block;
+  margin-bottom: $input-margin-bottom;
+  padding: $input-top-bottom-padding $input-left-right-padding;
+  font-size: $input-font-size;
+  opacity: $input-opacity;
+  outline: none;
+  margin-right: $input-margin-right;
+}

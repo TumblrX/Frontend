@@ -13,11 +13,12 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-recaptcha": "^2.1.0",
-    "react-recaptcha": "^2.3.10",
     "react-icons": "^4.3.1",
+    "react-recaptcha": "^2.3.10",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-test-renderer": "^17.0.2",
     "redux": "^4.1.2",
     "sass": "^1.43.4",
     "web-vitals": "^1.1.2"
@@ -27,14 +28,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src --fix",
     "docs": "jsdoc -c jsdoc.conf.json",
     "scssAccount": "node-sass  src/components/Account/scss/Account.scss   src/components/Account/Account.module.css ",
     "scssDashboard": "node-sass  src/components/Dashboard/scss/Dashboard.scss   src/components/Dashboard/Dashboard.module.css ",
     "scssNotifications": "node-sass  src/components/Notifications/scss/Notifications.scss   src/components/Notifications/Notifications.module.css ",
     "scssSettingsNavbar": "node-sass  src/components/SettingsNavbar/scss/SettingsNavbar.scss   src/components/SettingsNavbar/SettingsNavbar.module.css "
   },
-  "eslintConfig": {},
   "browserslist": {
     "production": [
       ">0.2%",
@@ -46,8 +45,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint-config-airbnb": "^19.0.0"
   }
 }

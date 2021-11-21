@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-multiple-empty-lines */
+
 import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import forgetPasswordStyle from './ForgetPassword.module.scss';

@@ -1,0 +1,130 @@
+/*
+    icon-photo
+*/
+/*
+    button variables 
+*/
+.icon-photo {
+  width: 15px;
+  height: 15px;
+  cursor: pointer; }
+
+.notification-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: calc(100% - 40px);
+  margin: 0 auto; }
+
+.notification-section {
+  display: flex;
+  justify-content: space-between;
+  color: #444;
+  height: 50px;
+  font: bold sans-serif 15px; }
+
+.user-info {
+  display: flex;
+  flex-shrink: 0;
+  width: 40%;
+  align-items: center; }
+
+.edit-section {
+  flex-shrink: 0;
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  align-items: center; }
+
+.user-img {
+  width: 28px;
+  height: 28px;
+  margin-right: 3%;
+  object-fit: cover;
+  border-radius: 3px; }
+
+.header {
+  color: #7e7c7c85;
+  font-family: sans-serif;
+  padding: 10px;
+  font-weight: 100; }
+
+input[type="checkbox"] {
+  margin-top: 6px; }
+
+select {
+  border: none;
+  background: transparent;
+  outline: none;
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+  z-index: 1; }
+
+.selected {
+  position: relative; }
+
+/* .selected::after {
+    content: "^";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 11px;
+    font-size: 30px;
+    right: -2px;
+    transform: rotate(180deg);
+    color: #00bcd4;
+  } */
+.arrow {
+  margin-bottom: -15px;
+  margin-left: 3px;
+  position: relative;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  font-size: 30px;
+  transform: rotate(180deg);
+  color: #00bcd4;
+  right: 0; }
+
+.cancel-button, .save-button,
+.add-button {
+  width: fit-content;
+  height: 30px;
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  border: none;
+  cursor: pointer; }
+
+.save-button,
+.add-button {
+  background-color: #00bcd4; }
+
+.edit-after-click {
+  font: 100 0.9rem sans-serif;
+  color: gray; }
+
+.notification-section-title {
+  margin-left: 5%;
+  width: 30%;
+  white-space: nowrap;
+  font: 600 1rem sans-serif; }
+
+.notification-selection {
+  font: 600 1rem sans-serif;
+  height: fit-content;
+  margin-top: 4px; }
+
+.input-box {
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px 5px;
+  font-size: 14px;
+  opacity: 0.5;
+  outline: none;
+  margin-right: 5px; }

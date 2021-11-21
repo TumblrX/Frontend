@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-unused-vars */
+
 import React, { useState } from 'react';
 import loginPageStyle from './LoginPage.module.scss';
 import api from '../../api/api';
