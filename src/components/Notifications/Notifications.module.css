@@ -21,7 +21,8 @@
   justify-content: space-between;
   color: #444;
   height: 50px;
-  font: bold 15px sans-serif; }
+  font: bold 15px sans-serif;
+  margin-left: 10px; }
 
 .user-info {
   display: flex;
@@ -86,7 +87,8 @@ select {
   transform: rotate(180deg);
   color: #00bcd4;
   right: 0;
-  font-family: "Rubik"; }
+  font-family: "Rubik";
+  top: -7px; }
 
 .cancel-button, .save-button,
 .add-button {

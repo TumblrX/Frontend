@@ -18,7 +18,8 @@
 .section {
   display: flex;
   margin-bottom: 10px;
-  position: relative; }
+  position: relative;
+  margin-left: 10px; }
 
 .title {
   width: 17%;

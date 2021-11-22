@@ -27,6 +27,7 @@ a{
 .filtering-section {
   @include displayFlex();
   margin-bottom: 10px;
+  margin-left: 10px;
   position: relative;
 }
 /* should be in a general place 

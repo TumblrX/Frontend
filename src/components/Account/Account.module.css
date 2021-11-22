@@ -30,6 +30,7 @@ a {
 .filtering-section {
   display: flex;
   margin-bottom: 10px;
+  margin-left: 10px;
   position: relative; }
 
 /* should be in a general place 
