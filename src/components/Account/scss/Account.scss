@@ -10,8 +10,8 @@
   }
 }
 
-a{
-  text-decoration: none
+a {
+  text-decoration: none;
 }
 
 .account-container {
@@ -86,6 +86,7 @@ input[type="checkbox"] {
 .title {
   width: $title-width;
   margin-right: $title-margin-right;
+  font: bold 100% sans-serif;
 }
 
 hr {
@@ -109,6 +110,7 @@ hr {
   height: 15px;
   position: absolute;
   right: 0;
+  cursor: pointer;
 }
 
 .hidden,

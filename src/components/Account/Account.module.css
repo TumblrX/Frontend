@@ -82,7 +82,8 @@ input[type="checkbox"] {
 /* should be in a general place  */
 .title {
   width: 15%;
-  margin-right: 2%; }
+  margin-right: 2%;
+  font: bold 100% sans-serif; }
 
 hr {
   margin-bottom: 10px;
@@ -102,7 +103,8 @@ hr {
   width: 15px;
   height: 15px;
   position: absolute;
-  right: 0; }
+  right: 0;
+  cursor: pointer; }
 
 .hidden,
 .tags-filter-box,
