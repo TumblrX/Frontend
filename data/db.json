@@ -16,8 +16,8 @@
       "password": "",
       "id": 3
     }
-],
-"createBlog": [
+  ],
+  "createBlog": [
     {
       "id": 1,
       "handle": "",
@@ -25,6 +25,31 @@
       "isPrivate": false,
       "settings": {
         "blogPassword": ""
+      }
+    }
+  ],
+  "users": [
+    {
+      "email": "abdalla@master.com",
+      "id": "1",
+      "password": "testtesttesttesttesttest",
+      "username": "youngdev",
+      "letPeopleFindBlogByEmail": true,
+      "emailAboutAccountActivity": true,
+      "twoFactorAuthentication": true,
+      "enableEndLessScrolling": true,
+      "messagingSounds": false,
+      "bestStuffFirst": false,
+      "includeStuffInorbit": true,
+      "EnableColorizedTags": true,
+      "includeFollowedTagPosts": true,
+      "notificationsSettings": {
+        "EmailUserAboutNewFollowersBox": false,
+        "EmailUserAboutNewRepliesBox": false,
+        "EmailUserAboutNewMentionsBox": false,
+        "EmailUserAboutNewAnsweredAsksBox": false,
+        "NotificationSettingsFor": "From nobody",
+        "ApplySettingsForAllBlogs": true
       }
     }
   ]

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Dashboard.module.css";
 import axios from "axios";
+import api from "../../../api/api";
 
 /**
  * Component to render the Preferences section in the Dashboard settings in the Settings page
@@ -78,8 +79,8 @@ function Preferences(props) {
       includeFollowedTagPosts: checkboxesStates.includeFollowedTagPosts,
     };
     console.log("Yes Iam ");
-    axios
-      .patch("http://localhost:3000/users/1", sentData)
+    api
+      .patch("/users/1", sentData)
       .then((res) => {
         console.log("data sent ");
       })
@@ -98,8 +99,8 @@ function Preferences(props) {
    */
 
   const componentDidMount = () => {
-    axios
-      .get("http://localhost:3000/users/1")
+    api
+      .get("/users/1")
       .then((response) => {
         let boxes = document.querySelectorAll(".preferences input");
         boxes[0].checked = response.data.bestStuffFirst;

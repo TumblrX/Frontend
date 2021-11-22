@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
 import axios from "axios";
+import api from "../../../api/api";
 
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
@@ -120,8 +121,8 @@ function EmailSection(props) {
    * @returns {void} return nothing , it just a click event handler
    */
   const componentDidMount = () => {
-    axios
-      .get("http://localhost:3000/users/1")
+    api
+      .get("/users/1")
       .then((response) => {
         document.querySelectorAll(`input[type="checkbox"]`)[0].checked =
           response.data.letPeopleFindBlogByEmail;
@@ -214,7 +215,7 @@ function EmailSection(props) {
       let sentData = {
         letPeopleFindBlogByEmail: event.target.checked,
       };
-      axios.patch("http://localhost:3000/users/1", sentData);
+      api.patch("/users/1", sentData);
       updateInfo({
         ...emailInfo,
         letPeopleFindBlogByEmail: event.target.checked,

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
+import api from '../../../api/api';
 
 /**
  * component to render the email section on the account settings

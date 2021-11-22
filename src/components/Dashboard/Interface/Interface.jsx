@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Dashboard.module.css";
 import axios from "axios";
+import api from "../../../api/api";
 
 /**
  * Component to render the interface section in the Dashboard settings in the Settings page
@@ -52,8 +53,8 @@ function Interface(props) {
    *
    */
   const componentDidMount = () => {
-    axios
-      .get("http://localhost:3000/users/1")
+    api
+      .get("/users/1")
       .then((response) => {
         document.querySelectorAll(`input[type="checkbox"]`)[0].checked =
           response.data.enableEndLessScrolling;

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styles from "./SettingsNavbar.module.css";
 import { Link } from "react-router-dom";
 import userPhoto from "../../assets/Images/myphoto.jpg";
+
+
 /**
  * Component to render the navbar of the settings page
  * @author Abdalla Mahmoud

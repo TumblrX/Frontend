@@ -28,7 +28,7 @@
   justify-content: space-between;
   color: #444;
   height: 50px;
-  font: bold sans-serif 15px;
+  font: bold 15px sans-serif;
 }
 
 .user-info {
@@ -103,6 +103,7 @@ select {
   transform: rotate(180deg);
   color: #00bcd4;
   right: 0;
+  font-family: "Rubik";
 }
 
 .cancel-button {

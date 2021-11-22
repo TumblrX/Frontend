@@ -5,6 +5,7 @@ import FilterSection from "./FilterSection/FilterSection";
 import EmailSection from "./EmailSection/EmailSection";
 import PasswordSection from "./PasswordSection/PasswordSection";
 import SecuritySection from "./SecuritySection/SecuritySection";
+import api from "../../api/api";
 /**
  * Component to render the Account settings in the Settings page
  * @author Abdalla Mahmoud
@@ -13,8 +14,8 @@ import SecuritySection from "./SecuritySection/SecuritySection";
  */
 export class Account extends Component {
   sendData(data) {
-    axios
-      .patch("http://localhost:3000/users/1", data)
+    api
+      .patch("/users/1", data)
       .then((res) => {
         window.location.reload();
       })

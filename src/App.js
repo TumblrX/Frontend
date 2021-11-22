@@ -1,7 +1,7 @@
-import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-import Settings from './pages/Settings/Settings';
+import Settings from "./pages/Settings/Settings";
 import {
   NotFound,
   Dashboard,
@@ -11,8 +11,8 @@ import {
   LoginPage,
   ForgetPassword,
   CreateBlog,
-} from './pages/pages';
-import { NavBar, ExploreLayout } from './components/Layouts/Layouts';
+} from "./pages/pages";
+import { NavBar, ExploreLayout } from "./components/Layouts/Layouts";
 
 const App = function () {
   return (
@@ -46,7 +46,10 @@ const App = function () {
       <Route exact path="/new/blog">
         <CreateBlog />
       </Route>
-      <Settings />
+      <Route  path="/settings">
+        <Redirect to="/settings/account"/>
+        <Settings />
+      </Route>
       <Route path="*">
         <NotFound />
       </Route>

@@ -1,7 +1,7 @@
 import styles from "../Account.module.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
+import api from "../../../api/api";
 /**
  * Component to render the Security  Section in the Accountsettings in the Settings page
  * @author Abdalla Mahmoud
@@ -53,8 +53,8 @@ function SecuritySection(props) {
       twoFactorAuthentication: checkboxesStates.TwoFactorAuth,
     };
     console.log("Yes Iam ");
-    axios
-      .patch("http://localhost:3000/users/1", sentData)
+    api
+      .patch("/users/1", sentData)
       .then((res) => {
         console.log("data sent ");
       })
@@ -71,8 +71,8 @@ function SecuritySection(props) {
    * retreive the data from the backend when the component mounted
    */
   const componentDidMount = () => {
-    axios
-      .get("http://localhost:3000/users/1")
+    api
+      .get("/users/1")
       .then((response) => {
         document.querySelectorAll(`input[type="checkbox"]`)[1].checked =
           response.data.emailAboutAccountActivity;

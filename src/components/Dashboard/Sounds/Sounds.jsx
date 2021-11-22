@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Dashboard.module.css";
 import axios from "axios";
+import api from "../../../api/api";
 
 /**
  * this function is responsible render the sounds  section
@@ -38,8 +39,8 @@ function Sounds(props) {
    *
    */
   const componentDidMount = () => {
-    axios
-      .get("http://localhost:3000/users/1")
+    api
+      .get("/users/1")
       .then((response) => {
         document.querySelectorAll(`input[type="checkbox"]`)[1].checked =
           response.data.messagingSounds;

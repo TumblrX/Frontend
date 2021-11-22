@@ -3,6 +3,7 @@ import styles from "./Notifications.module.css";
 import pen from "../../assets/Images/pencil-64x64.png";
 import userPhoto from "../../assets/Images/myphoto.jpg";
 import axios from "axios";
+import api from "../../api/api";
 
 /**
  * Component to render the Notifications  in the Settings page
@@ -142,8 +143,8 @@ function Notifictions() {
    *
    */
   const componentDidMount = () => {
-    axios
-      .get("http://localhost:3000/users/1")
+    api
+      .get("/users/1")
       .then((response) => {
         let PrevUserSettings = response.data.notificationsSettings;
         let userBoxes = document.querySelectorAll(`input[type="checkbox"]`);
@@ -189,8 +190,8 @@ function Notifictions() {
    */
   const formAction = () => {
     let sentData = { notificationsSettings: userSettings };
-    axios
-      .patch("http://localhost:3000/users/1", sentData)
+    api
+      .patch("/users/1", sentData)
       .then((res) => {
         // window.location.reload();
         console.log(res);

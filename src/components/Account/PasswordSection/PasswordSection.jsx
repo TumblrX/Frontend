@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
 import axios from "axios";
+import api from "../../../api/api";
 
 /**
  * Component to render the Password  Section in the Accountsettings in the Settings page
@@ -26,8 +27,8 @@ function PasswordSection(props) {
    *
    */
   const componentDidMount = () => {
-    axios
-      .get("http://localhost:3000/users/1")
+    api
+      .get("/users/1")
       .then((response) => {
         updateInfo({ ...passwordInfo, password: response.data.password });
         console.log(passwordInfo);
