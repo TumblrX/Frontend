@@ -156,6 +156,7 @@ function Notifictions() {
         userBoxes[3].checked = PrevUserSettings["EmailUserAboutNewMentionsBox"];
         userBoxes[4].checked =
           PrevUserSettings["EmailUserAboutNewAnsweredAsksBox"];
+        document.querySelector(".nickname").textContent=response.data.nickname;
 
         /**
          * get the selection box
@@ -215,7 +216,7 @@ function Notifictions() {
             className={styles["user-img"]}
             data-testid="avatar-icon"
           />
-          <div className={styles["user-name"]}>Thebrownboy</div>
+          <div className="nickname"></div>
         </div>
         <div className={styles["edit-section"]}>
           <div style={{ whiteSpace: "nowrap", marginRight: "10px" }}>

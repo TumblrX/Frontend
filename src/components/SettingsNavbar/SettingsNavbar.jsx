@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "./SettingsNavbar.module.css";
 import { Link } from "react-router-dom";
 import userPhoto from "../../assets/Images/myphoto.jpg";
-
+import api from "../../api/api";
 
 /**
  * Component to render the navbar of the settings page
@@ -12,10 +12,26 @@ import userPhoto from "../../assets/Images/myphoto.jpg";
  */
 export default class SettingsNavbar extends Component {
   /**
+   *
+   */
+  componentDidMount() {
+    api
+      .get("/users/1")
+      .then((respone) => {
+        console.log("Iam in the settings navbar ")
+        document.querySelector(".username").textContent=respone.data.username;
+        document.querySelector(".nickname").textContent=respone.data.nickname;
+
+      })
+      .catch(() => {});
+  }
+
+  /**
    * this function is responsible render the SettingsNavBar
    * @function
    * @returns {jsx} return jsx to be renderd
    */
+
   render() {
     return (
       <aside>
@@ -57,8 +73,8 @@ export default class SettingsNavbar extends Component {
                 data-testid="navbar-avatar"
               />
               <div>
-                <div>youngdev</div>
-                <div className={styles["small-text"]}>Thebrownboy</div>
+                <div className="username"></div>
+                <div className={`${styles["small-text"]} nickname`}></div>
               </div>
             </div>
           </div>
