@@ -1,0 +1,107 @@
+@import 'config';
+
+
+.profile{
+    @media screen and (max-width:$max-width){
+        display: none;
+    }
+    background-color:#fff;
+    width:240px;
+    border-radius: 3px;
+    overflow: hidden;
+    position:absolute;
+    top:125%;
+    right:-4rem;
+    z-index: 999;
+    a{
+        color: $dropdown-profile-icons-color;
+        
+    }
+    
+    span{
+        color: $dropdown-profile-icons-color;
+        
+    }
+    .account{
+        background-color: $dropdown-profile-background-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 10px;
+        font-size: 14px;
+        font-weight: 100;
+    }
+    .account-list{
+        display: flex;
+        flex-direction: column;
+        font-weight: 400;
+        a{
+            padding:8px 10px;
+            display: flex;
+            align-items: center;
+            svg{
+                margin-right: 10px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+        span{
+            cursor: pointer;
+            padding:8px 10px;
+            display: flex;
+            align-items: center;
+            svg{
+                margin-right: 10px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+             
+        a:hover{
+            background-color:$dropdown-profile-hover-color;
+        }
+        span:hover{
+            background-color:$dropdown-profile-hover-color;
+        }
+    }
+
+    .tumblrs    {
+        background-color: $dropdown-profile-background-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 10px;
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    .tumblrs-list{
+        display: flex;
+        flex-direction: column;
+        font-weight: 400;
+        margin:0 12px 0 50px;
+
+        a{
+            padding:2px
+        }
+        a:hover{
+            background-color: $dropdown-profile-hover-color;
+        }
+
+    }
+    .links{
+        background-color: $dropdown-profile-background-color;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        font-size: 10px;
+        font-weight: 100;
+        a{
+            margin: 0 5px;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+    }
+
+}
