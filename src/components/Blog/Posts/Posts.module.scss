@@ -1,0 +1,83 @@
+$bg : #001935 ;
+$post-bg : #888;
+$font-color : #000;
+@mixin self_center() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.row {
+    display: flex;
+}
+.posts {
+    width: 80vw;
+    margin-right: 5%;
+    .insertPost{
+        height: 100px;
+        border: 3px solid $bg;
+        margin-bottom: 15px;
+        .insertLogo {
+            width: 64px;
+            height: 64px;
+            margin-right: 20px;
+            background-color: $post-bg;
+
+            position: -webkit-sticky;
+            position: sticky;
+            top: 50px;
+        }
+        .insertPostDetails {
+            background-color: $post-bg;
+            width: 100%;
+        }
+    }
+    .post{
+        border: 3px solid $bg;
+        margin-bottom: 15px;
+        position: relative;
+        .logo {
+            width: 64px;
+            height: 64px;
+            margin-right: 20px;
+            background-color: $post-bg;
+
+            position: -webkit-sticky;
+            position: sticky;
+            top: 55px;
+        }
+        .postDatailes {
+            background-color: $post-bg;
+            width: 100%;
+        }
+    }
+    .navigate_btns {
+        height: 100px;
+        justify-content: space-around;
+        .next_btn{
+            justify-content: flex-start;
+            width: 52px;
+            background-color: #00B8FF;
+            height: 25px;
+            color: white;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+        .previous_btn{
+
+            width: 77px;
+            background-color: #A6AFB8;
+            height: 25px;
+            color: white;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+    }
+}
+
+@media (max-width : 600px ) {
+    .posts{
+        margin: auto;
+        align-items: center;
+    }
+}

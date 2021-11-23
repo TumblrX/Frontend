@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
-import styles from "../Dashboard.module.css";
-import axios from "axios";
-import api from "../../../api/api";
+/* eslint-disable func-names */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/destructuring-assignment */
+import React, { useState, useEffect } from 'react';
+import styles from '../Dashboard.module.css';
+import api from '../../../api/api';
 
 /**
  * this function is responsible render the sounds  section
  * @function
  * @returns {jsx} return jsx to be renderd
  */
-function Sounds(props) {
+const Sounds = function (props) {
   const [checkBoxState, setState] = useState({ state: null });
   /**
    * @function
@@ -18,14 +22,12 @@ function Sounds(props) {
    */
   const checkBoxClick = () => {
     // on click set the state with the inversion of the previous state
-    setState((prevState) => {
-      return { state: !prevState.state };
-    });
+    setState((prevState) => ({ state: !prevState.state }));
   };
 
   useEffect(() => {
     if (checkBoxState.state === null) return;
-    let sentData = {
+    const sentData = {
       messagingSounds: checkBoxState.state,
     };
     props.sendData(sentData);
@@ -40,10 +42,9 @@ function Sounds(props) {
    */
   const componentDidMount = () => {
     api
-      .get("/users/1")
+      .get('/users/1')
       .then((response) => {
-        document.querySelectorAll(`input[type="checkbox"]`)[1].checked =
-          response.data.messagingSounds;
+        document.querySelectorAll('input[type="checkbox"]')[1].checked = response.data.messagingSounds;
 
         setState({ state: response.data.messagingSounds });
       })
@@ -52,30 +53,28 @@ function Sounds(props) {
 
   useEffect(componentDidMount, []);
   return (
-    <>
-      <div className={styles["section"]}>
-        <div className={styles["title"]}>Sounds</div>
-        <div className={styles["section-form"]}>
-          <div style={{ display: "flex", marginBottom: "30px" }}>
-            <input
-              type="checkbox"
-              style={{ marginTop: "6px", marginRight: "6px" }}
-              onClick={checkBoxClick}
-              data-testid="messageing-sounds-checkbox"
-              value={checkBoxState.state}
-              className={`${styles["input-box"]}`}
-            />
-            <div className={styles["description"]}>
-              <div className={styles["section-message"]}>Messaging sounds</div>
-              <div className={styles["user-message"]}>
-                Assorted 'shling!' and 'fwip!' noises in messaging.
-              </div>
+    <div className={styles.section}>
+      <div className={styles.title}>Sounds</div>
+      <div className={styles['section-form']}>
+        <div style={{ display: 'flex', marginBottom: '30px' }}>
+          <input
+            type="checkbox"
+            style={{ marginTop: '6px', marginRight: '6px' }}
+            onClick={checkBoxClick}
+            data-testid="messageing-sounds-checkbox"
+            value={checkBoxState.state}
+            className={`${styles['input-box']}`}
+          />
+          <div className={styles.description}>
+            <div className={styles['section-message']}>Messaging sounds</div>
+            <div className={styles['user-message']}>
+              Assorted 'shling!' and 'fwip!' noises in messaging.
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-}
+};
 
 export default Sounds;

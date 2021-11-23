@@ -1,0 +1,38 @@
+.container{
+    border-radius: 6px 6px 0 0;
+    background: RGB(var(--white));
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    .a{
+        width: 100%;
+        display: block;
+        height: 100%;
+        position: absolute;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .side{
+        word-wrap: break-word;
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+        line-height: 1.2;
+        min-height: 43px;
+        outline: none;
+        overflow-wrap: break-word;
+        padding: 8px 10px;
+        text-decoration: none;
+        vertical-align: middle;
+    }
+    .sideSelect{
+        align-items: center;
+        display: flex;
+        padding-right: 14px;
+        position: relative;
+        text-align: right;
+    }
+}

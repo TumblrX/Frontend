@@ -1,4 +1,4 @@
-
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import forgetPasswordStyle from './ForgetPassword.module.scss';
@@ -33,7 +33,6 @@ export default function ForgetPassword() {
       setHideError(false);
     }
   };
-
 
   /**
  * @description Check that the user enter a valid data reseting his password
@@ -91,7 +90,6 @@ export default function ForgetPassword() {
     setHideConfirm(true);
     // go to the main page
   };
-
 
   function onChange() {
     setRecaptcha(!recaptcha);

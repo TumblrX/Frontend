@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import classes from './List.module.scss';
-import {FaPencilAlt} from 'react-icons/fa';
+import { FaPencilAlt } from 'react-icons/fa';
 import { MdExplore } from 'react-icons/md';
 import { IoIosMail, IoMdHelpCircle } from 'react-icons/io';
 import { RiChatSmile3Fill, RiUserFollowFill } from 'react-icons/ri';
-import { GiElectric} from 'react-icons/gi';
+import { GiElectric } from 'react-icons/gi';
 import { FiSettings } from 'react-icons/fi';
-import { AiFillHome,AiFillHeart } from 'react-icons/ai';
-import { BsFillPaletteFill } from 'react-icons/bs'; 
+import { AiFillHome, AiFillHeart } from 'react-icons/ai';
+import { BsFillPaletteFill } from 'react-icons/bs';
+import classes from './List.module.scss';
 
 // eslint-disable-next-line no-unused-vars
 const List = function (props) {

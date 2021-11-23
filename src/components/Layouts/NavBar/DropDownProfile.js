@@ -2,13 +2,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import classes from './DropDownProfile.module.scss';
-import {IoMdHelpCircle } from 'react-icons/io';
-import {RiUserFollowFill } from 'react-icons/ri';
-import {GiPresent } from 'react-icons/gi';
+import { IoMdHelpCircle } from 'react-icons/io';
+import { RiUserFollowFill } from 'react-icons/ri';
+import { GiPresent } from 'react-icons/gi';
 import { FiSettings } from 'react-icons/fi';
 import { AiFillHeart } from 'react-icons/ai';
-import { BsFillKeyboardFill,BsFillPaletteFill } from 'react-icons/bs';
+import { BsFillKeyboardFill, BsFillPaletteFill } from 'react-icons/bs';
+import classes from './DropDownProfile.module.scss';
 
 const DropDownProfile = function () {
   return (

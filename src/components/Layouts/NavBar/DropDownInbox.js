@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { RiChatSmile3Fill } from 'react-icons/ri';
 import classes from './DropDownInbox.module.scss';
-import { RiChatSmile3Fill} from 'react-icons/ri';
 
 // eslint-disable-next-line no-unused-vars
 const DropDownInbox = function (props) {

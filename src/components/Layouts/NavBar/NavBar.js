@@ -2,22 +2,20 @@
 
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import List from './List';
-import DropDownInbox from './DropDownInbox';
-import DropDownActivity from './DropDownActivity';
-import DropDownProfile from './DropDownProfile';
-import classes from './NavBar.module.scss';
 import { FaPencilAlt, FaTumblr } from 'react-icons/fa';
 import { BiSearch } from 'react-icons/bi';
 import { MdExplore } from 'react-icons/md';
 import { IoIosMail } from 'react-icons/io';
 import { RiChatSmile3Fill } from 'react-icons/ri';
-import { GiElectric, GiHamburgerMenu} from 'react-icons/gi';
+import { GiElectric, GiHamburgerMenu } from 'react-icons/gi';
 import { AiFillHome } from 'react-icons/ai';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { ImCross } from 'react-icons/im';
-
-
+import classes from './NavBar.module.scss';
+import DropDownProfile from './DropDownProfile';
+import DropDownActivity from './DropDownActivity';
+import DropDownInbox from './DropDownInbox';
+import List from './List';
 
 const NavBar = function () {
   const [title, setTitle] = useState('');

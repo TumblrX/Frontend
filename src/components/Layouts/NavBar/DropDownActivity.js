@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { GiElectric } from 'react-icons/gi';
 import classes from './DropDownActivity.module.scss';
-import { GiElectric} from 'react-icons/gi';
 
 // eslint-disable-next-line no-unused-vars
 const DropDownActivity = function (props) {

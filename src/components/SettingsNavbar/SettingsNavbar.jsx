@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import styles from "./SettingsNavbar.module.css";
-import { Link } from "react-router-dom";
-import userPhoto from "../../assets/Images/myphoto.jpg";
-import api from "../../api/api";
+import React, { Component } from 'react';
+import styles from './SettingsNavbar.module.css';
+import { Link } from 'react-router-dom';
+import userPhoto from '../../assets/Images/myphoto.jpg';
+import api from '../../api/api';
 
 /**
  * Component to render the navbar of the settings page
@@ -16,12 +16,11 @@ export default class SettingsNavbar extends Component {
    */
   componentDidMount() {
     api
-      .get("/users/1")
+      .get('/users/1')
       .then((respone) => {
-        console.log("Iam in the settings navbar ")
-        document.querySelector(".username").textContent=respone.data.username;
-        document.querySelector(".nickname").textContent=respone.data.nickname;
-
+        console.log('Iam in the settings navbar ');
+        document.querySelector('.username').textContent = respone.data.username;
+        document.querySelector('.nickname').textContent = respone.data.nickname;
       })
       .catch(() => {});
   }
@@ -36,21 +35,21 @@ export default class SettingsNavbar extends Component {
     return (
       <aside>
         <Link to="/settings/account">
-          <div className={styles["nav-bar-slot"]}>
+          <div className={styles['nav-bar-slot']}>
             <div>Account</div>
             <div>The essentials</div>
           </div>
         </Link>
 
         <Link to="/settings/dashboard">
-          <div className={styles["nav-bar-slot"]}>
+          <div className={styles['nav-bar-slot']}>
             <div>Dashboard</div>
             <div>Appearance options,text editor</div>
           </div>
         </Link>
 
         <Link to="/settings/notifications">
-          <div className={styles["nav-bar-slot"]}>
+          <div className={styles['nav-bar-slot']}>
             <div>Notifications</div>
             <div>Via email &amp; mobile </div>
           </div>
@@ -64,23 +63,23 @@ export default class SettingsNavbar extends Component {
 
         <div className={styles.blogs}>Blogs</div>
         <Link to="/settings/blog/youngdev">
-          <div className={`${styles["blog-slot"]}`}>
-            <div style={{ display: "flex" }}>
+          <div className={`${styles['blog-slot']}`}>
+            <div style={{ display: 'flex' }}>
               <img
                 src={userPhoto}
                 alt=""
-                className={styles["user-img"]}
+                className={styles['user-img']}
                 data-testid="navbar-avatar"
               />
               <div>
-                <div className="username"></div>
-                <div className={`${styles["small-text"]} nickname`}></div>
+                <div className="username" />
+                <div className={`${styles['small-text']} nickname`} />
               </div>
             </div>
           </div>
         </Link>
         <Link to="/new/blog">
-          <div className={styles["small-text"]}> create a new blog </div>
+          <div className={styles['small-text']}> create a new blog </div>
         </Link>
       </aside>
     );

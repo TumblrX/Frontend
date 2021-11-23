@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styles from "../Dashboard.module.css";
-import axios from "axios";
-import api from "../../../api/api";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/destructuring-assignment */
+import React, { useState, useEffect } from 'react';
+import styles from '../Dashboard.module.css';
+import api from '../../../api/api';
 
 /**
  * Component to render the interface section in the Dashboard settings in the Settings page
@@ -10,7 +11,7 @@ import api from "../../../api/api";
  * @component
  */
 
-function Interface(props) {
+const Interface = function (props) {
   // the state is supposed to be null not false and not true
   // why , but react assert a waring that warns from using the state  value with null
   // so the state will be object with a key equal to null
@@ -25,9 +26,7 @@ function Interface(props) {
    */
   const checkBoxClick = () => {
     // on click set the state with the inversion of the previous state
-    setState((prevState) => {
-      return { state: !prevState.state };
-    });
+    setState((prevState) => ({ state: !prevState.state }));
   };
 
   useEffect(() => {
@@ -35,7 +34,7 @@ function Interface(props) {
     // TAKE CARE  the setState function is an async function so we use useEffect method
     // to see any change happens to the state
     if (checkBoxState.state === null) return;
-    let sentData = {
+    const sentData = {
       enableEndLessScrolling: checkBoxState.state,
     };
     // I will send the data when the checkbox is clicked
@@ -54,10 +53,9 @@ function Interface(props) {
    */
   const componentDidMount = () => {
     api
-      .get("/users/1")
+      .get('/users/1')
       .then((response) => {
-        document.querySelectorAll(`input[type="checkbox"]`)[0].checked =
-          response.data.enableEndLessScrolling;
+        document.querySelectorAll('input[type="checkbox"]')[0].checked = response.data.enableEndLessScrolling;
 
         setState({ state: response.data.enableEndLessScrolling });
       })
@@ -67,34 +65,31 @@ function Interface(props) {
   useEffect(componentDidMount, []);
 
   return (
-    <>
-      <div className={styles["section"]}>
-        <div className={styles["title"]}>Interface</div>
-        <div className={styles["section-form"]}>
-          <div style={{ display: "flex", marginBottom: "30px" }}>
-            <input
-              type="checkbox"
-              style={{ marginTop: "6px", marginRight: "6px" }}
-              onClick={checkBoxClick}
-              data-testid="enable-endless-scrolling-checkbox"
-              className={`${styles["input-box"]}`}
-              // value={checkBoxState.state}
-            />
-            <div className={styles["description"]}>
-              <div className={styles["section-message"]}>
-                Eanble endless scrolling
-              </div>
-              <div className={styles["user-message"]}>
-                Surf your dashboard page-by-page instead of as an
-                infinitely-scrolling feed. To update the URL for each page in
-                your browser, you'll also need to disable Best Stuff First.
-              </div>
+    <div className={styles.section}>
+      <div className={styles.title}>Interface</div>
+      <div className={styles['section-form']}>
+        <div style={{ display: 'flex', marginBottom: '30px' }}>
+          <input
+            type="checkbox"
+            style={{ marginTop: '6px', marginRight: '6px' }}
+            onClick={checkBoxClick}
+            data-testid="enable-endless-scrolling-checkbox"
+            className={`${styles['input-box']}`}
+          />
+          <div className={styles.description}>
+            <div className={styles['section-message']}>
+              Eanble endless scrolling
+            </div>
+            <div className={styles['user-message']}>
+              Surf your dashboard page-by-page instead of as an
+              infinitely-scrolling feed. To update the URL for each page in
+              your browser, you will also need to disable Best Stuff First.
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-}
+};
 
 export default Interface;

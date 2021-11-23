@@ -24,8 +24,7 @@ const Dashboard = function () {
   return (
     <div className={styles.parent}>
       <div className={styles.mainClass}>
-      <div className={styles.Navbar} data-testid="testNavbar">
-      </div>
+        <div className={styles.Navbar} data-testid="testNavbar" />
         <div className={`${styles.container} ${styles.row}`}>
           {/* --------------- Start posts ---------------------- */}
           <div className={styles.posts} data-testid="testPostContainer">

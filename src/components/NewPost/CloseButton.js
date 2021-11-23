@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import classes from './CloseButton.module.scss';
