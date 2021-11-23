@@ -34,7 +34,7 @@ const App = function () {
         <NavBar />
         <Inbox />
       </Route>
-      <Route exact path="/new">
+      <Route path="/new">
         <New />
       </Route>
       <Route exact path="/forgetPassword">
