@@ -1,3 +1,18 @@
+@mixin before_content($counter_name: even-numbers) {
+  content: counter($counter_name);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: red;
+  top: 10%;
+  left: 4%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
 .trending-list {
   li {
     font-size: 20px;
@@ -41,35 +56,37 @@
     background-color: transparent;
   }
   .odd-items {
+    margin-bottom: 15px;
     display: flex;
     counter-reset: odd-numbers -1;
     list-style-type: none;
+    &::-webkit-scrollbar {
+      width: 0;
+      background-color: transparent;
+    }
     li {
+      flex-shrink: 0;
+      margin-right: 15px;
       counter-increment: odd-numbers 2;
       &::before {
-        content: counter(odd-numbers);
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background-color: red;
-        top: 10%;
-        left: 4%;
-        display: flex;
-        position: absolute;
-        justify-content: center;
-        align-items: center;
-        color: black;
+        @include before_content(odd-numbers);
       }
     }
   }
   .even-items {
-    display: flex;
     counter-reset: even-numbers 0;
     list-style-type: none;
+    display: flex;
+    &::-webkit-scrollbar {
+      width: 0;
+      background-color: transparent;
+    }
     li {
+      flex-shrink: 0;
+      margin-right: 15px;
       counter-increment: even-numbers 2;
       &::before {
-        content: counter(even-numbers);
+        @include before_content();
       }
     }
   }
