@@ -55,11 +55,56 @@ function ExploreAside() {
             </div>
           </li>
         </ul>
-        <div className={styles["show-more-tags"]}>
-            Show More Tags 
-        </div>
+        <div className={styles["show-more-tags"]}>Show More Tags</div>
       </div>
-      <div>Checkout list </div>
+      <div className={styles["check-out-blogs"]}>
+        <div className={styles["header"]}>
+          <div>check out these blogs</div>
+        </div>
+        <ul>
+          <li>
+            <div>
+              <img src={img} alt="" />
+            </div>
+            <div>
+              <div>savage-words</div>
+              <div>savage-words</div>
+            </div>
+            <div>Follow</div>
+          </li>
+          <li>
+            <div>
+              <img src={img} alt="" />
+            </div>
+            <div>
+              <div>savage-words</div>
+              <div>savage-words</div>
+            </div>
+            <div>Follow</div>
+          </li>
+          <li>
+            <div>
+              <img src={img} alt="" />
+            </div>
+            <div>
+              <div>savage-words</div>
+              <div>savage-words</div>
+            </div>
+            <div>Follow</div>
+          </li>
+          <li>
+            <div>
+              <img src={img} alt="" />
+            </div>
+            <div>
+              <div>savage-words</div>
+              <div>savage-words</div>
+            </div>
+            <div>Follow</div>
+          </li>
+        </ul>
+        <div className={styles["show-more-tags"]}>Show More Tags</div>
+      </div>
     </div>
   );
 }
