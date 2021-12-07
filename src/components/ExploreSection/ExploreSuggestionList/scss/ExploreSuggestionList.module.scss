@@ -63,11 +63,13 @@
       font-size: 15px;
       font-family: sans-serif;
       margin: 0 auto;
+      cursor: pointer;
     }
     img {
       margin-left: 5px;
       width: calc((100% - 15px) / 2);
       border-radius: 4px;
+      cursor: pointer;
     }
     .card-imgs-container {
       display: flex;
@@ -79,6 +81,7 @@
     }
     .card-tag {
       margin-left: 5px;
+      cursor: pointer;
     }
   }
 }
