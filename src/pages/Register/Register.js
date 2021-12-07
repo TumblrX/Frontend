@@ -1,39 +1,34 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import loginPageStyle from './LoginPage.module.scss';
+import React, { useState } from 'react';
+import registerStyle from './Register.module.scss';
 import api from '../../api/api';
-import { Redirect } from 'react-router-dom';
 
+/**
+ * Component to render the Email Section in the Accountsettings in the Settings page
+ * @author Taher Mohamed
+ *
+ * @component
+ */
 // eslint-disable-next-line react/function-component-definition
-export default function LoginPage() {
+function Register() {
   const [hideFillData, setHideFillData] = useState(true);
   const [hideFillEmail, setHideFillEmail] = useState(true);
   const [hideFillPassword, setHideFillPassword] = useState(true);
   const [hideWrongData, setHideWrongData] = useState(true);
-  const [dashboard, setDashboard] = useState(false);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    if (localStorage.getItem('token')) { setDashboard(true); }
-  });
-
-  const setToken = (token) => {
-    localStorage.token = token;
-  };
+  const [hideFillBlogName, setHideFillBlogName] = useState(true);
 
   /**
- * @description Verify that the user is authorized to login in
- * @param {string} email - email of the user
- * @param {string} password - password of the user
-*/
-  const login = async (email, password) => {
+  * @description Verify that the user is authorized to login in
+  * @param {string} email - email of the user
+  * @param {string} password - password of the user
+  */
+  const register = async (email, password) => {
     try {
-      const response = await api.post('/api/user/login', {
+      const response = await api.post('/login', {
         email,
         password,
       });
-      setToken(response.data.token);
-      setDashboard(true);
     } catch (err) {
       setHideFillData(true);
       setHideFillEmail(true);
@@ -43,10 +38,10 @@ export default function LoginPage() {
   };
 
   /**
- * @description Check that the user enter a valid data during login and procced to login if valid
- * @param {MyEvent} e - The observable event.
- * @listens MyEvent
-*/
+  * @description Check that the user enter a valid data during login and procced to login if valid
+  * @param {MyEvent} e - The observable event.
+  * @listens MyEvent
+  */
   const loginHandler = (e) => {
     e.preventDefault();
     if (e.target && e.target.email.value !== '' && e.target.password.value !== '') {
@@ -54,7 +49,10 @@ export default function LoginPage() {
       setHideFillEmail(true);
       setHideFillPassword(true);
       setHideWrongData(true);
-      login(e.target.email.value, e.target.password.value);
+      register({
+        email: e.target.email.value,
+        password: e.target.password.value,
+      });
     } else if (e.target.email.value === '' && e.target.password.value === '') {
       setHideFillData(false);
       setHideFillEmail(true);
@@ -74,54 +72,82 @@ export default function LoginPage() {
   };
 
   return (
-    <div className={loginPageStyle.bodyLogin}>
-      {dashboard
-      && (
-        <Redirect to="/dashboard" />
-      )}
-      <div className={loginPageStyle.container}>
+    <div className={registerStyle.bodyRegister}>
+      <div className={registerStyle.container}>
         <h2 data-testid="h2"> tumblr </h2>
         <form data-testid="form" onSubmit={loginHandler}>
 
           {!hideFillData
             && (
-              <div data-testid="emptyData" id={loginPageStyle.incorrectUser}>You do have to fill this stuff out, you know.</div>
+              <div data-testid="emptyData" id={registerStyle.incorrectUser}>You do have to fill this stuff out, you know.</div>
             )}
 
           {!hideFillEmail
             && (
-              <div data-testid="emptyEmail" id={loginPageStyle.incorrectUser}>You forgot to enter your email!</div>
+              <div data-testid="emptyEmail" id={registerStyle.incorrectUser}>You forgot to enter your email!</div>
             )}
 
           {!hideFillPassword
             && (
-              <div data-testid="emptyPassword" id={loginPageStyle.incorrectUser}>You forgot to enter your password!</div>
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>You forgot to enter your password!</div>
             )}
 
-          {!hideWrongData
+          {!hideFillBlogName
             && (
-              <div data-testid="wrongData" id={loginPageStyle.incorrectUser}>Your email or password were incorrect.</div>
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>You forgot to enter your blog name!</div>
             )}
 
-          <input data-testid="email" type="text" name="email" id="email" placeholder="Email" />
-          <input data-testid="password" type="password" name="password" id="password" placeholder="Password" />
+          {!hideFillBlogName
+            && (
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s not a valid email address. Please try again.</div>
+            )}
+
+          {!hideFillBlogName
+            && (
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s not a valid email address. Please try again.</div>
+            )}
+          {!hideFillBlogName
+            && (
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>This email address is already in use.</div>
+            )}
+
+          {!hideFillBlogName
+            && (
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>The password must be at least 8 characters.</div>
+            )}
+
+          {!hideFillBlogName
+            && (
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>Please choose a stronger password.</div>
+            )}
+
+          {!hideFillBlogName
+            && (
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That password is known to be included in compromised password lists. Please choose something more unique.</div>
+            )}
+
+          {!hideFillBlogName
+            && (
+              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s a good blog name, but it&apos;s taken.</div>
+            )}
+
+          <input data-testid="email" type="email" name="email" id="email" placeholder="Email" />
+          <input type="password" name="password" id="password" placeholder="Password" />
+          <input type="text" name="blogName" id="blogName" placeholder="Blog name" />
           <p>
-            By clicking &quot;log in&quot;, or continuing with the other options below,
-            you agree to Tumblr’ s
+            By clicking &quot;sign up&quot;, or continuing with the other options below,
+            you agree to Tumblr’s
             {' '}
             <a href="#"> Terms of Service </a>
             {' '}
             and
             have read the
             {' '}
-            <a href="#"> Privacy Policy </a>
+            <a href="#">  Privacy Policy </a>
           </p>
-          <input data-testid="login" id="login" type="submit" value="Log in" />
-          <p className={loginPageStyle.bigParagraphe}>
-            <a href="/forgetPassword" id={loginPageStyle.forgetPassword}> Forgot your password?</a>
-          </p>
+          <input data-testid="login" id="login" type="submit" value="Sign up" />
         </form>
-        <div id={loginPageStyle.or}>
+        <div id={registerStyle.or}>
           {' '}
           <hr />
           {' '}
@@ -172,12 +198,16 @@ export default function LoginPage() {
           </svg>
           <span> Continue with Apple </span>
         </button>
-        <p className={loginPageStyle.bigParagraphe}>
-          {' '}
-          New to Tumblr ?
-          <a href="#"> Sign up! </a>
+        <p className={registerStyle.trend}>
+          <svg viewBox="0 0 21.8 21.8" width="22" height="24" fill="#ffffff"><path d="M10.9 21.8C4.9 21.8 0 16.9 0 10.9S4.9 0 10.9 0s10.9 4.9 10.9 10.9-4.9 10.9-10.9 10.9zM12 2.1c-.5-.1-1.8-.1-2 0-4.1.4-7.5 3.7-8 7.8-.1.5-.1 1.8 0 2 .4 4.2 3.8 7.6 8 8h2c4.1-.5 7.4-3.8 7.8-8v-2C19.2 5.8 16 2.6 12 2.1zm1.7 11.3c-.1.2-.2.3-.4.4l-6.7 2.5c-.5.2-1.1-.3-.9-.9l2.5-6.7c.1-.2.2-.3.4-.4l6.7-2.5c.5-.2 1.1.3.9.9l-2.5 6.7zm-1.9-3.3c-.5-.5-1.3-.5-1.7 0-.5.5-.5 1.3 0 1.7.5.5 1.3.5 1.7 0 .4-.4.4-1.2 0-1.7z" /></svg>
+          <span>
+            {' '}
+            <a href="#"> Here&apos;s what&apos;s trending </a>
+            {' '}
+          </span>
         </p>
       </div>
     </div>
   );
 }
+export default Register;
