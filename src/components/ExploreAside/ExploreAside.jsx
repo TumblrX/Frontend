@@ -1,8 +1,8 @@
 import React from 'react'
-
+import styles from "./scss/ExploreAside.module.scss"
 function ExploreAside() {
     return (
-        <div>
+        <div className={styles["explore-aside"]}>
             Explore Aside 
         </div>
     )
