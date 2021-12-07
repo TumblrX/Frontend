@@ -893,6 +893,11 @@
           "type": "text",
           "subtype": "quote",
           "text": "Sward's Shopping quote"
+        },
+        {
+          "type": "text",
+          "subtype": "indented",
+          "text": "Sward's Shopping blockquote"
         }
       ]
     },

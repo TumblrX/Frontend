@@ -58,15 +58,9 @@ const Post = function ({ data }) {
         );
       } else if (subtype === 'indented') {
         return (
-          <figure>
-            <blockquote cite="">
-              <p>roperly—they’ll go through anything. You read and you’re pierced.</p>
-            </blockquote>
-            <figcaption>
-              —Aldous Huxley,
-              <cite>Brave New World</cite>
-            </figcaption>
-          </figure>
+          <blockquote cite="">
+            {text}
+          </blockquote>
         );
       } else if (subtype === 'chat') {
         text = text.replace(text.slice(formatting[0].start, formatting[0].end), `<b>${text.slice(formatting[0].start, formatting[0].end)}</b>`);

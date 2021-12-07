@@ -86,9 +86,15 @@
   h2 {
     font-size: 1.5rem;
   }
-  blockquote, q {
+  q {
     font-family: serif;
     display: block;
     margin-bottom: 0.6rem;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+  blockquote{
+    border-left: 2px solid #ccc;
+    padding-left: 1rem;
   }
 }
