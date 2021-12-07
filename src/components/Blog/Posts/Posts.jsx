@@ -1,8 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-sequences */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable func-names */
-/* eslint-disable react/jsx-filename-extension */
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './Posts.module.scss';
