@@ -1,0 +1,33 @@
+.trending-list {
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  .odd-items {
+    display: flex;
+    counter-reset: odd-numbers -1;
+    list-style-type: none;
+    li {
+      counter-increment: odd-numbers 2;
+      &::before {
+        content: counter(odd-numbers);
+      }
+    }
+  }
+  .even-items{
+      display: flex;
+      counter-reset: even-numbers 0;
+      list-style-type: none;
+      li{
+          counter-increment: even-numbers 2 ;
+          &::before{
+              content: counter(even-numbers);
+          }
+      }
+  }
+}
