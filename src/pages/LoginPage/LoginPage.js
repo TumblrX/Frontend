@@ -12,6 +12,7 @@ export default function LoginPage() {
   const [hideWrongData, setHideWrongData] = useState(true);
   const [dashboard, setDashboard] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (localStorage.getItem('token')) { setDashboard(true); }
   });
@@ -27,11 +28,11 @@ export default function LoginPage() {
 */
   const login = async (email, password) => {
     try {
-      const response = await api.post('/login', {
+      const response = await api.post('/api/user/login', {
         email,
         password,
       });
-      setToken(response.token);
+      setToken(response.data.token);
       setDashboard(true);
     } catch (err) {
       setHideFillData(true);
@@ -53,10 +54,7 @@ export default function LoginPage() {
       setHideFillEmail(true);
       setHideFillPassword(true);
       setHideWrongData(true);
-      login({
-        email: e.target.email.value,
-        password: e.target.password.value,
-      });
+      login(e.target.email.value, e.target.password.value);
     } else if (e.target.email.value === '' && e.target.password.value === '') {
       setHideFillData(false);
       setHideFillEmail(true);
