@@ -1,0 +1,84 @@
+.suggestion-list {
+  /* background-color: red; */
+  overflow-x: scroll;
+  display: flex;
+  position: relative;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  &:hover{
+      .before{
+          opacity: 1;
+      }
+      .after{
+        opacity: 1;
+    }
+  }
+  .after {
+    position: fixed;
+    background-image: url(../../../../assets/Images/icons8-chevron-right-60.png);
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    right: 27%;
+    transform: translateY(150%);
+    opacity: 0;
+    background-color: transparent;
+    transition: opacity 0.3s 0.3s linear;
+    cursor: pointer;
+  }
+  .before {
+    position: fixed;
+    background-image: url(../../../../assets/Images/icons8-chevron-right-60.png);
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    opacity: 0;
+    left: 8%;
+    transform: rotate(180deg) translateY(-150%);
+    background-color: transparent;
+    transition: opacity 0.3s 0.3s linear;
+    cursor: pointer;
+  }
+  .suggestion-card {
+    width: 140px;
+    margin: 12px;
+    flex-shrink: 0;
+    display: flex;
+    background-color: rgb(200, 131, 41);
+    border-radius: 4px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 211px;
+    button {
+      height: 30px;
+      outline: none;
+      background-color: white;
+      border: none;
+      width: calc(100% - 10px);
+      border-radius: 4px;
+      color: orange;
+      font-size: 15px;
+      font-family: sans-serif;
+      margin: 0 auto;
+    }
+    img {
+      margin-left: 5px;
+      width: calc((100% - 15px) / 2);
+      border-radius: 4px;
+    }
+    .card-imgs-container {
+      display: flex;
+      height: 100px;
+    }
+    div {
+      font-size: 12px;
+      color: white;
+    }
+    .card-tag {
+      margin-left: 5px;
+    }
+  }
+}
