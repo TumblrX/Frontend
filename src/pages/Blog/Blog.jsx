@@ -15,6 +15,7 @@ import { NavBar } from '../../components/Layouts/Layouts';
  * @component
  *
  */
+// eslint-disable-next-line func-names
 const Blog = function () {
   return (
     <Router>
