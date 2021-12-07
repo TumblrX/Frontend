@@ -1,15 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import loginPageStyle from './LoginPage.module.scss';
 import api from '../../api/api';
+import { Redirect } from 'react-router-dom';
 
 // eslint-disable-next-line react/function-component-definition
 export default function LoginPage() {
-  const [cookie, setCookie] = useState('');
   const [hideFillData, setHideFillData] = useState(true);
   const [hideFillEmail, setHideFillEmail] = useState(true);
   const [hideFillPassword, setHideFillPassword] = useState(true);
   const [hideWrongData, setHideWrongData] = useState(true);
+  const [dashboard, setDashboard] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) { setDashboard(true); }
+  });
+
+  const setToken = (token) => {
+    localStorage.token = token;
+  };
 
   /**
  * @description Verify that the user is authorized to login in
@@ -22,8 +31,8 @@ export default function LoginPage() {
         email,
         password,
       });
-      setCookie(response.data.email);
-      // go to dashboard
+      setToken(response.token);
+      setDashboard(true);
     } catch (err) {
       setHideFillData(true);
       setHideFillEmail(true);
@@ -68,6 +77,10 @@ export default function LoginPage() {
 
   return (
     <div className={loginPageStyle.bodyLogin}>
+      {dashboard
+      && (
+        <Redirect to="/dashboard" />
+      )}
       <div className={loginPageStyle.container}>
         <h2 data-testid="h2"> tumblr </h2>
         <form data-testid="form" onSubmit={loginHandler}>

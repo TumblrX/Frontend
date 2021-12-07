@@ -1,7 +1,15 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
-// const { REACT_APP_API_URL: url, REACT_APP_API_KEY: key } = process.env;
+
+const baseURL = process.env.REACT_APP_API_URL;
+// eslint-disable-next-line prefer-const
+let headers = {};
+
+if (localStorage.getItem('token')) {
+  headers.Authorization = `${localStorage.getItem('token')}`;
+}
+
 export default axios.create({
-  // baseURL: `${url}`,
-  baseURL: 'http://localhost:3500',
+  baseURL,
+  headers,
 });
