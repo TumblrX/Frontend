@@ -49,17 +49,15 @@ const Dashboard = function () {
                   )
               }
               {
-                  // eslint-disable-next-line no-mixed-operators
                   (pageNum * 10 < posts.length || posts.length === 0)
-                    // eslint-disable-next-line eqeqeq
-                    && !isInfinte
+                  && (!isInfinte)
                 && (
-                <button
-                  className={styles.next_btn}
-                  onClick={() => { dispatch(incrementPageNum()); console.log(pageNum); }}
-                >
-                  Next &gt;
-                </button>
+                  <button
+                    className={styles.next_btn}
+                    onClick={() => { dispatch(incrementPageNum()); console.log(pageNum); }}
+                  >
+                    Next &gt;
+                  </button>
                 )
               }
             </div>
