@@ -9,34 +9,61 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import styles from './Chat.module.scss';
-
+import { MdSend } from 'react-icons/md';
+import { AiFillCamera } from 'react-icons/ai';
+import { FaRegWindowClose, FaGripVertical, FaAngleDown } from 'react-icons/fa';
 
 const Inbox = function () {
   return (
     <div className={styles.Chat}>
       <div className={`${styles.Chat_header} ${styles.row}`}>
-        <div className={styles.title}>
-          <a> username1 </a>
-          <a> + username2</a>
+        <div className={styles.userName}>
+          <a> USER1 </a> 
+          +
+          <a> USER2</a>
         </div>
-        <div className={styles.icons}>
-          <button>
-            Button
-            <i style={{ fontSize: '24px' }}> &#xf142; </i>
-          </button>
+        <div className={`${styles.headerIcons} ${styles.row}`}>
+          <div className={styles.headerIcon}> 
+            <FaGripVertical />
+            <ul className={styles.dropDown}>
+              <li className={styles.item}><a href="#">Sound Settings</a></li>
+              <li className={styles.item}><a href="#">Delete Conversation</a></li>
+              <li className={styles.item}><a href="#">Block user2</a></li>
+            </ul>
+          </div>
+          <div className={styles.headerIcon}>
+            <FaAngleDown />
+          </div>
+          <div className={styles.headerIcon}>
+            <FaRegWindowClose />
+          </div>
         </div>
       </div>
       <div className={styles.Chat_content}>
         content  
       </div>
       <div className={styles.Chat_footer}>
-        <textarea className={styles.text}
-          placeholder="Your message here"
-          rows="1" 
-          maxLength="4096"
-        />
-        <div className={styles.send}>
-
+        <div className={styles.text}>
+          <textarea 
+            className={styles.type_here}
+            placeholder="New Message"
+            rows={1}
+            maxLength="4096"
+          > 
+          </textarea> 
+        </div>
+        <div className={`${styles.send} ${styles.row}`}>
+          <div className={styles.insertIcons}>
+            <div className={styles.icon}>
+              <MdSend />
+            </div>
+            <div className={styles.icon}>
+              <AiFillCamera />
+            </div>
+          </div>
+          <div className={styles.icon}>
+            <AiFillCamera />
+          </div>
         </div>
       </div>
     </div>
