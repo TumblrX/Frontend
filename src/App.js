@@ -16,14 +16,10 @@ import {
   Blog,
 } from './pages/pages';
 import { NavBar, ExploreLayout } from './components/Layouts/Layouts';
-import Chat from './components/Dashboard/Chat/Chat';
 
 const App = function () {
   return (
     <Switch>
-      <Route exact path="/Chat">
-        <Chat />
-      </Route>
       <Route exact path="/">
         <NavBar />
         <MainPage />

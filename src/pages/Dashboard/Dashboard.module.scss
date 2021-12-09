@@ -95,6 +95,7 @@ $font-color : #000;
     }
     .explore {
         width: 35%;
+        height: 1000px;
         justify-content:right;
         .checkBlogs{
             min-height: 200px;
@@ -143,7 +144,7 @@ $font-color : #000;
             }
         }
         .radar{
-            min-height: 200px;
+            height: 200px;
             border: 3px solid $bg;
             background-color: $post-bg;
         }
