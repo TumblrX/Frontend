@@ -10,6 +10,7 @@ import {
   setPosts, incrementPageNum, decrementPageNum,
   setIsInfinite, setExploreBlogs, setIsMounted, setPageNum,
 } from '../../redux/DashBoardReducer';
+import { RiContactsBookLine } from 'react-icons/ri';
 
 const Dashboard = function () {
   const {
@@ -29,13 +30,15 @@ const Dashboard = function () {
         <div className={styles.Navbar} data-testid="testNavbar" />
         <div className={`${styles.container} ${styles.row}`}>
           {/* --------------- Start posts ---------------------- */}
-          <div className={styles.posts} data-testid="testPostContainer">
-            <div className={`${styles.insertPost} ${styles.row}`}>
-              <div className={styles.insertLogo} />
-              <div className={styles.insertPostDetails}>
-                <NewPostNavBar />
+          <div className={styles.posts}>
+            { localStorage.getItem('token') && (
+              <div className={`${styles.insertPost} ${styles.row}`}>
+                <div className={styles.insertLogo} />
+                <div className={styles.insertPostDetails}>
+                  <NewPostNavBar />
+                </div>
               </div>
-            </div>
+            )}
             { ismounted && showPosts(posts, pageNum, isInfinte)}
             <div className={`${styles.navigate_btns} ${styles.row}`}>
               {
