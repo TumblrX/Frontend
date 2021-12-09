@@ -5,11 +5,14 @@ import Explore from './Explore/Explore';
 import Inbox from './Inbox/Inbox';
 import New from './New/New';
 import NotFound from './NotFound/NotFound';
+import MainPage from './MainPage/MainPage';
+import Register from './Register/Register';
 import LoginPage from './LoginPage/LoginPage';
 import ForgetPassword from './ForgetPassword/ForgetPassword';
 import CreateBlog from './CreateBlog/CreateBlog';
 import Blog from './Blog/Blog';
 
 export {
-  NotFound, Dashboard, Explore, Inbox, New, LoginPage, ForgetPassword, CreateBlog, Blog,
+  NotFound, Dashboard, Explore, Inbox, New, MainPage, Register, LoginPage,
+  ForgetPassword, CreateBlog, Blog,
 };

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './Dashboard.module.scss';
 import showPosts from './DashBoardController';
 import fetchPost from './DashBoardService';
+import NewPostNavBar from '../../components/Dashboard/NewPost/Newpost';
 import {
   setPosts, incrementPageNum, decrementPageNum,
   setIsInfinite, setExploreBlogs, setIsMounted, setPageNum,
@@ -31,7 +32,7 @@ const Dashboard = function () {
             <div className={`${styles.insertPost} ${styles.row}`}>
               <div className={styles.insertLogo} />
               <div className={styles.insertPostDetails}>
-                insertPost
+                <NewPostNavBar />
               </div>
             </div>
             { ismounted && showPosts(posts, pageNum, isInfinte)}
@@ -49,15 +50,15 @@ const Dashboard = function () {
               }
               {
                   (pageNum * 10 < posts.length || posts.length === 0)
-                  && (!isInfinte)
-                && (
-                  <button
-                    className={styles.next_btn}
-                    onClick={() => { dispatch(incrementPageNum()); console.log(pageNum); }}
-                  >
-                    Next &gt;
-                  </button>
-                )
+                    && !isInfinte
+                    && (
+                      <button
+                        className={styles.next_btn}
+                        onClick={() => { dispatch(incrementPageNum()); console.log(pageNum); }}
+                      >
+                        Next &gt;
+                      </button>
+                    )
               }
             </div>
           </div>

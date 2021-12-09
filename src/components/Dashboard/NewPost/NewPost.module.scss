@@ -1,0 +1,80 @@
+.newPost{
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    .icon{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color:#555;
+        cursor: pointer;
+    }
+    .text{
+        font-size: 2.5rem;
+        color: #000;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        &:hover{
+            transform: translateY(-3px);
+        }
+    }
+    .photo{
+        font-size: 2.5rem;
+        color: #FF492F;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        &:hover{
+            transform: translateY(-3px);
+        }
+    }
+    .quote{
+        font-size: 2.5rem;
+        color: #FF8A00;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        &:hover{
+            transform: translateY(-3px);
+        }
+    }
+    .link{
+        font-size: 2.5rem;
+        color: #00CF35;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        &:hover{
+            transform: translateY(-3px);
+        }
+    }
+    .chat{
+        font-size: 2.5rem;
+        color: #00B8FF;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        &:hover{
+            transform: translateY(-3px);
+        }
+    }
+    .audio{
+        font-size: 2.5rem;
+        color: #7C5CFF;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        &:hover{
+            transform: translateY(-3px);
+        }
+    }
+    .video{
+        font-size: 2.5rem;
+        color: #FF62CE;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        &:hover{
+            transform: translateY(-3px);
+        }
+    }
+}
