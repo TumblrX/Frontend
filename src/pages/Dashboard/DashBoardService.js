@@ -6,7 +6,7 @@ const fetchPost = async () => {
   try {
     const response = await api.get('/posts');
     configureStore.dispatch(setPosts(response.data));
-    // console.log(response.data);
+    console.log(response.data);
   } catch (err) {
     if (err.response) {
       // Not in the 200 response range

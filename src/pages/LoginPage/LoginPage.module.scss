@@ -41,7 +41,7 @@
                 display: none;
             }
 
-            input[type='text'],
+            input[type='email'],
             input[type='password'] {
                 @include dimensions(100%, 46px);
                 @include font(.875rem, #000, 400);
@@ -135,7 +135,7 @@
 
             }
 
-            input[type='text'],
+            input[type='email'],
             input[type='password'] {
                 @include font(5vw, #000, 400);
                 padding: 5px 7px;
