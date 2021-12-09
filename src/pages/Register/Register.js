@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, Redirect, useEffect } from 'react';
 import registerStyle from './Register.module.scss';
 import api from '../../api/api';
 
@@ -12,29 +12,126 @@ import api from '../../api/api';
  */
 // eslint-disable-next-line react/function-component-definition
 function Register() {
-  const [hideFillData, setHideFillData] = useState(true);
-  const [hideFillEmail, setHideFillEmail] = useState(true);
-  const [hideFillPassword, setHideFillPassword] = useState(true);
-  const [hideWrongData, setHideWrongData] = useState(true);
-  const [hideFillBlogName, setHideFillBlogName] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(9);
+  const [dashboard, setDashboard] = useState(false);
+
+  const errors = {
+    fillData: 0,
+    fillEmail: 1,
+    fillPassword: 2,
+    fillBlogName: 3,
+    invalidEmail: 4,
+    usedEmail: 5,
+    shortPassword: 6,
+    weakPassword: 7,
+    usedBlogName: 8,
+  };
+
+  const errorMessages = [
+    'You do have to fill this stuff out, you know.',
+    'You forgot to enter your email!',
+    'You forgot to enter your password!',
+    'You forgot to enter your blog name!',
+    'That\'s not a valid email address. Please try again.',
+    'This email address is already in use.',
+    'The password must be at least 8 characters.',
+    'Please choose a stronger password.',
+    'That\'s a good blog name, but it\'s taken.',
+  ];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (localStorage.getItem('token')) { setDashboard(true); }
+  });
+  const setToken = (token) => {
+    localStorage.token = token;
+  };
+
+  const checkNonEmptyFields = (e) => {
+    if (e.target && e.target.email.value !== '' && e.target.password.value !== '' && e.target.blogName.value !== '') {
+      return true;
+    }
+    if (e.target && e.target.email.value === '' && e.target.password.value === '' && e.target.blogName.value === '') {
+      setErrorMessage(errors.fillData);
+    } else if (e.target && e.target.email.value === '') {
+      setErrorMessage(errors.fillEmail);
+    } else if (e.target && e.target.password.value === '') {
+      setErrorMessage(errors.fillPassword);
+    } else if (e.target && e.target.blogName.value === '') {
+      setErrorMessage(errors.fillBlogName);
+    }
+    return false;
+  };
+  const validateEmail = (email) => {
+    const emailPattern = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!emailPattern.test(email)) {
+      setErrorMessage(errors.invalidEmail);
+    }
+    return emailPattern.test(email);
+  };
+  const validatePassword = (password) => {
+    const notShortPassword = /(?=.{8,})/;
+    const strongPassword = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+    const mediumPassword = /((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/;
+    if (!notShortPassword.test(password)) {
+      setErrorMessage(errors.shortPassword);
+      return false;
+    } if (!(strongPassword.test(password)) && !(mediumPassword.test(password))) {
+      setErrorMessage(errors.weakPassword);
+      return false;
+    }
+    return true;
+  };
+  const validateBLogName = (blogName) => {
+    const emailPattern = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return emailPattern.test(blogName);
+  };
 
   /**
   * @description Verify that the user is authorized to login in
   * @param {string} email - email of the user
   * @param {string} password - password of the user
   */
-  const register = async (email, password) => {
+  const register = async (email, password, blogName) => {
+    let done = false;
     try {
-      const response = await api.post('/login', {
+      const response = await api.post('/api/user/register', {
+        username: blogName,
         email,
         password,
       });
+      done = true;
+      setToken(response.data.token);
+      setDashboard(true);
     } catch (err) {
-      setHideFillData(true);
-      setHideFillEmail(true);
-      setHideFillPassword(true);
-      setHideWrongData(false);
+      done = false;
     }
+    return done;
+  };
+
+  const checkEmail = async (email) => {
+    let isValid = false;
+    try {
+      const response = await api.post('/api/user/email-check', {
+        email,
+      });
+      isValid = true;
+    } catch (err) {
+      setErrorMessage(errors.usedEmail);
+    }
+    return isValid;
+  };
+
+  const checkUserName = async (blogName) => {
+    let isValid = false;
+    try {
+      const response = await api.post('/api/user/username-check', {
+        blogName,
+      });
+      isValid = true;
+    } catch (err) {
+      setErrorMessage(errors.usedBlogName);
+    }
+    return isValid;
   };
 
   /**
@@ -42,96 +139,43 @@ function Register() {
   * @param {MyEvent} e - The observable event.
   * @listens MyEvent
   */
-  const loginHandler = (e) => {
+  const registerHandler = async (e) => {
     e.preventDefault();
-    if (e.target && e.target.email.value !== '' && e.target.password.value !== '') {
-      setHideFillData(true);
-      setHideFillEmail(true);
-      setHideFillPassword(true);
-      setHideWrongData(true);
-      register({
-        email: e.target.email.value,
-        password: e.target.password.value,
-      });
-    } else if (e.target.email.value === '' && e.target.password.value === '') {
-      setHideFillData(false);
-      setHideFillEmail(true);
-      setHideFillPassword(true);
-      setHideWrongData(true);
-    } else if (e.target.email.value !== '') {
-      setHideFillData(true);
-      setHideFillEmail(true);
-      setHideFillPassword(false);
-      setHideWrongData(true);
-    } else {
-      setHideFillData(true);
-      setHideFillEmail(false);
-      setHideFillPassword(true);
-      setHideWrongData(true);
+    try {
+      if (checkNonEmptyFields(e) && validateEmail(e.target.email.value)) {
+        const unusedEmail = await checkEmail(e.target.email.value);
+        if (unusedEmail && validatePassword(e.target.password.value)) {
+          const unusedBlogName = await checkUserName(e.target.blogName.value);
+          if (unusedBlogName) {
+            register(e.target.blogName.value, e.target.email.value, e.target.password.value);
+          }
+        }
+      }
+    } catch (err) {
+      console.error(err.message);
     }
   };
 
   return (
     <div className={registerStyle.bodyRegister}>
+      {dashboard
+      && (
+        <Redirect to="/dashboard" />
+      )}
       <div className={registerStyle.container}>
         <h2 data-testid="h2"> tumblr </h2>
-        <form data-testid="form" onSubmit={loginHandler}>
+        <form data-testid="form" onSubmit={registerHandler}>
 
-          {!hideFillData
+          {errorMessage !== 9
             && (
-              <div data-testid="emptyData" id={registerStyle.incorrectUser}>You do have to fill this stuff out, you know.</div>
+              <div data-testid="errorMessage" id={registerStyle.incorrectUser}>
+                {
+                  errorMessages[errorMessage]
+                }
+              </div>
             )}
 
-          {!hideFillEmail
-            && (
-              <div data-testid="emptyEmail" id={registerStyle.incorrectUser}>You forgot to enter your email!</div>
-            )}
-
-          {!hideFillPassword
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>You forgot to enter your password!</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>You forgot to enter your blog name!</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s not a valid email address. Please try again.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s not a valid email address. Please try again.</div>
-            )}
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>This email address is already in use.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>The password must be at least 8 characters.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>Please choose a stronger password.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That password is known to be included in compromised password lists. Please choose something more unique.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s a good blog name, but it&apos;s taken.</div>
-            )}
-
-          <input data-testid="email" type="email" name="email" id="email" placeholder="Email" />
+          <input data-testid="email" type="text" name="email" id="email" placeholder="Email" />
           <input type="password" name="password" id="password" placeholder="Password" />
           <input type="text" name="blogName" id="blogName" placeholder="Blog name" />
           <p>
