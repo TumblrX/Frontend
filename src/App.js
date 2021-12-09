@@ -8,6 +8,8 @@ import {
   Explore,
   Inbox,
   New,
+  MainPage,
+  Register,
   LoginPage,
   ForgetPassword,
   CreateBlog,
@@ -23,7 +25,8 @@ const App = function () {
         <Chat />
       </Route>
       <Route exact path="/">
-        <Redirect to="/dashboard" />
+        <NavBar />
+        <MainPage />
       </Route>
       <Route exact path="/explore">
         <NavBar />
@@ -48,7 +51,12 @@ const App = function () {
       <Route exact path="/forgetPassword">
         <ForgetPassword />
       </Route>
+      <Route exact path="/register">
+        <NavBar />
+        <Register />
+      </Route>
       <Route exact path="/login">
+        <NavBar />
         <LoginPage />
       </Route>
       <Route path="/settings">

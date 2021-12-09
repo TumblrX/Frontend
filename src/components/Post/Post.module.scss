@@ -1,0 +1,100 @@
+.post {
+  background-color: #fff;
+  border-radius: 5px;
+  padding:0 10px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    .blogName {
+      cursor: pointer;
+      a {
+        color: inherit;
+      }
+    }
+    .icon {
+      cursor: pointer;
+    }
+  }
+
+  .content {
+    .chat{
+      margin-bottom: 0.6rem;
+    }
+    .text{
+      margin-bottom: 0.6rem;
+    }
+    .chat{
+      font-family: monospace;
+    }
+    .link {
+      margin-bottom: 1rem;
+      a {
+        display: block;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        color: black;
+        margin-bottom: 0.5rem;
+        h3{
+          font-size: 1rem;
+          font-weight: 500;
+        }
+        p{
+          color: #555;
+        }
+      }
+    }
+    .image{
+      margin-bottom: 1rem;
+    }
+    .audio{
+      margin-bottom: 1rem;
+      audio{
+        display: block;
+      }
+    }
+    .video{
+      margin-bottom: 1rem;
+    }
+  }
+
+  .footer {
+    padding: 10px 0;  
+    color:rgb(89,89,89);
+    display: flex;
+    justify-content: space-between;
+    .notes {
+      cursor: pointer;
+    }
+    .icons {
+      display: flex;
+      &>*{
+        cursor: pointer;
+      }
+      &>*:not(:last-child){
+        margin-right: 16px;
+      }
+    }
+  }
+  b {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  q {
+    font-family: serif;
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+  blockquote{
+    border-left: 2px solid #ccc;
+    padding-left: 1rem;
+  }
+}
