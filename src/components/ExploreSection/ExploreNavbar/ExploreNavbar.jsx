@@ -1,12 +1,19 @@
 import React from "react";
 import styles from "./scss/ExploreNavbar.module.scss";
+import { Link } from "react-router-dom";
 function ExploreNavbar() {
   return (
     <div className={styles["explore-navbar"]}>
       <div className={styles["explore-selection"]}>
-        <span>For You 💖</span>
-        <span>Trending 🚀</span>
-        <span>Staff Picks 🌟</span>
+        <Link to="explore/recommended-for-you">
+          <span>For You 💖</span>
+        </Link>
+        <Link to="/explore/trending">
+          <span>Trending 🚀</span>
+        </Link>
+        <Link to="/explore/staff-pics">
+          <span>Staff Picks 🌟</span>
+        </Link>
         <span>More </span>
       </div>
       <div>

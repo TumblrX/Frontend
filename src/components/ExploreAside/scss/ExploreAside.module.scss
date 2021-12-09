@@ -5,6 +5,7 @@
   font-size: 1.2rem;
   font-family: sans-serif;
   margin: 15px 15px;
+
   .show-more-tags {
     margin: 20px auto;
     width: fit-content;
@@ -95,10 +96,10 @@
             text-decoration: underline;
           }
         }
-        &:hover{
-            &::after{
-                opacity: 1;
-            }
+        &:hover {
+          &::after {
+            opacity: 1;
+          }
         }
         &::after {
           content: "x";
@@ -112,4 +113,18 @@
       }
     }
   }
+}
+
+/* // Medium devices (tablets, 768px and up)768 */
+@media (max-width: 990px) {
+  .explore-aside {
+    display: none;
+  }
+}
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1200) {
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 }

@@ -6,11 +6,28 @@ import TrendingList from "./TrendingList/TrendingList";
 function ExploreSection() {
   return (
     <div className={styles["explore-section"]}>
-      <ExploreNavbar/>
-      <ExploreSuggestionList/>
-      <TrendingList/>
+      <ExploreNavbar />
 
-      
+      <ExploreSuggestionList />
+      {/* <TrendingList/> */}
+      <div className={styles["posts-grid"]}>
+        <div style={{ height: "40px", backgroundColor: "red"}}>post 1 </div>
+        <div style={{ height: "50px", backgroundColor: "black" }}>post 2 </div>
+        <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
+        <div style={{ height: "70px", backgroundColor: "white" }}>post 4 </div>
+        <div style={{ height: "40px", backgroundColor: "red" }}>post 1 </div>
+        <div style={{ height: "50px", backgroundColor: "black" }}>post 2 </div>
+        <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
+        <div style={{ height: "70px", backgroundColor: "white" }}>post 4 </div>
+        <div style={{ height: "40px", backgroundColor: "red" }}>post 1 </div>
+        <div style={{ height: "50px", backgroundColor: "black" }}>post 2 </div>
+        <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
+        <div style={{ height: "70px", backgroundColor: "white" }}>post 4 </div>
+        <div style={{ height: "40px", backgroundColor: "red" }}>post 1 </div>
+        <div style={{ height: "50px", backgroundColor: "black" }}>post 2 </div>
+        <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
+        <div style={{ height: "70px", backgroundColor: "white" }}>post 4 </div>
+      </div>
     </div>
   );
 }

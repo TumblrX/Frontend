@@ -1,7 +1,6 @@
 @import '../../scss/style.scss';
 
-
-.bodyLogin {
+.bodyRegister {
     min-height: 100vh;
     background: rgba(0, 0, 0, 0.7) url("../../assets/Images/background.jpg");
     background-size: cover;
@@ -41,8 +40,9 @@
                 display: none;
             }
 
-            input[type='text'],
-            input[type='password'] {
+            input[type='email'],
+            input[type='password'],
+            input[type='text'] {
                 @include dimensions(100%, 46px);
                 @include font(.875rem, #000, 400);
                 @include input-default;
@@ -63,21 +63,12 @@
 
             input[type='submit'] {
                 @include dimensions(100%, 42px);
-                @include font(1rem, #000, 700);
+                @include font(1.1rem, #000, 700);
                 @include btn-default;
-                margin: 10px 0 0 0;
+                margin: 10px 0 15px 0;
                 padding: 5px;
                 background: #00b8ff;
-            }
-
-            .bigParagraphe {
-                @include font(1rem, 0, 0);
-                text-align: center;
-
-                #forgetPassword {
-                    text-decoration: none;
-                }
-            }
+            }            
         }
 
         #or {
@@ -101,14 +92,26 @@
             @include flex_box(center, center, 0);
             @include btn-default;
             margin-bottom: 6px;
-            background: #fff;
-            
-            .reset{
-
-            }
+            background: #fff;          
+     
 
             span {
                 @include font(1rem, #000, 700);
+                margin-left: 8px;
+            }
+        }
+        .trend{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            span{
+                display: inline-block;
+                color: #fff;    
+            }
+
+            a{
+                text-decoration: none;
                 margin-left: 8px;
             }
         }
@@ -121,8 +124,7 @@
 
 @media (max-width: 300px) {
 
-
-    .bodyLogin {
+    .bodyRegister {
         .container {
             @include dimensions(100vw, 0);
 
@@ -130,48 +132,48 @@
                 @include font(23vw, 0, 0);
             }
 
-            form #incorrectUser {
-                @include font(5vw, #fff, 400);
+            form{
+                #incorrectUser {
+                    @include font(5vw, #fff, 400);
+        
+                }
+                input[type='email'],
+                input[type='password'],
+                input[type='text'] {
+                    @include dimensions(0,35px );
+                    @include font(5vw, #000, 400);
+                    padding: 5px 7px;
 
-            }
+                    &::placeholder {
+                        @include font(5vw, 0, 0);
+                    }
+                }
+                input[type='submit'] {
+                    @include dimensions(0,35px );
+                    @include font(5vw, #000, 700);
+                    padding: 5px 7px;
+                }
 
-            input[type='text'],
-            input[type='password'] {
-                @include font(5vw, #000, 400);
-                padding: 5px 7px;
-
-                &::placeholder {
-                    @include font(5vw, 0, 0);
+                p {
+                    @include font(4.5vw, 0, 0);
+                    line-height: 1rem;
                 }
             }
-
-            p {
-                @include font(4.5vw, 0, 0);
-                line-height: 1rem;
-            }
-
-            input[type='submit'] {
-                @include font(5vw, #000, 700);
-            }
-
-            .bigParagraphe {
+            #or p {
                 @include font(5vw, 0, 0);
-
+            }
+            button {
+                @include dimensions(0,35px );        
+                span {
+                    @include font(5vw, #000, 700);
+                }
+            }
+            .trend span{   
+                @include font(5vw, 0, 0);               
             }
         }
 
-        #or p {
-            @include font(5vw, 0, 0);
-        }
     }
 
-    button {
-        @include dimensions(100%, 42px);
-        @include font (7vw, 0, 0);
-
-        span {
-            @include font(5vw, #000, 700);
-        }
-    }
 
 }
