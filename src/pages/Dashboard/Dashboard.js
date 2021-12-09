@@ -2,9 +2,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Dashboard.module.scss';
-import showPosts from './DashBoardController';
+import { showPosts, getOnePost } from './DashBoardController';
 import fetchPost from './DashBoardService';
 import NewPostNavBar from '../../components/Dashboard/NewPost/Newpost';
+import Post from '../../components/Post/Post';
 import {
   setPosts, incrementPageNum, decrementPageNum,
   setIsInfinite, setExploreBlogs, setIsMounted, setPageNum,
@@ -133,8 +134,9 @@ const Dashboard = function () {
               </div>
             </div>
             <div className={styles.radar}>
-              Radar
+              <h1 className={styles.white}>Radar</h1>
               <hr />
+              {ismounted && getOnePost(posts)}
             </div>
           </div>
           {/* --------------- End explore  ---------------------- */}

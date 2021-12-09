@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styles from './Dashboard.module.scss';
@@ -25,4 +26,24 @@ const showPosts = (posts, pageNum, isInfinte) => {
     ))
   );
 };
-export default showPosts;
+
+const getOnePost = (posts) => {
+  const i = Math.floor(Math.random() * (posts.length - 1));
+  const post = posts[i];
+  console.log('post =', post);
+  if (post) {
+    return (
+      <div className={`${styles.post}`}>
+        <div className={styles.logo} />
+        <div className={styles.postDatailes}>
+          <Post data={post} />
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div />
+    );
+  }
+};
+export { showPosts, getOnePost };

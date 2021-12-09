@@ -143,9 +143,14 @@ $font-color : #000;
             }
         }
         .radar{
-            min-height: 200px;
+            .white{
+                color: #fff;
+            }
+            hr{
+                height: 1px;
+            }
             border: 3px solid $bg;
-            background-color: $post-bg;
+            // background-color: $post-bg;
         }
     }
 }
