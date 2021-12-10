@@ -8,21 +8,20 @@
     width: 0;
     background-color: transparent;
   }
-  &:hover{
-      .before{
-          opacity: 1;
-      }
-      .after{
-        opacity: 1;
+  &:hover {
+    .before {
+      opacity: 1;
+    }
+    .after {
+      opacity: 1;
     }
   }
   .after {
-    position: fixed;
-    background-image: url(../../../../assets/Images/icons8-chevron-right-60.png);
+    position: sticky;
     width: 50px;
     height: 50px;
     display: inline-block;
-    right: 27%;
+    right: 3%;
     transform: translateY(150%);
     opacity: 0;
     background-color: transparent;
@@ -30,13 +29,12 @@
     cursor: pointer;
   }
   .before {
-    position: fixed;
-    background-image: url(../../../../assets/Images/icons8-chevron-right-60.png);
+    position: sticky;
     width: 50px;
     height: 50px;
     display: inline-block;
     opacity: 0;
-    left: 8%;
+    left: 3%;
     transform: rotate(180deg) translateY(-150%);
     background-color: transparent;
     transition: opacity 0.3s 0.3s linear;
