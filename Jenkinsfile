@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment{
+        PASS=credentials('dockerToken')
+    }
         stages {
         stage('Build') {
             steps {
@@ -16,6 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh'''
+                    docker login -u muhammad2000 -p $PASS
                     docker push muhammad2000/front
                 '''
             }
