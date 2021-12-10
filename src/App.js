@@ -15,14 +15,20 @@ import {
   CreateBlog,
   Blog,
 } from './pages/pages';
-import { NavBar, ExploreLayout } from './components/Layouts/Layouts';
+import {
+  NavBar,
+  HomePageNavBar,
+  LogInNavBar,
+  SignUpNavBar,
+  ExploreLayout,
+} from './components/Layouts/Layouts';
 import Chat from './components/Dashboard/Chat/Chat';
 
 const App = function () {
   return (
     <Switch>
       <Route exact path="/">
-        <NavBar />
+        <HomePageNavBar />
         <MainPage />
       </Route>
       <Route exact path="/Chat">
@@ -52,11 +58,11 @@ const App = function () {
         <ForgetPassword />
       </Route>
       <Route exact path="/register">
-        <NavBar />
+        <LogInNavBar />
         <Register />
       </Route>
       <Route exact path="/login">
-        <NavBar />
+        <SignUpNavBar />
         <LoginPage />
       </Route>
       <Route path="/settings">
