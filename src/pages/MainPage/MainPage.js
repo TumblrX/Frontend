@@ -1,8 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect, Redirect } from 'react';
 import mainPageStyle from './MainPage.module.scss';
-import api from '../../api/api';
 
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
@@ -12,8 +9,17 @@ import api from '../../api/api';
  */
 // eslint-disable-next-line react/function-component-definition
 function MainPage() {
+  const [dashboard, setDashboard] = useState(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (localStorage.getItem('token')) { setDashboard(true); }
+  });
   return (
     <div className={mainPageStyle.bodyMainPage}>
+      {dashboard
+      && (
+        <Redirect to="/dashboard" />
+      )}
       <div className={mainPageStyle.container}>
         <h2> tumblr </h2>
         <p className={mainPageStyle.p1}>

@@ -38,6 +38,7 @@ function Register() {
     'Please choose a stronger password.',
     'That\'s a good blog name, but it\'s taken.',
   ];
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (localStorage.getItem('token')) { setDashboard(true); }
@@ -61,6 +62,7 @@ function Register() {
     }
     return false;
   };
+
   const validateEmail = (email) => {
     const emailPattern = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (!emailPattern.test(email)) {
@@ -68,6 +70,7 @@ function Register() {
     }
     return emailPattern.test(email);
   };
+
   const validatePassword = (password) => {
     const notShortPassword = /(?=.{8,})/;
     const strongPassword = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
@@ -81,17 +84,13 @@ function Register() {
     }
     return true;
   };
-  const validateBLogName = (blogName) => {
-    const emailPattern = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return emailPattern.test(blogName);
-  };
 
   /**
   * @description Verify that the user is authorized to login in
   * @param {string} email - email of the user
   * @param {string} password - password of the user
   */
-  const register = async (email, password, blogName) => {
+  const register = async (blogName, email, password) => {
     let done = false;
     try {
       const response = await api.post('/api/user/register', {
@@ -102,34 +101,38 @@ function Register() {
       done = true;
       setToken(response.data.token);
       setDashboard(true);
+      console.log('hi');
     } catch (err) {
-      done = false;
+      // empty
+      console.log('not hi');
     }
     return done;
   };
 
   const checkEmail = async (email) => {
-    let isValid = false;
+    let isValid = true;
     try {
       const response = await api.post('/api/user/email-check', {
         email,
       });
-      isValid = true;
-    } catch (err) {
+      isValid = false;
       setErrorMessage(errors.usedEmail);
+    } catch (err) {
+      // empty
     }
     return isValid;
   };
 
   const checkUserName = async (blogName) => {
-    let isValid = false;
+    let isValid = true;
     try {
       const response = await api.post('/api/user/username-check', {
-        blogName,
+        username: blogName,
       });
-      isValid = true;
-    } catch (err) {
+      isValid = false;
       setErrorMessage(errors.usedBlogName);
+    } catch (e) {
+      // empty
     }
     return isValid;
   };
@@ -152,17 +155,17 @@ function Register() {
         }
       }
     } catch (err) {
-      console.error(err.message);
+      // empty
     }
   };
 
   return (
     <div className={registerStyle.bodyRegister}>
-      {dashboard
+      <div className={registerStyle.container}>
+        {dashboard
       && (
         <Redirect to="/dashboard" />
       )}
-      <div className={registerStyle.container}>
         <h2 data-testid="h2"> tumblr </h2>
         <form data-testid="form" onSubmit={registerHandler}>
 
