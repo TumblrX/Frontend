@@ -1,11 +1,19 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import styles from '../Account.module.css';
 import pen from '../../../assets/Images/pencil-64x64.png';
 import api from '../../../api/api';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  updateEmail,
+  updateConfirmedPassword,
+  updateLetPeopleFindBlogByEmail,
+  updatePrevEmail,
+  updatePassword,
+} from '../../../redux/EmailSection';
 
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
@@ -15,14 +23,10 @@ import api from '../../../api/api';
  */
 
 const EmailSection = function (props) {
-  const [emailInfo, updateInfo] = useState({
-    email: '',
-    password: '',
-    previousEmail: '',
-    confirmedPassword: '',
-    letPeopleFindBlogByEmail: null,
-  });
-
+  const {
+    email, password, previousEmail, confirmedPassword, letPeopleFindBlogByEmail,
+  } = useSelector((state) => state.emailInfo);
+  const dispatch = useDispatch();
   /**
    * this function handle the click on the save button in the email section
    * @type {function}
@@ -40,14 +44,14 @@ const EmailSection = function (props) {
     );
     if (event.target === saveButtons[0]) {
       if (
-        emailInfo.email === emailInfo.previousEmail
-        || emailInfo.email === ''
+        email === previousEmail
+        || email === ''
       ) {
         document.getElementsByClassName(
           `${styles['error-email-message']}`,
         )[0].style.visibility = 'unset';
       } else {
-        if (emailInfo.password !== emailInfo.confirmedPassword) {
+        if (password !== confirmedPassword) {
           document.getElementsByClassName(
             `${styles['error-password-message']}`,
           )[0].style.visibility = 'unset';
@@ -58,9 +62,8 @@ const EmailSection = function (props) {
          * object for the data that will be sent to the server
          */
         const sentData = {
-          email: emailInfo.email,
+          email,
         };
-
         props.sendData(sentData);
       }
     }
@@ -111,7 +114,11 @@ const EmailSection = function (props) {
 
     document.querySelectorAll('form')[0].style.pointerEvents = 'all';
     // the change that has happen will be ignored
-    updateInfo((prevState) => ({ ...prevState, email: prevState.previousEmail }));
+    // updateInfo((prevState) => ({
+    //   ...prevState,
+    //   email: prevState.previousEmail,
+    // }));
+    dispatch(updateEmail(previousEmail));
   };
 
   /**
@@ -125,13 +132,10 @@ const EmailSection = function (props) {
       .get('/users/1')
       .then((response) => {
         document.querySelectorAll('input[type="checkbox"]')[0].checked = response.data.letPeopleFindBlogByEmail;
-        updateInfo((prevState) => ({
-          ...prevState,
-          previousEmail: response.data.email,
-          email: response.data.email,
-          password: response.data.password,
-          letPeopleFindBlogByEmail: response.data.letPeopleFindBlogByEmail,
-        }));
+        dispatch(updateEmail(response.data.email));
+        dispatch(updatePrevEmail(response.data.email));
+        dispatch(updateLetPeopleFindBlogByEmail(response.data.letPeopleFindBlogByEmail));
+        dispatch(updatePassword(response.data.password));
       })
       .catch(() => {
         console.log('error');
@@ -205,18 +209,16 @@ const EmailSection = function (props) {
       element.style.visibility = 'hidden';
     });
     if (event.target.type === 'email') {
-      updateInfo({ ...emailInfo, email: event.target.value });
+      dispatch(updateEmail(event.target.value));
+      console.log(email);
     } else if (event.target.id === 'emailcurrentpassword') {
-      updateInfo({ ...emailInfo, confirmedPassword: event.target.value });
+      dispatch(updateConfirmedPassword(event.target.value));
     } else {
       const sentData = {
         letPeopleFindBlogByEmail: event.target.checked,
       };
       api.patch('/users/1', sentData);
-      updateInfo({
-        ...emailInfo,
-        letPeopleFindBlogByEmail: event.target.checked,
-      });
+      dispatch(updateLetPeopleFindBlogByEmail(event.target.checked));
     }
   };
 
@@ -233,7 +235,7 @@ const EmailSection = function (props) {
             id="email-box"
             data-testid="email-box"
             type="email"
-            value={emailInfo.email}
+            value={email}
             onChange={changeInput}
             className={`${styles['before-focus-on-edit']} ${styles['input-box']} `}
           />
@@ -244,7 +246,7 @@ const EmailSection = function (props) {
             type="password"
             placeholder="Confirm Password"
             className={`${styles.hidden} ${styles['input-box']}`}
-            value={emailInfo.confirmedPassword}
+            value={confirmedPassword}
             onChange={changeInput}
             id="emailcurrentpassword"
             data-testid="password-box"
@@ -280,7 +282,7 @@ const EmailSection = function (props) {
               type="checkbox"
               name=""
               style={{ marginRight: '6px' }}
-              value={emailInfo.letPeopleFindThroughEmail}
+              value={letPeopleFindBlogByEmail}
               onChange={changeInput}
               className={`${styles['input-box']}`}
             />
