@@ -1,10 +1,14 @@
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import styles from '../Account.module.css';
 import pen from '../../../assets/Images/pencil-64x64.png';
 import api from '../../../api/api';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  updateConfirmedPassword, updatenewConfirmedPassword, updatenewPassword, updatePassword,
+} from '../../../redux/PasswordSection';
 
 /**
  * Component to render the Password  Section in the Accountsettings in the Settings page
@@ -14,12 +18,20 @@ import api from '../../../api/api';
  */
 
 const PasswordSection = function (props) {
-  const [passwordInfo, updateInfo] = useState({
-    password: '',
-    confirmedPassword: '',
-    newPassword: '',
-    newConfirmedPassword: '',
-  });
+  const {
+    password,
+    confirmedPassword,
+    newPassword,
+    newConfirmedPassword,
+  } = useSelector((state) => state.passwordInfo);
+  // const [passwordInfo, updateInfo] = useState({
+  //   password: '',
+  //   confirmedPassword: '',
+  //   newPassword: '',
+  //   newConfirmedPassword: '',
+  // });
+
+  const dispatch = useDispatch();
   /**
    * retreive the data from the backend when the component mounteds
    * @type {function}
@@ -31,8 +43,8 @@ const PasswordSection = function (props) {
     api
       .get('/users/1')
       .then((response) => {
-        updateInfo({ ...passwordInfo, password: response.data.password });
-        console.log(passwordInfo);
+        // updateInfo({ ...passwordInfo, password: response.data.password });
+        dispatch(updatePassword(response.data.password));
       })
       .catch();
   };
@@ -55,16 +67,16 @@ const PasswordSection = function (props) {
     );
 
     if (event.target === saveButtons[1]) {
-      if (passwordInfo.confirmedPassword !== passwordInfo.password) {
+      if (confirmedPassword !== password) {
         document.getElementsByClassName(
           `${styles['error-current-password']}`,
         )[0].style.visibility = 'unset';
       } else if (
-        passwordInfo.newPassword.length < 10
-        || passwordInfo.password === passwordInfo.newPassword
+        newPassword.length < 10
+        || password === newPassword
       ) {
         // one condition for test
-        if (passwordInfo.newPassword.length < 10) {
+        if (newPassword.length < 10) {
           document.getElementsByClassName(
             `${styles['error-new-password']}`,
           )[0].style.visibility = 'unset';
@@ -74,13 +86,14 @@ const PasswordSection = function (props) {
           )[1].style.visibility = 'unset';
         }
       } else if (
-        passwordInfo.newPassword !== passwordInfo.newConfirmedPassword
+        newPassword !== newConfirmedPassword
       ) {
         document.getElementsByClassName(
           `${styles['error-confirm-password']}`,
         )[0].style.visibility = 'unset';
       } else {
-        const sentData = { password: passwordInfo.newPassword };
+        const sentData = { password: newPassword };
+        console.log(newConfirmedPassword, newPassword, password);
         props.sendData(sentData);
       }
     }
@@ -204,15 +217,19 @@ const PasswordSection = function (props) {
       element.style.visibility = 'hidden';
     });
     if (event.target.id === 'currentpassword') {
-      updateInfo({ ...passwordInfo, confirmedPassword: event.target.value });
+      // updateInfo({ ...passwordInfo, confirmedPassword: event.target.value });
+      dispatch(updateConfirmedPassword(event.target.value));
     } else if (event.target.id === 'newpassword') {
-      updateInfo({ ...passwordInfo, newPassword: event.target.value });
+      // updateInfo({ ...passwordInfo, newPassword: event.target.value });
+      dispatch(updatenewPassword(event.target.value));
     } else if (event.target.id === 'confirmpassword') {
-      updateInfo({ ...passwordInfo, newConfirmedPassword: event.target.value });
+      // updateInfo({ ...passwordInfo, newConfirmedPassword: event.target.value });
+      dispatch(updatenewConfirmedPassword(event.target.value));
     } else {
-      updateInfo({ ...passwordInfo, confirmedPassword: event.target.value });
+      // updateInfo({ ...passwordInfo, confirmedPassword: event.target.value });
+      dispatch(updateConfirmedPassword(event.target.value));
     }
-    console.log(passwordInfo);
+    // console.log(passwordInfo);
   };
 
   return (
@@ -236,7 +253,7 @@ const PasswordSection = function (props) {
             type="password"
             name=""
             placeholder="Current Password"
-            value={passwordInfo.confirmedPassword}
+            value={confirmedPassword}
             onChange={changeInput}
             data-testid="currentpassword-box"
             className={`${styles['input-box']}`}
@@ -248,7 +265,7 @@ const PasswordSection = function (props) {
             id="newpassword"
             type="password"
             placeholder="New Password"
-            value={passwordInfo.newPassword}
+            value={newPassword}
             onChange={changeInput}
             data-testid="newpassword-box"
             className={`${styles['input-box']}`}
@@ -263,7 +280,7 @@ const PasswordSection = function (props) {
             id="confirmpassword"
             type="password"
             placeholder="Confirm Password"
-            value={passwordInfo.newConfirmedPassword}
+            value={newConfirmedPassword}
             onChange={changeInput}
             data-testid="confirmpassword-box"
             className={`${styles['input-box']}`}

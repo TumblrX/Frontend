@@ -3,6 +3,9 @@ import styles from '../Account.module.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import api from '../../../api/api';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { updateEmailUserAbout, updateTwoFactorAuth } from '../../../redux/SecuritySection';
 /**
  * Component to render the Security  Section in the Accountsettings in the Settings page
  * @author Abdalla Mahmoud
@@ -11,10 +14,8 @@ import api from '../../../api/api';
  */
 
 const SecuritySection = function (props) {
-  const [checkboxesStates, updateState] = useState({
-    EmailUserAbout: null,
-    TwoFactorAuth: null,
-  });
+  const { EmailUserAbout, TwoFactorAuth } = useSelector((state) => state.securityInfo);
+  const dispatch = useDispatch();
 
   /**
    * this fucntion is just a handler for clicking on check box in the Security Section
@@ -30,9 +31,11 @@ const SecuritySection = function (props) {
      */
     const boxes = document.querySelectorAll('.security-container input');
     if (event.target === boxes[0]) {
-      updateState((prevState) => ({ ...prevState, EmailUserAbout: !prevState.EmailUserAbout }));
+      // updateState((prevState) => ({ ...prevState, EmailUserAbout: !prevState.EmailUserAbout }));
+      dispatch(updateEmailUserAbout(!EmailUserAbout));
     } else {
-      updateState((prevState) => ({ ...prevState, TwoFactorAuth: !prevState.TwoFactorAuth }));
+      // updateState((prevState) => ({ ...prevState, TwoFactorAuth: !prevState.TwoFactorAuth }));
+      dispatch(updateTwoFactorAuth(!TwoFactorAuth));
     }
   };
 
@@ -41,12 +44,12 @@ const SecuritySection = function (props) {
     // TAKE CARE  the setState function is an async function so we use useEffect method
     // to see any change happens to the state
     if (
-      checkboxesStates.EmailUserAbout === null
-      || checkboxesStates.TwoFactorAuth === null
+      EmailUserAbout === null
+      || TwoFactorAuth === null
     ) return;
     const sentData = {
-      emailAboutAccountActivity: checkboxesStates.EmailUserAbout,
-      twoFactorAuthentication: checkboxesStates.TwoFactorAuth,
+      emailAboutAccountActivity: EmailUserAbout,
+      twoFactorAuthentication: TwoFactorAuth,
     };
     console.log('Yes Iam ');
     api
@@ -58,7 +61,7 @@ const SecuritySection = function (props) {
         console.log(err);
         // validations from backend .
       });
-  }, [checkboxesStates, props]);
+  }, [EmailUserAbout, TwoFactorAuth, props]);
 
   /**
    * @function
@@ -74,10 +77,12 @@ const SecuritySection = function (props) {
         document.querySelectorAll('input[type="checkbox"]')[2].checked = response.data.twoFactorAuthentication;
         console.log('Iam here ');
 
-        updateState({
-          EmailUserAbout: response.data.emailAboutAccountActivity,
-          TwoFactorAuth: response.data.twoFactorAuthentication,
-        });
+        // updateState({
+        //   EmailUserAbout: response.data.emailAboutAccountActivity,
+        //   TwoFactorAuth: response.data.twoFactorAuthentication,
+        // });
+        dispatch(updateEmailUserAbout(response.data.emailAboutAccountActivity));
+        dispatch(updateTwoFactorAuth(response.data.twoFactorAuthentication));
       })
       .catch((err) => {});
   };

@@ -5,6 +5,15 @@ import styles from './Notifications.module.css';
 import pen from '../../assets/Images/pencil-64x64.png';
 import userPhoto from '../../assets/Images/myphoto.jpg';
 import api from '../../api/api';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  udpateEmailUserAboutNewFollowersBox,
+  udpateEmailUserAboutNewRepliesBox,
+  udpateEmailUserAboutNewMentionsBox,
+  udpateEmailUserAboutNewAnsweredAsksBox,
+  udpateNotificationSettingsFor,
+  udpateApplySettingsForAllBlogs,
+} from '../../redux/Notifications';
 
 /**
  * Component to render the Notifications  in the Settings page
@@ -14,14 +23,23 @@ import api from '../../api/api';
  */
 
 const Notifictions = function () {
-  const [userSettings, updateInfo] = useState({
-    EmailUserAboutNewFollowersBox: null,
-    EmailUserAboutNewRepliesBox: null,
-    EmailUserAboutNewMentionsBox: null,
-    EmailUserAboutNewAnsweredAsksBox: null,
-    NotificationSettingsFor: 'From people you follow',
-    ApplySettingsForAllBlogs: null,
-  });
+  // const [userSettings, updateInfo] = useState({
+  //   EmailUserAboutNewFollowersBox: null,
+  //   EmailUserAboutNewRepliesBox: null,
+  //   EmailUserAboutNewMentionsBox: null,
+  //   EmailUserAboutNewAnsweredAsksBox: null,
+  //   NotificationSettingsFor: 'From people you follow',
+  //   ApplySettingsForAllBlogs: null,
+  // });
+  const {
+    EmailUserAboutNewFollowersBoxState,
+    EmailUserAboutNewRepliesBoxState,
+    EmailUserAboutNewMentionsBoxState,
+    EmailUserAboutNewAnsweredAsksBoxState,
+    NotificationSettingsForState,
+    ApplySettingsForAllBlogsState,
+  } = useSelector((state) => state.notificationsInfo);
+  const dispatch = useDispatch();
 
   /**
    *
@@ -40,46 +58,57 @@ const Notifictions = function () {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
     if (event.target === checkboxes[0]) {
-      updateInfo({
-        ...userSettings,
-        ApplySettingsForAllBlogs: event.target.checked,
-      });
+      // updateInfo({
+      //   ...userSettings,
+      //   ApplySettingsForAllBlogs: event.target.checked,
+      // });
+      dispatch(udpateApplySettingsForAllBlogs(event.target.checked));
+      console.log(EmailUserAboutNewFollowersBoxState);
     } else if (event.target === checkboxes[1]) {
-      updateInfo({
-        ...userSettings,
-        EmailUserAboutNewFollowersBox: event.target.checked,
-      });
+      // updateInfo({
+      //   ...userSettings,
+      //   EmailUserAboutNewFollowersBox: event.target.checked,
+      // });
+      dispatch(udpateEmailUserAboutNewFollowersBox(event.target.checked));
+      console.log(EmailUserAboutNewRepliesBoxState);
     } else if (event.target === checkboxes[2]) {
-      updateInfo({
-        ...userSettings,
-        EmailUserAboutNewRepliesBox: event.target.checked,
-      });
+      // updateInfo({
+      //   ...userSettings,
+      //   EmailUserAboutNewRepliesBox: event.target.checked,
+      // });
+      dispatch(udpateEmailUserAboutNewRepliesBox(event.target.checked));
     } else if (event.target === checkboxes[3]) {
-      updateInfo({
-        ...userSettings,
-        EmailUserAboutNewMentionsBox: event.target.checked,
-      });
+      // updateInfo({
+      //   ...userSettings,
+      //   EmailUserAboutNewMentionsBox: event.target.checked,
+      // });
+      dispatch(udpateEmailUserAboutNewMentionsBox(event.target.checked));
     } else if (event.target === checkboxes[4]) {
-      updateInfo({
-        ...userSettings,
-        EmailUserAboutNewAnsweredAsksBox: event.target.checked,
-      });
+      // updateInfo({
+      //   ...userSettings,
+      //   EmailUserAboutNewAnsweredAsksBox: event.target.checked,
+      // });
+      // console.log(event.target.checked);
+      dispatch(udpateEmailUserAboutNewAnsweredAsksBox(event.target.checked));
     } else if (event.target.value === '1') {
-      updateInfo({ ...userSettings, NotificationSettingsFor: 'From nobody' });
+      // updateInfo({ ...userSettings, NotificationSettingsFor: 'From nobody' });
+      dispatch(udpateNotificationSettingsFor('From nobody'));
 
       document.querySelector(`.${styles.arrow}`).style.left = '-55px';
     } else if (event.target.value === '2') {
-      updateInfo({
-        ...userSettings,
-        NotificationSettingsFor: 'From people you follow',
-      });
+      // updateInfo({
+      //   ...userSettings,
+      //   NotificationSettingsFor: 'From people you follow',
+      // });
+      dispatch(udpateNotificationSettingsFor('From people you follow'));
 
       document.querySelector(`.${styles.arrow}`).style.left = '0';
     } else {
-      updateInfo({
-        ...userSettings,
-        NotificationSettingsFor: 'From everyone',
-      });
+      // updateInfo({
+      //   ...userSettings,
+      //   NotificationSettingsFor: 'From everyone',
+      // });
+      dispatch(udpateNotificationSettingsFor('From everyone'));
       document.querySelector(`.${styles.arrow}`).style.left = '-50px';
     }
   };
@@ -146,7 +175,29 @@ const Notifictions = function () {
         const PrevUserSettings = response.data.notificationsSettings;
         const userBoxes = document.querySelectorAll('input[type="checkbox"]');
         PrevUserSettings.ApplySettingsForAllBlogs = false;
-        updateInfo(PrevUserSettings);
+
+        dispatch(
+          udpateEmailUserAboutNewFollowersBox(
+            PrevUserSettings.EmailUserAboutNewFollowersBox,
+          ),
+        );
+
+        dispatch(
+          udpateEmailUserAboutNewRepliesBox(PrevUserSettings.EmailUserAboutNewRepliesBox),
+        );
+
+        dispatch(
+          udpateEmailUserAboutNewMentionsBox(PrevUserSettings.EmailUserAboutNewMentionsBox),
+        );
+
+        dispatch(
+          udpateEmailUserAboutNewAnsweredAsksBox(
+            PrevUserSettings.EmailUserAboutNewAnsweredAsksBox,
+          ),
+        );
+
+        dispatch(udpateNotificationSettingsFor('From nobody'));
+
         userBoxes[1].checked = PrevUserSettings.EmailUserAboutNewFollowersBox;
         userBoxes[2].checked = PrevUserSettings.EmailUserAboutNewRepliesBox;
         userBoxes[3].checked = PrevUserSettings.EmailUserAboutNewMentionsBox;
@@ -185,6 +236,15 @@ const Notifictions = function () {
    *
    */
   const formAction = () => {
+    const userSettings = {
+      EmailUserAboutNewFollowersBox: EmailUserAboutNewFollowersBoxState,
+      EmailUserAboutNewRepliesBox: EmailUserAboutNewRepliesBoxState,
+      EmailUserAboutNewMentionsBox: EmailUserAboutNewMentionsBoxState,
+      EmailUserAboutNewAnsweredAsksBox: EmailUserAboutNewAnsweredAsksBoxState,
+      NotificationSettingsFor: NotificationSettingsForState,
+      ApplySettingsForAllBlogs: ApplySettingsForAllBlogsState,
+    };
+    console.log(userSettings);
     const sentData = { notificationsSettings: userSettings };
     api
       .patch('/users/1', sentData)
@@ -196,7 +256,6 @@ const Notifictions = function () {
         console.log(err);
         // validations from backend .
       });
-    this.preventDefault();
   };
   useEffect(componentDidMount, []);
   return (
@@ -342,6 +401,7 @@ const Notifictions = function () {
             onClick={formAction}
             className={styles['save-button']}
             data-testid="notifications-save-button"
+            type="button"
           >
             Save
           </button>
