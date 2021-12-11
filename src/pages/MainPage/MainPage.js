@@ -1,19 +1,24 @@
-import React, { useState, useEffect, Redirect } from 'react';
+/* eslint-disable no-unused-vars */
+import { useEffect } from 'react';
 import mainPageStyle from './MainPage.module.scss';
-
+import { Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { redirectToDashboard } from '../../redux/mainPage';
 /**
- * Component to render the Email Section in the Accountsettings in the Settings page
  * @author Taher Mohamed
  *
  * @component
  */
 // eslint-disable-next-line react/function-component-definition
 function MainPage() {
-  const [dashboard, setDashboard] = useState(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const { dashboard } = useSelector((state) => state.mainPage);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    if (localStorage.getItem('token')) { setDashboard(true); }
+    if (localStorage.getItem('token')) { dispatch(redirectToDashboard()); }
   });
+
   return (
     <div className={mainPageStyle.bodyMainPage}>
       {dashboard
