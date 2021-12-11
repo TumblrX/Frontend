@@ -17,6 +17,9 @@ title
 a {
   text-decoration: none; }
 
+.before-focus-on-edit {
+  border: none; }
+
 .account-container {
   display: flex;
   flex-direction: column;
@@ -24,7 +27,8 @@ a {
   width: calc(100% - 40px);
   margin: 0 auto; }
   .account-container input {
-    -webkit-appearance: auto; }
+    -webkit-appearance: auto;
+    border: 1px solid gray; }
 
 .change-email-section,
 .password-box,
@@ -112,9 +116,6 @@ hr {
 .tags-filter-box,
 .posts-filter-box {
   display: none; }
-
-.before-focus-on-edit {
-  border: none; }
 
 .dots {
   margin-left: 5px;
