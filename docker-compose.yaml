@@ -4,3 +4,4 @@ services:
         image: muhammad2000/front
     fronttest:
         image: muhammad2000/fronttest
+        container_name: fronttest_container
