@@ -120,8 +120,6 @@
 
 
 @media (max-width: 300px) {
-
-
     .bodyLogin {
         .container {
             @include dimensions(100vw, 0);

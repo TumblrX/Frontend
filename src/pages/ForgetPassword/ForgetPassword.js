@@ -22,9 +22,9 @@ export default function ForgetPassword() {
   const forgetPassword = async (email) => {
     try {
       // eslint-disable-next-line no-unused-vars
-      /* const response = await api.post('/forgotPassword', {
+      const response = await api.post('/api/user/forgot-password', {
         email,
-      }); */
+      });
 
       setHideForm(true);
       setHideConfirm(false);
