@@ -1,6 +1,11 @@
 .row {
     display: flex;
 }
+@mixin avatar($width) {
+    width: $width;
+    height: $width;
+    border-radius: 50%;
+}
 .Chat {
     position: absolute;
     bottom: 0;
@@ -10,6 +15,16 @@
     height: 500px;
     background-color: aliceblue;
     z-index: 5;
+    transition: 1.5;
+}
+
+.ExitAvatar{
+    @include avatar(40px);
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+    display: none;
 }
 /*-----------------------------*/
 .Chat_header{
@@ -40,6 +55,9 @@
         }
     }
 }
+.DownIcon{
+
+}
 .dropDown {
     position: absolute;
     min-width: 200px;
@@ -60,7 +78,7 @@
     }
     .item:hover {background: #f1f1f1;}
 }
-.headerIcon:hover .dropDown {display: block;}
+.optionsIcon:hover .dropDown {display: block;}
 /*-----------------------------*/
 .Chat_content{
     height: 350px ;
@@ -68,11 +86,8 @@
     padding: 15px;
     overflow-y: scroll;
     .usertAvatar{
-        width:  40px;
-        height: 40px;
-        border-radius: 50%;
+        @include avatar(40px);
         margin-bottom: 10px;
-        position: relative;
         .avatar_img{
             max-width: 100%;
             z-index: 0;

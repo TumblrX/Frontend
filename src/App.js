@@ -40,10 +40,20 @@ const App = function () {
           <Explore />
         </ExploreLayout>
       </Route>
-      <Route exact path="/dashboard">
-        <NavBar />
-        <Dashboard />
-      </Route>
+      <Route
+        exact
+        path="/dashboard"
+        render={() => (
+          !localStorage.getItem('token') ? (
+            <>
+              <NavBar />
+              <Dashboard />
+            </>
+          ) : (
+            <Redirect to="/" />
+          )
+        )}
+      />
       <Route exact path="/inbox">
         <NavBar />
         <Inbox />

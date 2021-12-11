@@ -30,7 +30,6 @@ const showPosts = (posts, pageNum, isInfinte) => {
 const getOnePost = (posts) => {
   const i = Math.floor(Math.random() * (posts.length - 1));
   const post = posts[i];
-  console.log('post =', post);
   if (post) {
     return (
       <div className={`${styles.post}`}>

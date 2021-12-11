@@ -5,6 +5,7 @@ import styles from './Dashboard.module.scss';
 import { showPosts, getOnePost } from './DashBoardController';
 import fetchPost from './DashBoardService';
 import NewPostNavBar from '../../components/Dashboard/NewPost/Newpost';
+import { Redirect } from 'react-router-dom';
 import Post from '../../components/Post/Post';
 import {
   setPosts, incrementPageNum, decrementPageNum,
@@ -22,7 +23,7 @@ const Dashboard = function () {
     fetchPost();
     dispatch(setIsMounted(1));
     console.log('mounted done');
-  }, []);
+  }, [posts]);
 
   return (
     <div className={styles.parent}>
@@ -31,7 +32,7 @@ const Dashboard = function () {
         <div className={`${styles.container} ${styles.row}`}>
           {/* --------------- Start posts ---------------------- */}
           <div className={styles.posts}>
-            { localStorage.getItem('token') && (
+            { (
               <div className={`${styles.insertPost} ${styles.row}`}>
                 <div className={styles.insertLogo} />
                 <div className={styles.insertPostDetails}>
