@@ -5,10 +5,14 @@ import api from '../../api/api';
  * @param {object} userData
  * @return {void} return nothing
  */
-const sendData = async (userData) => {
+const sendData = async (userData, history, handleURLUsed) => {
   try {
     const response = await api.post('/createBlog', userData);
-    console.log(response);
+    if (response.status === 200) {
+      history.push(`/blog/${userData.handle}`);
+    } else if (response.status === 400) {
+      handleURLUsed();
+    }
   } catch (err) {
     console.log(`Error message: ${err.message}`);
   }
