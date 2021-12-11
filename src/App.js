@@ -44,7 +44,7 @@ const App = function () {
         exact
         path="/dashboard"
         render={() => (
-          !localStorage.getItem('token') ? (
+          localStorage.getItem('token') ? (
             <>
               <NavBar />
               <Dashboard />
