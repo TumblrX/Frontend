@@ -4,6 +4,7 @@
   display: flex;
   position: relative;
   scroll-behavior: smooth;
+  margin-left: -60px;
   &::-webkit-scrollbar {
     width: 0;
     background-color: transparent;
@@ -21,7 +22,7 @@
     width: 50px;
     height: 50px;
     display: inline-block;
-    right: 3%;
+    right: 1%;
     transform: translateY(150%);
     opacity: 0;
     background-color: transparent;
@@ -29,12 +30,13 @@
     cursor: pointer;
   }
   .before {
+    
     position: sticky;
     width: 50px;
     height: 50px;
     display: inline-block;
     opacity: 0;
-    left: 3%;
+    left: 5%;
     transform: rotate(180deg) translateY(-150%);
     background-color: transparent;
     transition: opacity 0.3s 0.3s linear;

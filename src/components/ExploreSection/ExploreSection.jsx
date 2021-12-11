@@ -16,6 +16,7 @@ function ExploreSection() {
             display: "flex",
             flexDirection: "column",
             marginLeft: "12px",
+            minWidth: "300px",
           }}
         >
           <div style={{ height: "50px", backgroundColor: "black" }}>
@@ -32,6 +33,7 @@ function ExploreSection() {
             display: "flex",
             flexDirection: "column",
             marginLeft: "12px",
+            minWidth: "300px",
           }}
         >
           <div style={{ height: "70px", backgroundColor: "white" }}>
@@ -48,6 +50,7 @@ function ExploreSection() {
             display: "flex",
             flexDirection: "column",
             marginLeft: "12px",
+            minWidth: "300px",
           }}
         >
           <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
@@ -65,6 +68,7 @@ function ExploreSection() {
             display: "flex",
             flexDirection: "column",
             marginLeft: "12px",
+            minWidth: "300px",
           }}
         >
           <div style={{ height: "40px", backgroundColor: "red" }}>post 1 </div>
