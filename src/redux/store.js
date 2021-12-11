@@ -6,6 +6,7 @@ import LoginReducer from './login';
 import EmailSectionReducer from './EmailSection';
 import PasswordSectionReducer from './PasswordSection';
 import SecuritySectionReducer from './SecuritySection';
+import NotificationsReducer from './Notifications';
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     login: LoginReducer,
     emailInfo: EmailSectionReducer,
     securityInfo: SecuritySectionReducer,
+    notificationsInfo: NotificationsReducer,
   },
 });
