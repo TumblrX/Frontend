@@ -1,18 +1,92 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import styles from './FollowerSection.module.scss';
+import useHandler from './FollowerSecionController';
 
-const FollowerSection = function ({ blogURL }) {
+const FollowerSection = function ({ data }) {
+  const { title, handle, avatar } = data;
+  const { handleSideClick } = useHandler();
   return (
     <div className={styles.container}>
       <a
-        href={blogURL}
+        href={`https://${handle}.tumblrx.com`}
         target="_blank"
         rel="noopener noreferrer"
         role="link"
         className={styles.a}
       />
-      <div className={styles.side} />
-      <div className={styles.sideSelect} />
+      <div className={styles.side}>
+        <div className={styles.sideSide}>
+          <div className={styles.avatarContainer}>
+            <div className={styles.avatar}>
+              <img
+                className={styles.img}
+                src={avatar}
+                alt="Avatar"
+                loading="eager"
+              />
+            </div>
+          </div>
+          <div className={styles.titlesContainer}>
+            <div className={styles.handle}>
+              <span className={styles.handleSpan}>{handle}</span>
+              <div className={styles.svgDiv}>
+                <svg
+                  viewBox="0 0 20 21"
+                  height="12"
+                  width="12"
+                  className={styles.svg}
+                >
+                  <path d="M11.5 8.8c0-1.5-1.2-2.8-2.6-2.8-1.4 0-2.6 1.3-2.6 2.8 0 1.5 1.2 2.2 2.6 2.2 1.5 0 2.6-.7 2.6-2.2zM5 16.2v.8h7.7v-.8c0-3-1.7-4.2-3.9-4.2C6.7 12 5 13.2 5 16.2zM16 19H2V4h10V2H2C.9 2 0 2.9 0 4v14.9C0 20.1.9 21 2 21h14.2c1.1 0 1.8-.9 1.8-2.1V8h-2v11zm2-17V0h-2v2h-2v2h2v2h2V4h2V2h-2z" />
+                </svg>
+              </div>
+            </div>
+            <div className={styles.title}>{title}</div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.sideSelect}>
+        <div className={styles.list}>
+          <span className={styles.span1}>
+            <span className={styles.span2}>
+              <button
+                className={styles.button}
+                aria-label="More options"
+                tabIndex="0"
+              >
+                <span className={styles.buttonSpanC} tabIndex="-1">
+                  <span className={styles.buttonSpan}>
+                    <svg
+                      viewBox="0 0 17.5 3.9"
+                      width="14"
+                      height="8"
+                      className={styles.Buttonsvg}
+                    >
+                      <path d="M17.5 1.9c0 1.1-.9 1.9-1.9 1.9-1.1 0-1.9-.9-1.9-1.9S14.5 0 15.6 0c1 0 1.9.9 1.9 1.9m-6.8 0c0 1.1-.9 1.9-1.9 1.9-1.1.1-2-.8-2-1.9 0-1 .9-1.9 2-1.9s1.9.9 1.9 1.9m-6.8 0c0 1.1-.9 2-2 2-1 0-1.9-.9-1.9-2S.9 0 1.9 0c1.1 0 2 .9 2 1.9" />
+                    </svg>
+                  </span>
+                </span>
+              </button>
+            </span>
+            <div className={styles.dropDown} id="List">
+              <div className={styles.dropDownContainer}>
+                <div className={styles.anotherContainer}>
+                  <a
+                    href="#"
+                    rel="noopener"
+                    target="_blank"
+                    className={styles.report}
+                  >
+                    Report
+                  </a>
+                  <button className={styles.block}>block</button>
+                  <button className={styles.close}>close</button>
+                </div>
+              </div>
+            </div>
+          </span>
+        </div>
+      </div>
 
     </div>
   );

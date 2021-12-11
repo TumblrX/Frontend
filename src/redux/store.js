@@ -9,6 +9,7 @@ import SecuritySectionReducer from './SecuritySection';
 import NotificationsReducer from './Notifications';
 import RegisterReducer from './register';
 import MainPageReducer from './mainPage';
+import blogFollowers from './blogFollowers';
 
 export default configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export default configureStore({
     create: createReducer,
     DashBoard: DashBoardReducer,
     blogposts: blogPosts,
+    blogfollowers: blogFollowers,
     login: LoginReducer,
     emailInfo: EmailSectionReducer,
     securityInfo: SecuritySectionReducer,

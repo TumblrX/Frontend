@@ -79,7 +79,7 @@ const App = function () {
         <Redirect to="/settings/account" />
         <Settings />
       </Route>
-      <Route path="/blog">
+      <Route path="/blog/:blogName">
         <NavBar />
         <Blog />
       </Route>
