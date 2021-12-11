@@ -1,0 +1,6 @@
+version: '3'
+services:
+    front:
+        image: muhammad2000/front
+    fronttest:
+        image: muhammad2000/fronttest
