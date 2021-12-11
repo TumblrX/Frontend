@@ -1,8 +1,9 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-unused-vars */
-import React, { useState, Redirect, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import registerStyle from './Register.module.scss';
-import api from '../../api/api';
+import { useSelector, useDispatch } from 'react-redux';
+import { redirectToDashboard } from '../../redux/register';
+import RegisterController from './RegisterController';
 
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
@@ -11,161 +12,26 @@ import api from '../../api/api';
  * @component
  */
 // eslint-disable-next-line react/function-component-definition
-function Register() {
-  const [errorMessage, setErrorMessage] = useState(9);
-  const [dashboard, setDashboard] = useState(false);
+const Register = function () {
+  const {
+    errorMessage, dashboard, errorMessages,
+  } = useSelector((state) => state.register);
+  const { registerHandler } = RegisterController();
 
-  const errors = {
-    fillData: 0,
-    fillEmail: 1,
-    fillPassword: 2,
-    fillBlogName: 3,
-    invalidEmail: 4,
-    usedEmail: 5,
-    shortPassword: 6,
-    weakPassword: 7,
-    usedBlogName: 8,
-  };
-
-  const errorMessages = [
-    'You do have to fill this stuff out, you know.',
-    'You forgot to enter your email!',
-    'You forgot to enter your password!',
-    'You forgot to enter your blog name!',
-    'That\'s not a valid email address. Please try again.',
-    'This email address is already in use.',
-    'The password must be at least 8 characters.',
-    'Please choose a stronger password.',
-    'That\'s a good blog name, but it\'s taken.',
-  ];
+  const dispatch = useDispatch();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (localStorage.getItem('token')) { setDashboard(true); }
+    if (localStorage.getItem('token')) { dispatch(redirectToDashboard()); }
   });
-  const setToken = (token) => {
-    localStorage.token = token;
-  };
-
-  const checkNonEmptyFields = (e) => {
-    if (e.target && e.target.email.value !== '' && e.target.password.value !== '' && e.target.blogName.value !== '') {
-      return true;
-    }
-    if (e.target && e.target.email.value === '' && e.target.password.value === '' && e.target.blogName.value === '') {
-      setErrorMessage(errors.fillData);
-    } else if (e.target && e.target.email.value === '') {
-      setErrorMessage(errors.fillEmail);
-    } else if (e.target && e.target.password.value === '') {
-      setErrorMessage(errors.fillPassword);
-    } else if (e.target && e.target.blogName.value === '') {
-      setErrorMessage(errors.fillBlogName);
-    }
-    return false;
-  };
-
-  const validateEmail = (email) => {
-    const emailPattern = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    if (!emailPattern.test(email)) {
-      setErrorMessage(errors.invalidEmail);
-    }
-    return emailPattern.test(email);
-  };
-
-  const validatePassword = (password) => {
-    const notShortPassword = /(?=.{8,})/;
-    const strongPassword = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
-    const mediumPassword = /((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/;
-    if (!notShortPassword.test(password)) {
-      setErrorMessage(errors.shortPassword);
-      return false;
-    } if (!(strongPassword.test(password)) && !(mediumPassword.test(password))) {
-      setErrorMessage(errors.weakPassword);
-      return false;
-    }
-    return true;
-  };
-
-  /**
-  * @description Verify that the user is authorized to login in
-  * @param {string} email - email of the user
-  * @param {string} password - password of the user
-  */
-  const register = async (blogName, email, password) => {
-    let done = false;
-    try {
-      const response = await api.post('/api/user/register', {
-        username: blogName,
-        email,
-        password,
-      });
-      done = true;
-      setToken(response.data.token);
-      setDashboard(true);
-      console.log('hi');
-    } catch (err) {
-      // empty
-      console.log('not hi');
-    }
-    return done;
-  };
-
-  const checkEmail = async (email) => {
-    let isValid = true;
-    try {
-      const response = await api.post('/api/user/email-check', {
-        email,
-      });
-      isValid = false;
-      setErrorMessage(errors.usedEmail);
-    } catch (err) {
-      // empty
-    }
-    return isValid;
-  };
-
-  const checkUserName = async (blogName) => {
-    let isValid = true;
-    try {
-      const response = await api.post('/api/user/username-check', {
-        username: blogName,
-      });
-      isValid = false;
-      setErrorMessage(errors.usedBlogName);
-    } catch (e) {
-      // empty
-    }
-    return isValid;
-  };
-
-  /**
-  * @description Check that the user enter a valid data during login and procced to login if valid
-  * @param {MyEvent} e - The observable event.
-  * @listens MyEvent
-  */
-  const registerHandler = async (e) => {
-    e.preventDefault();
-    try {
-      if (checkNonEmptyFields(e) && validateEmail(e.target.email.value)) {
-        const unusedEmail = await checkEmail(e.target.email.value);
-        if (unusedEmail && validatePassword(e.target.password.value)) {
-          const unusedBlogName = await checkUserName(e.target.blogName.value);
-          if (unusedBlogName) {
-            register(e.target.blogName.value, e.target.email.value, e.target.password.value);
-          }
-        }
-      }
-    } catch (err) {
-      // empty
-    }
-  };
 
   return (
     <div className={registerStyle.bodyRegister}>
+      {dashboard
+          && (
+            <Redirect to="/dashboard" />
+          )}
       <div className={registerStyle.container}>
-        {dashboard
-      && (
-        <Redirect to="/dashboard" />
-      )}
         <h2 data-testid="h2"> tumblr </h2>
         <form data-testid="form" onSubmit={registerHandler}>
 
@@ -256,5 +122,5 @@ function Register() {
       </div>
     </div>
   );
-}
+};
 export default Register;

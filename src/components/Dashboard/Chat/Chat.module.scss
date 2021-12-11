@@ -13,7 +13,7 @@
 }
 /*-----------------------------*/
 .Chat_header{
-    background-color: aqua;
+    background-color: #00b7f9;
     color: white;
     height: 50px;
     display: flex;
@@ -48,7 +48,7 @@
     color: #000;   
     display: none;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
+    z-index: 10;
     .item { 
         display: block; 
         border-bottom: 0.5px solid rgba($color: #000000, $alpha: 0.2) ;
@@ -56,14 +56,56 @@
         font-size: 15px;
         font-weight: 400;
         padding: 7px;
+        z-index: 10;
     }
     .item:hover {background: #f1f1f1;}
 }
 .headerIcon:hover .dropDown {display: block;}
 /*-----------------------------*/
 .Chat_content{
-    height: 350px   ;
+    height: 350px ;
     background-color: #fff;
+    padding: 15px;
+    overflow-y: scroll;
+    .usertAvatar{
+        width:  40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        position: relative;
+        .avatar_img{
+            max-width: 100%;
+            z-index: 0;
+        }
+    }
+    .messegesBody{
+        display: flex;
+        flex-direction:column ;
+    }
+    .msg{
+        display: flex;
+        .msgAvatar{
+            width: 20%;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 30px;
+        }
+        .msgContent{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+        }
+        p{
+            display: block;
+        }
+    }
+}
+.startChat{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
 }
 /*-----------------------------*/
 .Chat_footer{

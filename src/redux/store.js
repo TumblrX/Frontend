@@ -7,6 +7,8 @@ import EmailSectionReducer from './EmailSection';
 import PasswordSectionReducer from './PasswordSection';
 import SecuritySectionReducer from './SecuritySection';
 import NotificationsReducer from './Notifications';
+import RegisterReducer from './register';
+import MainPageReducer from './mainPage';
 
 export default configureStore({
   reducer: {
@@ -18,5 +20,7 @@ export default configureStore({
     emailInfo: EmailSectionReducer,
     securityInfo: SecuritySectionReducer,
     notificationsInfo: NotificationsReducer,
+    register: RegisterReducer,
+    mainPage: MainPageReducer,
   },
 });
