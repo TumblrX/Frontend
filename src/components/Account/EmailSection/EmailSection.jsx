@@ -134,7 +134,7 @@ const EmailSection = function (props) {
         }));
       })
       .catch(() => {
-        console.log('error');
+        // console.log('error');
       });
   };
   useEffect(componentDidMount, []);
