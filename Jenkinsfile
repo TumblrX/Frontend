@@ -14,6 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh'''
+                    docker build -f ./Dockertest .
                     docker-compose up -d
                     docker wait fronttest_container
                     docker-compose up -d
