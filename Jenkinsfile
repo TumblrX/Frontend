@@ -13,7 +13,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'no tests so done'
+                sh'''
+                    docker-compose up -d
+                    docker wait fronttest_container
+                    docker-compose up -d
+                    VALUE=$(docker wait fronttest_container)
+                    if [ "$VALUE" != "0" ] ; then exit 1 ; fi
+                '''
             }
         }
         stage('Deploy') {
