@@ -11,23 +11,19 @@ export const EmailSectionReducer = createSlice({
     letPeopleFindBlogByEmail: null,
   },
   reducers: {
-    updatePassword: (state) => {
-      console.log(state);
+    updatePassword: (state, action) => {
+      state.password = action.payload;
     },
     updateEmail: (state, action) => {
-      console.log('master', state, action);
       state.email = action.payload;
     },
     updateConfirmedPassword: (state, action) => {
-      console.log(state);
       state.confirmedPassword = action.payload;
     },
     updateLetPeopleFindBlogByEmail: (state, action) => {
-      console.log(state);
       state.letPeopleFindBlogByEmail = action.payload;
     },
     updatePrevEmail: (state, action) => {
-      console.log(state);
       state.previousEmail = action.payload;
     },
   },
