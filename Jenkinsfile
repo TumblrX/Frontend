@@ -15,9 +15,11 @@ pipeline {
             steps {
                 sh'''
                     docker build -f ./Dockertest .
+                    docker-compose stop
+                    docker-compose rm -f
                     docker-compose up -d
                     docker wait fronttest_container
-                    docker-compose up -d
+                    docker start fronttest_container
                     VALUE=$(docker wait fronttest_container)
                     if [ "$VALUE" != "0" ] ; then exit 1 ; fi
                 '''
