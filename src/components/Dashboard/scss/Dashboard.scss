@@ -13,6 +13,9 @@
 /* you should arrange these classes to have one css file  */
 
 .dashboard-container {
+  input{
+    -webkit-appearance: auto;
+  }
   @include displayFlex(column);
   background-color: white;
   width: calc(100% - 40px);

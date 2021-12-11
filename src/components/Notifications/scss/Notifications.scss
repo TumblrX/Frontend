@@ -22,6 +22,9 @@
 
   width: calc(100% - 40px);
   margin: 0 auto;
+  input{
+    -webkit-appearance: auto;
+  }
 }
 .notification-section {
   @include displayFlex(row);

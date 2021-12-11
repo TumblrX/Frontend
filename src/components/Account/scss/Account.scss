@@ -19,6 +19,9 @@ a {
   background-color: white;
   width: calc(100% - 40px);
   margin: 0 auto;
+  input {
+    -webkit-appearance: auto;
+  }
 }
 
 .change-email-section,
@@ -124,6 +127,8 @@ hr {
 }
 
 .dots {
+  margin-left: 5px;
+  margin-top: -5px;
   span {
     width: 5px;
     height: 5px;
