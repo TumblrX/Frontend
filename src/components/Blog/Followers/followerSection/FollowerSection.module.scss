@@ -1,6 +1,5 @@
 .container{
-    border-radius: 6px 6px 0 0;
-    background: RGB(var(--white));
+    background: RGB(255, 255, 255);
     display: flex;
     justify-content: center;
     position: relative;
@@ -27,6 +26,67 @@
         padding: 8px 10px;
         text-decoration: none;
         vertical-align: middle;
+        .sideSide{
+            align-items: center;
+            display: flex;
+            .avatarContainer{
+                margin-right: 11px;
+                position: relative;
+                .avatar{
+                    position: relative;
+                    width: 37px;
+                    height: 37px;
+                    .img{
+                        width: 37px; 
+                        height: 37px;
+                        display: block;
+                    }
+                }
+            }
+            .titlesContainer{
+                position: relative;
+                cursor: pointer;
+                text-decoration: none;
+                .handle{
+                    align-items: center;
+                    display: flex;
+                    font-family:"Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                    font-size: .875rem;
+                    font-weight: 700;
+                    line-height: 1.5;
+                    color: RGB(0,0,0);
+                    text-align: left;
+                    word-break: break-word;
+                    .handleSpan{
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 1;
+                        display: -webkit-box;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    .svgDiv{
+                        margin-left: 5px;
+                        .svg{
+                            fill: RGB(0, 207, 53);
+                        }
+                    }
+                }
+                .title{
+                    color: rgba(0,0,0,.65);
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    display: -webkit-box;
+                    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                    font-size: .875rem;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    text-align: left;
+                    word-break: break-word;
+                }
+            }
+        }
     }
     .sideSelect{
         align-items: center;
@@ -34,5 +94,90 @@
         padding-right: 14px;
         position: relative;
         text-align: right;
+        .list{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            .span1{
+                vertical-align: top;
+                .span2{
+                    vertical-align: top;
+                    .button{
+                        background-color: transparent;
+                        border: none;
+                        color: inherit;
+                        cursor: pointer;
+                        margin: 0;
+                        padding: 0;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        user-select: none;
+                        .buttonSpanC{
+                            display: block;
+                           .buttonSpan{
+                                margin-right: -10px;
+                                padding: 0 10px;
+                               .Buttonsvg{
+                                transform: rotate(90deg);
+                                fill:rgba(0,0,0,.65);
+                               }
+                           }
+                        }
+                    }
+                }
+                .dropDown{
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    z-index: 2;
+                    display: none;
+                    .dropDownContainer{
+                        position: absolute;
+                        will-change: transform;
+                        width: 200px;
+                        height: auto;
+                        top: 0px;
+                        left: 0px;
+                        transform: translate3d(-88px, 48px, 0px);
+                        overflow-y: visible;
+                        background: white;
+                        border-radius: 3px;
+                        box-shadow: 0 0 15px 0 rgb(0 0 0 / 50%);
+                        color: black;
+                        max-height: calc(100vh - 88px);
+                        .anotherContainer{
+                            align-items: center;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            .report,.block,.close{
+                               color:red;
+                               box-sizing: border-box;
+                               justify-content: center;
+                               width: 100%;
+                               font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                               font-size: 1rem;
+                               font-weight: 700;
+                               line-height: 1.5;
+                               align-items: center;
+                               cursor: pointer;
+                               display: flex;
+                               flex-direction: row;
+                               padding: 10px;
+                               text-decoration: none;
+                            }
+                            .close{
+                                color:black;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+}
+.container:hover{
+    background-color:  gray;
 }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setIsRobot, setBlogHandle, setBlogTitle, setBlogPrivacy, setBlogPassword,
 } from '../../redux/createBlog';
+import { useHistory } from 'react-router-dom';
 import sendData from './CreateBlogService';
 
 const useHandler = () => {
@@ -10,6 +11,7 @@ const useHandler = () => {
     blogHandle, blogTitle, blogIsPrivate, blogPassword, isRobot,
   } = useSelector((state) => state.create);
   const dispatch = useDispatch();
+  const history = useHistory();
   /**
    * this function tests if input string has special characters
    * @function checkIfStringHasSpecialChar
@@ -129,6 +131,12 @@ const useHandler = () => {
       errorPasswordSmall.style.display = 'none';
     }
   };
+  const handleURLUsed = () => {
+    const error = document.getElementById('errors');
+    const errorURLTaken = document.getElementById('error_url_taken');
+    error.style.display = 'block';
+    errorURLTaken.style.display = 'list-item';
+  };
   /**
    * this function handle the event of changing url input to keep it in sync with the state
    * it also makes some validations on the url like it doesnot contain hyphen at start or end
@@ -197,14 +205,18 @@ const useHandler = () => {
     if (okToSubmit) {
       error.style.display = 'none';
       console.log('Ok to Submit');
-      sendData({
-        handle: blogHandle,
-        title: blogTitle,
-        isPrivate: blogIsPrivate,
-        settings: {
-          blogPassword,
+      sendData(
+        {
+          handle: blogHandle,
+          title: blogTitle,
+          isPrivate: blogIsPrivate,
+          settings: {
+            blogPassword,
+          },
         },
-      });
+        history,
+        handleURLUsed,
+      );
     }
   };
   return {

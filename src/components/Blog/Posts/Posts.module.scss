@@ -74,10 +74,16 @@ $font-color : #000;
         }
     }
 }
+@media(max-width : 960px){
+    .insertPost{
+        display: none;
+    }
+}
 
 @media (max-width : 600px ) {
     .posts{
-        margin: auto;
+        display: flex;
         align-items: center;
+        align-self: center;
     }
 }

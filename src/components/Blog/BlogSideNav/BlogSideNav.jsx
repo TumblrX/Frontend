@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './BlogSideNav.module.scss';
@@ -10,36 +11,41 @@ import styles from './BlogSideNav.module.scss';
  * @component
  */
 
-const BlogSideNav = function () {
+const BlogSideNav = function ({ blogName }) {
   return (
     <aside className={styles.aside}>
       <div className={styles.navBarFirst}>
-        <div>Ahmedmma</div>
+        <div>{blogName}</div>
         <div>Untitled</div>
       </div>
-      <Link to="/blog">
+      <Link to={`/blog/${blogName}`}>
         <div className={styles.navBarSlot}>
           <div>Posts</div>
         </div>
       </Link>
-      <Link to="/blog/followers">
+      <Link to={`/blog/${blogName}/followers`}>
         <div className={styles.navBarSlot}>
           <div>Followers</div>
         </div>
       </Link>
 
-      <Link to="/blog/activity">
+      <Link to={`/blog/${blogName}/activity`}>
         <div className={styles.navBarSlot}>
           <div>Activity</div>
         </div>
       </Link>
 
-      <Link to="/blog/drafts">
+      <Link to={`/blog/${blogName}/drafts`}>
         <div className={styles.navBarSlot}>
           <div>Drafts</div>
         </div>
       </Link>
-      <Link to="settings/blog">
+      <Link to={`/blog/${blogName}/members`}>
+        <div className={styles.navBarSlot}>
+          <div>Members</div>
+        </div>
+      </Link>
+      <Link to={`/settings/${blogName}`}>
         <div className={styles.navBarSlot}>
           <div>Edit Appearance</div>
         </div>

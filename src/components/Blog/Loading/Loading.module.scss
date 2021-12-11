@@ -1,0 +1,61 @@
+.container{
+    width: 110px;
+    height:50px;
+    margin: 100px auto;
+    position:relative;
+    p{
+        width: 30px;
+        height: 30px;
+        background-color: #ccc;
+        -webkit-border-radius: 22%;
+        -moz-border-radius: 22%;
+        border-radius: 22%;
+        -khtml-border-radius: 22%;
+        display: block;
+        padding: 0;
+        vertical-align:middle;
+        position:absolute;
+        top:6px;
+    }
+    .block {
+        -webkit-animation-name: block;
+        -webkit-animation-duration: .3s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-delay: 0;
+        -webkit-animation-timing-function: ease-out;
+        animation-name: block;
+        animation-duration: .3s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-delay: 0;
+        timing-function: ease-out;
+      }
+}
+.container p:nth-child(2) {
+    left:38px;
+}
+  
+.container p:nth-child(3) {
+    left:76px;
+}
+.block:nth-child(2) {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+}  
+.block:nth-child(3) {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}  
+@keyframes block {
+from {
+    top:0;
+    height: 42px;
+    opacity: 0.4;
+}
+to {
+    top:6px;
+    height: 30px;
+    opacity: 0.7;
+}
+}
