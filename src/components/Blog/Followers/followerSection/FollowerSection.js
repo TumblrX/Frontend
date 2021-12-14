@@ -47,7 +47,7 @@ const FollowerSection = function ({ data }) {
       </div>
       <div className={styles.sideSelect}>
         <div className={styles.list}>
-          <span className={styles.span1}>
+          <span className={styles.span1} onClick={handleSideClick}>
             <span className={styles.span2}>
               <button
                 className={styles.button}
@@ -68,7 +68,7 @@ const FollowerSection = function ({ data }) {
                 </span>
               </button>
             </span>
-            <div className={styles.dropDown} id="List">
+            <div className={styles.dropDown} id="list">
               <div className={styles.dropDownContainer}>
                 <div className={styles.anotherContainer}>
                   <a

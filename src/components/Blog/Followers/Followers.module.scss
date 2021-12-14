@@ -40,10 +40,42 @@
                 }
             }
         }
+        .SearchSection {
+            color: RGB(255,255,255);
+            font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 10px 10px 0;
+            display: none;
+            .sSpan1{
+                vertical-align: top;
+                width: inherit;
+                display: inline-block;
+                .sSpan2{
+                    vertical-align: top;
+                    width: inherit;
+                    display: inline-block;
+                    .sa{
+                        font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        line-height: 1.5;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
         .section{
             margin-top: 15px;
         }  
     }
+}
+@media (min-width: 990px){
+  .SearchSection{
+    align-self: flex-end;
+  }
 }
 @media (max-width: 540px){
  .h1{

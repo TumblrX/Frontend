@@ -43,7 +43,7 @@ const Posts = function () {
                 <NothingAvailable page="Post" />
             )
             : (
-              console.log('show Posts'),
+              console.log('show Posts from jsx'),
               showPosts(posts, pageNum, isInfinte),
                 <NavButtons />
             )

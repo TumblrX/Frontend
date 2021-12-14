@@ -22,6 +22,8 @@ const showPosts = (posts, pageNum, isInfinte) => {
     lastPost = pageNum * 10;
     firstPost = lastPost - 10;
   }
+  console.log(posts);
+  console.log(firstPost, lastPost);
   return (
     // eslint-disable-next-line block-scoped-var
     posts.slice(firstPost, lastPost).map((post, index) => (
