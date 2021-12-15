@@ -11,15 +11,31 @@ const useHandler = () => {
     followers, searchValue, isReady,
   } = useSelector((state) => state.blogfollowers);
   const dispatch = useDispatch();
+  /**
+   * this function is to show the fetched followers in followers page of a blog
+   * @function showFollowers
+   * @return {JSX} return jsx of followers to be rendered in the followers page
+   */
   const showFollowers = () => (
     followers.map((follower) => (
       <FollowerSection data={follower} key={follower.id} />
     ))
   );
+  /**
+   * this function is to show the fetched followers in followers page of a blog
+   * @function handleChange
+   * @param {event} event
+   * @return {void} return nothing
+   */
   const handleChange = (event) => {
     dispatch(setSearchDone(false));
     dispatch(setSearchValue(event.target.value));
   };
+  /**
+   *  this function handle the event of changing search box input to keep it in sync with the state
+   * @param {event} event
+   * @return {void} return nothing
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(setSearchDone(false));

@@ -4,16 +4,18 @@ import { setPosts, setNumOfPosts, setInitialLoading } from '../../../redux/blogP
 import api from '../../../api/api';
 
 /**
- * this function makes a post request to the json server to get posts of a certain blog
+ * this function makes a get request to the server to get posts of a certain blog
  * @function fetchPost
  * @return {void} return nothing
  */
 const fetchPost = async () => {
   try {
     const response = await api.get('/posts');
-    configureStore.dispatch(setPosts(response.data));
-    configureStore.dispatch(setNumOfPosts(response.data.length));
-    configureStore.dispatch(setInitialLoading(false));
+    if (response.status === 200) {
+      configureStore.dispatch(setPosts(response.data));
+      configureStore.dispatch(setNumOfPosts(response.data.length));
+      configureStore.dispatch(setInitialLoading(false));
+    }
   } catch (err) {
     if (err.response) {
       // Not in the 200 response range

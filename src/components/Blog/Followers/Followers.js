@@ -4,7 +4,13 @@ import useHandler from './FollowersController';
 import { useSelector } from 'react-redux';
 import fetchFollowers from './FollowersService';
 import Loading from '../Loading/Loading';
-
+/**
+ * Component to render blog follower page
+ * @author Ahmed Mahmoud
+ *
+ * @component
+ *
+ */
 const Followers = function () {
   const {
     showFollowers, handleChange, handleSubmit,
