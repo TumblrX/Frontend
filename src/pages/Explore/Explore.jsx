@@ -10,8 +10,6 @@ const Explore = function () {
     <div>
       <div className={styles["explore-container"]}>
         <ExploreSection/>
-
-        
         <ExploreAside/>
       </div>
     </div>
