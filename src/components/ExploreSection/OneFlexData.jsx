@@ -1,18 +1,16 @@
 import React from "react";
-
-function FourFlexData(props) {
+import styles from "./scss/ExploreSection.module.scss";
+function OneFlexData(props) {
   const { posts } = props;
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ display: "flex",flexDirection:"column" }}>
+    <div className={styles["posts-container"]}>
+      <div className={styles["one-flex"]}>
         {posts.map((item, index) => {
           return <div key={index}>{item}</div>;
         })}
-
-        
       </div>
     </div>
   );
 }
 
-export default FourFlexData;
+export default OneFlexData;

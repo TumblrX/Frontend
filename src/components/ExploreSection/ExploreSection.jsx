@@ -8,8 +8,14 @@ import ThreeFlexesData from "./ThreeFlexesData";
 import TwoFlexesData from "./TwoFlexesData";
 import OneFlexData from "./OneFlexData";
 function ExploreSection() {
+  
   const [flexesNumber, updateSize] = useState(4);
-  const posts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // const posts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [posts,updatePosts]=useState([1,2,3,4,5]);
+  const onclickbutton=()=>{
+    updatePosts((prevPosts)=>[...prevPosts,1]);
+  }
+  
   const componentDidMount = () => {
     if (window.innerWidth <= 910) {
       updateSize(1);
@@ -40,78 +46,7 @@ function ExploreSection() {
       <ExploreNavbar />
 
       <ExploreSuggestionList />
-      {/* <TrendingList/> */}
-      {/* <div className={styles["posts-grid"]}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginLeft: "12px",
-            minWidth: "300px",
-          }}
-        >
-          <div style={{ height: "50px", backgroundColor: "black" }}>
-            post 2{" "}
-          </div>
-          <div style={{ height: "40px", backgroundColor: "red" }}>post 1 </div>
-          <div style={{ height: "70px", backgroundColor: "white" }}>
-            post 4{" "}
-          </div>
-          <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginLeft: "12px",
-            minWidth: "300px",
-          }}
-        >
-          <div style={{ height: "70px", backgroundColor: "white" }}>
-            post 4{" "}
-          </div>
-          <div style={{ height: "40px", backgroundColor: "red" }}>post 1 </div>
-          <div style={{ height: "50px", backgroundColor: "black" }}>
-            post 2{" "}
-          </div>
-          <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginLeft: "12px",
-            minWidth: "300px",
-          }}
-        >
-          <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
-
-          <div style={{ height: "40px", backgroundColor: "red" }}>post 1 </div>
-          <div style={{ height: "50px", backgroundColor: "black" }}>
-            post 2{" "}
-          </div>
-          <div style={{ height: "70px", backgroundColor: "white" }}>
-            post 4{" "}
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginLeft: "12px",
-            minWidth: "300px",
-          }}
-        >
-          <div style={{ height: "40px", backgroundColor: "red" }}>post 1 </div>
-          <div style={{ height: "50px", backgroundColor: "black" }}>
-            post 2{" "}
-          </div>
-          <div style={{ height: "60px", backgroundColor: "blue" }}>post 3 </div>
-          <div style={{ height: "70px", backgroundColor: "white" }}>
-            post 4{" "}
-          </div>
-        </div>
-      </div> */}
+  
 
       {flexesNumber == 4 ? (
         <FourFlexData posts={posts} />
@@ -122,6 +57,8 @@ function ExploreSection() {
       ) : (
         <OneFlexData posts={posts} />
       )}
+
+      <button onClick={onclickbutton}>click on me </button>
     </div>
   );
 }

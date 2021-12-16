@@ -1,11 +1,11 @@
 import React from "react";
-
-function FourFlexData(props) {
-    const {posts}=props
+import styles from "./scss/ExploreSection.module.scss";
+function TwoFlexesData(props) {
+  const { posts } = props;
   return (
-    <div style={{ display: "flex",justifyContent:"space-between" }}>
+    <div className={styles["posts-container"]}>
       <div
-        style={{ display: "flex", flexDirection: "column", minWidth: "300px" }}
+        className={styles["two-flexes"]}
       >
         {posts.map((item, index) => {
           if (index % 2 == 0) {
@@ -14,7 +14,7 @@ function FourFlexData(props) {
         })}
       </div>
       <div
-        style={{ display: "flex", flexDirection: "column", minWidth: "300px" }}
+        className={styles["two-flexes"]}
       >
         {posts.map((item, index) => {
           if (index % 2 == 1) {
@@ -26,4 +26,4 @@ function FourFlexData(props) {
   );
 }
 
-export default FourFlexData;
+export default TwoFlexesData;
