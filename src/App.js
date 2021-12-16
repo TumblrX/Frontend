@@ -24,9 +24,8 @@ const App = function () {
         <NavBar />
         <MainPage />
       </Route>
-      <Route exact path="/explore">
+      <Route path="/explore">
         <NavBar />
-
         <Explore />
       </Route>
       <Route exact path="/dashboard">

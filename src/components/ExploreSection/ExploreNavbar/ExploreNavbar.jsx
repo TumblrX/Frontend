@@ -5,16 +5,17 @@ function ExploreNavbar() {
   return (
     <div className={styles["explore-navbar"]}>
       <div className={styles["explore-selection"]}>
-        <Link to="explore/recommended-for-you">
+        <Link to="recommended-for-you">
           <span>For You 💖</span>
         </Link>
         <Link to="/explore/trending">
           <span>Trending 🚀</span>
         </Link>
-        <Link to="/explore/staff-pics">
+        <Link to="/explore/staff-picks">
           <span>Staff Picks 🌟</span>
         </Link>
         <span>More </span>
+        {/* <div>More <div>^</div></div> */}
       </div>
       <div style={{display:"flex",width:"50%",justifyContent:"flex-end"}}>
         <span className={styles["grid-icons"]} tabindex="-1">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styles from "./scss/ExploreSection.module.scss";
 import ExploreSuggestionList from "./ExploreSuggestionList/ExploreSuggestionList";
 import ExploreNavbar from "./ExploreNavbar/ExploreNavbar";
@@ -8,6 +9,7 @@ import ThreeFlexesData from "./ThreeFlexesData";
 import TwoFlexesData from "./TwoFlexesData";
 import OneFlexData from "./OneFlexData";
 import Post from "../Post/Post";
+
 function ExploreSection() {
   const [flexesNumber, updateSize] = useState(4);
   const [posts, updatePosts] = useState([1, 2, 3, 4, 5, 6]);
@@ -43,7 +45,14 @@ function ExploreSection() {
   return (
     <div className={styles["explore-section"]}>
       <ExploreNavbar />
-      <ExploreSuggestionList />
+      <Switch>
+        <Route
+          path="/explore/recommended-for-you"
+          component={ExploreSuggestionList}
+        />
+        <Route path="/explore/trending" exact component={TrendingList} />
+        <Route path="/explore/staff-picks" exact component={ExploreSuggestionList}/>
+      </Switch>
       {flexesNumber == 4 ? (
         <FourFlexData posts={posts} />
       ) : flexesNumber == 3 ? (
