@@ -23,22 +23,6 @@ function ExploreSuggestionList() {
       header.scrollLeft -= 652;
     }
   };
-
-  /**
-   * retreive the data from the backend when the component mounted
-   * @type {function}
-   * @param {*} event
-   * @returns {void} return nothing , it just a click event handler
-   */
-  const componentDidMount = () => {
-   window.onresize=onresize; 
-  };
-  useEffect(componentDidMount, []);
-  const onresize=()=>{
-    console.log(window.innerWidth); 
-    // if window size >1833  four boxes 
-    
-  }
   return (
     <div className={styles["suggestion-list"]}>
       <div className={styles["before"]} onClick={onArrowClick}>

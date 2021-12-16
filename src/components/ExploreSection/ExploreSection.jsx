@@ -7,15 +7,14 @@ import FourFlexData from "./FourFlexData";
 import ThreeFlexesData from "./ThreeFlexesData";
 import TwoFlexesData from "./TwoFlexesData";
 import OneFlexData from "./OneFlexData";
+import Post from "../Post/Post";
 function ExploreSection() {
-  
   const [flexesNumber, updateSize] = useState(4);
-  // const posts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const [posts,updatePosts]=useState([1,2,3,4,5]);
-  const onclickbutton=()=>{
-    updatePosts((prevPosts)=>[...prevPosts,1]);
-  }
-  
+  const [posts, updatePosts] = useState([1, 2, 3, 4, 5, 6]);
+  const onclickbutton = () => {
+    updatePosts((prevPosts) => [...prevPosts, 1]);
+  };
+
   const componentDidMount = () => {
     if (window.innerWidth <= 910) {
       updateSize(1);
@@ -44,10 +43,7 @@ function ExploreSection() {
   return (
     <div className={styles["explore-section"]}>
       <ExploreNavbar />
-
       <ExploreSuggestionList />
-  
-
       {flexesNumber == 4 ? (
         <FourFlexData posts={posts} />
       ) : flexesNumber == 3 ? (
@@ -58,7 +54,7 @@ function ExploreSection() {
         <OneFlexData posts={posts} />
       )}
 
-      <button onClick={onclickbutton}>click on me </button>
+      <button onClick={onclickbutton}>Click on me </button>
     </div>
   );
 }

@@ -85,3 +85,23 @@
     }
   }
 }
+
+
+
+@media (max-width: 1488px) {
+  .suggestion-list{
+    .before{
+      left: 8%;
+    }
+  }
+  
+}
+
+@media (max-width: 980px) {
+  .suggestion-list{
+    .before{
+      left: 10%;
+    }
+  }
+  
+}

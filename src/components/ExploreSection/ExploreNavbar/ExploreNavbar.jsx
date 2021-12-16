@@ -16,7 +16,7 @@ function ExploreNavbar() {
         </Link>
         <span>More </span>
       </div>
-      <div>
+      <div style={{display:"flex"}}>
         <span className={styles["grid-icons"]} tabindex="-1">
           <svg
             viewBox="0 0 24 24"
