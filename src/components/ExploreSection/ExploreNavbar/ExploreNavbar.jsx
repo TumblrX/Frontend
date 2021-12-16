@@ -16,13 +16,13 @@ function ExploreNavbar() {
         </Link>
         <span>More </span>
       </div>
-      <div style={{display:"flex"}}>
+      <div style={{display:"flex",width:"50%",justifyContent:"flex-end"}}>
         <span className={styles["grid-icons"]} tabindex="-1">
           <svg
             viewBox="0 0 24 24"
             width="24"
             height="24"
-            fill="RGB(255,255,255,.65)"
+            fill="RGB(255,255,255,1)"
           >
             <rect width="8" height="10" x="3" y="3" rx="1"></rect>
             <rect width="8" height="6" x="13" y="3" rx="1"></rect>
