@@ -19,7 +19,9 @@ import Post from "../Post/Post";
 
 function ExploreSection() {
   const [flexesNumber, updateSize] = useState(4);
-  const [posts, updatePosts] = useState([1, 2, 3, 4, 5, 6]);
+  const [posts, updatePosts] = useState([
+    1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+  ]);
   const onclickbutton = () => {
     updatePosts((prevPosts) => [...prevPosts, 1]);
   };
@@ -54,6 +56,11 @@ function ExploreSection() {
   const componentDidMount = () => {
     onResize(); // First call to set the state ;
     window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        onclickbutton(); 
+      }
+    });
     // it will be called when the Component is unmounted
     return () => {
       window.removeEventListener("resize", onResize);
