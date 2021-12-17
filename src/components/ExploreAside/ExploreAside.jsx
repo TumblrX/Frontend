@@ -1,9 +1,15 @@
 import React from "react";
 import styles from "./scss/ExploreAside.module.scss";
 import img from "../../assets/Images/Project_128-09.jpg";
+/**
+ * Component to render the Aside  in Explore page
+ * @author Abdalla Mahmoud
+ *
+ * @component
+ */
 function ExploreAside() {
   return (
-    <div className={styles["explore-aside"]}>
+    <aside className={styles["explore-aside"]}>
       <div className={styles["following-list"]}>
         <div className={styles["header"]}>
           <div>Following</div>
@@ -105,7 +111,7 @@ function ExploreAside() {
         </ul>
         <div className={styles["show-more-tags"]}>Show More Tags</div>
       </div>
-    </div>
+    </aside>
   );
 }
 

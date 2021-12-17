@@ -1,6 +1,13 @@
 import React from "react";
 import styles from "./scss/ExploreNavbar.module.scss";
 import { Link } from "react-router-dom";
+
+/**
+ * Component to render the Explore Navbar in Explore page
+ * @author Abdalla Mahmoud
+ *
+ * @component
+ */
 function ExploreNavbar() {
   return (
     <div className={styles["explore-navbar"]}>
@@ -17,7 +24,9 @@ function ExploreNavbar() {
         <span>More </span>
         {/* <div>More <div>^</div></div> */}
       </div>
-      <div style={{display:"flex",width:"50%",justifyContent:"flex-end"}}>
+      <div
+        style={{ display: "flex", width: "50%", justifyContent: "flex-end" }}
+      >
         <span className={styles["grid-icons"]} tabindex="-1">
           <svg
             viewBox="0 0 24 24"

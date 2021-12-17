@@ -4,6 +4,13 @@ import img from "../../../assets/Images/icons8-chevron-right-60.png";
 import img1 from "../../../assets/Images/icons8-chevron-right-60.png";
 import { useEffect } from "react";
 import ExploreSuggestionListCard from "./ExploreSuggestionListCard";
+
+/**
+ * Component to render the whole suggestion list container in Explore page
+ * @author Abdalla Mahmoud
+ *
+ * @component
+ */
 function ExploreSuggestionList() {
   /**
    * this function handle the click on the arrows on the suggestion list
