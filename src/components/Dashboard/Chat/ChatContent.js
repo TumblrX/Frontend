@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Chat.module.scss';
 import logo from '../../../assets/Images/avatar.png';
 
-const ChatContent = function () {
+const ChatContent = function ({ messages, scrollRef }) {
   return (
     <div className={styles.Chat_content}>
       <div className={styles.startChat}>
@@ -14,91 +14,24 @@ const ChatContent = function () {
         <p> User2 </p>
       </div>
 
-      <div className={styles.messegesBody}>
-        <div className={styles.msg}>
-          <div className={styles.msgAvatar}>
-            <div className={styles.avatar_img}>
-              <img src={logo} alt="#" />
+      {messages.map((m) => (
+        <div className={styles.messegesBody} ref={scrollRef}>
+          <div className={styles.msg}>
+            <div className={styles.msgAvatar}>
+              <div className={styles.avatar_img}>
+                <img src={logo} alt="#" />
+              </div>
+            </div>
+            <div className={styles.msgContent}>
+              <h3> user </h3>
+              <div>
+                {m}
+              </div>
             </div>
           </div>
-          <div className={styles.msgContent}>
-            <h3> user </h3>
-            <p>
-              msg msg msg  msg msg msg
-              msg msg msgmsg msg msg msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-            </p>
-          </div>
-        </div>
 
-        <div className={styles.msg}>
-          <div className={styles.msgAvatar}>
-            <div className={styles.avatar_img}>
-              <img src={logo} alt="#" />
-            </div>
-          </div>
-          <div className={styles.msgContent}>
-            <h3> user </h3>
-            <p>
-              msg msg msg  msg msg msg
-              msg msg msgmsg msg msg msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-            </p>
-          </div>
         </div>
-
-        <div className={styles.msg}>
-          <div className={styles.msgAvatar}>
-            <div className={styles.avatar_img}>
-              <img src={logo} alt="#" />
-            </div>
-          </div>
-          <div className={styles.msgContent}>
-            <h3> user </h3>
-            <p>
-              msg msg msg  msg msg msg
-              msg msg msgmsg msg msg msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.msg}>
-          <div className={styles.msgAvatar}>
-            <div className={styles.avatar_img}>
-              <img src={logo} alt="#" />
-            </div>
-          </div>
-          <div className={styles.msgContent}>
-            <h3> user </h3>
-            <p>
-              msg msg msg  msg msg msg
-              msg msg msgmsg msg msg msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-              msg msg msg  msg msg msg
-            </p>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
