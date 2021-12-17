@@ -1,5 +1,11 @@
 import React from "react";
 import styles from "./scss/ExploreSection.module.scss";
+/**
+ * Component to render three Flexes in the post container if the window can take them 
+ * @author Abdalla Mahmoud
+ *
+ * @component
+ */
 function ThreeFlexesData(props) {
   const { posts } = props;
   return (
