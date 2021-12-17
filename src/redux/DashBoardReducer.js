@@ -6,7 +6,7 @@ export const DashboardReducer = createSlice({
   initialState: {
     posts: [],
     pageNum: 1,
-    isInfinte: false,
+    isInfinte: true,
     ismounted: false,
     exploreBlogs: [],
   },
