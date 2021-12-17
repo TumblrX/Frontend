@@ -10,7 +10,7 @@ function OneFlexData(props) {
   const { posts } = props;
   return (
     <div className={styles["posts-container"]}>
-      <div className={`${styles["one-flex"]} "first-of-first"`}>
+      <div className={`${styles["one-flex"]} first-of-first`}>
         {posts.map((item, index) => {
          let height = index * 30 + 20;
 

@@ -23,7 +23,8 @@ function ExploreSection() {
     1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
   ]);
   const onclickbutton = () => {
-    updatePosts((prevPosts) => [...prevPosts, 1]);
+    for(let i = 0 ; i<5 ; i++)
+      updatePosts((prevPosts) => [...prevPosts, 1]);
   };
 
   /**
