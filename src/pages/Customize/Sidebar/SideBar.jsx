@@ -44,15 +44,13 @@ const SideBar = function () {
             <input type="text" name="" id="" defaultValue="default" />
           </li>
           <li>
-            <div className={style.li}>         Title      </div>
+            <div className={style.li}>         Description      </div>
             <input type="text" name="" id="" defaultValue="default" />
           </li>
           <li>
             <div className={style.li}>
               {' '}
               Header Image
-              <input type="file" onChange={changeAvatar1} />
-
               <button className={style.pen}>
                 <BsFillPencilFill color="#acacac" fontSize="15px" float="right" />
               </button>
