@@ -775,6 +775,18 @@
       "password": "fsdgbnh",
       "apiId": "user",
       "id": 112
+    },
+    {
+      "email": "jgijgf",
+      "password": "bjhgjk",
+      "apiId": "user",
+      "id": 113
+    },
+    {
+      "email": "fkghfnhkgn",
+      "password": "kgjnhgfn",
+      "apiId": "user",
+      "id": 114
     }
   ],
   "createBlog": [
@@ -872,7 +884,7 @@
     {
       "id": 1,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -904,7 +916,7 @@
     {
       "id": 2,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -917,11 +929,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -929,11 +941,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -941,11 +953,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -953,11 +965,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -965,11 +977,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -977,11 +989,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         }
       ]
@@ -989,7 +1001,7 @@
     {
       "id": 3,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1011,7 +1023,7 @@
     {
       "id": 4,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1022,7 +1034,7 @@
         {
           "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680",
           "type": "audio",
-          "media":  "audio/mp3",
+          "media": "audio/mp3",
           "provider": "soundcloud",
           "title": "Mouth Sounds",
           "artist": "neilcic",
@@ -1032,14 +1044,14 @@
             "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
             "width": 500,
             "height": 400
-          }  
+          }
         }
       ]
     },
     {
       "id": 5,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1050,7 +1062,7 @@
         {
           "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
           "type": "video",
-          "media":  "video/mp4",
+          "media": "video/mp4",
           "provider": "youtube",
           "title": "Video Title",
           "artist": "neilcic",
@@ -1060,14 +1072,14 @@
             "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
             "width": 500,
             "height": 400
-          }  
+          }
         }
       ]
     },
     {
       "id": 6,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1081,11 +1093,11 @@
           "title": "Secrecy Bill Raises Alarms in Both Parties",
           "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
           "author": "Thomas Kaplan and Robert Pear",
-          "poster":{
-              "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
-              "type": "image/jpeg",
-              "width": 549,
-              "height": 549
+          "poster": {
+            "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
+            "type": "image/jpeg",
+            "width": 549,
+            "height": 549
           }
         }
       ]
@@ -1093,7 +1105,7 @@
     {
       "id": 7,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1125,11 +1137,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1137,11 +1149,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1149,11 +1161,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1161,11 +1173,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1173,11 +1185,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1185,11 +1197,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1204,7 +1216,7 @@
         {
           "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680",
           "type": "audio",
-          "media":  "audio/mp3",
+          "media": "audio/mp3",
           "provider": "soundcloud",
           "title": "Mouth Sounds",
           "artist": "neilcic",
@@ -1214,12 +1226,12 @@
             "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
             "width": 500,
             "height": 400
-          }  
+          }
         },
         {
           "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
           "type": "video",
-          "media":  "video/mp4",
+          "media": "video/mp4",
           "provider": "youtube",
           "title": "Video Title",
           "artist": "neilcic",
@@ -1229,7 +1241,7 @@
             "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
             "width": 500,
             "height": 400
-          }  
+          }
         },
         {
           "type": "link",
@@ -1237,14 +1249,141 @@
           "title": "Secrecy Bill Raises Alarms in Both Parties",
           "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
           "author": "Thomas Kaplan and Robert Pear",
-          "poster":{
-              "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
-              "type": "image/jpeg",
-              "width": 549,
-              "height": 549
+          "poster": {
+            "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
+            "type": "image/jpeg",
+            "width": 549,
+            "height": 549
           }
         }
       ]
+    }
+  ],
+  "new": [
+    {
+      "state": "published",
+      "title": "Title",
+      "postType": "text",
+      "content": [
+        {
+          "type": "text",
+          "subtype": "heading1",
+          "text": "Heading 1"
+        },
+        {
+          "type": "text",
+          "subtype": "heading2",
+          "text": "Heading 2"
+        },
+        {
+          "type": "text",
+          "text": "Normal Text"
+        },
+        {
+          "type": "text",
+          "subtype": "indented",
+          "text": "Blockquote"
+        },
+        {
+          "type": "text",
+          "subtype": "unordered-list-item",
+          "text": "ul1"
+        },
+        {
+          "type": "text",
+          "subtype": "unordered-list-item",
+          "text": "ul2"
+        },
+        {
+          "type": "text",
+          "subtype": "ordered-list-item",
+          "text": "ol2"
+        },
+        {
+          "type": "text",
+          "subtype": "ordered-list-item",
+          "text": "ol2"
+        },
+        {
+          "url": "https://www.youtube.com/embed/ZEKBDXGnD4s",
+          "type": "video",
+          "provider": "youtube",
+          "formatting": []
+        },
+        {
+          "type": "image",
+          "identifier": "200e678f-a12f-4e1d-9a7a-3fcad522723c",
+          "media": "image/jpeg",
+          "altText": "",
+          "width": "100%",
+          "height": "auto",
+          "formatting": []
+        },
+        {
+          "type": "text",
+          "subtype": "indented",
+          "text": "Image Caption"
+        },
+        {
+          "type": "text",
+          "text": "link"
+        }
+      ],
+      "tags": "",
+      "id": 1
+    },
+    {
+      "state": "published",
+      "title": "T",
+      "postType": "text",
+      "content": [
+        {
+          "type": "text",
+          "text": "Text Bold",
+          "formatting": [
+            {
+              "start": 5,
+              "end": 9,
+              "type": "bold"
+            }
+          ]
+        }
+      ],
+      "tags": "",
+      "id": 2
+    },
+    {
+      "state": "published",
+      "title": "Title",
+      "postType": "text",
+      "content": [
+        {
+          "type": "text",
+          "text": "TExt bold",
+          "formatting": [
+            {
+              "start": 5,
+              "end": 9,
+              "type": "bold"
+            }
+          ]
+        }
+      ],
+      "tags": "",
+      "id": 3
+    },
+    {
+      "state": "published",
+      "title": "Title",
+      "postType": "text",
+      "content": [
+        {
+          "type": "text",
+          "text": "link"
+        }
+      ],
+      "tags": "",
+      "id": 4
     }
   ]
 }

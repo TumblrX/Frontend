@@ -9,13 +9,14 @@ import classes from './FormCard.module.scss';
 import avatar from '../../assets/Images/avatar.png';
 
 const FormCard = function ({ children }) {
-  const [selectedOption, setSelectedOption] = useState('lyousefelshabrawy');
+  const [selectedOption, setSelectedOption] = useState('Blog_1_ID');
   const [showOptions, setShowOptions] = useState(false);
   const toggleOptionsHandler = () => {
     setShowOptions((x) => !x);
   };
   const selectOptionHandler = (e) => {
     setSelectedOption(e.target.getAttribute('value'));
+    console.log(e.target.getAttribute('value'));
   };
   return (
     <div className={classes.text}>
@@ -29,12 +30,12 @@ const FormCard = function ({ children }) {
             <IoIosArrowDown />
             {showOptions && (
               <ul onClick={selectOptionHandler}>
-                <li value='lyousefelshabrawy'>lyousefelshabrawy</li>
-                <li value='llyousefelshabrawy'>llyousefelshabrawy</li>
+                <li value='Blog_1_ID'>Blog_1_ID</li>
+                <li value='Blog_2_ID'>Blog_2_ID</li>
               </ul>
             )}
           </div>
-          <MdSettings />
+          {/* <MdSettings /> */}
         </header>
         {children}
       </div>

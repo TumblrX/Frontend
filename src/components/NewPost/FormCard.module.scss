@@ -10,13 +10,20 @@
   height: 4rem;
   border-radius: 0.3rem;
   overflow: hidden;
+  @media (max-width:988px) {
+    display: none;
+  }
 }
 .form {
   background-color: #fff;
   border-radius: 0.3rem;
   padding: 1rem;
   min-height: 8rem;
+  width: 100%;
   min-width: 30rem;
+  @media (max-width:988px) {
+    min-width: 15rem;
+  }
   header {
     display: flex;
     justify-content: space-between;

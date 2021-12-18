@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint quotes: ["error","single"] */
 /* eslint jsx-quotes: ["error", "prefer-single"] */
 /* eslint-disable no-unused-vars */
@@ -5,26 +6,33 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import classes from './PostButton.module.scss';
+import { useHistory } from 'react-router-dom';
 
-const PostButton = function ({ formIsValid }) {
-  const [selectedOption, setSelectedOption] = useState('Post');
+const PostButton = function ({ formIsValid, selectedOption, setSelectedOption }) {
   const [showOptions, setShowOptions] = useState(false);
+  const history = useHistory();
   const toggleOptionsHandler = () => {
     setShowOptions((x) => !x);
   };
   const selectOptionHandler = (e) => {
     setSelectedOption(e.target.getAttribute('value'));
   };
+  const buttonClickHandler = () => {
+    history.goBack();
+    history.goBack();
+  };
   return (
     <div className={classes.post}>
-      <button disabled={!formIsValid}>{selectedOption}</button>
+      <button disabled={!formIsValid} onClick={buttonClickHandler}>
+        {selectedOption === 'published' ? 'Post now' : selectedOption === 'draft' ? 'Save as draft' : 'Post privately'}
+      </button>
       <div onClick={toggleOptionsHandler}>
         <IoIosArrowDown />
         {showOptions && (
           <ul onClick={selectOptionHandler}>
-            <li value='Post'>Post now</li>
-            <li value='Save draft'>Save as draft</li>
-            <li value='Post privately'>Post privately</li>
+            <li value='published'>Post now</li>
+            <li value='draft'>Save as draft</li>
+            <li value='private'>Post privately</li>
           </ul>
         )}
       </div>

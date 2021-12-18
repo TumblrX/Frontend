@@ -77,4 +77,7 @@
             transform: translateY(-3px);
         }
     }
+    @media (max-width : 988px) {
+        display: none;
+    }
 }

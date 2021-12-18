@@ -8,7 +8,7 @@
  * @author Yousef Elshabrawy
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, useHistory, Link } from 'react-router-dom';
 import { IoText } from 'react-icons/io5';
 import { AiFillCamera } from 'react-icons/ai';
@@ -28,6 +28,13 @@ import NewVideo from './Video/Video';
 
 const New = function () {
   const history = useHistory();
+  const [width, setWidth] = useState(window.screen.width);
+  window.addEventListener('resize', () => setWidth(window.screen.width));
+  if (width > 988) {
+    history.push('/new');
+  } else {
+    history.push('/new/text');
+  }
   const overlayClickHandler = () => {
     history.push('/dashboard');
   };
