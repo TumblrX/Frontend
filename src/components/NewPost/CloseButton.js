@@ -6,7 +6,8 @@ import classes from './CloseButton.module.scss';
 const CloseButton = function () {
   const history = useHistory();
   const closeClickHandler = () => {
-    history.push('/new');
+    history.goBack();
+    history.goBack();
   };
   return (
     <button className={classes.close} onClick={closeClickHandler}>
