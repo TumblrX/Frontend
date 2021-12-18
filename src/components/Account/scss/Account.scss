@@ -14,11 +14,18 @@ a {
   text-decoration: none;
 }
 
+.before-focus-on-edit {
+  border: none;
+}
 .account-container {
   @include displayFlex(column);
   background-color: white;
   width: calc(100% - 40px);
   margin: 0 auto;
+  input {
+    -webkit-appearance: auto;
+    border: 1px solid gray;
+  }
 }
 
 .change-email-section,
@@ -119,11 +126,9 @@ hr {
   display: none;
 }
 
-.before-focus-on-edit {
-  border: none;
-}
-
 .dots {
+  margin-left: 5px;
+  margin-top: -5px;
   span {
     width: 5px;
     height: 5px;

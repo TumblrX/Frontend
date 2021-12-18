@@ -14,15 +14,26 @@ import {
   ForgetPassword,
   CreateBlog,
   Blog,
+  Customize,
 } from './pages/pages';
-import { NavBar, ExploreLayout } from './components/Layouts/Layouts';
+import {
+  NavBar,
+  HomePageNavBar,
+  LogInNavBar,
+  SignUpNavBar,
+  ExploreLayout,
+} from './components/Layouts/Layouts';
+import Chat from './components/Dashboard/Chat/Chat';
 
 const App = function () {
   return (
     <Switch>
       <Route exact path="/">
-        <NavBar />
+        <HomePageNavBar />
         <MainPage />
+      </Route>
+      <Route exact path="/Chat">
+        <Chat />
       </Route>
       <Route exact path="/explore">
         <NavBar />
@@ -30,13 +41,26 @@ const App = function () {
           <Explore />
         </ExploreLayout>
       </Route>
-      <Route exact path="/dashboard">
-        <NavBar />
-        <Dashboard />
-      </Route>
+      <Route
+        exact
+        path="/dashboard"
+        render={() => (
+          localStorage.getItem('token') ? (
+            <>
+              <NavBar />
+              <Dashboard />
+            </>
+          ) : (
+            <Redirect to="/" />
+          )
+        )}
+      />
       <Route exact path="/inbox">
         <NavBar />
         <Inbox />
+      </Route>
+      <Route exact path="/customize">
+        <Customize />
       </Route>
       <Route exact path="/newblog">
         <CreateBlog />
@@ -48,18 +72,18 @@ const App = function () {
         <ForgetPassword />
       </Route>
       <Route exact path="/register">
-        <NavBar />
+        <LogInNavBar />
         <Register />
       </Route>
       <Route exact path="/login">
-        <NavBar />
+        <SignUpNavBar />
         <LoginPage />
       </Route>
       <Route path="/settings">
         <Redirect to="/settings/account" />
         <Settings />
       </Route>
-      <Route path="/blog">
+      <Route path="/blog/:blogName">
         <NavBar />
         <Blog />
       </Route>

@@ -47,14 +47,13 @@ $font-color : #000;
             top: 55px;
         }
         .postDatailes {
-            background-color: $post-bg;
             width: 100%;
         }
     }
-    .navigate_btns {
+    .navigateBtns {
         height: 100px;
         justify-content: space-around;
-        .next_btn{
+        .nextBtn{
             justify-content: flex-start;
             width: 52px;
             background-color: #00B8FF;
@@ -63,7 +62,7 @@ $font-color : #000;
             border-radius: 3px;
             font-size: 10px;
         }
-        .previous_btn{
+        .previousBtn{
 
             width: 77px;
             background-color: #A6AFB8;
@@ -74,10 +73,16 @@ $font-color : #000;
         }
     }
 }
+@media(max-width : 960px){
+    .insertPost{
+        display: none;
+    }
+}
 
 @media (max-width : 600px ) {
     .posts{
-        margin: auto;
+        display: flex;
         align-items: center;
+        align-self: center;
     }
 }

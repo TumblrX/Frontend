@@ -5,6 +5,8 @@
   background-color: white;
   width: calc(100% - 40px);
   margin: 0 auto; }
+  .dashboard-container input {
+    -webkit-appearance: auto; }
 
 /* this class and account-conatiner should be put in css file of the settings page 
      it should be general

@@ -1,8 +1,9 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import registerStyle from './Register.module.scss';
-import api from '../../api/api';
+import { useSelector, useDispatch } from 'react-redux';
+import { redirectToDashboard } from '../../redux/register';
+import RegisterController from './RegisterController';
 
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
@@ -11,127 +12,39 @@ import api from '../../api/api';
  * @component
  */
 // eslint-disable-next-line react/function-component-definition
-function Register() {
-  const [hideFillData, setHideFillData] = useState(true);
-  const [hideFillEmail, setHideFillEmail] = useState(true);
-  const [hideFillPassword, setHideFillPassword] = useState(true);
-  const [hideWrongData, setHideWrongData] = useState(true);
-  const [hideFillBlogName, setHideFillBlogName] = useState(true);
+const Register = function () {
+  const {
+    errorMessage, dashboard, errorMessages,
+  } = useSelector((state) => state.register);
+  const { registerHandler } = RegisterController();
 
-  /**
-  * @description Verify that the user is authorized to login in
-  * @param {string} email - email of the user
-  * @param {string} password - password of the user
-  */
-  const register = async (email, password) => {
-    try {
-      const response = await api.post('/login', {
-        email,
-        password,
-      });
-    } catch (err) {
-      setHideFillData(true);
-      setHideFillEmail(true);
-      setHideFillPassword(true);
-      setHideWrongData(false);
-    }
-  };
+  const dispatch = useDispatch();
 
-  /**
-  * @description Check that the user enter a valid data during login and procced to login if valid
-  * @param {MyEvent} e - The observable event.
-  * @listens MyEvent
-  */
-  const loginHandler = (e) => {
-    e.preventDefault();
-    if (e.target && e.target.email.value !== '' && e.target.password.value !== '') {
-      setHideFillData(true);
-      setHideFillEmail(true);
-      setHideFillPassword(true);
-      setHideWrongData(true);
-      register({
-        email: e.target.email.value,
-        password: e.target.password.value,
-      });
-    } else if (e.target.email.value === '' && e.target.password.value === '') {
-      setHideFillData(false);
-      setHideFillEmail(true);
-      setHideFillPassword(true);
-      setHideWrongData(true);
-    } else if (e.target.email.value !== '') {
-      setHideFillData(true);
-      setHideFillEmail(true);
-      setHideFillPassword(false);
-      setHideWrongData(true);
-    } else {
-      setHideFillData(true);
-      setHideFillEmail(false);
-      setHideFillPassword(true);
-      setHideWrongData(true);
-    }
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (localStorage.getItem('token')) { dispatch(redirectToDashboard()); }
+  });
 
   return (
     <div className={registerStyle.bodyRegister}>
+      {dashboard
+          && (
+            <Redirect to="/dashboard" />
+          )}
       <div className={registerStyle.container}>
         <h2 data-testid="h2"> tumblr </h2>
-        <form data-testid="form" onSubmit={loginHandler}>
+        <form data-testid="form" onSubmit={registerHandler}>
 
-          {!hideFillData
+          {errorMessage !== 9
             && (
-              <div data-testid="emptyData" id={registerStyle.incorrectUser}>You do have to fill this stuff out, you know.</div>
+              <div data-testid="errorMessage" id={registerStyle.incorrectUser}>
+                {
+                  errorMessages[errorMessage]
+                }
+              </div>
             )}
 
-          {!hideFillEmail
-            && (
-              <div data-testid="emptyEmail" id={registerStyle.incorrectUser}>You forgot to enter your email!</div>
-            )}
-
-          {!hideFillPassword
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>You forgot to enter your password!</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>You forgot to enter your blog name!</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s not a valid email address. Please try again.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s not a valid email address. Please try again.</div>
-            )}
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>This email address is already in use.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>The password must be at least 8 characters.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>Please choose a stronger password.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That password is known to be included in compromised password lists. Please choose something more unique.</div>
-            )}
-
-          {!hideFillBlogName
-            && (
-              <div data-testid="emptyPassword" id={registerStyle.incorrectUser}>That&apos;s a good blog name, but it&apos;s taken.</div>
-            )}
-
-          <input data-testid="email" type="email" name="email" id="email" placeholder="Email" />
+          <input data-testid="email" type="text" name="email" id="email" placeholder="Email" />
           <input type="password" name="password" id="password" placeholder="Password" />
           <input type="text" name="blogName" id="blogName" placeholder="Blog name" />
           <p>
@@ -209,5 +122,5 @@ function Register() {
       </div>
     </div>
   );
-}
+};
 export default Register;

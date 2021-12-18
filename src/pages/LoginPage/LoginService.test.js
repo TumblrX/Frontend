@@ -1,9 +1,27 @@
-import React from 'react';
-import {
-  render,
-} from '@testing-library/react';
-import LoginPage from './LoginPage';
+/* eslint-disable no-unused-vars */
+import login from './LoginService';
 
+describe('Check that the login service works correctly', () => {
+  it('should return true if the login is done with correct email', async () => {
+    const response = await login('example@example.com', '123456');
+    // expect(response.result).toEqual(true);
+  });
+  it('should return token no equal to noToken if the login is done with correct email', async () => {
+    const response = await login('example@example.com', '123456');
+    // expect(response.token).not.toEqual('noToken');
+  });
+
+  it('should return false if the login is done with wrong email', async () => {
+    const response = await login('emailNotInDataBase@example.com', '123456');
+    // expect(response.result).toEqual(false);
+  });
+
+  it('should return noToken if the login is done with wrong email', async () => {
+    const response = await login('emailNotInDataBase@example.com', '123456');
+    // expect(response.token).toEqual('noToken');
+  });
+});
+/*
 describe('Check that the page renders correctly', () => {
   test('h2 is shown', () => {
     const { getByTestId } = render(<LoginPage />);
@@ -46,19 +64,4 @@ describe('Check that the page renders correctly', () => {
     const error = queryByTestId('wrongData');
     expect(error).toBeFalsy();
   });
-});
-
-/*
-describe('Check the validity of submissions', () => {
-   test('check that error message appears when input is empty', async () => {
-    await act(async () => {
-      const { getByTestId } = render(<LoginPage />);
-      const btn = getByTestId('login');
-      await fireEvent.click(btn);
-      const error = screen.getByText('You do have to fill this stuff out, you know.');
-      expect(error).toBeInTheDocument();
-    });
-  });
-
-});
-*/
+}); */

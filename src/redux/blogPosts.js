@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import { createSlice } from '@reduxjs/toolkit';
 
-export const DashboardReducer = createSlice({
+export const blogPosts = createSlice({
   name: 'blogPosts',
   initialState: {
     posts: [],
@@ -38,5 +38,5 @@ export const DashboardReducer = createSlice({
 export const {
   setPosts, incrementPageNum, decrementPageNum, setIsInfinite,
   setPageNum, setInitialLoading, setNumOfPosts,
-} = DashboardReducer.actions;
-export default DashboardReducer.reducer;
+} = blogPosts.actions;
+export default blogPosts.reducer;

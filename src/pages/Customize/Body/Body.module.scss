@@ -1,0 +1,53 @@
+.bodyContainer{
+    width: calc(100% - 300px);
+    .backgroundWrapper{
+        background-size: cover;
+        height: 300px;
+        margin: auto;
+        width: 100%;
+        background-position: center center;
+    }
+    .avatarImage{
+        height: 100px;
+          width: 100px;
+          border-radius: 100%;
+          transform: translate(0, -70px);
+          border: solid #fff 5px;
+          margin: auto;
+          display: block;
+    }
+    .headerText{
+        transform: translate(0, -70px);
+        h2{
+            margin: auto;
+          display: block;
+          text-align: center;
+          font-size: 45px;
+        }
+        p{
+            margin: auto;
+          display: block;
+          text-align: center;
+        }
+        ul{
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            width:500px;  
+            margin-top: 10px;   
+            text-align: center;  
+            padding: 0 5px;     
+            li{
+                font-weight: bold;
+                font-size: 15px;                   
+            }
+            li:first-of-type{
+                border-bottom: 4px solid black;
+
+            }
+        }
+    }
+}
+
+
+        

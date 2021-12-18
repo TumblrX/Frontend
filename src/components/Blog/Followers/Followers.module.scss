@@ -1,45 +1,83 @@
-.main{
+.followersContaine{
+    align-items: flex-end;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
-    max-width: 540px;
+    max-width: 625px;
     width: 100%;
-    .bar{
+    .main{
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .h1{
-            color: RGB(var(--white-on-dark));
-            font-family: var(--font-family);
-            font-size: 1.125rem;
-            font-weight: 400;
-            line-height: 1.333;
-            margin: 0 10px;
-        }
-        .form{
+        flex-direction: column;
+        margin-bottom: 40px;
+        width: 100%;
+        .bar{
             display: flex;
-            .input{
-                background: rgba(var(--white-on-dark),.25);
-                border: none;
-                border-radius: 3px;
-                box-sizing: border-box;
-                color: rgba(var(--white-on-dark),.65);
-                font-family: var(--font-family);
-                font-size: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            .h1{
+                color: RGB(255, 255, 255);
+                font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                font-size: 1.125rem;
                 font-weight: 400;
-                line-height: 1.5;
-                padding: 5px 10px;
-                transition: background-color .25s ease;
-                width: 100%;
+                line-height: 1.333;
+                margin: 0 10px;
+            }
+            .form{
+                display: flex;
+                .input{
+                    background: rgba(255, 255, 255,.25);
+                    border: none;
+                    border-radius: 3px;
+                    box-sizing: border-box;
+                    color: rgba(255, 255, 255,.65);
+                    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    padding: 5px 10px;
+                    transition: background-color .25s ease;
+                    width: 100%;
+                }
             }
         }
+        .SearchSection {
+            color: RGB(255,255,255);
+            font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 10px 10px 0;
+            display: none;
+            .sSpan1{
+                vertical-align: top;
+                width: inherit;
+                display: inline-block;
+                .sSpan2{
+                    vertical-align: top;
+                    width: inherit;
+                    display: inline-block;
+                    .sa{
+                        font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        line-height: 1.5;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .section{
+            margin-top: 15px;
+        }  
     }
-    .section{
-        margin-top: 15px;
-    }  
 }
 @media (max-width: 540px){
  .h1{
     margin: 10px;
  }
+}
+@media (min-width: 990px){
+    .SearchSection{
+      align-self: flex-end;
+    }
 }

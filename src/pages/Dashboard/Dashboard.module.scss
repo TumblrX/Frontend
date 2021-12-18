@@ -7,7 +7,10 @@ $font-color : #000;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-
+.x{
+    top: 100px;
+    position: relative;
+}
 .parent {
     background-color: $bg; 
     box-sizing: border-box;
@@ -16,7 +19,7 @@ $font-color : #000;
 .Navbar {
     width: 100%;
     height : 55px; 
-    background-color: $post-bg;
+    background-color: $bg;
     text-align: center;
     margin-bottom: 50px;
     border: 3px solid $bg;
@@ -25,7 +28,7 @@ $font-color : #000;
     display: flex;
 }
 .container {
-    width: 65%;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -95,7 +98,6 @@ $font-color : #000;
     }
     .explore {
         width: 35%;
-        height: 1000px;
         justify-content:right;
         .checkBlogs{
             min-height: 200px;
@@ -144,9 +146,14 @@ $font-color : #000;
             }
         }
         .radar{
-            height: 200px;
+            .white{
+                color: #fff;
+            }
+            hr{
+                height: 1px;
+            }
             border: 3px solid $bg;
-            background-color: $post-bg;
+            // background-color: $post-bg;
         }
     }
 }

@@ -17,12 +17,18 @@ title
 a {
   text-decoration: none; }
 
+.before-focus-on-edit {
+  border: none; }
+
 .account-container {
   display: flex;
   flex-direction: column;
   background-color: white;
   width: calc(100% - 40px);
   margin: 0 auto; }
+  .account-container input {
+    -webkit-appearance: auto;
+    border: 1px solid gray; }
 
 .change-email-section,
 .password-box,
@@ -111,16 +117,16 @@ hr {
 .posts-filter-box {
   display: none; }
 
-.before-focus-on-edit {
-  border: none; }
-
-.dots span {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: black;
-  display: inline-block;
-  margin-right: 1px; }
+.dots {
+  margin-left: 5px;
+  margin-top: -5px; }
+  .dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: black;
+    display: inline-block;
+    margin-right: 1px; }
 
 .user-message {
   color: gray;

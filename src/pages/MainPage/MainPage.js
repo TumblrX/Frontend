@@ -1,19 +1,30 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import { useEffect } from 'react';
 import mainPageStyle from './MainPage.module.scss';
-import api from '../../api/api';
-
+import { Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { redirectToDashboard } from '../../redux/mainPage';
 /**
- * Component to render the Email Section in the Accountsettings in the Settings page
  * @author Taher Mohamed
  *
  * @component
  */
 // eslint-disable-next-line react/function-component-definition
 function MainPage() {
+  const { dashboard } = useSelector((state) => state.mainPage);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) { dispatch(redirectToDashboard()); }
+  });
+
   return (
     <div className={mainPageStyle.bodyMainPage}>
+      {dashboard
+      && (
+        <Redirect to="/dashboard" />
+      )}
       <div className={mainPageStyle.container}>
         <h2> tumblr </h2>
         <p className={mainPageStyle.p1}>

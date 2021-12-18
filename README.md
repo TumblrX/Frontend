@@ -1,16 +1,8 @@
-# New Blog 
+# Forntend of tumblrx
 
 ---
 
-### This branch will keep the progress of developing create new blog page, it will be merged to the main after completing its functionalities, functional documentation and unit testing
+### Forntend repo of the better version of tumblr our tumblrx :sunglasses:
 
 ---
 
-### features :
-
-
-- [x] Page UI  
-- [x] State managment with Redux Toolkit
-- [x] Function Documentation  
-- [X] Convert from css to scss  
-- [ ] Unit testing
