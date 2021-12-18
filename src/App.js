@@ -14,6 +14,7 @@ import {
   ForgetPassword,
   CreateBlog,
   Blog,
+  Customize,
 } from './pages/pages';
 import {
   NavBar,
@@ -57,6 +58,9 @@ const App = function () {
       <Route exact path="/inbox">
         <NavBar />
         <Inbox />
+      </Route>
+      <Route exact path="/customize">
+        <Customize />
       </Route>
       <Route exact path="/newblog">
         <CreateBlog />

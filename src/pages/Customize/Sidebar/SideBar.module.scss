@@ -1,0 +1,191 @@
+@import '../../../scss/style.scss';
+
+.sidebarContainer{
+    width:300px;
+    background: #33393e;
+    .header{
+        position: sticky;
+        top:0;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        background: #3d4348;
+        font-size: 13px;
+        color: white;
+        font-weight: bold;
+        align-items: baseline;
+        button{
+            color: white;
+            padding: 6px 9px;
+            font-size: 13px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:first-of-type{
+            background: #6a6e72;
+        }
+        button:last-of-type{
+            background: #519ecc;
+        }
+    }
+    .sidebarWrapper{
+        padding: 0  20px;
+        .apperance{
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            color :hsla(0,0%,100%,.4);  
+            font-size: 13px;  
+            .question{
+                display: inline-block;
+                background: hsla(0,0%,100%,.4);  ;
+                color :#33393e;
+                border-radius: 50%;
+                padding: 0px 6px;
+            }        
+        }
+        ul{
+            background: #fff;
+            padding: 10px 0;
+            border-radius: 3px;                      
+            li{
+                border-bottom: 1px solid #d5d9dd;
+                padding: 10px 10px;
+                .li{
+                    font-weight: bold;
+                    font-size: 14px;
+                    .input[type='color']{
+                        border-radius: 50%;
+                    }
+                    .pen{
+                        background: white;
+                        float :right;
+                        cursor: pointer;
+                    }
+                    .avatarShape{
+                        float: right;
+                        margin-top: 5px ;
+                        input[type='radio'] {                        
+                            box-sizing:border-box;
+                            background: rgb(255, 255, 255);
+                            outline: 2px solid rgb(161 161 161);
+                            border: 3px solid white;
+                            width: 16px;
+                            height: 16px;
+                            -webkit-box-sizing: border-box;
+                            margin-left: 10px;
+                        }                    
+    
+                        input[type='radio']:last-of-type {
+                            border-radius: 100%;
+                        }
+    
+                        input[type='radio']:checked {
+                            outline: 2px solid rgb(0 184 255);
+                            background: rgb(169 206 228);
+                        }                       
+                    } 
+                    .checkbox{
+                        float: right;
+                        margin: 5px;
+                        /* The switch - the box around the slider */
+                        .switch {
+                            position: relative;
+                            display: inline-block;
+                            width: 30px;
+                            height: 16px;
+                        }
+                        
+                        /* Hide default HTML checkbox */
+                        .switch input {
+                            opacity: 0;
+                            width: 0;
+                            height: 0;
+                        }
+                        
+                        /* The slider */
+                        .slider {
+                            position: absolute;
+                            cursor: pointer;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background-color: #ccc;
+                            -webkit-transition: .4s;
+                            transition: .4s;
+                        }
+                        
+                        .slider:before {
+                            position: absolute;
+                            content: "";
+                            height: 11px;
+                            width: 13px;
+                            left: 2px;
+                            bottom: 3px;
+                            background-color: white;
+                            -webkit-transition: .4s;
+                            transition: .4s;
+                        }
+                        
+                        input:checked + .slider {
+                            background-color: #2196F3;
+                        }
+                        
+                        input:focus + .slider {
+                            box-shadow: 0 0 1px #2196F3;
+                        }
+                        
+                        input:checked + .slider:before {
+                            -webkit-transform: translateX(13px);
+                            -ms-transform: translateX(13px);
+                            transform: translateX(13px);
+                        }
+                        
+                        /* Rounded sliders */
+                        .slider.round {
+                            border-radius: 14px;
+                        }
+                        
+                        .slider.round:before {
+                            border-radius: 50%;
+                        }
+                        input[type="checkbox"]{
+                            -webkit-appearance: checkbox !important;
+                            -moz-appearance: checkbox !important;
+                            -ms-appearance: checkbox !important;
+                            -o-appearance: checkbox !important;
+                            appearance: checkbox !important;
+                        }   
+                    }
+                    
+                    input[type="color"]{
+                        border-radius: 50%;
+                        height: 20px;
+                        width: 20px;
+                        border: none;
+                        outline: none;
+                        -webkit-appearance: none;
+                        float: right;
+                    }
+                    
+                    input[type="color"]::-webkit-color-swatch-wrapper {
+                        padding: 0; 
+                    }
+                    input[type="color"]::-webkit-color-swatch {
+                        border: none;
+                        border-radius: 50%;
+                    }
+                          
+                }
+                input[type="text"]{
+                    border: none;
+                    outline: none;
+                    color: black;
+                }
+            }
+        }
+
+    }
+}
