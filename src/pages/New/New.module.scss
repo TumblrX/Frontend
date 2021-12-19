@@ -16,6 +16,9 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  @media (max-width:988px) {
+    flex-direction: column;
+  }
   a {
     color: inherit;
   }
@@ -61,45 +64,66 @@
 
 .text {
   margin-right: 1.4rem;
+  @media (max-width:988px) {
+    margin-right: 0;
+    margin-bottom: 1.4rem;
+  }
   div {
     background-color: rgb(255, 255, 255);
   }
 }
 .photo {
   margin-right: 1.4rem;
+  @media (max-width:988px) {
+    margin-right: 0;
+    margin-bottom: 1.4rem;
+  }
   div {
     background-color: rgb(255, 73, 47);
   }
 }
 .quote {
     margin-right: 1.4rem;
-
+    @media (max-width:988px) {
+      margin-right: 0;
+      margin-bottom: 1.4rem;
+    }
   div {
     background-color: rgb(255, 138, 0);
   }
 }
 .link {
     margin-right: 1.4rem;
-
+    @media (max-width:988px) {
+      margin-right: 0;
+      margin-bottom: 1.4rem;
+    }
   div {
     background-color: rgb(0, 207, 53);
   }
 }
 .chat {
     margin-right: 1.4rem;
-
+    @media (max-width:988px) {
+      margin-right: 0;
+      margin-bottom: 1.4rem;
+    }
   div {
     background-color: rgb(0, 184, 255);
   }
 }
 .audio {
     margin-right: 1.4rem;
-
+    @media (max-width:988px) {
+      margin-right: 0;
+      margin-bottom: 1.4rem;
+    }
   div {
     background-color: rgb(124, 92, 255);
   }
 }
 .video {
+  
   div {
     background-color: rgb(255, 98, 206);
   }
