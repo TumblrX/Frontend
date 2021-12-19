@@ -2,6 +2,10 @@
 .text {
   color: rgb(89, 89, 89);
   display: flex;
+  @media (max-width:578px) {
+    display: block;
+    width: 100%;
+  }
 }
 .avatar {
   margin-right: 1rem;
