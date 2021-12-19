@@ -33,24 +33,6 @@ const NewText =function () {
   const titleChangeHandler = (e) => {
     setTitle(e.target.value);
   };
-  useEffect(() => {
-    const fetchUserBlogs =async function (){
-      try{
-        const userInfo = await api.get(`/api/user/info`);
-        console.log(userInfo);
-        const primaryBlog=userInfo.primaryBlog;
-        const blogsIds = userInfo.blogs;
-      }catch(err){
-        if(err.response){
-          console.log(err.response)
-          console.log(`Error ${err.response.status}`, err.response.statusText);
-        }else{
-          console.log(err);
-        }
-      }
-    }
-    fetchUserBlogs();
-  }, []);
   const textChangeHandler = (editorOutput) => {
     setUploadedImages(editorOutput.uploadedImages);
     let blocks = convertToRaw(editorOutput.editorState.getCurrentContent()).blocks;
@@ -76,6 +58,7 @@ const NewText =function () {
   }
   const blogIdChangeHandler = (blogId) => {
     setBlogId(blogId);
+    console.log(blogId);
   }
   const formSubmitHandler = async (e) => {
     e.preventDefault();[]
@@ -179,7 +162,7 @@ const NewText =function () {
       }
       // await api.post('/new', post);
       console.log(post);
-      //await api.post(`/blog/${blogId}/posts`, fd);
+      await api.post(`api/blog/${blogId}/posts`, fd);
     } catch (err) {
       if (err.response) {
         console.log(err.response);
@@ -194,7 +177,7 @@ const NewText =function () {
     setTags('');
   };
   return (
-    <FormCard>
+    <FormCard changeBlogId={blogIdChangeHandler}>
       <form className={classes.form} onSubmit={formSubmitHandler}>
         <input
           className={classes.title}

@@ -2,21 +2,27 @@
 /* eslint jsx-quotes: ["error", "prefer-single"] */
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdSettings } from 'react-icons/md';
 import { IoIosArrowDown } from 'react-icons/io';
 import classes from './FormCard.module.scss';
 import avatar from '../../assets/Images/avatar.png';
+import { useSelector } from 'react-redux';
 
-const FormCard = function ({ children }) {
-  const [selectedOption, setSelectedOption] = useState('Blog_1_ID');
+const FormCard = function (props) {
+  const userBlogs = useSelector((state) => state.userBlogs.userBlogs);
+  const { children, changeBlogId } = props;
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState();
   const [showOptions, setShowOptions] = useState(false);
+  useEffect(() => {
+    setSelectedBlogTitle(userBlogs[0].title);
+  }, [userBlogs]);
   const toggleOptionsHandler = () => {
     setShowOptions((x) => !x);
   };
   const selectOptionHandler = (e) => {
-    setSelectedOption(e.target.getAttribute('value'));
-    console.log(e.target.getAttribute('value'));
+    changeBlogId(e.target.getAttribute('value'));
+    setSelectedBlogTitle(userBlogs.find((blog) => blog.id === e.target.getAttribute('value')).title);
   };
   return (
     <div className={classes.text}>
@@ -26,12 +32,11 @@ const FormCard = function ({ children }) {
       <div className={classes.form}>
         <header>
           <div onClick={toggleOptionsHandler}>
-            {selectedOption}
+            {selectedBlogTitle}
             <IoIosArrowDown />
             {showOptions && (
               <ul onClick={selectOptionHandler}>
-                <li value='Blog_1_ID'>Blog_1_ID</li>
-                <li value='Blog_2_ID'>Blog_2_ID</li>
+                {userBlogs.map((blog) => <li value={blog.id} key={blog.id}>{blog.title}</li>)}
               </ul>
             )}
           </div>

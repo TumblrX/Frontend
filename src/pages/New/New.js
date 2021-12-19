@@ -1,3 +1,4 @@
+/* eslint-disable space-before-blocks */
 /* eslint quotes: ["error","single"] */
 /* eslint jsx-quotes: ["error", "prefer-single"] */
 /* eslint-disable no-unused-vars */
@@ -10,6 +11,7 @@
 
 import React, { useState } from 'react';
 import { Route, useHistory, Link } from 'react-router-dom';
+import api from '../../api/api';
 import { IoText } from 'react-icons/io5';
 import { AiFillCamera } from 'react-icons/ai';
 import { ImQuotesLeft, ImHeadphones } from 'react-icons/im';
@@ -28,15 +30,15 @@ import NewVideo from './Video/Video';
 
 const New = function () {
   const history = useHistory();
-  const [width, setWidth] = useState(window.screen.width);
-  window.addEventListener('resize', () => setWidth(window.screen.width));
-  if (width > 988) {
-    history.push('/new');
-  } else {
-    history.push('/new/text');
-  }
+  // const [width, setWidth] = useState(window.screen.width);
+  // window.addEventListener('resize', () => setWidth(window.screen.width));
+  // if (width > 988) {
+  //   history.replace('/new');
+  // } else {
+  //   history.replace('/new/text');
+  // }
   const overlayClickHandler = () => {
-    history.push('/dashboard');
+    history.goBack();
   };
   return (
     <div className={classes.new}>
@@ -51,7 +53,7 @@ const New = function () {
               <span>Text</span>
             </div>
           </Link>
-          <Link to='/new/photo'>
+          <Link to='/new/text'>
             <div className={classes.photo}>
               <div>
                 <AiFillCamera />
@@ -59,7 +61,7 @@ const New = function () {
               <span>Photo</span>
             </div>
           </Link>
-          <Link to='/new/quote'>
+          <Link to='/new/text'>
             <div className={classes.quote}>
               <div>
                 <ImQuotesLeft />
@@ -67,7 +69,7 @@ const New = function () {
               <span>Quote</span>
             </div>
           </Link>
-          <Link to='/new/link'>
+          <Link to='/new/text'>
             <div className={classes.link}>
               <div>
                 <FaLink />
@@ -75,7 +77,7 @@ const New = function () {
               <span>Link</span>
             </div>
           </Link>
-          <Link to='/new/chat'>
+          <Link to='/new/text'>
             <div className={classes.chat}>
               <div>
                 <BsFillChatDotsFill />
@@ -83,7 +85,7 @@ const New = function () {
               <span>Chat</span>
             </div>
           </Link>
-          <Link to='/new/audio'>
+          <Link to='/new/text'>
             <div className={classes.audio}>
               <div>
                 <ImHeadphones />
@@ -91,7 +93,7 @@ const New = function () {
               <span>Audio</span>
             </div>
           </Link>
-          <Link to='/new/video'>
+          <Link to='/new/text'>
             <div className={classes.video}>
               <div>
                 <TiVideo />

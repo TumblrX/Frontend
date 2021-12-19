@@ -1,6 +1,10 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable space-before-blocks */
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { fetchUserBlogs } from './redux/userBlogs-actions';
 import Settings from './pages/Settings/Settings';
 import {
   NotFound,
@@ -26,6 +30,10 @@ import {
 import Chat from './components/Dashboard/Chat/Chat';
 
 const App = function () {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUserBlogs());
+  }, [dispatch]);
   return (
     <Switch>
       <Route exact path="/">

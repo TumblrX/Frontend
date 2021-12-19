@@ -10,6 +10,7 @@ import NotificationsReducer from './Notifications';
 import RegisterReducer from './register';
 import MainPageReducer from './mainPage';
 import blogFollowers from './blogFollowers';
+import userBlogsReducer from './userBlogs-slice';
 
 export default configureStore({
   reducer: {
@@ -24,5 +25,6 @@ export default configureStore({
     notificationsInfo: NotificationsReducer,
     register: RegisterReducer,
     mainPage: MainPageReducer,
+    userBlogs: userBlogsReducer,
   },
 });
