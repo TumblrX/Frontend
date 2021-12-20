@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable func-names */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Posts.module.scss';
 import showPosts from './PostsControllers';
-import fetchPost from './PostsService';
 import NothingAvailable from '../nothingAvailable/nothingAvailable';
 import Loading from '../Loading/Loading';
 import NewPostNavBar from '../../Dashboard/NewPost/Newpost';
@@ -22,23 +20,22 @@ import {
  *
  */
 const Posts = function () {
+  const { pageNum, isInfinte } = useSelector((state) => state.blogposts);
   const {
-    posts, pageNum, intialLoading, NumOfPosts, isInfinte,
-  } = useSelector((state) => state.blogposts);
+    intialLoading, NumOfPosts, posts, avatar,
+  } = useSelector((state) => state.Blog);
   const dispatch = useDispatch();
-  useEffect(() => {
-    fetchPost();
-  }, []);
   return (
     <div className={`${styles.container} ${styles.row}`}>
       <div className={styles.posts}>
         <div className={`${styles.insertPost} ${styles.row}`}>
-          <div className={styles.insertLogo} />
+          <div className={styles.insertLogo}>
+            <img src={avatar} alt="no avatar" className={styles.img} />
+          </div>
           <div className={styles.insertPostDetails}>
             <NewPostNavBar />
           </div>
         </div>
-        {/* --------------- Start posts ---------------------- */}
         { intialLoading
           ? <Loading />
           : (NumOfPosts === 0
@@ -51,7 +48,7 @@ const Posts = function () {
           )}
         <div className={`${styles.navigateBtns} ${styles.row}`}>
           {
-            (pageNum !== 1 && !isInfinte)
+            (pageNum !== 1 && !isInfinte && NumOfPosts !== 0)
             && (
               <button
                 className={styles.previousBtn}
@@ -63,7 +60,7 @@ const Posts = function () {
           }
           {
             (pageNum * 10 < posts.length || posts.length === 0)
-              && !isInfinte
+              && !isInfinte && NumOfPosts !== 0
               && (
                 <button
                   className={styles.nextBtn}
@@ -75,7 +72,6 @@ const Posts = function () {
           }
         </div>
       </div>
-      {/* --------------- End posts ---------------------- */}
     </div>
   );
 };

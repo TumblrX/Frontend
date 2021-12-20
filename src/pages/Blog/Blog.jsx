@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router, Route, Switch, useParams,
 } from 'react-router-dom';
@@ -8,9 +8,9 @@ import Posts from '../../components/Blog/Posts/Posts';
 import Followers from '../../components/Blog/Followers/Followers';
 import Drafts from '../../components/Blog/Drafts/Drafts';
 import Activity from '../../components/Blog/Activity/Activity';
-import Members from '../../components/Blog/Members/Members';
 import styles from './Blog.module.scss';
 import { NavBar } from '../../components/Layouts/Layouts';
+import useBlogHandler from './BlogService';
 /**
  * Component to render the blog page with its different routes
  * @author Ahmed Mahmoud
@@ -21,6 +21,10 @@ import { NavBar } from '../../components/Layouts/Layouts';
 // eslint-disable-next-line func-names
 const Blog = function () {
   const { blogName } = useParams();
+  const { fetchBlogData } = useBlogHandler();
+  useEffect(() => {
+    fetchBlogData(blogName);
+  }, []);
   return (
     <Router>
       <NavBar />
@@ -39,13 +43,10 @@ const Blog = function () {
             <Route path="/blog/:blogName/activity" exact>
               <Activity />
             </Route>
-            <Route path="/blog/:blogName/members" exact>
-              <Members />
-            </Route>
           </Switch>
         </div>
         <div className={styles.asideBar}>
-          <BlogSideNav blogName={blogName} />
+          <BlogSideNav />
         </div>
       </div>
     </Router>

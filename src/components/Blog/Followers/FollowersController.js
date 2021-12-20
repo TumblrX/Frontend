@@ -1,5 +1,4 @@
 /* eslint-disable no-plusplus */
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import FollowerSection from './followerSection/FollowerSection';
 import {

@@ -4,8 +4,10 @@ import styles from './FollowerSection.module.scss';
 import useHandler from './FollowerSecionController';
 
 const FollowerSection = function ({ data }) {
-  const { title, handle, avatar } = data;
-  const { handleSideClick } = useHandler();
+  const {
+    _id, title, handle, avatar, alreadyFollow,
+  } = data;
+  const { handleSideClick, handleClick } = useHandler();
   return (
     <div className={styles.container}>
       <a
@@ -30,6 +32,7 @@ const FollowerSection = function ({ data }) {
           <div className={styles.titlesContainer}>
             <div className={styles.handle}>
               <span className={styles.handleSpan}>{handle}</span>
+              {alreadyFollow && (
               <div className={styles.svgDiv}>
                 <svg
                   viewBox="0 0 20 21"
@@ -40,6 +43,7 @@ const FollowerSection = function ({ data }) {
                   <path d="M11.5 8.8c0-1.5-1.2-2.8-2.6-2.8-1.4 0-2.6 1.3-2.6 2.8 0 1.5 1.2 2.2 2.6 2.2 1.5 0 2.6-.7 2.6-2.2zM5 16.2v.8h7.7v-.8c0-3-1.7-4.2-3.9-4.2C6.7 12 5 13.2 5 16.2zM16 19H2V4h10V2H2C.9 2 0 2.9 0 4v14.9C0 20.1.9 21 2 21h14.2c1.1 0 1.8-.9 1.8-2.1V8h-2v11zm2-17V0h-2v2h-2v2h2v2h2V4h2V2h-2z" />
                 </svg>
               </div>
+              )}
             </div>
             <div className={styles.title}>{title}</div>
           </div>
@@ -47,6 +51,13 @@ const FollowerSection = function ({ data }) {
       </div>
       <div className={styles.sideSelect}>
         <div className={styles.list}>
+          {!alreadyFollow && (
+          <button className={styles.follow} aria-label="Follow" onClick={(event) => handleClick(event, _id)}>
+            <span className={styles.followspan} tabIndex="-1">
+              Follow
+            </span>
+          </button>
+          )}
           <span className={styles.span1} onClick={handleSideClick}>
             <span className={styles.span2}>
               <button
