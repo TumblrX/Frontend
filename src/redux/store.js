@@ -11,6 +11,7 @@ import RegisterReducer from './register';
 import MainPageReducer from './mainPage';
 import blogFollowers from './blogFollowers';
 import ChatReducer from './ChatReducer';
+import blog from './blog';
 
 export default configureStore({
   reducer: {
@@ -26,5 +27,6 @@ export default configureStore({
     register: RegisterReducer,
     mainPage: MainPageReducer,
     Chat: ChatReducer,
+    Blog: blog,
   },
 });

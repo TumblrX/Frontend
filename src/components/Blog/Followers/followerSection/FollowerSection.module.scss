@@ -98,6 +98,17 @@
             align-items: center;
             display: flex;
             justify-content: center;
+            .follow{
+                .followspan{
+                    color: RGB(0, 184, 255);
+                    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                    font-size: .875rem;
+                    font-weight: 700;
+                    line-height: 1.5;
+                    text-decoration: none;
+                    display: block;
+                }
+            }
             .span1{
                 vertical-align: top;
                 .span2{

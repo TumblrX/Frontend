@@ -15,12 +15,16 @@ const Followers = function () {
   const {
     showFollowers, handleChange, handleSubmit,
   } = useHandler();
+  const { id, intialLoading } = useSelector((state) => state.Blog);
   const {
     numOfFollowers, searchValue, searchResult, isReady, searchDone, prevSearchValue,
   } = useSelector((state) => state.blogfollowers);
   useEffect(() => {
-    fetchFollowers();
-  }, []);
+    console.log('idd  ', id);
+    if (!intialLoading) {
+      fetchFollowers(id);
+    }
+  }, [intialLoading]);
   return (
     <div className={styles.followersContaine}>
       <main className={styles.main}>
@@ -30,6 +34,8 @@ const Followers = function () {
             {' '}
             Followers
           </h1>
+          {numOfFollowers > 0
+          && (
           <form className={styles.form} onSubmit={handleSubmit}>
             <input
               type="text"
@@ -40,6 +46,7 @@ const Followers = function () {
               onChange={handleChange}
             />
           </form>
+          )}
         </div>
         <span className={styles.SearchSection} id="SearchSection">
           <span className={styles.sSpan1}>
@@ -61,6 +68,7 @@ const Followers = function () {
           you.
         </span>
         <section className={styles.section}>
+          {console.log(isReady)}
           {isReady ? showFollowers() : <Loading /> }
         </section>
       </main>
