@@ -4,16 +4,10 @@ import { createSlice } from '@reduxjs/toolkit';
 export const blogPosts = createSlice({
   name: 'blogPosts',
   initialState: {
-    posts: [],
     pageNum: 1,
     isInfinte: false,
-    intialLoading: true,
-    NumOfPosts: 0,
   },
   reducers: {
-    setPosts: (state, action) => {
-      state.posts = action.payload;
-    },
     incrementPageNum: (state) => {
       state.pageNum += 1;
     },
@@ -26,17 +20,11 @@ export const blogPosts = createSlice({
     setIsInfinite: (state, action) => {
       state.isInfinte = action.payload;
     },
-    setInitialLoading: (state, action) => {
-      state.intialLoading = action.payload;
-    },
-    setNumOfPosts: (state, action) => {
-      state.NumOfPosts = action.payload;
-    },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
-  setPosts, incrementPageNum, decrementPageNum, setIsInfinite,
-  setPageNum, setInitialLoading, setNumOfPosts,
+  incrementPageNum, decrementPageNum, setIsInfinite,
+  setPageNum,
 } = blogPosts.actions;
 export default blogPosts.reducer;

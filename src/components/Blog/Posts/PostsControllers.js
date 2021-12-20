@@ -26,7 +26,9 @@ const showPosts = (posts, pageNum, isInfinte) => {
     // eslint-disable-next-line block-scoped-var
     posts.slice(firstPost, lastPost).map((post, index) => (
       <div className={`${styles.post} ${styles.row}`} key={index} data-testid={`testPost${index}`}>
-        <div className={styles.logo} />
+        <div className={styles.logo}>
+          <img src={post.blogAttribution.avatar} alt="no avatar" className={styles.limg} />
+        </div>
         <div className={styles.postDatailes}>
           <Post data={post} />
         </div>

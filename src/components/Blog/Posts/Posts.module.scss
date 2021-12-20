@@ -26,6 +26,11 @@ $font-color : #000;
             position: -webkit-sticky;
             position: sticky;
             top: 50px;
+            .img{
+                width: 64px; 
+                height: 64px;
+                display: block;
+            }
         }
         .insertPostDetails {
             background-color: $post-bg;
@@ -45,6 +50,11 @@ $font-color : #000;
             position: -webkit-sticky;
             position: sticky;
             top: 55px;
+            .limg{
+                width: 64px; 
+                height: 64px;
+                display: block;
+            }
         }
         .postDatailes {
             width: 100%;
