@@ -9,5 +9,9 @@ const open = () => {
   document.getElementById('Chat').style.display = 'block';
   document.getElementById('ExitAvatar').style.display = 'none';
 };
-
-export { open, close, dropDown };
+const scroll = (scrollRef) => {
+  scrollRef.current?.scrollIntoView({ block: 'start' });
+};
+export {
+  open, close, dropDown, scroll,
+};
