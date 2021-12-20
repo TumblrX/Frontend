@@ -50,6 +50,10 @@ $font-color : #000;
                 position: -webkit-sticky;
                 position: sticky;
                 top: 50px;
+                .avatar {
+                    width: 100%;
+                    height: 100%;
+                }
             }
             .insertPostDetails {
                 width: 100%;
@@ -68,6 +72,10 @@ $font-color : #000;
                 position: -webkit-sticky;
                 position: sticky;
                 top: 55px;
+                .avatar {
+                    width: 100%;
+                    height: 100%;
+                }
             }
             .postDatailes {
                 width: 100%;
