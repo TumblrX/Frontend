@@ -23,6 +23,7 @@ import {
   iconClick,
   changeInput,
   cancelButtonClick,
+  formAction,
 } from "./EmailSectionController";
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
@@ -39,46 +40,6 @@ const EmailSection = function (props) {
     confirmedPassword,
     letPeopleFindBlogByEmail,
   } = useSelector((state) => state.emailInfo);
-  const dispatch = useDispatch();
-  /**
-   * this function handle the click on the save button in the email section
-   * @type {function}
-   * @param {*} event
-   * @returns {void} return nothing , it just a click event handler
-   */
-  const formAction = (event) => {
-    /**
-     * get the save button
-     * @type {Array<Element>}
-     *
-     */
-    const saveButtons = document.getElementsByClassName(
-      `${styles["save-button"]}`
-    );
-    if (event.target === saveButtons[0]) {
-      if (email === previousEmail || email === "") {
-        document.getElementsByClassName(
-          `${styles["error-email-message"]}`
-        )[0].style.visibility = "unset";
-      } else {
-        // if (password !== confirmedPassword) {
-        //   document.getElementsByClassName(
-        //     `${styles['error-password-message']}`,
-        //   )[0].style.visibility = 'unset';
-        //   return;
-        // }
-        /**
-         * @type{object } sentData
-         * object for the data that will be sent to the server
-         */
-        const sentData = {
-          email: email,
-          password: confirmedPassword,
-        };
-        changeEmail(sentData);
-      }
-    }
-  };
 
   useEffect(componentDidMount, []);
 
@@ -130,7 +91,7 @@ const EmailSection = function (props) {
               cancel
             </button>
             <button
-              onClick={formAction}
+              onClick={(event)=>formAction(event,email,previousEmail,confirmedPassword)}
               type="button"
               className={styles["save-button"]}
             >

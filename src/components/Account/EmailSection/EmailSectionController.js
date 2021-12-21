@@ -1,12 +1,13 @@
 import { getUserInfo } from "./EmailSectionServices";
 import styles from "../Account.module.css";
-import { changeFindMeByEmail } from "./EmailSectionServices";
+import { changeFindMeByEmail,changeEmail } from "./EmailSectionServices";
 import configureStore from "../../../redux/store";
 import {
   updateEmail,
   updateLetPeopleFindBlogByEmail,
   updateConfirmedPassword,
 } from "../../../redux/EmailSection";
+
 
 /**
  * this function handle the click on the cancel button in the email section
@@ -161,4 +162,45 @@ const changeInput = (event) => {
   }
 };
 
-export { componentDidMount, iconClick, changeInput,cancelButtonClick };
+
+/**
+   * this function handle the click on the save button in the email section
+   * @type {function}
+   * @param {*} event
+   * @returns {void} return nothing , it just a click event handler
+   */
+ const formAction = (event,email , previousEmail,confirmedPassword) => {
+  /**
+   * get the save button
+   * @type {Array<Element>}
+   *
+   */
+  const saveButtons = document.getElementsByClassName(
+    `${styles["save-button"]}`
+  );
+  if (event.target === saveButtons[0]) {
+    if (email === previousEmail || email === "") {
+      document.getElementsByClassName(
+        `${styles["error-email-message"]}`
+      )[0].style.visibility = "unset";
+    } else {
+      // if (password !== confirmedPassword) {
+      //   document.getElementsByClassName(
+      //     `${styles['error-password-message']}`,
+      //   )[0].style.visibility = 'unset';
+      //   return;
+      // }
+      /**
+       * @type{object } sentData
+       * object for the data that will be sent to the server
+       */
+      const sentData = {
+        email: email,
+        password: confirmedPassword,
+      };
+      changeEmail(sentData);
+    }
+  }
+};
+
+export { componentDidMount, iconClick, changeInput,cancelButtonClick ,formAction};
