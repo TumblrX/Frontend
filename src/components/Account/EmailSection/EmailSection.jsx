@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
-import React, { useEffect } from "react";
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
 import { useSelector } from "react-redux";
@@ -18,7 +17,7 @@ import {
  * @component
  */
 
-const EmailSection = function (props) {
+const EmailSection = function () {
   const {
     email,
     password,

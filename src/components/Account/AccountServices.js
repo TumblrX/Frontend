@@ -4,9 +4,9 @@ import {
   updateEmail,
   updatePrevEmail,
   updateLetPeopleFindBlogByEmail,
-} from "../../redux/EmailSection"
+} from "../../redux/EmailSection";
 
-
+import updateEmailUserAbout from "../../redux/SecuritySection";
 const getUserInfo = function () {
   let token = localStorage.getItem("token");
   console.log(token);
@@ -17,6 +17,8 @@ const getUserInfo = function () {
       },
     })
     .then((response) => {
+      console.log("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+      console.log(response);
       document.querySelectorAll('input[type="checkbox"]')[0].checked =
         response.data.settings.findMeByEmail;
       configureStore.dispatch(updateEmail(response.data.email));
@@ -25,7 +27,11 @@ const getUserInfo = function () {
         updateLetPeopleFindBlogByEmail(response.data.findMeByEmail)
       );
 
-      console.log(response);
+      document.querySelectorAll('input[type="checkbox"]')[1].checked =
+        response.data.settings.actionNotify;
+      configureStore.dispatch(
+        updateEmailUserAbout(response.data.settings.actionNotify)
+      );
     })
     .catch((error) => {
       console.log(error);

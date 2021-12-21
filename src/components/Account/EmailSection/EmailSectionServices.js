@@ -1,10 +1,4 @@
 import api from "../../../api/api";
-import configureStore from "../../../redux/store";
-import {
-  updateEmail,
-  updatePrevEmail,
-  updateLetPeopleFindBlogByEmail,
-} from "../../../redux/EmailSection";
 const changeEmail = function (sentData) {
   let token = localStorage.getItem("token");
   let config = {
@@ -12,8 +6,6 @@ const changeEmail = function (sentData) {
       Authorization: token,
     },
   };
-  console.log(token);
-
   api
     .post("/api/user/change-email", sentData, config)
     .then((response) => {
@@ -36,4 +28,4 @@ const changeFindMeByEmail = function (sentData) {
   });
 };
 
-export {changeEmail, changeFindMeByEmail };
+export { changeEmail, changeFindMeByEmail };

@@ -183,9 +183,4 @@ const formAction = (event, email, previousEmail, confirmedPassword) => {
   }
 };
 
-export {
-  iconClick,
-  changeInput,
-  cancelButtonClick,
-  formAction,
-};
+export { iconClick, changeInput, cancelButtonClick, formAction };
