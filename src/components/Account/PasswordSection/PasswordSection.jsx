@@ -38,47 +38,53 @@ const PasswordSection = function (props) {
           className={`${styles["input-fields"]} ${styles.hidden}`}
           data-testid="password-section-input-field"
         >
-          <input
-            id="currentpassword"
-            type="password"
-            name=""
-            placeholder="Current Password"
-            value={confirmedPassword}
-            onChange={changeInput}
-            data-testid="currentpassword-box"
-            className={`${styles["input-box"]}`}
-          />
-          <div className={`${styles["error-current-password"]} error-message `}>
-            Please Enter your password Correctly
+          <div style={{ }}>
+            <input
+              id="currentpassword"
+              type="password"
+              name=""
+              placeholder="Current Password"
+              value={confirmedPassword}
+              onChange={changeInput}
+              data-testid="currentpassword-box"
+              className={`${styles["input-box"]}`}
+            />
+            <div
+              className={`${styles["error-current-password"]} error-message `}
+            >
+              Please Enter your password Correctly
+            </div>
           </div>
-          <input
-            id="newpassword"
-            type="password"
-            placeholder="New Password"
-            value={newPassword}
-            onChange={changeInput}
-            data-testid="newpassword-box"
-            className={`${styles["input-box"]}`}
-          />
-          <div className={`${styles["error-new-password"]} error-message`}>
-            Please Enter Strong Password
+          <div style={{ display: "none" }}>
+            <input
+              id="newpassword"
+              type="password"
+              placeholder="New Password"
+              value={newPassword}
+              onChange={changeInput}
+              data-testid="newpassword-box"
+              className={`${styles["input-box"]}`}
+            />
+            <div className={`${styles["error-new-password"]} error-message`}>
+              Please Enter Strong Password
+            </div>
           </div>
-          <div className={`${styles["error-new-password"]} error-message`}>
-            Please Don not enter you previous Password
+          <div style={{ display: "none" }}>
+            <input
+              id="confirmpassword"
+              type="password"
+              placeholder="Confirm Password"
+              value={newConfirmedPassword}
+              onChange={changeInput}
+              data-testid="confirmpassword-box"
+              className={`${styles["input-box"]}`}
+            />
+            <div
+              className={`${styles["error-confirm-password"]} error-message`}
+            >
+              Please Enter Identical Passwords
+            </div>
           </div>
-          <input
-            id="confirmpassword"
-            type="password"
-            placeholder="Confirm Password"
-            value={newConfirmedPassword}
-            onChange={changeInput}
-            data-testid="confirmpassword-box"
-            className={`${styles["input-box"]}`}
-          />
-          <div className={`${styles["error-confirm-password"]} error-message`}>
-            Please Enter Identical Passwords
-          </div>
-
           <div id="password-section-buttons">
             <button
               onClick={cancelButtonClick}

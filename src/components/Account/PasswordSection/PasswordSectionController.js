@@ -58,6 +58,13 @@ const iconClick = (event) => {
     event.target.className === `${styles.dots}` ||
     event.target.parentElement.className === `${styles.dots}`
   ) {
+    document.querySelector("#currentpassword").parentElement.style.display =
+      "flex";
+    document.querySelector("#newpassword").parentElement.style.display = "flex";
+
+    document.querySelector("#confirmpassword").parentElement.style.display =
+      "flex";
+
     document.getElementsByClassName(`${styles.dots}`)[0].style.display = "none";
     document
       .querySelectorAll(`.${styles["password-box"]} .${styles.hidden}`)
@@ -111,6 +118,11 @@ const cancelButtonClick = (event) => {
    */
   const allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
   if (event.target === allButtons[1]) {
+    document.querySelectorAll("form")[0].style.pointerEvents = "all";
+    document.querySelector("#newpassword").parentElement.style.display = "none";
+
+    document.querySelector("#confirmpassword").parentElement.style.display =
+      "none";
     document.getElementsByClassName(`${styles.dots}`)[0].style.display =
       "block";
     document
@@ -136,8 +148,6 @@ const cancelButtonClick = (event) => {
   document.querySelectorAll("form >div").forEach((element) => {
     element.style.opacity = "1";
   });
-
-  document.querySelectorAll("form")[0].style.pointerEvents = "all";
 };
 
 /**

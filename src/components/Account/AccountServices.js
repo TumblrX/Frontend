@@ -16,6 +16,7 @@ const getUserInfo = function () {
       },
     })
     .then((response) => {
+      document.querySelector(".username").textContent = response.data.name;
       document.querySelectorAll('input[type="checkbox"]')[0].checked =
         response.data.settings.findMeByEmail;
       configureStore.dispatch(updateEmail(response.data.email));
