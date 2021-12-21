@@ -1,5 +1,5 @@
 {
-    "/": "/",
-    "/blog/ahmed": "/blog_ahmed",
-    "/blog/ahmed/followers": "/blogFollowers"
+    "/api": "/",
+    "/api/blog/ahmed": "/blog_ahmed",
+    "/api/blog/ahmed/followers": "/blogFollowers"
   }
