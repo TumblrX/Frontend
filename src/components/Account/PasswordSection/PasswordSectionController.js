@@ -170,19 +170,14 @@ const formAction = (
   const saveButtons = document.getElementsByClassName(
     `${styles["save-button"]}`
   );
-
+  var regExp = /[a-zA-Z]/g;
   if (event.target === saveButtons[1]) {
-    if (newPassword.length < 10) {
+    if (newPassword.length < 10 || !regExp.test(newPassword)) {
       // one condition for test
-      if (newPassword.length < 10) {
-        document.getElementsByClassName(
-          `${styles["error-new-password"]}`
-        )[0].style.visibility = "unset";
-      } else {
-        document.getElementsByClassName(
-          `${styles["error-new-password"]}`
-        )[1].style.visibility = "unset";
-      }
+
+      document.getElementsByClassName(
+        `${styles["error-new-password"]}`
+      )[0].style.visibility = "unset";
     } else if (newPassword !== newConfirmedPassword) {
       document.getElementsByClassName(
         `${styles["error-confirm-password"]}`
