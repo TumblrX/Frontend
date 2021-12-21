@@ -4,20 +4,7 @@
 import React, { useEffect } from "react";
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
-import api from "../../../api/api";
-import {
-  getUserInfo,
-  changeEmail,
-  changeFindMeByEmail,
-} from "./EmailSectionServices";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  updateEmail,
-  updateConfirmedPassword,
-  updateLetPeopleFindBlogByEmail,
-  updatePrevEmail,
-  updatePassword,
-} from "../../../redux/EmailSection";
+import { useSelector} from "react-redux";
 import {
   componentDidMount,
   iconClick,
