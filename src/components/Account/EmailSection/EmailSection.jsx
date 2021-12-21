@@ -15,7 +15,7 @@ import {
   updatePrevEmail,
   updatePassword,
 } from "../../../redux/EmailSection";
-
+import { componentDidMount } from "./EmailSectionController";
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
  * @author Abdalla Mahmoud
@@ -124,15 +124,7 @@ const EmailSection = function (props) {
     dispatch(updateEmail(previousEmail));
   };
 
-  /**
-   * retreive the data from the backend when the component mounted
-   * @type {function}
-   * @param {*} event
-   * @returns {void} return nothing , it just a click event handler
-   */
-  const componentDidMount = () => {
-    getUserInfo();
-  };
+  
   useEffect(componentDidMount, []);
 
   /**
