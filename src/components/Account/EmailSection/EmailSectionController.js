@@ -7,6 +7,59 @@ import {
   updateLetPeopleFindBlogByEmail,
   updateConfirmedPassword,
 } from "../../../redux/EmailSection";
+
+/**
+ * this function handle the click on the cancel button in the email section
+ * @type {function}
+ * @param {*} event
+ * @returns {void} return nothing , it just a click event handler
+ */
+const cancelButtonClick = (event,previousEmail) => {
+  // if the user entered invalid email or password then cancel the operation
+  // remove the transition "immediate change " but you should put it again
+  // so it will when the user click on the edit button agian
+  document.querySelectorAll(".error-message").forEach((element) => {
+    element.style.visibility = "hidden";
+    element.style.transition = "none";
+  });
+  /**
+   * get all Cancel buttons
+   * @type {Array<Element>}
+   */
+  const allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
+  console.log(document.querySelector("#email-section-buttons"));
+  if (event.target === allButtons[0]) {
+    document
+      .querySelector(
+        `.${styles["change-email-section"]} input[type="password"]`
+      )
+      .classList.toggle(`${styles.hidden}`);
+    // hide the password box
+    document
+      .querySelector(`.${styles["change-email-section"]} input[type="email"]`)
+      .classList.toggle(`${styles["before-focus-on-edit"]}`); // remove the borders from the email box by toggle the class
+    document
+      .querySelector("#email-section-buttons")
+      .classList.toggle(`${styles.hidden}`);
+    // hide the buttons
+    document
+      .getElementsByTagName("img")[0]
+      .classList.toggle(`${styles.hidden}`);
+    // display the edit icon again
+  }
+  document.querySelectorAll("form >div").forEach((element) => {
+    element.style.opacity = "1";
+  });
+
+  document.querySelectorAll("form")[0].style.pointerEvents = "all";
+  // the change that has happen will be ignored
+  // updateInfo((prevState) => ({
+  //   ...prevState,
+  //   email: prevState.previousEmail,
+  // }));
+  configureStore.dispatch(updateEmail(previousEmail));
+};
+
 /**
  * retreive the data from the backend when the component mounted
  * @type {function}
@@ -15,6 +68,13 @@ import {
  */
 const componentDidMount = () => {
   getUserInfo();
+  // let emailCancelButton = document.querySelector(
+  //   `[data-testid="email-cancel-button"]`
+  // );
+  // console.log(emailCancelButton);
+  // emailCancelButton.addEventListener("click",()=>{
+  //   console.log("yes yes yes ") 
+  // })
 };
 
 /**
@@ -95,8 +155,10 @@ const changeInput = (event) => {
     //   console.log(respone)
     // });
     changeFindMeByEmail(sentData);
-    configureStore.dispatch(updateLetPeopleFindBlogByEmail(event.target.checked));
+    configureStore.dispatch(
+      updateLetPeopleFindBlogByEmail(event.target.checked)
+    );
   }
 };
 
-export { componentDidMount, iconClick,changeInput };
+export { componentDidMount, iconClick, changeInput,cancelButtonClick };
