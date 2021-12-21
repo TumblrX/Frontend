@@ -1,4 +1,5 @@
 import api from "../../../api/api";
+import styles from "../Account.module.css";
 const changeEmail = function (sentData) {
   let token = localStorage.getItem("token");
   let config = {
@@ -13,6 +14,9 @@ const changeEmail = function (sentData) {
     })
     .catch((error) => {
       console.log(error);
+      document.getElementsByClassName(
+        `${styles["error-password-message"]}`
+      )[0].style.visibility = "unset";
     });
 };
 
