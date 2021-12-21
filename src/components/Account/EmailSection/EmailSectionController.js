@@ -1,6 +1,5 @@
-import { getUserInfo } from "./EmailSectionServices";
 import styles from "../Account.module.css";
-import { changeFindMeByEmail,changeEmail } from "./EmailSectionServices";
+import { changeFindMeByEmail, changeEmail } from "./EmailSectionServices";
 import configureStore from "../../../redux/store";
 import {
   updateEmail,
@@ -8,14 +7,13 @@ import {
   updateConfirmedPassword,
 } from "../../../redux/EmailSection";
 
-
 /**
  * this function handle the click on the cancel button in the email section
  * @type {function}
  * @param {*} event
  * @returns {void} return nothing , it just a click event handler
  */
-const cancelButtonClick = (event,previousEmail) => {
+const cancelButtonClick = (event, previousEmail) => {
   // if the user entered invalid email or password then cancel the operation
   // remove the transition "immediate change " but you should put it again
   // so it will when the user click on the edit button agian
@@ -59,23 +57,6 @@ const cancelButtonClick = (event,previousEmail) => {
   //   email: prevState.previousEmail,
   // }));
   configureStore.dispatch(updateEmail(previousEmail));
-};
-
-/**
- * retreive the data from the backend when the component mounted
- * @type {function}
- * @param {*} event
- * @returns {void} return nothing , it just a click event handler
- */
-const componentDidMount = () => {
-  getUserInfo();
-  // let emailCancelButton = document.querySelector(
-  //   `[data-testid="email-cancel-button"]`
-  // );
-  // console.log(emailCancelButton);
-  // emailCancelButton.addEventListener("click",()=>{
-  //   console.log("yes yes yes ") 
-  // })
 };
 
 /**
@@ -162,14 +143,13 @@ const changeInput = (event) => {
   }
 };
 
-
 /**
-   * this function handle the click on the save button in the email section
-   * @type {function}
-   * @param {*} event
-   * @returns {void} return nothing , it just a click event handler
-   */
- const formAction = (event,email , previousEmail,confirmedPassword) => {
+ * this function handle the click on the save button in the email section
+ * @type {function}
+ * @param {*} event
+ * @returns {void} return nothing , it just a click event handler
+ */
+const formAction = (event, email, previousEmail, confirmedPassword) => {
   /**
    * get the save button
    * @type {Array<Element>}
@@ -203,4 +183,9 @@ const changeInput = (event) => {
   }
 };
 
-export { componentDidMount, iconClick, changeInput,cancelButtonClick ,formAction};
+export {
+  iconClick,
+  changeInput,
+  cancelButtonClick,
+  formAction,
+};

@@ -6,7 +6,6 @@ import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
 import { useSelector } from "react-redux";
 import {
-  componentDidMount,
   iconClick,
   changeInput,
   cancelButtonClick,
@@ -27,8 +26,6 @@ const EmailSection = function (props) {
     confirmedPassword,
     letPeopleFindBlogByEmail,
   } = useSelector((state) => state.emailInfo);
-
-  useEffect(componentDidMount, []);
 
   return (
     <>
