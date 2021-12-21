@@ -32,7 +32,6 @@ const getUserInfo = function () {
 
 const changeEmail = function (sentData) {
   let token = localStorage.getItem("token");
-  console.log(sentData);
   let config = {
     headers: {
       Authorization: token,
@@ -43,7 +42,7 @@ const changeEmail = function (sentData) {
   api
     .post("/api/user/change-email", sentData, config)
     .then((response) => {
-      console.log(response);
+      window.location.reload();
     })
     .catch((error) => {
       console.log(error);
