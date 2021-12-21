@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from "react";
-
+import { changeInput } from "./PasswordSectionController";
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
 import api from "../../../api/api";
@@ -24,13 +24,6 @@ import { sendPasswordData } from "./PasswordSectionServices";
 const PasswordSection = function (props) {
   const { password, confirmedPassword, newPassword, newConfirmedPassword } =
     useSelector((state) => state.passwordInfo);
-  // const [passwordInfo, updateInfo] = useState({
-  //   password: '',
-  //   confirmedPassword: '',
-  //   newPassword: '',
-  //   newConfirmedPassword: '',
-  // });
-
   const dispatch = useDispatch();
   /**
    * this function handle the click on the save button in the email section
@@ -180,37 +173,7 @@ const PasswordSection = function (props) {
     }
   };
 
-  /**
-   * this function handle any change in the states
-   * @type {function}
-   * @param {*} event
-   * @returns {void}
-   */
-  const changeInput = (event) => {
-    document.querySelectorAll(".error-message").forEach((element) => {
-      // if the user enter invalid input then try to enter new values
-      element.style.visibility = "hidden";
-    });
-    document.querySelectorAll(".error-message").forEach((element) => {
-      // if the user enter invalid input then try to enter new values
-      element.style.visibility = "hidden";
-    });
-    if (event.target.id === "currentpassword") {
-      // updateInfo({ ...passwordInfo, confirmedPassword: event.target.value });
-      dispatch(updateConfirmedPassword(event.target.value));
-    } else if (event.target.id === "newpassword") {
-      // updateInfo({ ...passwordInfo, newPassword: event.target.value });
-      dispatch(updatenewPassword(event.target.value));
-    } else if (event.target.id === "confirmpassword") {
-      // updateInfo({ ...passwordInfo, newConfirmedPassword: event.target.value });
-      dispatch(updatenewConfirmedPassword(event.target.value));
-    } else {
-      // updateInfo({ ...passwordInfo, confirmedPassword: event.target.value });
-      dispatch(updateConfirmedPassword(event.target.value));
-    }
-    // console.log(passwordInfo);
-  };
-
+  
   return (
     <>
       <div data-testid="password-section" className={styles["password-box"]}>
