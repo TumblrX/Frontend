@@ -1,5 +1,12 @@
 import { getUserInfo } from "./EmailSectionServices";
 import styles from "../Account.module.css";
+import { changeFindMeByEmail } from "./EmailSectionServices";
+import configureStore from "../../../redux/store";
+import {
+  updateEmail,
+  updateLetPeopleFindBlogByEmail,
+  updateConfirmedPassword,
+} from "../../../redux/EmailSection";
 /**
  * retreive the data from the backend when the component mounted
  * @type {function}
@@ -62,4 +69,34 @@ const iconClick = (event) => {
   }
 };
 
-export { componentDidMount,iconClick };
+/**
+ * this function handle any change in the states
+ * @type {function}
+ * @param {*} event
+ * @returns {void}
+ */
+const changeInput = (event) => {
+  document.querySelectorAll(".error-message").forEach((element) => {
+    // if the user enter invalid input then try to enter new values
+    element.style.visibility = "hidden";
+  });
+  if (event.target.type === "email") {
+    configureStore.dispatch(updateEmail(event.target.value));
+  } else if (event.target.id === "emailcurrentpassword") {
+    configureStore.dispatch(updateConfirmedPassword(event.target.value));
+  } else {
+    const sentData = {
+      findMeByEmail: event.target.checked,
+    };
+    // let token = localStorage.getItem("token");
+    // api.post("/api/user/settings-save", sentData,{headers:{
+    //   Authorization: token,
+    // }}).then((respone)=>{
+    //   console.log(respone)
+    // });
+    changeFindMeByEmail(sentData);
+    configureStore.dispatch(updateLetPeopleFindBlogByEmail(event.target.checked));
+  }
+};
+
+export { componentDidMount, iconClick,changeInput };

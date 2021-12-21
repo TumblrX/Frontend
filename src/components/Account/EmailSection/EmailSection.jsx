@@ -14,7 +14,7 @@ import {
   updatePrevEmail,
   updatePassword,
 } from "../../../redux/EmailSection";
-import { componentDidMount ,iconClick} from "./EmailSectionController";
+import { componentDidMount ,iconClick,changeInput} from "./EmailSectionController";
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
  * @author Abdalla Mahmoud
@@ -127,36 +127,7 @@ const EmailSection = function (props) {
   useEffect(componentDidMount, []);
 
   
-  /**
-   * this function handle any change in the states
-   * @type {function}
-   * @param {*} event
-   * @returns {void}
-   */
-  const changeInput = (event) => {
-    document.querySelectorAll(".error-message").forEach((element) => {
-      // if the user enter invalid input then try to enter new values
-      element.style.visibility = "hidden";
-    });
-    if (event.target.type === "email") {
-      dispatch(updateEmail(event.target.value));
-      console.log(email);
-    } else if (event.target.id === "emailcurrentpassword") {
-      dispatch(updateConfirmedPassword(event.target.value));
-    } else {
-      const sentData = {
-        findMeByEmail: event.target.checked,
-      };
-      // let token = localStorage.getItem("token");
-      // api.post("/api/user/settings-save", sentData,{headers:{
-      //   Authorization: token,
-      // }}).then((respone)=>{
-      //   console.log(respone)
-      // });
-      changeFindMeByEmail(sentData);
-      dispatch(updateLetPeopleFindBlogByEmail(event.target.checked));
-    }
-  };
+  
 
   return (
     <>
