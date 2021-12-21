@@ -1,5 +1,7 @@
 import configureStore from "../../../redux/store";
 import styles from "../Account.module.css";
+import { sendPasswordData } from "./PasswordSectionServices";
+
 import {
   updateConfirmedPassword,
   updatenewPassword,
@@ -139,4 +141,52 @@ const cancelButtonClick = (event) => {
   document.querySelectorAll("form")[0].style.pointerEvents = "all";
 };
 
-export { changeInput, iconClick, cancelButtonClick };
+/**
+ * this function handle the click on the save button in the email section
+ * @type {function}
+ * @param {*} event
+ * @returns {void} return nothing , it just a click event handler
+ */
+const formAction = (
+  event,
+  newPassword,
+  newConfirmedPassword,
+  confirmedPassword
+) => {
+  /**
+   *  get save buttons
+   * @type {Array<Element>}
+   *
+   */
+  const saveButtons = document.getElementsByClassName(
+    `${styles["save-button"]}`
+  );
+
+  if (event.target === saveButtons[1]) {
+    if (newPassword.length < 10) {
+      // one condition for test
+      if (newPassword.length < 10) {
+        document.getElementsByClassName(
+          `${styles["error-new-password"]}`
+        )[0].style.visibility = "unset";
+      } else {
+        document.getElementsByClassName(
+          `${styles["error-new-password"]}`
+        )[1].style.visibility = "unset";
+      }
+    } else if (newPassword !== newConfirmedPassword) {
+      document.getElementsByClassName(
+        `${styles["error-confirm-password"]}`
+      )[0].style.visibility = "unset";
+    } else {
+      const sentData = {
+        oldPassword: confirmedPassword,
+        password: newPassword,
+      };
+      sendPasswordData(sentData);
+      // console.log(newConfirmedPassword, newPassword, password);
+    }
+  }
+};
+
+export { changeInput, iconClick, cancelButtonClick,formAction };

@@ -2,7 +2,12 @@
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from "react";
-import { changeInput, iconClick,cancelButtonClick } from "./PasswordSectionController";
+import {
+  changeInput,
+  iconClick,
+  cancelButtonClick,
+  formAction,
+} from "./PasswordSectionController";
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
 import api from "../../../api/api";
@@ -24,50 +29,7 @@ import { sendPasswordData } from "./PasswordSectionServices";
 const PasswordSection = function (props) {
   const { password, confirmedPassword, newPassword, newConfirmedPassword } =
     useSelector((state) => state.passwordInfo);
-  /**
-   * this function handle the click on the save button in the email section
-   * @type {function}
-   * @param {*} event
-   * @returns {void} return nothing , it just a click event handler
-   */
-  const formAction = (event) => {
-    /**
-     *  get save buttons
-     * @type {Array<Element>}
-     *
-     */
-    const saveButtons = document.getElementsByClassName(
-      `${styles["save-button"]}`
-    );
 
-    if (event.target === saveButtons[1]) {
-      if (newPassword.length < 10 || password === newPassword) {
-        // one condition for test
-        if (newPassword.length < 10) {
-          document.getElementsByClassName(
-            `${styles["error-new-password"]}`
-          )[0].style.visibility = "unset";
-        } else {
-          document.getElementsByClassName(
-            `${styles["error-new-password"]}`
-          )[1].style.visibility = "unset";
-        }
-      } else if (newPassword !== newConfirmedPassword) {
-        document.getElementsByClassName(
-          `${styles["error-confirm-password"]}`
-        )[0].style.visibility = "unset";
-      } else {
-        const sentData = {
-          oldPassword: confirmedPassword,
-          password: newPassword,
-        };
-        sendPasswordData(sentData);
-        // console.log(newConfirmedPassword, newPassword, password);
-      }
-    }
-  };
-
-  
   return (
     <>
       <div data-testid="password-section" className={styles["password-box"]}>
@@ -135,7 +97,14 @@ const PasswordSection = function (props) {
             </button>
             <button
               type="button"
-              onClick={formAction}
+              onClick={(event) =>
+                formAction(
+                  event,
+                  newPassword,
+                  newConfirmedPassword,
+                  confirmedPassword
+                )
+              }
               className={styles["save-button"]}
             >
               save
