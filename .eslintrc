@@ -17,6 +17,7 @@
     "jsx-a11y/anchor-is-valid":"off",
     "import/order":"off",
     "import/no-named-as-default":"off",
-    "linebreak-style":"off"
+    "linebreak-style":"off",
+    "import/no-extraneous-dependencies":"off"
   }
 }

@@ -1,86 +1,62 @@
-/* TODO: */
-// 1. edit the closeClickHandler
-// 2. add the post button options
-// 3. validate the inputs values(remember dealing with #)
-// 4. install uuid to generate ids
-// 5. redirect after post
-
-/* eslint quotes: ["error","single"] */
-/* eslint jsx-quotes: ["error", "prefer-single"] */
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-
+// TODO: mention
 /**
  * This is the /new/text page
  * @module Text
  * @author Yousef Elshabrawy
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { newTextPostActions } from '../../../redux/newTextPost-slice';
 import classes from './Text.module.scss';
 import FormCard from '../../../components/NewPost/FormCard';
 import PostButton from '../../../components/NewPost/PostButton';
 import CloseButton from '../../../components/NewPost/CloseButton';
+import TextEditor from '../../../components/TextEditor/TextEditor';
+import textController from './TextController';
 
 const NewText = function () {
-  const [title, setTitle] = useState('');
-  const [text, setText] = useState('');
-  const [tags, setTags] = useState('');
-  const [formIsValid, setFormIsValid] = useState(false);
+  const userBlogs = useSelector((state) => state.userBlogs.userBlogs);
+  const {
+    titleChangeHandler, textChangeHandler, tagsChangeHandler, postStateChangeHandler, blogIdChangeHandler, formSubmitHandler,
+  } = textController();
+  const dispatch = useDispatch();
+  const {
+    title, uploadedImages, blocks, entities, tags, formIsValid, postState, blogId,
+  } = useSelector((state) => state.newTextPost);
   useEffect(() => {
-    if (title.trim() && text.trim()) setFormIsValid(true);
-    else setFormIsValid(false);
-  }, [title, text]);
-  const titleChangeHandler = (e) => {
-    setTitle(e.target.value);
-  };
-  const textChangeHandler = (textEditorOutput) => {
-    setText(textEditorOutput);
-  };
-  const tagsChangeHandler = (e) => {
-    setTags(e.target.value);
-  };
-  const formSubmitHandler = async (e) => {
-    e.preventDefault();
-    if (!formIsValid) return;
-    try {
-      // await api.post('/text', { id: title.length, title, text, tags });
-    } catch (err) {
-      if (err.response) {
-        console.log('NOT in the 200 range');
-      } else {
-        console.log('error');
-      }
+    if (userBlogs.length !== 0) {
+      dispatch(newTextPostActions.setBlogId(userBlogs[0].id));
     }
-    setTitle('');
-    setText('');
-    setTags('');
-  };
+  }, [dispatch, userBlogs]);
+  useEffect(() => {
+    if (title.trim() && (blocks.length || uploadedImages.length) && userBlogs.length) dispatch(newTextPostActions.setFormIsValid(true));
+    else dispatch(newTextPostActions.setFormIsValid(false));
+  }, [title, blocks, uploadedImages, userBlogs, dispatch]);
+
   return (
-    <FormCard>
+    <FormCard changeBlogId={blogIdChangeHandler}>
       <form className={classes.form} onSubmit={formSubmitHandler}>
         <input
           className={classes.title}
-          type='text'
-          placeholder='Title'
+          type="text"
+          placeholder="Title"
           onChange={titleChangeHandler}
           value={title}
         />
-        <input
-          type='text'
-          placeholder='Your text here'
-          onChange={textChangeHandler}
-          value={text}
-        />
+        <TextEditor onChange={textChangeHandler} />
         <input
           className={classes.tags}
-          type='text'
-          placeholder='#tags'
+          type="text"
+          placeholder="#tags"
           onChange={tagsChangeHandler}
           value={tags}
         />
         <div className={classes.actions}>
           <CloseButton />
-          <PostButton formIsValid={formIsValid} />
+          <PostButton setSelectedOption={postStateChangeHandler} />
         </div>
       </form>
     </FormCard>

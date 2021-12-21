@@ -6,15 +6,16 @@ import { setNumOfFollowers, setFollowers, setIsReady } from '../../../redux/blog
  * @function fetchFollowers
  * @return {void} return nothing
  */
-const fetchFollowers = async () => {
+const fetchFollowers = async (blogid) => {
   try {
-    const response = await api.get('blogFollowers');
-    console.log(response);
-    if (response.status === 200) {
-      configureStore.dispatch(setNumOfFollowers(response.data.numberOfFollowers));
-      configureStore.dispatch(setFollowers(response.data.followers));
-      configureStore.dispatch(setIsReady(true));
+    const response = await api.get(`/api/blog/${blogid}/followers`);
+    console.log('succcess in fetch followers');
+    configureStore.dispatch(setNumOfFollowers(response.data.numberOfFollowers));
+    console.log('followers', response.data.blogs);
+    if (response.data.blogs) {
+      configureStore.dispatch(setFollowers(response.data.blogs));
     }
+    configureStore.dispatch(setIsReady(true));
   } catch (err) {
     console.log(`Error message: ${err.message}`);
   }

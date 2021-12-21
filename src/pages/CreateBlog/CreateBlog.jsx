@@ -1,7 +1,6 @@
 /* eslint-disable func-names */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import Recaptcha from 'react-recaptcha';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './createBlog.module.scss';
@@ -15,14 +14,13 @@ import useHandler from './CreateBlogController';
  */
 const CreateBlog = function () {
   const {
-    verifyCallback,
-    recatchaLoaded,
-    expiredCallback,
     handleCheckChange,
     handleURLChange,
     handleTitleChange,
     handlePasswordChange,
     handleSubmit,
+    handleFocus,
+    handleFocusOut,
   } = useHandler();
   const {
     blogHandle, blogTitle, blogIsPrivate, blogPassword,
@@ -115,13 +113,6 @@ const CreateBlog = function () {
               >
                 Password must be 6 char at least.
               </li>
-              <li
-                id="error_robot_check"
-                style={{ display: 'none' }}
-                className={styles.li}
-              >
-                You need to verify that you are a real person.
-              </li>
             </ul>
           </div>
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -136,6 +127,7 @@ const CreateBlog = function () {
                       type="text"
                       className={styles.textField1}
                       value={blogTitle}
+                      maxLength="33"
                       onChange={handleTitleChange}
                     />
                   </div>
@@ -156,6 +148,7 @@ const CreateBlog = function () {
                       className={styles.textField2}
                       id="new_group_name"
                       value={blogHandle}
+                      maxLength="33"
                       onChange={handleURLChange}
                     />
                     <label
@@ -217,23 +210,16 @@ const CreateBlog = function () {
                   style={{ width: '260px', marginLeft: '20px', border: '1px solid #d5d9dd' }}
                   id="new_group_password_protected"
                   type="text"
+                  maxLength="255"
                   value={blogPassword}
                   onChange={handlePasswordChange}
+                  onFocus={handleFocus}
+                  onBlur={handleFocusOut}
                 />
                 <div className={styles.clear} />
               </div>
             </div>
             <div className={styles.secondSection}>
-              <div style={{ marginBottom: '4px', textAlign: 'left' }}>
-                Are you a robot?
-              </div>
-              <Recaptcha
-                sitekey="6Lfzj0QdAAAAAD6W8u9U-PhLTvbp2qmSzzogOSwy"
-                render="explicit"
-                verifyCallback={verifyCallback}
-                onloadCallback={recatchaLoaded}
-                expiredCallback={expiredCallback}
-              />
               <br style={{ clear: 'both' }} />
               <Link to="/Dashboard">
                 <button

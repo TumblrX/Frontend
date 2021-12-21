@@ -1,0 +1,54 @@
+.demo-editor {
+  min-height: 8rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #000;
+}
+.wrapper-class{
+  
+}
+.toolbar-class {
+  img {
+    width: 1rem;
+  }
+}
+.rdw-option-wrapper {
+  border: none;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: rgb(157, 166, 175);
+    color: #fff;
+  }
+}
+.rdw-option-active {
+  background-color: rgb(157, 166, 175);
+}
+.rdw-link-modal {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.rdw-suggestion-dropdown {
+  overflow-x: hidden;
+}
+.rdw-suggestion-option{
+  cursor: pointer;
+}
+.rdw-embedded-modal,
+.rdw-image-modal,
+.rdw-link-modal{
+  height: auto;
+  box-shadow: none;
+}
+.rdw-link-decorator-wrapper{
+  a{
+    color:blue;
+  }
+}
+.rdw-link-decorator-icon{
+  width:1rem;
+  position: relative;
+  left:3px
+}

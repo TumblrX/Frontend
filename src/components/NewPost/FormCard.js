@@ -2,20 +2,32 @@
 /* eslint jsx-quotes: ["error", "prefer-single"] */
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdSettings } from 'react-icons/md';
 import { IoIosArrowDown } from 'react-icons/io';
 import classes from './FormCard.module.scss';
 import avatar from '../../assets/Images/avatar.png';
+import { useSelector } from 'react-redux';
 
-const FormCard = function ({ children }) {
-  const [selectedOption, setSelectedOption] = useState('lyousefelshabrawy');
+const FormCard = function (props) {
+  const userBlogs = useSelector((state) => state.userBlogs.userBlogs);
+  const { children, changeBlogId } = props;
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState();
   const [showOptions, setShowOptions] = useState(false);
+  useEffect(() => {
+    if (userBlogs.length !== 0) {
+      setSelectedBlogTitle(userBlogs[0].title);
+    } else {
+      console.log('Server Error');
+    }
+  }, [userBlogs]);
   const toggleOptionsHandler = () => {
     setShowOptions((x) => !x);
   };
   const selectOptionHandler = (e) => {
-    setSelectedOption(e.target.getAttribute('value'));
+    if (userBlogs.length === 0) return;
+    changeBlogId(e.target.getAttribute('value'));
+    setSelectedBlogTitle(userBlogs.find((blog) => blog.id === e.target.getAttribute('value')).title);
   };
   return (
     <div className={classes.text}>
@@ -25,16 +37,15 @@ const FormCard = function ({ children }) {
       <div className={classes.form}>
         <header>
           <div onClick={toggleOptionsHandler}>
-            {selectedOption}
+            {selectedBlogTitle}
             <IoIosArrowDown />
             {showOptions && (
               <ul onClick={selectOptionHandler}>
-                <li value='lyousefelshabrawy'>lyousefelshabrawy</li>
-                <li value='llyousefelshabrawy'>llyousefelshabrawy</li>
+                {userBlogs.map((blog) => <li value={blog.id} key={blog.id}>{blog.title}</li>)}
               </ul>
             )}
           </div>
-          <MdSettings />
+          {/* <MdSettings /> */}
         </header>
         {children}
       </div>

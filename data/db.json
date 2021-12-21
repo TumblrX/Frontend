@@ -1,4 +1,390 @@
 {
+  "blog_ahmed":{
+      "handle":"Ahmed",
+      "title": "BlaBla",
+      "avatar": "https://assets.tumblr.com/images/default_avatar/cube_open_128.png",
+      "isPrimary": "false",
+      "ownBlog": "true",
+      "post":[
+        {
+          "id": 1,
+          "blogAttribution": {
+              "Standard API Short Blog Info object": "goes here"
+          },
+          "content": [
+            {
+              "type": "text",
+              "subtype": "heading1",
+              "text": "Sward's Shopping List Heading 1"
+            },
+            {
+              "type": "text",
+              "subtype": "heading2",
+              "text": "Sward's Shopping List Heading 2"
+            },
+            {
+              "type": "text",
+              "text": "Hello world! paragraph"
+            },
+            {
+              "type": "text",
+              "subtype": "quote",
+              "text": "Sward's Shopping quote"
+            },
+            {
+              "type": "text",
+              "subtype": "indented",
+              "text": "Sward's Shopping blockquote"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "blogAttribution": {
+              "Standard API Short Blog Info object": "goes here"
+          },
+          "content": [
+            {
+              "type": "text",
+              "subtype": "heading1",
+              "text": "Chat Post"
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "cyle: ello",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 5,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "oli: i'm oli",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 4,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "cyle: ello",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 5,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "oli: i'm oli",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 4,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "cyle: ello",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 5,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "oli: i'm oli",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 4,
+                      "type": "bold"
+                  }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "blogAttribution": {
+              "Standard API Short Blog Info object": "goes here"
+          },
+          "content": [
+            {
+              "type": "text",
+              "subtype": "heading1",
+              "text": "Image Post"
+            },
+            {
+              "type": "image",
+              "media": "image/png",
+              "url": "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_540.jpg",
+              "altText": "Sonic the Hedgehog and friends",
+              "caption": "I'm living my best life on earth.",
+              "width": 540,
+              "height": 400
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "blogAttribution": {
+              "Standard API Short Blog Info object": "goes here"
+          },
+          "content": [
+            {
+              "type": "text",
+              "subtype": "heading1",
+              "text": "Soundcloud Audio Post"
+            },
+            {
+              "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680",
+              "type": "audio",
+              "media":  "audio/mp3",
+              "provider": "soundcloud",
+              "title": "Mouth Sounds",
+              "artist": "neilcic",
+              "album": "Track Album",
+              "poster": {
+                "type": "image/jpeg",
+                "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
+                "width": 500,
+                "height": 400
+              }  
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "blogAttribution": {
+              "Standard API Short Blog Info object": "goes here"
+          },
+          "content": [
+            {
+              "type": "text",
+              "subtype": "heading1",
+              "text": "Youtube Video Post"
+            },
+            {
+              "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+              "type": "video",
+              "media":  "video/mp4",
+              "provider": "youtube",
+              "title": "Video Title",
+              "artist": "neilcic",
+              "album": "Track Album",
+              "poster": {
+                "type": "image/jpeg",
+                "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
+                "width": 500,
+                "height": 400
+              }  
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "blogAttribution": {
+              "Standard API Short Blog Info object": "goes here"
+          },
+          "content": [
+            {
+              "type": "text",
+              "subtype": "heading1",
+              "text": "Link Post"
+            },
+            {
+              "type": "link",
+              "url": "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
+              "title": "Secrecy Bill Raises Alarms in Both Parties",
+              "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
+              "author": "Thomas Kaplan and Robert Pear",
+              "poster":{
+                  "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
+                  "type": "image/jpeg",
+                  "width": 549,
+                  "height": 549
+              }
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "blogAttribution": {
+              "Standard API Short Blog Info object": "goes here"
+          },
+          "content": [
+            {
+              "type": "text",
+              "subtype": "heading1",
+              "text": "All in one Post"
+            },
+            {
+              "type": "text",
+              "subtype": "heading1",
+              "text": "Sward's Shopping List Heading 1"
+            },
+            {
+              "type": "text",
+              "subtype": "heading2",
+              "text": "Sward's Shopping List Heading 2"
+            },
+            {
+              "type": "text",
+              "text": "Hello world! paragraph"
+            },
+            {
+              "type": "text",
+              "subtype": "quote",
+              "text": "Sward's Shopping quote"
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "cyle: ello",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 5,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "oli: i'm oli",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 4,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "cyle: ello",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 5,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "oli: i'm oli",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 4,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "cyle: ello",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 5,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "text",
+              "subtype": "chat",
+              "text": "oli: i'm oli",
+              "formatting": [
+                  {
+                      "start": 0,
+                      "end": 4,
+                      "type": "bold"
+                  }
+              ]
+            },
+            {
+              "type": "image",
+              "media": "image/png",
+              "url": "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_540.jpg",
+              "altText": "Sonic the Hedgehog and friends",
+              "caption": "I'm living my best life on earth.",
+              "width": 540,
+              "height": 400
+            },
+            {
+              "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680",
+              "type": "audio",
+              "media":  "audio/mp3",
+              "provider": "soundcloud",
+              "title": "Mouth Sounds",
+              "artist": "neilcic",
+              "album": "Track Album",
+              "poster": {
+                "type": "image/jpeg",
+                "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
+                "width": 500,
+                "height": 400
+              }  
+            },
+            {
+              "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+              "type": "video",
+              "media":  "video/mp4",
+              "provider": "youtube",
+              "title": "Video Title",
+              "artist": "neilcic",
+              "album": "Track Album",
+              "poster": {
+                "type": "image/jpeg",
+                "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
+                "width": 500,
+                "height": 400
+              }  
+            },
+            {
+              "type": "link",
+              "url": "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
+              "title": "Secrecy Bill Raises Alarms in Both Parties",
+              "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
+              "author": "Thomas Kaplan and Robert Pear",
+              "poster":{
+                  "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
+                  "type": "image/jpeg",
+                  "width": 549,
+                  "height": 549
+              }
+            }
+          ]
+        }
+      ]
+  },
   "blogFollowers": 
     {
       "numberOfFollowers": 3,
@@ -7,18 +393,21 @@
           "title": "good blog",
           "handle": "clint",
           "avatar": "https://assets.tumblr.com/images/default_avatar/cube_open_128.png",
+          "alreadyFollow":"true",
           "id": 1
         },
         {
           "title": "bad blog",
           "handle": "Lee van",
           "avatar": "https://assets.tumblr.com/images/default_avatar/sphere_open_64.png",
+          "alreadyFollow":"false",
           "id": 2
         },
         {
           "title": "ugly blog",
           "handle": "Eli Wallach",
           "avatar": "https://assets.tumblr.com/images/default_avatar/cube_open_128.png",
+          "alreadyFollow":"false",
           "id": 3
         }
       ],
@@ -36,771 +425,6 @@
       "email": "taher@gmail.com",
       "password": "vvsb",
       "id": 2
-    },
-    {
-      "email": "",
-      "password": "",
-      "id": 3
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "brgbdf"
-      },
-      "id": 4
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "111111111111"
-      },
-      "id": 5
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "123"
-      },
-      "id": 6
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "123fvds"
-      },
-      "id": 7
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "123fvds"
-      },
-      "id": 8
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "123fvds"
-      },
-      "id": 9
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "123fvds"
-      },
-      "id": 10
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "123fvds"
-      },
-      "id": 11
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 12
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 13
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 14
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 15
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 16
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 17
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 18
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 19
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 20
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 21
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 22
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 23
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 24
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 25
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 26
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 27
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 28
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 29
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bdgb"
-      },
-      "id": 30
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 31
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 32
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 33
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 34
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 35
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 36
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 37
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 38
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 39
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 40
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 41
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 42
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 43
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 44
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 45
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 46
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 47
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 48
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 49
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 50
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 51
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 52
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 53
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 54
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 55
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 56
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 57
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 58
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "4851"
-      },
-      "id": 59
-    },
-    {
-      "email": {
-        "email": "wbyecevyinolgjniiv@sdvft.com",
-        "password": "vbhnjmlk;,'."
-      },
-      "id": 60
-    },
-    {
-      "email": {
-        "email": "wbyecevyinolgjniiv@sdvft.com",
-        "password": "vbhnjmlk;,'."
-      },
-      "id": 61
-    },
-    {
-      "email": {
-        "email": "wbyecevyinolgjniiv@sdvft.com",
-        "password": "vbhnjmlk;,'."
-      },
-      "id": 62
-    },
-    {
-      "email": {
-        "email": "wbyecevyinolgjniiv@sdvft.com",
-        "password": "vbhnjmlk;,'."
-      },
-      "id": 63
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 64
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 65
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 66
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 67
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 68
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 69
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 70
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 71
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 72
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 73
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 74
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 75
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bgvfc"
-      },
-      "id": 76
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "hjkm"
-      },
-      "id": 77
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "hjkm"
-      },
-      "id": 78
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "hjkm"
-      },
-      "id": 79
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "hjkm"
-      },
-      "id": 80
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": ",kmjnhbgvfds"
-      },
-      "id": 81
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": ",kmjnhbgvfds"
-      },
-      "id": 82
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": ",kmjnhbgvfds"
-      },
-      "id": 83
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": ",kmjnhbgvfds"
-      },
-      "id": 84
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": ",kmjnhbgvfds"
-      },
-      "id": 85
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": ",kmjnhbgvfds"
-      },
-      "id": 86
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "46465"
-      },
-      "id": 87
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "46465"
-      },
-      "id": 88
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "46465"
-      },
-      "id": 89
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "46465"
-      },
-      "id": 90
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bnm,."
-      },
-      "id": 91
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bnm,."
-      },
-      "id": 92
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bnm,."
-      },
-      "id": 93
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bnm,."
-      },
-      "id": 94
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bnm,."
-      },
-      "id": 95
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bnm,."
-      },
-      "id": 96
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bnm,."
-      },
-      "id": 97
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "bnm,."
-      },
-      "id": 98
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "jkl "
-      },
-      "id": 99
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "jkl "
-      },
-      "id": 100
-    },
-    {
-      "email": {
-        "email": "wbyecevyinolgjniiv@sdvft.com",
-        "password": "nbgvf"
-      },
-      "id": 101
-    },
-    {
-      "email": {
-        "email": "wbyecevyinolgjniiv@sdvft.com",
-        "password": "nbgvf"
-      },
-      "id": 102
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "jnhbgv"
-      },
-      "id": 103
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "jnhbgv"
-      },
-      "id": 104
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "rgbgrdbdf"
-      },
-      "id": 105
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "ctfv"
-      },
-      "id": 106
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "dsvfbghgn"
-      },
-      "id": 107
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "dsfvbg"
-      },
-      "id": 108
-    },
-    {
-      "email": {
-        "email": "taher@gmail.com",
-        "password": "hnhbgfv"
-      },
-      "id": 109
-    },
-    {
-      "email": "taher@gmail.com",
-      "password": "bgdbfn",
-      "apiId": "user",
-      "id": 110
-    },
-    {
-      "email": "taher@gmail.com",
-      "password": "fgbfnm",
-      "apiId": "user",
-      "id": 111
-    },
-    {
-      "email": "taher@gmail.com",
-      "password": "fsdgbnh",
-      "apiId": "user",
-      "id": 112
     }
   ],
   "createBlog": [
@@ -812,60 +436,6 @@
       "settings": {
         "blogPassword": ""
       }
-    },
-    {
-      "handle": "dsfsdf",
-      "title": "sfasdf;lksdf",
-      "isPrivate": false,
-      "settings": {
-        "blogPassword": "asfdsfsdf"
-      },
-      "id": 2
-    },
-    {
-      "handle": "dsfsdf",
-      "title": "sfasdf;lksdf",
-      "isPrivate": false,
-      "settings": {
-        "blogPassword": "asfdsfsdf"
-      },
-      "id": 3
-    },
-    {
-      "handle": "dsfsdf",
-      "title": "sfasdf;lksdf",
-      "isPrivate": true,
-      "settings": {
-        "blogPassword": "asfdsfsdf"
-      },
-      "id": 4
-    },
-    {
-      "handle": "dsfsdf",
-      "title": "sfasdf;lksdf",
-      "isPrivate": true,
-      "settings": {
-        "blogPassword": "asfdsfsdf"
-      },
-      "id": 5
-    },
-    {
-      "handle": "dsfsdf",
-      "title": "sfasdf;lksdf",
-      "isPrivate": true,
-      "settings": {
-        "blogPassword": "asfdsfsdf"
-      },
-      "id": 6
-    },
-    {
-      "handle": "dsfsdf",
-      "title": "sfasdf;lksdf",
-      "isPrivate": true,
-      "settings": {
-        "blogPassword": "asfdsfsdf"
-      },
-      "id": 7
     }
   ],
   "users": [
@@ -898,7 +468,7 @@
     {
       "id": 1,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -930,7 +500,7 @@
     {
       "id": 2,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -943,11 +513,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -955,11 +525,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -967,11 +537,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -979,11 +549,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -991,11 +561,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1003,11 +573,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         }
       ]
@@ -1015,7 +585,7 @@
     {
       "id": 3,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1037,7 +607,7 @@
     {
       "id": 4,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1048,7 +618,7 @@
         {
           "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680",
           "type": "audio",
-          "media":  "audio/mp3",
+          "media": "audio/mp3",
           "provider": "soundcloud",
           "title": "Mouth Sounds",
           "artist": "neilcic",
@@ -1058,14 +628,14 @@
             "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
             "width": 500,
             "height": 400
-          }  
+          }
         }
       ]
     },
     {
       "id": 5,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1076,7 +646,7 @@
         {
           "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
           "type": "video",
-          "media":  "video/mp4",
+          "media": "video/mp4",
           "provider": "youtube",
           "title": "Video Title",
           "artist": "neilcic",
@@ -1086,14 +656,14 @@
             "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
             "width": 500,
             "height": 400
-          }  
+          }
         }
       ]
     },
     {
       "id": 6,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1107,11 +677,11 @@
           "title": "Secrecy Bill Raises Alarms in Both Parties",
           "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
           "author": "Thomas Kaplan and Robert Pear",
-          "poster":{
-              "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
-              "type": "image/jpeg",
-              "width": 549,
-              "height": 549
+          "poster": {
+            "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
+            "type": "image/jpeg",
+            "width": 549,
+            "height": 549
           }
         }
       ]
@@ -1119,7 +689,7 @@
     {
       "id": 7,
       "blogAttribution": {
-          "Standard API Short Blog Info object": "goes here"
+        "Standard API Short Blog Info object": "goes here"
       },
       "content": [
         {
@@ -1151,11 +721,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1163,11 +733,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1175,11 +745,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1187,11 +757,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1199,11 +769,11 @@
           "subtype": "chat",
           "text": "cyle: ello",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 5,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 5,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1211,11 +781,11 @@
           "subtype": "chat",
           "text": "oli: i'm oli",
           "formatting": [
-              {
-                  "start": 0,
-                  "end": 4,
-                  "type": "bold"
-              }
+            {
+              "start": 0,
+              "end": 4,
+              "type": "bold"
+            }
           ]
         },
         {
@@ -1230,7 +800,7 @@
         {
           "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680",
           "type": "audio",
-          "media":  "audio/mp3",
+          "media": "audio/mp3",
           "provider": "soundcloud",
           "title": "Mouth Sounds",
           "artist": "neilcic",
@@ -1240,12 +810,12 @@
             "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
             "width": 500,
             "height": 400
-          }  
+          }
         },
         {
           "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
           "type": "video",
-          "media":  "video/mp4",
+          "media": "video/mp4",
           "provider": "youtube",
           "title": "Video Title",
           "artist": "neilcic",
@@ -1255,7 +825,7 @@
             "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
             "width": 500,
             "height": 400
-          }  
+          }
         },
         {
           "type": "link",
@@ -1263,14 +833,141 @@
           "title": "Secrecy Bill Raises Alarms in Both Parties",
           "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
           "author": "Thomas Kaplan and Robert Pear",
-          "poster":{
-              "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
-              "type": "image/jpeg",
-              "width": 549,
-              "height": 549
+          "poster": {
+            "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
+            "type": "image/jpeg",
+            "width": 549,
+            "height": 549
           }
         }
       ]
+    }
+  ],
+  "new": [
+    {
+      "state": "published",
+      "title": "Title",
+      "postType": "text",
+      "content": [
+        {
+          "type": "text",
+          "subtype": "heading1",
+          "text": "Heading 1"
+        },
+        {
+          "type": "text",
+          "subtype": "heading2",
+          "text": "Heading 2"
+        },
+        {
+          "type": "text",
+          "text": "Normal Text"
+        },
+        {
+          "type": "text",
+          "subtype": "indented",
+          "text": "Blockquote"
+        },
+        {
+          "type": "text",
+          "subtype": "unordered-list-item",
+          "text": "ul1"
+        },
+        {
+          "type": "text",
+          "subtype": "unordered-list-item",
+          "text": "ul2"
+        },
+        {
+          "type": "text",
+          "subtype": "ordered-list-item",
+          "text": "ol2"
+        },
+        {
+          "type": "text",
+          "subtype": "ordered-list-item",
+          "text": "ol2"
+        },
+        {
+          "url": "https://www.youtube.com/embed/ZEKBDXGnD4s",
+          "type": "video",
+          "provider": "youtube",
+          "formatting": []
+        },
+        {
+          "type": "image",
+          "identifier": "200e678f-a12f-4e1d-9a7a-3fcad522723c",
+          "media": "image/jpeg",
+          "altText": "",
+          "width": "100%",
+          "height": "auto",
+          "formatting": []
+        },
+        {
+          "type": "text",
+          "subtype": "indented",
+          "text": "Image Caption"
+        },
+        {
+          "type": "text",
+          "text": "link"
+        }
+      ],
+      "tags": "",
+      "id": 1
+    },
+    {
+      "state": "published",
+      "title": "T",
+      "postType": "text",
+      "content": [
+        {
+          "type": "text",
+          "text": "Text Bold",
+          "formatting": [
+            {
+              "start": 5,
+              "end": 9,
+              "type": "bold"
+            }
+          ]
+        }
+      ],
+      "tags": "",
+      "id": 2
+    },
+    {
+      "state": "published",
+      "title": "Title",
+      "postType": "text",
+      "content": [
+        {
+          "type": "text",
+          "text": "TExt bold",
+          "formatting": [
+            {
+              "start": 5,
+              "end": 9,
+              "type": "bold"
+            }
+          ]
+        }
+      ],
+      "tags": "",
+      "id": 3
+    },
+    {
+      "state": "published",
+      "title": "Title",
+      "postType": "text",
+      "content": [
+        {
+          "type": "text",
+          "text": "link"
+        }
+      ],
+      "tags": "",
+      "id": 4
     }
   ]
 }

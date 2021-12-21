@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import api from '../../api/api';
 /**
  * this function makes a post request to the json server
@@ -7,13 +8,11 @@ import api from '../../api/api';
  */
 const sendData = async (userData, history, handleURLUsed) => {
   try {
-    const response = await api.post('/createBlog', userData);
-    if (response.status === 200) {
-      history.push(`/blog/${userData.handle}`);
-    } else if (response.status === 400) {
-      handleURLUsed();
-    }
+    const response = await api.post('/api/blog/create', userData);
+    console.log('succeed');
+    history.push(`/blog/${userData.handle}`);
   } catch (err) {
+    handleURLUsed();
     console.log(`Error message: ${err.message}`);
   }
 };

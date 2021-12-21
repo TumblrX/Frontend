@@ -2,6 +2,10 @@
 .text {
   color: rgb(89, 89, 89);
   display: flex;
+  @media (max-width:578px) {
+    display: block;
+    width: 100%;
+  }
 }
 .avatar {
   margin-right: 1rem;
@@ -10,13 +14,20 @@
   height: 4rem;
   border-radius: 0.3rem;
   overflow: hidden;
+  @media (max-width:988px) {
+    display: none;
+  }
 }
 .form {
   background-color: #fff;
   border-radius: 0.3rem;
   padding: 1rem;
   min-height: 8rem;
+  width: 100%;
   min-width: 30rem;
+  @media (max-width:988px) {
+    min-width: 15rem;
+  }
   header {
     display: flex;
     justify-content: space-between;
@@ -35,7 +46,7 @@
       }
       ul {
         color: #000;
-        width: 12.5rem;
+        min-width: 7.5rem;
         font-size: 1rem;
         background-color: #fff;
         border: 1px solid rgba(0, 0, 0, 0.2);
@@ -45,6 +56,7 @@
         left: 0%;
         top: 110%;
         li {
+          text-align: center;
           padding: 0.5rem;
           &:hover {
             background-color: #eee;

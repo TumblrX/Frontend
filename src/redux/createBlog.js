@@ -6,7 +6,6 @@ export const createBlog = createSlice({
     blogHandle: '',
     blogTitle: '',
     blogIsPrivate: false,
-    isRobot: true,
     blogPassword: '',
   },
   reducers: {
@@ -22,13 +21,10 @@ export const createBlog = createSlice({
     setBlogPassword: (state, action) => {
       state.blogPassword = action.payload;
     },
-    setIsRobot: (state, action) => {
-      state.isRobot = action.payload;
-    },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
-  setIsRobot, setBlogHandle, setBlogTitle, setBlogPrivacy, setBlogPassword,
+  setBlogHandle, setBlogTitle, setBlogPrivacy, setBlogPassword,
 } = createBlog.actions;
 export default createBlog.reducer;
