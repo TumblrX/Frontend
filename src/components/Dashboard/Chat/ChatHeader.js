@@ -2,21 +2,14 @@
 import React, { useState } from 'react';
 import { FaRegWindowClose, FaGripVertical, FaAngleDown } from 'react-icons/fa';
 import styles from './Chat.module.scss';
-import { dropDown, close } from './ChatController';
+import {
+  dropDown, close, handleSound, handleBlock, handleDelete,
+} from './ChatController';
 import { Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const ChatHeader = function () {
-  const [sound, setSound] = useState(false);
-  const handleSound = () => {
-    setSound(true);
-    console.log(sound);
-  };
-  const handleBlock = () => {
-
-  };
-  const handleDelete = () => {
-
-  };
+  const { sound } = useSelector((state) => state.Chat);
   return (
     <div className={`${styles.Chat_header} ${styles.row}`}>
       {sound && <Redirect to="/settings/dashboard" />}

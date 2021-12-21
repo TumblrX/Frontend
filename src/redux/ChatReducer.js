@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable linebreak-style */
 import { createSlice } from '@reduxjs/toolkit';
@@ -12,6 +13,7 @@ export const ChatReducer = createSlice({
     _id: null,
     owner: {},
     friend: {},
+    sound: false,
   },
   reducers: {
     setMessages: (state, action) => {
@@ -42,6 +44,9 @@ export const ChatReducer = createSlice({
     setFriend: (state, action) => {
       state.friend = action.payload;
     },
+    setSound: (state, action) => {
+      state.sound = action.payload;
+    },
   },
 });
 // Action creators are generated for each case reducer function
@@ -54,5 +59,6 @@ export const {
   setID,
   setOwner,
   setFriend,
+  setSound,
 } = ChatReducer.actions;
 export default ChatReducer.reducer;

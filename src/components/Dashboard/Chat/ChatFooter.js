@@ -6,18 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MdSend } from 'react-icons/md';
 import { AiFillCamera } from 'react-icons/ai';
 import { setNewMessage, addMessage } from '../../../redux/ChatReducer';
-import { scroll } from './ChatController';
+import { scroll, handleSend, handleKeyEnter } from './ChatController';
 
-const ChatFooter = function ({ handleSubmit, scrollRef }) {
+const ChatFooter = function ({ scrollRef }) {
   const { newMessage } = useSelector((state) => state.Chat);
   const dispatch = useDispatch();
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      console.log('enter press here! ');
-      handleSubmit(e);
-      scroll(scrollRef);
-    }
-  };
   return (
     <div className={styles.Chat_footer}>
       <div className={styles.text}>
@@ -28,7 +21,7 @@ const ChatFooter = function ({ handleSubmit, scrollRef }) {
           maxLength="4096"
           onChange={(e) => dispatch(setNewMessage(e.target.value))}
           value={newMessage}
-          onKeyPress={handleKeyPress}
+          onKeyPress={handleKeyEnter}
           id="input_field"
         >
         </textarea>
@@ -39,7 +32,7 @@ const ChatFooter = function ({ handleSubmit, scrollRef }) {
           <input type="file" accept="image/*" />
         </div>
         <div className={styles.insertIcons}>
-          <div className={styles.icon} onClick={(e) => handleSubmit()}>
+          <div className={styles.icon} onClick={(e) => handleSend(newMessage, scrollRef)}>
             <MdSend />
           </div>
         </div>

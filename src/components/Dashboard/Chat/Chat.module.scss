@@ -115,11 +115,15 @@
         }
         .msgContent{
             flex: 4;
-            max-width: 100%;
+            max-width: 70%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
         p{
-            max-width: 100%;
-            display: block;
+            max-width: 80%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            // display: block;
         }
     }
 }

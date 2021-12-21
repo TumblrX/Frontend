@@ -36,7 +36,7 @@ const ChatContent = function ({ scrollRef }) {
 
       </div>
       {messages.map((m, index) => (
-        <div className={styles.messegesBody} ref={scrollRef} key={index}>
+        <div className={styles.messegesBody} key={index} ref={scrollRef}>
           <div className={styles.msg}>
             <div className={styles.msgAvatar}>
               <div className={styles.avatar_img}>
