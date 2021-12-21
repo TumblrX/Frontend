@@ -10,6 +10,7 @@ import TwoFlexesData from "./TwoFlexesData";
 import OneFlexData from "./OneFlexData";
 import Post from "../Post/Post";
 import api from "../../api/api";
+import { useSelector } from "react-redux";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -18,20 +19,23 @@ import api from "../../api/api";
  */
 
 function ExploreSection() {
+  const {posts}=useSelector((state)=>state.Explore)
   useEffect(() => {
     api
       .get("/api/user/explore/5/trending")
       .then((res) => {
         console.log(res);
+        posts=res.data.trendingPosts
+        console.log(posts)
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
   const [flexesNumber, updateSize] = useState(4);
-  const [posts, updatePosts] = useState([
-    1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
-  ]);
+  // const [posts, updatePosts] = useState([
+  //   1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+  // ]);
   const onclickbutton = () => {
     for (let i = 0; i < 5; i++) updatePosts((prevPosts) => [...prevPosts, 1]);
   };
