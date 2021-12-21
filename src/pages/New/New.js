@@ -30,13 +30,6 @@ import NewVideo from './Video/Video';
 
 const New = function () {
   const history = useHistory();
-  // const [width, setWidth] = useState(window.screen.width);
-  // window.addEventListener('resize', () => setWidth(window.screen.width));
-  // if (width > 988) {
-  //   history.replace('/new');
-  // } else {
-  //   history.replace('/new/text');
-  // }
   const overlayClickHandler = () => {
     history.goBack();
   };

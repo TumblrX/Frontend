@@ -11,6 +11,7 @@ import RegisterReducer from './register';
 import MainPageReducer from './mainPage';
 import blogFollowers from './blogFollowers';
 import userBlogsReducer from './userBlogs-slice';
+import newTextPostReducer from './newTextPost-slice';
 
 export default configureStore({
   reducer: {
@@ -26,5 +27,9 @@ export default configureStore({
     register: RegisterReducer,
     mainPage: MainPageReducer,
     userBlogs: userBlogsReducer,
+    newTextPost: newTextPostReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });

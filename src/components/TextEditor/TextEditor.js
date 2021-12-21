@@ -1,32 +1,24 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState , convertToRaw} from 'draft-js';
+import { EditorState } from 'draft-js';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './TextEditor.scss';
 import getYoutubeVideoId from '../../helpers/getYoutubeVideoId';
+import { connect } from 'react-redux';
+import { newTextPostActions } from '../../redux/newTextPost-slice';
 class TextEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
       editorState: EditorState.createEmpty(),
-      uploadedImages: []
     };
   }
-  
+
   onEditorStateChange = (editorState) => {
     this.setState({
       editorState,
     });
-    // console.log(editorState);
-    // console.log(this.state.uploadedImages)
-    // console.log(JSON.parse(JSON.stringify(editorState)));
-    // console.log(editorState.getCurrentContent());
-    // console.log(convertToRaw(editorState.getCurrentContent()));
-    // this.props.onChange(
-    //   JSON.parse(JSON.stringify(editorState))._immutable.currentContent.blockMap
-    // );
-    // this.props.onChange(convertToRaw(editorState.getCurrentContent()));
     this.props.onChange(this.state);
   };
 
@@ -53,7 +45,7 @@ class TextEditor extends Component {
           },
           blockType: {
             inDropdown: false,
-            options: ['Normal','H1', 'H2','Blockquote'],
+            options: ['Normal', 'H1', 'H2', 'Blockquote'],
             className: undefined,
             component: undefined,
             dropdownClassName: undefined,
@@ -70,7 +62,7 @@ class TextEditor extends Component {
             linkCallback: undefined,
           },
           embedded: {
-            embedCallback: (link)=>{
+            embedCallback: (link) => {
               return `https://www.youtube.com/embed/${getYoutubeVideoId(link)}`
             },
             defaultSize: {
@@ -88,10 +80,8 @@ class TextEditor extends Component {
               // every time we upload an image, we
               // need to save it to the state so we can get it's data
               // later when we decide what to do with it.
-              let uploadedImages = this.state.uploadedImages;
-              uploadedImages.push(file);
-              this.setState({ uploadedImages: uploadedImages })
-          
+              this.props.addImage(file);
+
               // We need to return a promise with the image src
               // the img src we will use here will be what's needed
               // to preview it in the browser.
@@ -132,4 +122,14 @@ class TextEditor extends Component {
     );
   }
 }
-export default TextEditor;
+// To connet the text editor to the state directly
+const mapStateToProps = (state) => {
+  return ({
+    uploadedImages: state.newTextPost.uploadedImages
+  });
+};
+const mapDispatchToProps = { addImage: newTextPostActions.addImage };
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TextEditor);

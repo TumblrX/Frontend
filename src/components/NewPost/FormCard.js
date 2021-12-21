@@ -15,12 +15,17 @@ const FormCard = function (props) {
   const [selectedBlogTitle, setSelectedBlogTitle] = useState();
   const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
-    setSelectedBlogTitle(userBlogs[0].title);
+    if (userBlogs.length !== 0) {
+      setSelectedBlogTitle(userBlogs[0].title);
+    } else {
+      console.log('Server Error');
+    }
   }, [userBlogs]);
   const toggleOptionsHandler = () => {
     setShowOptions((x) => !x);
   };
   const selectOptionHandler = (e) => {
+    if (userBlogs.length === 0) return;
     changeBlogId(e.target.getAttribute('value'));
     setSelectedBlogTitle(userBlogs.find((blog) => blog.id === e.target.getAttribute('value')).title);
   };

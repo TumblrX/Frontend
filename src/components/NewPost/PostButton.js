@@ -7,8 +7,11 @@ import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import classes from './PostButton.module.scss';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const PostButton = function ({ formIsValid, selectedOption, setSelectedOption }) {
+const PostButton = function ({ setSelectedOption }) {
+  const { formIsValid, postState } = useSelector((state) => state.newTextPost);
+
   const [showOptions, setShowOptions] = useState(false);
   const history = useHistory();
   const toggleOptionsHandler = () => {
@@ -24,7 +27,7 @@ const PostButton = function ({ formIsValid, selectedOption, setSelectedOption })
   return (
     <div className={classes.post}>
       <button disabled={!formIsValid} onClick={buttonClickHandler}>
-        {selectedOption === 'published' ? 'Post now' : selectedOption === 'draft' ? 'Save as draft' : 'Post privately'}
+        {postState === 'published' ? 'Post now' : postState === 'draft' ? 'Save as draft' : 'Post privately'}
       </button>
       <div onClick={toggleOptionsHandler}>
         <IoIosArrowDown />
