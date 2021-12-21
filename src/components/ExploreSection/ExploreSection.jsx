@@ -11,6 +11,8 @@ import OneFlexData from "./OneFlexData";
 import Post from "../Post/Post";
 import api from "../../api/api";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { pushPosts } from "../../redux/ExploreRecuder";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -19,26 +21,21 @@ import { useSelector } from "react-redux";
  */
 
 function ExploreSection() {
-  const {posts}=useSelector((state)=>state.Explore)
+  const { posts } = useSelector((state) => state.Explore);
+  const dispatch = useDispatch();
   useEffect(() => {
     api
       .get("/api/user/explore/5/trending")
       .then((res) => {
         console.log(res);
-        posts=res.data.trendingPosts
-        console.log(posts)
+
+        dispatch(pushPosts(res.data.trendingPosts));
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
   const [flexesNumber, updateSize] = useState(4);
-  // const [posts, updatePosts] = useState([
-  //   1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
-  // ]);
-  const onclickbutton = () => {
-    for (let i = 0; i < 5; i++) updatePosts((prevPosts) => [...prevPosts, 1]);
-  };
 
   /**
    * this function is used to update the state when resizing the window
@@ -68,17 +65,17 @@ function ExploreSection() {
    *
    */
   const componentDidMount = () => {
-    onResize(); // First call to set the state ;
-    window.addEventListener("resize", onResize);
-    window.addEventListener("scroll", () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        onclickbutton();
-      }
-    });
-    // it will be called when the Component is unmounted
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
+    // onResize(); // First call to set the state ;
+    // window.addEventListener("resize", onResize);
+    // window.addEventListener("scroll", () => {
+    //   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    //     onclickbutton();
+    //   }
+    // });
+    // // it will be called when the Component is unmounted
+    // return () => {
+    //   window.removeEventListener("resize", onResize);
+    // };
   };
 
   useEffect(componentDidMount, []);
@@ -107,8 +104,6 @@ function ExploreSection() {
       ) : (
         <OneFlexData posts={posts} />
       )}
-
-      <button onClick={onclickbutton}>Click on me </button>
     </div>
   );
 }

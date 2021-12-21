@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./scss/ExploreSection.module.scss";
+import Post from "../Post/Post";
 /**
  * Component to render two  Flexes in the post container if the window can take them
  * @author Abdalla Mahmoud
@@ -13,26 +14,14 @@ function TwoFlexesData(props) {
       <div className={`${styles["two-flexes"]} "first-of-two"`}>
         {posts.map((item, index) => {
           if (index % 2 == 0) {
-            let height = index * 30 + 20;
-
-            return (
-              <div style={{ height: `${height}px`,backgroundColor:"red",marginBottom:"15px" }} key={index}>
-                {item}
-              </div>
-            );
+            return <Post data={item}  key={index} />;
           }
         })}
       </div>
       <div className={`${styles["two-flexes"]} "second-of-two"`}>
         {posts.map((item, index) => {
           if (index % 2 == 1) {
-            let height = index * 30 + 20;
-
-            return (
-              <div style={{ height: `${height}px`,backgroundColor:"black" ,marginBottom:"15px"}} key={index}>
-                {item}
-              </div>
-            );
+            return <Post data={item} key={index} />;
           }
         })}
       </div>

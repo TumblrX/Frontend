@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const ExploreReducer = createSlice({
   name: "Explore",
@@ -12,11 +12,14 @@ export const ExploreReducer = createSlice({
     pushPost: (state, action) => {
       state.posts.push(action.payload);
     },
+    pushPosts: (state, action) => {
+      for(let i =0 ; i<action.payload.length;i++){
+          state.posts.push(action.payload[i]); 
+      }
+    },
   },
 });
 
-export const {
-    setPosts,pushPost
-}=ExploreReducer.actions;
+export const { setPosts, pushPost, pushPosts } = ExploreReducer.actions;
 
 export default ExploreReducer.reducer;
