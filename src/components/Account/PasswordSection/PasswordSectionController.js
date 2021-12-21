@@ -91,4 +91,52 @@ const iconClick = (event) => {
   }
 };
 
-export { changeInput ,iconClick};
+/**
+ * this function handle the event handler on cancel button on the editing email section
+ * @type {function}
+ * @param {*} event  it takes the click item as an event
+ * @return {void} returns nothing it just an event handler
+ */
+
+const cancelButtonClick = (event) => {
+  document.querySelectorAll(".error-message").forEach((element) => {
+    element.style.visibility = "hidden";
+    element.style.transition = "none";
+  });
+  /**
+   * all cancel buttons
+   * @type {Array<Element>}
+   *
+   */
+  const allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
+  if (event.target === allButtons[1]) {
+    document.getElementsByClassName(`${styles.dots}`)[0].style.display =
+      "block";
+    document
+      .querySelectorAll(`.${styles["password-box"]} input`)
+      .forEach((element) => {
+        element.classList.toggle(`${styles.hidden}`);
+        // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
+        // How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
+      });
+
+    document
+      .getElementsByTagName("img")[1]
+      .classList.toggle(`${styles.hidden}`);
+
+    document
+      .querySelector("#password-section-buttons")
+      .classList.toggle(`${styles.hidden}`);
+  }
+  document.querySelectorAll("form >div").forEach((element) => {
+    element.style.opacity = "1";
+  });
+
+  document.querySelectorAll("form >div").forEach((element) => {
+    element.style.opacity = "1";
+  });
+
+  document.querySelectorAll("form")[0].style.pointerEvents = "all";
+};
+
+export { changeInput, iconClick, cancelButtonClick };
