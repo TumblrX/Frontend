@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from "react";
@@ -12,7 +13,7 @@ import {
   updatenewPassword,
   updatePassword,
 } from "../../../redux/PasswordSection";
-
+import { sendPasswordData } from "./PasswordSectionServices";
 /**
  * Component to render the Password  Section in the Accountsettings in the Settings page
  * @author Abdalla Mahmoud
@@ -86,21 +87,9 @@ const PasswordSection = function (props) {
           oldPassword: confirmedPassword,
           password: newPassword,
         };
-        let token = localStorage.getItem("token");
-        console.log(newConfirmedPassword, newPassword, password);
-        api
-          .post("/api/user/change-password", sentData, {
-            headers: {
-              Authorization: token,
-            },
-          })
-          .then((res) => {
-            console.log(res)
-          })
-          .catch((err) => {
-            console.log(err);
-            // validations from backend .
-          });
+       sendPasswordData(sentData); 
+        // console.log(newConfirmedPassword, newPassword, password);
+        
       }
     }
   };

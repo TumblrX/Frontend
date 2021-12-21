@@ -4,7 +4,7 @@
 import React, { useEffect } from "react";
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import {
   componentDidMount,
   iconClick,
@@ -78,7 +78,9 @@ const EmailSection = function (props) {
               cancel
             </button>
             <button
-              onClick={(event)=>formAction(event,email,previousEmail,confirmedPassword)}
+              onClick={(event) =>
+                formAction(event, email, previousEmail, confirmedPassword)
+              }
               type="button"
               className={styles["save-button"]}
             >
