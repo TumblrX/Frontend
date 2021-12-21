@@ -33,24 +33,6 @@ const PasswordSection = function (props) {
 
   const dispatch = useDispatch();
   /**
-   * retreive the data from the backend when the component mounteds
-   * @type {function}
-   * @param {void}
-   * @returns {void}
-   *
-   */
-  const componentDidMount = () => {
-    api
-      .get("/users/1")
-      .then((response) => {
-        // updateInfo({ ...passwordInfo, password: response.data.password });
-        dispatch(updatePassword(response.data.password));
-      })
-      .catch();
-  };
-  useEffect(componentDidMount, []);
-
-  /**
    * this function handle the click on the save button in the email section
    * @type {function}
    * @param {*} event
