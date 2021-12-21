@@ -1,12 +1,12 @@
 body {
   background-color: #001935;
 }
-
 .baseContanier {
   display: flex;
   width: 100%;
   height: auto;
   position: relative;
+  padding: 30px;
   .contanier {
     margin: 40px auto;
     gap: 20px;
@@ -73,7 +73,7 @@ body {
         .secondSection {
           padding-top: 30px;
           width: 840px;
-          height: 180.4px;
+          height: 100.4px;
           .chrome {
             &.blue {
               border-color: #00b8ff;

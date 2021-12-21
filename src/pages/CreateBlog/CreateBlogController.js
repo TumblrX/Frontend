@@ -1,14 +1,13 @@
-import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  setIsRobot, setBlogHandle, setBlogTitle, setBlogPrivacy, setBlogPassword,
+  setBlogHandle, setBlogTitle, setBlogPrivacy, setBlogPassword,
 } from '../../redux/createBlog';
 import { useHistory } from 'react-router-dom';
 import sendData from './CreateBlogService';
 
 const useHandler = () => {
   const {
-    blogHandle, blogTitle, blogIsPrivate, blogPassword, isRobot,
+    blogHandle, blogTitle, blogIsPrivate, blogPassword,
   } = useSelector((state) => state.create);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -24,7 +23,6 @@ const useHandler = () => {
     const errorTitleSmall = document.getElementById('error_title_small');
     const errorPasswordEmpty = document.getElementById('error_password_empty');
     const errorPasswordSmall = document.getElementById('error_password_small');
-    const errorRobotCheck = document.getElementById('error_robot_check');
     const errorURLContainsInvalid = document.getElementById('error_url_contains_invalid');
     const dashesError = document.getElementById('error_url_hyphen_starts_with');
     const errorURLTaken = document.getElementById('error_url_taken');
@@ -42,9 +40,6 @@ const useHandler = () => {
       shouldhide = false;
     }
     if (errorPasswordSmall.style.display !== 'none') {
-      shouldhide = false;
-    }
-    if (errorRobotCheck.style.display !== 'none') {
       shouldhide = false;
     }
     if (errorURLContainsInvalid.style.display !== 'none') {
@@ -72,31 +67,6 @@ const useHandler = () => {
       return true;
     }
     return false;
-  };
-  const recatchaLoaded = useCallback(
-    () => {
-      console.log('captch loaded');
-    },
-    [],
-  );
-  /**
-   * this function is the callback function for Recaptcha to update the isRobot state
-   * @function verifyCallback
-   * @param {bool} Response
-   * @return {bool} return true  if input string contaions special character and false otherwise
-   */
-  const verifyCallback = (Response) => {
-    if (Response) {
-      dispatch(setIsRobot(false));
-      const errorRobotCheck = document.getElementById('error_robot_check');
-      errorRobotCheck.style.display = 'none';
-      checkerrordisplay();
-    }
-  };
-  const expiredCallback = (Response) => {
-    if (Response) {
-      dispatch(setIsRobot(true));
-    }
   };
   /**
    * this function handle the event of changing checkbox of making the blog private
@@ -161,7 +131,7 @@ const useHandler = () => {
       errorTitleEmpty.style.display = 'none';
       checkerrordisplay();
     }
-    if (title.length > 6) {
+    if (title.length >= 6) {
       errorTitleSmall.style.display = 'none';
       checkerrordisplay();
     }
@@ -234,7 +204,6 @@ const useHandler = () => {
     const errorTitleSmall = document.getElementById('error_title_small');
     const errorPasswordEmpty = document.getElementById('error_password_empty');
     const errorPasswordSmall = document.getElementById('error_password_small');
-    const errorRobotCheck = document.getElementById('error_robot_check');
     error.style.display = 'none';
     let okToSubmit = true;
     if (blogHandle.length === 0) {
@@ -278,14 +247,6 @@ const useHandler = () => {
       errorPasswordSmall.style.display = 'none';
       checkerrordisplay();
     }
-    if (isRobot) {
-      error.style.display = 'block';
-      errorRobotCheck.style.display = 'list-item';
-      okToSubmit = false;
-    } else {
-      errorRobotCheck.style.display = 'none';
-      checkerrordisplay();
-    }
     if (okToSubmit) {
       error.style.display = 'none';
       sendData(
@@ -301,9 +262,6 @@ const useHandler = () => {
     }
   };
   return {
-    verifyCallback,
-    recatchaLoaded,
-    expiredCallback,
     handleCheckChange,
     handleURLChange,
     handleTitleChange,

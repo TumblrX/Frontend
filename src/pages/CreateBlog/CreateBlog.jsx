@@ -1,7 +1,6 @@
 /* eslint-disable func-names */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import Recaptcha from 'react-recaptcha';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './createBlog.module.scss';
@@ -15,9 +14,6 @@ import useHandler from './CreateBlogController';
  */
 const CreateBlog = function () {
   const {
-    verifyCallback,
-    recatchaLoaded,
-    expiredCallback,
     handleCheckChange,
     handleURLChange,
     handleTitleChange,
@@ -116,13 +112,6 @@ const CreateBlog = function () {
                 className={styles.li}
               >
                 Password must be 6 char at least.
-              </li>
-              <li
-                id="error_robot_check"
-                style={{ display: 'none' }}
-                className={styles.li}
-              >
-                You need to verify that you are a real person.
               </li>
             </ul>
           </div>
@@ -231,16 +220,6 @@ const CreateBlog = function () {
               </div>
             </div>
             <div className={styles.secondSection}>
-              <div style={{ marginBottom: '4px', textAlign: 'left' }}>
-                Are you a robot?
-              </div>
-              <Recaptcha
-                sitekey="6Lfzj0QdAAAAAD6W8u9U-PhLTvbp2qmSzzogOSwy"
-                render="explicit"
-                verifyCallback={verifyCallback}
-                onloadCallback={recatchaLoaded}
-                expiredCallback={expiredCallback}
-              />
               <br style={{ clear: 'both' }} />
               <Link to="/Dashboard">
                 <button
