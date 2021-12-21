@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable class-methods-use-this */
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./Dashboard.module.css";
 import Interface from "./Interface/Interface";
 import Sounds from "./Sounds/Sounds";
 import Preferences from "./Preferences/Preferences";
-import api from "../../api/api";
 import { getUserInfo } from "./DashboardServices";
 
 const Dashboard = function () {
