@@ -95,7 +95,6 @@ const App = function () {
         <Settings />
       </Route>
       <Route
-        exact
         path="/blog/:blogName"
         render={() => (
           localStorage.getItem('token') ? (

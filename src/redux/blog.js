@@ -4,8 +4,6 @@ import { createSlice } from '@reduxjs/toolkit';
 export const blog = createSlice({
   name: 'blog',
   initialState: {
-    posts: [],
-    NumOfPosts: 0,
     blogHandle: '',
     blogTitle: '',
     avatar: '',
@@ -13,12 +11,6 @@ export const blog = createSlice({
     intialLoading: true,
   },
   reducers: {
-    setPosts: (state, action) => {
-      state.posts = action.payload;
-    },
-    setNumOfPosts: (state, action) => {
-      state.NumOfPosts = action.payload;
-    },
     setBlogHandle: (state, action) => {
       state.blogHandle = action.payload;
     },
@@ -38,7 +30,7 @@ export const blog = createSlice({
 });
 // Action creators are generated for each case reducer function
 export const {
-  setPosts, setNumOfPosts, setBlogHandle, setBlogTitle,
+  setBlogHandle, setBlogTitle,
   setAvatar, setId, setInitialLoading,
 } = blog.actions;
 export default blog.reducer;

@@ -12,6 +12,7 @@ import MainPageReducer from './mainPage';
 import blogFollowers from './blogFollowers';
 import ChatReducer from './ChatReducer';
 import blog from './blog';
+import blogDrafts from './blogDrafts';
 
 export default configureStore({
   reducer: {
@@ -28,5 +29,6 @@ export default configureStore({
     mainPage: MainPageReducer,
     Chat: ChatReducer,
     Blog: blog,
+    BlogDrafts: blogDrafts,
   },
 });

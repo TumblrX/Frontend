@@ -11,9 +11,9 @@ const fetchFollowers = async (blogid) => {
     const response = await api.get(`/api/blog/${blogid}/followers`);
     console.log('succcess in fetch followers');
     configureStore.dispatch(setNumOfFollowers(response.data.numberOfFollowers));
-    console.log('followers', response.data.data);
-    if (response.data.data) {
-      configureStore.dispatch(setFollowers(response.data.data));
+    console.log('followers', response.data.blogs);
+    if (response.data.blogs) {
+      configureStore.dispatch(setFollowers(response.data.blogs));
     }
     configureStore.dispatch(setIsReady(true));
   } catch (err) {

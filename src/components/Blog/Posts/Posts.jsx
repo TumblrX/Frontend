@@ -1,13 +1,14 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable func-names */
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Posts.module.scss';
 import showPosts from './PostsControllers';
 import NothingAvailable from '../nothingAvailable/nothingAvailable';
 import Loading from '../Loading/Loading';
 import Newpost from '../../Dashboard/NewPost/Newpost';
+import usePostHandler from './PostsService';
 import {
   incrementPageNum, decrementPageNum,
 } from '../../../redux/blogPosts';
@@ -20,10 +21,17 @@ import {
  *
  */
 const Posts = function () {
-  const { pageNum, isInfinte } = useSelector((state) => state.blogposts);
   const {
-    intialLoading, NumOfPosts, posts, avatar,
-  } = useSelector((state) => state.Blog);
+    pageNum, isInfinte, intialLoading,
+    posts, NumOfPosts,
+  } = useSelector((state) => state.blogposts);
+  const { avatar, id } = useSelector((state) => state.Blog);
+  const { fetchBlogPosts } = usePostHandler();
+  useEffect(() => {
+    if (id) {
+      fetchBlogPosts(id);
+    }
+  }, [id]);
   const dispatch = useDispatch();
   return (
     <div className={`${styles.container} ${styles.row}`}>

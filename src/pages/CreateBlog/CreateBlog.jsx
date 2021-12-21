@@ -221,6 +221,7 @@ const CreateBlog = function () {
                   style={{ width: '260px', marginLeft: '20px', border: '1px solid #d5d9dd' }}
                   id="new_group_password_protected"
                   type="text"
+                  maxLength="255"
                   value={blogPassword}
                   onChange={handlePasswordChange}
                   onFocus={handleFocus}

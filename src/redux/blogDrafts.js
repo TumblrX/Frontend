@@ -1,21 +1,21 @@
 /* eslint-disable linebreak-style */
 import { createSlice } from '@reduxjs/toolkit';
 
-export const blogPosts = createSlice({
-  name: 'blogPosts',
+export const blogDrafts = createSlice({
+  name: 'blogDrafts',
   initialState: {
-    posts: [],
-    NumOfPosts: 0,
+    drafts: [],
+    numberOfDrafts: 0,
     pageNum: 1,
     isInfinte: true,
     intialLoading: true,
   },
   reducers: {
-    setPosts: (state, action) => {
-      state.posts = action.payload;
+    setDrafts: (state, action) => {
+      state.drafts = action.payload;
     },
-    setNumOfPosts: (state, action) => {
-      state.NumOfPosts = action.payload;
+    setNumOfDrafts: (state, action) => {
+      state.numberOfDrafts = action.payload;
     },
     incrementPageNum: (state) => {
       state.pageNum += 1;
@@ -31,6 +31,6 @@ export const blogPosts = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   incrementPageNum, decrementPageNum,
-  setInitialLoading, setPosts, setNumOfPosts,
-} = blogPosts.actions;
-export default blogPosts.reducer;
+  setDrafts, setInitialLoading, setNumOfDrafts,
+} = blogDrafts.actions;
+export default blogDrafts.reducer;
