@@ -10,6 +10,7 @@ import NotificationsReducer from './Notifications';
 import RegisterReducer from './register';
 import MainPageReducer from './mainPage';
 import blogFollowers from './blogFollowers';
+import ChatReducer from './ChatReducer';
 import blog from './blog';
 
 export default configureStore({
@@ -25,6 +26,7 @@ export default configureStore({
     notificationsInfo: NotificationsReducer,
     register: RegisterReducer,
     mainPage: MainPageReducer,
+    Chat: ChatReducer,
     Blog: blog,
   },
 });

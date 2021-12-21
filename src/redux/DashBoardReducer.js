@@ -6,9 +6,10 @@ export const DashboardReducer = createSlice({
   initialState: {
     posts: [],
     pageNum: 1,
-    isInfinte: true,
+    isInfinte: false,
     ismounted: false,
-    exploreBlogs: [],
+    exploreBlogs: [1, 2, 3, 5],
+    pageNumPosts: 5,
   },
   reducers: {
     setPosts: (state, action) => {
@@ -31,6 +32,9 @@ export const DashboardReducer = createSlice({
     },
     setIsMounted: (state, action) => {
       state.ismounted = action.payload;
+    },
+    setpageNumPosts: (state, action) => {
+      state.pageNumPosts = action.payload;
     },
   },
 });
