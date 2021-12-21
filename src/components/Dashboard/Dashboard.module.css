@@ -24,7 +24,7 @@
   margin-left: 10px; }
 
 .title {
-  width: 17%;
+  width: 23%;
   margin-right: 2%;
   flex-shrink: 0;
   font: bold  100% sans-serif; }
@@ -45,7 +45,7 @@
 
 .user-message {
   color: gray;
-  font-size: 0.9rem; }
+  font-size: 0.8rem; }
 
 .input-box {
   display: block;

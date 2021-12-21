@@ -48,6 +48,8 @@ const cancelButtonClick = (event, previousEmail) => {
   document.querySelectorAll("form >div").forEach((element) => {
     element.style.opacity = "1";
   });
+  document.querySelector("#emailcurrentpassword").parentElement.style.display="none"
+
 
   document.querySelectorAll("form")[0].style.pointerEvents = "all";
   // the change that has happen will be ignored
@@ -84,6 +86,7 @@ const iconClick = (event) => {
         // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
         // How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
       });
+      document.querySelector("#emailcurrentpassword").parentElement.style.display="flex"
 
     document
       .querySelector("#email-box")
@@ -143,6 +146,7 @@ const changeInput = (event) => {
  * @returns {void} return nothing , it just a click event handler
  */
 const formAction = (event, email, previousEmail, confirmedPassword) => {
+  const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
   /**
    * get the save button
    * @type {Array<Element>}
@@ -152,17 +156,17 @@ const formAction = (event, email, previousEmail, confirmedPassword) => {
     `${styles["save-button"]}`
   );
   if (event.target === saveButtons[0]) {
-    if (email === previousEmail || email === "") {
-      document.getElementsByClassName(
+    if (email === previousEmail || email === "" || !emailRegex.test(email)) {
+      let error_message = document.getElementsByClassName(
         `${styles["error-email-message"]}`
-      )[0].style.visibility = "unset";
+      )[0];
+      error_message.style.visibility = "unset";
+      if (!emailRegex.test(email) || email === "") {
+        error_message.textContent = "Please enter valid Email";
+      } else {
+        error_message.textContent = "Don't enter your previous Email";
+      }
     } else {
-      // if (password !== confirmedPassword) {
-      //   document.getElementsByClassName(
-      //     `${styles['error-password-message']}`,
-      //   )[0].style.visibility = 'unset';
-      //   return;
-      // }
       /**
        * @type{object } sentData
        * object for the data that will be sent to the server

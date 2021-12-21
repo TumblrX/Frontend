@@ -34,32 +34,37 @@ const EmailSection = function () {
       >
         <div className={styles.title}>Email</div>
         <div className={styles["input-fields"]}>
-          <input
-            onClick={iconClick}
-            id="email-box"
-            data-testid="email-box"
-            type="email"
-            value={email}
-            onChange={changeInput}
-            className={`${styles["before-focus-on-edit"]} ${styles["input-box"]} `}
-          />
-          <div className={`${styles["error-email-message"]} error-message`}>
-            change your Email
+          <div style={{ display: "flex" }}>
+            <input
+              onClick={iconClick}
+              id="email-box"
+              data-testid="email-box"
+              type="email"
+              value={email}
+              onChange={changeInput}
+              className={`${styles["before-focus-on-edit"]} ${styles["input-box"]} `}
+            />
+            <div className={`${styles["error-email-message"]} error-message`}>
+              change your Email
+            </div>
           </div>
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            className={`${styles.hidden} ${styles["input-box"]}`}
-            value={confirmedPassword}
-            onChange={changeInput}
-            id="emailcurrentpassword"
-            data-testid="password-box"
-          />
+          <div style={{ display:"none" }}>
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              className={`${styles.hidden} ${styles["input-box"]}`}
+              value={confirmedPassword}
+              onChange={changeInput}
+              id="emailcurrentpassword"
+              data-testid="password-box"
+            />
 
-          <div className={`${styles["error-password-message"]} error-message`}>
-            Please Enter the correct password
+            <div
+              className={`${styles["error-password-message"]} error-message`}
+            >
+              Please Enter the correct password
+            </div>
           </div>
-
           <div
             className={`${styles.hidden}`}
             data-testid="buttons-container"
