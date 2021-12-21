@@ -2,7 +2,6 @@
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from "react";
-
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
 import api from "../../../api/api";
@@ -15,7 +14,7 @@ import {
   updatePrevEmail,
   updatePassword,
 } from "../../../redux/EmailSection";
-import { componentDidMount } from "./EmailSectionController";
+import { componentDidMount ,iconClick} from "./EmailSectionController";
 /**
  * Component to render the Email Section in the Accountsettings in the Settings page
  * @author Abdalla Mahmoud
@@ -127,60 +126,7 @@ const EmailSection = function (props) {
   
   useEffect(componentDidMount, []);
 
-  /**
-   * this function handle the click on the edit icon button
-   * @type {function}
-   * @param {*} event
-   * @returns {void} return nothing , it just a click event handler
-   */
-  const iconClick = (event) => {
-    document.querySelectorAll(".error-message").forEach((element) => {
-      element.style.transition = "0.5s .1s linear";
-    });
-
-    // if they set to zero
-    /**
-     * array to get the icon photo
-     * @type {Array<Element>}
-     *
-     */
-    const imgs = document.querySelectorAll(`.${styles["icon-photo"]}`);
-    if (event.target.id === "email-box" || event.target === imgs[0]) {
-      document
-        .querySelectorAll(
-          `.${styles["change-email-section"]} .${styles.hidden}`
-        )
-        .forEach((element) => {
-          element.classList.toggle(`${styles.hidden}`);
-          // if you click on the Email or on the Edit icon the Email box will apear and the confirm password box will appear too
-          // How I select this element? as regular selector .classX .classY{} then forEach one of them toggle the hidden class
-        });
-
-      document
-        .querySelector("#email-box")
-        .classList.remove(`${styles["before-focus-on-edit"]}`);
-      document
-        .getElementsByClassName(`${styles["icon-photo"]}`)[0]
-        .classList.toggle(`${styles.hidden}`);
-
-      /**
-       * get the Email section
-       * @type {Array<Element>}
-       *
-       */
-      const changeEmailSection = document.getElementsByClassName(
-        `${styles["change-email-section"]}`
-      )[0];
-      const entireForm = document.getElementsByTagName("form")[0];
-      entireForm.style.pointerEvents = "none";
-      document.querySelectorAll("form >div").forEach((element) => {
-        element.style.opacity = "0.5";
-      });
-      changeEmailSection.style.pointerEvents = "all";
-      changeEmailSection.style.opacity = "1";
-    }
-  };
-
+  
   /**
    * this function handle any change in the states
    * @type {function}
