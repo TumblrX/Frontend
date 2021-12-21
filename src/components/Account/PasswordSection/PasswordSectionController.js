@@ -35,7 +35,6 @@ const changeInput = (event) => {
     // updateInfo({ ...passwordInfo, confirmedPassword: event.target.value });
     configureStore.dispatch(updateConfirmedPassword(event.target.value));
   }
-  // console.log(passwordInfo);
 };
 
 /**
@@ -184,9 +183,8 @@ const formAction = (
         password: newPassword,
       };
       sendPasswordData(sentData);
-      // console.log(newConfirmedPassword, newPassword, password);
     }
   }
 };
 
-export { changeInput, iconClick, cancelButtonClick,formAction };
+export { changeInput, iconClick, cancelButtonClick, formAction };

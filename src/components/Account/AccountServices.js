@@ -9,7 +9,6 @@ import {
 import updateEmailUserAbout from "../../redux/SecuritySection";
 const getUserInfo = function () {
   let token = localStorage.getItem("token");
-  console.log(token);
   api
     .get("api/user/info", {
       headers: {
@@ -17,8 +16,6 @@ const getUserInfo = function () {
       },
     })
     .then((response) => {
-      console.log("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
-      console.log(response);
       document.querySelectorAll('input[type="checkbox"]')[0].checked =
         response.data.settings.findMeByEmail;
       configureStore.dispatch(updateEmail(response.data.email));

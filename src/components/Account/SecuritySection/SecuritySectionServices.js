@@ -6,11 +6,10 @@ const changeNotifyAbout = function (sentData) {
       Authorization: token,
     },
   };
-  console.log(sentData);
   api
     .post("/api/user/settings-save", sentData, config)
     .then((res) => {
-      console.log(res);
+    //   console.log(res);
     })
     .catch((err) => {
       console.log(err);

@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
-import React, { useEffect } from "react";
 import {
   changeInput,
   iconClick,
@@ -10,15 +9,8 @@ import {
 } from "./PasswordSectionController";
 import styles from "../Account.module.css";
 import pen from "../../../assets/Images/pencil-64x64.png";
-import api from "../../../api/api";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  updateConfirmedPassword,
-  updatenewConfirmedPassword,
-  updatenewPassword,
-  updatePassword,
-} from "../../../redux/PasswordSection";
-import { sendPasswordData } from "./PasswordSectionServices";
+import { useSelector } from "react-redux";
+
 /**
  * Component to render the Password  Section in the Accountsettings in the Settings page
  * @author Abdalla Mahmoud

@@ -26,7 +26,6 @@ const cancelButtonClick = (event, previousEmail) => {
    * @type {Array<Element>}
    */
   const allButtons = document.querySelectorAll(`.${styles["cancel-button"]}`);
-  console.log(document.querySelector("#email-section-buttons"));
   if (event.target === allButtons[0]) {
     document
       .querySelector(
@@ -130,12 +129,6 @@ const changeInput = (event) => {
     const sentData = {
       findMeByEmail: event.target.checked,
     };
-    // let token = localStorage.getItem("token");
-    // api.post("/api/user/settings-save", sentData,{headers:{
-    //   Authorization: token,
-    // }}).then((respone)=>{
-    //   console.log(respone)
-    // });
     changeFindMeByEmail(sentData);
     configureStore.dispatch(
       updateLetPeopleFindBlogByEmail(event.target.checked)

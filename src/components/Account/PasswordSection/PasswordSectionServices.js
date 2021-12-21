@@ -1,6 +1,6 @@
 import api from "../../../api/api";
 
-const sendPasswordData= function (sentData) {
+const sendPasswordData = function (sentData) {
   let token = localStorage.getItem("token");
   api
     .post("/api/user/change-password", sentData, {
@@ -9,7 +9,6 @@ const sendPasswordData= function (sentData) {
       },
     })
     .then((res) => {
-      console.log(res);
       window.location.reload();
     })
     .catch((err) => {
@@ -18,5 +17,4 @@ const sendPasswordData= function (sentData) {
     });
 };
 
-
-export{sendPasswordData}
+export { sendPasswordData };

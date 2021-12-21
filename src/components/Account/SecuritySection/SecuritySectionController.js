@@ -11,7 +11,6 @@ import {
  *
  */
 const checkBoxClick = (event, EmailUserAbout, TwoFactorAuth) => {
-  console.log("I will change notify me ");
   /**
    * get all the check boxes in the security container
    * @type {Array<Element>}
@@ -25,7 +24,6 @@ const checkBoxClick = (event, EmailUserAbout, TwoFactorAuth) => {
     const sentData = {
       actionNotify: event.target.checked,
     };
-    console.log("Yes Iam ");
     changeNotifyAbout(sentData);
   } else {
     // updateState((prevState) => ({ ...prevState, TwoFactorAuth: !prevState.TwoFactorAuth }));
