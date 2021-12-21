@@ -7,7 +7,7 @@ import styles from './Posts.module.scss';
 import showPosts from './PostsControllers';
 import NothingAvailable from '../nothingAvailable/nothingAvailable';
 import Loading from '../Loading/Loading';
-import NewPostNavBar from '../../Dashboard/NewPost/Newpost';
+import Newpost from '../../Dashboard/NewPost/Newpost';
 import {
   incrementPageNum, decrementPageNum,
 } from '../../../redux/blogPosts';
@@ -28,14 +28,7 @@ const Posts = function () {
   return (
     <div className={`${styles.container} ${styles.row}`}>
       <div className={styles.posts}>
-        <div className={`${styles.insertPost} ${styles.row}`}>
-          <div className={styles.insertLogo}>
-            <img src={avatar} alt="no avatar" className={styles.img} />
-          </div>
-          <div className={styles.insertPostDetails}>
-            <NewPostNavBar />
-          </div>
-        </div>
+        <Newpost avatar={avatar} />
         { intialLoading
           ? <Loading />
           : (NumOfPosts === 0

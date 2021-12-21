@@ -9,16 +9,14 @@ import { FaLink } from 'react-icons/fa';
 import { BsFillChatDotsFill } from 'react-icons/bs';
 import { TiVideo } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
-import styles from '../../../pages/Dashboard/Dashboard.module.scss';
-import logo from '../../../assets/Images/avatar.png';
 
-const Newpost = function () {
+const Newpost = function ({ avatar }) {
   return (
-    <div className={`${styles.insertPost} ${styles.row}`}>
-      <div className={styles.insertLogo}>
-        <img src={logo} alt="avatar" className={styles.avatar} />
+    <div className={`${classes.insertPost} ${classes.row}`}>
+      <div className={classes.insertLogo}>
+        <img src={avatar} alt="avatar" className={classes.avatar} />
       </div>
-      <div className={styles.insertPostDetails}>
+      <div className={classes.insertPostDetails}>
         <div className={classes.newPost}>
           <Link to="/new/text" className={classes.icon}>
             <IconContext.Provider value={{ className: classes.text }}>

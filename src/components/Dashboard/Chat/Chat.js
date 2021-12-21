@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from 'react';
