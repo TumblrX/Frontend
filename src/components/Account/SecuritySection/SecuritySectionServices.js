@@ -6,8 +6,9 @@ const changeNotifyAbout = function (sentData) {
       Authorization: token,
     },
   };
+  console.log(sentData);
   api
-    .post("/api/user/settings-save", sentData,config)
+    .post("/api/user/settings-save", sentData, config)
     .then((res) => {
       console.log(res);
     })
@@ -17,4 +18,4 @@ const changeNotifyAbout = function (sentData) {
     });
 };
 
-export{changeNotifyAbout}
+export { changeNotifyAbout };

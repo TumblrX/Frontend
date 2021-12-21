@@ -1,15 +1,8 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-unused-vars */
 import styles from "../Account.module.css";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import api from "../../../api/api";
-import { useSelector, useDispatch } from "react-redux";
-import { changeNotifyAbout } from "./SecuritySectionServices";
-import {
-  updateEmailUserAbout,
-  updateTwoFactorAuth,
-} from "../../../redux/SecuritySection";
+import { useSelector } from "react-redux";
+import { checkBoxClick } from "./SecuritySectionController";
 /**
  * Component to render the Security  Section in the Accountsettings in the Settings page
  * @author Abdalla Mahmoud
@@ -17,73 +10,11 @@ import {
  * @component
  */
 
-const SecuritySection = function (props) {
+const SecuritySection = function () {
   const { EmailUserAbout, TwoFactorAuth } = useSelector(
     (state) => state.securityInfo
   );
-  const dispatch = useDispatch();
 
-  /**
-   * this fucntion is just a handler for clicking on check box in the Security Section
-   * @type {function}
-   * @param {event} event
-   *
-   */
-  const checkBoxClick = (event) => {
-    /**
-     * get all the check boxes in the security container
-     * @type {Array<Element>}
-     *
-     */
-    const boxes = document.querySelectorAll(".security-container input");
-    if (event.target === boxes[0]) {
-      // updateState((prevState) => ({ ...prevState, EmailUserAbout: !prevState.EmailUserAbout }));
-      dispatch(updateEmailUserAbout(!EmailUserAbout));
-    } else {
-      // updateState((prevState) => ({ ...prevState, TwoFactorAuth: !prevState.TwoFactorAuth }));
-      dispatch(updateTwoFactorAuth(!TwoFactorAuth));
-    }
-  };
-
-  useEffect(() => {
-    // value will be null in the first call the the other useEffect state
-    // TAKE CARE  the setState function is an async function so we use useEffect method
-    // to see any change happens to the state
-    if (EmailUserAbout === null) return;
-    const sentData = {
-      actionNotify: EmailUserAbout,
-    };
-    console.log("Yes Iam ");
-    changeNotifyAbout(sentData); 
-  }, [EmailUserAbout, props]);
-
-  /**
-   * @function
-   * @param {void}
-   * @returns {void}
-   * retreive the data from the backend when the component mounted
-   */
-  const componentDidMount = () => {
-    api
-      .get("/users/1")
-      .then((response) => {
-        document.querySelectorAll('input[type="checkbox"]')[1].checked =
-          response.data.emailAboutAccountActivity;
-        document.querySelectorAll('input[type="checkbox"]')[2].checked =
-          response.data.twoFactorAuthentication;
-        console.log("Iam here ");
-
-        // updateState({
-        //   EmailUserAbout: response.data.emailAboutAccountActivity,
-        //   TwoFactorAuth: response.data.twoFactorAuthentication,
-        // });
-        dispatch(updateEmailUserAbout(response.data.emailAboutAccountActivity));
-        dispatch(updateTwoFactorAuth(response.data.twoFactorAuthentication));
-      })
-      .catch((err) => {});
-  };
-
-  useEffect(componentDidMount, []);
   return (
     <div
       data-testid="security-seciton"
@@ -113,7 +44,9 @@ const SecuritySection = function (props) {
           <input
             type="checkbox"
             style={{ marginTop: "6px", marginRight: "6px" }}
-            onClick={checkBoxClick}
+            onClick={(event) =>
+              checkBoxClick(event, EmailUserAbout, TwoFactorAuth)
+            }
             className={`${styles["input-box"]}`}
           />
           <div>
