@@ -14,14 +14,22 @@ function TwoFlexesData(props) {
       <div className={`${styles["two-flexes"]} "first-of-two"`}>
         {posts.map((item, index) => {
           if (index % 2 == 0) {
-            return <Post data={item}  key={index} />;
+            return (
+              <div className={styles["exlpore-post"]}>
+                <Post data={item} key={index} />
+              </div>
+            );
           }
         })}
       </div>
       <div className={`${styles["two-flexes"]} "second-of-two"`}>
         {posts.map((item, index) => {
           if (index % 2 == 1) {
-            return <Post data={item} key={index} />;
+            return (
+              <div className={styles["exlpore-post"]}>
+                <Post data={item} key={index} />
+              </div>
+            );
           }
         })}
       </div>

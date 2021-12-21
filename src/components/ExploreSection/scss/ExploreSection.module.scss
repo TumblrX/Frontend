@@ -5,10 +5,18 @@
   margin-right: 15px;
 }
 
-body{
-  height:fit-content
+body {
+  height: fit-content;
 }
-
+.exlpore-post {
+  margin-bottom: 15px;
+  img {
+    width: 100%;
+  }
+  video {
+    width: 100%;
+  }
+}
 .explore-section {
   width: 66%;
   border-right: 1px solid white;
@@ -35,10 +43,9 @@ body{
   }
   .four-flexes {
     @include post-flex();
-    width:calc(100% - 60px);
+    width: calc(100% - 60px);
   }
 }
-
 
 @media (max-width: 990px) {
   .explore-section {

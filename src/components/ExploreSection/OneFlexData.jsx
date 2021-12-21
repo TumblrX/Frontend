@@ -13,7 +13,11 @@ function OneFlexData(props) {
     <div className={styles["posts-container"]}>
       <div className={`${styles["one-flex"]} first-of-first`}>
         {posts.map((item, index) => {
-          return <Post data={item} key={index} />;
+          return (
+            <div className={styles["exlpore-post"]}>
+              <Post data={item} key={index} />
+            </div>
+          );
         })}
       </div>
     </div>

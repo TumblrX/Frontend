@@ -15,28 +15,44 @@ function FourFlexData(props) {
       <div className={`${styles["four-flexes"]} "first-of-four"`}>
         {posts.map((item, index) => {
           if (index % 4 == 0) {
-            return <Post data={item} key={index} />;
+            return (
+              <div className={styles["exlpore-post"]}>
+                <Post data={item} key={index} />
+              </div>
+            );
           }
         })}
       </div>
       <div className={`${styles["four-flexes"]} "second-of-four"`}>
         {posts.map((item, index) => {
           if (index % 4 == 1) {
-            return <Post data={item} key={index} />;
+            return (
+              <div className={styles["exlpore-post"]}>
+                <Post data={item} key={index} />
+              </div>
+            );
           }
         })}
       </div>
       <div className={`${styles["four-flexes"]} "third-of-four"`}>
         {posts.map((item, index) => {
           if (index % 4 == 2) {
-            return <Post data={item} key={index} />;
+            return (
+              <div className={styles["exlpore-post"]}>
+                <Post data={item} key={index} />
+              </div>
+            );
           }
         })}
       </div>
       <div className={`${styles["four-flexes"]} "forth-of-four"`}>
         {posts.map((item, index) => {
           if (index % 4 == 3) {
-            return <Post data={item} key={index} />;
+            return (
+              <div className={styles["exlpore-post"]}>
+                <Post data={item} key={index} />
+              </div>
+            );
           }
         })}
       </div>

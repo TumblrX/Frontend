@@ -65,8 +65,8 @@ function ExploreSection() {
    *
    */
   const componentDidMount = () => {
-    // onResize(); // First call to set the state ;
-    // window.addEventListener("resize", onResize);
+    onResize(); // First call to set the state ;
+    window.addEventListener("resize", onResize);
     // window.addEventListener("scroll", () => {
     //   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
     //     onclickbutton();
