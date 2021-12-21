@@ -167,6 +167,26 @@ const useHandler = () => {
     }
   };
   /**
+   * this function handle the event of focus for the password input field
+   * @function handleFocusOut
+   * @return {void} return nothing it just an event handler
+   */
+  const handleFocus = () => {
+    dispatch(setBlogPrivacy(true));
+  };
+  /**
+   * this function handle the event of outfocus for the password input field
+   * @function handleFocusOut
+   * @param {event} event
+   * @return {void} return nothing it just an event handler
+   */
+  const handleFocusOut = (event) => {
+    const password = event.target.value;
+    if (!password.length) {
+      dispatch(setBlogPrivacy(false));
+    }
+  };
+  /**
    * this function handle the event of changing Password input to keep it in sync with the state
    * @function handlePasswordChange
    * @param {event} event
@@ -289,6 +309,8 @@ const useHandler = () => {
     handleTitleChange,
     handlePasswordChange,
     handleSubmit,
+    handleFocus,
+    handleFocusOut,
   };
 };
 
