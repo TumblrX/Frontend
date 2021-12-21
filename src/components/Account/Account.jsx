@@ -7,6 +7,7 @@ import EmailSection from "./EmailSection/EmailSection";
 import PasswordSection from "./PasswordSection/PasswordSection";
 import SecuritySection from "./SecuritySection/SecuritySection";
 import { getUserInfo } from "./AccountServices";
+import { Link } from "react-router-dom";
 /**
  * Component to render the Account settings in the Settings page
  * @author Abdalla Mahmoud
@@ -27,14 +28,14 @@ const Account = function () {
         <SecuritySection />
 
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <a href="/delete">
+          <Link to="/account/delete">
             <button
               data-testid="delete-account-button"
               className={styles["delete-account-button"]}
             >
               Delete account
             </button>
-          </a>
+          </Link>
         </div>
       </form>
     </div>

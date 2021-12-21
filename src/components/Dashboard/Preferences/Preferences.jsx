@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import styles from '../Dashboard.module.css';

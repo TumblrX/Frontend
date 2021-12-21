@@ -9,6 +9,7 @@ import {
 import updateEmailUserAbout from "../../redux/SecuritySection";
 const getUserInfo = function () {
   let token = localStorage.getItem("token");
+  console.log(token);
   api
     .get("api/user/info", {
       headers: {
