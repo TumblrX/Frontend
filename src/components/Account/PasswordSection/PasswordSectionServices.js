@@ -1,4 +1,5 @@
 import api from "../../../api/api";
+import styles from "../Account.module.css";
 
 const sendPasswordData = function (sentData) {
   let token = localStorage.getItem("token");
@@ -12,8 +13,7 @@ const sendPasswordData = function (sentData) {
       window.location.reload();
     })
     .catch((err) => {
-      console.log(err);
-      // validations from backend .
+      document.querySelector(`.${styles["error-current-password"]}`).style.visibility="unset"
     });
 };
 
