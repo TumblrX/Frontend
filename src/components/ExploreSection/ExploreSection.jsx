@@ -9,7 +9,7 @@ import ThreeFlexesData from "./ThreeFlexesData";
 import TwoFlexesData from "./TwoFlexesData";
 import OneFlexData from "./OneFlexData";
 import Post from "../Post/Post";
-
+import api from "../../api/api";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -18,13 +18,22 @@ import Post from "../Post/Post";
  */
 
 function ExploreSection() {
+  useEffect(() => {
+    api
+      .get("/api/user/explore/5/trending")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const [flexesNumber, updateSize] = useState(4);
   const [posts, updatePosts] = useState([
     1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
   ]);
   const onclickbutton = () => {
-    for(let i = 0 ; i<5 ; i++)
-      updatePosts((prevPosts) => [...prevPosts, 1]);
+    for (let i = 0; i < 5; i++) updatePosts((prevPosts) => [...prevPosts, 1]);
   };
 
   /**
@@ -59,7 +68,7 @@ function ExploreSection() {
     window.addEventListener("resize", onResize);
     window.addEventListener("scroll", () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        onclickbutton(); 
+        onclickbutton();
       }
     });
     // it will be called when the Component is unmounted
