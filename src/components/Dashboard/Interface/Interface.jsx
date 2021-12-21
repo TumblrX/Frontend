@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
-import React, { useState, useEffect } from "react";
 import styles from "../Dashboard.module.css";
 import { checkBoxClick } from "./InterfaceServices";
 /**

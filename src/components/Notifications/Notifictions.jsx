@@ -237,26 +237,27 @@ const Notifictions = function () {
    *
    */
   const formAction = () => {
-    const userSettings = {
-      EmailUserAboutNewFollowersBox: EmailUserAboutNewFollowersBoxState,
-      EmailUserAboutNewRepliesBox: EmailUserAboutNewRepliesBoxState,
-      EmailUserAboutNewMentionsBox: EmailUserAboutNewMentionsBoxState,
-      EmailUserAboutNewAnsweredAsksBox: EmailUserAboutNewAnsweredAsksBoxState,
-      NotificationSettingsFor: NotificationSettingsForState,
-      ApplySettingsForAllBlogs: ApplySettingsForAllBlogsState,
-    };
-    console.log(userSettings);
-    const sentData = { notificationsSettings: userSettings };
-    api
-      .patch("/users/1", sentData)
-      .then((res) => {
-        // window.location.reload();
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-        // validations from backend .
-      });
+    // const userSettings = {
+    //   EmailUserAboutNewFollowersBox: EmailUserAboutNewFollowersBoxState,
+    //   EmailUserAboutNewRepliesBox: EmailUserAboutNewRepliesBoxState,
+    //   EmailUserAboutNewMentionsBox: EmailUserAboutNewMentionsBoxState,
+    //   EmailUserAboutNewAnsweredAsksBox: EmailUserAboutNewAnsweredAsksBoxState,
+    //   NotificationSettingsFor: NotificationSettingsForState,
+    //   ApplySettingsForAllBlogs: ApplySettingsForAllBlogsState,
+    // };
+    // console.log(userSettings);
+    // const sentData = { notificationsSettings: userSettings };
+    // api
+    //   .patch("/users/1", sentData)
+    //   .then((res) => {
+    //     // window.location.reload();
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     // validations from backend .
+    //   });
+    window.location.reload(); 
   };
   return (
     <div className={styles["notification-container"]}>
