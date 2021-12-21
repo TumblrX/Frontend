@@ -12,6 +12,9 @@ import MainPageReducer from './mainPage';
 import blogFollowers from './blogFollowers';
 import userBlogsReducer from './userBlogs-slice';
 import newTextPostReducer from './newTextPost-slice';
+import ChatReducer from './ChatReducer';
+import blog from './blog';
+import blogDrafts from './blogDrafts';
 
 export default configureStore({
   reducer: {
@@ -28,6 +31,9 @@ export default configureStore({
     mainPage: MainPageReducer,
     userBlogs: userBlogsReducer,
     newTextPost: newTextPostReducer,
+    Chat: ChatReducer,
+    Blog: blog,
+    BlogDrafts: blogDrafts,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false,

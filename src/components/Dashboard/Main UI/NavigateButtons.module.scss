@@ -1,0 +1,25 @@
+.row {
+    display: flex;
+}
+.navigate_btns {
+    height: 100px;
+    justify-content: space-around;
+    .next_btn{
+        justify-content: flex-start;
+        width: 52px;
+        background-color: #00B8FF;
+        height: 25px;
+        color: white;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+    .previous_btn{
+
+        width: 77px;
+        background-color: #A6AFB8;
+        height: 25px;
+        color: white;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+}

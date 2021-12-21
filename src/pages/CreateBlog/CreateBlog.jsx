@@ -23,6 +23,8 @@ const CreateBlog = function () {
     handleTitleChange,
     handlePasswordChange,
     handleSubmit,
+    handleFocus,
+    handleFocusOut,
   } = useHandler();
   const {
     blogHandle, blogTitle, blogIsPrivate, blogPassword,
@@ -136,6 +138,7 @@ const CreateBlog = function () {
                       type="text"
                       className={styles.textField1}
                       value={blogTitle}
+                      maxLength="33"
                       onChange={handleTitleChange}
                     />
                   </div>
@@ -156,6 +159,7 @@ const CreateBlog = function () {
                       className={styles.textField2}
                       id="new_group_name"
                       value={blogHandle}
+                      maxLength="33"
                       onChange={handleURLChange}
                     />
                     <label
@@ -217,8 +221,11 @@ const CreateBlog = function () {
                   style={{ width: '260px', marginLeft: '20px', border: '1px solid #d5d9dd' }}
                   id="new_group_password_protected"
                   type="text"
+                  maxLength="255"
                   value={blogPassword}
                   onChange={handlePasswordChange}
+                  onFocus={handleFocus}
+                  onBlur={handleFocusOut}
                 />
                 <div className={styles.clear} />
               </div>

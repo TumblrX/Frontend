@@ -1,39 +1,39 @@
 /* eslint-disable no-else-return */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import styles from './Posts.module.scss';
+import styles from './Drafts.module.scss';
 import Post from '../../Post/Post';
 /**
- * this function is to show the fetched posts in post page in blog
- * @function showPosts
- * @param {object} posts
+ * this function is to show the fetched drafts in drafts page in blog
+ * @function showDrafts
+ * @param {object} drafts
  * @param {number} pageNum
  * @param {bool}  isInfinte
- * @return {JSX} return jsx of posts to be rendered in the posts page
+ * @return {JSX} return jsx of drafts to be rendered in the drafts page
  */
 
-const showPosts = (posts, pageNum, isInfinte) => {
+const showDrafts = (drafts, pageNum, isInfinte) => {
   let firstPost;
   let lastPost;
   if (isInfinte) {
     firstPost = 0;
-    lastPost = posts.length;
+    lastPost = drafts.length;
   } else {
     lastPost = pageNum * 10;
     firstPost = lastPost - 10;
   }
   return (
     // eslint-disable-next-line block-scoped-var
-    posts.slice(firstPost, lastPost).map((post, index) => (
+    drafts.slice(firstPost, lastPost).map((draft, index) => (
       <div className={`${styles.post} ${styles.row}`} key={index} data-testid={`testPost${index}`}>
         <div className={styles.logo}>
-          <img src={post.blogAttribution.avatar} alt="no avatar" className={styles.limg} />
+          <img src={draft.blogAttribution.avatar} alt="no avatar" className={styles.limg} />
         </div>
         <div className={styles.postDatailes}>
-          <Post data={post} />
+          <Post data={draft} />
         </div>
       </div>
     ))
   );
 };
-export default showPosts;
+export default showDrafts;

@@ -1,19 +1,16 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
 import configureStore from '../../redux/store';
 import { setPosts } from '../../redux/DashBoardReducer';
 import api from '../../api/api';
 
 const fetchPost = async () => {
   try {
-    console.log('fetchPost is called');
-    const response = await api.get('/api/user/dashboard?limit=2&page=1');
-    let arr = [];
-    response.data.posts.map((post, index) => (
-      arr.push(post.content)
-    ));
-    configureStore.dispatch(setPosts(arr));
-    // await console.log('arr -->', arr);
+    const response = await api.get('/api/user/dashboard?limit=12&page=2');
+    // console.log('response -->', response.data);
+    if (response.data['for-youPosts'].length !== 0) {
+      configureStore.dispatch(setPosts(response.data['for-youPosts']));
+    } else {
+      configureStore.dispatch(setPosts(response.data.posts));
+    }
   } catch (err) {
     if (err.response) {
       // Not in the 200 response range
@@ -26,7 +23,3 @@ const fetchPost = async () => {
   }
 };
 export default fetchPost;
-// old code
-// const response = await api.get('/posts');
-// configureStore.dispatch(setPosts(response.data));
-// console.log(response.data);
