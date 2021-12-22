@@ -34,15 +34,15 @@ const componentDidMount = function (postsIndex) {
   onResize(); // First call to set the state ;
   window.addEventListener("resize", onResize);
   retrivePosts(postsIndex);
-  // window.addEventListener("scroll", () => {
-  //   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-  //     onclickbutton();
-  //   }
-  // });
-  // // it will be called when the Component is unmounted
-  // return () => {
-  //   window.removeEventListener("resize", onResize);
-  // };
+  window.addEventListener("scroll", () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      retrivePosts(postsIndex)
+    }
+  });
+  // it will be called when the Component is unmounted
+  return () => {
+    window.removeEventListener("resize", onResize);
+  };
 };
 
 export { componentDidMount, onResize };

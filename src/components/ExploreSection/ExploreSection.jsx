@@ -10,9 +10,6 @@ import TwoFlexesData from "./TwoFlexesData";
 import OneFlexData from "./OneFlexData";
 import api from "../../api/api";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { pushPosts } from "../../redux/ExploreRecuder";
-import { retrivePosts } from "./ExploreSectionServices";
 import { componentDidMount } from "./ExploreSectionController";
 /**
  * Component to render the Explore section  in Explore page
