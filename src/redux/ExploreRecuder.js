@@ -3,20 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 export const ExploreReducer = createSlice({
   name: "Explore",
   initialState: {
-    posts: [],
+    trendingPosts: [],
     flexesNumber:4,
     postIndex:2,
   },
   reducers: {
-    setPosts: (state, action) => {
-      state.posts = action.payload;
+    setTrendingPosts: (state, action) => {
+      state.trendingPosts = action.payload;
     },
-    pushPost: (state, action) => {
-      state.posts.push(action.payload);
+    pushTrendingPost: (state, action) => {
+      state.trendingPosts.push(action.payload);
     },
-    pushPosts: (state, action) => {
+    pushTrendingPosts: (state, action) => {
       for(let i =0 ; i<action.payload.length;i++){
-          state.posts.push(action.payload[i]); 
+          state.trendingPosts.push(action.payload[i]); 
       }
     },
     setFlexesNumbers:(state,action)=>{
@@ -28,6 +28,6 @@ export const ExploreReducer = createSlice({
   },
 });
 
-export const { setPosts, pushPost, pushPosts ,setFlexesNumbers } = ExploreReducer.actions;
+export const { setTrendingPosts, pushTrendingPost, pushTrendingPosts ,setFlexesNumbers } = ExploreReducer.actions;
 
 export default ExploreReducer.reducer;

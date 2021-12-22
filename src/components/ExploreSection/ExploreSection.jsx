@@ -27,10 +27,11 @@ function ExploreSection() {
   return (
     <div className={styles["explore-section"]}>
       <ExploreNavbar />
-      <Switch>
+      {/* <Switch>
         <Route
           path="/explore/recommended-for-you"
           component={ExploreSuggestionList}
+          exact
         />
         <Route path="/explore/trending" exact component={TrendingList} />
         <Route
@@ -38,8 +39,8 @@ function ExploreSection() {
           exact
           component={ExploreSuggestionList}
         />
-      </Switch>
-      {flexesNumber == 4 ? (
+      </Switch> */}
+      {/* {flexesNumber == 4 ? (
         <FourFlexData posts={posts} />
       ) : flexesNumber == 3 ? (
         <ThreeFlexesData posts={posts} />
@@ -47,7 +48,7 @@ function ExploreSection() {
         <TwoFlexesData posts={posts} />
       ) : (
         <OneFlexData posts={posts} />
-      )}
+      )} */}
     </div>
   );
 }

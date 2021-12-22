@@ -25,6 +25,7 @@ const App = function () {
         <MainPage />
       </Route>
       <Route path="/explore">
+        <Redirect to="/explore/recommended-for-you" />
         <NavBar />
         <Explore />
       </Route>
