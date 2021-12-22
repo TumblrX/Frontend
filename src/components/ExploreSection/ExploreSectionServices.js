@@ -1,13 +1,18 @@
 import api from "../../api/api";
 import configureStore from "../../redux/store";
-import { pushPosts } from "../../redux/ExploreRecuder";
-const retrivePosts = function (postsIndex) {
+import { pushTrendingPosts } from "../../redux/ExploreRecuder";
+const retrivePosts = function (postsIndex, page) {
+  let route = `/api/user/explore/${postsIndex}/`;
+  if (page === "trending") {
+      route+=page;
+  }
+
   api
-    .get(`/api/user/explore/${postsIndex}/trending`)
+    .get(route)
     .then((res) => {
       console.log(res);
 
-      configureStore.dispatch(pushPosts(res.data.trendingPosts));
+      configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
     })
     .catch((err) => {
       console.log(err);

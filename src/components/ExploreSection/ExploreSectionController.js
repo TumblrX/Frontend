@@ -30,13 +30,13 @@ const onResize = () => {
  * @returns {void} return nothing
  */
 
-const componentDidMount = function (postsIndex) {
+const componentDidMount = function (postsIndex,page) {
   onResize(); // First call to set the state ;
   window.addEventListener("resize", onResize);
-  retrivePosts(postsIndex);
+  retrivePosts(postsIndex,page);
   window.addEventListener("scroll", () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      retrivePosts(postsIndex)
+      retrivePosts(postsIndex,page)
     }
   });
   // it will be called when the Component is unmounted

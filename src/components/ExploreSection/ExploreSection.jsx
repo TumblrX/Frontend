@@ -11,6 +11,7 @@ import OneFlexData from "./OneFlexData";
 import api from "../../api/api";
 import { useSelector } from "react-redux";
 import { componentDidMount } from "./ExploreSectionController";
+import Trending from "./Trending/Trending";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -27,6 +28,7 @@ function ExploreSection() {
   return (
     <div className={styles["explore-section"]}>
       <ExploreNavbar />
+      <Trending />
       {/* <Switch>
         <Route
           path="/explore/recommended-for-you"
