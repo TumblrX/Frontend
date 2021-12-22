@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import SettingsNavbar from '../../components/SettingsNavbar/SettingsNavbar';
 import styles from './Settings.module.css';

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import register from './RegisterService';
+// import register from './RegisterService';
 
-describe('Check that the register service works correctly', () => {
+describe.skip('Check that the register service works correctly', () => {
   it('should return true if the register done correctly', async () => {
     // const response = await register('example1', 'example@example.com', 'Taher#123');
     // expect(response.result).toEqual(true);

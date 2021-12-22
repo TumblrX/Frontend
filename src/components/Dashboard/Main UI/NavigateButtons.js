@@ -17,17 +17,16 @@ const NavigateButtons = function ({ pageNumPosts }) {
         && (
         <button
           className={styles.previous_btn}
-          onClick={() => dispatch(decrementPageNum())}
+          onClick={() => { dispatch(decrementPageNum());}}
         >
           &lt; Previous
         </button>
         )}
-      {(pageNum * pageNumPosts < posts.length || posts.length === 0)
-      && !isInfinte
+      {( posts.length !== 0) && (!isInfinte)
       && (
         <button
           className={styles.next_btn}
-          onClick={() => { dispatch(incrementPageNum()); }}
+          onClick={() => { dispatch(incrementPageNum());}}
         >
           Next &gt;
         </button>
