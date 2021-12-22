@@ -5,15 +5,32 @@ export const DashboardReducer = createSlice({
   name: 'DashBoard',
   initialState: {
     posts: [],
+    exploreBlogs: [1,2,3],
+    radar:[],
+    postsMounted: false,
+    exploreBlogsMounted:false,
+    radarMounted:false,
     pageNum: 1,
+    pageNumPosts: 5,
     isInfinte: false,
     ismounted: false,
-    exploreBlogs: [1, 2, 3, 5],
-    pageNumPosts: 5,
   },
   reducers: {
     setPosts: (state, action) => {
       state.posts = action.payload;
+    },
+    setPostsMounted: (state, action) => {
+      state.postsMounted = action.payload;
+    },
+    setExploreBlogsMounted: (state, action) => {
+      state.exploreBlogsMounted = action.payload;
+    },
+    setRadarMounted: (state, action) => {
+      state.radarMounted = action.payload;
+    },
+    removeBlog: (state, action) =>{
+      const id =action.payload;
+      state.exploreBlogs.splice(id,1);
     },
     incrementPageNum: (state) => {
       state.pageNum += 1;
@@ -36,11 +53,16 @@ export const DashboardReducer = createSlice({
     setpageNumPosts: (state, action) => {
       state.pageNumPosts = action.payload;
     },
+    setRadar: (state, action) =>{
+      state.radar =action.payload;
+    },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
   setPosts, incrementPageNum, decrementPageNum, setIsInfinite,
-  setExploreBlogs, setIsMounted, setPageNum,
+  setExploreBlogs, setIsMounted, setPageNum,setRadar,
+  setPostsMounted, setExploreBlogsMounted, setRadarMounted, 
+  removeBlog
 } = DashboardReducer.actions;
 export default DashboardReducer.reducer;

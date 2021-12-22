@@ -106,25 +106,26 @@ $font-color : #000;
     }
     .explore {
         width: 35%;
-        justify-content:right;
         .checkBlogs{
             min-height: 200px;
-            background-color: $post-bg;
-            border: 3px solid $bg;
-
+            background-color: $bg;
+            color: white;
             .exploreBlog{
                 width: 100%;
                 margin-bottom: 15px;
+                padding: 10px;
+                &:hover {background: #001D61;}
                 .blogAvatar{
                     width: 37px;
                     height: 37px;
-                    margin-right: 10px;
-                    background-color: cyan;
+                    margin-right: 30px;
+                    cursor: pointer;
                 }
                 .blogTitle{
                     width: 50%;
-                    margin-right: 10px;
+                    margin-right: 10px;  
                     .p{
+                        cursor: pointer;
                         font-size: 13px;
                     }
                 }
@@ -132,10 +133,9 @@ $font-color : #000;
                     width: 20%;
                     margin-right: 10px;
                     position: relative;
+                    cursor: pointer;
                     .follow{
                         font-size: 15px;
-                        background-color: $post-bg;
-                        border: 0;
                         @include self_center();
                     }
                 }
@@ -143,10 +143,9 @@ $font-color : #000;
                     width: 10%;
                     margin-right: 10px;
                     position: relative;
+                    cursor: pointer;
                     .exit{
                         font-weight: bold;
-                        background-color: $post-bg;
-                        border: 0;
                         font-size: 20px;                        
                         @include self_center();
                     }

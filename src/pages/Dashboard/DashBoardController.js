@@ -3,22 +3,15 @@
 import React from 'react';
 import styles from './Dashboard.module.scss';
 import Post from '../../components/Post/Post';
-import logo from '../../assets/Images/avatar.png';
+import noAvatar from '../../assets/Images/avatar.png';
+import { handleSideView, handleExit,  handleFollow } from './DashBoardService';
+
 
 const showPosts = (posts, pageNum, isInfinte, pageNumPosts) => {
-  let firstPost;
-  let lastPost;
-  if (isInfinte) {
-    firstPost = 0;
-    lastPost = posts.length;
-  } else {
-    lastPost = pageNum * pageNumPosts;
-    firstPost = lastPost - pageNumPosts;
-  }
-  return posts.slice(firstPost, lastPost).map((post, index) => (
+  return posts.map((post, index) => (
     <div className={`${styles.post} ${styles.row}`} key={index}>
       <div className={styles.logo}>
-        <img src={logo} alt="avatar" className={styles.avatar} />
+        <img src={noAvatar} alt="avatar" className={styles.avatar} />
       </div>
       <div className={styles.postDatailes}>
         <Post data={post} />
@@ -27,9 +20,10 @@ const showPosts = (posts, pageNum, isInfinte, pageNumPosts) => {
   ));
 };
 
-const getOnePost = (posts) => {
-  const i = Math.floor(Math.random() * (posts.length - 1));
-  const post = posts[i];
+const getOnePost = (radar) => {
+  const i = Math.floor(Math.random() * (radar.length - 1));
+  const post = radar[i];
+  // console.log('onepost -->', post)
   return (
     <div className={`${styles.post} `}>
       <div className={styles.logo} />
@@ -39,21 +33,28 @@ const getOnePost = (posts) => {
     </div>
   );
 };
-const showBlogsForYou = (exploreBlogs) => exploreBlogs.map((blog, index) => (
-  <div className={`${styles.exploreBlog} ${styles.row}`} key={index}>
-    <div className={styles.blogAvatar}>
-      avatar
+
+
+
+
+const showBlogsForYou = (exploreBlogs) => {
+  console.log('explore is called', exploreBlogs); 
+  return exploreBlogs.map((blog, index) => (
+    <div className={`${styles.exploreBlog} ${styles.row}`} key={index}>
+      <div className={styles.blogAvatar} id={`side${index}`} onClick={() => handleSideView(`side${index}`)}>
+        <img src={noAvatar} alt="avatar" className={styles.avatar} />
+      </div>
+      <div className={styles.blogTitle} >
+        <h4> { blog.title} </h4>
+      </div>
+      <div className={styles.blogFollow} id={`follow${index}`} onClick={() => handleFollow(index,blog._id)}>
+        <p className={styles.follow}> follow </p>
+      </div>
+      <div className={styles.blogExit} id={`exit${index}`} onClick={(e)=> handleExit(`exit${index}`)}>
+        <p className={styles.exit}> &times; </p>
+      </div>
     </div>
-    <div className={styles.blogTitle}>
-      <h4> Blog Title </h4>
-      <p className={styles.p}> Fav1 Fav2 Fav3 </p>
-    </div>
-    <div className={styles.blogFollow}>
-      <button className={styles.follow}> Follow </button>
-    </div>
-    <div className={styles.blogExit}>
-      <button className={styles.exit}> &times; </button>
-    </div>
-  </div>
-));
+  ));
+};
+  
 export { showPosts, getOnePost, showBlogsForYou };
