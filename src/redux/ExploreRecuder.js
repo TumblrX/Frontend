@@ -4,10 +4,10 @@ export const ExploreReducer = createSlice({
   name: "Explore",
   initialState: {
     trendingPosts: [],
-    forYouPosts:[],
+    forYouPosts: [],
     flexesNumber: 4,
     trendingPostsIndex: 2,
-    forYouPostsIndex:2,
+    forYouPostsIndex: 2,
   },
   reducers: {
     setTrendingPosts: (state, action) => {
@@ -21,6 +21,14 @@ export const ExploreReducer = createSlice({
         state.trendingPosts.push(action.payload[i]);
       }
     },
+    pushForYouPost: (state, action) => {
+      state.forYouPosts.push(action.payload);
+    },
+    pushForYouPosts: (state, action) => {
+      for (let i = 0; i < action.payload.length; i++) {
+        state.forYouPosts.push(action.payload[i]);
+      }
+    },
     setFlexesNumbers: (state, action) => {
       state.flexesNumber = action.payload;
     },
@@ -28,8 +36,8 @@ export const ExploreReducer = createSlice({
       state.trendingPostsIndex = action.payload;
     },
     setForYouPostIndex: (state, action) => {
-        state.forYouPostsIndex = action.payload;
-      },
+      state.forYouPostsIndex = action.payload;
+    },
   },
 });
 
@@ -38,7 +46,9 @@ export const {
   pushTrendingPost,
   pushTrendingPosts,
   setFlexesNumbers,
-  setForYouPostIndex
+  setForYouPostIndex,
+  pushForYouPost,
+  pushForYouPosts,
 } = ExploreReducer.actions;
 
 export default ExploreReducer.reducer;

@@ -1,6 +1,6 @@
 import api from "../../api/api";
 import configureStore from "../../redux/store";
-import { pushTrendingPosts } from "../../redux/ExploreRecuder";
+import { pushTrendingPosts, pushForYouPosts } from "../../redux/ExploreRecuder";
 import {
   setTrendingPostIndex,
   setForYouPostIndex,
@@ -30,15 +30,11 @@ const retrivePosts = function () {
   }
 
   api
-    .get(route, {
-      headers: {
-        Authorization: token,
-      },
-    })
+    .get(route, config)
     .then((res) => {
       console.log(res);
       if (pathname === "recommended-for-you")
-        configureStore.dispatch(pushTrendingPosts(res.data["for-youPosts"]));
+        configureStore.dispatch(pushForYouPosts(res.data["for-youPosts"]));
       else configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
     })
     .catch((err) => {

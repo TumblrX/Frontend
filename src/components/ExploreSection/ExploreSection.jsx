@@ -12,6 +12,7 @@ import api from "../../api/api";
 import { useSelector } from "react-redux";
 import { componentDidMount } from "./ExploreSectionController";
 import Trending from "./Trending/Trending";
+import ForYou from "./ForYou/ForYou";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -28,7 +29,15 @@ function ExploreSection() {
   return (
     <div className={styles["explore-section"]}>
       <ExploreNavbar />
-      <Trending />
+      <Switch>
+        <Route path="/explore/recommended-for-you" component={ForYou} exact />
+        <Route path="/explore/trending" exact component={Trending} />
+        <Route
+          path="/explore/staff-picks"
+          exact
+          component={ExploreSuggestionList}
+        />
+      </Switch>
       {/* <Switch>
         <Route
           path="/explore/recommended-for-you"

@@ -32,7 +32,7 @@ const onResize = () => {
 
 const componentDidMount = function () {
   onResize(); // First call to set the state ;
-  window.addEventListener("resize", onResize);
+  window.addEventListener("resize", onResize);// it should be added one time as well as scroll Event handler
   retrivePosts();
   window.addEventListener("scroll", () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
