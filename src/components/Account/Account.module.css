@@ -14,21 +14,34 @@ title
 /*
  hr vars 
 */
+
+body {
+  overflow: scroll !important;
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none !important;
+}
 a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .before-focus-on-edit {
-  border: none; }
+  border: none;
+}
 
 .account-container {
   display: flex;
   flex-direction: column;
   background-color: white;
   width: calc(100% - 40px);
-  margin: 0 auto; }
-  .account-container input {
-    -webkit-appearance: auto;
-    border: 1px solid gray; }
+  margin: 0 auto;
+}
+.account-container input {
+  -webkit-appearance: auto;
+  border: 1px solid gray;
+}
 
 .change-email-section,
 .password-box,
@@ -37,7 +50,8 @@ a {
   display: flex;
   margin-bottom: 10px;
   margin-left: 10px;
-  position: relative; }
+  position: relative;
+}
 
 /* should be in a general place 
      and should have one name for exapmple section-box 
@@ -47,7 +61,8 @@ a {
   display: flex;
   flex-direction: column;
   width: 70%;
-  position: relative; }
+  position: relative;
+}
 
 .input-box {
   display: block;
@@ -56,12 +71,15 @@ a {
   font-size: 14px;
   opacity: 0.5;
   outline: none;
-  margin-right: 5px; }
+  margin-right: 5px;
+}
 
 input[type="checkbox"] {
-  display: inline; }
+  display: inline;
+}
 
-.cancel-button, .save-button,
+.cancel-button,
+.save-button,
 .add-button {
   width: fit-content;
   height: 30px;
@@ -73,79 +91,93 @@ input[type="checkbox"] {
   margin-right: 5px;
   margin-bottom: 15px;
   border: none;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .save-button,
 .add-button {
-  background-color: #00bcd4; }
+  background-color: #00bcd4;
+}
 
 .header {
   color: #7e7c7c85;
   font-family: sans-serif;
   padding: 10px;
-  font-weight: 100; }
+  font-weight: 100;
+}
 
 /* should be in a general place  */
 .title {
-  width: 15%;
+  width: 20%;
   margin-right: 2%;
-  font: bold 100% sans-serif; }
+  font: bold 100% sans-serif;
+}
 
 hr {
   margin-bottom: 10px;
   border: none;
   height: 1px;
-  background-color: #dad8d8; }
+  background-color: #dad8d8;
+}
 
 .security-section,
 .security-description {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+}
 
 .security-section {
-  width: 80%; }
+  width: 80%;
+}
 
 .icon-photo {
   width: 15px;
   height: 15px;
   position: absolute;
   right: 0;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .hidden,
 .tags-filter-box,
 .posts-filter-box {
-  display: none; }
+  display: none;
+}
 
 .dots {
   margin-left: 5px;
-  margin-top: -5px; }
-  .dots span {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: black;
-    display: inline-block;
-    margin-right: 1px; }
+  margin-top: -5px;
+}
+.dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: black;
+  display: inline-block;
+  margin-right: 1px;
+}
 
 .user-message {
   color: gray;
-  font-size: 0.9rem; }
+  font-size: 0.8rem;
+}
 
 .section-message {
   font: 300 1rem sans-serif;
   color: #000000b5;
-  margin-bottom: 15px;
-  margin-top: 5px; }
+  margin-top: 5px;
+}
 
 .filter-message {
   color: gray;
   display: inline-block;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 
 .anchor {
   text-decoration: underline;
-  color: inherit; }
+  color: inherit;
+}
 
 .error-email-message,
 .error-password-message,
@@ -153,7 +185,7 @@ hr {
 .error-new-password,
 .error-confirm-password {
   visibility: hidden;
-  position: absolute;
+  white-space: nowrap;
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;
@@ -165,22 +197,27 @@ hr {
   right: -40%;
   text-align: center;
   transition: 0.5s 0.1s linear;
-  padding: 5px; }
+  padding: 5px;
+}
 
 .error-password-message {
   bottom: 53%;
-  right: -67%; }
+  right: -67%;
+}
 
 .error-current-password {
-  right: -71.5%; }
+  right: -71.5%;
+}
 
 .error-new-password {
   top: 25%;
-  right: -60%; }
+  right: -60%;
+}
 
 .error-confirm-password {
   top: 50%;
-  right: -65%; }
+  right: -65%;
+}
 
 .delete-account-button {
   margin: 20px 0;
@@ -188,8 +225,19 @@ hr {
   color: gray;
   padding: 7px;
   border-radius: 4px;
-  cursor: pointer; }
-  .delete-account-button:hover {
-    background-color: #e60000a6;
-    color: white;
-    border: none; }
+  cursor: pointer;
+}
+.delete-account-button:hover {
+  background-color: #e60000a6;
+  color: white;
+  border: none;
+}
+
+[data-testid="email-box"],
+[data-testid="password-box"],
+[data-testid="currentpassword-box"],
+[data-testid="newpassword-box"],
+[data-testid="confirmpassword-box"] {
+  width: calc(100% - 4px);
+  flex-shrink: 0;
+}
