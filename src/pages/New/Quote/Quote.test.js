@@ -15,11 +15,11 @@ describe.skip('Quote components', () => {
     // expect(screen.queryByPlaceholderText('#tags')).not.toBeNull();
   });
   test.skip('renders the Close button', () => {
-    render(<Quote />);
+    // render(<Quote />);
     expect(screen.queryByText('Close')).not.toBeNull();
   });
   test.skip('renders the Post button', () => {
-    render(<Quote />);
+    // render(<Quote />);
     expect(screen.queryByText('Post')).not.toBeNull();
   });
 });
