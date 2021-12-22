@@ -23,6 +23,7 @@ const handleSend = (newMessage) => {
   if (!newMessage.match(/^\s*$/)) {
     configureStore.dispatch(addMessage(newMessage));
     scroll();
+    
   }
   configureStore.dispatch(setNewMessage(''));
 };
