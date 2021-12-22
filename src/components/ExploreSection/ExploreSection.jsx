@@ -14,6 +14,7 @@ import { componentDidMount } from "./ExploreSectionController";
 import Trending from "./Trending/Trending";
 import ForYou from "./ForYou/ForYou";
 import Audio from "./Audio/Audio";
+import Text from "./Text/Text";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -38,7 +39,8 @@ function ExploreSection() {
           exact
           component={ExploreSuggestionList}
         />
-        <Route path="/explore/audios" exact component={Audio}/>
+        <Route path="/explore/audios" exact component={Audio} />
+        <Route path="/explore/text" exact component={Text} />
       </Switch>
       {/* <Switch>
         <Route

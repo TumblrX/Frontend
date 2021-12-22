@@ -5,6 +5,8 @@ import {
   pushForYouPosts,
   setAudioPostIndex,
   pushAudioPosts,
+  setTextPostIndex,
+  pushTextPosts,
 } from "../../redux/ExploreRecuder";
 import {
   setTrendingPostIndex,
@@ -37,7 +39,13 @@ const retrivePosts = function () {
     route += Explore.audioPostsIndex + "/";
     route += "audio";
     configureStore.dispatch(setAudioPostIndex(Explore.audioPostsIndex + 10));
-    console.log(route);
+    
+  } else if (pathname === "text") {
+    route += Explore.textPostsIndex + "/";
+    route += "text";
+    configureStore.dispatch(setTextPostIndex(Explore.textPostsIndex + 10));
+    console.log(route)
+
   }
 
   api
@@ -50,6 +58,8 @@ const retrivePosts = function () {
         configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
       else if (pathname === "audio")
         configureStore.dispatch(pushAudioPosts(res.data.audio));
+      else if (pathname === "text")
+        configureStore.dispatch(pushTextPosts(res.data.trendingPosts));
     })
     .catch((err) => {
       console.log(err);
