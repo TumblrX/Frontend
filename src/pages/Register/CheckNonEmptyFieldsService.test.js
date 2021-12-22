@@ -1,4 +1,4 @@
-import checkNonEmptyFields from "./checkNonEmptyFieldsService";
+import checkNonEmptyFields from "./CheckNonEmptyFieldsService";
 
 describe('check THat feilds are not empty', ()=>{
     it('should return 0 if all inputs are empty',()=>{
