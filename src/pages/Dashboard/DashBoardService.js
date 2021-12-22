@@ -67,11 +67,11 @@ const handleFollow = (index, _id) =>{
   console.log(_id);
   var element = document.getElementById(`follow${index}`).getElementsByTagName('p')[0];
   if(element.innerText === 'follow'){
-    const { follow } = useFollow;
+    // const { follow } = useFollow;
     // follow(_id);
     element.innerText ='unfollow';
   }else {
-    // un follow heeeer
+    // unfollow heeeer
     element.innerText ='follow';
   }
 };
