@@ -58,7 +58,7 @@ const Register = function () {
             {' '}
             <a href="#">  Privacy Policy </a>
           </p>
-          <input data-testid="login" id="login" type="submit" value="Sign up" />
+          <input data-testid="signup" id="signup" type="submit" value="Sign up" />
         </form>
         <div id={registerStyle.or}>
           {' '}
