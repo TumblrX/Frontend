@@ -10,7 +10,7 @@ import configureStore from "../../redux/store";
  * @returns {void} return nothing
  */
 const onResize = () => {
-    console.log("Iam heree ")
+  console.log("Iam heree ");
   if (window.innerWidth <= 910) {
     configureStore.dispatch(setFlexesNumbers(1));
   } else if (window.innerWidth <= 1364) {
@@ -19,6 +19,13 @@ const onResize = () => {
     configureStore.dispatch(setFlexesNumbers(3));
   } else {
     configureStore.dispatch(setFlexesNumbers(4));
+  }
+};
+
+const checkScroll = () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    window.removeEventListener("scroll", checkScroll);
+    retrivePosts();
   }
 };
 
@@ -32,17 +39,13 @@ const onResize = () => {
 
 const componentDidMount = function () {
   onResize(); // First call to set the state ;
-  window.addEventListener("resize", onResize);// it should be added one time as well as scroll Event handler
+  window.addEventListener("resize", onResize); // it should be added one time as well as scroll Event handler
   retrivePosts();
-  window.addEventListener("scroll", () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      retrivePosts()
-    }
-  });
+  window.addEventListener("scroll", checkScroll);
   // it will be called when the Component is unmounted
   return () => {
     window.removeEventListener("resize", onResize);
   };
 };
 
-export { componentDidMount, onResize };
+export { componentDidMount, onResize,checkScroll };

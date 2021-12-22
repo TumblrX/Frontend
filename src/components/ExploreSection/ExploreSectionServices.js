@@ -1,4 +1,5 @@
 import api from "../../api/api";
+import { checkScroll } from "./ExploreSectionController";
 import configureStore from "../../redux/store";
 import {
   pushTrendingPosts,
@@ -61,9 +62,10 @@ const retrivePosts = function () {
       if (pathname === "recommended-for-you") {
         configureStore.dispatch(pushForYouPosts(res.data["for-youPosts"]));
         configureStore.dispatch(
-          setForYouPostIndex(Explore.trendingPostsIndex + 10)
+          setForYouPostIndex(Explore.forYouPostsIndex + 10)
         );
         console.log("Iam in side recommended-for-you ", route);
+        //console.log(res);
       } else if (pathname === "trending") {
         configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
         configureStore.dispatch(
@@ -98,6 +100,7 @@ const retrivePosts = function () {
         configureStore.dispatch(setAskPostIndex(Explore.askPostsIndex + 10));
         console.log("Iam in side asks ", route);
       }
+      window.addEventListener("scroll", checkScroll);
     })
     .catch((err) => {
       console.log(err);
