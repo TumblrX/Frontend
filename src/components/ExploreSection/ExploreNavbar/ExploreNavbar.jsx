@@ -30,23 +30,23 @@ function ExploreNavbar() {
             </li>
             <li>
               {" "}
-              <Link to="/explore/Photos">Photos</Link>
+              <Link to="/explore/photos">Photos</Link>
             </li>
             <li>
               {" "}
-              <Link to="/explore/Audios">Audios </Link>
+              <Link to="/explore/audios">Audios </Link>
             </li>
             <li>
               {" "}
-              <Link to="/explore/Videos">Videos</Link>
+              <Link to="/explore/aideos">Videos</Link>
             </li>
             <li>
               {" "}
-              <Link to="/explore/GIFs">GIFs </Link>{" "}
+              <Link to="/explore/gifs">GIFs </Link>{" "}
             </li>
             <li>
               {" "}
-              <Link to="/explore/Asks">Asks</Link>
+              <Link to="/explore/asks">Asks</Link>
             </li>
           </ul>
         </div>

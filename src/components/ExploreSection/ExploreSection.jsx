@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { componentDidMount } from "./ExploreSectionController";
 import Trending from "./Trending/Trending";
 import ForYou from "./ForYou/ForYou";
+import Audio from "./Audio/Audio";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -37,6 +38,7 @@ function ExploreSection() {
           exact
           component={ExploreSuggestionList}
         />
+        <Route path="/explore/audios" exact component={Audio}/>
       </Switch>
       {/* <Switch>
         <Route

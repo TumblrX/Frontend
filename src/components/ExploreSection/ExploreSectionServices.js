@@ -1,6 +1,11 @@
 import api from "../../api/api";
 import configureStore from "../../redux/store";
-import { pushTrendingPosts, pushForYouPosts } from "../../redux/ExploreRecuder";
+import {
+  pushTrendingPosts,
+  pushForYouPosts,
+  setAudioPostIndex,
+  pushAudioPosts,
+} from "../../redux/ExploreRecuder";
 import {
   setTrendingPostIndex,
   setForYouPostIndex,
@@ -12,6 +17,7 @@ const retrivePosts = function () {
       Authorization: token,
     },
   };
+  console.log(window.location.pathname);
   const { Explore } = configureStore.getState();
   let pathname = window.location.pathname.split("/")[2];
   let route = `/api/user/explore/`;
@@ -27,6 +33,11 @@ const retrivePosts = function () {
     configureStore.dispatch(
       setForYouPostIndex(Explore.trendingPostsIndex + 10)
     );
+  } else if (pathname === "audios") {
+    route += Explore.audioPostsIndex + "/";
+    route += "audio";
+    configureStore.dispatch(setAudioPostIndex(Explore.audioPostsIndex + 10));
+    console.log(route);
   }
 
   api
@@ -37,7 +48,8 @@ const retrivePosts = function () {
         configureStore.dispatch(pushForYouPosts(res.data["for-youPosts"]));
       else if (pathname === "trending")
         configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
-    
+      else if (pathname === "audio")
+        configureStore.dispatch(pushAudioPosts(res.data.audio));
     })
     .catch((err) => {
       console.log(err);
