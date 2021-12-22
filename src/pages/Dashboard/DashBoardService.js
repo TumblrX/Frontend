@@ -1,7 +1,7 @@
 import configureStore from '../../redux/store';
 import { setPosts, setRadar, setExploreBlogs, removeBlog} from '../../redux/DashBoardReducer';
 import api from '../../api/api';
-import useFollow  from '../../components/Blog/Followers/followerSection/followservice'
+import { follow }  from '../../components/Blog/Followers/followerSection/followservice'
 import { useSelector } from 'react-redux';
 
 const fetchPost = async (pageNum, pageNumPosts) => {
@@ -67,8 +67,7 @@ const handleFollow = (index, _id) =>{
   console.log(_id);
   var element = document.getElementById(`follow${index}`).getElementsByTagName('p')[0];
   if(element.innerText === 'follow'){
-    // const { follow } = useFollow;
-    // follow(_id);
+    follow(_id);
     element.innerText ='unfollow';
   }else {
     // unfollow heeeer

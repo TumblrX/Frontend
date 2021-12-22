@@ -46,7 +46,7 @@ const showBlogsForYou = (exploreBlogs) => {
         {/* <img src={blog.avatar} alt="avatar" className={styles.avatar} /> */}
       </div>
       <div className={styles.blogTitle} >
-        <h4> { blog.title} </h4>
+        <h4> { blog.handle} </h4>
       </div>
       <div className={styles.blogFollow} id={`follow${index}`} onClick={() => handleFollow(index,blog._id)}>
         <p className={styles.follow}> follow </p>
