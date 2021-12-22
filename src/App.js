@@ -45,9 +45,7 @@ const App = function () {
       </Route>
       <Route exact path="/explore">
         <NavBar />
-        <ExploreLayout>
-          <Explore />
-        </ExploreLayout>
+        <Explore />
       </Route>
       <Route
         exact
@@ -99,8 +97,8 @@ const App = function () {
         <LoginPage />
       </Route>
       <Route path="/settings">
-        <Redirect to="/settings/account" />
         <Settings />
+        <Redirect to="/settings/account" />
       </Route>
       <Route
         path="/blog/:blogName"
