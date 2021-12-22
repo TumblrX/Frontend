@@ -11,7 +11,8 @@ function Trending() {
   const { trendingPosts, flexesNumber } = useSelector((state) => state.Explore);
   useEffect(componentDidMount, []);
   return (
-    <div>
+    <div style={{ minHeight: "250px" }}>
+      {/* minHeight = 250px the height of the menu when no posts retrieved */}
       <TrendingList />
       {flexesNumber == 4 ? (
         <FourFlexData posts={trendingPosts} />

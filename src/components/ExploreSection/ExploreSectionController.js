@@ -48,4 +48,4 @@ const componentDidMount = function () {
   };
 };
 
-export { componentDidMount, onResize,checkScroll };
+export { componentDidMount, onResize, checkScroll };

@@ -11,8 +11,9 @@ function ForYou() {
   const { forYouPosts, flexesNumber } = useSelector((state) => state.Explore);
   useEffect(componentDidMount, []);
   return (
-    <div>
-      <ExploreSuggestionList/>
+    <div style={{ minHeight: "250px" }}>
+      {/* minHeight = 250px the height of the menu when no posts retrieved */}
+      <ExploreSuggestionList />
       {flexesNumber == 4 ? (
         <FourFlexData posts={forYouPosts} />
       ) : flexesNumber == 3 ? (

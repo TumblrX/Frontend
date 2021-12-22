@@ -11,7 +11,8 @@ function Image() {
   const { imagesPosts, flexesNumber } = useSelector((state) => state.Explore);
   useEffect(componentDidMount, []);
   return (
-    <div>
+    <div style={{ minHeight: "250px" }}>
+      {/* minHeight = 250px the height of the menu when no posts retrieved */}
       {flexesNumber == 4 ? (
         <FourFlexData posts={imagesPosts} />
       ) : flexesNumber == 3 ? (
