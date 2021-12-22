@@ -14,7 +14,6 @@ import logo from '../../../assets/Images/avatar.png';
 import { open, scroll, handleSend } from './ChatController';
 import { io } from 'socket.io-client';
 import api from '../../../api/api';
-import {sendMessage, getChat, getConversations} from './ChatServices'
 
 const Inbox = function () {
   const {
@@ -30,31 +29,6 @@ const Inbox = function () {
 
   return (
     <>
-      <div>
-        <button
-          className ={styles.x}
-          onClick ={ ()=> sendMessage('update ', '61b2131d0b8aaec60c5af0eb') }
-        >
-          test send
-        </button>
-      </div>
-      <div>
-        <button
-          className ={styles.x}
-            // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
-          onClick ={ ()=> getChat('61b2131d0b8aaec60c5af0eb') }
-        >
-          getChat
-        </button>
-      </div>
-      <div>
-        <button
-          className ={styles.x}
-          onClick ={ ()=> getConversations() }
-        >
-          conversation
-        </button>
-      </div>
       <div className={styles.Chat} id="Chat">
         <ChatHeader />
         <ChatContent scrollRef={scrollRef} />
