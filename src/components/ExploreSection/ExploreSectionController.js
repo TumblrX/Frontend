@@ -10,6 +10,7 @@ import configureStore from "../../redux/store";
  * @returns {void} return nothing
  */
 const onResize = () => {
+    console.log("Iam heree ")
   if (window.innerWidth <= 910) {
     configureStore.dispatch(setFlexesNumbers(1));
   } else if (window.innerWidth <= 1364) {

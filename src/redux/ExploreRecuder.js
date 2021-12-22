@@ -4,7 +4,7 @@ export const ExploreReducer = createSlice({
   name: "Explore",
   initialState: {
     posts: [],
-    flexesNumbers:4,
+    flexesNumber:4,
     postIndex:2,
   },
   reducers: {
@@ -20,7 +20,7 @@ export const ExploreReducer = createSlice({
       }
     },
     setFlexesNumbers:(state,action)=>{
-        state.flexesNumbers=action.payload
+        state.flexesNumber=action.payload
     },
     setPostIndex:(state,action)=>{
         state.postIndex=action.payload
