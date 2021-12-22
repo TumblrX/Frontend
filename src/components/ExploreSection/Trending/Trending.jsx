@@ -8,10 +8,8 @@ import OneFlexData from "../OneFlexData";
 import { componentDidMount } from "../ExploreSectionController";
 import { useEffect } from "react";
 function Trending() {
-  const { trendingPosts, flexesNumber, postIndex } = useSelector(
-    (state) => state.Explore
-  );
-  useEffect(() => componentDidMount(postIndex,"trending"), []);
+  const { trendingPosts, flexesNumber } = useSelector((state) => state.Explore);
+  useEffect(componentDidMount, []);
   return (
     <div>
       <TrendingList />

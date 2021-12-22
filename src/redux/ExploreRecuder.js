@@ -4,8 +4,10 @@ export const ExploreReducer = createSlice({
   name: "Explore",
   initialState: {
     trendingPosts: [],
+    forYouPosts:[],
     flexesNumber: 4,
     trendingPostsIndex: 2,
+    forYouPostsIndex:2,
   },
   reducers: {
     setTrendingPosts: (state, action) => {
@@ -25,6 +27,9 @@ export const ExploreReducer = createSlice({
     setTrendingPostIndex: (state, action) => {
       state.trendingPostsIndex = action.payload;
     },
+    setForYouPostIndex: (state, action) => {
+        state.forYouPostsIndex = action.payload;
+      },
   },
 });
 
@@ -33,6 +38,7 @@ export const {
   pushTrendingPost,
   pushTrendingPosts,
   setFlexesNumbers,
+  setForYouPostIndex
 } = ExploreReducer.actions;
 
 export default ExploreReducer.reducer;
