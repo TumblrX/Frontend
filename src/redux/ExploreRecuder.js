@@ -13,7 +13,7 @@ export const ExploreReducer = createSlice({
     flexesNumber: 4,
     trendingPostsIndex: 2,
     forYouPostsIndex: 2,
-    audioPostsIndex: 2,
+    audioPostsIndex: 0,
     textPostsIndex: 2,
     imagesPostsIndex: 2,
     vidoesPostsIndex: 2,

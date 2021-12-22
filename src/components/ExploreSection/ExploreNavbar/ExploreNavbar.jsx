@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./scss/ExploreNavbar.module.scss";
 import { Link } from "react-router-dom";
-import {componentDidMount } from "./ExploreNavBarController";
+import { componentDidMount } from "./ExploreNavBarController";
 
 /**
  * Component to render the Explore Navbar in Explore page
@@ -10,7 +10,7 @@ import {componentDidMount } from "./ExploreNavBarController";
  * @component
  */
 function ExploreNavbar() {
-  useEffect(componentDidMount,[]); 
+  useEffect(componentDidMount, []);
   return (
     <div className={styles["explore-navbar"]}>
       <div className={styles["explore-selection"]}>
@@ -23,11 +23,7 @@ function ExploreNavbar() {
         <Link to="/explore/staff-picks">
           <span>Staff Picks 🌟</span>
         </Link>
-        <span
-          className={`more-section`}
-          style={{ position: "relative" }}
-          
-        >
+        <span className={`more-section`} style={{ position: "relative" }}>
           More
           <div className={styles["more-list"]}>
             <div>
@@ -41,9 +37,6 @@ function ExploreNavbar() {
             </div>
             <div>
               <Link to="/explore/videos">Videos</Link>
-            </div>
-            <div>
-              <Link to="/explore/gifs">GIFs </Link>{" "}
             </div>
             <div>
               <Link to="/explore/asks">Asks</Link>
