@@ -13,7 +13,6 @@ function ThreeFlexesData(props) {
     <div className={styles["posts-container"]}>
       <div className={`${styles["three-flexes"]} "first-of-three"`}>
         {posts.map((item, index) => {
-          console.log(item);
           if (index % 3 === 0) {
             return (
               <div className={styles["exlpore-post"]}>
