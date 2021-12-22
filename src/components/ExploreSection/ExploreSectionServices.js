@@ -64,6 +64,7 @@ const retrivePosts = function () {
         configureStore.dispatch(
           setForYouPostIndex(Explore.forYouPostsIndex + 10)
         );
+        console.log(res);
         console.log("Iam in side recommended-for-you ", route);
         //console.log(res);
       } else if (pathname === "trending") {
@@ -71,6 +72,7 @@ const retrivePosts = function () {
         configureStore.dispatch(
           setTrendingPostIndex(Explore.trendingPostsIndex + 10)
         );
+        console.log(res);
         console.log("Iam in side trending", route);
       } else if (pathname === "audios") {
         console.log(route);
