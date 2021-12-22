@@ -15,6 +15,8 @@ import Trending from "./Trending/Trending";
 import ForYou from "./ForYou/ForYou";
 import Audio from "./Audio/Audio";
 import Text from "./Text/Text";
+import Image from "./Image/Image";
+import Videos from "./Videos/Videos";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -41,6 +43,8 @@ function ExploreSection() {
         />
         <Route path="/explore/audios" exact component={Audio} />
         <Route path="/explore/text" exact component={Text} />
+        <Route path="/explore/photos" exact component={Image} />
+        <Route path="/explore/videos" exact component={Videos} />
       </Switch>
       {/* <Switch>
         <Route

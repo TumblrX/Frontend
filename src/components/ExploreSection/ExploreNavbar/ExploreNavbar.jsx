@@ -38,7 +38,7 @@ function ExploreNavbar() {
             </li>
             <li>
               {" "}
-              <Link to="/explore/aideos">Videos</Link>
+              <Link to="/explore/videos">Videos</Link>
             </li>
             <li>
               {" "}

@@ -7,26 +7,21 @@ export const ExploreReducer = createSlice({
     forYouPosts: [],
     audioPosts: [],
     textPosts: [],
+    imagesPosts: [],
+    vidoesPosts: [],
     flexesNumber: 4,
     trendingPostsIndex: 2,
     forYouPostsIndex: 2,
     audioPostsIndex: 2,
     textPostsIndex: 2,
+    imagesPostsIndex: 2,
+    vidoesPostsIndex: 2,
   },
   reducers: {
-    setTrendingPosts: (state, action) => {
-      state.trendingPosts = action.payload;
-    },
-    pushTrendingPost: (state, action) => {
-      state.trendingPosts.push(action.payload);
-    },
     pushTrendingPosts: (state, action) => {
       for (let i = 0; i < action.payload.length; i++) {
         state.trendingPosts.push(action.payload[i]);
       }
-    },
-    pushForYouPost: (state, action) => {
-      state.forYouPosts.push(action.payload);
     },
     pushForYouPosts: (state, action) => {
       for (let i = 0; i < action.payload.length; i++) {
@@ -41,6 +36,16 @@ export const ExploreReducer = createSlice({
     pushTextPosts: (state, action) => {
       for (let i = 0; i < action.payload.length; i++) {
         state.textPosts.push(action.payload[i]);
+      }
+    },
+    pushImagePosts: (state, action) => {
+      for (let i = 0; i < action.payload.length; i++) {
+        state.imagesPosts.push(action.payload[i]);
+      }
+    },
+    pushVideosPosts: (state, action) => {
+      for (let i = 0; i < action.payload.length; i++) {
+        state.vidoesPosts.push(action.payload[i]);
       }
     },
     setFlexesNumbers: (state, action) => {
@@ -58,21 +63,29 @@ export const ExploreReducer = createSlice({
     setTextPostIndex: (state, action) => {
       state.textPostsIndex = action.payload;
     },
+    setImagesPostIndex: (state, action) => {
+      state.imagesPostsIndex = action.payload;
+    },
+    setVideosPostIndex: (state, action) => {
+      state.vidoesPostsIndex = action.payload;
+    },
   },
 });
 
 export const {
   setTrendingPostIndex,
-  pushTrendingPost,
   pushTrendingPosts,
   setFlexesNumbers,
   setForYouPostIndex,
-  pushForYouPost,
   pushForYouPosts,
   pushAudioPosts,
   setAudioPostIndex,
   setTextPostIndex,
   pushTextPosts,
+  setImagesPostIndex,
+  pushImagePosts,
+  setVideosPostIndex,
+  pushVideosPosts,
 } = ExploreReducer.actions;
 
 export default ExploreReducer.reducer;
