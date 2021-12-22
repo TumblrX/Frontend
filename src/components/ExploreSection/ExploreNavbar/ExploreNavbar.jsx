@@ -21,7 +21,35 @@ function ExploreNavbar() {
         <Link to="/explore/staff-picks">
           <span>Staff Picks 🌟</span>
         </Link>
-        <span>More </span>
+        <span>More</span>
+        <div>
+          <ul>
+            <li>
+              {" "}
+              <Link to="/explore/text">Text</Link>
+            </li>
+            <li>
+              {" "}
+              <Link to="/explore/Photos">Photos</Link>
+            </li>
+            <li>
+              {" "}
+              <Link to="/explore/Audios">Audios </Link>
+            </li>
+            <li>
+              {" "}
+              <Link to="/explore/Videos">Videos</Link>
+            </li>
+            <li>
+              {" "}
+              <Link to="/explore/GIFs">GIFs </Link>{" "}
+            </li>
+            <li>
+              {" "}
+              <Link to="/explore/Asks">Asks</Link>
+            </li>
+          </ul>
+        </div>
         {/* <div>More <div>^</div></div> */}
       </div>
       <div

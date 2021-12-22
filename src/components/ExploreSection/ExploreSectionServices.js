@@ -35,7 +35,9 @@ const retrivePosts = function () {
       console.log(res);
       if (pathname === "recommended-for-you")
         configureStore.dispatch(pushForYouPosts(res.data["for-youPosts"]));
-      else configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
+      else if (pathname === "trending")
+        configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
+    
     })
     .catch((err) => {
       console.log(err);
