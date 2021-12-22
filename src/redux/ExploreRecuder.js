@@ -4,8 +4,8 @@ export const ExploreReducer = createSlice({
   name: "Explore",
   initialState: {
     trendingPosts: [],
-    flexesNumber:4,
-    postIndex:2,
+    flexesNumber: 4,
+    trendingPostsIndex: 2,
   },
   reducers: {
     setTrendingPosts: (state, action) => {
@@ -15,19 +15,24 @@ export const ExploreReducer = createSlice({
       state.trendingPosts.push(action.payload);
     },
     pushTrendingPosts: (state, action) => {
-      for(let i =0 ; i<action.payload.length;i++){
-          state.trendingPosts.push(action.payload[i]); 
+      for (let i = 0; i < action.payload.length; i++) {
+        state.trendingPosts.push(action.payload[i]);
       }
     },
-    setFlexesNumbers:(state,action)=>{
-        state.flexesNumber=action.payload
+    setFlexesNumbers: (state, action) => {
+      state.flexesNumber = action.payload;
     },
-    setPostIndex:(state,action)=>{
-        state.postIndex=action.payload
-    }
+    setTrendingPostIndex: (state, action) => {
+      state.trendingPostsIndex = action.payload;
+    },
   },
 });
 
-export const { setTrendingPosts, pushTrendingPost, pushTrendingPosts ,setFlexesNumbers } = ExploreReducer.actions;
+export const {
+  setTrendingPostIndex,
+  pushTrendingPost,
+  pushTrendingPosts,
+  setFlexesNumbers,
+} = ExploreReducer.actions;
 
 export default ExploreReducer.reducer;

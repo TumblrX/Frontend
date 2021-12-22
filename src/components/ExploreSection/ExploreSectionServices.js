@@ -1,10 +1,17 @@
 import api from "../../api/api";
 import configureStore from "../../redux/store";
 import { pushTrendingPosts } from "../../redux/ExploreRecuder";
+import { setTrendingPostIndex } from "../../redux/ExploreRecuder";
 const retrivePosts = function (postsIndex, page) {
-  let route = `/api/user/explore/${postsIndex}/`;
+  const { Explore } = configureStore.getState();
+
+  let route = `/api/user/explore/`;
   if (page === "trending") {
-      route+=page;
+    route += Explore.trendingPostsIndex + "/";
+    route += page;
+    configureStore.dispatch(
+      setTrendingPostIndex(Explore.trendingPostsIndex + 10)
+    );
   }
 
   api
