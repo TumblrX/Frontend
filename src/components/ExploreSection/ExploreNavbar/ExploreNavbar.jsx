@@ -25,7 +25,7 @@ function ExploreNavbar() {
         </Link>
         <span className={`more-section`} style={{ position: "relative" }}>
           More
-          <div className={styles["more-list"]}>
+          <div className={`${styles["more-list"]} ${styles["hide"]}`}>
             <div>
               <Link to="/explore/text">Text</Link>
             </div>

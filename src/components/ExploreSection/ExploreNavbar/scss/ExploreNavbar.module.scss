@@ -17,8 +17,6 @@
     background-color: white;
     border-radius: 4px;
     top: 55px;
-    display: none;
-
     div {
       display: flex;
       justify-content: center;
@@ -31,6 +29,9 @@
         color: black;
       }
     }
+  }
+  .hide {
+    display: none;
   }
   .explore-selection {
     display: flex;

@@ -1,7 +1,14 @@
 import styles from "./scss/ExploreNavbar.module.scss";
 
 const onMoreClick = () => {
-  document.querySelector(`.${styles["more-list"]}`).style.display = "block";
+  let moreList = document.querySelector(`.${styles["more-list"]}`);
+  if (moreList.classList.contains(`${styles["hide"]}`)) {
+    moreList.style.display = "block";
+  }
+
+  document
+    .querySelector(`.${styles["more-list"]}`)
+    .classList.toggle(`${styles["hide"]}`);
 };
 
 const componentDidMount = () => {

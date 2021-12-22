@@ -10,7 +10,6 @@ import configureStore from "../../redux/store";
  * @returns {void} return nothing
  */
 const onResize = () => {
-  console.log("Iam heree ");
   if (window.innerWidth <= 910) {
     configureStore.dispatch(setFlexesNumbers(1));
   } else if (window.innerWidth <= 1364) {
@@ -22,9 +21,16 @@ const onResize = () => {
   }
 };
 
+/**
+ * check if the user scroll to the end of the page , it will retrieve more data
+ * @type {function}
+ * @param {void}
+ * @returns {void} return nothing
+ */
 const checkScroll = () => {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
     window.removeEventListener("scroll", checkScroll);
+    // no more retrived data until the last request response
     retrivePosts();
   }
 };
