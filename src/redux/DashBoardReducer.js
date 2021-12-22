@@ -1,5 +1,3 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -55,16 +53,10 @@ export const DashboardReducer = createSlice({
     setpageNumPosts: (state, action) => {
       state.pageNumPosts = action.payload;
     },
-    deletePost: (state, action) => {
-      const id = action.payload;
-      state.posts = state.posts.filter((post) => {
-        return post.id !== id;
-      });
-    },
     setRadar: (state, action) =>{
       state.radar =action.payload;
     },
-  }
+  },
 });
 // Action creators are generated for each case reducer function
 export const {
@@ -73,5 +65,4 @@ export const {
   setPostsMounted, setExploreBlogsMounted, setRadarMounted, 
   removeBlog
 } = DashboardReducer.actions;
-export const dashboardActions = DashboardReducer.actions;
 export default DashboardReducer.reducer;

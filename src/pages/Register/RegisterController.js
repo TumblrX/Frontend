@@ -1,13 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import register from './RegisterService';
+import checkEmail from './CheckEmailService';
+import checkUserName from './CheckUserNameService';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setErrorMessage, redirectToDashboard,
 } from '../../redux/register';
-import validatePassword from './CheckValidPasswordService';
-import validateEmail from './CheckValidEmailService';
-import checkNonEmptyFields from './CheckNonEmptyFieldsService';
-import validateBlogName from './CheckValidBlogName';
 
 const registerController = function () {
   const { errors } = useSelector((state) => state.register);
@@ -18,6 +16,44 @@ const registerController = function () {
     localStorage.token = token;
   };
 
+  const checkNonEmptyFields = (e) => {
+    if (e.target && e.target.email.value !== '' && e.target.password.value !== '' && e.target.blogName.value !== '') {
+      return true;
+    }
+    if (e.target && e.target.email.value === '' && e.target.password.value === '' && e.target.blogName.value === '') {
+      dispatch(setErrorMessage(errors.fillData));
+    } else if (e.target && e.target.email.value === '') {
+      dispatch(setErrorMessage(errors.fillEmail));
+    } else if (e.target && e.target.password.value === '') {
+      dispatch(setErrorMessage(errors.fillPassword));
+    } else if (e.target && e.target.blogName.value === '') {
+      dispatch(setErrorMessage(errors.fillBlogName));
+    }
+    return false;
+  };
+
+  const validateEmail = (email) => {
+    const emailPattern = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!emailPattern.test(email)) {
+      dispatch(setErrorMessage(errors.invalidEmail));
+    }
+    return emailPattern.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const notShortPassword = /(?=.{8,})/;
+    const strongPassword = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+    const mediumPassword = /((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/;
+    if (!notShortPassword.test(password)) {
+      dispatch(setErrorMessage(errors.shortPassword));
+      return false;
+    } if (!(strongPassword.test(password)) && !(mediumPassword.test(password))) {
+      dispatch(setErrorMessage(errors.weakPassword));
+      return false;
+    }
+    return true;
+  };
+
   /**
   * @description Check that the user enter a valid data during login and procced to login if valid
   * @param {MyEvent} e - The observable event.
@@ -25,71 +61,32 @@ const registerController = function () {
   */
   const registerHandler = async (e) => {
     e.preventDefault();
-    let email;
-    let password;
-    let blogName;
-    let ret;
     try {
-        if(e && e.target){
-            // check if all feilds are filled
-            email = e.target.email.value;
-            password = e.target.password.value;
-            blogName = e.target.blogName.value;
-            ret  = checkNonEmptyFields(email , password, blogName);
-            if (ret === 0)
-                dispatch(setErrorMessage(errors.fillData));
-            else if (ret === 1)
-                dispatch(setErrorMessage(errors.fillEmail));
-            else if (ret === 2 )
-                dispatch(setErrorMessage(errors.fillPassword));
-            else if (ret === 3)
-                dispatch(setErrorMessage(errors.fillBlogName));
-            else{
-                // check if the email is valid
-                if (validateEmail(email)){
-                    // check if the password is valid
-                    if (validatePassword(password)){
-                        ret = validateBlogName(blogName);
-                        if (ret === 1){
-                          console.log(ret);
-                          dispatch(setErrorMessage(errors.spacesOnly));
-                        }else if(ret === 2){
-                          dispatch(setErrorMessage(errors.includeSpecialChars));
-                        }else if(ret === 3){
-                          dispatch(setErrorMessage(errors.tooLongName));
-                        }else{
-                          // Doing register process and wait for the result
-                          const response = await register(blogName, email, password); 
-                          setToken(response.token);
-                          dispatch(redirectToDashboard());  
-                        }                         
-                    }else{
-                        dispatch(setErrorMessage(errors.shortPassword));
-                    }
-                }else{
-                    dispatch(setErrorMessage(errors.invalidEmail));
-                }
-            }
-        }else{
-            dispatch(setErrorMessage(errors.fillData));
-        }
-    } catch (err) {
-      if (err.response){
-        const symbol = err.response.data.symbol;
-        console.log(symbol);
-        if (symbol === '1') {
-          dispatch(setErrorMessage(errors.weakPassword));
-        }else if (symbol === '2'){
-          dispatch(setErrorMessage(errors.invalidEmail));
-        }else if (symbol === '3'){
-          console.log("here");
+      if (checkNonEmptyFields(e) && validateEmail(e.target.email.value)) {
+        const unusedEmail = await checkEmail(e.target.email.value);
+        if (!unusedEmail) {
           dispatch(setErrorMessage(errors.usedEmail));
-        }else if (symbol === '4'){
-          dispatch(setErrorMessage(errors.usedBlogName));
-        } 
-      }else{
-    // empty
+        }
+        if (unusedEmail && validatePassword(e.target.password.value)) {
+          const unusedBlogName = await checkUserName(e.target.blogName.value);
+          if (!unusedBlogName) {
+            dispatch(setErrorMessage(errors.usedBlogName));
+          }
+          if (unusedBlogName) {
+            const response = await register(
+              e.target.blogName.value,
+              e.target.email.value,
+              e.target.password.value,
+            );
+            if (response.result === true) {
+              setToken(response.token);
+              dispatch(redirectToDashboard());
+            }
+          }
+        }
       }
+    } catch (err) {
+    // empty
     }
   };
   return {

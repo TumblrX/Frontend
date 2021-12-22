@@ -24,7 +24,7 @@
   margin-left: 10px; }
 
 .title {
-  width: 23%;
+  width: 17%;
   margin-right: 2%;
   flex-shrink: 0;
   font: bold  100% sans-serif; }
@@ -40,11 +40,12 @@
 .section-message {
   font: 300 1rem sans-serif;
   color: #000000b5;
+  margin-bottom: 15px;
   margin-top: 5px; }
 
 .user-message {
   color: gray;
-  font-size: 0.8rem; }
+  font-size: 0.9rem; }
 
 .input-box {
   display: block;

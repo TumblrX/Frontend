@@ -35,7 +35,7 @@ const Register = function () {
         <h2 data-testid="h2"> tumblr </h2>
         <form data-testid="form" onSubmit={registerHandler}>
 
-          {errorMessage !== 12
+          {errorMessage !== 9
             && (
               <div data-testid="errorMessage" id={registerStyle.incorrectUser}>
                 {
@@ -58,7 +58,7 @@ const Register = function () {
             {' '}
             <a href="#">  Privacy Policy </a>
           </p>
-          <input data-testid="signup" id="signup" type="submit" value="Sign up" />
+          <input data-testid="login" id="login" type="submit" value="Sign up" />
         </form>
         <div id={registerStyle.or}>
           {' '}

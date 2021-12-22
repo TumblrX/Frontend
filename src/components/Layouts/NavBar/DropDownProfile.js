@@ -11,15 +11,12 @@ import { BsFillKeyboardFill, BsFillPaletteFill } from 'react-icons/bs';
 import classes from './DropDownProfile.module.scss';
 
 const DropDownProfile = function () {
-  const logout = function (){
-    localStorage.removeItem('token');
-  }
   return (
 
     <div className={classes.profile}>
       <div className={classes.account}>
         <span>Account</span>
-        <NavLink to="/" onClick={logout}>Log out</NavLink>
+        <NavLink to="/">Log out</NavLink>
       </div>
       <ul className={classes['account-list']}>
         <NavLink to="/likes">
@@ -54,7 +51,7 @@ const DropDownProfile = function () {
       </ul>
       <div className={classes.tumblrs}>
         <span>Tumblrs</span>
-        <NavLink to="/newblog">+ New</NavLink>
+        <NavLink to="/new/blog">+ New</NavLink>
       </div>
       <ul className={classes['tumblrs-list']}>
         <NavLink to="/blog/username">Posts</NavLink>
