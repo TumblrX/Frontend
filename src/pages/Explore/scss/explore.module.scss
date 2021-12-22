@@ -1,19 +1,17 @@
-
-
-body{
-    min-width: 500px;
+body {
+  min-width: 500px;
 }
-.explore-container{
-    width: 100% ;
-    border-top: 1px solid white;
-    display: flex;
-    justify-content: flex-end;
+.explore-container {
+  width: 100%;
+  border-top: 1px solid white;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 60px;
 }
-
 
 @media (max-width: 990px) {
-    .explore-container{
-        justify-content: center;
-        border: none;
-    }
+  .explore-container {
+    justify-content: center;
+    border: none;
   }
+}

@@ -43,7 +43,8 @@ const App = function () {
       <Route exact path="/Chat">
         <Chat />
       </Route>
-      <Route exact path="/explore">
+      <Route path="/explore">
+        <Redirect to="/explore/recommended-for-you" />
         <NavBar />
         <Explore />
       </Route>
