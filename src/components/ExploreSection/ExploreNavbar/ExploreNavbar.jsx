@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { useEffect } from "react";
 import styles from "./scss/ExploreNavbar.module.scss";
 import { Link } from "react-router-dom";

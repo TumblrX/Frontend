@@ -17,6 +17,7 @@
     background-color: white;
     border-radius: 4px;
     top: 55px;
+    z-index: 100;
     div {
       display: flex;
       justify-content: center;
@@ -45,7 +46,6 @@
       padding: 12px;
       cursor: pointer;
       display: block;
-      z-index: 10;
       white-space: nowrap;
       &:hover {
         background-color: #e5e3e32e;
