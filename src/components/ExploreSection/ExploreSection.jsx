@@ -17,6 +17,7 @@ import Audio from "./Audio/Audio";
 import Text from "./Text/Text";
 import Image from "./Image/Image";
 import Videos from "./Videos/Videos";
+import Asks from "./Asks/Asks";
 /**
  * Component to render the Explore section  in Explore page
  * @author Abdalla Mahmoud
@@ -45,6 +46,7 @@ function ExploreSection() {
         <Route path="/explore/text" exact component={Text} />
         <Route path="/explore/photos" exact component={Image} />
         <Route path="/explore/videos" exact component={Videos} />
+        <Route path="/explore/asks" exact component={Asks} />
       </Switch>
       {/* <Switch>
         <Route

@@ -9,6 +9,7 @@ export const ExploreReducer = createSlice({
     textPosts: [],
     imagesPosts: [],
     vidoesPosts: [],
+    askPosts: [],
     flexesNumber: 4,
     trendingPostsIndex: 2,
     forYouPostsIndex: 2,
@@ -16,6 +17,7 @@ export const ExploreReducer = createSlice({
     textPostsIndex: 2,
     imagesPostsIndex: 2,
     vidoesPostsIndex: 2,
+    askPostsIndex: 2,
   },
   reducers: {
     pushTrendingPosts: (state, action) => {
@@ -48,6 +50,11 @@ export const ExploreReducer = createSlice({
         state.vidoesPosts.push(action.payload[i]);
       }
     },
+    pushAskPosts: (state, action) => {
+      for (let i = 0; i < action.payload.length; i++) {
+        state.askPosts.push(action.payload[i]);
+      }
+    },
     setFlexesNumbers: (state, action) => {
       state.flexesNumber = action.payload;
     },
@@ -69,6 +76,9 @@ export const ExploreReducer = createSlice({
     setVideosPostIndex: (state, action) => {
       state.vidoesPostsIndex = action.payload;
     },
+    setAskPostIndex: (state, action) => {
+      state.askPostsIndex = action.payload;
+    },
   },
 });
 
@@ -86,6 +96,8 @@ export const {
   pushImagePosts,
   setVideosPostIndex,
   pushVideosPosts,
+  setAskPostIndex,
+  pushAskPosts,
 } = ExploreReducer.actions;
 
 export default ExploreReducer.reducer;

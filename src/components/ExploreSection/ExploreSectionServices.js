@@ -11,6 +11,8 @@ import {
   pushImagePosts,
   pushVideosPosts,
   setVideosPostIndex,
+  setAskPostIndex,
+  pushAskPosts,
 } from "../../redux/ExploreRecuder";
 import {
   setTrendingPostIndex,
@@ -48,6 +50,10 @@ const retrivePosts = function () {
     route += Explore.vidoesPostsIndex + "/";
     route += "video";
     console.log(route);
+  } else if (pathname === "asks") {
+    route += Explore.askPostsIndex + "/";
+    route += "ask";
+    console.log(route);
   }
 
   api
@@ -82,6 +88,9 @@ const retrivePosts = function () {
         configureStore.dispatch(
           setVideosPostIndex(Explore.vidoesPostsIndex + 10)
         );
+      } else if (pathname === "asks") {
+        configureStore.dispatch(pushAskPosts(res.data.trendingPosts));
+        configureStore.dispatch(setAskPostIndex(Explore.askPostsIndex + 10));
       }
     })
     .catch((err) => {
