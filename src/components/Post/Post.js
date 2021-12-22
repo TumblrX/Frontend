@@ -16,6 +16,7 @@ import { IconContext } from 'react-icons';
 import { IoGitCompareSharp } from 'react-icons/io5';
 import { RiDeleteBinLine, RiShareForwardLine, RiEdit2Line } from 'react-icons/ri';
 import PostController from './PostController';
+import DeletePostPopUp from '../DeletePostPopUp/DeletePostPopUp';
 import postContentToJsx from './PostContentToJsxService';
 const Post = function ({ data }) {
   // console.log(data);
