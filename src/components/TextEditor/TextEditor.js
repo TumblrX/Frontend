@@ -67,7 +67,7 @@ class TextEditor extends Component {
             },
             defaultSize: {
               height: 'auto',
-              width: '100%',
+              width: 'auto',
             },
           },
           image: {
@@ -99,7 +99,7 @@ class TextEditor extends Component {
             alt: { present: true, mandatory: false },
             defaultSize: {
               height: 'auto',
-              width: '100%',
+              width: 'auto',
             },
           },
         }}
