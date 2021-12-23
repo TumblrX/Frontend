@@ -51,7 +51,7 @@ const fetchExploreBlogs = async () =>{
   try {
     const response = await api.get('api/blog/explore/0/for-you');
     configureStore.dispatch(setExploreBlogs(response.data.forYouBlogs));
-    // console.log('fetch Explore is called', response.data.forYouBlogs);
+    console.log('fetch Explore is called', response.data.forYouBlogs);
   } catch (err) {
     if (err.response) {
       // Not in the 200 response range
@@ -91,7 +91,7 @@ const fetchInfo = async (pageNum, pageNumPosts) => {
     // console.log('pageNum -->', pageNum);
     // console.log('response -->', response.data);
     const response = await api.get('/api/user/info');
-    console.log('info --> ', response.data.id);
+    console.log('info --> ', response.data);
   } catch (err) {
     if (err.response) {
       // Not in the 200 response range

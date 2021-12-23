@@ -11,6 +11,7 @@
     position: relative;
 }
 .Chat {
+    z-index: 3;
     position: absolute;
     bottom: 0;
     right: 50px;

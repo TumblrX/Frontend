@@ -12,11 +12,12 @@ import {
 import NavigateButtons from '../../components/Dashboard/Main UI/NavigateButtons';
 import Newpost from '../../components/Dashboard/NewPost/Newpost';
 import Post from '../../components/Post/Post';
+import Inbox from '../../components/Dashboard/Chat/Chat';
 
 const Dashboard = function () {
   const {
     posts, pageNum, isInfinte, ismounted, exploreBlogs, pageNumPosts,radar,
-    postsMounted, exploreBlogsMounted, radarMounted
+    postsMounted, exploreBlogsMounted, radarMounted, ChatMounted,
   } = useSelector((state) => state.DashBoard);
   const dispatch = useDispatch();
 
@@ -62,6 +63,8 @@ const Dashboard = function () {
               <h1 className={styles.white}>Radar</h1>
               <hr />
               {radarMounted && getOnePost(radar)}
+              { ChatMounted && (<Inbox />)}
+              
             </div>
           </div>
         </div>

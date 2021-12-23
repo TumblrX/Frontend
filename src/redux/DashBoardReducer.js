@@ -14,6 +14,7 @@ export const DashboardReducer = createSlice({
     pageNumPosts: 5,
     isInfinte: false,
     ismounted: false,
+    ChatMounted: true,
   },
   reducers: {
     setPosts: (state, action) => {
@@ -56,6 +57,9 @@ export const DashboardReducer = createSlice({
     setRadar: (state, action) =>{
       state.radar =action.payload;
     },
+    setChatMounted: (state, action) =>{
+      state.chatMounted = action.payload;
+    },
   },
 });
 // Action creators are generated for each case reducer function
@@ -63,6 +67,6 @@ export const {
   setPosts, incrementPageNum, decrementPageNum, setIsInfinite,
   setExploreBlogs, setIsMounted, setPageNum,setRadar,
   setPostsMounted, setExploreBlogsMounted, setRadarMounted, 
-  removeBlog
+  removeBlog, setChatMounted
 } = DashboardReducer.actions;
 export default DashboardReducer.reducer;
