@@ -5,7 +5,7 @@ export const DashboardReducer = createSlice({
   name: 'DashBoard',
   initialState: {
     posts: [],
-    exploreBlogs: [1,2,3],
+    exploreBlogs: [],
     radar:[],
     postsMounted: false,
     exploreBlogsMounted:false,
