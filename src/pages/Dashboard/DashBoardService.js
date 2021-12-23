@@ -32,6 +32,7 @@ const fetchRadar = async () => {
   try {
     const response = await api.get('/api/user/explore/1/for-you');
     console.log('radar -->', response.data['for-youPosts'])
+    console.log('radar response -->', response.data)
     configureStore.dispatch(setRadar(response.data['for-youPosts']));
     // console.log('fetch radar is called', response.data);
   } catch (err) {
@@ -67,7 +68,7 @@ const handleFollow = (index, _id) =>{
   console.log(_id);
   var element = document.getElementById(`follow${index}`).getElementsByTagName('p')[0];
   if(element.innerText === 'follow'){
-    follow(_id);
+    // follow(_id);
     element.innerText ='unfollow';
   }else {
     // unfollow heeeer
@@ -84,6 +85,26 @@ const handleSideView = (clickedId) =>{
   console.log(clickedId);
 };
 
+const fetchInfo = async (pageNum, pageNumPosts) => {
+  try {
+    // console.log('fetch post is called');
+    // console.log('pageNum -->', pageNum);
+    // console.log('response -->', response.data);
+    const response = await api.get('/api/user/info');
+    console.log('info --> ', response.data.id);
+  } catch (err) {
+    if (err.response) {
+      // Not in the 200 response range
+      console.log(err.response.data);
+      console.log(err.response.status);
+      console.log(err.response.headers);
+    } else {
+      console.log(`Error: ${err.message}`);
+    }
+  }
+};
+
+
 export  
 {  fetchPost, fetchRadar, fetchExploreBlogs, 
-    handleFollow, handleExit, handleSideView,};
+    handleFollow, handleExit, handleSideView,fetchInfo};
