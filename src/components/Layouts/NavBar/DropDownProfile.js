@@ -22,25 +22,41 @@ const DropDownProfile = function () {
         <NavLink to="/" onClick={logout}>Log out</NavLink>
       </div>
       <ul className={classes['account-list']}>
-        <NavLink to="/likes">
-          <AiFillHeart />
-          Likes
-        </NavLink>
-        <NavLink to="/following">
-          <RiUserFollowFill />
-          Following
-        </NavLink>
+        <div className={classes.likes}>
+          <NavLink to="/likes">
+            <div className={classes.text}>
+            <AiFillHeart />
+            Likes
+            </div>
+            <span>0</span>
+          </NavLink>
+        </div>
+        <div className={classes.following}>
+          <NavLink to="/following">
+          <div className={classes.text}>
+            <RiUserFollowFill />
+            Following
+            </div>
+            <span>0</span>
+          </NavLink>
+        </div>
         <NavLink to="/settings/account">
+        <div className={classes.text}>
           <FiSettings />
           Settings
+          </div>
         </NavLink>
         <NavLink to="/blog/view/changes">
+        <div className={classes.text}>
           <GiPresent />
           What's new
+          </div>
         </NavLink>
         <NavLink to="/help">
+        <div className={classes.text}>
           <IoMdHelpCircle />
           Help
+          </div>
         </NavLink>
         <span>
           <BsFillKeyboardFill />

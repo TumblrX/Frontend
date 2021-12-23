@@ -35,7 +35,7 @@ const Register = function () {
         <h2 data-testid="h2"> tumblr </h2>
         <form data-testid="form" onSubmit={registerHandler}>
 
-          {errorMessage !== 12
+          {errorMessage !== 9
             && (
               <div data-testid="errorMessage" id={registerStyle.incorrectUser}>
                 {

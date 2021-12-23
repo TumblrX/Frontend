@@ -14,8 +14,10 @@ import logo from '../../../assets/Images/avatar.png';
 import { open, scroll, handleSend } from './ChatController';
 import { io } from 'socket.io-client';
 import api from '../../../api/api';
+import {sendMessage, getChat, getConversations} from './ChatServices'
+import { fetchExploreBlogs } from '../../../pages/Dashboard/DashBoardService';
 
-const Inbox = function () {
+const Chat = function ({ user2 , me }) {
   const {
     messages, newMessage, arrivalMessage, primaryblog,
   } = useSelector((state) => state.Chat);
@@ -29,6 +31,40 @@ const Inbox = function () {
 
   return (
     <>
+        <div>
+    <button
+      className ={styles.x}
+      onClick ={ ()=> sendMessage('update ', '61b2131d0b8aaec60c5af0eb') }
+    >
+      test send
+    </button>
+    </div>
+    <div>
+    <button
+      className ={styles.x}
+        // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
+      onClick ={ ()=> getChat('61b2131d0b8aaec60c5af0eb') }
+    >
+      getChat
+    </button>
+    </div>
+    <div>
+    <button
+      className ={styles.x}
+      onClick ={ ()=> getConversations() }
+    >
+      conversation
+    </button>
+    </div>
+    <div>
+    <button
+      className ={styles.x}
+        // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
+      onClick ={ ()=> fetchExploreBlogs() }
+    >
+      Explore
+    </button>
+    </div>
       <div className={styles.Chat} id="Chat">
         <ChatHeader />
         <ChatContent scrollRef={scrollRef} />
@@ -47,7 +83,44 @@ const Inbox = function () {
   );
 };
 
-export default Inbox;
+export default Chat;
+
+{/* <div>
+<button
+  className ={styles.x}
+  onClick ={ ()=> sendMessage('update ', '61b2131d0b8aaec60c5af0eb') }
+>
+  test send
+</button>
+</div>
+<div>
+<button
+  className ={styles.x}
+    // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
+  onClick ={ ()=> getChat('61b2131d0b8aaec60c5af0eb') }
+>
+  getChat
+</button>
+</div>
+<div>
+<button
+  className ={styles.x}
+  onClick ={ ()=> getConversations() }
+>
+  conversation
+</button>
+</div>
+<div>
+<button
+  className ={styles.x}
+    // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
+  onClick ={ ()=> fetchExploreBlogs() }
+>
+  Explore
+</button>
+</div> */}
+
+
 // socket
 { /* <div>
 <button

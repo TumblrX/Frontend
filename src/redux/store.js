@@ -15,7 +15,7 @@ import newTextPostReducer from './newTextPost-slice';
 import ChatReducer from './ChatReducer';
 import blog from './blog';
 import blogDrafts from './blogDrafts';
-import Customize from './Customize';  
+
 export default configureStore({
   reducer: {
     passwordInfo: PasswordSectionReducer,
@@ -34,7 +34,6 @@ export default configureStore({
     Chat: ChatReducer,
     Blog: blog,
     BlogDrafts: blogDrafts,
-    customize : Customize,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false,
