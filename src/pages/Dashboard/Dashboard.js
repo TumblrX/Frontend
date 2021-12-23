@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Dashboard.module.scss';
 import { showPosts, getOnePost, showBlogsForYou } from './DashBoardController';
-import {fetchPost, fetchRadar, fetchExploreBlogs, fetchInfo} from './DashBoardService';
+import {fetchPost, fetchRadar, fetchExploreBlogs} from './DashBoardService';
 import {
   setPosts, incrementPageNum, decrementPageNum,
   setIsInfinite, setExploreBlogs, setIsMounted, setPageNum,
@@ -24,12 +24,11 @@ const Dashboard = function () {
   useEffect(() => {
     fetchRadar();
     fetchExploreBlogs();
-    fetchInfo();
   }, []);
 
   useEffect(() => {
     fetchPost(pageNum, pageNumPosts);
-  }, [pageNum, pageNumPosts]);
+  }, [pageNum]);
 
   useEffect(() => {
     if (posts.length !==0  ) {

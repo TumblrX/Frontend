@@ -32,7 +32,6 @@ const fetchRadar = async () => {
   try {
     const response = await api.get('/api/user/explore/1/for-you');
     console.log('radar -->', response.data['for-youPosts'])
-    console.log('radar response -->', response.data)
     configureStore.dispatch(setRadar(response.data['for-youPosts']));
     // console.log('fetch radar is called', response.data);
   } catch (err) {
@@ -68,7 +67,7 @@ const handleFollow = (index, _id) =>{
   console.log(_id);
   var element = document.getElementById(`follow${index}`).getElementsByTagName('p')[0];
   if(element.innerText === 'follow'){
-    // follow(_id);
+    follow(_id);
     element.innerText ='unfollow';
   }else {
     // unfollow heeeer
@@ -107,4 +106,4 @@ const fetchInfo = async (pageNum, pageNumPosts) => {
 
 export  
 {  fetchPost, fetchRadar, fetchExploreBlogs, 
-    handleFollow, handleExit, handleSideView,fetchInfo};
+    handleFollow, handleExit, handleSideView,};
