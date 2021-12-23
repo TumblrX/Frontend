@@ -20,7 +20,7 @@ import postContentToJsx from './PostContentToJsxService';
 const Post = function ({ data }) {
   // console.log(data);
   const { blogAttribution, commentsCount, content, id, isReblogged, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
-  const { deletePostHandler } = PostController();
+  const { reblogPostHandler, deletePostHandler } = PostController();
   const userBlogs = useSelector(state => state.userBlogs.userBlogs);
   return (
     <div className={classes.post}>
@@ -47,7 +47,7 @@ const Post = function ({ data }) {
           <div>
             <FaRegComment />
           </div>
-          <div>
+          <div onClick={reblogPostHandler.bind(this, data)}>
             <IoGitCompareSharp />
           </div>
           <div>
