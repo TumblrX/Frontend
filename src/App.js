@@ -18,6 +18,7 @@ import {
   ForgetPassword,
   CreateBlog,
   Blog,
+  BlogView,
   Customize,
 } from './pages/pages';
 import {
@@ -115,6 +116,9 @@ const App = function () {
           )
         )}
       />
+      <Route exact path="/blogview">
+        <BlogView />
+      </Route>
       <Route path="*">
         <NotFound />
       </Route>

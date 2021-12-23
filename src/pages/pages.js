@@ -11,9 +11,10 @@ import LoginPage from './LoginPage/LoginPage';
 import ForgetPassword from './ForgetPassword/ForgetPassword';
 import CreateBlog from './CreateBlog/CreateBlog';
 import Blog from './Blog/Blog';
+import BlogView from './BlogView/BlogView';
 import Customize from './Customize/Customize';
 
 export {
   NotFound, Dashboard, Explore, Inbox, New, MainPage, Register, LoginPage,
-  ForgetPassword, CreateBlog, Blog, Customize,
+  ForgetPassword, CreateBlog, Blog, BlogView, Customize,
 };
