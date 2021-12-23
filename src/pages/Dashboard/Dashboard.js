@@ -7,7 +7,7 @@ import {fetchPost, fetchRadar, fetchExploreBlogs, fetchInfo} from './DashBoardSe
 import {
   setPosts, incrementPageNum, decrementPageNum,
   setIsInfinite, setExploreBlogs, setIsMounted, setPageNum,
-  setPostsMounted, setRadarMounted, setExploreBlogsMounted,
+  setPostsMounted, setRadarMounted, setExploreBlogsMounted,setNextButton
 } from '../../redux/DashBoardReducer';
 import NavigateButtons from '../../components/Dashboard/Main UI/NavigateButtons';
 import Newpost from '../../components/Dashboard/NewPost/Newpost';
@@ -17,7 +17,7 @@ import Inbox from '../../components/Dashboard/Chat/Chat';
 const Dashboard = function () {
   const {
     posts, pageNum, isInfinte, ismounted, exploreBlogs, pageNumPosts,radar,
-    postsMounted, exploreBlogsMounted, radarMounted, ChatMounted,
+    postsMounted, exploreBlogsMounted, radarMounted, ChatMounted,nextButton
   } = useSelector((state) => state.DashBoard);
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const Dashboard = function () {
   }, []);
 
   useEffect(() => {
-    fetchPost(pageNum, pageNumPosts);
+    fetchPost(pageNum, pageNumPosts, posts, setNextButton);
   }, [pageNum, pageNumPosts]);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const Dashboard = function () {
           <div className={styles.posts}>
             <Newpost />
             { postsMounted && showPosts(posts, pageNum, isInfinte, pageNumPosts)}
-            <NavigateButtons pageNumPosts={pageNumPosts} />
+            <NavigateButtons nextButton={nextButton}/>
           </div>
           <div className={styles.explore}>
             <div className={styles.checkBlogs}>

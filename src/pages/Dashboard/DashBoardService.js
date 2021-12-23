@@ -4,16 +4,25 @@ import api from '../../api/api';
 import { follow }  from '../../components/Blog/Followers/followerSection/followservice'
 import { useSelector } from 'react-redux';
 
-const fetchPost = async (pageNum, pageNumPosts) => {
+
+
+const fetchPost = async (pageNum, pageNumPosts, posts, setNextButton) => {
+  const checkEqualArr =  (a , b) =>{
+    return JSON.stringify(a) === JSON.stringify(b);
+  } ;
   try {
     // console.log('fetch post is called');
     // console.log('pageNum -->', pageNum);
-    // console.log('response -->', response.data);
-    const response = await api.get(`/api/user/dashboard?limit=${10}&page=${pageNum}`);
+    const response = await api.get(`/api/user/dashboard?limit=${pageNumPosts}&page=${pageNum}`);
+    console.log('fetch post is called -->', response.data);
     if (response.data.hasOwnProperty('for-youPosts')) {
       configureStore.dispatch(setPosts(response.data['for-youPosts']));
+      const next = checkEqualArr(posts, response.data['for-youPosts']);
+      configureStore.dispatch(setNextButton(!next));
     } else {
       configureStore.dispatch(setPosts(response.data.posts));
+      const next = checkEqualArr(posts, response.posts)
+      configureStore.dispatch(setNextButton(!next));
     }
     
   } catch (err) {

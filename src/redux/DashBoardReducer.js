@@ -14,7 +14,8 @@ export const DashboardReducer = createSlice({
     pageNumPosts: 5,
     isInfinte: false,
     ismounted: false,
-    ChatMounted: true,
+    ChatMounted: false,
+    nextButton: true,
   },
   reducers: {
     setPosts: (state, action) => {
@@ -35,9 +36,11 @@ export const DashboardReducer = createSlice({
     },
     incrementPageNum: (state) => {
       state.pageNum += 1;
+      console.log(state.pageNum);
     },
     decrementPageNum: (state) => {
       state.pageNum -= 1;
+      console.log(state.pageNum);
     },
     setPageNum: (state, action) => {
       state.pageNum = action.payload;
@@ -50,6 +53,9 @@ export const DashboardReducer = createSlice({
     },
     setIsMounted: (state, action) => {
       state.ismounted = action.payload;
+    },
+    setNextButton: (state, action) => {
+      state.nextButton = action.payload;
     },
     setpageNumPosts: (state, action) => {
       state.pageNumPosts = action.payload;
@@ -67,6 +73,6 @@ export const {
   setPosts, incrementPageNum, decrementPageNum, setIsInfinite,
   setExploreBlogs, setIsMounted, setPageNum,setRadar,
   setPostsMounted, setExploreBlogsMounted, setRadarMounted, 
-  removeBlog, setChatMounted
+  removeBlog, setChatMounted, setNextButton
 } = DashboardReducer.actions;
 export default DashboardReducer.reducer;
