@@ -11,6 +11,13 @@ const onMoreClick = () => {
     .classList.toggle(`${styles["hide"]}`);
 };
 
+const closeMore = function (e) {
+  var container = document.querySelector(`.${styles["more-list"]}`);
+  if (!container.contains(e.target)) {
+    container.style.display = "none";
+  }
+};
+
 const componentDidMount = () => {
   document
     .querySelector(`.more-section`)
@@ -25,12 +32,11 @@ const componentDidMount = () => {
         // event.stopPropagation(); // stop action from propagation to the parent
       });
     });
-  document.addEventListener("mouseup", function (e) {
-    var container = document.querySelector(`.${styles["more-list"]}`);
-    if (!container.contains(e.target)) {
-      container.style.display = "none";
-    }
-  });
+  document.addEventListener("mouseup", closeMore);
+  return () => {
+    document.removeEventListener("mouseup", closeMore);
+    console.log("I have been unmounted ");
+  };
 };
 
 export { onMoreClick, componentDidMount };
