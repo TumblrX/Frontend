@@ -161,6 +161,7 @@ a{
                     color: $icons-color;   
                 }
                 span{
+                    cursor: pointer;
                     display: flex;
                     justify-items: center;
                     align-items: center;
@@ -172,10 +173,21 @@ a{
                     width: 22px;
                 }
                 .inbox ,
-                .activity,
-                .profile{
+                .activity{
                     position: relative;
                     span{
+                        cursor: pointer;
+                    }
+                }
+                .profile{
+                    position: relative;
+                    a{
+                        color:$dropdown-profile-icons-color;
+                        margin:0;
+                    }
+                    span{
+                        color:$dropdown-profile-icons-color;
+                        margin:0;
                         cursor: pointer;
                     }
                 }

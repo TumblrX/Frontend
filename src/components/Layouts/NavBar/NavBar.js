@@ -82,16 +82,16 @@ const NavBar = function () {
               <NavLink to="/dashboard"><AiFillHome /></NavLink>
               <NavLink to="/explore/recommended-for-you"><MdExplore /></NavLink>
               <NavLink to="/inbox"><IoIosMail /></NavLink>
-              <div className={classes.inbox}>
-                <span onClick={inboxClickHandler}><RiChatSmile3Fill /></span>
+              <span onClick={inboxClickHandler}><RiChatSmile3Fill /></span>
+              <span onClick={activityClickHandler}><GiElectric /></span>
+              <span onClick={profileClickHandler}><BsFillPersonFill /></span>
+              <div className={classes.inbox}>  
                 {isInbox && <DropDownInbox />}
               </div>
               <div className={classes.activity}>
-                <span onClick={activityClickHandler}><GiElectric /></span>
                 {isActivity && <DropDownActivity />}
               </div>
               <div className={classes.profile}>
-                <span onClick={profileClickHandler}><BsFillPersonFill /></span>
                 {isProfile && <DropDownProfile />}
               </div>
             </div>
