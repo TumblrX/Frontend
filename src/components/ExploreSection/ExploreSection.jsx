@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styles from "./scss/ExploreSection.module.scss";

@@ -1,10 +1,4 @@
-/* eslint-disable consistent-return */
-/* eslint-disable array-callback-return */
-/* eslint-disable prefer-const */
-/* eslint-disable jsx-a11y/iframe-has-title */
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable no-empty */
-/* eslint-disable max-len */
+
 import React from 'react';
 import classes from './Post.module.scss';
 import { Link } from 'react-router-dom';
