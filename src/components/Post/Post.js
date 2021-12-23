@@ -19,10 +19,10 @@ import PostController from './PostController';
 import postContentToJsx from './PostContentToJsx';
 
 const Post = function ({ data }) {
-  // console.log(data);
   const { blogAttribution, commentsCount, content, id, isReblogged, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
   const { reblogPostHandler, deletePostHandler } = PostController();
   const userBlogs = useSelector(state => state.userBlogs.userBlogs);
+  console.log(userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }));
   return (
     <div className={classes.post}>
       <header className={classes.header}>
@@ -55,7 +55,7 @@ const Post = function ({ data }) {
             <div>
               <FaRegHeart />
             </div>
-            { ((userBlogs.find((blog) => { blog.id === blogAttribution._id })) !== undefined) && 
+            { userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1 && 
             (<div onClick={ deletePostHandler.bind(this, id) }>
               <RiDeleteBinLine />
             </div>)}
