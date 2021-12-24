@@ -9,14 +9,14 @@ import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const ChatHeader = function () {
-  const { sound } = useSelector((state) => state.Chat);
+  const { sound, friend } = useSelector((state) => state.Chat);
   return (
     <div className={`${styles.Chat_header} ${styles.row}`}>
       {sound && <Redirect to="/settings/dashboard" />}
       <div className={styles.userName}>
-        <a> USER1 </a>
+        <a> myName </a>
         +
-        <a> USER2</a>
+        <a> {friend.handle} </a>
       </div>
       <div className={`${styles.headerIcons} ${styles.row}`}>
         <div className={` ${styles.headerIcon} ${styles.optionsIcon}`}>

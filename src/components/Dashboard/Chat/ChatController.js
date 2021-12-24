@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import configureStore from '../../../redux/store';
-import { addMessage, setNewMessage, setSound } from '../../../redux/ChatReducer';
+import { addMessage, setNewMessage, setSound ,deleteMessages} from '../../../redux/ChatReducer';
+import { setIsChat } from '../../../redux/DashBoardReducer';
+import { sendMessage } from './ChatServices';
 
 const dropDown = () => {
   document.getElementById('Chat').style.display = 'none';
@@ -8,29 +10,45 @@ const dropDown = () => {
 };
 const close = () => {
   document.getElementById('Chat').style.display = 'none';
+  configureStore.dispatch(setIsChat(false));
 };
 const open = () => {
   document.getElementById('Chat').style.display = 'block';
   document.getElementById('ExitAvatar').style.display = 'none';
 };
 
-const scroll = (scrollRef) => {
-  scrollRef?.current.scrollIntoView({ block: 'start' });
-  // document.getElementById('sc').scrollIntoView(true);
+const scroll = () => {
+  // scrollRef?.current.scrollIntoView({ block: 'start' });
+  document.getElementById('scroll').scroll({
+    top: 10000,
+    behavior: 'smooth'
+  });
 };
 
-const handleSend = (newMessage) => {
+const handleSend = async (newMessage, id) => {
+
+  const today = new Date();
+  const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  const dateTime = date+' '+time;
   if (!newMessage.match(/^\s*$/)) {
-    configureStore.dispatch(addMessage(newMessage));
+    await sendMessage(newMessage, id)
+    configureStore.dispatch(addMessage({
+      text:newMessage,
+      senderId: id,
+      createdAt: dateTime
+    }));
     scroll();
   }
   configureStore.dispatch(setNewMessage(''));
 };
 
-const handleKeyEnter = (e) => {
+const handleKeyEnter = (e, id) => {
   if (e.key === 'Enter') {
     e.preventDefault();
-    handleSend(e.target.value);
+    handleSend(e.target.value, id);
+    // console.log('id -->', configureStore.dispatch(getFreindId));
+    // console.log('id -->', id);
   }
 };
 
@@ -41,10 +59,12 @@ const handleSound = () => {
 
 const handleBlock = () => {
   console.log('block is called');
+  configureStore.dispatch(deleteMessages());
 };
 
 const handleDelete = () => {
   console.log('delete is called');
+  configureStore.dispatch(deleteMessages());
 };
 
 export {

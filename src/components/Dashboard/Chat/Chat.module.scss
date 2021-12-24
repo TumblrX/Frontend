@@ -4,7 +4,7 @@
 @mixin avatar($width) {
     width: $width;
     height: $width;
-    border-radius: 50%;
+    border-radius: 100%;
 }
 .x{
     top: 100px;
@@ -111,8 +111,11 @@
         .msgAvatar{
             flex: 1;
             height: 40px;
-            border-radius: 50%;
+            border-radius: 100%;
             margin-right: 30px;
+            .circle{
+                border-radius: 100%;
+            }
         }
         .msgContent{
             flex: 4;
