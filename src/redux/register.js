@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const RegisterReducer = createSlice({
   name: 'register',
   initialState: {
-    errorMessage: 9,
+    errorMessage: 12,
     dashboard: false,
     errors: {
       fillData: 0,
@@ -16,6 +16,9 @@ export const RegisterReducer = createSlice({
       shortPassword: 6,
       weakPassword: 7,
       usedBlogName: 8,
+      spacesOnly:9,
+      includeSpecialChars:10,
+      tooLongName:11,
     },
     errorMessages: [
       'You do have to fill this stuff out, you know.',
@@ -27,6 +30,9 @@ export const RegisterReducer = createSlice({
       'The password must be at least 8 characters.',
       'Please choose a stronger password.',
       'That\'s a good blog name, but it\'s taken.',
+      'Oops. There was an error. Try again.',
+      'That\'s not a valid blog name. Letters, numbers, and dashes only please.',
+      'That\'s not a valid blog name. Username is too long. Please enter 32 or fewer characters.',
     ],
   },
   reducers: {
