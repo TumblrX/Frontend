@@ -14,9 +14,11 @@ const DropDownInbox = function (props) {
   const dispatch = useDispatch();
   useEffect(async () => {
     const x= await getConversations();
-    await setConversations(x.data);
-    console.log('x-->', x.data.length);
+    if(x.hasOwnProperty('data')){
+      await setConversations(x.data);
+    }
     console.log('data -->', conversations);
+    // console.log('x-->', x.data.length);
     // console.log('conversation -->', conversations[0].hasOwnProperty('blogHandle'));
   },[])
 

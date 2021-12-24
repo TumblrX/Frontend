@@ -15,6 +15,7 @@ import api from '../../../api/api';
       } else {
         console.log(`Error: ${err.message}`);
       }
+      return [];
     }
   };
 
