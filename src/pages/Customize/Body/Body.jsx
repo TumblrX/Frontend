@@ -30,31 +30,32 @@ const Body = function () {
     setHeaderImageData(e.target.files[0]);
   };
   return (
-    <div className={style.bodyContainer}>
+    <div className={style.bodyContainer} >
       <input type="file" onChange={changeAvatar} />
       <input type="file" onChange={changeHeaderImage} />
       <div
+        id  = 'headerImage'
         className={style.backgroundWrapper}
         style={{
           background: `url(${headerImage}) center center`,
         }}
       />
-      <img
+      <img id='avatar'
         className={style.avatarImage}
         src={avatar}
         alt=""
         accept="image/*"
       />
-      <div className={style.headerText}>
-        <h2>     Taher   </h2>
-        <p>      description    </p>
-        <ul>
-          <li>Posts </li>
+      <div className={style.headerText} id='headerText'>
+        <h2 id = 'title' >     Taher   </h2>
+        <p id = 'description' >      description    </p>
+        <ul id = 'accent'>
+          <li id='accent1' >Posts </li>
           <li>Likes </li>
           <li>Following </li>
           <li>Ask me anything </li>
           <li>Submit a post </li>
-          <li>Archive </li>
+          <li >Archive </li>
         </ul>
       </div>
     </div>

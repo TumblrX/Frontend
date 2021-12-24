@@ -7,7 +7,7 @@ import style from './Customize.module.scss';
 
 const Customize = function () {
   return (
-    <div className={style.customizeContainer}>
+    <div className={style.customizeContainer} id='customizeContainer'>
       <SideBar />
       <Body />
     </div>
