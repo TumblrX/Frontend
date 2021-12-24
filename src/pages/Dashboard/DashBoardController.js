@@ -6,13 +6,15 @@ import Post from '../../components/Post/Post';
 import noAvatar from '../../assets/Images/avatar.png';
 import { handleSideView, handleExit,  handleFollow } from './DashBoardService';
 
-
 const showPosts = (posts, pageNum, isInfinte, pageNumPosts) => {
-  return posts.map((post, index) => (
+  return posts.map((post, index) => ( 
     <div className={`${styles.post} ${styles.row}`} key={index}>
       <div className={styles.logo}>
+        {/* { post?.blogAttribution.avatar === 'none'&& <img src={noAvatar} alt="noavatar" className={styles.avatar} /> }
+        { post?.blogAttribution.avatar !== 'none'&& 
+          <img src={post.blogAttribution.avatar} alt="post avatar" className={styles.avatar} />
+        } */}
         <img src={noAvatar} alt="noavatar" className={styles.avatar} />
-        {/* <img src={noAvatar} alt="posts.blogAttribution.avatar" className={styles.avatar} /> */}
       </div>
       <div className={styles.postDatailes}>
         <Post data={post} />
