@@ -9,12 +9,14 @@ import { FaLink } from 'react-icons/fa';
 import { BsFillChatDotsFill } from 'react-icons/bs';
 import { TiVideo } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
+import noavatar from '../../../assets/Images/avatar.png'
 
 const Newpost = function ({ avatar }) {
   return (
     <div className={`${classes.insertPost} ${classes.row}`}>
       <div className={classes.insertLogo}>
-        <img src={avatar} alt="avatar" className={classes.avatar} />
+        {avatar === 'none' && <img src={noavatar} alt="noavatar" className={classes.avatar} />}        
+        {avatar !== 'none' &&< img src={avatar} alt="avatar" className={classes.avatar}     />}
       </div>
       <div className={classes.insertPostDetails}>
         <div className={classes.newPost}>
