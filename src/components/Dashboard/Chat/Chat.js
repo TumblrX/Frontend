@@ -11,70 +11,55 @@ import ChatHeader from './ChatHeader';
 import ChatFooter from './ChatFooter';
 import ChatContent from './ChatContent';
 import logo from '../../../assets/Images/avatar.png';
-import { open, scroll, handleSend } from './ChatController';
+import { open, scroll, handleSend , dataTime} from './ChatController';
 import { io } from 'socket.io-client';
 import api from '../../../api/api';
 import {sendMessage, getChat, getConversations} from './ChatServices'
-import { fetchExploreBlogs } from '../../../pages/Dashboard/DashBoardService';
 
-const Chat = function ({ user2 , me }) {
+const Chat = function () {
   const {
-    messages, newMessage, arrivalMessage, primaryblog,
+    messages, newMessage, arrivalMessage, primaryblog,friend
   } = useSelector((state) => state.Chat);
   const dispatch = useDispatch();
-  const scrollRef = useRef();
-  const socket = useRef();
-
+  const mySocket = useRef();
+  
   useEffect(() => {
-    scroll(scrollRef);
+    scroll();
   }, [messages]);
 
+  useEffect(() => {
+    // mySocket.current = io("wss://tumblrx.me:6600" ,{
+    mySocket.current = io.connect("ws://tumblrx.me:6600" ,{
+      headers: {
+        authorization: `${localStorage.getItem('token')}`
+      }
+    });
+    console.log('socket  respond --> \t', mySocket.current)
+    // mySocket.current.connect();
+    // console.log('socket  respond --> \t', mySocket.current)
+    mySocket.current.on("privateMessage", (data) => {
+      console.log('socket recive -->' , data);
+      // dispatch(addMessage({
+      //   text:data.content,
+      //   senderId: data.senderId,
+      //   createdAt: dataTime()
+      // }));
+      // scroll();
+    });
+    // --------------------------------------------------
+  }, [friend]);
   return (
     <>
-        <div>
-    <button
-      className ={styles.x}
-      onClick ={ ()=> sendMessage('update ', '61b2131d0b8aaec60c5af0eb') }
-    >
-      test send
-    </button>
-    </div>
-    <div>
-    <button
-      className ={styles.x}
-        // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
-      onClick ={ ()=> getChat('61b2131d0b8aaec60c5af0eb') }
-    >
-      getChat
-    </button>
-    </div>
-    <div>
-    <button
-      className ={styles.x}
-      onClick ={ ()=> getConversations() }
-    >
-      conversation
-    </button>
-    </div>
-    <div>
-    <button
-      className ={styles.x}
-        // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
-      onClick ={ ()=> fetchExploreBlogs() }
-    >
-      Explore
-    </button>
-    </div>
       <div className={styles.Chat} id="Chat">
-        <ChatHeader />
-        <ChatContent scrollRef={scrollRef} />
-        <ChatFooter scrollRef={scrollRef} />
+        <ChatHeader  />
+        <ChatContent />
+        <ChatFooter socket ={mySocket} />
       </div>
       <div
         className={styles.ExitAvatar}
         id="ExitAvatar"
         onClick={() => open()}
-      >
+        >
         <div className={styles.avatar_img}>
           <img src={logo} alt="#" />
         </div>

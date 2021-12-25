@@ -5,7 +5,7 @@ import {
   incrementPageNum, decrementPageNum,
 } from '../../../redux/DashBoardReducer';
 
-const NavigateButtons = function ({ pageNumPosts }) {
+const NavigateButtons = function ({nextButton}) {
   const {
     posts, pageNum, isInfinte,
   } = useSelector((state) => state.DashBoard);
@@ -22,7 +22,7 @@ const NavigateButtons = function ({ pageNumPosts }) {
           &lt; Previous
         </button>
         )}
-      {( posts.length !== 0) && (!isInfinte)
+      {( posts.length !== 0)&& (nextButton) && (!isInfinte)
       && (
         <button
           className={styles.next_btn}

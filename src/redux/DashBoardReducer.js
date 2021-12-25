@@ -15,11 +15,26 @@ export const DashboardReducer = createSlice({
     pageNumPosts: 5,
     isInfinte: false,
     ismounted: false,
-    ChatMounted: true,
+    ChatMounted: false,
+    nextButton: true,
+    isChat: false,
+    stopFetch:false,
+    freind: {}
   },
   reducers: {
+    setIsChat: (state, action) => {
+      state.isChat = action.payload;
+      // console.log('chat ->', state.isChat);
+    },
+    setFreind: (state, action) => {
+      state.freind = action.payload;
+      console.log('freind ->', state.freind);
+    },
     setPosts: (state, action) => {
       state.posts = action.payload;
+    },
+    setStopFetch: (state, action) => {
+      state.stopFetch = action.payload;
     },
     setPostsMounted: (state, action) => {
       state.postsMounted = action.payload;
@@ -36,9 +51,11 @@ export const DashboardReducer = createSlice({
     },
     incrementPageNum: (state) => {
       state.pageNum += 1;
+      console.log(state.pageNum);
     },
     decrementPageNum: (state) => {
       state.pageNum -= 1;
+      console.log(state.pageNum);
     },
     setPageNum: (state, action) => {
       state.pageNum = action.payload;
@@ -51,6 +68,9 @@ export const DashboardReducer = createSlice({
     },
     setIsMounted: (state, action) => {
       state.ismounted = action.payload;
+    },
+    setNextButton: (state, action) => {
+      state.nextButton = action.payload;
     },
     setpageNumPosts: (state, action) => {
       state.pageNumPosts = action.payload;
@@ -74,7 +94,8 @@ export const {
   setPosts, incrementPageNum, decrementPageNum, setIsInfinite,
   setExploreBlogs, setIsMounted, setPageNum,setRadar,
   setPostsMounted, setExploreBlogsMounted, setRadarMounted, 
-  removeBlog, setChatMounted
+  removeBlog, setChatMounted, setNextButton, setIsChat,
+  setFreind,pushPosts,setStopFetch
 } = DashboardReducer.actions;
 export const dashboardActions = DashboardReducer.actions;
 export default DashboardReducer.reducer;

@@ -6,7 +6,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const ChatReducer = createSlice({
   name: 'Chat',
   initialState: {
-    messages: ['a', 'b', 'c', 'd'],
+    messages: [],
     newMessage: '',
     arrivalMessage: '',
     primaryblog: null,
@@ -21,10 +21,10 @@ export const ChatReducer = createSlice({
     },
     addMessage: (state, action) => {
     //   state.messages = [...state.messages, action.payload];
-      console.log('add is called ');
-      console.log('msgs --> ', state.messages);
-      console.log('new --> ', action.payload);
-      state.messages = [...state.messages, action.payload];
+      state.messages = [action.payload, ...state.messages];
+    },
+    deleteMessages: (state) =>{
+      state.messages=[];
     },
     setNewMessage: (state, action) => {
       state.newMessage = action.payload;
@@ -60,5 +60,7 @@ export const {
   setOwner,
   setFriend,
   setSound,
+  getFreindId,
+  deleteMessages,
 } = ChatReducer.actions;
 export default ChatReducer.reducer;

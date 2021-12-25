@@ -7,6 +7,7 @@ import {
 import validatePassword from './CheckValidPasswordService';
 import validateEmail from './CheckValidEmailService';
 import checkNonEmptyFields from './CheckNonEmptyFieldsService';
+import validateBlogName from './CheckValidBlogName';
 
 const registerController = function () {
   const { errors } = useSelector((state) => state.register);
@@ -48,10 +49,20 @@ const registerController = function () {
                 if (validateEmail(email)){
                     // check if the password is valid
                     if (validatePassword(password)){
-                        // Doing register process and wait for the result
-                        const response = await register(blogName, email, password); 
-                        setToken(response.token);
-                        dispatch(redirectToDashboard());   
+                        ret = validateBlogName(blogName);
+                        if (ret === 1){
+                          console.log(ret);
+                          dispatch(setErrorMessage(errors.spacesOnly));
+                        }else if(ret === 2){
+                          dispatch(setErrorMessage(errors.includeSpecialChars));
+                        }else if(ret === 3){
+                          dispatch(setErrorMessage(errors.tooLongName));
+                        }else{
+                          // Doing register process and wait for the result
+                          const response = await register(blogName, email, password); 
+                          setToken(response.token);
+                          dispatch(redirectToDashboard());  
+                        }                         
                     }else{
                         dispatch(setErrorMessage(errors.shortPassword));
                     }

@@ -1,58 +1,80 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React , {useEffect} from 'react';
 import styles from './Chat.module.scss';
 import logo from '../../../assets/Images/avatar.png';
 import img1 from '../../../assets/Images/1.jpg';
 import { useSelector, useDispatch } from 'react-redux';
+import { getChat } from './ChatServices';
+import { setMessages } from '../../../redux/ChatReducer';
 
-const ChatContent = function ({ scrollRef }) {
-  const { messages } = useSelector((state) => state.Chat);
+const ChatContent = function () {
+  const { messages, friend } = useSelector((state) => state.Chat);
+  const dispatch = useDispatch();
+
+  useEffect( async () => {
+    const msgs = await getChat(friend.id);
+    await dispatch(setMessages(msgs));
+    // console.log('msgs ->', messages)
+  }, [friend])
   return (
-    <div className={styles.Chat_content}>
+    <div className={styles.Chat_content} id="scroll">
       <div className={styles.startChat}>
         <div className={styles.usertAvatar}>
           <div className={styles.avatar_img}>
-            <img src={logo} alt="user Avatar" />
+            <img src={logo} alt="user Avatar" className={styles.circle} />
           </div>
         </div>
-        <p> User2 </p>
+        <p> {friend.handle} </p>
       </div>
 
-      <div className={styles.messegesBody} ref={scrollRef}>
-        <div className={styles.msg}>
-          <div className={styles.msgAvatar}>
-            <div className={styles.avatar_img}>
-              <img src={logo} alt="#" />
-            </div>
-          </div>
-          <div className={styles.msgContent}>
-            <h3> user </h3>
-            <div>
-              <img src={img1} alt="img msg" />
-            </div>
-          </div>
-        </div>
-
-      </div>
-      {messages.map((m, index) => (
-        <div className={styles.messegesBody} key={index} ref={scrollRef}>
+      
+      {
+        // img msg
+        /* <div className={styles.messegesBody} >
           <div className={styles.msg}>
             <div className={styles.msgAvatar}>
               <div className={styles.avatar_img}>
-                <img src={logo} alt="#" />
+                <img src={logo} alt="#" className={styles.circle} />
               </div>
             </div>
             <div className={styles.msgContent}>
               <h3> user </h3>
               <div>
-                {m}
+                <img src={img1} alt="img msg" />
+              </div>
+            </div>
+          </div> 
+
+        </div>*/
+      }
+      { messages.length >0 &&  (messages.slice(0).reverse().map((m, index) => (
+        <div className={styles.messegesBody} key={index} >
+          <div className={styles.msg}>
+            <div className={styles.msgAvatar}>
+              <div className={styles.avatar_img}>
+                <img src={logo} alt="#" className={styles.circle}/>
+              </div>
+            </div>
+            <div className={styles.msgContent}>
+              <h3>
+                {
+                  m.senderId === friend.id ? ( 
+                    <> {friend.handle} </>    
+                  ): (
+                    <> my handle </>   
+                  )
+                }
+              </h3>
+              <div>
+                {m.text}
               </div>
             </div>
           </div>
 
         </div>
-      ))}
+        )))
+      }
     </div>
   );
 };
