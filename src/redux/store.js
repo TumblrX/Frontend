@@ -15,7 +15,8 @@ import newTextPostReducer from './newTextPost-slice';
 import ChatReducer from './ChatReducer';
 import blog from './blog';
 import blogDrafts from './blogDrafts';
-import Customize from './Customize';  
+import Customize from './Customize'; 
+import ExploreRecuder from './ExploreRecuder';
 
 export default configureStore({
   reducer: {
@@ -36,8 +37,9 @@ export default configureStore({
     Blog: blog,
     BlogDrafts: blogDrafts,
     customize : Customize,
+    Explore: ExploreRecuder,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    serializableCheck: false,
+    serializableCheck: false, 
   }),
 });
