@@ -28,7 +28,8 @@ const NewText = function () {
   } = useSelector((state) => state.newTextPost);
   useEffect(() => {
     if (userBlogs.length !== 0) {
-      dispatch(newTextPostActions.setBlogId(userBlogs[0].id));
+      const primaryBlog = userBlogs.find((userBlog)=>userBlog.isPrimary);
+      dispatch(newTextPostActions.setBlogId(primaryBlog.id));
     }
   }, [dispatch, userBlogs]);
   useEffect(() => {

@@ -50,17 +50,14 @@
         font-size: 1rem;
         background-color: #fff;
         border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 0.3rem;
+        border-radius: 3px;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         position: absolute;
         left: 0%;
         top: 110%;
         li {
           text-align: center;
-          padding: 0.5rem;
-          &:hover {
-            background-color: #eee;
-          }
+          padding: 5px 0;
         }
       }
     }

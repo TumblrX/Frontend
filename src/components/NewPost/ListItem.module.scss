@@ -1,0 +1,16 @@
+.item{
+  min-width: 10rem;
+  padding: 6px;
+  display: flex;
+  .avatar{
+    width:2.2rem;
+    border-radius: 3px;
+    margin-right: 8px;
+    img{
+      border-radius: 3px;
+    }
+  }
+  &:hover {
+    background-color: #eee;
+  }
+}

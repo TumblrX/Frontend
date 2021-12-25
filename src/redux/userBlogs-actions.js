@@ -7,7 +7,8 @@ export const fetchUserBlogs = function () {
     try {
       const response = await api.get('/api/user/get-blogs');
       // eslint-disable-next-line no-underscore-dangle
-      const userBlogs = response.data.map((blog) => ({ title: blog.title, id: blog._id }));
+      const userBlogs = response.data.map((blog) => ({ ...blog, id: blog._id }));
+      // const userBlogs = response.data;
       dispatch(userBlogsActions.addUserBlogs(userBlogs));
     } catch (err) {
       if (err.response) {

@@ -7,27 +7,23 @@ import { MdSettings } from 'react-icons/md';
 import { IoIosArrowDown } from 'react-icons/io';
 import classes from './FormCard.module.scss';
 import avatar from '../../assets/Images/avatar.png';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { userBlogsActions } from '../../redux/userBlogs-slice';
+import ListItem from './ListItem';
 
 const FormCard = function (props) {
-  const userBlogs = useSelector((state) => state.userBlogs.userBlogs);
+  const dispatch = useDispatch();
   const { children, changeBlogId } = props;
-  const [selectedBlogTitle, setSelectedBlogTitle] = useState();
+  const userBlogs = useSelector((state) => state.userBlogs.userBlogs);
+  const postBlog = useSelector((state) => state.userBlogs.postBlog);
   const [showOptions, setShowOptions] = useState(false);
-  useEffect(() => {
-    if (userBlogs.length !== 0) {
-      setSelectedBlogTitle(userBlogs[0].title);
-    } else {
-      console.log('Server Error');
-    }
-  }, [userBlogs]);
   const toggleOptionsHandler = () => {
     setShowOptions((x) => !x);
   };
   const selectOptionHandler = (e) => {
-    if (userBlogs.length === 0) return;
+    const postBlog = userBlogs.find((userBlog) => userBlog.id === e.target.getAttribute('value'));
+    dispatch(userBlogsActions.setPostBlog(postBlog));
     changeBlogId(e.target.getAttribute('value'));
-    setSelectedBlogTitle(userBlogs.find((blog) => blog.id === e.target.getAttribute('value')).title);
   };
   return (
     <div className={classes.text}>
@@ -37,11 +33,11 @@ const FormCard = function (props) {
       <div className={classes.form}>
         <header>
           <div onClick={toggleOptionsHandler}>
-            {selectedBlogTitle}
+            {postBlog.handle}
             <IoIosArrowDown />
             {showOptions && (
               <ul onClick={selectOptionHandler}>
-                {userBlogs.map((blog) => <li value={blog.id} key={blog.id}>{blog.title}</li>)}
+                {userBlogs.map((blog) => <li value={blog.id} key={blog.id}><ListItem userBlog={blog}/></li>)}
               </ul>
             )}
           </div>
