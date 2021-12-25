@@ -151,7 +151,16 @@ const TextController = function () {
         }
       }
       objectToFormData(content, 'content', fd);
-      fd.append('tags', tags);
+      console.log(tags);
+      const tagsWithoutHash = tags.replaceAll('#', ' ');
+      console.log(tagsWithoutHash);
+      let tagsArr = tagsWithoutHash.split(' ');
+      console.log(tagsArr);
+      tagsArr = tagsArr.filter(tag => tag.trim() !== '');
+      console.log(tagsArr);
+      for (let i = 0; i < tagsArr.length; i++) {
+        fd.append(`tags[${i}]`, tagsArr[i]);
+      }
       if (!await submitPost(blogId, fd)) return;
       dispatch(newTextPostActions.setTitle(''));
       dispatch(newTextPostActions.setUploadedImages([]));
