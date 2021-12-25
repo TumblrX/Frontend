@@ -59,11 +59,12 @@ const ChatContent = function () {
             <div className={styles.msgContent}>
               <h3>
                 {
-                  m.senderID === friend.id && <> {friend.handle} </>    
+                  m.senderId === friend.id ? ( 
+                    <> {friend.handle} </>    
+                  ): (
+                    <> my handle </>   
+                  )
                 }
-                {
-                   m.senderID !== friend.id && <> my handle </>    
-                } 
               </h3>
               <div>
                 {m.text}

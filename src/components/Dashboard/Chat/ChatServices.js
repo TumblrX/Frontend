@@ -24,7 +24,7 @@ const getChat = async (user2Id) => {
     try {
     // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
     const response = await api.get(`api/user/chat/reterive-chat/${user2Id}`);
-    // console.log('get Chat is called -->', response.data);      
+    console.log('get Chat is called -->', response.data);      
     return response.data.messages;
     } catch (err) {
       if (err.response) {
