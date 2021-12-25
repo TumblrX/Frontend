@@ -38,6 +38,6 @@ export default configureStore({
     customize : Customize,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    serializableCheck: false,
+    serializableCheck: false, 
   }),
 });
