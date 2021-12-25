@@ -25,28 +25,30 @@ const scroll = () => {
   });
 };
 
-const handleSend = async (newMessage, id) => {
-
+const dataTime = () => {
   const today = new Date();
   const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  const dateTime = date+' '+time;
+  return date+' '+time;
+};
+const handleSend = async (newMessage, id, socket) => {
   if (!newMessage.match(/^\s*$/)) {
     await sendMessage(newMessage, id)
+    await socket.current.emit('private message' , { newMessage, id });
     configureStore.dispatch(addMessage({
       text:newMessage,
       senderId: id,
-      createdAt: dateTime
+      createdAt: dataTime()
     }));
     scroll();
   }
   configureStore.dispatch(setNewMessage(''));
 };
 
-const handleKeyEnter = (e, id) => {
+const handleKeyEnter = (e, id, socket) => {
   if (e.key === 'Enter') {
     e.preventDefault();
-    handleSend(e.target.value, id);
+    handleSend(e.target.value, id, socket);
     // console.log('id -->', configureStore.dispatch(getFreindId));
     // console.log('id -->', id);
   }
@@ -69,5 +71,5 @@ const handleDelete = () => {
 
 export {
   open, close, dropDown, scroll, handleSend, handleKeyEnter,
-  handleSound, handleBlock, handleDelete,
+  handleSound, handleBlock, handleDelete,dataTime
 };

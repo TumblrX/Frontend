@@ -8,9 +8,10 @@ import { AiFillCamera } from 'react-icons/ai';
 import { setNewMessage, addMessage } from '../../../redux/ChatReducer';
 import { scroll, handleSend, handleKeyEnter } from './ChatController';
 
-const ChatFooter = function () {
+const ChatFooter = function ({ socket }) {
   const { newMessage, friend } = useSelector((state) => state.Chat);
   const dispatch = useDispatch();
+
   return (
     <div className={styles.Chat_footer}>
       <div className={styles.text}>
@@ -21,7 +22,7 @@ const ChatFooter = function () {
           maxLength="4096"
           onChange={(e) => dispatch(setNewMessage(e.target.value))}
           value={newMessage}
-          onKeyPress={(e)=> handleKeyEnter(e, friend.id)}
+          onKeyPress={(e)=> handleKeyEnter(e, friend.id, socket)}
           id="input_field"
         >
         </textarea>
@@ -32,7 +33,7 @@ const ChatFooter = function () {
           <input type="file" accept="image/*" />
         </div>
         <div className={styles.insertIcons}>
-          <div className={styles.icon} onClick={(e) => handleSend(newMessage, friend.id)}>
+          <div className={styles.icon} onClick={(e) => handleSend(newMessage, friend.id, socket) }>
             <MdSend />
           </div>
         </div>

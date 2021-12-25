@@ -10,9 +10,12 @@
     top: 100px;
     position: relative;
 }
+.parent{
+    // position: relative;
+}
 .Chat {
     z-index: 3;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 50px;
 
