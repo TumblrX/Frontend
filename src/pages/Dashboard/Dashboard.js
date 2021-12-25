@@ -23,10 +23,10 @@ const Dashboard = function () {
   } = useSelector((state) => state.DashBoard);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchRadar();
-    fetchExploreBlogs();
-    fetchInfo();
+  useEffect( async () => {
+    await fetchRadar();
+    await fetchExploreBlogs();
+    await fetchInfo();
     detectLazyLoad(isInfinte);
   }, []);
 
@@ -34,15 +34,15 @@ const Dashboard = function () {
     await fetchPost(pageNum, pageNumPosts, posts, setNextButton, isInfinte,stopFetch);
   }, [pageNum, pageNumPosts]);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (posts.length !==0  ) {
-      dispatch(setPostsMounted(1));
+      await dispatch(setPostsMounted(1));
     }
     if (radar.length !==0  ) {
-      dispatch(setRadarMounted(1));
+      await dispatch(setRadarMounted(1));
     }
     if (exploreBlogs.length !==0  ) {
-      dispatch(setExploreBlogsMounted(1));
+      await dispatch(setExploreBlogsMounted(1));
     }
   }, [posts]);
 

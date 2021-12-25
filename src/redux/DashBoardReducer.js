@@ -23,7 +23,7 @@ export const DashboardReducer = createSlice({
   reducers: {
     setIsChat: (state, action) => {
       state.isChat = action.payload;
-      console.log('chat ->', state.isChat);
+      // console.log('chat ->', state.isChat);
     },
     setFreind: (state, action) => {
       state.freind = action.payload;

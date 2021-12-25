@@ -15,7 +15,7 @@ const ChatContent = function () {
   useEffect( async () => {
     const msgs = await getChat(friend.id);
     await dispatch(setMessages(msgs));
-    console.log('msgs ->', messages)
+    // console.log('msgs ->', messages)
   }, [friend])
   return (
     <div className={styles.Chat_content} id="scroll">

@@ -21,9 +21,6 @@ export const ChatReducer = createSlice({
     },
     addMessage: (state, action) => {
     //   state.messages = [...state.messages, action.payload];
-      console.log('add is called ');
-      console.log('msgs --> ', state.messages);
-      console.log('new --> ', action.payload);
       state.messages = [action.payload, ...state.messages];
     },
     deleteMessages: (state) =>{

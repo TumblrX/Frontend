@@ -20,7 +20,7 @@ const fetchPost = async (pageNum, pageNumPosts, posts, setNextButton, isInfinte,
     const a = JSON.stringify(arr1);
     const b = JSON.stringify(arr2);
     const c = b.indexOf(a);
-    console.log('contained called')
+    // console.log('contained called')
     return c === -1 ;
   };
   if(stopFetch){
@@ -30,10 +30,10 @@ const fetchPost = async (pageNum, pageNumPosts, posts, setNextButton, isInfinte,
     // console.log('fetch post is called');
     // console.log('pageNum -->', pageNum);
     const response = await api.get(`/api/user/dashboard?limit=${pageNumPosts}&page=${pageNum}`);
-    console.log('fetch post is called -->', response.data);
+    // console.log('fetch post is called -->', response.data);
     if (response.data.hasOwnProperty('for-youPosts')) {
       if(isInfinte ){
-        console.log('check if contained')
+        // console.log('check if contained')
         if(checkArrNotContained( response.data['for-youPosts'] , posts)){
           await configureStore.dispatch(setPosts([...posts,...response.data['for-youPosts']]));
         }else {
@@ -74,8 +74,8 @@ const fetchPost = async (pageNum, pageNumPosts, posts, setNextButton, isInfinte,
 const fetchRadar = async () => {
   try {
     const response = await api.get('/api/user/explore/1/for-you');
-    console.log('radar -->', response.data['for-youPosts'])
-    console.log('radar response -->', response.data)
+    // console.log('radar -->', response.data['for-youPosts'])
+    // console.log('radar response -->', response.data)
     configureStore.dispatch(setRadar(response.data['for-youPosts']));
     // console.log('fetch radar is called', response.data);
   } catch (err) {
@@ -94,7 +94,7 @@ const fetchExploreBlogs = async () =>{
   try {
     const response = await api.get('api/blog/explore/0/for-you');
     configureStore.dispatch(setExploreBlogs(response.data.forYouBlogs));
-    console.log('fetch Explore is called', response.data.forYouBlogs);
+    // console.log('fetch Explore is called', response.data.forYouBlogs);
   } catch (err) {
     if (err.response) {
       // Not in the 200 response range
@@ -108,7 +108,7 @@ const fetchExploreBlogs = async () =>{
 };
 
 const handleFollow = (index, _id) =>{
-  console.log(_id);
+  // console.log(_id);
   var element = document.getElementById(`follow${index}`).getElementsByTagName('p')[0];
   if(element.innerText === 'follow'){
     // follow(_id);
@@ -134,7 +134,7 @@ const fetchInfo = async (pageNum, pageNumPosts) => {
     // console.log('pageNum -->', pageNum);
     // console.log('response -->', response.data);
     const response = await api.get('/api/user/info');
-    console.log('info --> ', response.data);
+    // console.log('info --> ', response.data);
   } catch (err) {
     if (err.response) {
       // Not in the 200 response range

@@ -17,14 +17,14 @@ const DropDownInbox = function (props) {
     if(x.hasOwnProperty('data')){
       await setConversations(x.data);
     }
-    console.log('data -->', conversations);
+    // console.log('data -->', conversations);
     // console.log('x-->', x.data.length);
     // console.log('conversation -->', conversations[0].hasOwnProperty('blogHandle'));
   },[])
 
   const handleChat = (conversation)=>{
     const freind ={ id:conversation.textedUser , handle:conversation.blogHandle   , avatar:conversation.avatar };
-    console.log( freind);
+    // console.log( freind);
     dispatch(setIsChat(true));
     dispatch(setFriend(freind));
   };
@@ -43,7 +43,7 @@ const DropDownInbox = function (props) {
       { 
         conversations.length > 0  && (
           conversations.map((conversation, index) =>(
-            <div className={classes.conversation} key={index} onClick={ ()=> { console.log(conversation); handleChat(conversation) }}>
+            <div className={classes.conversation} key={index} onClick={ ()=> {  handleChat(conversation) }}>
               <div className={classes.ConversationAvatar} id={`side${index}`} >
                 {conversation.avatar ==='none'  && <img src={noAvatar} alt="avatar" className={classes.avatar} />}
                 {conversation.avatar !=='none'  && <img src={conversation.avatar} alt="avatar" className={classes.avatar} />}

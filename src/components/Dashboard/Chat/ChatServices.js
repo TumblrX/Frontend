@@ -7,7 +7,7 @@ const sendMessage = async (textMessage, user2Id) => {
           textMessage,
           user2Id,
       });
-      console.log('send done -->', response.data);      
+      // console.log('send done -->', response.data);      
     } catch (err) {
       if (err.response) {
         // Not in the 200 response range
@@ -41,7 +41,7 @@ const getChat = async (user2Id) => {
   const getConversations = async () => {
     try {
       const response = await api.get(`/api/user/chat/reterive-conversations`);
-      console.log('converstion done -->', response.data);      
+      // console.log('converstion done -->', response.data);      
     } catch (err) {
       if (err.response) {
         // Not in the 200 response range
