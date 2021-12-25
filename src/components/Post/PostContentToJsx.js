@@ -56,13 +56,13 @@ const PostContentToJsx = function (content){
         );
       } else if (subtype === 'ordered-list-item') {
         return (
-          <ol>
+          <ol className={classes.ol}>
             <li>{ text }</li>
           </ol>
         );
       } else if (subtype === 'unordered-list-item') {
         return (
-          <ul>
+          <ul className={classes.ul}>
             <li>{ text }</li>
           </ul>
         );

@@ -15,7 +15,7 @@
         margin-right: 8px;
       }
       &>:nth-child(3){
-        color: #555
+        color: #333;
       }
       .avatar{
         width: 1.8rem;
@@ -37,6 +37,15 @@
     }
     .title{
       font-size: 2.2rem;
+    }
+    .ul {
+      list-style-type: disc;
+      margin-left: 1.4rem;
+    }
+    .ol{
+      // list-style-type: decimal;
+      list-style-type: disc;
+      margin-left: 1.4rem;
     }
     .tag{
       display: inline-block;
