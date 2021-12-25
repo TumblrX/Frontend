@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaPencilAlt, FaTumblr } from 'react-icons/fa';
 import { BiSearch } from 'react-icons/bi';
@@ -16,6 +16,7 @@ import DropDownProfile from './DropDownProfile';
 import DropDownActivity from './DropDownActivity';
 import DropDownInbox from './DropDownInbox';
 import List from './List';
+import { getLikesCount } from './DropDownProfileService';
 
 const NavBar = function () {
   const [title, setTitle] = useState('');
@@ -25,6 +26,13 @@ const NavBar = function () {
   const [isActivity, setActivity] = useState(false);
   const [isProfile, setProfile] = useState(false);
   const [inputIsFocused, setInputIsFocused] = useState(false);
+  const [counts, setCounts] = useState({});
+  useEffect(() => {
+    const fetchNavbarCounts = async () => {
+    setCounts(await getLikesCount());
+    }
+    fetchNavbarCounts();
+  }, [])
   const barsClickHandler = () => setIsShown(!isShown);
   const searchClickhHandler = () => setSearch(!isSearch);
   const inboxClickHandler = () => {
@@ -37,7 +45,7 @@ const NavBar = function () {
     setActivity(!isActivity);
     setProfile(false);
   };
-  const profileClickHandler = () => {
+  const profileClickHandler = async () => {
     setInbox(false);
     setActivity(false);
     setProfile(!isProfile);
@@ -92,7 +100,7 @@ const NavBar = function () {
                 {isActivity && <DropDownActivity />}
               </div>
               <div className={classes.profile}>
-                {isProfile && <DropDownProfile />}
+                {isProfile && <DropDownProfile counts={counts} />}
               </div>
             </div>
             <div className={classes['new-post-navbar']}>

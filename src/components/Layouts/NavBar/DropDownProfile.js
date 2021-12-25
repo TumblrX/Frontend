@@ -10,7 +10,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import { BsFillKeyboardFill, BsFillPaletteFill } from 'react-icons/bs';
 import classes from './DropDownProfile.module.scss';
 
-const DropDownProfile = function () {
+const DropDownProfile = function (props) {
   const logout = function (){
     localStorage.removeItem('token');
   }
@@ -28,7 +28,7 @@ const DropDownProfile = function () {
             <AiFillHeart />
             Likes
             </div>
-            <span>0</span>
+            <span>{props.counts.likesCount}</span>
           </NavLink>
         </div>
         <div className={classes.following}>
@@ -37,7 +37,7 @@ const DropDownProfile = function () {
             <RiUserFollowFill />
             Following
             </div>
-            <span>0</span>
+            <span>{props.counts.followingCount}</span>
           </NavLink>
         </div>
         <NavLink to="/settings/account">
