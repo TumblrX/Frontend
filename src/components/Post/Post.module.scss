@@ -2,11 +2,25 @@
   background-color: #fff;
   border-radius: 5px;
   padding:0 10px;
+  position: relative;
   .header {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
     .blogName {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &>*{
+        margin-right: 8px;
+      }
+      &>:nth-child(3){
+        color: #555
+      }
+      .avatar{
+        width: 1.8rem;
+        border-radius: 3px;
+      }
       cursor: pointer;
       a {
         color: inherit;
@@ -20,6 +34,14 @@
   .content {
     .chat{
       margin-bottom: 0.6rem;
+    }
+    .title{
+      font-size: 2.2rem;
+    }
+    .tag{
+      display: inline-block;
+      padding:4px;
+      color: #555;
     }
     .text{
       margin-bottom: 0.6rem;
@@ -82,10 +104,10 @@
     font-weight: bold;
   }
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   q {
     font-family: serif;
@@ -97,5 +119,11 @@
   blockquote{
     border-left: 2px solid #ccc;
     padding-left: 1rem;
+  }
+  .br{
+    height: 5px;
+    width: 100%;
+    border-top: 2px solid #eee;
+    margin-top: 5px;
   }
 }

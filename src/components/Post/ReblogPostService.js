@@ -1,9 +1,11 @@
 /* eslint-disable no-restricted-syntax */
 import api from '../../api/api';
 
-const ReblogPostService = async function (blogId, fd) {
-  if (!blogId) return false;
+const ReblogPostService = async function (fd) {
   try {
+    const response = await api.get(`api/user/info`);
+    let blogId = response.data.primary_blog;
+    if (!blogId) return false;
     await api.post(`api/blog/${blogId}/posts`, fd);
   } catch (err) {
     if (err.response) {
