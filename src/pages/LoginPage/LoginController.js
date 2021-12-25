@@ -1,5 +1,6 @@
 import login from './LoginService';
 import { useDispatch } from 'react-redux';
+import { setID } from '../../redux/UserInfo';
 import {
   showFillData,
   showFillEmail,
@@ -7,6 +8,7 @@ import {
   showWrongData,
   redirectToDashboard,
 } from '../../redux/login';
+import api from '../../api/api';
 
 const LoginController = function () {
   const dispatch = useDispatch();
@@ -25,9 +27,12 @@ const LoginController = function () {
 
     if (e.target && e.target.email.value !== '' && e.target.password.value !== '') {
       const response = await login(e.target.email.value, e.target.password.value);
-      console.log(response);
       if (response.result === true) {
         setToken(response.token);
+        const re = await api.get('/api/user/info');
+        // separate it later
+        console.log(re.data);
+        setID(re.data.id);
         dispatch(redirectToDashboard());
       } else {
         dispatch(showWrongData());
