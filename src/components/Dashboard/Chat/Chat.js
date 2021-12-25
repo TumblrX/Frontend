@@ -50,20 +50,18 @@ const Chat = function () {
   }, [friend]);
   return (
     <>
-      <div className={styles.parent}>
-        <div className={styles.Chat} id="Chat">
-          <ChatHeader  />
-          <ChatContent />
-          <ChatFooter socket ={mySocket} />
-        </div>
-        <div
-          className={styles.ExitAvatar}
-          id="ExitAvatar"
-          onClick={() => open()}
-          >
-          <div className={styles.avatar_img}>
-            <img src={logo} alt="#" />
-          </div>
+      <div className={styles.Chat} id="Chat">
+        <ChatHeader  />
+        <ChatContent />
+        <ChatFooter socket ={mySocket} />
+      </div>
+      <div
+        className={styles.ExitAvatar}
+        id="ExitAvatar"
+        onClick={() => open()}
+        >
+        <div className={styles.avatar_img}>
+          <img src={logo} alt="#" />
         </div>
       </div>
     </>
