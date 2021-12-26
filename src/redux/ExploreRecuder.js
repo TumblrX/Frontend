@@ -10,6 +10,7 @@ export const ExploreReducer = createSlice({
     imagesPosts: [],
     vidoesPosts: [],
     askPosts: [],
+    checkBlogs: [],
     flexesNumber: 4,
     trendingPostsIndex: 2,
     forYouPostsIndex: 2,
@@ -44,6 +45,16 @@ export const ExploreReducer = createSlice({
       for (let i = 0; i < action.payload.length; i++) {
         state.imagesPosts.push(action.payload[i]);
       }
+    },
+    pushCheckBlogs: (state, action) => {
+      state.checkBlogs = action.payload;
+      console.log(state.checkBlogs);
+    },
+    pushSpecificBlog: (state, action) => {
+      state.checkBlogs.push(action.payload);
+    },
+    removeSpecificBlog: (state, action) => {
+      state.checkBlogs.splice(action.payload, 1);
     },
     pushVideosPosts: (state, action) => {
       for (let i = 0; i < action.payload.length; i++) {
@@ -98,6 +109,9 @@ export const {
   pushVideosPosts,
   setAskPostIndex,
   pushAskPosts,
+  pushCheckBlogs,
+  pushSpecificBlog,
+  removeSpecificBlog,
 } = ExploreReducer.actions;
 
 export default ExploreReducer.reducer;
