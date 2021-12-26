@@ -26,7 +26,14 @@ export const CustomizeReducer = createSlice({
       relatedPosts:true,
     },  
     dataToSend:{
+      customApperance:{
+        globalParameters:{
 
+        },
+        customParameters:{
+
+        }
+      }
     }  
   },
   reducers: {

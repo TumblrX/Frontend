@@ -17,8 +17,7 @@ import blog from './blog';
 import blogDrafts from './blogDrafts';
 import Customize from './Customize'; 
 import ExploreRecuder from './ExploreRecuder';
-import userInfo from './UserInfo'
-import UserInfo from './UserInfo';
+import UserInfoReducer from './UserInfo'
 
 export default configureStore({
   reducer: {
@@ -40,7 +39,7 @@ export default configureStore({
     BlogDrafts: blogDrafts,
     customize : Customize,
     Explore: ExploreRecuder,
-    userInfo : UserInfo,
+    userInfo : UserInfoReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false, 

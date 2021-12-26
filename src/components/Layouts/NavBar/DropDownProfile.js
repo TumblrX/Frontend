@@ -78,7 +78,7 @@ const DropDownProfile = function (props) {
         <NavLink to="/blog/username/activity">Activity</NavLink>
         <NavLink to="/blog/username/drafts">Drafts</NavLink>
         <NavLink to="/blog/username/queue">Queue</NavLink>
-        <NavLink to="/settings/blog/username">Edit Apperance</NavLink>
+        <NavLink to="/customize">Edit Apperance</NavLink>
       </ul>
       <div className={classes.links}>
         <NavLink to="/about">About</NavLink>
