@@ -2,7 +2,7 @@ import login from './LoginService';
 import getUserInfo from './UserInfoService';
 import getBlogInfo from './BlogInfoService';
 import { useDispatch , useSelector } from 'react-redux';
-import { setID , setInfinteScrolling } from '../../redux/UserInfo';
+import { setUserInfo } from '../../redux/UserInfo';
 import {
   showFillData,
   showFillEmail,
@@ -31,8 +31,8 @@ const LoginController = function () {
         if (response.result === true) {
           setToken(response.token);
           const response2 = await getUserInfo();
-          dispatch(setID(response2.data.blogs[0]));
-          console.log(response2.data.blogs[0]);
+          // const id = response2.data.blogs[0];
+          dispatch(setUserInfo(response2.data));
           dispatch(redirectToDashboard());
         } else {
           dispatch(showWrongData());

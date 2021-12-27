@@ -18,7 +18,7 @@ import blogDrafts from './blogDrafts';
 import Customize from './Customize'; 
 import ExploreRecuder from './ExploreRecuder';
 import UserInfoReducer from './UserInfo'
-
+import  NavNotificationsReducer  from './NavNotifications';
 export default configureStore({
   reducer: {
     passwordInfo: PasswordSectionReducer,
@@ -40,6 +40,7 @@ export default configureStore({
     customize : Customize,
     Explore: ExploreRecuder,
     userInfo : UserInfoReducer,
+    navNotifications : NavNotificationsReducer ,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false, 

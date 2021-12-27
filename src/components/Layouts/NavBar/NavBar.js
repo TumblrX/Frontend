@@ -17,6 +17,9 @@ import DropDownActivity from './DropDownActivity';
 import DropDownInbox from './DropDownInbox';
 import List from './List';
 import { getLikesCount } from './DropDownProfileService';
+import getNotifications from './NotificationsServce';
+import { setNotifications } from '../../../redux/NavNotifications';
+import { useDispatch } from 'react-redux';
 
 const NavBar = function () {
   const [title, setTitle] = useState('');
@@ -27,6 +30,9 @@ const NavBar = function () {
   const [isProfile, setProfile] = useState(false);
   const [inputIsFocused, setInputIsFocused] = useState(false);
   const [counts, setCounts] = useState({});
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchNavbarCounts = async () => {
     setCounts(await getLikesCount());
@@ -40,10 +46,13 @@ const NavBar = function () {
     setActivity(false);
     setProfile(false);
   };
-  const activityClickHandler = () => {
+  const activityClickHandler = async () => {
     setInbox(false);
     setActivity(!isActivity);
     setProfile(false);
+    const response  = await getNotifications();
+    console.log(response.response.data);
+    dispatch(setNotifications(response.response.data.notifications));
   };
   const profileClickHandler = async () => {
     setInbox(false);

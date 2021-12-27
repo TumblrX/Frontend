@@ -10,7 +10,7 @@ const CustomizePageController = function () {
     } = useSelector((state) => state.customize);
 
     const {
-      id,
+      userInfo,
     } = useSelector((state) => state.userInfo);
 
     const changeAvatar = (link) => {
@@ -92,8 +92,8 @@ const CustomizePageController = function () {
     dispatch(customize.setDataToSend({description : e.target.value})); 
   }
   const req =async () =>{
-    await customzie(dataToSend, id);
-    console.log('id ==============>      ',id);
+    await customzie(dataToSend, userInfo.blogs[0]);
+    console.log(userInfo);
   }
 
     const makeCircle =  (val) =>{ 
