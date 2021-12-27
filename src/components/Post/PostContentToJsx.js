@@ -99,6 +99,14 @@ const PostContentToJsx = function (content){
         audio = <iframe width="100%" height="166" src={contentBlock.url} frameBorder="no" />;
       } else {
         // Here provider is tumblrx
+        audio = (
+          <audio
+          controls
+          src={contentBlock.url}>
+            Your browser does not support the
+            <code>audio</code> element.
+          </audio>
+        )
       }
       return (
         <div className={classes.audio}>
@@ -112,6 +120,13 @@ const PostContentToJsx = function (content){
         video = <iframe width="100%" height="315" src={`//www.youtube.com/embed/${getYoutubeVideoId(contentBlock.url)}`} frameBorder="0" allowFullScreen />;
       } else {
         // Here provider is tumblrx
+        video = (
+          <video controls width="250">
+            <source src={contentBlock.url}
+            type="video/webm"/>
+              Sorry, your browser doesn't support embedded videos.
+          </video>
+        )
       }
       return (
         <div className={classes.video}>
