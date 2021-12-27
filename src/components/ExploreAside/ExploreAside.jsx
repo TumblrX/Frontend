@@ -10,7 +10,7 @@ import { fetchBlogs } from "./CheckBlogServices";
  *
  * @component
  */
-function ExploreAside() {
+function ExploreAside(props) {
   return (
     <aside className={styles["explore-aside"]}>
       <div className={styles["following-list"]}>
@@ -67,7 +67,7 @@ function ExploreAside() {
         <div className={styles["show-more-tags"]}>Show More Tags</div>
       </div>
       <div className={styles["check-out-blogs"]}>
-        <CheckBlog />
+        <CheckBlog tagName={props.tagName} />
         <div className={styles["show-more-tags"]} onClick={fetchBlogs}>Show More Tags</div>
       </div>
     </aside>
