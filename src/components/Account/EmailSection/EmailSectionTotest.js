@@ -1,4 +1,4 @@
-import api from "../../../api/api";
+import axios from "axios";
 import styles from "../Account.module.css";
 
 /**
@@ -8,23 +8,19 @@ import styles from "../Account.module.css";
  * @param {void}
  * @returns {void} return nothing
  */
-const changeEmail = function (sentData) {
+const changeEmail = async function (sentData) {
   let token = localStorage.getItem("token");
   let config = {
     headers: {
       Authorization: token,
     },
   };
-  api
-    .post("/api/user/change-email", sentData, config)
-    .then((response) => {
-      window.location.reload();
-    })
-    .catch((error) => {
-      document.getElementsByClassName(
-        `${styles["error-password-message"]}`
-      )[0].style.visibility = "unset";
-    });
+  try {
+    await axios.post("/api/user/change-email", sentData, config);
+    return true 
+  } catch (err) {
+    return false 
+  }
 };
 
 const changeFindMeByEmail = function (sentData) {
@@ -34,8 +30,8 @@ const changeFindMeByEmail = function (sentData) {
       Authorization: token,
     },
   };
-  api.post("/api/user/settings-save", sentData, config).then((respone) => {
-    console.log(respone);
+  axios.post("/api/user/settings-save", sentData, config).then((respone) => {
+    return true;
   });
 };
 
