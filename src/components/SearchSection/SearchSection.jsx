@@ -7,25 +7,30 @@ import ThreeFlexesData from "../ExploreSection/ThreeFlexesData";
 import TwoFlexesData from "../ExploreSection/TwoFlexesData";
 import OneFlexData from "../ExploreSection/OneFlexData";
 import { componentDidMount } from "./SearchSectionController";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AllPosts from "./AllPosts/AllPosts";
 import { useSelector } from "react-redux";
 function SearchSection() {
-  const { forYouPosts, flexesNumber } = useSelector((state) => state.Search);
+  const { searchWord } = useSelector((state) => state.Search);
 
   useEffect(componentDidMount, []);
   return (
-    <div className={styles["explore-section"]} style={{borderRight:"none"}}>
+    <div className={styles["explore-section"]} style={{ borderRight: "none" }}>
       <SearchNavbar />
-      <div style={{ minHeight: "250px" }}>
-        {flexesNumber == 4 ? (
-          <FourFlexData posts={forYouPosts} />
-        ) : flexesNumber == 3 ? (
-          <ThreeFlexesData posts={forYouPosts} />
-        ) : flexesNumber == 2 ? (
-          <TwoFlexesData posts={forYouPosts} />
-        ) : (
-          <OneFlexData posts={forYouPosts} />
-        )}
-      </div>
+      <Switch>
+        <Route path={`/search/${searchWord}/all`} component={AllPosts} exact />
+        {/* <Route path="/explore/trending" exact component={Trending} />
+        <Route
+          path="/explore/staff-picks"
+          exact
+          component={ExploreSuggestionList}
+        />
+        <Route path="/explore/audios" exact component={Audio} />
+        <Route path="/explore/text" exact component={Text} />
+        <Route path="/explore/photos" exact component={Image} />
+        <Route path="/explore/videos" exact component={Videos} />
+        <Route path="/explore/asks" exact component={Asks} /> */}
+      </Switch>
     </div>
   );
 }

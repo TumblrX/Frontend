@@ -34,7 +34,7 @@ function SearchNavbar() {
               style={{ left: "0%" }}
             >
               <div>
-                <Link to="/search/text">Text</Link>
+                <Link to="/search//text">Text</Link>
               </div>
               <div>
                 <Link to="/search/photos">Photos</Link>

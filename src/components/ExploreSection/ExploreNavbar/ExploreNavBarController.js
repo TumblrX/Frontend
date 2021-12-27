@@ -1,4 +1,6 @@
 import styles from "./scss/ExploreNavbar.module.scss";
+import { setSeachWord } from "../../../redux/SearchReducer";
+import configureStore from "../../../redux/store";
 
 /**
  * Handels the Click on the "more " button in the Explore
@@ -51,8 +53,9 @@ const componentDidMount = () => {
 
   // if the function is called from the Search Component .
   if (window.location.pathname.split("/")[1] == "search") {
-    document.getElementById("searchTag").innerText =
-      window.location.pathname.split("/")[2];
+    const searchWord = window.location.pathname.split("/")[2];
+    document.getElementById("searchTag").innerText = searchWord;
+    configureStore.dispatch(setSeachWord(searchWord));
   }
   return () => {
     document.removeEventListener("mouseup", closeMore);

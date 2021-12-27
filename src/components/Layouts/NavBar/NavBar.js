@@ -37,7 +37,7 @@ const NavBar = function () {
       // Number 13 is the "Enter" key on the keyboard
       if (event.keyCode === 13) {
         console.log(window.location)
-        window.location.replace(window.location.origin+"/search/" + searchBox.value);
+        window.location.replace(window.location.origin+"/search/" + searchBox.value+"/all");
       }
     });
   }, []);

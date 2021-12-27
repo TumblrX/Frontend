@@ -1,4 +1,5 @@
 import axios from "axios";
+import { RiTruckLine } from "react-icons/ri";
 import styles from "../Account.module.css";
 
 /**
@@ -10,6 +11,7 @@ import styles from "../Account.module.css";
  */
 const changeEmail = async function (sentData) {
   let token = localStorage.getItem("token");
+  let response = false;
   let config = {
     headers: {
       Authorization: token,
@@ -17,22 +19,24 @@ const changeEmail = async function (sentData) {
   };
   try {
     await axios.post("/api/user/change-email", sentData, config);
-    return true 
-  } catch (err) {
-    return false 
-  }
+    response = true;
+  } catch (err) {}
+  return response;
 };
 
-const changeFindMeByEmail = function (sentData) {
+const changeFindMeByEmail = async function (sentData) {
   let token = localStorage.getItem("token");
+  let response = false;
   let config = {
     headers: {
       Authorization: token,
     },
   };
-  axios.post("/api/user/settings-save", sentData, config).then((respone) => {
-    return true;
-  });
+  try {
+    await axios.post("/api/user/settings-save", sentData, config);
+    response = true;
+  } catch (err) {}
+  return response;
 };
 
 export { changeEmail, changeFindMeByEmail };

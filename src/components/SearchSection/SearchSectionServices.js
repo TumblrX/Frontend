@@ -29,13 +29,19 @@ const retrieveSearchPosts = () => {
   const { Search } = configureStore.getState();
 
   const searchTag = document.getElementById("searchTag").innerText;
+
   api
     .get("/api/post?q=" + searchTag + "&offset=" + Search.searchPostsIndex)
     .then((res) => {
-      console.log("From hyou ",res.data.data);
+      console.log("From hyou ", res.data.data);
       configureStore.dispatch(pushForYouPosts(res.data.data));
-      configureStore.dispatch(setSearchPostsIndex(Search.searchPostsIndex+10));
+      configureStore.dispatch(
+        setSearchPostsIndex(Search.searchPostsIndex + 10)
+      );
       window.addEventListener("scroll", checkScrollo);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };
 

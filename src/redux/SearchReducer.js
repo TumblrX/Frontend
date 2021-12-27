@@ -23,6 +23,9 @@ export const SearchReducer = createSlice({
     searchPostsIndex: 0,
   },
   reducers: {
+    setSeachWord: (state, action) => {
+      state.searchWord = action.payload;
+    },
     setSearchPostsIndex: (state, action) => {
       state.searchPostsIndex = action.payload;
     },
@@ -118,6 +121,7 @@ export const {
   pushSpecificBlog,
   removeSpecificBlog,
   setSearchPostsIndex,
+  setSeachWord,
 } = SearchReducer.actions;
 
 export default SearchReducer.reducer;
