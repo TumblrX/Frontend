@@ -7,10 +7,8 @@ function Search() {
   return (
     <div>
       <div className={styles["explore-container"]}>
-        <SearchSection/>
+        <SearchSection />
         <ExploreAside tagName="Checkout related blogs" />
-        
-        
       </div>
     </div>
   );

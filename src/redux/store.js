@@ -1,24 +1,25 @@
-import { configureStore } from '@reduxjs/toolkit';
-import createReducer from './createBlog';
-import DashBoardReducer from './DashBoardReducer';
-import blogPosts from './blogPosts';
-import LoginReducer from './login';
-import EmailSectionReducer from './EmailSection';
-import PasswordSectionReducer from './PasswordSection';
-import SecuritySectionReducer from './SecuritySection';
-import NotificationsReducer from './Notifications';
-import RegisterReducer from './register';
-import MainPageReducer from './mainPage';
-import blogFollowers from './blogFollowers';
-import userBlogsReducer from './userBlogs-slice';
-import newTextPostReducer from './newTextPost-slice';
-import ChatReducer from './ChatReducer';
-import blog from './blog';
-import blogDrafts from './blogDrafts';
-import Customize from './Customize'; 
-import ExploreRecuder from './ExploreRecuder';
-import userInfo from './UserInfo'
-import UserInfo from './UserInfo';
+import { configureStore } from "@reduxjs/toolkit";
+import createReducer from "./createBlog";
+import DashBoardReducer from "./DashBoardReducer";
+import blogPosts from "./blogPosts";
+import LoginReducer from "./login";
+import EmailSectionReducer from "./EmailSection";
+import PasswordSectionReducer from "./PasswordSection";
+import SecuritySectionReducer from "./SecuritySection";
+import NotificationsReducer from "./Notifications";
+import RegisterReducer from "./register";
+import MainPageReducer from "./mainPage";
+import blogFollowers from "./blogFollowers";
+import userBlogsReducer from "./userBlogs-slice";
+import newTextPostReducer from "./newTextPost-slice";
+import ChatReducer from "./ChatReducer";
+import blog from "./blog";
+import blogDrafts from "./blogDrafts";
+import Customize from "./Customize";
+import ExploreRecuder from "./ExploreRecuder";
+import userInfo from "./UserInfo";
+import UserInfo from "./UserInfo";
+import SearchReducer from "./SearchReducer";
 
 export default configureStore({
   reducer: {
@@ -38,11 +39,13 @@ export default configureStore({
     Chat: ChatReducer,
     Blog: blog,
     BlogDrafts: blogDrafts,
-    customize : Customize,
+    customize: Customize,
     Explore: ExploreRecuder,
-    userInfo : UserInfo,
+    userInfo: UserInfo,
+    Search: SearchReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    serializableCheck: false, 
-  }),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

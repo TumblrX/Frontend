@@ -1,5 +1,13 @@
 import styles from "./scss/ExploreNavbar.module.scss";
 
+/**
+ * Handels the Click on the "more " button in the Explore
+ * when click occurs on it the list should appear .
+ * @type {function}
+ * @param {void}
+ * @returns {void} return nothing
+ */
+
 const onMoreClick = () => {
   let moreList = document.querySelector(`.${styles["more-list"]}`);
   if (moreList.classList.contains(`${styles["hide"]}`)) {
@@ -18,6 +26,13 @@ const closeMore = function (e) {
   }
 };
 
+/**
+ * once the Component is mounted you should add the event handlers
+ *
+ * @type {function}
+ * @param {void}
+ * @returns {void} return nothing
+ */
 const componentDidMount = () => {
   document
     .querySelector(`.more-section`)
@@ -33,9 +48,14 @@ const componentDidMount = () => {
       });
     });
   document.addEventListener("mouseup", closeMore);
+
+  // if the function is called from the Search Component .
+  if (window.location.pathname.split("/")[1] == "search") {
+    document.getElementById("searchTag").innerText =
+      window.location.pathname.split("/")[2];
+  }
   return () => {
     document.removeEventListener("mouseup", closeMore);
-    console.log("I have been unmounted ");
   };
 };
 
