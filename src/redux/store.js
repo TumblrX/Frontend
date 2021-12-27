@@ -18,8 +18,10 @@ import blogDrafts from "./blogDrafts";
 import Customize from "./Customize";
 import ExploreRecuder from "./ExploreRecuder";
 import SearchReducer from "./SearchReducer";
-import  NavNotificationsReducer  from './NavNotifications';
+import NavNotificationsReducer  from './NavNotifications';
 import userFollowing from "./userFollowing";
+import UserInfoReducer  from "./UserInfo";
+
 export default configureStore({
   reducer: {
     passwordInfo: PasswordSectionReducer,
@@ -43,6 +45,7 @@ export default configureStore({
     Search: SearchReducer,
     following: userFollowing,
     navNotifications : NavNotificationsReducer ,
+    userInfo: UserInfoReducer ,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

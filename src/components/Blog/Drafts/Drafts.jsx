@@ -23,10 +23,9 @@ import {
 const Drafts = function () {
   const {
     pageNum, intialLoading,
-    drafts, numberOfDrafts,
+    drafts, numberOfDrafts, isInfinte
   } = useSelector((state) => state.BlogDrafts);
   const { avatar, id } = useSelector((state) => state.Blog);
-  const { infinteScrolling } = useSelector((state) => state.userInfo);
   const { fetchBlogDrafts } = useDraftHandler();
   useEffect(() => {
     if (id) {
@@ -45,12 +44,12 @@ const Drafts = function () {
               <NothingAvailable page="Draft" />
             )
             : (
-              showDrafts(drafts, pageNum, infinteScrolling)
+              showDrafts(drafts, pageNum, isInfinte)
             )
           )}
         <div className={`${styles.navigateBtns} ${styles.row}`}>
           {
-            (pageNum !== 1 && !infinteScrolling && numberOfDrafts !== 0)
+            (pageNum !== 1 && !isInfinte && numberOfDrafts !== 0)
             && (
               <button
                 className={styles.previousBtn}
@@ -62,7 +61,7 @@ const Drafts = function () {
           }
           {
             (pageNum * 10 < drafts.length || drafts.length === 0)
-              && !infinteScrolling && numberOfDrafts !== 0
+              && !isInfinte && numberOfDrafts !== 0
               && (
                 <button
                   className={styles.nextBtn}
