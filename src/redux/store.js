@@ -20,6 +20,7 @@ import ExploreRecuder from "./ExploreRecuder";
 import userInfo from "./UserInfo";
 import UserInfo from "./UserInfo";
 import SearchReducer from "./SearchReducer";
+import UserInfoReducer from './UserInfo'
 
 export default configureStore({
   reducer: {
@@ -43,6 +44,7 @@ export default configureStore({
     Explore: ExploreRecuder,
     userInfo: UserInfo,
     Search: SearchReducer,
+    userInfo : UserInfoReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -52,6 +52,7 @@ const componentDidMount = function () {
   // it will be called when the Component is unmounted
   return () => {
     window.removeEventListener("resize", onResize);
+    window.removeEventListener("scroll", checkScrollo);
   };
 };
 
