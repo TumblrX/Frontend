@@ -25,6 +25,10 @@ body {
   min-width: 533px;
   height: fit-content;
   overflow-x: hidden;
+  audio{
+    width: 100%;
+    margin-right: 0px;
+  }
 }
 
 .posts-container {

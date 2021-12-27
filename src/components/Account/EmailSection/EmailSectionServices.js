@@ -13,7 +13,6 @@ const changeEmail = function (sentData) {
       window.location.reload();
     })
     .catch((error) => {
-      console.log(error);
       document.getElementsByClassName(
         `${styles["error-password-message"]}`
       )[0].style.visibility = "unset";

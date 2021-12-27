@@ -1,25 +1,25 @@
-import { configureStore } from '@reduxjs/toolkit';
-import createReducer from './createBlog';
-import DashBoardReducer from './DashBoardReducer';
-import blogPosts from './blogPosts';
-import LoginReducer from './login';
-import EmailSectionReducer from './EmailSection';
-import PasswordSectionReducer from './PasswordSection';
-import SecuritySectionReducer from './SecuritySection';
-import NotificationsReducer from './Notifications';
-import RegisterReducer from './register';
-import MainPageReducer from './mainPage';
-import blogFollowers from './blogFollowers';
-import userBlogsReducer from './userBlogs-slice';
-import newTextPostReducer from './newTextPost-slice';
-import ChatReducer from './ChatReducer';
-import blog from './blog';
-import blogDrafts from './blogDrafts';
-import Customize from './Customize'; 
-import ExploreRecuder from './ExploreRecuder';
-import UserInfoReducer from './UserInfo';
-import userFollowing from './userFollowing';
-
+import { configureStore } from "@reduxjs/toolkit";
+import createReducer from "./createBlog";
+import DashBoardReducer from "./DashBoardReducer";
+import blogPosts from "./blogPosts";
+import LoginReducer from "./login";
+import EmailSectionReducer from "./EmailSection";
+import PasswordSectionReducer from "./PasswordSection";
+import SecuritySectionReducer from "./SecuritySection";
+import NotificationsReducer from "./Notifications";
+import RegisterReducer from "./register";
+import MainPageReducer from "./mainPage";
+import blogFollowers from "./blogFollowers";
+import userBlogsReducer from "./userBlogs-slice";
+import newTextPostReducer from "./newTextPost-slice";
+import ChatReducer from "./ChatReducer";
+import blog from "./blog";
+import blogDrafts from "./blogDrafts";
+import Customize from "./Customize";
+import ExploreRecuder from "./ExploreRecuder";
+import SearchReducer from "./SearchReducer";
+import  NavNotificationsReducer  from './NavNotifications';
+import userFollowing from "./userFollowing";
 export default configureStore({
   reducer: {
     passwordInfo: PasswordSectionReducer,
@@ -38,12 +38,14 @@ export default configureStore({
     Chat: ChatReducer,
     Blog: blog,
     BlogDrafts: blogDrafts,
-    customize : Customize,
+    customize: Customize,
     Explore: ExploreRecuder,
-    userInfo : UserInfoReducer,
+    Search: SearchReducer,
     following: userFollowing,
+    navNotifications : NavNotificationsReducer ,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    serializableCheck: false, 
-  }),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

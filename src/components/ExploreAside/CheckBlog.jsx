@@ -5,13 +5,13 @@ import img from "../../assets/Images/avatar.png";
 import { useSelector } from "react-redux";
 import { onXClick } from "./CheckBlogController";
 import { fetchBlogs } from "./CheckBlogServices";
-function CheckBlog() {
+function CheckBlog(props) {
   const { checkBlogs } = useSelector((state) => state.Explore);
   useEffect(fetchBlogs, []);
   return (
     <>
       <div className={styles["header"]}>
-        <div>check out these blogs</div>
+        <div>{props.tagName}</div>
       </div>
       <ul>
         {checkBlogs.map((blog, index) => {
