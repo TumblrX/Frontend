@@ -13,8 +13,10 @@ import CreateBlog from './CreateBlog/CreateBlog';
 import Blog from './Blog/Blog';
 import BlogView from './BlogView/BlogView';
 import Customize from './Customize/Customize';
+import Following from './Following/Following';
+import ServerError from './NotFound/ServerError';
 
 export {
   NotFound, Dashboard, Explore, Inbox, New, MainPage, Register, LoginPage,
-  ForgetPassword, CreateBlog, Blog, BlogView, Customize,
+  ForgetPassword, CreateBlog, Blog, BlogView, Customize, Following, ServerError,
 };

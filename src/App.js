@@ -8,6 +8,7 @@ import { fetchUserBlogs } from './redux/userBlogs-actions';
 import Settings from './pages/Settings/Settings';
 import {
   NotFound,
+  ServerError,
   Dashboard,
   Explore,
   Inbox,
@@ -20,6 +21,7 @@ import {
   Blog,
   BlogView,
   Customize,
+  Following,
 } from './pages/pages';
 import {
   NavBar,
@@ -63,6 +65,24 @@ const App = function () {
           )
         )}
       />
+      {/* <Route
+        exact
+        path="/following"
+        render={() => (
+          localStorage.getItem('token') ? (
+            <>
+              <NavBar />
+              <Following />
+            </>
+          ) : (
+            <Redirect to="/" />
+          )
+        )}
+      /> */}
+      <Route exact path="/following">
+        <NavBar />
+        <Following />
+      </Route>
       <Route exact path="/inbox">
         <NavBar />
         <Inbox />
@@ -117,6 +137,9 @@ const App = function () {
       />
       <Route exact path="/blogview">
         <BlogView />
+      </Route>
+      <Route path="/servererror">
+        <ServerError />
       </Route>
       <Route path="*">
         <NotFound />

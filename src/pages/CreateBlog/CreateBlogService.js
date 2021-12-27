@@ -12,7 +12,11 @@ const sendData = async (userData, history, handleURLUsed) => {
     console.log('succeed');
     history.push(`/blog/${userData.handle}`);
   } catch (err) {
-    handleURLUsed();
+    if(err.response.status===400){
+      handleURLUsed();
+    }else{
+      history.push(`/servererror`);
+    }
     console.log(`Error message: ${err.message}`);
   }
 };

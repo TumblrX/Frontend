@@ -21,7 +21,7 @@ const useHandler = () => {
     ))
   );
   /**
-   * this function is to show the fetched followers in followers page of a blog
+   * this function handle the event of changing search box input to keep it in sync with the state
    * @function handleChange
    * @param {event} event
    * @return {void} return nothing
@@ -31,7 +31,8 @@ const useHandler = () => {
     dispatch(setSearchValue(event.target.value));
   };
   /**
-   *  this function handle the event of changing search box input to keep it in sync with the state
+   *  this function handle the event of submitting search form
+   * @function handleSubmit
    * @param {event} event
    * @return {void} return nothing
    */
