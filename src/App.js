@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable space-before-blocks */
-import React, { useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { fetchUserBlogs } from './redux/userBlogs-actions';
-import Settings from './pages/Settings/Settings';
+import React, { useEffect } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchUserBlogs } from "./redux/userBlogs-actions";
+import Search from "./pages/Search/Search";
+import Settings from "./pages/Settings/Settings";
 import {
   NotFound,
   Dashboard,
@@ -20,7 +21,7 @@ import {
   Blog,
   BlogView,
   Customize,
-} from './pages/pages';
+} from "./pages/pages";
 import {
   NavBar,
   HomePageNavBar,
@@ -31,6 +32,7 @@ import {
 import Chat from './components/Dashboard/Chat/Chat';
 import { useSelector } from 'react-redux';
 import updateNotifications from './UpdateNotifications'
+
 const App = function () {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -56,11 +58,15 @@ const App = function () {
         <NavBar />
         <Explore />
       </Route>
+      <Route path="/search">
+        <NavBar />
+        <Search />
+      </Route>
       <Route
         exact
         path="/dashboard"
-        render={() => (
-          localStorage.getItem('token') ? (
+        render={() =>
+          localStorage.getItem("token") ? (
             <>
               <NavBar />
               <Dashboard />
@@ -68,7 +74,7 @@ const App = function () {
           ) : (
             <Redirect to="/" />
           )
-        )}
+        }
       />
       <Route exact path="/inbox">
         <NavBar />
@@ -80,8 +86,8 @@ const App = function () {
       <Route
         exact
         path="/newblog"
-        render={() => (
-          localStorage.getItem('token') ? (
+        render={() =>
+          localStorage.getItem("token") ? (
             <>
               <NavBar />
               <CreateBlog />
@@ -89,7 +95,7 @@ const App = function () {
           ) : (
             <Redirect to="/" />
           )
-        )}
+        }
       />
       <Route path="/new">
         <New />
@@ -111,8 +117,8 @@ const App = function () {
       </Route>
       <Route
         path="/blog/:blogName"
-        render={() => (
-          localStorage.getItem('token') ? (
+        render={() =>
+          localStorage.getItem("token") ? (
             <>
               <NavBar />
               <Blog />
@@ -120,7 +126,7 @@ const App = function () {
           ) : (
             <Redirect to="/" />
           )
-        )}
+        }
       />
       <Route exact path="/blogview">
         <BlogView />

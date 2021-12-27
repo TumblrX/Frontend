@@ -11,7 +11,7 @@ const Explore = function () {
     <div>
       <div className={styles["explore-container"]}>
         <ExploreSection/>
-        <ExploreAside/>
+        <ExploreAside tagName="Check out these Blogs"/>
       </div>
     </div>
   );
