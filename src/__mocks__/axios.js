@@ -1,4 +1,4 @@
-// /* eslint-disable prefer-promise-reject-errors */
-// export default {
-//   get: jest.fn(() => Promise.resolve({ data: {} })),
-// };
+export default {
+    post: jest.fn(() => Promise.resolve({ data: {} })),
+    get: jest.fn(() => Promise.resolve({ data: {} }))
+};

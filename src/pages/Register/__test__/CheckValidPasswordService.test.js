@@ -1,4 +1,4 @@
-import validatePassword from "./CheckValidPasswordService";
+import validatePassword from "../CheckValidPasswordService";
 
 describe('check that the password is validated well', ()=>{
     it('should return true if the password is 8 chars or longer ',()=>{
