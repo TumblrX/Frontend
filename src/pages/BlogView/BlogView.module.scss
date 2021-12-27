@@ -23,6 +23,10 @@
             display: flex;
             align-items: center;
             .close{
+                svg{
+                    width: 60%;
+                    height: 100%;
+                }
                 height: 100%;
                 width:30px;
                 cursor: pointer;
@@ -74,9 +78,6 @@
                     justify-content: center;
                     font-weight: 700;
                     font-size:1rem;
-                }
-                span:last-of-type{
-                    font-weight: 400;
                 }
                 :hover{
                     background-color: $hover-color;

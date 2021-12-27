@@ -33,7 +33,9 @@ function BlogView() {
                 <div className={classes.background}>
                     <div className={classes['background-container']}>
                         <div className={classes['background-container-1']}>
-                            <div className={classes.close} onClick={() => {dispatch(setIsClose(0))}} ><ImCross /></div>
+                            <div className={classes.close} onClick={() => {dispatch(setIsClose(0))}} >
+                                <NavLink to="/dashboard"><ImCross /></NavLink>
+                            </div>
                             <div className={classes.username}><span>username</span></div>
                         </div>
                         <div className={classes['background-container-2']}>
@@ -53,7 +55,6 @@ function BlogView() {
                                 <div className={classes.dotsDrop}>
                                 <span>Archive</span>
                                 <span>Following</span>
-                                <span>Close</span>
                                 </div>
                                 }
                             </div>
