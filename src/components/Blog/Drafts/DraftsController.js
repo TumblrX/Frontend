@@ -27,7 +27,9 @@ const showDrafts = (drafts, pageNum, isInfinte) => {
     drafts.slice(firstPost, lastPost).map((draft, index) => (
       <div className={`${styles.post} ${styles.row}`} key={index} data-testid={`testPost${index}`}>
         <div className={styles.logo}>
+        <object data="https://assets.tumblr.com/images/default_avatar/cone_open_128.png" width="64" height="64">
           <img src={draft.blogAttribution.avatar} alt="no avatar" className={styles.limg} />
+        </object>
         </div>
         <div className={styles.postDatailes}>
           <Post data={draft} />
