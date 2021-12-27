@@ -47,7 +47,9 @@ const App = function () {
     updateNotifications(userInfo.id);    
   }, [userInfo.id]);
   return (
-    <Switch>
+    <>
+    {localStorage.getItem('token') && (
+      <Switch>
       <Route exact path="/">
         <HomePageNavBar />
         <MainPage />
@@ -64,20 +66,11 @@ const App = function () {
         <NavBar />
         <Search />
       </Route>
-      <Route
-        exact
-        path="/dashboard"
-        render={() =>
-          localStorage.getItem("token") ? (
-            <>
-              <NavBar />
-              <Dashboard />
-            </>
-          ) : (
-            <Redirect to="/" />
-          )
-        }
-      />
+      <Route exact  path="/dashboard">
+        <NavBar />
+        <Dashboard />
+      </Route>
+
       {/* <Route
         exact
         path="/following"
@@ -86,37 +79,27 @@ const App = function () {
             <>
               <NavBar />
               <Following />
-            </>
-          ) : (
+              </>
+              ) : (
             <Redirect to="/" />
           )
-        )}
-      /> */}
+          )}
+        /> */}
       <Route exact path="/following">
         <NavBar />
         <Following />
       </Route>
-      <Route exact path="/inbox">
+      {/*<Route exact path="/inbox">
         <NavBar />
         <Inbox />
-      </Route>
+      </Route>*/}
       <Route exact path="/customize">
         <Customize />
       </Route>
-      <Route
-        exact
-        path="/newblog"
-        render={() =>
-          localStorage.getItem("token") ? (
-            <>
-              <NavBar />
-              <CreateBlog />
-            </>
-          ) : (
-            <Redirect to="/" />
-          )
-        }
-      />
+      <Route exact path="/newblog">
+        <NavBar />
+        <CreateBlog />      
+      </Route>      
       <Route path="/new">
         <New />
       </Route>
@@ -135,19 +118,10 @@ const App = function () {
         <Redirect to="/settings/account" />
         <Settings />
       </Route>
-      <Route
-        path="/blog/:blogName"
-        render={() =>
-          localStorage.getItem("token") ? (
-            <>
-              <NavBar />
-              <Blog />
-            </>
-          ) : (
-            <Redirect to="/" />
-          )
-        }
-      />
+      <Route path="/blog/:blogName">
+        <NavBar />
+        <Blog />
+      </Route>      
       <Route exact path="/blogview">
         <BlogView />
       </Route>
@@ -158,6 +132,30 @@ const App = function () {
         <NotFound />
       </Route>
     </Switch>
+    )}
+    {!localStorage.getItem('token') && (
+      <Switch>
+      <Route exact path="/">
+        <HomePageNavBar />
+        <MainPage />
+      </Route>
+      <Route exact path="/forgetPassword">
+        <ForgetPassword />
+      </Route>
+      <Route exact path="/register">
+        <LogInNavBar />
+        <Register />
+      </Route>
+      <Route exact path="/login">
+        <SignUpNavBar />
+        <LoginPage />
+      </Route>
+      <Route path="*">
+        <Redirect to="/" />
+      </Route>      
+    </Switch>
+    )}
+    </>
   );
 };
 
