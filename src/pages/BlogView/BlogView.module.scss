@@ -1,10 +1,5 @@
 @import 'config';
 
-// قولنا 100 الف مرة محدش يعمل حاجة جلوبال
-svg{
-    // width: 100%;
-    // height: 100%;
-}
 .page{
     display: flex;
     justify-content: flex-end;
@@ -58,7 +53,6 @@ svg{
                 width: 30px;
                 height: 100%;
             }
-            
             .dotsDrop{
                 width:200px;
                 display: flex;
@@ -69,7 +63,7 @@ svg{
                 border-radius: 3px;
                 overflow: hidden;
                 position: absolute;
-                top: 10%;
+                top: 6%;
                 right: 1rem;
                 z-index: 999;
                 span{
@@ -98,7 +92,7 @@ svg{
                 border-radius: 3px;
                 overflow: hidden;
                 position: absolute;
-                top: 10%;
+                top: 6%;
                 right: 1rem;
                 z-index: 999;
                 span{
@@ -112,6 +106,21 @@ svg{
                 :hover{
                     background-color: $hover-color;
                 }
+            }
+        }
+    }
+}
+.blogview-posts{
+    background-color: #fff;
+    .blogview-posts-container{
+        width: 90%;
+        margin:auto;
+        .post{
+            border: 3px solid $bg;
+            margin-bottom: 15px;
+            position: relative;
+            .postDatailes {
+                width: 100%;
             }
         }
     }

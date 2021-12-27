@@ -14,6 +14,7 @@ import userBlogsReducer from "./userBlogs-slice";
 import newTextPostReducer from "./newTextPost-slice";
 import ChatReducer from "./ChatReducer";
 import blog from "./blog";
+import BlogView from "./blogview";
 import blogDrafts from "./blogDrafts";
 import Customize from "./Customize";
 import ExploreRecuder from "./ExploreRecuder";
@@ -39,6 +40,7 @@ export default configureStore({
     newTextPost: newTextPostReducer,
     Chat: ChatReducer,
     Blog: blog,
+    BlogView: BlogView,
     BlogDrafts: blogDrafts,
     customize: Customize,
     Explore: ExploreRecuder,
