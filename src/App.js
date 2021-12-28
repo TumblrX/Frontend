@@ -1,13 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable space-before-blocks */
-import React, { useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { fetchUserBlogs } from './redux/userBlogs-actions';
-import Settings from './pages/Settings/Settings';
+import React, { useEffect } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchUserBlogs } from "./redux/userBlogs-actions";
+import Search from "./pages/Search/Search";
+import Settings from "./pages/Settings/Settings";
 import {
   NotFound,
+  ServerError,
   Dashboard,
   Explore,
   Inbox,
@@ -20,7 +22,8 @@ import {
   Blog,
   BlogView,
   Customize,
-} from './pages/pages';
+  Following,
+} from "./pages/pages";
 import {
   NavBar,
   HomePageNavBar,
@@ -29,14 +32,24 @@ import {
   ExploreLayout,
 } from './components/Layouts/Layouts';
 import Chat from './components/Dashboard/Chat/Chat';
+import { useSelector } from 'react-redux';
+import updateNotifications from './UpdateNotifications'
 
 const App = function () {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUserBlogs());
   }, [dispatch]);
+  const {
+    id, userInfo
+  } = useSelector((state) => state.userInfo);
+  useEffect(() => {
+    updateNotifications(userInfo.id);    
+  }, [userInfo.id]);
   return (
-    <Switch>
+    <>
+    {localStorage.getItem('token') && (
+      <Switch>
       <Route exact path="/">
         <HomePageNavBar />
         <MainPage />
@@ -49,41 +62,44 @@ const App = function () {
         <NavBar />
         <Explore />
       </Route>
-      <Route
+      <Route path="/search">
+        <NavBar />
+        <Search />
+      </Route>
+      <Route exact  path="/dashboard">
+        <NavBar />
+        <Dashboard />
+      </Route>
+
+      {/* <Route
         exact
-        path="/dashboard"
+        path="/following"
         render={() => (
           localStorage.getItem('token') ? (
             <>
               <NavBar />
-              <Dashboard />
-            </>
-          ) : (
+              <Following />
+              </>
+              ) : (
             <Redirect to="/" />
           )
-        )}
-      />
-      <Route exact path="/inbox">
+          )}
+        /> */}
+      <Route exact path="/following">
+        <NavBar />
+        <Following />
+      </Route>
+      {/*<Route exact path="/inbox">
         <NavBar />
         <Inbox />
-      </Route>
+      </Route>*/}
       <Route exact path="/customize">
         <Customize />
       </Route>
-      <Route
-        exact
-        path="/newblog"
-        render={() => (
-          localStorage.getItem('token') ? (
-            <>
-              <NavBar />
-              <CreateBlog />
-            </>
-          ) : (
-            <Redirect to="/" />
-          )
-        )}
-      />
+      <Route exact path="/newblog">
+        <NavBar />
+        <CreateBlog />      
+      </Route>      
       <Route path="/new">
         <New />
       </Route>
@@ -102,26 +118,44 @@ const App = function () {
         <Redirect to="/settings/account" />
         <Settings />
       </Route>
-      <Route
-        path="/blog/:blogName"
-        render={() => (
-          localStorage.getItem('token') ? (
-            <>
-              <NavBar />
-              <Blog />
-            </>
-          ) : (
-            <Redirect to="/" />
-          )
-        )}
-      />
+      <Route path="/blog/:blogName">
+        <NavBar />
+        <Blog />
+      </Route>      
       <Route exact path="/blogview">
         <BlogView />
+      </Route>
+      <Route path="/servererror">
+        <ServerError />
       </Route>
       <Route path="*">
         <NotFound />
       </Route>
     </Switch>
+    )}
+    {!localStorage.getItem('token') && (
+      <Switch>
+      <Route exact path="/">
+        <HomePageNavBar />
+        <MainPage />
+      </Route>
+      <Route exact path="/forgetPassword">
+        <ForgetPassword />
+      </Route>
+      <Route exact path="/register">
+        <LogInNavBar />
+        <Register />
+      </Route>
+      <Route exact path="/login">
+        <SignUpNavBar />
+        <LoginPage />
+      </Route>
+      <Route path="*">
+        <Redirect to="/" />
+      </Route>      
+    </Switch>
+    )}
+    </>
   );
 };
 

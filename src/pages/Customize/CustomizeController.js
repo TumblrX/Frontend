@@ -1,9 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
 import * as customize from '../../redux/Customize';
+import customzie from './CustomizeService';
 
 const CustomizePageController = function () {
 
     const dispatch = useDispatch();  
+    const {
+      dataToSend,
+    } = useSelector((state) => state.customize);
+
+    const {
+      userInfo,
+    } = useSelector((state) => state.userInfo);
 
     const changeAvatar = (link) => {
       dispatch(customize.setAvatar(link));
@@ -44,26 +52,32 @@ const CustomizePageController = function () {
     const handler1 = (e) => {
         document.getElementById('customizeContainer').style.background =  e.target.value;
         dispatch(customize.setBgColor(e.target.value));
-        dispatch(customize.setDataToSend({headerImage : e.target.value}));   
+        let newdata =  JSON.parse(JSON.stringify(dataToSend));
+        newdata['customApperance']['globalParameters']['backgroundColor'] = e.target.value; 
+        dispatch(customize.setDataToSend(newdata)); 
+
     };
       const handler2 = (e) => {
         document.getElementById('title').style.color =  e.target.value; 
         document.getElementById('description').style.color =  e.target.value;
         dispatch(customize.setTitleColor(e.target.value));
-        dispatch(customize.setDataToSend({backgroundColor : e.target.value}));   
-        dispatch(customize.setDataToSend({titleColor : e.target.value}));          
+        let newdata =  JSON.parse(JSON.stringify(dataToSend));
+        newdata['customApperance']['globalParameters']['titleColor'] = e.target.value; 
+        dispatch(customize.setDataToSend(newdata)); 
     };
       const handler3 = (e) => {
         document.getElementById('accent').style.color =  e.target.value; 
         document.getElementById('accent1').style.borderBottom =  `4px solid ${e.target.value}`; 
-        dispatch(customize.setAccentColor(e.target.value));  
-        dispatch(customize.setDataToSend({accentColor : e.target.value}));     
+        dispatch(customize.setAccentColor(e.target.value));
+        let newdata =  JSON.parse(JSON.stringify(dataToSend));
+        newdata['customApperance']['globalParameters']['accentColor'] = e.target.value; 
+        dispatch(customize.setDataToSend(newdata)); 
     };
     
     const changeTitleFunc = (title) =>{
     document.getElementById('title').innerHTML =  title;
     }
-
+    
     const changeTitle = (e) =>{
     dispatch(customize.setTitle(e.target.value)); 
     changeTitleFunc(e.target.value);
@@ -76,9 +90,14 @@ const CustomizePageController = function () {
     dispatch(customize.setDescription(e.target.value)); 
     changeDescriptionFunc(e.target.value);
     dispatch(customize.setDataToSend({description : e.target.value})); 
-    }
+  }
+  const req =async () =>{
+    await customzie(dataToSend, userInfo.blogs[0]);
+    console.log(userInfo);
+  }
 
-    const makeCircle = (val) =>{        
+    const makeCircle =  (val) =>{ 
+       
     if (val === true){
         document.getElementById('avatar').style.borderRadius  =  '100%'; 
         document.getElementById('avatar').style.MozBorderRadius  =  '100%'; 
@@ -90,7 +109,9 @@ const CustomizePageController = function () {
     }
     dispatch(customize.setAvatarShapeCircle(val));
     }
-    const handleRadio = (e) =>{
+    const handleRadio = async (e) =>{
+      await req();
+
     if (e.target.value === 'circle'){
         makeCircle(true); 
         dispatch(customize.setDataToSend({isAvatarCircle : true})); 
@@ -146,33 +167,44 @@ const CustomizePageController = function () {
           document.getElementById('description').style.display  = 'none'; 
         }
       }
+
     
       const handleCheckBoxes = (e) =>{
         const checked = e.target.checked;
         if(e.target.value === '1'){
           showHeaderImageFunc(checked);
           dispatch(customize.setShowHeaderImage(checked));
-          dispatch(customize.setDataToSend({'showHeaderImage' : checked}));
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['globalParameters']['showHeaderImage'] = checked;  
+          dispatch(customize.setDataToSend(newdata));   
         }
         else if(e.target.value === '2'){
           stretchHeaderImageFunc(checked); 
           dispatch(customize.setStretchHeaderImage(checked));  
-          dispatch(customize.setDataToSend({'stretchHeaderImage' : checked}));    
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['globalParameters']['stretchHeaderImage'] = checked; 
+          dispatch(customize.setDataToSend(newdata)); 
         }
         else if(e.target.value === '3'){
           showAvatarFunc(checked);
-          dispatch(customize.setShowAvatar(checked));  
-          dispatch(customize.setDataToSend({'showAvatar' : checked}));
+          dispatch(customize.setShowAvatar(checked)); 
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['globalParameters']['showAvatar'] = checked; 
+          dispatch(customize.setDataToSend(newdata));  
         }
         else if(e.target.value === '4'){
           showTitleFunc(checked);
           dispatch(customize.setShowTitle(checked));  
-          dispatch(customize.setDataToSend({'showTitle' : checked}));     
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['globalParameters']['showTitle'] = checked; 
+          dispatch(customize.setDataToSend(newdata));  
         }
         else if(e.target.value === '5'){
           showDescriptionFunc(checked);   
           dispatch(customize.setShowDescription(checked)); 
-          dispatch(customize.setDataToSend({'showDescription' : checked}));  
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['globalParameters']['showDescription'] = checked; 
+          dispatch(customize.setDataToSend(newdata));  
         }
         else if(e.target.value === '6'){
           showDescriptionFunc(checked);   
@@ -182,27 +214,37 @@ const CustomizePageController = function () {
         else if(e.target.value === '7'){
           showDescriptionFunc(checked);  
           dispatch(customize.setSlidingHeader(checked)); 
-          dispatch(customize.setDataToSend({'slidingHeader' : checked}));    
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['customParameters']['slidingHeader'] = checked; 
+          dispatch(customize.setDataToSend(newdata));  
         } 
         else if(e.target.value === '8'){
           showDescriptionFunc(checked);   
           dispatch(customize.setShowNavigation(checked));  
-          dispatch(customize.setDataToSend({'showNavigation' : checked}));        
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['customParameters']['showNavigation'] = checked; 
+          dispatch(customize.setDataToSend(newdata));  
         } 
         else if(e.target.value === '9'){
           showDescriptionFunc(checked);   
           dispatch(customize.setEndlessScrolling(checked));  
-          dispatch(customize.setDataToSend({'endlessScrolling' : checked}));    
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['customParameters']['endlessScrolling'] = checked; 
+          dispatch(customize.setDataToSend(newdata));  
         } 
         else if(e.target.value === '10'){
           showDescriptionFunc(checked);   
-          dispatch(customize.setSyntaxHighlighting(checked));  
-          dispatch(customize.setDataToSend({'syntaxHighlighting' : checked}));   
+          dispatch(customize.setSyntaxHighlighting(checked)); 
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['customParameters']['syntaxHighlighting'] = checked; 
+          dispatch(customize.setDataToSend(newdata));   
         }     
         else if(e.target.value === '11'){
           showDescriptionFunc(checked);   
           dispatch(customize.setRelatedPosts(checked));
-          dispatch(customize.setDataToSend({'relatedPosts' : checked}));   
+          let newdata =  JSON.parse(JSON.stringify(dataToSend));
+          newdata['customApperance']['customParameters']['relatedPosts'] = checked; 
+          dispatch(customize.setDataToSend(newdata));   
         } 
       }
       return {

@@ -8,7 +8,7 @@ const checkNonEmptyFields = (email , password , blogName ) => {
         return 1;
     } else if (password === '') {
         return 2;
-    } else if (blogName === '') {
+    } else {
       return 3;
     }
 };

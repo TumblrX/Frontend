@@ -5,7 +5,6 @@ import BlogSideNav from '../../components/Blog/BlogSideNav/BlogSideNav';
 import Posts from '../../components/Blog/Posts/Posts';
 import Followers from '../../components/Blog/Followers/Followers';
 import Drafts from '../../components/Blog/Drafts/Drafts';
-import Activity from '../../components/Blog/Activity/Activity';
 import styles from './Blog.module.scss';
 import useBlogHandler from './BlogService';
 /**
@@ -33,9 +32,6 @@ const Blog = function () {
         </Route>
         <Route path="/blog/:blogName/drafts">
           <Drafts />
-        </Route>
-        <Route path="/blog/:blogName/activity">
-          <Activity />
         </Route>
       </div>
       <div className={styles.asideBar}>

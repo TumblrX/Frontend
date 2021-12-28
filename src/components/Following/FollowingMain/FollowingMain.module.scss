@@ -1,0 +1,107 @@
+.FollowingMain{
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    max-width: 625px;
+    width: 100%;
+    .main{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+        width: 100%;
+        .h1{
+            color: RGB(255, 255, 255);
+            font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.333;
+            margin: 0 10px;
+        }
+        .form{
+            display: flex;
+            margin: 10px 0;
+            .input{
+                background: rgba(255, 255, 255,.25);
+                border: none;
+                border-radius: 3px;
+                box-sizing: border-box;
+                color: rgba(255, 255, 255,.65);
+                font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                padding: 0px 10px;
+                transition: background-color .25s ease;
+                width: 100%;
+                text-overflow: ellipsis;
+            }
+            .button{
+                background-color: transparent;
+                border: none;
+                user-select: none;
+                .span{
+                    background: none;
+                    border: 2px solid rgba(255,255,255,.4);
+                    border-radius: 3px;
+                    color: rgba(255,255,255,.65);
+                    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    line-height: 1.5;
+                    margin-left: 10px;
+                    padding: 6px 10px;
+                    display: block;
+                }
+            }
+            .button:enabled{
+                .span{
+                    background: RGB(0, 184, 255);
+                    border: none;
+                    color: RGB(0, 25, 53);
+                    padding: 8px 12px;
+                }
+            }
+        }
+
+        .SearchSection {
+            color: RGB(255,255,255);
+            font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 10px 10px 0;
+            display: none;
+            .sSpan1{
+                vertical-align: top;
+                width: inherit;
+                display: inline-block;
+                .sSpan2{
+                    vertical-align: top;
+                    width: inherit;
+                    display: inline-block;
+                    .sa{
+                        font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        line-height: 1.5;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .section{
+            margin-top: 15px;
+        }  
+    }
+}
+@media (max-width: 540px){
+ .h1{
+    margin: 10px;
+ }
+}
+@media (min-width: 990px){
+    .SearchSection{
+      align-self: flex-end;
+    }
+}

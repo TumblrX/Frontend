@@ -1,24 +1,13 @@
 import api from '../../api/api';
 
-const customzie = async (blogName, email, password) => {
-  let token;
-  let symbol;
-  const response = await api.post('/api/user/register', {
-    username: blogName,
-    email,
-    password,
-  });
-  symbol = response.data.symbol;
-
-  if (response.data.symbol === '5'){
-    token = response.data.token;
-  }else{
-    token = '';
-  }
-  return {
-    result: symbol ,
-    token,
-  };
+const customzie = async (dataToSend, id) => {
+  try{
+    const response = await api.put(`/api/blog/${id}`,dataToSend);
+    console.log(response);
+  }catch(e){
+    // empty
+    console.log('Error');
+  } 
 };
 
 export default customzie;

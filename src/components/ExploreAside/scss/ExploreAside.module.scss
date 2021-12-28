@@ -17,6 +17,9 @@
   }
   .following-list,
   .check-out-blogs {
+    * {
+      box-sizing: content-box;
+    }
     min-width: 304px;
     border-radius: 4px;
     margin-bottom: 15px;
@@ -60,7 +63,6 @@
           white-space: nowrap;
           & > :first-child {
             font-weight: bold;
-            margin-bottom: 10px;
           }
           & > :nth-child(2) {
             color: gray;
@@ -97,12 +99,11 @@
           }
         }
         &:hover {
-          &::after {
+          .cross-sign {
             opacity: 1;
           }
         }
-        &::after {
-          content: "x";
+        .cross-sign {
           position: absolute;
           right: -25px;
           top: 18px;
@@ -110,6 +111,9 @@
           font-family: "Rubik";
           opacity: 0;
         }
+        // &::after {
+        //   content: "x";
+        // }
       }
     }
   }

@@ -1,4 +1,4 @@
-import validateEmail from "./CheckValidEmailService";
+import validateEmail from "../CheckValidEmailService";
 
 describe('check that the email is validated well', ()=>{
     it('should return true if the input email is valid',()=>{

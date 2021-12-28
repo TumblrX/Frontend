@@ -1,13 +1,16 @@
-import React from "react";
+/* eslint-disable react/jsx-filename-extension */
+import React, { useEffect } from "react";
 import styles from "./scss/ExploreAside.module.scss";
+import CheckBlog from "./CheckBlog";
 import img from "../../assets/Images/Project_128-09.jpg";
+import { fetchBlogs } from "./CheckBlogServices";
 /**
  * Component to render the Aside  in Explore page
  * @author Abdalla Mahmoud
  *
  * @component
  */
-function ExploreAside() {
+function ExploreAside(props) {
   return (
     <aside className={styles["explore-aside"]}>
       <div className={styles["following-list"]}>
@@ -64,52 +67,8 @@ function ExploreAside() {
         <div className={styles["show-more-tags"]}>Show More Tags</div>
       </div>
       <div className={styles["check-out-blogs"]}>
-        <div className={styles["header"]}>
-          <div>check out these blogs</div>
-        </div>
-        <ul>
-          <li>
-            <div>
-              <img src={img} alt="" />
-            </div>
-            <div>
-              <div>savage-words</div>
-              <div>savage-words</div>
-            </div>
-            <div>Follow</div>
-          </li>
-          <li>
-            <div>
-              <img src={img} alt="" />
-            </div>
-            <div>
-              <div>savage-words</div>
-              <div>savage-words</div>
-            </div>
-            <div>Follow</div>
-          </li>
-          <li>
-            <div>
-              <img src={img} alt="" />
-            </div>
-            <div>
-              <div>savage-words</div>
-              <div>savage-words</div>
-            </div>
-            <div>Follow</div>
-          </li>
-          <li>
-            <div>
-              <img src={img} alt="" />
-            </div>
-            <div>
-              <div>savage-words</div>
-              <div>savage-words</div>
-            </div>
-            <div>Follow</div>
-          </li>
-        </ul>
-        <div className={styles["show-more-tags"]}>Show More Tags</div>
+        <CheckBlog tagName={props.tagName} />
+        <div className={styles["show-more-tags"]} onClick={fetchBlogs}>Show More Tags</div>
       </div>
     </aside>
   );

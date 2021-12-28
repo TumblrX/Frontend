@@ -8,8 +8,10 @@ const login = async (email, password) => {
       email,
       password,
     });
+    console.log(response);
     token = response.data.token;
   } catch (err) {
+    console.log(err);
     succeeded = false;
     token = 'noToken';
   }

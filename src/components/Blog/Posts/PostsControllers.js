@@ -27,7 +27,9 @@ const showPosts = (posts, pageNum, isInfinte) => {
     posts.slice(firstPost, lastPost).map((post, index) => (
       <div className={`${styles.post} ${styles.row}`} key={index} data-testid={`testPost${index}`}>
         <div className={styles.logo}>
+        <object data="https://assets.tumblr.com/images/default_avatar/cone_open_128.png" width="64" height="64">
           <img src={post.blogAttribution.avatar} alt="no avatar" className={styles.limg} />
+        </object>
         </div>
         <div className={styles.postDatailes}>
           <Post data={post} />

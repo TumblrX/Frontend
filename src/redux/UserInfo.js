@@ -4,16 +4,16 @@ import { createSlice } from '@reduxjs/toolkit';
 export const UserInfoReducer = createSlice({
   name: 'userInfo',
   initialState: {
-    id:'',
+    userInfo:{},
   },
   reducers: {
-    setID: (state, action) => {
-        state.id = action.payload;
+    setUserInfo: (state, action) => {
+      state.userInfo = action.payload;
     },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
-    setID,
+    setUserInfo , 
 } = UserInfoReducer.actions;
 export default UserInfoReducer.reducer;
