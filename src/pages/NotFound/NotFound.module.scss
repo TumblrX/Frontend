@@ -1,0 +1,40 @@
+.container{
+    align-items: center;
+    background-color: #001935;
+    background-position: 50%;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    background-image: url('https://64.media.tumblr.com/738982bf60bc01e007fd2249f77cb0e2/tumblr_mhytt5EpNd1qzp2qco1_500.gif');
+    .text{
+        max-width: 440px;
+        padding: 20px;
+        position: relative;
+        .h1{
+            font-family: Gibson,Favorit,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif;
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: center;
+        }
+        .anotherText{
+            line-height: 21px;
+            position: relative;
+            text-align: center;
+        }
+    }
+    .text::before{
+        background-color: rgba(0,0,0,.25);
+        bottom: 0;
+        box-shadow: 0 0 100px 100px rgb(0 0 0 / 25%);
+        content: "";
+        display: block;
+        left: 0;
+        margin: 75px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}

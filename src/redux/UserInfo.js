@@ -4,20 +4,16 @@ import { createSlice } from '@reduxjs/toolkit';
 export const UserInfoReducer = createSlice({
   name: 'userInfo',
   initialState: {
-    id:'new',
-    infinteScrolling:true,
+    userInfo:{},
   },
   reducers: {
-    setID: (state, action) => {
-        state.id = action.payload;
+    setUserInfo: (state, action) => {
+      state.userInfo = action.payload;
     },
-    setInfinteScrolling: (state, action) => {
-      state.infinteScrolling = action.payload;
-  },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
-    setID,
+    setUserInfo , 
 } = UserInfoReducer.actions;
 export default UserInfoReducer.reducer;

@@ -1,8 +1,8 @@
 import api from '../../api/api';
 
-const customzie = async (dataToSend, id) => {
+const customzie = async (dataToSend) => {
   try{
-    const response = await api.put(`/api/blog/${id}`,dataToSend);
+    const response = await api.put(`/api/blog/${localStorage.getItem('blog1')}`,dataToSend);
     console.log(response);
   }catch(e){
     // empty

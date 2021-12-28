@@ -22,8 +22,8 @@ import {
  */
 const Posts = function () {
   const {
-    pageNum, isInfinte, intialLoading,
-    posts, NumOfPosts,
+    pageNum, intialLoading,
+    posts, NumOfPosts, isInfinte,
   } = useSelector((state) => state.blogposts);
   const { avatar, id } = useSelector((state) => state.Blog);
   const { fetchBlogPosts } = usePostHandler();

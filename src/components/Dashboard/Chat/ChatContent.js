@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 import React , {useEffect} from 'react';
@@ -14,6 +15,7 @@ const ChatContent = function () {
 
   useEffect( async () => {
     const msgs = await getChat(friend.id);
+    // const msgs = await getChat('61c263c46b827a7e14446ee5');
     await dispatch(setMessages(msgs));
     // console.log('msgs ->', messages)
   }, [friend])
@@ -27,27 +29,7 @@ const ChatContent = function () {
         </div>
         <p> {friend.handle} </p>
       </div>
-
       
-      {
-        // img msg
-        /* <div className={styles.messegesBody} >
-          <div className={styles.msg}>
-            <div className={styles.msgAvatar}>
-              <div className={styles.avatar_img}>
-                <img src={logo} alt="#" className={styles.circle} />
-              </div>
-            </div>
-            <div className={styles.msgContent}>
-              <h3> user </h3>
-              <div>
-                <img src={img1} alt="img msg" />
-              </div>
-            </div>
-          </div> 
-
-        </div>*/
-      }
       { messages.length >0 &&  (messages.slice(0).reverse().map((m, index) => (
         <div className={styles.messegesBody} key={index} >
           <div className={styles.msg}>

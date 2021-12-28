@@ -12,6 +12,11 @@ import classes from './DropDownProfile.module.scss';
 
 const DropDownProfile = function (props) {
   const logout = function (){
+    localStorage.removeItem('userId');
+    localStorage.removeItem('InfinteScrolling');
+    localStorage.removeItem('handle');
+    localStorage.removeItem('blogs');
+    localStorage.removeItem('blog1');
     localStorage.removeItem('token');
   }
   return (

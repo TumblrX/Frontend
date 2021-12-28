@@ -99,6 +99,9 @@
             display: flex;
             justify-content: center;
             .follow{
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
                 .followspan{
                     color: RGB(0, 184, 255);
                     font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;

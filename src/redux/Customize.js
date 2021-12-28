@@ -96,6 +96,9 @@ export const CustomizeReducer = createSlice({
     }, 
     setDataToSend: (state, action ) => {
       state.dataToSend = { ...state.dataToSend, ...action.payload };
+    },  
+    setSettings: (state, action ) => {
+      state.settings = action.payload;
     },       
   },
 });
@@ -121,5 +124,6 @@ export const {
   setSyntaxHighlighting,
   setRelatedPosts,
   setDataToSend,
+  setSettings,  
 } = CustomizeReducer.actions;
 export default CustomizeReducer.reducer;

@@ -21,12 +21,14 @@ const FollowerSection = function ({ data }) {
         <div className={styles.sideSide}>
           <div className={styles.avatarContainer}>
             <div className={styles.avatar}>
-              <img
-                className={styles.img}
-                src={avatar}
-                alt="Avatar"
-                loading="eager"
-              />
+              <object data="https://assets.tumblr.com/images/default_avatar/cone_open_128.png" width="37" height="37">
+                <img
+                  className={styles.img}
+                  src={avatar}
+                  alt="Avatar"
+                  loading="eager"
+                />
+              </object>
             </div>
           </div>
           <div className={styles.titlesContainer}>

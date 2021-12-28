@@ -25,7 +25,7 @@
 
 .ExitAvatar{
     @include avatar(40px);
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     right: 30px;
     cursor: pointer;
