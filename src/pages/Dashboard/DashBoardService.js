@@ -30,7 +30,7 @@ const fetchPost = async (pageNum, pageNumPosts, posts, setNextButton, isInfinte,
     // console.log('fetch post is called');
     // console.log('pageNum -->', pageNum);
     const response = await api.get(`/api/user/dashboard?limit=${pageNumPosts}&page=${pageNum}`);
-    // console.log('fetch post is called -->', response.data);
+    console.log('fetch post is called -->', response.data);
     if (response.data.hasOwnProperty('for-youPosts')) {
       if(isInfinte ){
         // console.log('check if contained')
@@ -134,7 +134,7 @@ const fetchInfo = async (pageNum, pageNumPosts) => {
     // console.log('pageNum -->', pageNum);
     // console.log('response -->', response.data);
     const response = await api.get('/api/user/info');
-    // console.log('info --> ', response.data);
+    return response;
   } catch (err) {
     if (err.response) {
       // Not in the 200 response range
@@ -145,6 +145,7 @@ const fetchInfo = async (pageNum, pageNumPosts) => {
       console.log(`Error: ${err.message}`);
     }
   }
+  return null
 };
 
 

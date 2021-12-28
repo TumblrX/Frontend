@@ -12,7 +12,7 @@ export const DashboardReducer = createSlice({
     exploreBlogsMounted:false,
     radarMounted:false,
     pageNum: 1,
-    pageNumPosts: 5,
+    pageNumPosts: 10,
     isInfinte: false,
     ismounted: false,
     ChatMounted: false,

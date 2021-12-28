@@ -29,8 +29,7 @@ const ChatFooter = function ({ socket }) {
       </div>
       <div className={`${styles.send} ${styles.row}`}>
         <div className={styles.icon}>
-          <AiFillCamera />
-          <input type="file" accept="image/*" />
+        
         </div>
         <div className={styles.insertIcons}>
           <div className={styles.icon} onClick={(e) => handleSend(newMessage, friend.id, socket) }>

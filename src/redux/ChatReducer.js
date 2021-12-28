@@ -10,7 +10,7 @@ export const ChatReducer = createSlice({
     newMessage: '',
     arrivalMessage: '',
     primaryblog: null,
-    _id: null,
+    id: null,
     owner: {},
     friend: {},
     sound: false,
@@ -36,7 +36,7 @@ export const ChatReducer = createSlice({
       state.primaryblog = action.payload;
     },
     setID: (state, action) => {
-      state._id = action.payload;
+      state.id = action.payload;
     },
     setOwner: (state, action) => {
       state.owner = action.payload;

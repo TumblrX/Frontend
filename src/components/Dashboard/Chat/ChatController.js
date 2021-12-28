@@ -18,11 +18,13 @@ const open = () => {
 };
 
 const scroll = () => {
-  // scrollRef?.current.scrollIntoView({ block: 'start' });
-  document.getElementById('scroll').scroll({
-    top: 10000,
-    behavior: 'smooth'
-  });
+  const element = document.getElementById('scroll');
+  if( element !== undefined){
+    element.scroll({
+      top: 10000,
+      behavior: 'smooth'
+    });
+  }
 };
 
 const dataTime = () => {
@@ -33,13 +35,7 @@ const dataTime = () => {
 };
 const handleSend = async (newMessage, id, socket) => {
   if (!newMessage.match(/^\s*$/)) {
-    await sendMessage(newMessage, id)
-    await socket.current.emit('private message' , { newMessage, id });
-    configureStore.dispatch(addMessage({
-      text:newMessage,
-      senderId: id,
-      createdAt: dataTime()
-    }));
+    socket.current.emit('private message' , { content:newMessage, receiverId:id });
     scroll();
   }
   configureStore.dispatch(setNewMessage(''));
@@ -49,19 +45,12 @@ const handleKeyEnter = (e, id, socket) => {
   if (e.key === 'Enter') {
     e.preventDefault();
     handleSend(e.target.value, id, socket);
-    // console.log('id -->', configureStore.dispatch(getFreindId));
-    // console.log('id -->', id);
   }
 };
 
 const handleSound = () => {
   configureStore.dispatch(setSound(true));
   console.log('sound is called');
-};
-
-const handleBlock = () => {
-  console.log('block is called');
-  configureStore.dispatch(deleteMessages());
 };
 
 const handleDelete = () => {
@@ -71,5 +60,5 @@ const handleDelete = () => {
 
 export {
   open, close, dropDown, scroll, handleSend, handleKeyEnter,
-  handleSound, handleBlock, handleDelete,dataTime
+  handleSound, handleDelete,dataTime
 };
