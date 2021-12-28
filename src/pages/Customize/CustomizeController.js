@@ -1,17 +1,35 @@
 import { useDispatch , useSelector } from 'react-redux';
 import * as customize from '../../redux/Customize';
 import customzie from './CustomizeService';
+import getSettings from './GetSettingsServce';
 
 const CustomizePageController = function () {
 
-    const dispatch = useDispatch();  
-    const {
-      dataToSend,
-    } = useSelector((state) => state.customize);
+  const dispatch = useDispatch();  
 
-    const {
-      userInfo,
-    } = useSelector((state) => state.userInfo);
+  const { dataToSend  } = useSelector((state) => state.customize);
+
+  const readData = async () =>{
+    // const response = await getSettings();
+    // dispatch(customize.setSettings(response));
+    console.log('hi');
+  }
+
+  const  objectToFormData = (object,objectName,formData) =>{
+    if(Array.isArray(object)){
+        for(let i=0; i<object.length; i++){
+            objectToFormData(object[i],`${objectName}[${i}]`,formData);
+        }
+    }    
+    else if(object instanceof Object ){
+        for (let key in object) {
+            objectToFormData(object[key], `${objectName}[${key}]`, formData);
+        }
+    }
+    else{
+        formData.append(objectName,object);
+    }
+  }
 
     const changeAvatar = (link) => {
       dispatch(customize.setAvatar(link));
@@ -57,46 +75,51 @@ const CustomizePageController = function () {
         dispatch(customize.setDataToSend(newdata)); 
 
     };
-      const handler2 = (e) => {
-        document.getElementById('title').style.color =  e.target.value; 
-        document.getElementById('description').style.color =  e.target.value;
-        dispatch(customize.setTitleColor(e.target.value));
-        let newdata =  JSON.parse(JSON.stringify(dataToSend));
-        newdata['customApperance']['globalParameters']['titleColor'] = e.target.value; 
-        dispatch(customize.setDataToSend(newdata)); 
+    
+    const handler2 = (e) => {
+      document.getElementById('title').style.color =  e.target.value; 
+      document.getElementById('description').style.color =  e.target.value;
+      dispatch(customize.setTitleColor(e.target.value));
+      let newdata =  JSON.parse(JSON.stringify(dataToSend));
+      newdata['customApperance']['globalParameters']['titleColor'] = e.target.value; 
+      dispatch(customize.setDataToSend(newdata)); 
     };
-      const handler3 = (e) => {
-        document.getElementById('accent').style.color =  e.target.value; 
-        document.getElementById('accent1').style.borderBottom =  `4px solid ${e.target.value}`; 
-        dispatch(customize.setAccentColor(e.target.value));
-        let newdata =  JSON.parse(JSON.stringify(dataToSend));
-        newdata['customApperance']['globalParameters']['accentColor'] = e.target.value; 
-        dispatch(customize.setDataToSend(newdata)); 
+    
+    const handler3 = (e) => {
+      document.getElementById('accent').style.color =  e.target.value; 
+      document.getElementById('accent1').style.borderBottom =  `4px solid ${e.target.value}`; 
+      dispatch(customize.setAccentColor(e.target.value));
+      let newdata =  JSON.parse(JSON.stringify(dataToSend));
+      newdata['customApperance']['globalParameters']['accentColor'] = e.target.value; 
+      dispatch(customize.setDataToSend(newdata)); 
     };
     
     const changeTitleFunc = (title) =>{
-    document.getElementById('title').innerHTML =  title;
+      document.getElementById('title').innerHTML =  title;
     }
     
     const changeTitle = (e) =>{
-    dispatch(customize.setTitle(e.target.value)); 
-    changeTitleFunc(e.target.value);
-    dispatch(customize.setDataToSend({title : e.target.value}));       
+      dispatch(customize.setTitle(e.target.value)); 
+      changeTitleFunc(e.target.value);
+      dispatch(customize.setDataToSend({title : e.target.value}));       
     }
     const changeDescriptionFunc = (description) =>{
-    document.getElementById('description').innerHTML =  description; 
+      document.getElementById('description').innerHTML =  description; 
     }
     const changeDescription = (e) =>{
-    dispatch(customize.setDescription(e.target.value)); 
-    changeDescriptionFunc(e.target.value);
-    dispatch(customize.setDataToSend({description : e.target.value})); 
-  }
-  const req =async () =>{
-    await customzie(dataToSend, userInfo.blogs[0]);
-    console.log(userInfo);
-  }
+      dispatch(customize.setDescription(e.target.value)); 
+      changeDescriptionFunc(e.target.value);
+      dispatch(customize.setDataToSend({description : e.target.value})); 
+    }
 
-    const makeCircle =  (val) =>{ 
+    const saveHandler =async () =>{
+      let formData = new FormData();
+      objectToFormData(dataToSend, 'dataToSend' , formData)
+      console.log(dataToSend);
+      await customzie(formData);
+    }
+
+  const makeCircle =  (val) =>{ 
        
     if (val === true){
         document.getElementById('avatar').style.borderRadius  =  '100%'; 
@@ -108,51 +131,53 @@ const CustomizePageController = function () {
         document.getElementById('avatar').style.WebkitBorderRadius  =  '0'; 
     }
     dispatch(customize.setAvatarShapeCircle(val));
-    }
-    const handleRadio = async (e) =>{
-      await req();
+  }
+  
+  const handleRadio =  (e) =>{
 
-    if (e.target.value === 'circle'){
-        makeCircle(true); 
-        dispatch(customize.setDataToSend({isAvatarCircle : true})); 
-    }else{
-        makeCircle(false); 
-        dispatch(customize.setDataToSend({isAvatarCircle : false})); 
-    }
+      if (e.target.value === 'circle'){
+          makeCircle(true); 
+          dispatch(customize.setDataToSend({isAvatarCircle : true})); 
+      }else{
+          makeCircle(false); 
+          dispatch(customize.setDataToSend({isAvatarCircle : false})); 
+      }
     }
     const showHeaderImageFunc = (val) =>{
-    if(val){
-        document.getElementById('headerImage').style.display  = 'block'; 
-        document.getElementById('avatar').style.marginTop  = '0px'; 
-    }else{
-        document.getElementById('headerImage').style.display  = 'none'; 
-        document.getElementById('avatar').style.marginTop  = '100px'; 
-    }
-    }
-      const stretchHeaderImageFunc = (checked) =>{
-        if(checked){
-          document.getElementById('headerImage').style.width  = '100%'; 
-          document.getElementById('headerImage').style.marginTop  = '0px'; 
-          document.getElementById('headerImage').style.marginBottom  = '0px'; 
-          document.getElementById('headerImage').style.height  = '300px'; 
-        }else{
-          document.getElementById('headerImage').style.width  = '60%'; 
-          document.getElementById('headerImage').style.marginTop  = '50px'; 
-          document.getElementById('headerImage').style.marginBottom  = '65px'; 
-          document.getElementById('headerImage').style.height  = '200px'; 
-        }
+      if(val){
+          document.getElementById('headerImage').style.display  = 'block'; 
+          document.getElementById('avatar').style.marginTop  = '0px'; 
+      }else{
+          document.getElementById('headerImage').style.display  = 'none'; 
+          document.getElementById('avatar').style.marginTop  = '100px'; 
       }
-      const showAvatarFunc = (checked) =>{
-        if(checked){
-          document.getElementById('avatar').style.display  = 'block'; 
-          document.getElementById('avatar').style.transform = 'translate(0, -70px)';
-          document.getElementById('headerText').style.transform = 'translate(0, -70px)';        
-        }else{
-          document.getElementById('avatar').style.transform = 'translate(0,0)';
-          document.getElementById('headerText').style.transform = 'translate(0, 0)';
-          document.getElementById('avatar').style.display  = 'none'; 
-        }
+    }
+
+    const stretchHeaderImageFunc = (checked) =>{
+      if(checked){
+        document.getElementById('headerImage').style.width  = '100%'; 
+        document.getElementById('headerImage').style.marginTop  = '0px'; 
+        document.getElementById('headerImage').style.marginBottom  = '0px'; 
+        document.getElementById('headerImage').style.height  = '300px'; 
+      }else{
+        document.getElementById('headerImage').style.width  = '60%'; 
+        document.getElementById('headerImage').style.marginTop  = '50px'; 
+        document.getElementById('headerImage').style.marginBottom  = '65px'; 
+        document.getElementById('headerImage').style.height  = '200px'; 
       }
+    }
+
+    const showAvatarFunc = (checked) =>{
+      if(checked){
+        document.getElementById('avatar').style.display  = 'block'; 
+        document.getElementById('avatar').style.transform = 'translate(0, -70px)';
+        document.getElementById('headerText').style.transform = 'translate(0, -70px)';        
+      }else{
+        document.getElementById('avatar').style.transform = 'translate(0,0)';
+        document.getElementById('headerText').style.transform = 'translate(0, 0)';
+        document.getElementById('avatar').style.display  = 'none'; 
+      }
+    }
       const showTitleFunc = (checked) =>{
         if(checked){
           document.getElementById('title').style.display  = 'block';         
@@ -267,6 +292,8 @@ const CustomizePageController = function () {
         changeHeaderImage,
         changeAvatarHandler,
         changeHeaderImageHandler,
+        saveHandler,
+        readData,
       };      
 };
 

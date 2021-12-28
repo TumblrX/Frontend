@@ -36,16 +36,20 @@ import { useSelector } from 'react-redux';
 import updateNotifications from './UpdateNotifications'
 
 const App = function () {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUserBlogs());
   }, [dispatch]);
+
   const {
-    id, userInfo
+    userInfo
   } = useSelector((state) => state.userInfo);
+
   useEffect(() => {
-    updateNotifications(userInfo.id);    
+    updateNotifications();    
   }, [userInfo.id]);
+
   return (
     <>
     {localStorage.getItem('token') && (
