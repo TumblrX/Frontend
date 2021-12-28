@@ -92,7 +92,7 @@ const CustomizePageController = function () {
     dispatch(customize.setDataToSend({description : e.target.value})); 
   }
   const req =async () =>{
-    await customzie(dataToSend, userInfo.blogs[0]);
+    await customzie(dataToSend);
     console.log(userInfo);
   }
 
