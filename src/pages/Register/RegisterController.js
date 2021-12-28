@@ -13,11 +13,7 @@ const registerController = function () {
   const { errors } = useSelector((state) => state.register);
 
   const dispatch = useDispatch();
-
-  const setToken = (token) => {
-    localStorage.token = token;
-  };
-
+  
   /**
   * @description Check that the user enter a valid data during login and procced to login if valid
   * @param {MyEvent} e - The observable event.
@@ -60,7 +56,12 @@ const registerController = function () {
                         }else{
                           // Doing register process and wait for the result
                           const response = await register(blogName, email, password); 
-                          setToken(response.token);
+                          localStorage.userId = response.userId;
+                          localStorage.InfinteScrolling = response.InfinteScrolling;
+                          localStorage.handle = response.handle;
+                          localStorage.blogs = response.blogs;
+                          localStorage.blog1 = response.blogs[0];
+                          localStorage.token = response.token;     
                           dispatch(redirectToDashboard());  
                         }                         
                     }else{
