@@ -5,11 +5,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import style from './Body.module.scss';
 // import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import readData from './../CustomizeController'
 
 const Body = function () { 
   const {
     settings,
   } = useSelector((state) => state.customize);  
+
+  // useEffect(() => {
+  //   readData();
+  // }, [])
   
   return (
     <div className={style.bodyContainer} >      

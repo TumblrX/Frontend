@@ -7,12 +7,13 @@ const CustomizePageController = function () {
 
   const dispatch = useDispatch();  
 
-  const { dataToSend  } = useSelector((state) => state.customize);
+  const { dataToSend , settings  } = useSelector((state) => state.customize);
 
   const readData = async () =>{
     const response = await getSettings();
-    dispatch(customize.setSettings(response));
-    console.log('hi');
+    console.log(response.response.data.data);
+    dispatch(customize.setSettings(response.response.data.data));
+    console.log(settings);
   }
 
   const  objectToFormData = (object,objectName,formData) =>{
@@ -30,6 +31,15 @@ const CustomizePageController = function () {
         formData.append(objectName,object);
     }
   }
+
+  const saveHandler =async () =>{
+    let formData = new FormData();
+    objectToFormData(dataToSend, 'dataToSend' , formData)
+    console.log(dataToSend);
+    await customzie(dataToSend);
+    await readData();
+  }
+
 
     const changeAvatar = (link) => {
       dispatch(customize.setAvatar(link));
@@ -112,13 +122,6 @@ const CustomizePageController = function () {
       dispatch(customize.setDataToSend({description : e.target.value})); 
     }
 
-    const saveHandler =async () =>{
-      let formData = new FormData();
-      objectToFormData(dataToSend, 'dataToSend' , formData)
-      console.log(dataToSend);
-      await customzie(formData);
-      await readData();
-    }
 
   const makeCircle =  (val) =>{ 
        
@@ -194,7 +197,9 @@ const CustomizePageController = function () {
         }
       }
 
-    
+     /**
+      ********************************** SLiders *****************************
+      */
       const handleCheckBoxes = (e) =>{
         const checked = e.target.checked;
         if(e.target.value === '1'){
