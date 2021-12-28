@@ -10,32 +10,20 @@ $font-color : #000;
 .row {
     display: flex;
 }
+.likescont{
+    width: 70%;
+}
 .posts {
     width: 80vw;
     margin-right: 5%;
-    .insertPost{
-        height: 100px;
-        border: 3px solid $bg;
-        margin-bottom: 15px;
-        .insertLogo {
-            width: 64px;
-            height: 64px;
-            margin-right: 20px;
-            background-color: $post-bg;
-
-            position: -webkit-sticky;
-            position: sticky;
-            top: 50px;
-            .img{
-                width: 64px; 
-                height: 64px;
-                display: block;
-            }
-        }
-        .insertPostDetails {
-            background-color: $post-bg;
-            width: 100%;
-        }
+    .h1{
+        color: RGB(255, 255, 255);
+        font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: 1.333;
+        margin: 0 10px;
+        margin-bottom: 20px;
     }
     .post{
         border: 3px solid $bg;
@@ -60,6 +48,13 @@ $font-color : #000;
             width: 100%;
         }
     }
+    .NothingAvailable{
+        color: rgba(255, 255, 255,.65);
+        font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+    }
     .navigateBtns {
         height: 100px;
         justify-content: space-around;
@@ -83,16 +78,16 @@ $font-color : #000;
         }
     }
 }
-@media(max-width : 960px){
-    .insertPost{
-        display: none;
+@media (max-width : 990px ) {
+    .posts,.likescont{
+        width: 80vw;
+        margin: 0 auto;
     }
 }
-
 @media (max-width : 600px ) {
-    .posts{
-        display: flex;
+    .posts,.likescont{
+        margin: 0;
+        width: 100%;
         align-items: center;
-        align-self: center;
     }
 }

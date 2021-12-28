@@ -23,6 +23,7 @@ import SearchReducer from "./SearchReducer";
 import NavNotificationsReducer  from './NavNotifications';
 import userFollowing from "./userFollowing";
 import UserInfoReducer  from "./UserInfo";
+import LikedPosts  from "./Likes";
 
 export default configureStore({
   reducer: {
@@ -49,7 +50,8 @@ export default configureStore({
     Search: SearchReducer,
     following: userFollowing,
     navNotifications : NavNotificationsReducer ,
-    userInfo: UserInfoReducer ,
+    userInfo: UserInfoReducer,
+    likes:LikedPosts,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

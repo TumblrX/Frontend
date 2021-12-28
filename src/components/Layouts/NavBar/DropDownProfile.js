@@ -75,7 +75,7 @@ const DropDownProfile = function (props) {
       </ul>
       <div className={classes.tumblrs}>
         <span>Tumblrs</span>
-        <NavLink to="/newblog">+ New</NavLink>
+        <NavLink to="/new/blog">+ New</NavLink>
       </div>
       <ul className={classes['tumblrs-list']}>
         <NavLink to="/blog/username">Posts</NavLink>

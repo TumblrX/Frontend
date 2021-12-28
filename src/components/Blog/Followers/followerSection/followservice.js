@@ -9,10 +9,11 @@ import api from '../../../../api/api';
    */
   const follow = async (blogid) => {
     try {
-      const response = await api.post('/api/user/follow', { _id: blogid });
+      console.log(blogid);
+      const response = await api.post('/api/user/follow', blogid);
       console.log('success');
     } catch (err) {
-      console.log(`Error: ${err.message}`);
+      console.log(`Error: ${err.response.data.message}`);
     }
   };
   /**
@@ -23,10 +24,11 @@ import api from '../../../../api/api';
    */
   const unfollow = async (blogid) => {
     try {
-      const response = await api.delete('/api/user/unfollow', { _id: blogid });
+      console.log(blogid);
+      const response = await api.delete('/api/user/unfollow', { data: blogid} );
       console.log('success');
     } catch (err) {
-      console.log(`Error: ${err.message}`);
+      console.log(`Error: ${err.response.data.message}`);
     }
   };
 export { follow, unfollow };

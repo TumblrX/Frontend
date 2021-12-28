@@ -8,7 +8,7 @@ const useHandler = () => {
   const handleClick = (event, id) => {
     const f = event.currentTarget;
     f.style.display = 'none';
-    follow(id);
+    follow({_id: id});
   };
   return {
     handleSideClick,
