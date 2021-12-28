@@ -9,6 +9,7 @@ import OneFlexData from "../ExploreSection/OneFlexData";
 import { componentDidMount } from "./SearchSectionController";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllPosts from "./AllPosts/AllPosts";
+import TextSearch from "./Text/TextSearch";
 import { useSelector } from "react-redux";
 function SearchSection() {
   const { searchWord } = useSelector((state) => state.Search);
@@ -19,8 +20,12 @@ function SearchSection() {
       <SearchNavbar />
       <Switch>
         <Route path={`/search/${searchWord}/all`} component={AllPosts} exact />
-        {/* <Route path="/explore/trending" exact component={Trending} />
         <Route
+          path={`/search/${searchWord}/text`}
+          exact
+          component={TextSearch}
+        />
+        {/* <Route
           path="/explore/staff-picks"
           exact
           component={ExploreSuggestionList}

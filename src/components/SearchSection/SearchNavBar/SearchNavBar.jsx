@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import styles from "../../ExploreSection/ExploreNavbar/scss/ExploreNavbar.module.scss";
 import { Link } from "react-router-dom";
 import { componentDidMount } from "../../ExploreSection/ExploreNavbar/ExploreNavBarController";
+import { useSelector } from "react-redux";
 /**
  * Component to render the Search Navbar in Search Page.
  * @author Abdalla Mahmoud
@@ -10,6 +11,7 @@ import { componentDidMount } from "../../ExploreSection/ExploreNavbar/ExploreNav
  * @component
  */
 function SearchNavbar() {
+  const { searchWord } = useSelector((state) => state.Search);
   useEffect(componentDidMount, []);
   return (
     <>
@@ -22,9 +24,7 @@ function SearchNavbar() {
           marginTop: "30px",
         }}
         id="searchTag"
-      >
-        NASA
-      </div>
+      ></div>
       <div className={styles["explore-navbar"]} style={{ marginTop: "10px" }}>
         <div className={styles["explore-selection"]}>
           <span className={`more-section`} style={{ position: "relative" }}>
@@ -34,19 +34,19 @@ function SearchNavbar() {
               style={{ left: "0%" }}
             >
               <div>
-                <Link to="/search//text">Text</Link>
+                <Link to={`/search/${searchWord}/text`}>Text</Link>
               </div>
               <div>
-                <Link to="/search/photos">Photos</Link>
+                <Link to={`/search/${searchWord}/image`}>Photos</Link>
               </div>
               <div>
-                <Link to="/search/audios">Audios </Link>
+                <Link to={`/search/${searchWord}/audios`}>Audios </Link>
               </div>
               <div>
-                <Link to="/search/videos">Videos</Link>
+                <Link to={`/search/${searchWord}/videos`}>Videos</Link>
               </div>
               <div>
-                <Link to="/search/asks">Asks</Link>
+                <Link to={`/search/${searchWord}/asks`}>Asks</Link>
               </div>
             </div>
           </span>
