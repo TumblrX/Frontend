@@ -4,7 +4,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchUserBlogs } from "./redux/userBlogs-actions";
 import Search from "./pages/Search/Search";
 import Settings from "./pages/Settings/Settings";
 import {
@@ -36,12 +35,7 @@ import { useSelector } from 'react-redux';
 import updateNotifications from './UpdateNotifications'
 
 const App = function () {
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchUserBlogs());
-  }, [dispatch]);
-
+  
   const {
     userInfo
   } = useSelector((state) => state.userInfo);

@@ -23,7 +23,8 @@ import avatar from '../../assets/Images/avatar.png'
 import Notes from './Notes/Notes';
 
 const Post = function ({ data }) {
-  const { tags, title, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
+  // console.log(data);
+  const { title, tags, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
   const [notesIsShown, setNotesIsShown] = useState(false);
   const [notesCounter, setNotesCounter] = useState(notesCount);
   const { reblogPostHandler, likePostHandler, deletePostHandler } = PostController();
@@ -37,19 +38,23 @@ const Post = function ({ data }) {
     }
     likePostHandler(id, isLiked)
     setIsLiked(!isLiked);
-  }
+  };
+  const reblogClickHandler =()=>{
+    setNotesCounter(x=>x+1);
+    reblogPostHandler.bind(this, id)
+  };
   const openNotesClickHandler = () =>{
     setNotesIsShown(true);
-  }
+  };
   const closeNotesClickHandler = (e) =>{
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
     setNotesIsShown(false);
-  }
+  };
   const increamentNotesCount = () =>{
     setNotesCounter(x=>x+1);
     console.log(notesCounter);
-  }
+  };
   let postJsx = [];
   if(!isReblogged){
     postJsx.push(

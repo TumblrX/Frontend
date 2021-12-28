@@ -57,7 +57,7 @@ const Newpost = function ({ avatar }) {
             Audio
           </Link>
           <Link to="/new/text" className={classes.icon}>
-            <IconContext.Provider value={{ className: classes.video }}>
+              <IconContext.Provider value={{ className: classes.video }}>
               <TiVideo />
             </IconContext.Provider>
             Video
