@@ -17,6 +17,7 @@ import blog from './blog';
 import blogDrafts from './blogDrafts';
 import Customize from './Customize'; 
 import ExploreRecuder from './ExploreRecuder';
+import DropDownInbox from './DropDownInbox';
 import userInfo from './UserInfo'
 import UserInfo from './UserInfo';
 
@@ -25,6 +26,7 @@ export default configureStore({
     passwordInfo: PasswordSectionReducer,
     create: createReducer,
     DashBoard: DashBoardReducer,
+    DropDownInbox: DropDownInbox,
     blogposts: blogPosts,
     blogfollowers: blogFollowers,
     login: LoginReducer,

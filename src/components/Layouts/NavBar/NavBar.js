@@ -17,6 +17,8 @@ import DropDownActivity from './DropDownActivity';
 import DropDownInbox from './DropDownInbox';
 import List from './List';
 import { getLikesCount } from './DropDownProfileService';
+import { useDispatch } from 'react-redux';
+import { resetDropDown } from '../../../redux/DropDownInbox';
 
 const NavBar = function () {
   const [title, setTitle] = useState('');
@@ -27,6 +29,8 @@ const NavBar = function () {
   const [isProfile, setProfile] = useState(false);
   const [inputIsFocused, setInputIsFocused] = useState(false);
   const [counts, setCounts] = useState({});
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchNavbarCounts = async () => {
     setCounts(await getLikesCount());
@@ -39,6 +43,9 @@ const NavBar = function () {
     setInbox(!isInbox);
     setActivity(false);
     setProfile(false);
+    dispatch(resetDropDown())
+
+    console.log('reset')
   };
   const activityClickHandler = () => {
     setInbox(false);
