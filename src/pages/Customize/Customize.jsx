@@ -9,9 +9,9 @@ import readData from './CustomizeController'
 
 const Customize = function () {
 
-  useEffect(() => {
-    // await readData();
-  }, [])
+  // useEffect(() => {
+  //   readData();
+  // }, [])
 
   return (
     <div className={style.customizeContainer} id='customizeContainer'>

@@ -9,8 +9,13 @@ import { FiSettings } from 'react-icons/fi';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillKeyboardFill, BsFillPaletteFill } from 'react-icons/bs';
 import classes from './DropDownProfile.module.scss';
+import { Redirect } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const DropDownProfile = function (props) {
+
+  const [logoutt , setLogoutt] = useState(false);
+
   const logout = function (){
     localStorage.removeItem('userId');
     localStorage.removeItem('InfinteScrolling');
@@ -18,10 +23,17 @@ const DropDownProfile = function (props) {
     localStorage.removeItem('blogs');
     localStorage.removeItem('blog1');
     localStorage.removeItem('token');
+    setLogoutt(true);
+    console.log('removed');
   }
   return (
+    <>
+    {logoutt && (
+      <Redirect to="/login" />
+    )}
+    {!logoutt && (
 
-    <div className={classes.profile}>
+      <div className={classes.profile}>
       <div className={classes.account}>
         <span>Account</span>
         <NavLink to="/" onClick={logout}>Log out</NavLink>
@@ -93,6 +105,8 @@ const DropDownProfile = function (props) {
       </div>
     </div>
 
+  )}
+        </>
   );
 };
 

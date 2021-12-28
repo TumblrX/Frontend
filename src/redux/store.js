@@ -25,6 +25,7 @@ import userFollowing from "./userFollowing";
 import UserInfoReducer  from "./UserInfo";
 import LikedPosts  from "./Likes";
 
+import ForgetPasswordReducer from './forgetPassword'
 export default configureStore({
   reducer: {
     passwordInfo: PasswordSectionReducer,
@@ -52,6 +53,7 @@ export default configureStore({
     navNotifications : NavNotificationsReducer ,
     userInfo: UserInfoReducer,
     likes:LikedPosts,
+    forgetPassword :ForgetPasswordReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

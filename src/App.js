@@ -49,7 +49,7 @@ const App = function () {
   useEffect(() => {
     updateNotifications();    
   }, [userInfo.id]);
-
+  
   return (
     <>
     {localStorage.getItem('token') && (
@@ -93,13 +93,16 @@ const App = function () {
         <New />
       </Route>
       <Route exact path="/forgetPassword">
+        <Redirect to="/dashboard" />
         <ForgetPassword />
       </Route>
       <Route exact path="/register">
+        <Redirect to="/dashboard" />
         <LogInNavBar />
         <Register />
       </Route>
       <Route exact path="/login">
+        <Redirect to="/dashboard" />
         <SignUpNavBar />
         <LoginPage />
       </Route>
