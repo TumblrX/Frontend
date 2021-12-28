@@ -10,8 +10,8 @@ const CustomizePageController = function () {
   const { dataToSend  } = useSelector((state) => state.customize);
 
   const readData = async () =>{
-    // const response = await getSettings();
-    // dispatch(customize.setSettings(response));
+    const response = await getSettings();
+    dispatch(customize.setSettings(response));
     console.log('hi');
   }
 
@@ -117,6 +117,7 @@ const CustomizePageController = function () {
       objectToFormData(dataToSend, 'dataToSend' , formData)
       console.log(dataToSend);
       await customzie(formData);
+      await readData();
     }
 
   const makeCircle =  (val) =>{ 

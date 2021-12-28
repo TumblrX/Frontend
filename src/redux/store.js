@@ -23,7 +23,7 @@ import SearchReducer from "./SearchReducer";
 import NavNotificationsReducer  from './NavNotifications';
 import userFollowing from "./userFollowing";
 import UserInfoReducer  from "./UserInfo";
-
+import ForgetPasswordReducer from './forgetPassword'
 export default configureStore({
   reducer: {
     passwordInfo: PasswordSectionReducer,
@@ -50,6 +50,7 @@ export default configureStore({
     following: userFollowing,
     navNotifications : NavNotificationsReducer ,
     userInfo: UserInfoReducer ,
+    forgetPassword :ForgetPasswordReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,101 +1,23 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import React from 'react';
 import forgetPasswordStyle from './ForgetPassword.module.scss';
-import api from '../../api/api';
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import ForgetPasswordController from './ForgetPassowrdController'
+import { useEffect } from 'react';
 
-// eslint-disable-next-line react/function-component-definition
 export default function ForgetPassword() {
-  const [hideForm, setHideForm] = useState(false);
-  const [hideConfirm, setHideConfirm] = useState(true);
-  const [hideError, setHideError] = useState(true);
-  const [hideEmptyEmail, setHideEmptyEmail] = useState(true);
-  const [hideRecaptchaError, setHideRecaptchaError] = useState(true);
-  const [recaptcha, setRecaptcha] = useState(false);
 
-  /**
- * @description Send request to send the reset password mail to the user
- * @param {string} email - email of the user
- * @param {string} password - password of the user
-*/
+  const {
+    hideForm,   
+    hideConfirm ,
+    hideError ,
+    hideEmptyEmail ,   
+  } = useSelector((state) => state.forgetPassword);
 
-  const forgetPassword = async (email) => {
-    let done = false;
-    try {
-      // eslint-disable-next-line no-unused-vars
-      await api.post('/api/user/forgot-password', {
-        email,
-      });
+  const { forgetPasswordHandler } = ForgetPasswordController();
 
-      setHideForm(true);
-      setHideConfirm(false);
-      setHideError(true);
-    } catch (err) {
-      setHideError(false);
-    }
-  };
-
-  /**
- * @description Check that the user enter a valid data reseting his password
- * @param {MyEvent} e - The observable event.
- * @listens MyEvent
-*/
-  const forgetPasswordHandler = (e) => {
-    e.preventDefault();
-    /**
-     * in case of valid email processed to check on recaptcha
-     */
-    if (e.target.email && e.target.email.value !== '') {
-      if (recaptcha === false) {
-        /**
-       * in case  that recaptcha not checked show error
-       */
-        setHideRecaptchaError(false);
-        setHideEmptyEmail(true);
-        setHideError(true);
-      } else {
-        /**
-         * if valid email and recaptcha is checked send succsseded
-         */
-        forgetPassword(e.target.email.value);
-        setHideEmptyEmail(true);
-        setHideRecaptchaError(true);
-        setRecaptcha(false);
-      }
-    } else {
-      /**
-       * if no email show an error
-       */
-      setHideEmptyEmail(false);
-      setHideRecaptchaError(true);
-    }
-  };
-  /**
- * @description When user presses cancel it return back to the login page
- * @param {MyEvent} e - The observable event.
- * @listens MyEvent
-*/
-  const canceHandler = (e) => {
-    e.preventDefault();
-    setHideEmptyEmail(true);
-    // go to login again
-  };
-  /**
- * @description When user presses done it return back to the main page
- * @param {MyEvent} e - The observable event.
- * @listens MyEvent
-*/
-  const doneHandler = (e) => {
-    e.preventDefault();
-    setHideForm(false);
-    setHideConfirm(true);
-    // go to the main page
-  };
-
-  function onChange() {
-    setRecaptcha(!recaptcha);
-  }
+  useEffect(() => {
+  }, [hideForm, hideConfirm , hideError , hideEmptyEmail ])
 
   return (
     <div data-testid="body" className={forgetPasswordStyle.bodyForget}>
@@ -112,29 +34,14 @@ export default function ForgetPassword() {
                                 <p data-testid="error" id="error">There was an error submitting your request.</p>
                                 )}
 
-                      {!hideRecaptchaError
-                                && (
-                                <p data-testid="recaptchaError" name="recaptchaError">There was an error submitting your request.</p>
-                                )}
-
                       {!hideEmptyEmail && (
                       <p id="error" data-testid="error">Please enter your email address.</p>
                       )}
 
-                      <div
-                        data-testid="recaptcha"
-                        className={forgetPasswordStyle.recaptcha}
-                      >
-                        <ReCAPTCHA
-                          sitekey="6Le9C0YdAAAAAK5iSBhKrlLEGV6av3COAi5l8sC6"
-                          // eslint-disable-next-line react/jsx-no-bind
-                          onChange={onChange}
-                        />
-                      </div>
-
                       <div className={forgetPasswordStyle.buttons}>
-                        <button type="button" data-testid="cancel" onClick={canceHandler}> Cancel </button>
+                        <NavLink to="/login" className={forgetPasswordStyle.nav1}  >Cancel</NavLink>
                         <input className={forgetPasswordStyle.reset} data-testid="reset" name="reset" type="submit" value="Reset password" />
+
                       </div>
                     </form>
                     )}
@@ -152,8 +59,8 @@ export default function ForgetPassword() {
                         {' '}
                         <a href="#">  help documents</a>
                         .
-                      </p>
-                      <button type="button" onClick={doneHandler}> Done </button>
+                      </p>                        
+                      <NavLink to="/"  ><button> Done </button></NavLink>                        
                     </div>
                     )}
       </div>
