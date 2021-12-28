@@ -18,11 +18,12 @@ import BlogView from "./blogview";
 import blogDrafts from "./blogDrafts";
 import Customize from "./Customize";
 import ExploreRecuder from "./ExploreRecuder";
-import DropDownInbox from './DropDownInbox';
+import DropDownInbox from "./DropDownInbox";
 import SearchReducer from "./SearchReducer";
-import NavNotificationsReducer  from './NavNotifications';
+import NavNotificationsReducer from "./NavNotifications";
 import userFollowing from "./userFollowing";
-import UserInfoReducer  from "./UserInfo";
+import UserInfoReducer from "./UserInfo";
+import suggestList from "./suggestList";
 
 export default configureStore({
   reducer: {
@@ -43,13 +44,14 @@ export default configureStore({
     Chat: ChatReducer,
     Blog: blog,
     BlogView: BlogView,
+    suggestedList: suggestList,
     BlogDrafts: blogDrafts,
     customize: Customize,
     Explore: ExploreRecuder,
     Search: SearchReducer,
     following: userFollowing,
-    navNotifications : NavNotificationsReducer ,
-    userInfo: UserInfoReducer ,
+    navNotifications: NavNotificationsReducer,
+    userInfo: UserInfoReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
