@@ -17,7 +17,7 @@ import {
   Register,
   LoginPage,
   ForgetPassword,
-  CreateBlog,
+  Likes,
   Blog,
   BlogView,
   Customize,
@@ -43,7 +43,7 @@ const App = function () {
   useEffect(() => {
     updateNotifications();    
   }, [userInfo.id]);
-
+  
   return (
     <>
     {localStorage.getItem('token') && (
@@ -68,21 +68,10 @@ const App = function () {
         <NavBar />
         <Dashboard />
       </Route>
-
-      {/* <Route
-        exact
-        path="/following"
-        render={() => (
-          localStorage.getItem('token') ? (
-            <>
-              <NavBar />
-              <Following />
-              </>
-              ) : (
-            <Redirect to="/" />
-          )
-          )}
-        /> */}
+      <Route exact path="/likes">
+        <NavBar />
+        <Likes />
+      </Route>
       <Route exact path="/following">
         <NavBar />
         <Following />
@@ -93,22 +82,21 @@ const App = function () {
       </Route>*/}
       <Route exact path="/customize">
         <Customize />
-      </Route>
-      <Route exact path="/newblog">
-        <NavBar />
-        <CreateBlog />      
       </Route>      
       <Route path="/new">
         <New />
       </Route>
       <Route exact path="/forgetPassword">
+        <Redirect to="/dashboard" />
         <ForgetPassword />
       </Route>
       <Route exact path="/register">
+        <Redirect to="/dashboard" />
         <LogInNavBar />
         <Register />
       </Route>
       <Route exact path="/login">
+        <Redirect to="/dashboard" />
         <SignUpNavBar />
         <LoginPage />
       </Route>

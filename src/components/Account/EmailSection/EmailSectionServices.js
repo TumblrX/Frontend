@@ -1,5 +1,13 @@
 import api from "../../../api/api";
 import styles from "../Account.module.css";
+
+/**
+ * Function to send the Email data to the backend and retrieve a confirmation
+ * message that the email has been changed .
+ * @type {function}
+ * @param {void}
+ * @returns {void} return nothing
+ */
 const changeEmail = function (sentData) {
   let token = localStorage.getItem("token");
   let config = {

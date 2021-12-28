@@ -6,6 +6,12 @@
   align-items: center;
   min-width: 533px;
   margin-bottom: 20px;
+  .page-name {
+    display: flex;
+    align-content: center;
+    align-items: center;
+  }
+
   .grid-icons {
     cursor: pointer;
     margin-left: 5px;
@@ -49,6 +55,18 @@
       white-space: nowrap;
       &:hover {
         background-color: #e5e3e32e;
+      }
+    }
+    .arrow {
+      font-family: "Rubik";
+      font-size: 30px;
+      margin-left: 5px;
+      transform: rotate(180deg);
+      margin-bottom: 20px;
+      padding: 0px;
+      display: inline;
+      &:hover {
+        background-color: transparent;
       }
     }
   }

@@ -27,10 +27,7 @@ import Asks from "./Asks/Asks";
  */
 
 function ExploreSection() {
-  const { posts, flexesNumber, postIndex } = useSelector(
-    (state) => state.Explore
-  );
-  useEffect(() => componentDidMount(postIndex), []);
+  useEffect(componentDidMount, []);
 
   return (
     <div className={styles["explore-section"]}>

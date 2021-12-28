@@ -73,7 +73,6 @@ const Dashboard = function () {
               <hr />
               {radarMounted && getOnePost(radar)}
               { isChat && (<Inbox />)}
-              
             </div>
           </div>
         </div>

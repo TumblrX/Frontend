@@ -1,7 +1,7 @@
 import configureStore from '../../redux/store';
 import { setPosts, setRadar, setExploreBlogs, removeBlog, incrementPageNum, setStopFetch} from '../../redux/DashBoardReducer';
 import api from '../../api/api';
-import { follow }  from '../../components/Blog/Followers/followerSection/followservice'
+import { follow, unfollow }  from '../../components/Blog/Followers/followerSection/followservice'
 import { useSelector } from 'react-redux';
 
 const detectLazyLoad = (isInfinte) => {
@@ -107,14 +107,15 @@ const fetchExploreBlogs = async () =>{
   }
 };
 
-const handleFollow = (index, _id) =>{
-  // console.log(_id);
+const handleFollow = (index, id) =>{
+  
   var element = document.getElementById(`follow${index}`).getElementsByTagName('p')[0];
   if(element.innerText === 'follow'){
-    // follow(_id);
+     follow({_id: id});
     element.innerText ='unfollow';
   }else {
     // unfollow heeeer
+     unfollow({_id: id});
     element.innerText ='follow';
   }
 };

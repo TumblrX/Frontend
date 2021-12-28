@@ -4,3 +4,9 @@
     margin-left: 30px;
     width: 320px;
 }
+
+@media (max-width : 990px ) {
+    .FollowingSide {
+        display: none;
+    }     
+}

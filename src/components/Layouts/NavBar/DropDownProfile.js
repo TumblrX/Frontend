@@ -9,8 +9,13 @@ import { FiSettings } from 'react-icons/fi';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillKeyboardFill, BsFillPaletteFill } from 'react-icons/bs';
 import classes from './DropDownProfile.module.scss';
+import { Redirect } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const DropDownProfile = function (props) {
+
+  const [logoutt , setLogoutt] = useState(false);
+
   const logout = function (){
     localStorage.removeItem('userId');
     localStorage.removeItem('InfinteScrolling');
@@ -18,13 +23,20 @@ const DropDownProfile = function (props) {
     localStorage.removeItem('blogs');
     localStorage.removeItem('blog1');
     localStorage.removeItem('token');
+    setLogoutt(true);
+    console.log('removed');
   }
   return (
+    <>
+    {logoutt && (
+      <Redirect to="/" />
+    )}
+    {!logoutt && (
 
-    <div className={classes.profile}>
+      <div className={classes.profile}>
       <div className={classes.account}>
         <span>Account</span>
-        <NavLink to="/" onClick={logout}>Log out</NavLink>
+        <a href="/" onClick={logout}>Log out</a>
       </div>
       <ul className={classes['account-list']}>
         <div className={classes.likes}>
@@ -75,7 +87,7 @@ const DropDownProfile = function (props) {
       </ul>
       <div className={classes.tumblrs}>
         <span>Tumblrs</span>
-        <NavLink to="/newblog">+ New</NavLink>
+        <NavLink to="/new/blog">+ New</NavLink>
       </div>
       <ul className={classes['tumblrs-list']}>
         <NavLink to="/blog/username">Posts</NavLink>
@@ -93,6 +105,8 @@ const DropDownProfile = function (props) {
       </div>
     </div>
 
+  )}
+        </>
   );
 };
 

@@ -5,13 +5,7 @@ import { fetchFollowing } from './FollowingServices';
 import { useSelector } from 'react-redux';
 import useFollowingHandler from './FollowingController';
 import Loading from '../../Blog/Loading/Loading';
-/**
- * Component to render use following page
- * @author Ahmed Mahmoud
- *
- * @component
- *
- */
+
 const FollowingMain = () => {
     const {
         showFollowing, handleChange, handleSubmit,

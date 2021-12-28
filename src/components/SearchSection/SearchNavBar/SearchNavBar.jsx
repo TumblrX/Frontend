@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import styles from "../../ExploreSection/ExploreNavbar/scss/ExploreNavbar.module.scss";
 import { Link } from "react-router-dom";
 import { componentDidMount } from "../../ExploreSection/ExploreNavbar/ExploreNavBarController";
+import { useSelector } from "react-redux";
 /**
  * Component to render the Search Navbar in Search Page.
  * @author Abdalla Mahmoud
@@ -10,6 +11,7 @@ import { componentDidMount } from "../../ExploreSection/ExploreNavbar/ExploreNav
  * @component
  */
 function SearchNavbar() {
+  const { searchWord } = useSelector((state) => state.Search);
   useEffect(componentDidMount, []);
   return (
     <>
@@ -18,35 +20,35 @@ function SearchNavbar() {
           fontSize: "20px",
           fontFamily: "sans-serif",
           color: "white",
-          marginLeft: "10px",
           marginTop: "30px",
         }}
         id="searchTag"
-      >
-        NASA
-      </div>
+      ></div>
       <div className={styles["explore-navbar"]} style={{ marginTop: "10px" }}>
         <div className={styles["explore-selection"]}>
-          <span className={`more-section`} style={{ position: "relative" }}>
-            All posts
+          <span
+            className={`more-section`}
+            style={{ position: "relative", padding: "0px" }}
+          >
+            <div className={styles[`page-name`]}>
+              <div>Allposts</div>
+              <span className={styles["arrow"]}>^</span>
+            </div>
             <div
               className={`${styles["more-list"]} ${styles["hide"]}`}
               style={{ left: "0%" }}
             >
               <div>
-                <Link to="/search/text">Text</Link>
+                <Link to={`/search/${searchWord}/text`}>Text</Link>
               </div>
               <div>
-                <Link to="/search/photos">Photos</Link>
+                <Link to={`/search/${searchWord}/image`}>Images</Link>
               </div>
               <div>
-                <Link to="/search/audios">Audios </Link>
+                <Link to={`/search/${searchWord}/audio`}>Audios </Link>
               </div>
               <div>
-                <Link to="/search/videos">Videos</Link>
-              </div>
-              <div>
-                <Link to="/search/asks">Asks</Link>
+                <Link to={`/search/${searchWord}/video`}>Videos</Link>
               </div>
             </div>
           </span>

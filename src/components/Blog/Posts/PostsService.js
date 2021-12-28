@@ -27,8 +27,8 @@ const usePostHandler = () => {
         history.push('/notfound');
       }
     } catch (err) {
-      history.push('/notfound');
-      console.log(`Error: ${err.message}`);
+      history.push('/servererror');
+      console.log(`Error: ${err.response.data.message}`);
     }
   };
   return {

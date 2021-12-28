@@ -4,7 +4,7 @@ const login = async (email, password) => {
   let succeeded = true;
   let token;
   try {
-    const response = await axios.post('/api/user/login', {
+    const response = await axios.post("/api/user/login", {
       email,
       password,
     });
@@ -13,7 +13,7 @@ const login = async (email, password) => {
   } catch (err) {
     console.log(err);
     succeeded = false;
-    token = 'noToken';
+    token = "noToken";
   }
   return {
     result: succeeded,

@@ -1,0 +1,12 @@
+.LikesSide{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    width: 30%;
+}
+
+@media (max-width : 990px ) {
+    .LikesSide {
+        display: none;
+    }     
+}

@@ -105,7 +105,9 @@ $font-color : #000;
             }
         }
     }
-    @media (max-width : 988px) {
-        // display: none;
+}
+@media (max-width : 990px) {
+    .insertPost{
+        display: none;
     }
 }
