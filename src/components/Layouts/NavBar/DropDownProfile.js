@@ -36,7 +36,7 @@ const DropDownProfile = function (props) {
       <div className={classes.profile}>
       <div className={classes.account}>
         <span>Account</span>
-        <a href="/likes" onClick={logout}>Log out</a>
+        <a href="/" onClick={logout}>Log out</a>
       </div>
       <ul className={classes['account-list']}>
         <div className={classes.likes}>
