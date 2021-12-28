@@ -20,15 +20,20 @@ function SearchNavbar() {
           fontSize: "20px",
           fontFamily: "sans-serif",
           color: "white",
-          marginLeft: "10px",
           marginTop: "30px",
         }}
         id="searchTag"
       ></div>
       <div className={styles["explore-navbar"]} style={{ marginTop: "10px" }}>
         <div className={styles["explore-selection"]}>
-          <span className={`more-section`} style={{ position: "relative" }}>
-            <div className={`page-name`}>Allposts</div>
+          <span
+            className={`more-section`}
+            style={{ position: "relative", padding: "0px" }}
+          >
+            <div className={styles[`page-name`]}>
+              <div>Allposts</div>
+              <span className={styles["arrow"]}>^</span>
+            </div>
             <div
               className={`${styles["more-list"]} ${styles["hide"]}`}
               style={{ left: "0%" }}
