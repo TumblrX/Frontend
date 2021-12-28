@@ -31,7 +31,7 @@ const retrieveSearchPosts = () => {
   const searchTag = document.getElementById("searchTag").innerText;
 
   let dir = window.location.pathname.split("/")[3];
-  let route = "/api/post?q=" + searchTag + "&offset=";
+  let route = `/api/post?q=` + searchTag + `&offset=`;
   if (dir === "all") {
     route += Search.searchPostsIndex;
   } else if (dir === "text") {

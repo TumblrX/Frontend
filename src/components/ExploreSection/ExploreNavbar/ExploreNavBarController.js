@@ -46,8 +46,6 @@ const componentDidMount = () => {
         document.querySelector(`.${styles["more-list"]}`).style.display =
           "none";
 
-        
-
         // event.stopPropagation(); // stop action from propagation to the parent
       });
     });
@@ -55,8 +53,15 @@ const componentDidMount = () => {
 
   // if the function is called from the Search Component .
   if (window.location.pathname.split("/")[1] == "search") {
+    let finalSearchWord = "";
     const searchWord = window.location.pathname.split("/")[2];
-    document.getElementById("searchTag").innerText = searchWord;
+    let actualSearchWord = searchWord.split("%20");
+    actualSearchWord = actualSearchWord.filter((x) => x !== "");
+    actualSearchWord.forEach((val) => {
+      finalSearchWord += val + " ";
+    });
+
+    document.getElementById("searchTag").innerText = finalSearchWord;
     configureStore.dispatch(setSeachWord(searchWord));
   }
   return () => {
