@@ -53,14 +53,22 @@ const componentDidMount = () => {
 
   // if the function is called from the Search Component .
   if (window.location.pathname.split("/")[1] == "search") {
-    let finalSearchWord = "";
+
+    // let finalSearchWord = "";
+    // const searchWord = window.location.pathname.split("/")[2];
+    // let actualSearchWord = searchWord.split("%20");
+    // actualSearchWord = actualSearchWord.filter((x) => x !== "");
+    // actualSearchWord.forEach((val) => {
+    //   finalSearchWord += val + " ";
+    // });
+    let finalSearchWord=""
     const searchWord = window.location.pathname.split("/")[2];
-    let actualSearchWord = searchWord.split("%20");
+    let actualSearchWord=localStorage.getItem("actualSearch");
+    actualSearchWord=actualSearchWord.split(" "); 
     actualSearchWord = actualSearchWord.filter((x) => x !== "");
     actualSearchWord.forEach((val) => {
       finalSearchWord += val + " ";
     });
-
     document.getElementById("searchTag").innerText = finalSearchWord;
     configureStore.dispatch(setSeachWord(searchWord));
   }
