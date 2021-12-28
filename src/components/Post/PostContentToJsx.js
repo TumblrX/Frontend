@@ -121,7 +121,7 @@ const PostContentToJsx = function (content){
       } else {
         // Here provider is tumblrx
         video = (
-          <video controls width="250">
+          <video controls width="100%" height="315">
             <source src={contentBlock.url}
             type="video/webm"/>
               Sorry, your browser doesn't support embedded videos.
