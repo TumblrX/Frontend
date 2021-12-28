@@ -8,6 +8,8 @@ import validatePassword from './CheckValidPasswordService';
 import validateEmail from './CheckValidEmailService';
 import checkNonEmptyFields from './CheckNonEmptyFieldsService';
 import validateBlogName from './CheckValidBlogName';
+import { setUserInfo } from '../../redux/UserInfo';
+import getUserInfo from './../LoginPage/UserInfoService'
 
 const registerController = function () {
   const { errors } = useSelector((state) => state.register);
@@ -61,7 +63,9 @@ const registerController = function () {
                           localStorage.handle = response.handle;
                           localStorage.blogs = response.blogs;
                           localStorage.blog1 = response.blogs[0];
-                          localStorage.token = response.token;     
+                          localStorage.token = response.token; 
+                          const response2 = await getUserInfo();
+                          dispatch(setUserInfo(response2.data));
                           dispatch(redirectToDashboard());  
                         }                         
                     }else{

@@ -49,7 +49,7 @@ const App = function () {
   useEffect(() => {
     updateNotifications();    
   }, [userInfo.id]);
-
+  
   return (
     <>
     {localStorage.getItem('token') && (

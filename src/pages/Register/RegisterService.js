@@ -34,28 +34,3 @@ const register = async (blogName, email, password) => {
 };
 
 export default register;
-
-/*
-const register = async (blogName, email, password) => {
-  let token;
-  let symbol;
-  let response;
-  // try {
-  //     response = await api.post('/api/user/register', {
-  //     username: blogName,
-  //     email,
-  //     password,
-  //   });
-  //   token = response.data.token;
-  //   symbol = response.data.symbol;
-  //   console.log('symbol');
-  // } catch (err) {
-  //   token = 'noToken';
-  //   symbol = response.data.symbol;
-  //   console.log('symbol');
-  // }
-  // return {
-  //   result: symbol ,
-  //   token,
-  // };}
-*/
