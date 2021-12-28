@@ -45,13 +45,19 @@ const NavBar = function () {
     searchBox.addEventListener("keyup", function (event) {
       // Number 13 is the "Enter" key on the keyboard
       if (event.keyCode === 13) {
-        localStorage.setItem("actualSearch",searchBox.value ); 
-        let searchBoxValue=searchBox.value; 
-        searchBoxValue= searchBoxValue.replaceAll(" ",""); 
+        localStorage.setItem("actualSearch", searchBox.value);
+        let searchBoxValue = searchBox.value;
 
-        window.location.replace(
-          window.location.origin + "/search/" + searchBoxValue + "/all"
-        );
+        searchBoxValue = searchBoxValue.replaceAll(" ", "");
+        if (searchBoxValue === "") {
+          window.location.replace(
+            window.location.origin + "/explore/recommended-for-you"
+          );
+        } else {
+          window.location.replace(
+            window.location.origin + "/search/" + searchBoxValue + "/all"
+          );
+        }
       }
     });
   }, []);
