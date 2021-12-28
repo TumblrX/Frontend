@@ -13,6 +13,7 @@ import TextSearch from "./Text/TextSearch";
 import { useSelector } from "react-redux";
 import VideoSearch from "./Video/VideoSearch";
 import AudioSearch from "./Audio/AudioSearch";
+import ImageSearch from "./Image/ImageSearch";
 function SearchSection() {
   const { searchWord } = useSelector((state) => state.Search);
 
@@ -37,8 +38,12 @@ function SearchSection() {
           exact
           component={AudioSearch}
         />
-        {/* <Route path="/explore/text" exact component={Text} />
-        <Route path="/explore/photos" exact component={Image} />
+        <Route
+          path={`/search/${searchWord}/image`}
+          exact
+          component={ImageSearch}
+        />
+        {/* <Route path="/explore/photos" exact component={Image} />
         <Route path="/explore/videos" exact component={Videos} />
         <Route path="/explore/asks" exact component={Asks} /> */}
       </Switch>
