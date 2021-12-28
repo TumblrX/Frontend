@@ -29,7 +29,7 @@ function SearchSection() {
           component={TextSearch}
         />
         <Route
-          path={`/search/${searchWord}/videos`}
+          path={`/search/${searchWord}/video`}
           exact
           component={VideoSearch}
         />

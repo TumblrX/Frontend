@@ -48,7 +48,8 @@ const componentDidMount = function () {
   window.addEventListener("resize", onResize); // it should be added one time as well as scroll Event handler
   retrieveSearchPosts();
   window.addEventListener("scroll", checkScrollo);
-
+  document.querySelector(".page-name").innerText =
+    window.location.pathname.split("/")[3];
   // it will be called when the Component is unmounted
   return () => {
     window.removeEventListener("resize", onResize);

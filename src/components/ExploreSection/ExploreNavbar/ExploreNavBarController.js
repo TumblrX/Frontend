@@ -46,6 +46,8 @@ const componentDidMount = () => {
         document.querySelector(`.${styles["more-list"]}`).style.display =
           "none";
 
+        
+
         // event.stopPropagation(); // stop action from propagation to the parent
       });
     });

@@ -28,7 +28,7 @@ function SearchNavbar() {
       <div className={styles["explore-navbar"]} style={{ marginTop: "10px" }}>
         <div className={styles["explore-selection"]}>
           <span className={`more-section`} style={{ position: "relative" }}>
-            All posts
+            <div className={`page-name`}>Allposts</div>
             <div
               className={`${styles["more-list"]} ${styles["hide"]}`}
               style={{ left: "0%" }}
@@ -37,16 +37,13 @@ function SearchNavbar() {
                 <Link to={`/search/${searchWord}/text`}>Text</Link>
               </div>
               <div>
-                <Link to={`/search/${searchWord}/image`}>Photos</Link>
+                <Link to={`/search/${searchWord}/image`}>Images</Link>
               </div>
               <div>
                 <Link to={`/search/${searchWord}/audio`}>Audios </Link>
               </div>
               <div>
-                <Link to={`/search/${searchWord}/videos`}>Videos</Link>
-              </div>
-              <div>
-                <Link to={`/search/${searchWord}/asks`}>Asks</Link>
+                <Link to={`/search/${searchWord}/video`}>Videos</Link>
               </div>
             </div>
           </span>
