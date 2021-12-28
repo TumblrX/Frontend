@@ -5,11 +5,13 @@
 
 :root {
   --main-padding:20px;
-  --main-font:1.6rem;
+  --main-font:1.2rem;
   --small-text-font:13px;
   --slot-border-thickness:1px;
   --main-color:white;
   --background-on-hover:#53515185;
+  --font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  --white-on-dark: 255, 255, 255;
 }
 
 body {
@@ -18,21 +20,38 @@ body {
 .aside{
   .navBarSlot, .navBarFirst {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     color: var(--main-color);
     text-transform: capitalize;
     font: var(--main-font) sans-serif;
     padding: var(--main-padding);
     cursor: pointer;
+    clear: both;
     div{
       margin-bottom: 3px;  
+    }
+    .span2{
+     font-family: var(--font-family);
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+     margin-left: auto;
+     text-align: right;
+     color: rgba(var(--white-on-dark),.65);
+    }
+    .spansvg{
+      margin-left: auto;
+      .svg{
+        fill: rgba(var(--white-on-dark), 0.65);
+        transform: rotate(0deg);
+      }
     }
   }
   .navBarSlot:hover {
     background-color: var(--background-on-hover);
   }
 
-  .blogs {
+  .Radar {
     margin-top: 20px;
     color: var(--main-color);
     font: bold var(--main-font) sans-serif;
@@ -46,8 +65,10 @@ body {
   }
   .navBarFirst {
     cursor: auto;
+    flex-direction: column;
   }
   a{
     text-decoration: none;
   }
 }
+

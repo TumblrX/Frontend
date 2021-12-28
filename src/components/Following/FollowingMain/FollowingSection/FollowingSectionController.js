@@ -11,11 +11,11 @@ const useFollowingSectionHandler = () => {
   };
   const handleClick = (id, followingStatus) => {
     if(followingStatus==='Follow'){
-        follow(id);
+        follow({_id: id});
         dispatch(setFollowingStatus({id: id , status: "unFollow" }));  
     }
     else{
-        unfollow(id);
+        unfollow({_id: id});
         dispatch(setFollowingStatus({id: id , status: "Follow" }));  
     }
   };

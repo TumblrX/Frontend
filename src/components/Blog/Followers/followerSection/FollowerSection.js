@@ -84,14 +84,6 @@ const FollowerSection = function ({ data }) {
             <div className={styles.dropDown} id="list">
               <div className={styles.dropDownContainer}>
                 <div className={styles.anotherContainer}>
-                  <a
-                    href="#"
-                    rel="noopener"
-                    target="_blank"
-                    className={styles.report}
-                  >
-                    Report
-                  </a>
                   <button className={styles.block}>block</button>
                   <button className={styles.close}>close</button>
                 </div>

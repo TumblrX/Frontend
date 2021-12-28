@@ -39,7 +39,6 @@ const SideBar = function () {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    console.log(dataToSend);
 
     changeTitleFunc(settings.title);
 

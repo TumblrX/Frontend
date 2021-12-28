@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import ForgetPasswordController from './ForgetPassowrdController'
 import { useEffect } from 'react';
 
-export default function ForgetPassword() {
+export default function ResetPassword() {
 
   const {
     hideForm,   
