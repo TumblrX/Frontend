@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -13,40 +14,51 @@ import { useSelector } from 'react-redux';
  */
 
 const BlogSideNav = function () {
-  const { blogTitle, blogHandle } = useSelector((state) => state.Blog);
+  const { blogTitle, blogHandle, NumOfDrafts,
+    NumOfFollowers, NumOfPosts } = useSelector((state) => state.Blog);
   return (
     <aside className={styles.aside}>
       <div className={styles.navBarFirst}>
         <div>
           {blogHandle}
-          {console.log(blogHandle)}
         </div>
         <div>
           {blogTitle}
-          {console.log(blogTitle)}
         </div>
       </div>
       <Link to={`/blog/${blogHandle}`}>
         <div className={styles.navBarSlot}>
-          <div>Posts</div>
+          <span>Posts</span>
+          <span className={styles.span2}>{NumOfPosts}</span>
         </div>
       </Link>
       <Link to={`/blog/${blogHandle}/followers`}>
         <div className={styles.navBarSlot}>
-          <div>Followers</div>
+          <span>Followers</span>
+          <span className={styles.span2}>{NumOfFollowers}</span>
         </div>
       </Link>
       <Link to={`/blog/${blogHandle}/drafts`}>
         <div className={styles.navBarSlot}>
-          <div>Drafts</div>
+          <span>Drafts</span>
+          <span className={styles.span2}>{NumOfDrafts}</span>
         </div>
       </Link>
       <Link to={`/settings/${blogHandle}`}>
         <div className={styles.navBarSlot}>
-          <div>Edit Appearance</div>
+          <span>Edit Appearance</span>
+          <span className={styles.spansvg}>
+            <svg viewBox="0 0 13 20.1" 
+              className={styles.svg}
+              width="12"
+              height="12"
+            >
+              <path d="M0 2.9l7.2 7.2-7.1 7.1L3 20.1l7.1-7.1 2.9-2.9L2.9 0 0 2.9"> </path>
+            </svg>
+          </span>
         </div>
       </Link>
-      <div className={styles.blogs}>Radar</div>
+      <div className={styles.Radar}>Radar</div>
     </aside>
   );
 };

@@ -18,6 +18,8 @@ import { ImQuotesLeft, ImHeadphones } from 'react-icons/im';
 import { FaLink } from 'react-icons/fa';
 import { BsFillChatDotsFill } from 'react-icons/bs';
 import { TiVideo } from 'react-icons/ti';
+import { NavBar  } from '../../components/Layouts/Layouts';
+import CreateBlog from '../CreateBlog/CreateBlog';
 
 import classes from './New.module.scss';
 import NewText from './Text/Text';
@@ -116,6 +118,10 @@ const New = function () {
       </Route>
       <Route path='/new/video'>
         <NewVideo />
+      </Route>
+      <Route path='/new/blog'>
+        <NavBar />
+        <CreateBlog />      
       </Route>
     </div>
   );

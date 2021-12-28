@@ -30,12 +30,12 @@ const fetchFollowing = async () => {
  */
 const searchFollow = async (bloghandle) => {
     try {
-      const response = await api.post('/api/user/follow', { handle: bloghandle });
+      const response = await api.post('/api/user/follow', { _id: bloghandle });
       console.log('success');
       configureStore.dispatch(setFound(true));
       configureStore.dispatch(setNewFollowing());
     } catch (err) {  
-      console.log(`Error: ${err.message}`);
+      console.log(`Error: ${err.response.data.message}`);
     }
 };
 

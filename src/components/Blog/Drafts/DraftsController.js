@@ -1,7 +1,7 @@
 /* eslint-disable no-else-return */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import styles from './Drafts.module.scss';
+import styles from '../Posts/Posts.module.scss';
 import Post from '../../Post/Post';
 /**
  * this function is to show the fetched drafts in drafts page in blog

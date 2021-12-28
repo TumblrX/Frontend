@@ -27,7 +27,7 @@ const useDraftHandler = () => {
         history.push('/notfound');
       }
     } catch (err) {
-      history.push('/notfound');
+      history.push('/servererror');
       console.log(`Error: ${err.message}`);
     }
   };

@@ -95,13 +95,11 @@
         }  
     }
 }
-@media (max-width: 540px){
- .h1{
-    margin: 10px;
- }
-}
-@media (min-width: 990px){
-    .SearchSection{
-      align-self: flex-end;
+@media (max-width : 990px ) {
+    .FollowingMain {
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
     }
 }
+
