@@ -23,10 +23,9 @@ import {
 const Posts = function () {
   const {
     pageNum, intialLoading,
-    posts, NumOfPosts,
+    posts, NumOfPosts, isInfinte,
   } = useSelector((state) => state.blogposts);
   const { avatar, id } = useSelector((state) => state.Blog);
-  const { infinteScrolling } = useSelector((state) => state.userInfo);
   const { fetchBlogPosts } = usePostHandler();
   useEffect(() => {
     if (id) {
@@ -45,12 +44,12 @@ const Posts = function () {
               <NothingAvailable page="Post" />
             )
             : (
-              showPosts(posts, pageNum, infinteScrolling)
+              showPosts(posts, pageNum, isInfinte)
             )
           )}
         <div className={`${styles.navigateBtns} ${styles.row}`}>
           {
-            (pageNum !== 1 && !infinteScrolling && NumOfPosts !== 0)
+            (pageNum !== 1 && !isInfinte && NumOfPosts !== 0)
             && (
               <button
                 className={styles.previousBtn}
@@ -62,7 +61,7 @@ const Posts = function () {
           }
           {
             (pageNum * 10 < posts.length || posts.length === 0)
-              && !infinteScrolling && NumOfPosts !== 0
+              && !isInfinte && NumOfPosts !== 0
               && (
                 <button
                   className={styles.nextBtn}

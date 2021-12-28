@@ -81,9 +81,10 @@
     }
     .audio{
       margin-bottom: 1rem;
-      audio{
-        display: block;
-      }
+      text-align: center;
+      // audio{
+      //   display: inline-block;
+      // }
     }
     .video{
       margin-bottom: 1rem;

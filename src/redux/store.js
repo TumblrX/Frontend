@@ -14,19 +14,22 @@ import userBlogsReducer from "./userBlogs-slice";
 import newTextPostReducer from "./newTextPost-slice";
 import ChatReducer from "./ChatReducer";
 import blog from "./blog";
+import BlogView from "./blogview";
 import blogDrafts from "./blogDrafts";
 import Customize from "./Customize";
 import ExploreRecuder from "./ExploreRecuder";
-import userInfo from "./UserInfo";
-import UserInfo from "./UserInfo";
+import DropDownInbox from './DropDownInbox';
 import SearchReducer from "./SearchReducer";
-import UserInfoReducer from './UserInfo'
+import NavNotificationsReducer  from './NavNotifications';
+import userFollowing from "./userFollowing";
+import UserInfoReducer  from "./UserInfo";
 
 export default configureStore({
   reducer: {
     passwordInfo: PasswordSectionReducer,
     create: createReducer,
     DashBoard: DashBoardReducer,
+    DropDownInbox: DropDownInbox,
     blogposts: blogPosts,
     blogfollowers: blogFollowers,
     login: LoginReducer,
@@ -39,12 +42,14 @@ export default configureStore({
     newTextPost: newTextPostReducer,
     Chat: ChatReducer,
     Blog: blog,
+    BlogView: BlogView,
     BlogDrafts: blogDrafts,
     customize: Customize,
     Explore: ExploreRecuder,
-    userInfo: UserInfo,
     Search: SearchReducer,
-    userInfo : UserInfoReducer,
+    following: userFollowing,
+    navNotifications : NavNotificationsReducer ,
+    userInfo: UserInfoReducer ,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

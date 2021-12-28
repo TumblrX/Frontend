@@ -22,8 +22,8 @@ import {
  */
 const Drafts = function () {
   const {
-    pageNum, isInfinte, intialLoading,
-    drafts, numberOfDrafts,
+    pageNum, intialLoading,
+    drafts, numberOfDrafts, isInfinte
   } = useSelector((state) => state.BlogDrafts);
   const { avatar, id } = useSelector((state) => state.Blog);
   const { fetchBlogDrafts } = useDraftHandler();

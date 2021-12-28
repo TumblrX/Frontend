@@ -43,16 +43,10 @@ const List = function (props) {
           </div>
           </NavLink>
           <NavLink to="/inbox">
-          <div className={classes.text}>
-            <IoIosMail />
-            Inbox
-          </div>
-          </NavLink>
-          <NavLink to="/messaging">
-          <div className={classes.text}>
-            <RiChatSmile3Fill />
-            Messaging
-          </div>
+            <div className={classes.text}>
+              <IoIosMail />
+              Inbox
+            </div>
           </NavLink>
           <NavLink to="/blog.username/activity">
           <div className={classes.text}>

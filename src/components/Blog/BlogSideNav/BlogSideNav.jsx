@@ -36,13 +36,6 @@ const BlogSideNav = function () {
           <div>Followers</div>
         </div>
       </Link>
-
-      <Link to={`/blog/${blogHandle}/activity`}>
-        <div className={styles.navBarSlot}>
-          <div>Activity</div>
-        </div>
-      </Link>
-
       <Link to={`/blog/${blogHandle}/drafts`}>
         <div className={styles.navBarSlot}>
           <div>Drafts</div>

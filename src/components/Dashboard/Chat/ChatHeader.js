@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaRegWindowClose, FaGripVertical, FaAngleDown } from 'react-icons/fa';
 import styles from './Chat.module.scss';
 import {
-  dropDown, close, handleSound, handleBlock, handleDelete,
+  dropDown, close, handleSound, handleDelete,
 } from './ChatController';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -24,7 +24,6 @@ const ChatHeader = function () {
           <ul className={styles.dropDown}>
             <li className={styles.item} onClick={() => { handleSound(); }}> Sound Settings</li>
             <li className={styles.item} onClick={() => { handleDelete(); }}>Delete Conversation</li>
-            <li className={styles.item} onClick={() => { handleBlock(); }}> Block user2 </li>
           </ul>
         </div>
         <div

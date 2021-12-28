@@ -1,22 +1,26 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { FaPencilAlt, FaTumblr } from "react-icons/fa";
-import { BiSearch } from "react-icons/bi";
-import { MdExplore } from "react-icons/md";
-import { IoIosMail } from "react-icons/io";
-import { RiChatSmile3Fill } from "react-icons/ri";
-import { GiElectric, GiHamburgerMenu } from "react-icons/gi";
-import { AiFillHome } from "react-icons/ai";
-import { BsFillPersonFill } from "react-icons/bs";
-import { ImCross } from "react-icons/im";
-import classes from "./NavBar.module.scss";
-import DropDownProfile from "./DropDownProfile";
-import DropDownActivity from "./DropDownActivity";
-import DropDownInbox from "./DropDownInbox";
-import List from "./List";
-import { getLikesCount } from "./DropDownProfileService";
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { FaPencilAlt, FaTumblr } from 'react-icons/fa';
+import { BiSearch } from 'react-icons/bi';
+import { MdExplore } from 'react-icons/md';
+import { IoIosMail } from 'react-icons/io';
+import { RiChatSmile3Fill } from 'react-icons/ri';
+import { GiElectric, GiHamburgerMenu } from 'react-icons/gi';
+import { AiFillHome } from 'react-icons/ai';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { ImCross } from 'react-icons/im';
+import classes from './NavBar.module.scss';
+import DropDownProfile from './DropDownProfile';
+import DropDownActivity from './DropDownActivity';
+import DropDownInbox from './DropDownInbox';
+import List from './List';
+import { getLikesCount } from './DropDownProfileService';
+import { useDispatch } from 'react-redux';
+import { resetDropDown } from '../../../redux/DropDownInbox';
+import getNotifications from './NotificationsServce';
+import { setNotifications } from '../../../redux/NavNotifications';
 
 const NavBar = function () {
   const [title, setTitle] = useState("");
@@ -27,6 +31,9 @@ const NavBar = function () {
   const [isProfile, setProfile] = useState(false);
   const [inputIsFocused, setInputIsFocused] = useState(false);
   const [counts, setCounts] = useState({});
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchNavbarCounts = async () => {
       setCounts(await getLikesCount());
@@ -54,11 +61,17 @@ const NavBar = function () {
     setInbox(!isInbox);
     setActivity(false);
     setProfile(false);
+    dispatch(resetDropDown())
+
+    console.log('reset')
   };
-  const activityClickHandler = () => {
+  const activityClickHandler = async () => {
     setInbox(false);
     setActivity(!isActivity);
     setProfile(false);
+    const response  = await getNotifications();
+    console.log(response.response.data);
+    dispatch(setNotifications(response.response.data.notifications));
   };
   const profileClickHandler = async () => {
     setInbox(false);

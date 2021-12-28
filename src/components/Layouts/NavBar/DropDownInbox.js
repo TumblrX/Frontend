@@ -1,66 +1,89 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
 import { RiChatSmile3Fill } from 'react-icons/ri';
 import classes from './DropDownInbox.module.scss';
-import { getConversations } from './DropDownInboxService';
-import { useDispatch } from 'react-redux';
+import { useDispatch ,useSelector} from 'react-redux';
 import noAvatar from '../../../assets/Images/avatar.png'
-import { setIsChat  } from '../../../redux/DashBoardReducer';
-import { setFriend } from '../../../redux/ChatReducer';
+import { MdSend } from 'react-icons/md';
+import { setNewMessage } from '../../../redux/DropDownInbox';
+import { handleOpenSearch, handleSearch, handleOpenChat, componentOnMount } from './DropDownInboxController'
 
-// eslint-disable-next-line no-unused-vars
 const DropDownInbox = function (props) {
-  const [conversations, setConversations] = useState([]);
+  const { conversations, blogs, isSearch, newMessage } = useSelector((state) => state.DropDownInbox);
   const dispatch = useDispatch();
-  useEffect(async () => {
-    const x= await getConversations();
-    if(x.hasOwnProperty('data')){
-      await setConversations(x.data);
-    }
-    // console.log('data -->', conversations);
-    // console.log('x-->', x.data.length);
-    // console.log('conversation -->', conversations[0].hasOwnProperty('blogHandle'));
-  },[])
-
-  const handleChat = (conversation)=>{
-    const freind ={ id:conversation.textedUser , handle:conversation.blogHandle   , avatar:conversation.avatar };
-    // console.log( freind);
-    dispatch(setIsChat(true));
-    dispatch(setFriend(freind));
-  };
+  useEffect(async () => { componentOnMount(); },  [conversations])
   return (
     <div className={classes.smile}>
-      <div className={classes.header}>
-        <span>username</span>
-        <NavLink to="/">New Message</NavLink>
+      <div className={classes.header} >
+        {
+          <>
+            <span>username</span>
+            <span onClick={(e) => handleOpenSearch(e, isSearch)}>New Message</span> 
+          </>
+        }
       </div>
-      { conversations.length ===0  &&  
-        <div className={classes.content}>
-              <RiChatSmile3Fill />
-              <span>Talk to tumblr</span> 
+      <div className={classes.all}> 
+      { 
+        isSearch && 
+        <div className={classes.header}>
+          <input 
+            type='text' 
+            className={classes.searchInput} 
+            onChange={ (e) => {  dispatch(setNewMessage(e.target.value)); }}
+            placeholder= 'Chat With .... '
+            value={ newMessage }
+          />
+          <div className={classes.icons} onClick={(e) => handleSearch(newMessage) }>
+            <MdSend className={classes.icon}/>
+          </div>
         </div>
       }
       { 
-        conversations.length > 0  && (
+        ( isSearch && blogs.length === 0 )? (
+          <div className={classes.content}>
+            <RiChatSmile3Fill />
+            <span> Enter Blog Name ... </span> 
+          </div>
+        ) : (isSearch && blogs.length !==0 )?(
+
+              blogs.map((blog, index) =>(
+              <div className={classes.conversation} key={index} onClick={ ()=> {  handleOpenChat(blog) }}>
+                <div className={classes.ConversationAvatar}  >
+                  {blog.avatar ==='none'  && <img src={noAvatar} alt="avatar" className={classes.avatar} />}
+                  {blog.avatar !=='none'  && <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="avatar" className={classes.avatar} />}
+                  
+                </div>
+                <div className={classes.title}>
+                  <h4 className={classes.h4}>   {blog.hasOwnProperty('handle') && blog.handle} </h4>
+                </div>
+              </div>
+          ))
+        ) : conversations.length ===0 ?  (
+          <div className={classes.content}>  
+            <RiChatSmile3Fill />
+            <span>Talk to tumblr</span> 
+          </div>
+        ) : ( 
           conversations.map((conversation, index) =>(
-            <div className={classes.conversation} key={index} onClick={ ()=> {  handleChat(conversation) }}>
-              <div className={classes.ConversationAvatar} id={`side${index}`} >
-                {conversation.avatar ==='none'  && <img src={noAvatar} alt="avatar" className={classes.avatar} />}
-                {conversation.avatar !=='none'  && <img src={conversation.avatar} alt="avatar" className={classes.avatar} />}
-                
+              <div className={classes.conversation} key={index} onClick={ ()=> {  handleOpenChat(conversation) }}>
+                <div className={classes.ConversationAvatar} id={`side${index}`} >
+                  {conversation.avatar ==='none'  && <img src={noAvatar} alt="avatar" className={classes.avatar} />}
+                  {conversation.avatar !=='none'  && <img src={`${process.env.REACT_APP_API_URL}/${conversation.avatar}`} alt="avatar" className={classes.avatar} />}
+                  
+                </div>
+                <div className={classes.title}>
+                  <h4 className={classes.h4}>   {conversation.hasOwnProperty('blogHandle') && conversation.blogHandle} </h4>
+                  <p  className={classes.p}>   
+                    {conversation.isMe  && <>myhandle : </>}
+                    {conversation.hasOwnProperty('message') && conversation.message} 
+                  </p>
+                </div>
               </div>
-              <div className={classes.title}>
-                <h4 className={classes.h4}>   {conversation.hasOwnProperty('blogHandle') && conversation.blogHandle} </h4>
-                <p  className={classes.p}>   
-                  {conversation.isMe  && <>myhandle : </>}
-                  {conversation.hasOwnProperty('message') && conversation.message} 
-                </p>
-              </div>
-            </div>
           ))
         )
-      } 
-
+      }
+      </div>
     </div>
   );
 };
