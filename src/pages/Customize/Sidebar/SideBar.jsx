@@ -7,6 +7,8 @@ import style from './SideBar.module.scss';
 import { BsFillPencilFill, BsQuestionCircleFill } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
 import CustomizePageController from '../CustomizeController';
+import { NavLink } from 'react-router-dom';
+
 
 const SideBar = function () {
   const {
@@ -31,6 +33,7 @@ const SideBar = function () {
         handleCheckBoxes,
         changeAvatarHandler, 
         changeHeaderImageHandler,  
+        saveHandler,
   } = CustomizePageController();
 
   const dispatch = useDispatch();
@@ -77,9 +80,9 @@ const SideBar = function () {
   return (
     <div className={style.sidebarContainer}>
       <div className={style.header}>
-        <button> Exit </button>
+        <NavLink to="/dashboard" style={{ background: '#6a6e72', padding: '3px 9px', fontSize: '13px', borderRadius: '2px' }} >Exit</NavLink>
         <div> Edit theme </div>
-        <button> Save </button>
+        <button onClick={saveHandler}> Save </button>
       </div>
       <div className={style.sidebarWrapper}>
         <div className={style.apperance}>
@@ -101,22 +104,34 @@ const SideBar = function () {
             <div className={style.li}>
               {' '}
               Header Image
-              <input type="file" onChange={changeHeaderImageHandler} />
-              <button className={style.pen}>
-                <BsFillPencilFill color="#acacac" fontSize="15px" float="right" />
-              </button>
+              <div style={{float:'right'}}>
+                <label for="upload-photo"><BsFillPencilFill color="#acacac" fontSize="15px" float="right" cursor='pointer' /></label>
+                <input id='upload-photo'
+                style ={{
+                  opacity: '0',
+                  position: 'absolute',
+                  zIndex: '-1',
+                }}
+                type="file" onChange={changeHeaderImageHandler} />             
+              </div>
             </div>
           </li>
           <li>
-
             <div className={style.li}>
+              {' '}
               Avatar
-              <input type="file" onChange={changeAvatarHandler} />
-              <button className={style.pen}>
-                <BsFillPencilFill color="#acacac" fontSize="15px" float="right" />
-              </button>
+              <div style={{float:'right'}}>
+                <label for="upload-photo2"><BsFillPencilFill color="#acacac" fontSize="15px" float="right" cursor='pointer' /></label>
+                <input id='upload-photo2'
+                style ={{
+                  opacity: '0',
+                  position: 'absolute',
+                  zIndex: '-1',
+                }}
+                type="file" onChange={changeAvatarHandler} />             
+              </div>
             </div>
-          </li>
+          </li>          
           <li>
             <div className={style.li}>
               Avatar Shape
