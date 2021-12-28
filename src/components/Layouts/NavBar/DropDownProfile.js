@@ -29,14 +29,14 @@ const DropDownProfile = function (props) {
   return (
     <>
     {logoutt && (
-      <Redirect to="/login" />
+      <Redirect to="/" />
     )}
     {!logoutt && (
 
       <div className={classes.profile}>
       <div className={classes.account}>
         <span>Account</span>
-        <NavLink to="/" onClick={logout}>Log out</NavLink>
+        <a href="/likes" onClick={logout}>Log out</a>
       </div>
       <ul className={classes['account-list']}>
         <div className={classes.likes}>
