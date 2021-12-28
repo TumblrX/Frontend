@@ -7,18 +7,54 @@
   border-radius: 5px;
   border : 1px solid #eee;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.006);
+  z-index: 999;
+  cursor: default;
+  @media screen and (max-width:660px) {
+    width: 100%;
+    left:0;
+  }
   .header {
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .back{
+      cursor: pointer;
+    }
   }
   .content {
     padding: 1rem;
     background-color: #EDEDED;
-    min-height: 25rem;
+    height: 25rem;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
   }
   .footer {
     padding: 1rem;
+    form{
+      display: flex;
+      justify-content: space-between;
+      input{
+        width:80%;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        &::placeholder {
+          color: #888;
+          font-size: 1rem;
+        }
+      }
+      button{
+        width:20%;
+        color: #00B8FF;
+        font-size: 1rem;
+        background-color: inherit;
+        cursor: pointer;
+        &:disabled{
+          color: #888;
+        }
+      }
+    }
   }
-}
-.close{
-  display: none;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // TODO Complete the reblog post
 // /* eslint-disable */
 /* eslint-disable consistent-return */
@@ -19,15 +20,35 @@ import { RiDeleteBinLine, RiShareForwardLine, RiEdit2Line } from 'react-icons/ri
 import PostController from './PostController';
 import postContentToJsx from './PostContentToJsx';
 import avatar from '../../assets/Images/avatar.png'
-// import Notes from './Notes/Notes';
+import Notes from './Notes/Notes';
+
 const Post = function ({ data }) {
   const { tags, title, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
+  const [notesIsShown, setNotesIsShown] = useState(false);
+  const [notesCounter, setNotesCounter] = useState(notesCount);
   const { reblogPostHandler, likePostHandler, deletePostHandler } = PostController();
   const userBlogs = useSelector(state => state.userBlogs.userBlogs);
   const [ isLiked, setIsLiked ] = useState(liked);
   const likeClickHandler = () =>{
+    if(isLiked){
+      setNotesCounter(x=>x-1);
+    }else {
+      setNotesCounter(x=>x+1);
+    }
     likePostHandler(id, isLiked)
     setIsLiked(!isLiked);
+  }
+  const openNotesClickHandler = () =>{
+    setNotesIsShown(true);
+  }
+  const closeNotesClickHandler = (e) =>{
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+    setNotesIsShown(false);
+  }
+  const increamentNotesCount = () =>{
+    setNotesCounter(x=>x+1);
+    console.log(notesCounter);
   }
   let postJsx = [];
   if(!isReblogged){
@@ -47,17 +68,17 @@ const Post = function ({ data }) {
           <p>{tags.map(tag => <span className={classes.tag}>{`#${tag}`}</span>)}</p>
         </div>
         <footer className={classes.footer}>
-          <div className={classes.notes}>
-            0 notes
+          <div className={classes.notes} onClick={openNotesClickHandler}>
+            {notesCounter} notes
           </div>
           <div className={classes.icons}>
             <IconContext.Provider value={{ size: '1.3rem' }}>
               {/* <div>
                 <RiShareForwardLine />
               </div> */}
-              <div>
+              <div onClick={openNotesClickHandler}>
                 <FaRegComment />
-                {/* <Notes/> */}
+                {notesIsShown && <Notes increamentNotesCount={increamentNotesCount} closeHandler={closeNotesClickHandler} postId={id}/>}
               </div>
               <div onClick={reblogPostHandler.bind(this, id)}>
                 <IoGitCompareSharp />
@@ -141,17 +162,17 @@ const Post = function ({ data }) {
     }
     postJsx.push(
       <footer className={classes.footer}>
-        <div className={classes.notes}>
-          0 notes
+        <div className={classes.notes} onClick={openNotesClickHandler}>
+          {notesCounter} notes
         </div>
         <div className={classes.icons}>
           <IconContext.Provider value={{ size: '1.3rem' }}>
             {/* <div>
               <RiShareForwardLine />
             </div> */}
-            <div>
-              <FaRegComment />
-              {/* <Notes/> */}
+            <div onClick={openNotesClickHandler}>
+                <FaRegComment />
+                {notesIsShown && <Notes increamentNotesCount={increamentNotesCount} closeHandler={closeNotesClickHandler} postId={id}/>}
             </div>
             <div onClick={reblogPostHandler.bind(this, id)}>
               <IoGitCompareSharp />
