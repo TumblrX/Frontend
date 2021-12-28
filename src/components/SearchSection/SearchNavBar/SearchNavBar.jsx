@@ -40,7 +40,7 @@ function SearchNavbar() {
                 <Link to={`/search/${searchWord}/image`}>Photos</Link>
               </div>
               <div>
-                <Link to={`/search/${searchWord}/audios`}>Audios </Link>
+                <Link to={`/search/${searchWord}/audio`}>Audios </Link>
               </div>
               <div>
                 <Link to={`/search/${searchWord}/videos`}>Videos</Link>
