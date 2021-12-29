@@ -15,7 +15,7 @@ import classes from './PostButton.module.scss';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const PostButton = function ({ setSelectedOption }) {
+const PostButton = function ({ setSelectedOption, formSubmitHandler }) {
   const { formIsValid, postState } = useSelector((state) => state.newTextPost);
 
   const [showOptions, setShowOptions] = useState(false);
@@ -27,11 +27,13 @@ const PostButton = function ({ setSelectedOption }) {
     setSelectedOption(e.target.getAttribute('value'));
   };
   const buttonClickHandler = () => {
-    history.push('/dashboard');
+    if(formSubmitHandler()){
+      history.push('/dashboard');
+    }
   };
   return (
     <div className={classes.post}>
-      <button disabled={!formIsValid} onClick={buttonClickHandler}>
+      <button type='button' disabled={!formIsValid} onClick={buttonClickHandler}>
         {postState === 'published' ? 'Post now' : postState === 'draft' ? 'Save as draft' : 'Post privately'}
       </button>
       <div onClick={toggleOptionsHandler}>

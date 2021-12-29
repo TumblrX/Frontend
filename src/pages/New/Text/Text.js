@@ -45,7 +45,7 @@ const NewText = function () {
 
   return (
     <FormCard changeBlogId={blogIdChangeHandler}>
-      <form className={classes.form} onSubmit={formSubmitHandler}>
+      <form className={classes.form} >
         <input
           className={classes.title}
           type="text"
@@ -63,7 +63,7 @@ const NewText = function () {
         />
         <div className={classes.actions}>
           <CloseButton />
-          <PostButton setSelectedOption={postStateChangeHandler} />
+          <PostButton setSelectedOption={postStateChangeHandler} formSubmitHandler={formSubmitHandler}/>
         </div>
       </form>
     </FormCard>

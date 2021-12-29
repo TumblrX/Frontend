@@ -15,7 +15,7 @@ const CloseButton = function () {
     history.push('/dashboard');
   };
   return (
-    <button className={classes.close} onClick={closeClickHandler}>
+    <button type='button' className={classes.close} onClick={closeClickHandler}>
       Close
     </button>
   );
