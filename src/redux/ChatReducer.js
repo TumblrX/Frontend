@@ -16,6 +16,13 @@ export const ChatReducer = createSlice({
     sound: false,
   },
   reducers: {
+    resetChat: (state) => {
+      state.messages =[]; 
+      state.newMessage ='';
+      state.arrivalMessage=''
+      state.friend ={};
+      state.sound =false;
+    },
     setMessages: (state, action) => {
       state.messages = action.payload;
     },
@@ -62,5 +69,6 @@ export const {
   setSound,
   getFreindId,
   deleteMessages,
+  resetChat,
 } = ChatReducer.actions;
 export default ChatReducer.reducer;

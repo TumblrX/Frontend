@@ -1,15 +1,23 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable react/jsx-filename-extension */
 import React from "react";
-import img from "../../../assets/Images/Project_128-09.jpg";
-function TrendCard() {
+import img from "../../../assets/Images/avatar.png";
+function TrendCard(props) {
   return (
     <li>
       <div>
         <div>
-          <div>911 fox</div>
-          <div>#tag</div>
+          <div>{props.tag}</div>
         </div>
-        <div>
-          <img src={img} alt="" />
+        <div style={{ width: "64px", height: "64px" }}>
+          <img
+            src={props.img}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = img;
+            }}
+            alt="photod"
+          />
         </div>
       </div>
     </li>

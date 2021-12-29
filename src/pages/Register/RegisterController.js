@@ -49,7 +49,6 @@ const registerController = function () {
                     if (validatePassword(password)){
                         ret = validateBlogName(blogName);
                         if (ret === 1){
-                          console.log(ret);
                           dispatch(setErrorMessage(errors.spacesOnly));
                         }else if(ret === 2){
                           dispatch(setErrorMessage(errors.includeSpecialChars));
@@ -81,13 +80,11 @@ const registerController = function () {
     } catch (err) {
       if (err.response){
         const symbol = err.response.data.symbol;
-        console.log(symbol);
         if (symbol === '1') {
           dispatch(setErrorMessage(errors.weakPassword));
         }else if (symbol === '2'){
           dispatch(setErrorMessage(errors.invalidEmail));
         }else if (symbol === '3'){
-          console.log("here");
           dispatch(setErrorMessage(errors.usedEmail));
         }else if (symbol === '4'){
           dispatch(setErrorMessage(errors.usedBlogName));

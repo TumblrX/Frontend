@@ -1,12 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/function-component-definition */
-import { useSelector, useDispatch } from 'react-redux';
-import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import React from 'react';
 import style from './Body.module.scss';
-// import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import readData from './../CustomizeController'
 
 const Body = function () { 
   const {

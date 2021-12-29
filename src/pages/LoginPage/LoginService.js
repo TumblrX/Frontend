@@ -12,14 +12,12 @@ const login = async (email, password) => {
       email,
       password,
     });
-    console.log(response);
     token = response.data.token;
     userId = response.data.id;
     InfinteScrolling = response.data.settings.dashBoardInfiniteScrolling;
     blogs = response.data.blogs;
     handle =response.data.name;  
   } catch (err) {
-    console.log(err);
     succeeded = false;
     token = 'noToken';
   }

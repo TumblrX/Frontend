@@ -7,12 +7,11 @@ import style from './SideBar.module.scss';
 import { BsFillPencilFill, BsQuestionCircleFill } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
 import CustomizePageController from '../CustomizeController';
-import { NavLink } from 'react-router-dom';
 
 
 const SideBar = function () {
   const {
-    settings, dataToSend,
+    settings,
   } = useSelector((state) => state.customize);
 
   const { 
@@ -39,7 +38,6 @@ const SideBar = function () {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    console.log(settings);
 
     changeTitleFunc(settings.title);
     changeDescriptionFunc(settings.description);
@@ -82,7 +80,7 @@ const SideBar = function () {
   return (
     <div className={style.sidebarContainer}>
       <div className={style.header}>
-        <NavLink to="/dashboard" style={{ background: '#6a6e72', padding: '3px 9px', fontSize: '13px', borderRadius: '2px' }} >Exit</NavLink>
+        <a href="/dashboard" style={{ background: '#6a6e72', padding: '3px 9px', fontSize: '13px', borderRadius: '2px' }} >Exit</a>
         <div> Edit theme </div>
         <button onClick={saveHandler}> Save </button>
       </div>

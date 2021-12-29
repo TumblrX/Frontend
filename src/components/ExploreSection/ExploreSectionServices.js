@@ -63,20 +63,18 @@ const retrivePosts = function () {
   api
     .get(route, config)
     .then((res) => {
-      console.log(route);
       if (pathname === "recommended-for-you") {
         configureStore.dispatch(pushForYouPosts(res.data["for-youPosts"]));
         configureStore.dispatch(
           setForYouPostIndex(Explore.forYouPostsIndex + 10)
-        );
+        );        
       } else if (pathname === "trending") {
         configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
         configureStore.dispatch(
           setTrendingPostIndex(Explore.trendingPostsIndex + 10)
         );
       } else if (pathname === "audios") {
-        console.log(res);
-        configureStore.dispatch(pushAudioPosts(res.data.trendingPosts));
+        configureStore.dispatch(pushAudioPosts(res.data.audio));
         configureStore.dispatch(
           setAudioPostIndex(Explore.audioPostsIndex + 10)
         );

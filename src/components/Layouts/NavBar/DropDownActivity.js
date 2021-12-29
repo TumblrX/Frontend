@@ -11,7 +11,7 @@ const DropDownActivity = function (props) {
   return (
     <div className={classes.activity}>
       <div className={classes.header}>
-        <span>username</span>
+        <span>{localStorage.getItem('handle')}</span>
         <NavLink to="/blog/username/activity">---------</NavLink>
       </div>
       <div className={classes.content}>

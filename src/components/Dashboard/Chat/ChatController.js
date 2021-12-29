@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
 import configureStore from '../../../redux/store';
-import { addMessage, setNewMessage, setSound ,deleteMessages} from '../../../redux/ChatReducer';
+import { resetChat,addMessage, setNewMessage, setSound ,deleteMessages, setMessages} from '../../../redux/ChatReducer';
 import { setIsChat } from '../../../redux/DashBoardReducer';
-import { sendMessage } from './ChatServices';
+import { sendMessage, getChat } from './ChatServices';
 
 const dropDown = () => {
   document.getElementById('Chat').style.display = 'none';
   document.getElementById('ExitAvatar').style.display = 'block';
 };
 const close = () => {
-  document.getElementById('Chat').style.display = 'none';
   configureStore.dispatch(setIsChat(false));
+  configureStore.dispatch(resetChat());
+  document.getElementById('Chat').style.display = 'none';
 };
 const open = () => {
   document.getElementById('Chat').style.display = 'block';
@@ -19,9 +20,9 @@ const open = () => {
 
 const scroll = () => {
   const element = document.getElementById('scroll');
-  if( element !== undefined){
+  if( element ){
     element.scroll({
-      top: 10000,
+      top: 50000,
       behavior: 'smooth'
     });
   }
@@ -36,6 +37,11 @@ const dataTime = () => {
 const handleSend = async (newMessage, id, socket) => {
   if (!newMessage.match(/^\s*$/)) {
     socket.current.emit('private message' , { content:newMessage, receiverId:id });
+    // configureStore.dispatch(addMessage({
+    //   text:newMessage,
+    //   senderId: localStorage.getItem('userId'),
+    //   createdAt: dataTime()
+    // }));
     scroll();
   }
   configureStore.dispatch(setNewMessage(''));
@@ -58,7 +64,22 @@ const handleDelete = () => {
   configureStore.dispatch(deleteMessages());
 };
 
+const socketConnect = (mySocket, io) => {
+  const socketUrl = process.env.REACT_APP_SOCKET_URL;
+  mySocket.current = io(socketUrl,{
+    auth:{
+      token: `${localStorage.getItem('token')}`
+    } 
+  });
+}
+
+const chatMessages = async (friendId) =>{
+  const msgs = await getChat(friendId);
+  await configureStore.dispatch(setMessages(msgs));
+}
+
+
 export {
   open, close, dropDown, scroll, handleSend, handleKeyEnter,
-  handleSound, handleDelete,dataTime
+  handleSound, handleDelete,dataTime, socketConnect, chatMessages
 };
