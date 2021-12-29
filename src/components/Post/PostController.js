@@ -9,11 +9,13 @@
 import { useDispatch } from 'react-redux';
 import { dashboardActions } from '../../redux/DashBoardReducer';
 import { blogDraftsActions } from '../../redux/blogDrafts';
+import { blogPostsActions } from '../../redux/blogPosts';
 import deletePost from './DeletePostService';
 import reblogPost from './ReblogPostService';
 import likePost from './LikePostService';
 import unLikePost from './UnlikePostService';
 import postDraft from './PostDraftService';
+import { deleteLikedPost } from '../../redux/Likes';
 
 const PostController = function () {
   const dispatch = useDispatch();
@@ -38,10 +40,22 @@ const PostController = function () {
         dispatch(dashboardActions.deletePost(postId));
       }
     },
+    deleteBlogPostHandler: async (postId) => {
+      // First delete it from the database then from the store
+      if(await deletePost(postId)){
+        dispatch(blogPostsActions.deletePost(postId));
+      }
+    },
     deleteDraftHandler: async (draftId) => {
       // First delete it from the database then from the store
       if(await deletePost(draftId)){
         dispatch(blogDraftsActions.deleteDraft(draftId));
+      }
+    },
+    deleteLikedHandler: async (postId) => {
+      // First delete it from the database then from the store
+      if(await deletePost(postId)){
+        dispatch(deleteLikedPost(postId));
       }
     },
     postDraftHandler: async (draftId) =>{
@@ -49,7 +63,7 @@ const PostController = function () {
       if(await postDraft(draftId)){
         dispatch(blogDraftsActions.deleteDraft(draftId));
       }
-    }
+    },
   };
 };
 export default PostController;

@@ -1,3 +1,9 @@
+/**
+ * Component to render a single user blog item in the new post editor
+ * @author Yousef Elshabrawy
+ *
+ * @component
+ */
 import React from 'react';
 import classes from './ListItem.module.scss';
 import defaultAvatar from '../../assets/Images/avatar.png';

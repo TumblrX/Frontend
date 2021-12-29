@@ -1,3 +1,9 @@
+/**
+ * Component to render the Notes of the post
+ * @author Yousef Elshabrawy
+ *
+ * @component
+ */
 import React , { useState, useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { FaArrowLeft } from 'react-icons/fa';

@@ -10,7 +10,12 @@ import avatar from '../../assets/Images/avatar.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { userBlogsActions } from '../../redux/userBlogs-slice';
 import ListItem from './ListItem';
-
+/**
+ * Component to render the layout of the new post
+ * @author Yousef Elshabrawy
+ *
+ * @component
+ */
 const FormCard = function (props) {
   const dispatch = useDispatch();
   const { children, changeBlogId } = props;

@@ -29,6 +29,7 @@ export const blogDrafts = createSlice({
     deleteDraft: (state, {payload}) => {
       const draftId = payload;
       state.drafts = state.drafts.filter((draft)=>draft.id !== draftId);
+      state.numberOfDrafts=state.numberOfDrafts-1;
     }
   },
 });

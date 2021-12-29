@@ -33,12 +33,17 @@ import {
 import Chat from './components/Dashboard/Chat/Chat';
 import { useSelector } from 'react-redux';
 import updateNotifications from './UpdateNotifications'
+import { fetchUserBlogs } from './redux/userBlogs-actions';
 
 const App = function () {
-  
+  const dispatch = useDispatch();
+
   const {
     userInfo
   } = useSelector((state) => state.userInfo);
+  useEffect(() => {
+    dispatch(fetchUserBlogs());
+  }, [dispatch]);
 
   useEffect(() => {
     updateNotifications();    

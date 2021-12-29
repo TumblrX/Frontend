@@ -5,7 +5,7 @@ const PostContentToJsx = function (content){
   if ( content === null ) return ;
   return content.map((contentBlock) => {
     // Text Content Block
-    if(contentBlock === null) return 
+    if(!contentBlock) return;
     if (contentBlock.type === 'text') {
       let { subtype, text, formatting } = contentBlock;
       // if(formatting){
