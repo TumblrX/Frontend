@@ -15,6 +15,10 @@ const getUserInfo = function () {
       document.querySelector(
         `[data-testid="enable-endless-scrolling-checkbox"]`
       ).checked = response.data.settings.dashBoardInfiniteScrolling;
+      localStorage.setItem(
+        "InfinteScrolling",
+        response.data.settings.dashBoardInfiniteScrolling
+      );
       document.querySelector(
         `[data-testid="messageing-sounds-checkbox"]`
       ).checked = response.data.settings.messagingSounds;
