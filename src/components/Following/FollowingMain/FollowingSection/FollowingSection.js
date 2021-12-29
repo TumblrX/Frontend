@@ -80,7 +80,7 @@ const FollowingSection = ({ data, index, blogId }) => {
                   </span>
                 </button>
               </span>
-              <div className={styles.dropDown} id="list">
+              <div className={`${styles.dropDown} dropmenu`} id="list">
                 <div className={styles.dropDownContainer}>
                   <div className={styles.anotherContainer}>
                   <button className={styles.block} id={`block${index}`} onClick={() => handleBlock(_id,index,blogId)}>block</button>

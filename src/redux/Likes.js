@@ -31,11 +31,14 @@ export const LikedPosts = createSlice({
       state.Likes = state.Likes.filter((post)=>post.id !== postId);
       state.numberOfLikes= state.numberOfLikes-1;
     },
+    setIsInfinte: (state, action) => {
+      state.isInfinte = action.payload;
+    },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
-  incrementPageNum, decrementPageNum,
+  incrementPageNum, decrementPageNum, setIsInfinte,
   setLikes, setInitialLoading, setNumOfLikes, deleteLikedPost, 
 } = LikedPosts.actions;
 export default LikedPosts.reducer;

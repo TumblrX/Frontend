@@ -32,16 +32,19 @@ const ChatContent = function () {
           <div className={styles.msg}>
             <div className={styles.msgAvatar}>
               <div className={styles.avatar_img}>
-                <img src={logo} alt="noavatar" className={styles.avatar} /> 
-              {/* { 
-                blog?.avatar === 'none' ? ( 
-                ) : blog?.avatar.includes("http")?(
-                  <img src={`${blog.avatar}`} alt="post avatar" className={styles.avatar} />
-                ) : (
-                  // <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="post avatar" className={styles.avatar} />
-                  <img src={`http://tumblrx.me:3000/${blog.avatar}`} alt="post avatar" className={styles.avatar} />
+              { 
+                m.senderId === friend.id ? (
+                  friend?.avatar === 'none' ? ( 
+                    <img src={logo} alt="noavatar" className={styles.avatar} /> 
+                  ) : friend?.avatar.includes("http")?(
+                    <img src={`${friend.avatar}`} alt="avatar" className={styles.avatar} />
+                  ) : (
+                    <img src={`${process.env.REACT_APP_API_URL}/${friend.avatar}`} alt="post avatar" className={styles.avatar} />
+                  )
+                ): (
+                  <img src={logo} alt="noavatar" className={styles.avatar} /> 
                 )
-              } */}
+              }
               </div>
             </div>
             <div className={styles.msgContent}>

@@ -9,7 +9,7 @@ import Loading from '../Loading/Loading';
 import Newpost from '../../Dashboard/NewPost/Newpost';
 import useDraftHandler from './DraftsService';
 import {
-  incrementPageNum, decrementPageNum,
+  incrementPageNum, decrementPageNum, setIsInfinte,
 } from '../../../redux/blogDrafts';
 import showPosts from '../Posts/PostsControllers';
 
@@ -33,6 +33,13 @@ const Drafts = function () {
     }
   }, [id]);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if(localStorage["InfinteScrolling"] === 'true') {
+    dispatch(setIsInfinte(true));
+    }else{
+    dispatch(setIsInfinte(false));
+    }
+  }, [localStorage["InfinteScrolling"]]);
   return (
     <div className={`${styles.container} ${styles.row}`}>
       <div className={styles.posts}>

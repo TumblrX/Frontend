@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { useDispatch } from 'react-redux';
 import {
-  setBlogHandle, setBlogTitle, setNumOfFollowers, 
+  setBlogHandle, setBlogTitle, setNumOfFollowers, setRadar, setRadarIsMounted, 
   setAvatar, setId, setInitialLoading, setNumOfDrafts, setNumOfPosts,
 } from '../../redux/blog';
 import api from '../../api/api';
@@ -36,8 +36,25 @@ const useBlogHandler = () => {
       console.log(`Error: ${err.message}`);
     }
   };
+  const fetchRadar = async () => {
+    try {
+      const response = await api.get('/api/user/explore/1/for-you');
+      dispatch(setRadar(response.data['for-youPosts']));
+      dispatch(setRadarIsMounted(true));
+    } catch (err) {
+      if (err.response) {
+        // Not in the 200 response range
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
+      } else {
+        console.log(`Error: ${err.message}`);
+      }
+    }
+  };
   return {
     fetchBlogData,
+    fetchRadar,
   };
 };
 export default useBlogHandler;

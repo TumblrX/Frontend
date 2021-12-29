@@ -10,7 +10,7 @@ import Loading from '../Loading/Loading';
 import Newpost from '../../Dashboard/NewPost/Newpost';
 import usePostHandler from './PostsService';
 import {
-  incrementPageNum, decrementPageNum,
+  incrementPageNum, decrementPageNum, setIsInfinte
 } from '../../../redux/blogPosts';
 //import {  CSSTransition }  from "react-transition-group"
 //import PostsArea from './PostsArea';
@@ -32,9 +32,17 @@ const Posts = function () {
   useEffect(() => {
     if (id) {
       fetchBlogPosts(id);
+
     }
   }, [id]);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if(localStorage["InfinteScrolling"] === 'true') {
+    dispatch(setIsInfinte(true));
+    }else{
+    dispatch(setIsInfinte(false));
+    }
+  }, [localStorage["InfinteScrolling"]]);
   return (
     <div className={`${styles.container} ${styles.row}`}>
       <div className={styles.posts}>
