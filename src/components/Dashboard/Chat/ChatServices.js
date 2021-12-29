@@ -45,8 +45,8 @@ const sendMessage = async (textMessage, user2Id) => {
     try {
       // const response = await api.delete('/api/user/unfollow', { data: blogid} );
       console.log('delete id', user2Id)
-      // const response = api.delete(`api/user/chat/delete-chat${user2Id}`)
-      const response = api.delete(`/api/user/chat/delete-chat`, {id : user2Id})
+      const response = api.delete(`api/user/chat/delete-chat/${user2Id}`)
+      // const response = api.delete(`/api/user/chat/delete-chat`, {id : user2Id})
 
       console.log('delete succeed')
       return true;
