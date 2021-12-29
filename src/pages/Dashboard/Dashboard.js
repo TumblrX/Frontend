@@ -15,7 +15,6 @@ import NavigateButtons from '../../components/Dashboard/Main UI/NavigateButtons'
 import Newpost from '../../components/Dashboard/NewPost/Newpost';
 import Post from '../../components/Post/Post';
 import Inbox from '../../components/Dashboard/Chat/Chat';
-import { fetchUserBlogs } from '../../redux/userBlogs-actions';
 
 const Dashboard = function () {
   const {
@@ -25,10 +24,6 @@ const Dashboard = function () {
   } = useSelector((state) => state.DashBoard);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchUserBlogs());
-  }, [dispatch]);
-  
   useEffect( async () => {
     await fetchRadar();
     await fetchExploreBlogs();
@@ -73,6 +68,7 @@ const Dashboard = function () {
               <hr />
               {radarMounted && getOnePost(radar)}
               { isChat && (<Inbox />)}
+              
             </div>
           </div>
         </div>

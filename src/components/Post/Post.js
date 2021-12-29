@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 /* eslint-disable no-param-reassign */
 // TODO Complete the reblog post
 // /* eslint-disable */
@@ -110,7 +111,7 @@ const Post = function ({ data }) {
                   <FaRegHeart />
                 </div>
               </IconContext.Provider>
-              { userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1 && 
+              { ((state === 'draft') || (userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1)) && 
               (<div onClick={ deletePostHandler.bind(this, id) }>
                 <RiDeleteBinLine />
               </div>)}
@@ -184,7 +185,21 @@ const Post = function ({ data }) {
         </div>
       )
     }
-    postJsx.push(
+    {state==='draft' ?
+      postJsx.push(
+        <footer className={classes.footer}>
+          <div className={classes.draftIcons}>
+            <button className={classes.draftButton} onClick={postDraftHandler.bind(this,id)}>
+              Post
+            </button>
+            <IconContext.Provider value={{ size: '1.3rem' }}>
+              <div onClick={ deleteDraftHandler.bind(this, id) }>
+                <RiDeleteBinLine />
+              </div>
+            </IconContext.Provider>
+          </div>
+        </footer>
+      ) : postJsx.push(
       <footer className={classes.footer}>
         <div className={classes.notes} onClick={openNotesClickHandler}>
           {notesCounter} notes
@@ -213,7 +228,8 @@ const Post = function ({ data }) {
           </IconContext.Provider>
         </div>
       </footer>
-    );
+      )
+    }
   }
   return (
     <div className={classes.post}>

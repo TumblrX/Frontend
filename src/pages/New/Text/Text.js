@@ -16,6 +16,7 @@ import PostButton from '../../../components/NewPost/PostButton';
 import CloseButton from '../../../components/NewPost/CloseButton';
 import TextEditor from '../../../components/TextEditor/TextEditor';
 import textController from './TextController';
+import { fetchUserBlogs } from '../../../redux/userBlogs-actions';
 
 const NewText = function () {
   const userBlogs = useSelector((state) => state.userBlogs.userBlogs);
@@ -26,6 +27,11 @@ const NewText = function () {
   const {
     title, uploadedImages, blocks, entities, tags, formIsValid, postState, blogId,
   } = useSelector((state) => state.newTextPost);
+
+  useEffect(() => {
+    dispatch(fetchUserBlogs());
+  }, [dispatch]);
+  
   useEffect(() => {
     if (userBlogs.length !== 0) {
       const primaryBlog = userBlogs.find((userBlog)=>userBlog.isPrimary);
