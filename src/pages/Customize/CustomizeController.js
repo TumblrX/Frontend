@@ -35,9 +35,10 @@ const CustomizeController = function () {
     objectToFormData(dataToSend, 'dataToSend' , formData)
     console.log(dataToSend);
     await customzie(dataToSend);
+    // await customzie(dataToSend);
+    // await customzie(dataToSend);
     await readData();
   }
-
 
     const changeAvatar = (link) => {
       configureStore.dispatch(customize.setAvatar(link));
@@ -104,18 +105,18 @@ const CustomizeController = function () {
     
     const changeTitleFunc = (title) =>{
       document.getElementById('title').innerHTML =  title;
+      configureStore.dispatch(customize.setTitle(title)); 
     }
     
     const changeTitle = (e) =>{
-      configureStore.dispatch(customize.setTitle(e.target.value)); 
       changeTitleFunc(e.target.value);
       configureStore.dispatch(customize.setDataToSend({title : e.target.value}));       
     }
     const changeDescriptionFunc = (description) =>{
       document.getElementById('description').innerHTML =  description; 
+      configureStore.dispatch(customize.setDescription(description)); 
     }
     const changeDescription = (e) =>{
-      configureStore.dispatch(customize.setDescription(e.target.value)); 
       changeDescriptionFunc(e.target.value);
       configureStore.dispatch(customize.setDataToSend({description : e.target.value})); 
     }
