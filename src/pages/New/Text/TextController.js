@@ -46,9 +46,8 @@ const TextController = function () {
     blogIdChangeHandler: (blogId) => {
       dispatch(newTextPostActions.setBlogId(blogId));
     },
-    formSubmitHandler: async (e) => {
-      e.preventDefault();
-      if (!formIsValid) return;
+    formSubmitHandler: async () => {
+      if (!formIsValid) return false;
       const fd = new FormData();
       const content = [];
       blocks.forEach((block) => {
@@ -158,12 +157,13 @@ const TextController = function () {
       for (let i = 0; i < tagsArr.length; i++) {
         fd.append(`tags[${i}]`, tagsArr[i]);
       }
-      if (!await submitPost(blogId, fd)) return;
+      if (!await submitPost(blogId, fd)) return false;
       dispatch(newTextPostActions.setTitle(''));
       dispatch(newTextPostActions.setUploadedImages([]));
       dispatch(newTextPostActions.setBlocks([]));
       dispatch(newTextPostActions.setEntities([]));
       dispatch(newTextPostActions.setTags(''));
+      return true;
     },
   };
 };
