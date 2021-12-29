@@ -11,13 +11,12 @@ const CustomizeController = function () {
   const readData = async () =>{
     const response = await getSettings();
     console.log(response.response.data.data);
-    if (!(response.response.data.data.avatar[0] == 'h') ){
+    if (!(response.response.data.data.avatar[0] === 'h') ){
       response.response.data.data.avatar = `http://tumblrx.me:3000/${response.response.data.data.avatar}`;
       // response.response.data.data.avatar = `${process.env.REACT_APP_API_URL}/${response.response.data.data.avatar}`;
     }
-    if(!(response.response.data.data.headerImage[0] == 'h')){    
+    if(!(response.response.data.data.headerImage[0] === 'h')){    
       response.response.data.data.headerImage = `http://tumblrx.me:3000/${response.response.data.data.headerImage}`;
-      // response.response.data.data.headerImage = `${response.response.data.data.headerImage}`;
       // response.response.data.data.headerImage = `${process.env.REACT_APP_API_URL}/${response.response.data.data.headerImage}`;
     }
     console.log(response.response.data.data);
@@ -42,8 +41,13 @@ const CustomizeController = function () {
   const saveHandler =async () =>{
     let formData = new FormData();
     for(const key of Object.keys(dataToSend))
-      {
-        objectToFormData(dataToSend[key], key , formData)
+      { 
+        if (key === 'avatar' || key === 'headerImage' ){
+          formData.append(key ,dataToSend[key] );
+        }
+        else{
+          objectToFormData(dataToSend[key], key , formData)
+        }
       }
     console.log(dataToSend);
     console.log(Array.from(formData));
@@ -69,7 +73,7 @@ const CustomizeController = function () {
                 }
             };
             reader.readAsDataURL(e.target.files[0]);
-            configureStore.dispatch(customize.setDataToSend({avatarUrl : e.target.files[0]})); 
+            configureStore.dispatch(customize.setDataToSend({avatar : e.target.files[0]})); 
         }
     };
       

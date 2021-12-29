@@ -11,6 +11,8 @@ const responseGoogle = async (response) => {
         console.log(res2);
         localStorage.userId = res2.data.id;
         localStorage.InfinteScrolling = res2.data.InfinteScrolling;
+        if (!res2.data.InfinteScrolling)
+            localStorage.InfinteScrolling = 'false';
         localStorage.handle = res2.data.name;
         localStorage.blogs = res2.data.blogs;
         localStorage.blog1 = res2.data.blogs[0];
