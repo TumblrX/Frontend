@@ -1,4 +1,8 @@
-import { setDataItems, setTag } from "../../../redux/suggestList";
+import {
+  setDataItems,
+  setTag,
+  truncateItems,
+} from "../../../redux/suggestList";
 import confiugreStore from "../../../redux/store";
 import api from "../../../api/api";
 import styles from "./scss/ExploreSuggestionList.module.scss";
@@ -13,13 +17,16 @@ const getTags = () => {
   api
     .get("api/user/get-tags", config)
     .then((res) => {
-      // console.log("HIIIIIIIII", Object.values(res.data.tagsPhotos).length);
       confiugreStore.dispatch(setDataItems(Object.values(res.data.tagsPhotos)));
       confiugreStore.dispatch(setTag(Object.keys(res.data.tagsPhotos)));
     })
     .catch((err) => {
       console.log(err);
     });
+
+  return () => {
+    confiugreStore.dispatch(truncateItems());
+  };
 };
 
 /**

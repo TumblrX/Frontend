@@ -1,7 +1,8 @@
-import { checkBoxClick } from "../InterfaceServicesToTest";
+import { changeNotifyAbout } from "../SecuritySectionToTest";
 import mockAxios from "axios";
-describe("testing the sound section ", () => {
-  it("it returns true when the user is Authorized ", async () => {
+
+describe("Testing security section  ", () => {
+  it("it return true after changing the value and the user is Authorized ", async () => {
     mockAxios.post.mockImplementationOnce(() =>
       Promise.resolve({
         status: "200",
@@ -11,13 +12,12 @@ describe("testing the sound section ", () => {
       })
     );
     let sendData = {
-      sound: true,
+      notifyMeAbout: true,
     };
-
-    const response = await checkBoxClick(sendData);
+    const response = await changeNotifyAbout(sendData);
     expect(response).toEqual("200");
   });
-  it("returns unAuthorized when the user is unAuthorized ", async () => {
+  it("return false it anything wrong happens ", async () => {
     mockAxios.post.mockImplementationOnce(() =>
       Promise.resolve({
         status: "fail",
@@ -28,9 +28,9 @@ describe("testing the sound section ", () => {
       })
     );
     let sendData = {
-      sound: true,
+      notifyMeAbout: true,
     };
-    const response = await checkBoxClick(sendData);
+    const response = await changeNotifyAbout(sendData);
     expect(response).toEqual(500);
   });
 });
