@@ -16,6 +16,29 @@ import { configureStore } from "@reduxjs/toolkit";
  */
 function ExploreSuggestionList() {
   const { items, tags } = useSelector((state) => state.suggestedList);
+  const length = items.length;
+  const backgroundColors = [
+    "#247273",
+    "#1169ba",
+    "#247273",
+    "#734f24",
+    "#7c7c7c",
+    "#723e25",
+    "#925f29",
+    "#145383",
+    "#7f2e18",
+  ];
+  const buttonColor = [
+    "#247273",
+    "#1169ba",
+    "#247273",
+    "#734f24",
+    "#7c7c7c",
+    "#723e25",
+    "#925f29",
+    "#145383",
+    "#7f2e18",
+  ];
   useEffect(getTags, []);
 
   return (
@@ -28,6 +51,8 @@ function ExploreSuggestionList() {
         if (value.length === 1)
           return (
             <ExploreSuggestionListCard
+              background={backgroundColors[index % length]}
+              color={buttonColor[index % length]}
               tag={tags[index]}
               img1={value[0]}
               img2={value[0]}
@@ -37,6 +62,8 @@ function ExploreSuggestionList() {
         else
           return (
             <ExploreSuggestionListCard
+              background={backgroundColors[index % length]}
+              color={buttonColor[index % length]}
               tag={tags[index]}
               img1={value[0]}
               img2={value[1]}

@@ -2,6 +2,7 @@ import api from "../../../api/api";
 
 const checkBoxClick = function (sentData) {
   let token = localStorage.getItem("token");
+  localStorage.setItem("InfinteScrolling", sentData.dashBoardInfiniteScrolling);
   let config = {
     headers: {
       Authorization: token,

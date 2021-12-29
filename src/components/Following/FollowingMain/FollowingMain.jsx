@@ -59,7 +59,8 @@ const FollowingMain = () => {
                     </span>
                 </span>
                 <section className={styles.section}>
-                {isReady ? showFollowing() : <Loading /> }
+                { console.log('primar blog id ', localStorage["blog1"])}
+                {isReady ? showFollowing(localStorage["blog1"]) : <Loading /> }
                 </section>
             </main>
         </div>

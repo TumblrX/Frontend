@@ -69,7 +69,7 @@ const Followers = function () {
         </span>
         <section className={styles.section}>
           {console.log(isReady)}
-          {isReady ? showFollowers() : <Loading /> }
+          {isReady ? showFollowers(id) : <Loading /> }
         </section>
       </main>
     </div>

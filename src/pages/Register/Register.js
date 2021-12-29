@@ -13,7 +13,6 @@ import {responseGoogle, responseGoogleFail} from '../../pages/LoginPage/GoogleSe
  *
  * @component
  */
-// eslint-disable-next-line react/function-component-definition
 const Register = function () {
   const {
     errorMessage, dashboard, errorMessages,
@@ -22,7 +21,6 @@ const Register = function () {
 
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (localStorage.getItem('token')) { dispatch(redirectToDashboard()); }
   });

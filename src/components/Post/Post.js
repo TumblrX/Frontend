@@ -77,7 +77,7 @@ const Post = function ({ data, place }) {
         <div className={classes.content}>
           <h1 className={classes.title}>{title}</h1>
           {postContentToJsx(content)}
-          <p>{tags.map(tag => <span className={classes.tag}>{`#${tag}`}</span>)}</p>
+          <p>{tags.map((tag,index) => <span key={index} className={classes.tag}>{`#${tag}`}</span>)}</p>
         </div>
         {state ==='draft' ? (
           <footer className={classes.footer}>
@@ -161,7 +161,7 @@ const Post = function ({ data, place }) {
           <div className={classes.content}>
           <h1 className={classes.title}>{title}</h1>
             {postContentToJsx(content)}
-            <p>{tags.map(tag => <span className={classes.tag}>{`#${tag}`}</span>)}</p>
+            <p>{tags.map((tag,index) => <span key={index} className={classes.tag}>{`#${tag}`}</span>)}</p>
           </div>
         )
         postJsx.push(<div className={classes.br}/>);
@@ -183,7 +183,7 @@ const Post = function ({ data, place }) {
         <div className={classes.content}>
         <h1 className={classes.title}>{title}</h1>
           {postContentToJsx(content)}
-          <p>{tags.map(tag => <span className={classes.tag}>{`#${tag}`}</span>)}</p>
+          <p>{tags.map((tag,index) => <span key={index} className={classes.tag}>{`#${tag}`}</span>)}</p>
         </div>
       )
     }
