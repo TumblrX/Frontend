@@ -39,8 +39,7 @@ const ChatContent = function () {
                   ) : friend?.avatar.includes("http")?(
                     <img src={`${friend.avatar}`} alt="avatar" className={styles.avatar} />
                   ) : (
-                    // <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="post avatar" className={styles.avatar} />
-                    <img src={`http://tumblrx.me:3000/${friend.avatar}`} alt="post avatar" className={styles.avatar} />
+                    <img src={`${process.env.REACT_APP_API_URL}/${friend.avatar}`} alt="post avatar" className={styles.avatar} />
                   )
                 ): (
                   <img src={logo} alt="noavatar" className={styles.avatar} /> 
