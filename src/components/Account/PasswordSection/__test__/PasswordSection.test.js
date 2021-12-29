@@ -1,22 +1,24 @@
+import { sendPasswordData } from "../PasswordSectionServicesToTest";
 import mockAxios from "axios";
 
-import sendPasswordData from "../PasswordSectionTotest";
-
-describe("Test Changing the Password", () => {
-  it("it returns true when the user enter valid password and ", async () => {
+describe("Testing password section ", () => {
+  it("return true when the user is uthorized ", async () => {
     mockAxios.post.mockImplementationOnce(() =>
       Promise.resolve({
         status: "200",
+        data: {
+          status: "200",
+        },
       })
     );
-    const sentData = {
-      oldPassword: "OldPassword",
-      password: "NewPassowrd",
+    let sendData = {
+      password: "12345%",
     };
-    // const response = await sendPasswordData(sentData);
-    expect(true).toEqual(true);
+    const response = await sendPasswordData(sendData);
+    expect(response).toEqual("200");
   });
-  it("it return Unuthorized when the user is unuthorized ", async () => {
+
+  it("return unuthorized when the user enters wrong password", async () => {
     mockAxios.post.mockImplementationOnce(() =>
       Promise.resolve({
         status: "fail",
@@ -26,32 +28,10 @@ describe("Test Changing the Password", () => {
         },
       })
     );
-
-    expect(false).toEqual(false);
+    let sendData = {
+      password: "1234567",
+    };
+    const response = await sendPasswordData(sendData);
+    expect(response).toEqual(500);
   });
 });
-
-// describe("test changing let people find me through email button ", () => {
-//   it("returns true when the user is uthorized ", async () => {
-//     mockAxios.post.mockImplementationOnce(() =>
-//       Promise.resolve({
-//         status: "200",
-//       })
-//     );
-//     // const response = await changeFindMeByEmail();
-//     // expect(response).toEqual(true);
-//   });
-//     it("returns false when the user is unuthorized ", async () => {
-//       mockAxios.post.mockImplementationOnce(() =>
-//         Promise.resolve({
-//           status: "fail",
-//           err: {
-//             statusCode: 400,
-//             status: "fail",
-//           },
-//         })
-//       );
-//       const response = await changeFindMeByEmail();
-//       expect(response).toEqual(false);
-//     });
-// });
