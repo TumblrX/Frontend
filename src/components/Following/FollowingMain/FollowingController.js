@@ -16,9 +16,9 @@ const useFollowingHandler = () => {
    * @function showFollowing
    * @return {JSX} return jsx of the fetched blogs that a user follows to be rendered in the following page
    */
-  const showFollowing = () => (
-    Following.map((follower) => (
-      <FollowingSection data={follower} key={follower.id} />
+  const showFollowing = (id) => (
+    Following.map((follower,index) => (
+      <FollowingSection data={follower} key={follower.id} index={index} blogId={id}/>
     ))
   );
   /**

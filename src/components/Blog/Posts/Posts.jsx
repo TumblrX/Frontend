@@ -12,6 +12,8 @@ import usePostHandler from './PostsService';
 import {
   incrementPageNum, decrementPageNum,
 } from '../../../redux/blogPosts';
+//import {  CSSTransition }  from "react-transition-group"
+//import PostsArea from './PostsArea';
 
 /**
  * Component to render blog posts page
@@ -44,7 +46,14 @@ const Posts = function () {
               <NothingAvailable page="Post" />
             )
             : (
-              showPosts(posts, pageNum, isInfinte,'blog')
+              // <CSSTransition
+              //   in={true}
+              //   timeout={4000}
+              //   classNames={styles.postAnimation}
+              // >
+              // <PostsArea posts={posts} pageNum={pageNum} isInfinte={isInfinte} />
+              // </CSSTransition>
+             showPosts(posts, pageNum, isInfinte,'blog')
             )
           )}
         <div className={`${styles.navigateBtns} ${styles.row}`}>
