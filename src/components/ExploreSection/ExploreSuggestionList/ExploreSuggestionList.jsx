@@ -28,6 +28,7 @@ function ExploreSuggestionList() {
         if (value.length === 1)
           return (
             <ExploreSuggestionListCard
+              tag={tags[index]}
               img1={value[0]}
               img2={value[0]}
               key={index}
@@ -36,6 +37,7 @@ function ExploreSuggestionList() {
         else
           return (
             <ExploreSuggestionListCard
+              tag={tags[index]}
               img1={value[0]}
               img2={value[1]}
               key={index}
