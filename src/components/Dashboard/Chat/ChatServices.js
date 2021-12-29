@@ -56,21 +56,4 @@ const getChat = async (user2Id) => {
     }
   };
 
-  const fetchInfo = async (pageNum, pageNumPosts) => {
-    try {
-      const response = await api.get('/api/user/info');
-      console.log('info called', response.data.id)
-      await configureStore.dispatch(setID(response.data.id))
-    } catch (err) {
-      if (err.response) {
-        // Not in the 200 response range
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-      } else {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-    return null
-  };
-export { sendMessage, getChat, getConversations, fetchInfo};
+export { sendMessage, getChat, getConversations};
