@@ -1,7 +1,7 @@
 import configureStore from '../../../redux/store';
 import { setIsSearch, setBlogs, setNewMessage, setConversations} from '../../../redux/DropDownInbox';
 import { setIsChat } from '../../../redux/DashBoardReducer';
-import { setFriend } from '../../../redux/ChatReducer';
+import { setFriend, resetChat } from '../../../redux/ChatReducer';
 import { search, getConversations } from './DropDownInboxService';
 
     const handleOpenSearch = (e, isSearch) => {
@@ -16,18 +16,19 @@ import { search, getConversations } from './DropDownInboxService';
     }
 
   const handleSearch = async (newMessage) =>{
+    const id = localStorage.getItem('userId');
     if (!newMessage.match(/^\s*$/)) {
       const mySearch = await search(newMessage);
-      // console.log('my Search', mySearch)
-    //   mySearch.blogs = await mySearch.blogs.filter((blog) => {
-    //     return blog._id !== id;
-    //   })
+      mySearch.blogs = await mySearch.blogs.filter((blog) => {
+        return blog.owner !== id;
+      })
       await configureStore.dispatch(setBlogs(mySearch.blogs))
     }
     configureStore.dispatch(setNewMessage(''))
   }
 
   const handleOpenChat = async (conversation)=>{
+    await configureStore.dispatch(resetChat());
     let freind={};
     if(conversation.hasOwnProperty('description')  ){
       freind ={ id:conversation.owner , handle:conversation.handle   , avatar:conversation.avatar };
