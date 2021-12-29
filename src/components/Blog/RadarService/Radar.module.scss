@@ -1,0 +1,33 @@
+$bg : #001935 ;
+$post-bg : #888;
+$font-color : #000;
+.post{
+    border: 3px solid $bg;
+    margin-bottom: 15px;
+    position: relative;
+    .logo {
+        width: 64px;
+        height: 64px;
+        margin-right: 20px;
+        background-color: $post-bg;
+
+        position: -webkit-sticky;
+        position: sticky;
+        top: 55px;
+        .avatar {
+            width: 64px;
+            height: 64px;
+        }
+    }
+    .postDatailes {
+        width: 100%;
+    }
+}
+.Radar {
+    margin-top: 20px;
+    color: var(--main-color);
+    font: bold var(--main-font) sans-serif;
+    border-bottom: 3px solid #ffffff29;
+    padding: var(--main-padding);
+    margin-bottom: 20px;
+  }

@@ -18,11 +18,12 @@ import { useSelector } from 'react-redux';
 // eslint-disable-next-line func-names
 const Blog = function () {
   const { blogName } = useParams();
-  const { fetchBlogData } = useBlogHandler();
+  const { fetchBlogData, fetchRadar } = useBlogHandler();
   const { NumOfPosts } = useSelector((state) => state.blogposts);
   const { numberOfDrafts } = useSelector((state) => state.BlogDrafts);
   useEffect(() => {
     fetchBlogData(blogName);
+    fetchRadar();
   }, [NumOfPosts, blogName, numberOfDrafts]);
   return (
     <div className={styles.contanier}>

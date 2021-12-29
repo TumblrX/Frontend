@@ -31,13 +31,16 @@ export const blogPosts = createSlice({
       state.posts = state.posts.filter((post)=>post.id !== postId);
       state.NumOfPosts= state.NumOfPosts-1;
       console.log("hi from deleting posts");
-    }
+    },
+    setIsInfinte: (state, action) => {
+      state.isInfinte = action.payload;
+    },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
   incrementPageNum, decrementPageNum,
-  setInitialLoading, setPosts, setNumOfPosts,
+  setInitialLoading, setPosts, setNumOfPosts, setIsInfinte,
 } = blogPosts.actions;
 export const blogPostsActions= blogPosts.actions;
 export default blogPosts.reducer;

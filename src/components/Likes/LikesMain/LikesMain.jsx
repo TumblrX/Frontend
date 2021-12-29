@@ -8,7 +8,7 @@ import showPosts from '../../Blog/Posts/PostsControllers';
 import Loading from '../../Blog/Loading/Loading';
 import useLikesHandler from './LikesService';
 import {
-  incrementPageNum, decrementPageNum,
+  incrementPageNum, decrementPageNum, setIsInfinte
 } from '../../../redux/Likes';
 
 
@@ -22,6 +22,13 @@ const LikesMain = function () {
     fetchLikes();
   }, []);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if(localStorage["InfinteScrolling"] === 'true') {
+    dispatch(setIsInfinte(true));
+    }else{
+    dispatch(setIsInfinte(false));
+    }
+  }, [localStorage["InfinteScrolling"]]);
   return (
     <div className={styles.likescont}>
         <div className={`${styles.container} ${styles.row}`}>

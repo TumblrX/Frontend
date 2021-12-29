@@ -8,6 +8,12 @@ const useFollowingSectionHandler = () => {
   const handleSideClick = (event) => {
     const sideMenu = event.currentTarget.querySelector('#list');
     if (sideMenu.style.display === 'none') { sideMenu.style.display = 'block'; } else { sideMenu.style.display = 'none'; }
+    var cusid_ele = document.getElementsByClassName('dropmenu');
+    for (var i = 0; i < cusid_ele.length; ++i) {
+      if(sideMenu !== cusid_ele[i]){
+        cusid_ele[i].style.display = 'none';
+      }
+    }
   };
   const handleClick = (id, followingStatus) => {
     if(followingStatus==='Follow'){
