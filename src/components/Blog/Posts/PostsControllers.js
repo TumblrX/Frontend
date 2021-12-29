@@ -32,7 +32,7 @@ const showPosts = (posts, pageNum, isInfinte) => {
         </object>
         </div>
         <div className={styles.postDatailes}>
-          <Post data={post} />
+          <Post data={post} place='blog'/>
         </div>
       </div>
     ))

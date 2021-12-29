@@ -9,6 +9,7 @@
 import { useDispatch } from 'react-redux';
 import { dashboardActions } from '../../redux/DashBoardReducer';
 import { blogDraftsActions } from '../../redux/blogDrafts';
+import { blogPostsActions } from '../../redux/blogPosts';
 import deletePost from './DeletePostService';
 import reblogPost from './ReblogPostService';
 import likePost from './LikePostService';
@@ -38,6 +39,12 @@ const PostController = function () {
         dispatch(dashboardActions.deletePost(postId));
       }
     },
+    deleteBlogPostHandler: async (postId) => {
+      // First delete it from the database then from the store
+      if(await deletePost(postId)){
+        dispatch(blogPostsActions.deletePost(postId));
+      }
+    },
     deleteDraftHandler: async (draftId) => {
       // First delete it from the database then from the store
       if(await deletePost(draftId)){
@@ -49,7 +56,7 @@ const PostController = function () {
       if(await postDraft(draftId)){
         dispatch(blogDraftsActions.deleteDraft(draftId));
       }
-    }
+    },
   };
 };
 export default PostController;

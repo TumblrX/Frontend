@@ -26,6 +26,10 @@ export const blogPosts = createSlice({
     setInitialLoading: (state, action) => {
       state.intialLoading = action.payload;
     },
+    deletePost: (state, {payload}) => {
+      const postId = payload;
+      state.posts = state.posts.filter((post)=>post.id !== postId);
+    }
   },
 });
 // Action creators are generated for each case reducer function
@@ -33,4 +37,5 @@ export const {
   incrementPageNum, decrementPageNum,
   setInitialLoading, setPosts, setNumOfPosts,
 } = blogPosts.actions;
+export const blogPostsActions= blogPosts.actions;
 export default blogPosts.reducer;
