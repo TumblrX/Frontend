@@ -27,8 +27,7 @@ const PostButton = function ({ setSelectedOption }) {
     setSelectedOption(e.target.getAttribute('value'));
   };
   const buttonClickHandler = () => {
-    history.goBack();
-    if(window.screen.width>970) history.goBack();
+    history.push('/dashboard');
   };
   return (
     <div className={classes.post}>

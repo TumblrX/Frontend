@@ -20,6 +20,14 @@
   .handle{
     color: #000;
     font-weight: 500;
+    margin-right: 1rem;
+  }
+  .commentHandle{
+    display: flex;
+    justify-content: space-between;
+    .dots{
+      cursor: pointer;
+    }
   }
   .comment{
     background-color: #fff;

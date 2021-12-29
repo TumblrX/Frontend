@@ -9,16 +9,15 @@ import { AiFillHeart } from 'react-icons/ai';
 import { HiRefresh } from 'react-icons/hi';
 import { FaComment } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-
+import { RiDeleteBinLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import defaultAvatar from '../../../../assets/Images/avatar.png';
 import classes from './NoteItem.module.scss';
-const NoteItem = ({note}) => {
-  const {blogId, type} = note;
+const NoteItem = ({note, deleteCommentHandler}) => {
+  const {blogId, type } =note;
   return (
     <li  className={classes.item}>
-      <Link to={`blog/view/${blogId.handle}`}>
-        <img src={blogId.avatar!=='none'? blogId.avatar: defaultAvatar} alt='avatar' className={blogId.isAvatarCircle ? classes.cavatar : classes.avatar }/>
+      <Link to={`blog/${blogId.handle}`}>
+        <img src={`http://tumblrx.me:3000/${blogId.avatar}`} alt='avatar' className={blogId.isAvatarCircle ? classes.cavatar : classes.avatar }/>
         <span className={classes.icon}>
           {type==='reblog'? 
           <IconContext.Provider value={{ color: '#00CF35' }}>
@@ -34,11 +33,22 @@ const NoteItem = ({note}) => {
         </span>
       </Link>
       <div className={classes.handle}>
-        {type!=='comment'? <p>{blogId.handle}</p>: 
-        <div className={classes.comment}>
-          <Link to={`blog/view/${blogId.handle}`} className={classes.handle}>
+        {type!=='comment'? 
+        <Link to={`blog/${blogId.handle}`} className={classes.handle}>
             <p>{blogId.handle}</p> 
-          </Link>
+          </Link>: 
+        <div className={classes.comment}>
+          <div className={classes.commentHandle}>
+            <Link to={`blog/${blogId.handle}`} className={classes.handle}>
+              <p>{blogId.handle}</p> 
+            </Link>
+            { localStorage.getItem('userId') === blogId.owner && 
+            <span className={classes.dots} onClick={deleteCommentHandler.bind(this, note._id)}>
+              <IconContext.Provider value={{ color: '#FF0000' }}>
+                <RiDeleteBinLine/>
+              </IconContext.Provider>
+            </span>}  
+          </div>
           <p className={classes.commentText}>{note.commentText}</p>
         </div>
         }
