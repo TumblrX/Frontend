@@ -1,4 +1,12 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
+
+/**
+ * Component to render the New Post Navbar in the Dashboard page
+ * @author Yousef Elshabrawy
+ *
+ * @component
+ */
+
 import React from 'react';
 import classes from './NewPost.module.scss';
 import { IconContext } from 'react-icons';

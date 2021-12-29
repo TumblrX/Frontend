@@ -1,3 +1,9 @@
+/**
+ * Component to render the close button in the new post editor
+ * @author Yousef Elshabrawy
+ *
+ * @component
+ */
 /* eslint-disable func-names */
 import React from 'react';
 import { useHistory } from 'react-router-dom';

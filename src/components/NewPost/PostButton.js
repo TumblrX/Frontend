@@ -1,3 +1,9 @@
+/**
+ * Component to render the post button in the new post editor
+ * @author Yousef Elshabrawy
+ *
+ * @component
+ */
 /* eslint-disable no-nested-ternary */
 /* eslint quotes: ["error","single"] */
 /* eslint jsx-quotes: ["error", "prefer-single"] */

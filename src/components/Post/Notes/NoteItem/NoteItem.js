@@ -1,3 +1,9 @@
+/**
+ * Component to render a single Note in the post notes.
+ * @author Yousef Elshabrawy
+ *
+ * @component
+ */
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { HiRefresh } from 'react-icons/hi';
