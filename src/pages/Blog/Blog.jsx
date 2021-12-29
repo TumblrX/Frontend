@@ -7,6 +7,7 @@ import Followers from '../../components/Blog/Followers/Followers';
 import Drafts from '../../components/Blog/Drafts/Drafts';
 import styles from './Blog.module.scss';
 import useBlogHandler from './BlogService';
+import { useSelector } from 'react-redux';
 /**
  * Component to render the blog page with its different routes
  * @author Ahmed Mahmoud
@@ -18,9 +19,11 @@ import useBlogHandler from './BlogService';
 const Blog = function () {
   const { blogName } = useParams();
   const { fetchBlogData } = useBlogHandler();
+  const { NumOfPosts } = useSelector((state) => state.blogposts);
+  const { numberOfDrafts } = useSelector((state) => state.BlogDrafts);
   useEffect(() => {
     fetchBlogData(blogName);
-  }, []);
+  }, [NumOfPosts, blogName, numberOfDrafts]);
   return (
     <div className={styles.contanier}>
       <div className={styles.leftSide}>

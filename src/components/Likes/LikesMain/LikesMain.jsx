@@ -41,7 +41,7 @@ const LikesMain = function () {
                         <div className={styles.NothingAvailable}>No posts available.</div>
                     )
                     : (
-                        showPosts(Likes, pageNum, isInfinte)
+                        showPosts(Likes, pageNum, isInfinte, 'likes')
                     )
                 )}
                 <div className={`${styles.navigateBtns} ${styles.row}`}>

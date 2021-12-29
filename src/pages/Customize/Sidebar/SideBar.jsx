@@ -39,11 +39,14 @@ const SideBar = function () {
   const dispatch = useDispatch();
 
   useEffect(()=>{
+    console.log(settings);
 
     changeTitleFunc(settings.title);
-
     changeDescriptionFunc(settings.description);
 
+    document.getElementById('t1').value =  settings.title; 
+    document.getElementById('d1').value =  settings.description;
+    
     document.getElementById('customizeContainer').style.background =  settings.bgColor;
     document.getElementById('title').style.color =  settings.titleColor; 
     document.getElementById('description').style.color =  settings.titleColor; 
@@ -93,11 +96,11 @@ const SideBar = function () {
         <ul>
           <li>
             <div className={style.li}>         Title       </div>
-            <input type="text" name="" id="" defaultValue={settings.title} onChange={changeTitle} />
+            <input type="text" name="" id="t1" defaultValue={settings.title} onChange={changeTitle} />
           </li>
           <li>
             <div className={style.li}>         Description      </div>
-            <input type="text" name="" id="" defaultValue={settings.description}  onChange={changeDescription} />
+            <input type="text" name="" id="d1" defaultValue={settings.description}  onChange={changeDescription} />
           </li>
           <li>
             <div className={style.li}>

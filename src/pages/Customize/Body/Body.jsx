@@ -13,10 +13,6 @@ const Body = function () {
     settings,
   } = useSelector((state) => state.customize);  
 
-  // useEffect(() => {
-  //   readData();
-  // }, [])
-  
   return (
     <div className={style.bodyContainer} >      
       <div

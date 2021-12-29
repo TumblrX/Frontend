@@ -26,11 +26,16 @@ export const LikedPosts = createSlice({
     setInitialLoading: (state, action) => {
       state.intialLoading = action.payload;
     },
+    deleteLikedPost: (state, {payload}) => {
+      const postId = payload;
+      state.Likes = state.Likes.filter((post)=>post.id !== postId);
+      state.numberOfLikes= state.numberOfLikes-1;
+    },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
   incrementPageNum, decrementPageNum,
-  setLikes, setInitialLoading, setNumOfLikes,
+  setLikes, setInitialLoading, setNumOfLikes, deleteLikedPost, 
 } = LikedPosts.actions;
 export default LikedPosts.reducer;

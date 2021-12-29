@@ -1,3 +1,9 @@
+/**
+ * Component to render the post button in the new post editor
+ * @author Yousef Elshabrawy
+ *
+ * @component
+ */
 /* eslint-disable no-nested-ternary */
 /* eslint quotes: ["error","single"] */
 /* eslint jsx-quotes: ["error", "prefer-single"] */
@@ -22,7 +28,7 @@ const PostButton = function ({ setSelectedOption }) {
   };
   const buttonClickHandler = () => {
     history.goBack();
-    if(window.screen.width<970) history.goBack();
+    if(window.screen.width>970) history.goBack();
   };
   return (
     <div className={classes.post}>
