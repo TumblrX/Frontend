@@ -1,0 +1,29 @@
+import axios from "axios";
+
+const checkBoxClick = async function (sentData) {
+  let token = localStorage.getItem("token");
+  let status = 500;
+  let config = {
+    headers: {
+      Authorization: token,
+    },
+  };
+  //   api
+  //     .post("/api/user/settings-save", sentData, config)
+  //     .then((respone) => {
+  //       console.log(respone);
+  //     })
+  //     .catch((err) => console.log(err));
+  try {
+    const response = await axios.post(
+      "/api/user/settings-save",
+      sentData,
+      config
+    );
+    return response.data.status;
+  } catch (err) {
+    return status;
+  }
+};
+
+export { checkBoxClick };
