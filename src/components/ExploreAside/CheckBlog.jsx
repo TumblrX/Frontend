@@ -24,7 +24,10 @@ function CheckBlog(props) {
               key={index}
             >
               <div>
-                <img src={img} alt="" />
+                <img
+                  src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`}
+                  alt=""
+                />
               </div>
               <div>
                 <div style={{ overflow: "hidden" }}>{blog.handle}</div>

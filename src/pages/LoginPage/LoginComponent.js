@@ -15,7 +15,6 @@ const LoginComponent = function () {
 
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (localStorage.getItem('token')) { dispatch(redirectToDashboard()); }
   });

@@ -151,6 +151,7 @@ const TextController = function () {
         }
       }
       objectToFormData(content, 'content', fd);
+      console.log(Array.from(fd));
       const tagsWithoutHash = tags.replaceAll('#', ' ');
       let tagsArr = tagsWithoutHash.split(' ');
       tagsArr = tagsArr.filter(tag => tag.trim() !== '');

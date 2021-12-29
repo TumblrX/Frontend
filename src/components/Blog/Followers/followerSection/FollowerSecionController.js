@@ -1,4 +1,5 @@
 import {follow} from './followservice';
+import { block , unblock } from '../../BlockService/blockService';
 
 const useHandler = () => {
   const handleSideClick = (event) => {

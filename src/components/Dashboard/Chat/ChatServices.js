@@ -9,7 +9,7 @@ const sendMessage = async (textMessage, user2Id) => {
           textMessage,
           user2Id,
       });
-      // console.log('send done -->', response.data);      
+      return true;   
     } catch (err) {
       if (err.response) {
         // Not in the 200 response range
@@ -19,15 +19,14 @@ const sendMessage = async (textMessage, user2Id) => {
       } else {
         console.log(`Error: ${err.message}`);
       }
+      return false
     }
 };
 
-const getChat = async (user2Id) => {
+  const getChat = async (user2Id) => {
     try {
-    // user/chat/reterive-chat/61c37ebe6486c8bb18bfc07e
-    const response = await api.get(`api/user/chat/reterive-chat/${user2Id}`);
-    // console.log('get Chat is called -->', response.data);      
-    return response.data.messages;
+      const response = await api.get(`api/user/chat/reterive-chat/${user2Id}`);     
+      return response.data.messages;
     } catch (err) {
       if (err.response) {
         // Not in the 200 response range
@@ -37,13 +36,20 @@ const getChat = async (user2Id) => {
       } else {
         console.log(`Error: ${err.message}`);
       }
+      return [];
     }
   };
 
-  const getConversations = async () => {
+
+  const deleteChat = async (user2Id) => {
     try {
-      const response = await api.get(`/api/user/chat/reterive-conversations`);
-      // console.log('converstion done -->', response.data);      
+      // const response = await api.delete('/api/user/unfollow', { data: blogid} );
+      console.log('delete id', user2Id)
+      const response = api.delete(`api/user/chat/delete-chat/${user2Id}`)
+      // const response = api.delete(`/api/user/chat/delete-chat`, {id : user2Id})
+
+      console.log('delete succeed')
+      return true;
     } catch (err) {
       if (err.response) {
         // Not in the 200 response range
@@ -53,7 +59,10 @@ const getChat = async (user2Id) => {
       } else {
         console.log(`Error: ${err.message}`);
       }
+      console.log('delete failed')
+      return false;
     }
   };
 
-export { sendMessage, getChat, getConversations};
+
+export { sendMessage, getChat, deleteChat};

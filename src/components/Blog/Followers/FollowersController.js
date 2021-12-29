@@ -15,9 +15,9 @@ const useHandler = () => {
    * @function showFollowers
    * @return {JSX} return jsx of followers to be rendered in the followers page
    */
-  const showFollowers = () => (
-    followers.map((follower) => (
-      <FollowerSection data={follower} key={follower.id} />
+  const showFollowers = (id) => (
+    followers.map((follower, index) => (
+      <FollowerSection data={follower} key={follower.id} index={index} blogId={id}/>
     ))
   );
   /**

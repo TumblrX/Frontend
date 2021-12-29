@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect } from 'react';
 import mainPageStyle from './MainPage.module.scss';
 import { Redirect } from 'react-router-dom';
@@ -12,7 +11,6 @@ import {responseGoogle, responseGoogleFail} from '../../pages/LoginPage/GoogleSe
  *
  * @component
  */
-// eslint-disable-next-line react/function-component-definition
 function MainPage() {
   const { dashboard } = useSelector((state) => state.mainPage);
 

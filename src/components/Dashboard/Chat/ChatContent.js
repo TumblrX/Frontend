@@ -26,7 +26,8 @@ const ChatContent = function () {
         <p> {friend.handle} </p>
       </div>
       
-      { messages?.length >0 &&  (messages.slice(0).reverse().map((m, index) => (
+      { messages?.length >0 &&  (messages.slice(0).reverse().map((m, index) => {
+        return  (m.senderId === friend.id || m.senderId === localStorage.getItem('userId')) ?(
         <div className={styles.messegesBody} key={index} >
           <div className={styles.msg}>
             <div className={styles.msgAvatar}>
@@ -60,7 +61,10 @@ const ChatContent = function () {
           </div>
 
         </div>
-        )))
+        ) : (
+          <></>
+        )
+      }))
       }
     </div>
   );

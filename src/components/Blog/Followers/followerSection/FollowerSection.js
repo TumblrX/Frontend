@@ -2,8 +2,9 @@
 import React from 'react';
 import styles from './FollowerSection.module.scss';
 import useHandler from './FollowerSecionController';
+import { handleBlock } from '../../BlockService/blockService';
 
-const FollowerSection = function ({ data }) {
+const FollowerSection = function ({ data, index, blogId }) {
   const {
     _id, title, handle, avatar, alreadyFollow,
   } = data;
@@ -84,7 +85,7 @@ const FollowerSection = function ({ data }) {
             <div className={styles.dropDown} id="list">
               <div className={styles.dropDownContainer}>
                 <div className={styles.anotherContainer}>
-                  <button className={styles.block}>block</button>
+                  <button className={styles.block} id={`block${index}`} onClick={() => handleBlock(_id,index,blogId)}>block</button>
                   <button className={styles.close}>close</button>
                 </div>
               </div>
