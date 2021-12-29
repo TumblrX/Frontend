@@ -44,7 +44,7 @@ const Posts = function () {
               <NothingAvailable page="Post" />
             )
             : (
-              showPosts(posts, pageNum, isInfinte)
+              showPosts(posts, pageNum, isInfinte,'blog')
             )
           )}
         <div className={`${styles.navigateBtns} ${styles.row}`}>

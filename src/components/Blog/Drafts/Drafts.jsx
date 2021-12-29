@@ -4,7 +4,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from '../Posts/Posts.module.scss';
-import showDrafts from './DraftsController';
 import NothingAvailable from '../nothingAvailable/nothingAvailable';
 import Loading from '../Loading/Loading';
 import Newpost from '../../Dashboard/NewPost/Newpost';
@@ -12,6 +11,7 @@ import useDraftHandler from './DraftsService';
 import {
   incrementPageNum, decrementPageNum,
 } from '../../../redux/blogDrafts';
+import showPosts from '../Posts/PostsControllers';
 
 /**
  * Component to render blog drafts page
@@ -44,7 +44,7 @@ const Drafts = function () {
               <NothingAvailable page="Draft" />
             )
             : (
-              showDrafts(drafts, pageNum, isInfinte)
+              showPosts(drafts, pageNum, isInfinte, 'draft')
             )
           )}
         <div className={`${styles.navigateBtns} ${styles.row}`}>

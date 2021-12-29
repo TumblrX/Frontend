@@ -31,7 +31,7 @@ const Post = function ({ data, place }) {
   const { title, tags, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
   const [notesIsShown, setNotesIsShown] = useState(false);
   const [notesCounter, setNotesCounter] = useState();
-  const { reblogPostHandler, likePostHandler, deletePostHandler, deleteBlogPostHandler, deleteDraftHandler, postDraftHandler } = PostController();
+  const { reblogPostHandler, likePostHandler, deletePostHandler, deleteBlogPostHandler, deleteDraftHandler, postDraftHandler, deleteLikedHandler } = PostController();
   const userBlogs = useSelector(state => state.userBlogs.userBlogs);
   const [ isLiked, setIsLiked ] = useState(liked);
   useEffect(() => {
@@ -115,7 +115,7 @@ const Post = function ({ data, place }) {
                 </div>
               </IconContext.Provider>
               { (userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1) && 
-              (<div onClick={ place ==='blog'? deleteBlogPostHandler.bind(this, id) : deletePostHandler.bind(this, id) }>
+              (<div onClick={ place ==='blog'?  deleteBlogPostHandler.bind(this, id) : place === 'likes' ? deleteLikedHandler.bind(this, id) : deletePostHandler.bind(this, id) }>
                 <RiDeleteBinLine />
               </div>)}
             </IconContext.Provider>
@@ -224,7 +224,8 @@ const Post = function ({ data, place }) {
               </div>
             </IconContext.Provider>
             { userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1 && 
-            (<div onClick={place ==='blog'? deleteBlogPostHandler.bind(this, id) : deletePostHandler.bind(this, id) }>
+            (<div onClick={place ==='blog'? deleteBlogPostHandler.bind(this, id) : place === 'likes' ? deleteLikedHandler.bind(this, id) : deletePostHandler.bind(this, id) }>
+              {console.log(place)}
               <RiDeleteBinLine />
             </div>)}
           </IconContext.Provider>

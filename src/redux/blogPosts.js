@@ -29,6 +29,8 @@ export const blogPosts = createSlice({
     deletePost: (state, {payload}) => {
       const postId = payload;
       state.posts = state.posts.filter((post)=>post.id !== postId);
+      state.NumOfPosts= state.NumOfPosts-1;
+      console.log("hi from deleting posts");
     }
   },
 });

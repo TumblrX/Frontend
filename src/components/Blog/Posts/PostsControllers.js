@@ -12,7 +12,7 @@ import Post from '../../Post/Post';
  * @return {JSX} return jsx of posts to be rendered in the posts page
  */
 
-const showPosts = (posts, pageNum, isInfinte) => {
+const showPosts = (posts, pageNum, isInfinte, place) => {
   let firstPost;
   let lastPost;
   if (isInfinte) {
@@ -32,7 +32,7 @@ const showPosts = (posts, pageNum, isInfinte) => {
         </object>
         </div>
         <div className={styles.postDatailes}>
-          <Post data={post} place='blog'/>
+          <Post data={post} place={place}/>
         </div>
       </div>
     ))

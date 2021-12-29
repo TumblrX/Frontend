@@ -15,6 +15,7 @@ import reblogPost from './ReblogPostService';
 import likePost from './LikePostService';
 import unLikePost from './UnlikePostService';
 import postDraft from './PostDraftService';
+import { deleteLikedPost } from '../../redux/Likes';
 
 const PostController = function () {
   const dispatch = useDispatch();
@@ -49,6 +50,12 @@ const PostController = function () {
       // First delete it from the database then from the store
       if(await deletePost(draftId)){
         dispatch(blogDraftsActions.deleteDraft(draftId));
+      }
+    },
+    deleteLikedHandler: async (postId) => {
+      // First delete it from the database then from the store
+      if(await deletePost(postId)){
+        dispatch(deleteLikedPost(postId));
       }
     },
     postDraftHandler: async (draftId) =>{
