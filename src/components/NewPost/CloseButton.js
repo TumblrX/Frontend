@@ -12,8 +12,7 @@ import classes from './CloseButton.module.scss';
 const CloseButton = function () {
   const history = useHistory();
   const closeClickHandler = () => {
-    history.goBack();
-    if(window.screen.width>970) history.goBack();
+    history.push('/dashboard');
   };
   return (
     <button className={classes.close} onClick={closeClickHandler}>

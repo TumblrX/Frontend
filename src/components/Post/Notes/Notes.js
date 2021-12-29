@@ -11,8 +11,8 @@ import classes from './Notes.module.scss';
 import notesController from './NotesController';
 import getNotes from './GetNotesService';
 import NoteItem from './NoteItem/NoteItem';
-const Notes = ({increamentNotesCount,closeHandler, postId}) => {
-  const {submitComment} = notesController();
+const Notes = ({decreaseNotesCount, increamentNotesCount,closeHandler, postId}) => {
+  const {submitComment, deleteComment} = notesController();
   const [comment, setComment] = useState('');
   const [notes, setNotes] = useState([]);
   useEffect(() => {
@@ -36,7 +36,16 @@ const Notes = ({increamentNotesCount,closeHandler, postId}) => {
         setNotes(response.data.data);
       }
     }
-  }
+  };
+  const deleteCommentHandler =async (commentId) =>{
+    if(await deleteComment(postId, commentId)){
+      decreaseNotesCount();
+      const response = await getNotes(postId);
+      if(response){
+        setNotes(response.data.data);
+      }
+    }
+  };
   return (
     <div className={classes.notes}>
       <header className={classes.header}>
@@ -51,7 +60,7 @@ const Notes = ({increamentNotesCount,closeHandler, postId}) => {
       </header>
       <div className={classes.content}>
         <ul>
-          {notes.map((note)=><NoteItem key={note._id} note={note}/>)}
+          {notes.map((note)=><NoteItem key={note._id} note={note} deleteCommentHandler={deleteCommentHandler}/>)}
         </ul>
       </div>
       <footer className={classes.footer}>

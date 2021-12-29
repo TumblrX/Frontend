@@ -4,22 +4,22 @@ import { setIsChat } from '../../../redux/DashBoardReducer';
 import { setFriend, resetChat } from '../../../redux/ChatReducer';
 import { search, getConversations } from './DropDownInboxService';
 
-    const handleOpenSearch = (e, isSearch) => {
-        e.preventDefault();
-        configureStore.dispatch(setIsSearch(!isSearch));
-        if(e.target.innerText === 'New Message'){
-          e.target.innerText ='Never Mind'
-        }else {
-          e.target.innerText ='New Message';
-          configureStore.dispatch(setBlogs([]));
-        }
-    }
+  const handleOpenSearch = (e, isSearch) => {
+      e.preventDefault();
+      configureStore.dispatch(setIsSearch(!isSearch));
+      if(e.target.innerText === 'New Message'){
+        e.target.innerText ='Never Mind'
+      }else {
+        e.target.innerText ='New Message';
+        configureStore.dispatch(setBlogs([]));
+      }
+  }
 
   const handleSearch = async (newMessage) =>{
     const id = localStorage.getItem('userId');
     if (!newMessage.match(/^\s*$/)) {
       const mySearch = await search(newMessage);
-      mySearch.blogs = await mySearch.blogs.filter((blog) => {
+      mySearch.blogs = await mySearch?.blogs.filter((blog) => {
         return blog.owner !== id;
       })
       await configureStore.dispatch(setBlogs(mySearch.blogs))
@@ -46,6 +46,5 @@ import { search, getConversations } from './DropDownInboxService';
     if(conversations.hasOwnProperty('data')){
       await configureStore.dispatch(setConversations(conversations.data));
     }
-    // console.log('data -->', conversations);
   }
   export { handleOpenSearch, handleSearch, handleOpenChat, componentOnMount };

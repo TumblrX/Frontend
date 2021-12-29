@@ -8,6 +8,7 @@ const checkEqualArr =  (a , b) =>{
 
 
 const fetchPost = async (pageNum, pageNumPosts, posts) => {
+  console.log('pageNum ', pageNum)
   try {
     const response = await api.get(`/api/user/dashboard?limit=${pageNumPosts}&page=${pageNum}`);
     console.log('fetch post is called -->', response.data);

@@ -27,7 +27,6 @@ const Dashboard = function () {
     postsMounted, exploreBlogsMounted, radarMounted, ChatMounted,nextButton,
     isChat, isLoading
   } = useSelector((state) => state.DashBoard);
-  const { friend } = useSelector((state) => state.Chat);
   const dispatch = useDispatch();
   const mySocket = useRef();
   const firstTimeRef = useRef(1);
@@ -42,10 +41,8 @@ const Dashboard = function () {
             token: `${localStorage.getItem('token')}`
           } 
         })   
-        firstTimeRef.current = 0;
         mySocket.current.on("privateMessage", async (data) => {
           let condition= ( data.senderId === localStorage.getItem('userId') || (data.receiverId === localStorage.getItem('userId'))) ;
-          // console.log( 'is sender', data.senderId === localStorage.getItem('userId') ) 
           if(condition){
             console.log("condition")
             dispatch(addMessage({
@@ -56,51 +53,14 @@ const Dashboard = function () {
             scroll(); 
           }
         })
+        firstTimeRef.current = 0;
       }
-  },[])
-  // useEffect(() => { 
-  //   let localChat = isChat; 
-  //   let localFriend = friend
-
-  //   // console.log('local chat ', localChat)
-  //   // const checkSocket = (data, localChat, localFriend) => {
-  //   //   console.log('before condition 1', localChat)
-  //   //   console.log('before condition 2', data.senderId === localStorage.getItem('userId'))
-  //   //   console.log('before condition 3', (localFriend.id === data.senderId))
-  //   //   console.log('test condition ')
-  //   //   const x= localChat &&  ( data.senderId === localStorage.getItem('userId') || (localFriend && localFriend.id === data.senderId)) ;
-  //   //   console.log('x = ', x)
-  //   //   return x;
-  //   // }
-  //   if(firstTimeRef.current ===1) {
-  //     console.log('first time called')
-
-  //     // mySocket.current.on("privateMessage", async (data) => {
-  //     //   setTimeout(() => {
-  //     //     if(checkSocket(data)){
-  //     //         console.log('true condition ')
-  //     //       }
-  //     //   }, 1000);
-    
-  //     // })
-  //     setTimeout(() => {
-  //       console.log('local chat ', localChat)
-  //       console.log('local freind ', friend)
-  //     }, 1000);
-
-  //     // firstTimeRef.current = 0;
-  //   }
-  //   // console.log('first time asdasdasdasd')
-
-  // },[isChat, friend]);
-
-  
+  },[])  
 
   useEffect(  () => {
     const fetch = async () => {
       await fetchPost(pageNum, pageNumPosts, posts);
     }
-    console.log('fetch is called')
     fetch();
   }, [pageNum, pageNumPosts]);
 
@@ -115,7 +75,7 @@ const Dashboard = function () {
       if (radar.length > 0  ) {
         await dispatch(setRadarMounted(true));
       }else {
-        // await dispatch(setRadarMounted(false));
+        await dispatch(setRadarMounted(false));
       }
 
       if (exploreBlogs.length !==0  ) {
@@ -139,7 +99,7 @@ const Dashboard = function () {
                 <Loading />
               ) : (
                 <>
-                  { showPosts(posts, pageNum, isInfinte, pageNumPosts, isLoading) }
+                  { postsMounted && showPosts(posts, pageNum, isInfinte, pageNumPosts, isLoading) }
                   {
                     isLoading && <div className={styles.load}> <Loading /> </div>
                   }

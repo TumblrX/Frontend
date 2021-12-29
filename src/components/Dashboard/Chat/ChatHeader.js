@@ -23,7 +23,7 @@ const ChatHeader = function () {
           <FaGripVertical />
           <ul className={styles.dropDown}>
             <li className={styles.item} onClick={() => { handleSound(); }}> Sound Settings</li>
-            <li className={styles.item} onClick={() => { handleDelete(); }}>Delete Conversation</li>
+            <li className={styles.item} onClick={() => { handleDelete(friend.id); }}>Delete Conversation</li>
           </ul>
         </div>
         <div
