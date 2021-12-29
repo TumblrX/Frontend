@@ -14,7 +14,7 @@ const ChatHeader = function () {
     <div className={`${styles.Chat_header} ${styles.row}`}>
       {sound && <Redirect to="/settings/dashboard" />}
       <div className={styles.userName}>
-        <a> myName </a>
+        <a> {localStorage.getItem('handle')} </a>
         +
         <a> {friend.handle} </a>
       </div>

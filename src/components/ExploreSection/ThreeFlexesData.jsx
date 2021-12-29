@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from "react";
 import styles from "./scss/ExploreSection.module.scss";
 import Post from "../Post/Post";
@@ -15,8 +16,8 @@ function ThreeFlexesData(props) {
         {posts.map((item, index) => {
           if (index % 3 === 0) {
             return (
-              <div className={styles["exlpore-post"]}>
-                <Post data={item} key={index} />
+              <div className={styles["exlpore-post"]} key={index}>
+                <Post data={item} key={item._id} />
               </div>
             );
           }
@@ -26,8 +27,8 @@ function ThreeFlexesData(props) {
         {posts.map((item, index) => {
           if (index % 3 === 1) {
             return (
-              <div className={styles["exlpore-post"]}>
-                <Post data={item} key={index} />
+              <div className={styles["exlpore-post"]} key={index}>
+                <Post data={item} key={item._id} />
               </div>
             );
           }
@@ -37,8 +38,8 @@ function ThreeFlexesData(props) {
         {posts.map((item, index) => {
           if (index % 3 === 2) {
             return (
-              <div className={styles["exlpore-post"]}>
-                <Post data={item} key={index} />
+              <div className={styles["exlpore-post"]} key={index}>
+                <Post data={item} key={item._id} />
               </div>
             );
           }

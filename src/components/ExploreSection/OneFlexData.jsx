@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from "react";
 import styles from "./scss/ExploreSection.module.scss";
 import Post from "../Post/Post";
@@ -14,8 +15,8 @@ function OneFlexData(props) {
       <div className={`${styles["one-flex"]} first-of-first`}>
         {posts.map((item, index) => {
           return (
-            <div className={styles["exlpore-post"]}>
-              <Post data={item} key={index} />
+            <div className={styles["exlpore-post"]} key={index}>
+              <Post data={item} key={item._id} />
             </div>
           );
         })}

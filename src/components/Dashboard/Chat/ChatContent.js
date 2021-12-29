@@ -8,17 +8,13 @@ import img1 from '../../../assets/Images/1.jpg';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChat } from './ChatServices';
 import { setMessages } from '../../../redux/ChatReducer';
+import { chatMessages } from './ChatController';
 
 const ChatContent = function () {
   const { messages, friend } = useSelector((state) => state.Chat);
   const dispatch = useDispatch();
+  useEffect( async () => { chatMessages(friend.id, friend.id) }, [friend])
 
-  useEffect( async () => {
-    const msgs = await getChat(friend.id);
-    // const msgs = await getChat('61c263c46b827a7e14446ee5');
-    await dispatch(setMessages(msgs));
-    // console.log('msgs ->', messages)
-  }, [friend])
   return (
     <div className={styles.Chat_content} id="scroll">
       <div className={styles.startChat}>
@@ -30,12 +26,21 @@ const ChatContent = function () {
         <p> {friend.handle} </p>
       </div>
       
-      { messages.length >0 &&  (messages.slice(0).reverse().map((m, index) => (
+      { messages?.length >0 &&  (messages.slice(0).reverse().map((m, index) => (
         <div className={styles.messegesBody} key={index} >
           <div className={styles.msg}>
             <div className={styles.msgAvatar}>
               <div className={styles.avatar_img}>
-                <img src={logo} alt="#" className={styles.circle}/>
+                <img src={logo} alt="noavatar" className={styles.avatar} /> 
+              {/* { 
+                blog?.avatar === 'none' ? ( 
+                ) : blog?.avatar.includes("http")?(
+                  <img src={`${blog.avatar}`} alt="post avatar" className={styles.avatar} />
+                ) : (
+                  // <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="post avatar" className={styles.avatar} />
+                  <img src={`http://tumblrx.me:3000/${blog.avatar}`} alt="post avatar" className={styles.avatar} />
+                )
+              } */}
               </div>
             </div>
             <div className={styles.msgContent}>
@@ -44,7 +49,7 @@ const ChatContent = function () {
                   m.senderId === friend.id ? ( 
                     <> {friend.handle} </>    
                   ): (
-                    <> my handle </>   
+                    <> {localStorage.getItem('handle')} </>   
                   )
                 }
               </h3>

@@ -21,6 +21,7 @@ function CheckBlog(props) {
               className="checkBlog"
               value={index}
               id={blog["_id"]}
+              key={index}
             >
               <div>
                 <img src={img} alt="" />

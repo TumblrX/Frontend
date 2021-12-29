@@ -67,7 +67,7 @@ const retrivePosts = function () {
         configureStore.dispatch(pushForYouPosts(res.data["for-youPosts"]));
         configureStore.dispatch(
           setForYouPostIndex(Explore.forYouPostsIndex + 10)
-        );
+        );        
       } else if (pathname === "trending") {
         configureStore.dispatch(pushTrendingPosts(res.data.trendingPosts));
         configureStore.dispatch(
