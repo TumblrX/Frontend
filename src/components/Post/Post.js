@@ -23,7 +23,7 @@ import postContentToJsx from './PostContentToJsx';
 import avatar from '../../assets/Images/avatar.png'
 import Notes from './Notes/Notes';
 
-const Post = function ({ data }) {
+const Post = function ({ data, place }) {
   const { title, tags, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
   const [notesIsShown, setNotesIsShown] = useState(false);
   const [notesCounter, setNotesCounter] = useState();
@@ -111,14 +111,13 @@ const Post = function ({ data }) {
                 </div>
               </IconContext.Provider>
               { (userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1) && 
-              (<div onClick={ deletePostHandler.bind(this, id) }>
+              (<div onClick={ place ==='blog'? deleteDraftHandler.bind(this, id) : deletePostHandler.bind(this, id) }>
                 <RiDeleteBinLine />
               </div>)}
             </IconContext.Provider>
           </div>
           </footer>
         )}
-        
       </Fragment>
     );
   }else {
@@ -221,7 +220,7 @@ const Post = function ({ data }) {
               </div>
             </IconContext.Provider>
             { userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1 && 
-            (<div onClick={ deletePostHandler.bind(this, id) }>
+            (<div onClick={place ==='blog'? deleteDraftHandler.bind(this, id) : deletePostHandler.bind(this, id) }>
               <RiDeleteBinLine />
             </div>)}
           </IconContext.Provider>

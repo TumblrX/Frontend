@@ -32,7 +32,7 @@ const showDrafts = (drafts, pageNum, isInfinte) => {
         </object>
         </div>
         <div className={styles.postDatailes}>
-          <Post data={draft} />
+          <Post data={draft} place='blog'/>
         </div>
       </div>
     ))
