@@ -23,10 +23,11 @@ import avatar from '../../assets/Images/avatar.png'
 import Notes from './Notes/Notes';
 
 const Post = function ({ data }) {
+  console.log(data);
   const { title, tags, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
   const [notesIsShown, setNotesIsShown] = useState(false);
   const [notesCounter, setNotesCounter] = useState();
-  const { reblogPostHandler, likePostHandler, deletePostHandler } = PostController();
+  const { reblogPostHandler, likePostHandler, deletePostHandler, deleteDraftHandler, postDraftHandler } = PostController();
   const userBlogs = useSelector(state => state.userBlogs.userBlogs);
   const [ isLiked, setIsLiked ] = useState(liked);
   useEffect(() => {
@@ -74,7 +75,21 @@ const Post = function ({ data }) {
           {postContentToJsx(content)}
           <p>{tags.map(tag => <span className={classes.tag}>{`#${tag}`}</span>)}</p>
         </div>
-        <footer className={classes.footer}>
+        {state ==='draft' ? (
+          <footer className={classes.footer}>
+          <div className={classes.draftIcons}>
+            <button className={classes.draftButton} onClick={postDraftHandler.bind(this,id)}>
+              Post
+            </button>
+            <IconContext.Provider value={{ size: '1.3rem' }}>
+              <div onClick={ deleteDraftHandler.bind(this, id) }>
+                <RiDeleteBinLine />
+              </div>
+            </IconContext.Provider>
+          </div>
+          </footer>
+        ) : (
+          <footer className={classes.footer}>
           <div className={classes.notes} onClick={openNotesClickHandler}>
             {notesCounter} notes
           </div>
@@ -101,7 +116,9 @@ const Post = function ({ data }) {
               </div>)}
             </IconContext.Provider>
           </div>
-        </footer>
+          </footer>
+        )}
+        
       </Fragment>
     );
   }else {
