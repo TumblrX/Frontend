@@ -21,7 +21,7 @@ const scroll = () => {
   const element = document.getElementById('scroll');
   if( element ){
     element.scroll({
-      top: 10000,
+      top: 50000,
       behavior: 'smooth'
     });
   }

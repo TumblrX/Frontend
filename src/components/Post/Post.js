@@ -23,7 +23,7 @@ import avatar from '../../assets/Images/avatar.png'
 import Notes from './Notes/Notes';
 
 const Post = function ({ data }) {
-  console.log(data);
+  // console.log(data);
   const { title, tags, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
   const [notesIsShown, setNotesIsShown] = useState(false);
   const [notesCounter, setNotesCounter] = useState();
