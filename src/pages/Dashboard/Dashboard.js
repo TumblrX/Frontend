@@ -26,9 +26,7 @@ const Dashboard = function () {
   const dispatch = useDispatch();
 
   useEffect(  () => { componentOnMount(pageNum, pageNumPosts) }, []);
-  useEffect(() => {
-    dispatch(fetchUserBlogs());
-  }, [dispatch]);
+  useEffect(() => { dispatch(fetchUserBlogs()); }, [dispatch]);
   
 
   useEffect(  () => {
