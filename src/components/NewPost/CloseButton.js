@@ -7,7 +7,7 @@ const CloseButton = function () {
   const history = useHistory();
   const closeClickHandler = () => {
     history.goBack();
-    history.goBack();
+    if(window.screen.width<970) history.goBack();
   };
   return (
     <button className={classes.close} onClick={closeClickHandler}>

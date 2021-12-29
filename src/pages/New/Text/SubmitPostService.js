@@ -4,7 +4,6 @@ import api from '../../../api/api';
 const submitPost = async function (blogId, fd) {
   if (!blogId) return false;
   try {
-    console.log(Array.from(fd));
     await api.post(`api/blog/${blogId}/posts`, fd);
   } catch (err) {
     if (err.response) {

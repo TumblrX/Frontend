@@ -1,6 +1,6 @@
 .contanier {
   display: flex;
-  margin-top: 40px;
+  margin-top: 80px;
   justify-content: center;
   gap: 20px;
   min-width: 700px;
