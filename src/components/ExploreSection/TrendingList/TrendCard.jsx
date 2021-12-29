@@ -4,7 +4,7 @@ import React from "react";
 import img from "../../../assets/Images/avatar.png";
 function TrendCard(props) {
   return (
-    <li>
+    <li style={{ backgroundColor: `${props.background}` }}>
       <div>
         <div>
           <div>{props.tag}</div>
