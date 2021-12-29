@@ -24,7 +24,6 @@ import { IoGitCompareSharp } from 'react-icons/io5';
 import { RiDeleteBinLine, RiShareForwardLine, RiEdit2Line } from 'react-icons/ri';
 import PostController from './PostController';
 import postContentToJsx from './PostContentToJsx';
-import avatar from '../../assets/Images/avatar.png'
 import Notes from './Notes/Notes';
 
 const Post = function ({ data, place }) {
@@ -68,7 +67,7 @@ const Post = function ({ data, place }) {
       <Fragment>
         <header className={classes.header}>
           <div className={classes.blogName}>
-            <Link to={`/blog/view/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
+            <Link to={`/blog/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
           </div>
           <div className={classes.icon}>
             {/* <BsThreeDots /> */}
@@ -131,11 +130,11 @@ const Post = function ({ data, place }) {
     postJsx.push(
       <header className={classes.header}>
         <div className={classes.blogName}>
-          <Link to={`/blog/view/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
+          <Link to={`/blog/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
           <IconContext.Provider value={{ color: '#555' }}>
             <IoGitCompareSharp/>
           </IconContext.Provider>
-          <Link to={`/blog/view/${trail[0].blogAttribution.handle}`}>{trail[0].blogAttribution.handle}</Link>
+          <Link to={`/blog/${trail[0].blogAttribution.handle}`}>{trail[0].blogAttribution.handle}</Link>
         </div>
         <div className={classes.icon}>
           {/* <BsThreeDots /> */}
@@ -151,8 +150,8 @@ const Post = function ({ data, place }) {
         postJsx.push(
           <header className={classes.header}>
             <div className={classes.blogName}>
-              { blogAttribution.avatar ==='none' ? <img src={avatar} className={classes.avatar}/> : <img src={blogAttribution.avatar} className={classes.avatar}/>}
-              <Link to={`/blog/view/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
+              <img src={`http://tumblrx.me:3000/${blogAttribution.avatar}`} className={classes.avatar}/>
+              <Link to={`/blog/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
             </div>
           </header>
         );
@@ -173,8 +172,8 @@ const Post = function ({ data, place }) {
       postJsx.push(
         <header className={classes.header}>
         <div className={classes.blogName}>
-          { blogAttribution.avatar ==='none' ? <img src={avatar} className={classes.avatar}/> : <img src={blogAttribution.avatar} className={classes.avatar}/>}
-          <Link to={`/blog/view/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
+          <img src={`http://tumblrx.me:3000/${blogAttribution.avatar}`} className={classes.avatar}/>
+          <Link to={`/blog/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
         </div>
         </header>
       );
