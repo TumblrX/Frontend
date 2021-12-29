@@ -23,8 +23,15 @@ const Newpost = function ({ avatar }) {
   return (
     <div className={`${classes.insertPost} ${classes.row}`}>
       <div className={classes.insertLogo}>
-        {avatar === 'none' && <img src={noavatar} alt="noavatar" className={classes.avatar} />}        
-        {avatar !== 'none' &&< img src={avatar} alt="avatar" className={classes.avatar}     />}
+        {
+          avatar === 'none' ? (
+            <img src={noavatar} alt="noavatar" className={classes.avatar} />
+          ) : avatar.includes("http") ? (
+            <img src={`${avatar}`} alt="avatar" className={classes.avatar} />
+          ) : (
+            <img src={`${process.env.REACT_APP_API_URL}/${avatar}`} alt="post avatar" className={classes.avatar} />
+          ) 
+        }
       </div>
       <div className={classes.insertPostDetails}>
         <div className={classes.newPost}>

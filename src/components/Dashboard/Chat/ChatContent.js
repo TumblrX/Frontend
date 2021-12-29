@@ -20,7 +20,15 @@ const ChatContent = function () {
       <div className={styles.startChat}>
         <div className={styles.usertAvatar}>
           <div className={styles.avatar_img}>
-            <img src={logo} alt="user Avatar" className={styles.circle} />
+            {
+              localStorage["avatar"] ==='none'? (
+                <img src={logo} alt="noavatar" className={styles.avatar} /> 
+              ) : localStorage["avatar"].includes('http') ? (
+                <img src={`${localStorage["avatar"]}`} alt="avatar" className={styles.avatar} />
+              ) : (
+                <img src={`${process.env.REACT_APP_API_URL}/${localStorage["avatar"]}`} alt="post avatar" className={styles.avatar} />
+              )
+            }
           </div>
         </div>
         <p> {friend.handle} </p>
@@ -42,7 +50,13 @@ const ChatContent = function () {
                     <img src={`${process.env.REACT_APP_API_URL}/${friend.avatar}`} alt="post avatar" className={styles.avatar} />
                   )
                 ): (
-                  <img src={logo} alt="noavatar" className={styles.avatar} /> 
+                  localStorage["avatar"] ==='none'? (
+                    <img src={logo} alt="noavatar" className={styles.avatar} /> 
+                  ) : localStorage["avatar"].includes('http') ? (
+                    <img src={`${localStorage["avatar"]}`} alt="avatar" className={styles.avatar} />
+                  ) : (
+                    <img src={`${process.env.REACT_APP_API_URL}/${localStorage["avatar"]}`} alt="post avatar" className={styles.avatar} />
+                  )
                 )
               }
               </div>
