@@ -24,7 +24,6 @@ import avatar from '../../assets/Images/avatar.png'
 import Notes from './Notes/Notes';
 
 const Post = function ({ data }) {
-  console.log(data);
   const { title, tags, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
   const [notesIsShown, setNotesIsShown] = useState(false);
   const [notesCounter, setNotesCounter] = useState();
@@ -111,7 +110,7 @@ const Post = function ({ data }) {
                   <FaRegHeart />
                 </div>
               </IconContext.Provider>
-              { ((state === 'draft') || (userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1)) && 
+              { (userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1) && 
               (<div onClick={ deletePostHandler.bind(this, id) }>
                 <RiDeleteBinLine />
               </div>)}
