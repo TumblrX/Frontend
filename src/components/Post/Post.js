@@ -59,7 +59,9 @@ const Post = function ({ data, place }) {
   };
   const increamentNotesCount = () =>{
     setNotesCounter(x=>x+1);
-    // console.log(notesCounter);
+  };
+  const decreaseNotesCount = () =>{
+    setNotesCounter(x=>x-1);
   };
   let postJsx = [];
   if(!isReblogged){
@@ -103,7 +105,7 @@ const Post = function ({ data, place }) {
               </div> */}
               <div onClick={openNotesClickHandler}>
                 <FaRegComment />
-                {notesIsShown && <Notes increamentNotesCount={increamentNotesCount} closeHandler={closeNotesClickHandler} postId={id}/>}
+                {notesIsShown && <Notes decreaseNotesCount={decreaseNotesCount}/>}
               </div>
               <div onClick={reblogClickHandler}>
                 <IoGitCompareSharp />
@@ -212,7 +214,7 @@ const Post = function ({ data, place }) {
             </div> */}
             <div onClick={openNotesClickHandler}>
                 <FaRegComment />
-                {notesIsShown && <Notes increamentNotesCount={increamentNotesCount} closeHandler={closeNotesClickHandler} postId={id}/>}
+                {notesIsShown && <Notes decreaseNotesCount={decreaseNotesCount} increamentNotesCount={increamentNotesCount} closeHandler={closeNotesClickHandler} postId={id}/>}
             </div>
             <div onClick={reblogPostHandler.bind(this, id)}>
               <IoGitCompareSharp />
