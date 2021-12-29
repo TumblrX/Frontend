@@ -105,7 +105,7 @@ const Post = function ({ data, place }) {
               </div> */}
               <div onClick={openNotesClickHandler}>
                 <FaRegComment />
-                {notesIsShown && <Notes decreaseNotesCount={decreaseNotesCount}/>}
+                {notesIsShown && <Notes decreaseNotesCount={decreaseNotesCount} increamentNotesCount={increamentNotesCount} closeHandler={closeNotesClickHandler} postId={id}/>}
               </div>
               <div onClick={reblogClickHandler}>
                 <IoGitCompareSharp />
