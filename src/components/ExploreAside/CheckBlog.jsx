@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import styles from "./scss/ExploreAside.module.scss";
 import img from "../../assets/Images/avatar.png";
 import { useSelector } from "react-redux";
-import { onXClick } from "./CheckBlogController";
+import { onXClick, onFollowClick } from "./CheckBlogController";
 import { fetchBlogs } from "./CheckBlogServices";
 function CheckBlog(props) {
   const { checkBlogs } = useSelector((state) => state.Explore);
@@ -20,6 +20,7 @@ function CheckBlog(props) {
               style={{ position: "relative" }}
               className="checkBlog"
               value={index}
+              id={blog["_id"]}
             >
               <div>
                 <img src={img} alt="" />
@@ -28,7 +29,7 @@ function CheckBlog(props) {
                 <div style={{ overflow: "hidden" }}>{blog.handle}</div>
                 <div>savage-words</div>
               </div>
-              <div onClick={onXClick}>Follow</div>
+              <div onClick={onFollowClick}>Follow</div>
               <div
                 className={`${styles["cross-sign"]} cross-sign`}
                 style={{ position: "absolute" }}
