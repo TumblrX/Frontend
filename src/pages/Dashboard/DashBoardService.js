@@ -2,7 +2,6 @@ import configureStore from '../../redux/store';
 import { pushPosts,setPosts, setRadar, setExploreBlogs, removeBlog, incrementPageNum, setStopFetch,setNextButton} from '../../redux/DashBoardReducer';
 import api from '../../api/api';
 import { follow, unfollow } from '../../components/Blog/Followers/followerSection/followservice'
-import { useSelector } from 'react-redux';
 const checkEqualArr =  (a , b) =>{
   return JSON.stringify(a) === JSON.stringify(b);
 };
