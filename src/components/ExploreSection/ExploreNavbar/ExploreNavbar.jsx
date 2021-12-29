@@ -50,7 +50,7 @@ function ExploreNavbar() {
       <div
         style={{ display: "flex", width: "50%", justifyContent: "flex-end" }}
       >
-        <span className={styles["grid-icons"]} tabindex="-1">
+        <span className={styles["grid-icons"]} tabIndex="-1">
           <svg
             viewBox="0 0 24 24"
             width="24"
@@ -63,7 +63,7 @@ function ExploreNavbar() {
             <rect width="8" height="6" x="3" y="15" rx="1"></rect>
           </svg>
         </span>
-        <span className={styles["grid-icons"]} tabindex="-1">
+        <span className={styles["grid-icons"]} tabIndex="-1">
           <svg
             viewBox="0 0 24 24"
             width="23"

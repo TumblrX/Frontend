@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from "react";
 import styles from "./scss/ExploreSection.module.scss";
 import Post from "../Post/Post";
@@ -16,8 +17,8 @@ function FourFlexData(props) {
         {posts.map((item, index) => {
           if (index % 4 == 0) {
             return (
-              <div className={styles["exlpore-post"]}>
-                <Post data={item} key={index} />
+              <div className={styles["exlpore-post"]} key={index}>
+                <Post data={item} key={item._id} />
               </div>
             );
           }
@@ -27,8 +28,8 @@ function FourFlexData(props) {
         {posts.map((item, index) => {
           if (index % 4 == 1) {
             return (
-              <div className={styles["exlpore-post"]}>
-                <Post data={item} key={index} />
+              <div className={styles["exlpore-post"]} key={index}>
+                <Post data={item} key={item._id} />
               </div>
             );
           }
@@ -38,8 +39,8 @@ function FourFlexData(props) {
         {posts.map((item, index) => {
           if (index % 4 == 2) {
             return (
-              <div className={styles["exlpore-post"]}>
-                <Post data={item} key={index} />
+              <div className={styles["exlpore-post"]} key={index}>
+                <Post data={item} key={item._id} />
               </div>
             );
           }
@@ -49,8 +50,8 @@ function FourFlexData(props) {
         {posts.map((item, index) => {
           if (index % 4 == 3) {
             return (
-              <div className={styles["exlpore-post"]}>
-                <Post data={item} key={index} />
+              <div className={styles["exlpore-post"]} key={index}>
+                <Post data={item} key={item._id} />
               </div>
             );
           }
