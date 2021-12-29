@@ -15,6 +15,7 @@ import Newpost from '../../components/Dashboard/NewPost/Newpost';
 import Post from '../../components/Post/Post';
 import Inbox from '../../components/Dashboard/Chat/Chat';
 import Loading from '../../components/Blog/Loading/Loading'
+import { fetchUserBlogs } from '../../redux/userBlogs-actions';
 
 const Dashboard = function () {
   const {
@@ -25,6 +26,10 @@ const Dashboard = function () {
   const dispatch = useDispatch();
 
   useEffect(  () => { componentOnMount(pageNum, pageNumPosts) }, []);
+  useEffect(() => {
+    dispatch(fetchUserBlogs());
+  }, [dispatch]);
+  
 
   useEffect(  () => {
     const fetch = async () => {

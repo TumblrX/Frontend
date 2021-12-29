@@ -15,8 +15,9 @@ import BlogView from './BlogView/BlogView';
 import Customize from './Customize/Customize';
 import Following from './Following/Following';
 import ServerError from './NotFound/ServerError';
+import Likes from './Likes/Likes'
 
 export {
   NotFound, Dashboard, Explore, Inbox, New, MainPage, Register, LoginPage,
-  ForgetPassword, CreateBlog, Blog, BlogView, Customize, Following, ServerError,
+  ForgetPassword, CreateBlog, Blog, BlogView, Customize, Following, ServerError, Likes,
 };

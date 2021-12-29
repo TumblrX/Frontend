@@ -8,7 +8,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-empty */
 /* eslint-disable max-len */
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import classes from './Post.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -23,12 +23,15 @@ import avatar from '../../assets/Images/avatar.png'
 import Notes from './Notes/Notes';
 
 const Post = function ({ data }) {
-  const { tags, title, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
+  const { title, tags, blogAttribution, commentsCount, content, id, isReblogged, liked, likesCount, notes, notesCount, postType, publishedOn, reblogsCount, state } = data;
   const [notesIsShown, setNotesIsShown] = useState(false);
-  const [notesCounter, setNotesCounter] = useState(notesCount);
+  const [notesCounter, setNotesCounter] = useState();
   const { reblogPostHandler, likePostHandler, deletePostHandler } = PostController();
   const userBlogs = useSelector(state => state.userBlogs.userBlogs);
   const [ isLiked, setIsLiked ] = useState(liked);
+  useEffect(() => {
+    setNotesCounter(notesCount);
+  }, []);
   const likeClickHandler = () =>{
     if(isLiked){
       setNotesCounter(x=>x-1);
@@ -37,19 +40,23 @@ const Post = function ({ data }) {
     }
     likePostHandler(id, isLiked)
     setIsLiked(!isLiked);
-  }
+  };
+  const reblogClickHandler =()=>{
+    reblogPostHandler(id);
+    setNotesCounter(x=>x+1);
+  };
   const openNotesClickHandler = () =>{
     setNotesIsShown(true);
-  }
+  };
   const closeNotesClickHandler = (e) =>{
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
     setNotesIsShown(false);
-  }
+  };
   const increamentNotesCount = () =>{
     setNotesCounter(x=>x+1);
     console.log(notesCounter);
-  }
+  };
   let postJsx = [];
   if(!isReblogged){
     postJsx.push(
@@ -80,7 +87,7 @@ const Post = function ({ data }) {
                 <FaRegComment />
                 {notesIsShown && <Notes increamentNotesCount={increamentNotesCount} closeHandler={closeNotesClickHandler} postId={id}/>}
               </div>
-              <div onClick={reblogPostHandler.bind(this, id)}>
+              <div onClick={reblogClickHandler}>
                 <IoGitCompareSharp />
               </div>
               <IconContext.Provider value={ isLiked ? { color: 'red' } : {}}>

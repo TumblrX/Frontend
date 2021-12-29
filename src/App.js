@@ -4,7 +4,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchUserBlogs } from "./redux/userBlogs-actions";
 import Search from "./pages/Search/Search";
 import Settings from "./pages/Settings/Settings";
 import {
@@ -18,7 +17,7 @@ import {
   Register,
   LoginPage,
   ForgetPassword,
-  CreateBlog,
+  Likes,
   Blog,
   BlogView,
   Customize,
@@ -36,12 +35,7 @@ import { useSelector } from 'react-redux';
 import updateNotifications from './UpdateNotifications'
 
 const App = function () {
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchUserBlogs());
-  }, [dispatch]);
-
+  
   const {
     userInfo
   } = useSelector((state) => state.userInfo);
@@ -49,7 +43,7 @@ const App = function () {
   useEffect(() => {
     updateNotifications();    
   }, [userInfo.id]);
-
+  
   return (
     <>
     {localStorage.getItem('token') && (
@@ -74,21 +68,10 @@ const App = function () {
         <NavBar />
         <Dashboard />
       </Route>
-
-      {/* <Route
-        exact
-        path="/following"
-        render={() => (
-          localStorage.getItem('token') ? (
-            <>
-              <NavBar />
-              <Following />
-              </>
-              ) : (
-            <Redirect to="/" />
-          )
-          )}
-        /> */}
+      <Route exact path="/likes">
+        <NavBar />
+        <Likes />
+      </Route>
       <Route exact path="/following">
         <NavBar />
         <Following />
@@ -99,22 +82,21 @@ const App = function () {
       </Route>*/}
       <Route exact path="/customize">
         <Customize />
-      </Route>
-      <Route exact path="/newblog">
-        <NavBar />
-        <CreateBlog />      
       </Route>      
       <Route path="/new">
         <New />
       </Route>
       <Route exact path="/forgetPassword">
+        <Redirect to="/dashboard" />
         <ForgetPassword />
       </Route>
       <Route exact path="/register">
+        <Redirect to="/dashboard" />
         <LogInNavBar />
         <Register />
       </Route>
       <Route exact path="/login">
+        <Redirect to="/dashboard" />
         <SignUpNavBar />
         <LoginPage />
       </Route>

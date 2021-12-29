@@ -22,7 +22,7 @@ const PostButton = function ({ setSelectedOption }) {
   };
   const buttonClickHandler = () => {
     history.goBack();
-    history.goBack();
+    if(window.screen.width<970) history.goBack();
   };
   return (
     <div className={classes.post}>

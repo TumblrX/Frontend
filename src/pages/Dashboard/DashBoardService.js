@@ -75,13 +75,11 @@ const fetchExploreBlogs = async () =>{
 };
 
 const handleFollow = (index, blogId) =>{
-  // console.log(_id);
   var element = document.getElementById(`follow${index}`).getElementsByTagName('p')[0];
   if(element.innerText === 'follow'){
     follow({_id:blogId});
     element.innerText ='unfollow';
   }else {
-    // unfollow heeeer
     unfollow({_id:blogId});
     element.innerText ='follow';
   }

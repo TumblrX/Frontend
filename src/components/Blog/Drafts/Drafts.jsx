@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styles from './Drafts.module.scss';
+import styles from '../Posts/Posts.module.scss';
 import showDrafts from './DraftsController';
 import NothingAvailable from '../nothingAvailable/nothingAvailable';
 import Loading from '../Loading/Loading';

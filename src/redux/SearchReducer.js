@@ -15,14 +15,17 @@ export const SearchReducer = createSlice({
     trendingPostsIndex: 2,
     forYouPostsIndex: 0,
     audioPostsIndex: 0,
-    textPostsIndex: 2,
-    imagesPostsIndex: 2,
-    vidoesPostsIndex: 2,
+    textPostsIndex: 0,
+    imagesPostsIndex: 0,
+    vidoesPostsIndex: 0,
     askPostsIndex: 2,
     searchWord: "",
     searchPostsIndex: 0,
   },
   reducers: {
+    setSeachWord: (state, action) => {
+      state.searchWord = action.payload;
+    },
     setSearchPostsIndex: (state, action) => {
       state.searchPostsIndex = action.payload;
     },
@@ -118,6 +121,7 @@ export const {
   pushSpecificBlog,
   removeSpecificBlog,
   setSearchPostsIndex,
+  setSeachWord,
 } = SearchReducer.actions;
 
 export default SearchReducer.reducer;

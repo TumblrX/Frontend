@@ -4,7 +4,7 @@ import useFollowingSectionHandler from './FollowingSectionController';
 
 const FollowingSection = ({ data }) => {
     const {
-        _id, title, handle, avatar, Friends, followingStatus
+        _id, title, handle, avatar, friends, followingStatus
       } = data;
       const { handleSideClick, handleClick } = useFollowingSectionHandler();  
     return (
@@ -33,8 +33,8 @@ const FollowingSection = ({ data }) => {
             <div className={styles.titlesContainer}>
               <div className={styles.handle}>
                 <span className={styles.handleSpan}>{handle}</span>
-                {console.log("Following ", Friends, _id)}
-                {Friends &&
+                {console.log("Following ", friends, _id)}
+                {friends &&
                    <div className={styles.svgDiv}>
                         <svg
                             viewBox="0 0 20 21"
@@ -82,14 +82,6 @@ const FollowingSection = ({ data }) => {
               <div className={styles.dropDown} id="list">
                 <div className={styles.dropDownContainer}>
                   <div className={styles.anotherContainer}>
-                    <a
-                      href="#"
-                      rel="noopener"
-                      target="_blank"
-                      className={styles.report}
-                    >
-                      Report
-                    </a>
                     <button className={styles.block}>block</button>
                     <button className={styles.close}>close</button>
                   </div>

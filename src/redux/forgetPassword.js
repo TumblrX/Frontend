@@ -4,30 +4,28 @@ import { createSlice } from '@reduxjs/toolkit';
 export const ForgetPasswordReducer = createSlice({
   name: 'forgetPassword',
   initialState: {
-    errorMessage: 3,
-    dashboard: false,
-    errors: {
-      error: 0,
-      fillEmail: 1,
-      invalidEmail: 2,
-    },
-    errorMessages: [
-      'There was an error submitting your request.',
-      'Please enter your email address.',
-      'Sorry, that email address is not registered with us. Please try again or register a new account.',
-    ],
+    hideForm:false,   
+    hideConfirm: true,
+    hideError: true,
+    hideEmptyEmail: true,   
   },
   reducers: {
-    setErrorMessage: (state, action) => {
-      state.errorMessage = action.payload;
+    setHideForm: (state, action) => {
+      state.hideForm = action.payload;
     },
-    redirectToDashboard: (state) => {
-      state.dashboard = true;
+    setHideConfirm: (state, action) => {
+      state.hideConfirm = action.payload;
     },
+    setHideError: (state, action) => {
+      state.hideError = action.payload;
+    },
+    setHideEmptyEmail: (state, action) => {
+      state.hideEmptyEmail = action.payload;
+    },    
   },
 });
 // Action creators are generated for each case reducer function
 export const {
-  setErrorMessage, redirectToDashboard,
+  setHideForm, setHideConfirm, setHideError, setHideEmptyEmail,
 } = ForgetPasswordReducer.actions;
 export default ForgetPasswordReducer.reducer;

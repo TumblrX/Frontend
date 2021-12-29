@@ -1,6 +1,7 @@
 import { setFlexesNumbers } from "../../redux/SearchReducer";
 import configureStore from "../../redux/store";
 import { retrieveSearchPosts } from "./SearchSectionServices";
+import styles from "../ExploreSection/ExploreNavbar/scss/ExploreNavbar.module.scss";
 
 /**
  * this function is used to update the state when resizing the window
@@ -48,7 +49,9 @@ const componentDidMount = function () {
   window.addEventListener("resize", onResize); // it should be added one time as well as scroll Event handler
   retrieveSearchPosts();
   window.addEventListener("scroll", checkScrollo);
-
+  document.querySelector(`.${styles["page-name"]}`).innerHTML =
+    window.location.pathname.split("/")[3] +
+    `<span class=${styles["arrow"]}>^</span>`;
   // it will be called when the Component is unmounted
   return () => {
     window.removeEventListener("resize", onResize);

@@ -1,21 +1,20 @@
-import { useDispatch , useSelector } from 'react-redux';
+import { dispatch , useSelector } from 'react-redux';
 import * as customize from '../../redux/Customize';
 import customzie from './CustomizeService';
 import getSettings from './GetSettingsServce';
+import configureStore from '../../redux/store';
 
-const CustomizePageController = function () {
+const CustomizeController = function () {
 
-  const dispatch = useDispatch();  
-
-  const { dataToSend  } = useSelector((state) => state.customize);
+  const { dataToSend , settings  } = useSelector((state) => state.customize);
 
   const readData = async () =>{
-    // const response = await getSettings();
-    // dispatch(customize.setSettings(response));
-    console.log('hi');
+    const response = await getSettings();
+    console.log(response.response.data.data);
+    configureStore.dispatch(customize.setSettings(response.response.data.data));
   }
 
-  const  objectToFormData = (object,objectName,formData) =>{
+   const  objectToFormData = (object,objectName,formData) =>{
     if(Array.isArray(object)){
         for(let i=0; i<object.length; i++){
             objectToFormData(object[i],`${objectName}[${i}]`,formData);
@@ -31,12 +30,21 @@ const CustomizePageController = function () {
     }
   }
 
+  const saveHandler =async () =>{
+    let formData = new FormData();
+    objectToFormData(dataToSend, 'dataToSend' , formData)
+    console.log(dataToSend);
+    await customzie(dataToSend);
+    await readData();
+  }
+
+
     const changeAvatar = (link) => {
-      dispatch(customize.setAvatar(link));
+      configureStore.dispatch(customize.setAvatar(link));
     };
     
     const changeHeaderImage = (link) => {
-       dispatch(customize.setHeaderImage(link));
+       configureStore.dispatch(customize.setHeaderImage(link));
     };
     
     const changeAvatarHandler = (e) => {
@@ -49,7 +57,7 @@ const CustomizePageController = function () {
                 }
             };
             reader.readAsDataURL(e.target.files[0]);
-            dispatch(customize.setDataToSend({avatarUrl : e.target.files[0]})); 
+            configureStore.dispatch(customize.setDataToSend({avatarUrl : e.target.files[0]})); 
         }
     };
       
@@ -63,35 +71,35 @@ const CustomizePageController = function () {
                 }
             };
             reader.readAsDataURL(e.target.files[0]);
-            dispatch(customize.setDataToSend({headerImage : e.target.files[0]})); 
+            configureStore.dispatch(customize.setDataToSend({headerImage : e.target.files[0]})); 
         }
     };
       
     const handler1 = (e) => {
         document.getElementById('customizeContainer').style.background =  e.target.value;
-        dispatch(customize.setBgColor(e.target.value));
+        configureStore.dispatch(customize.setBgColor(e.target.value));
         let newdata =  JSON.parse(JSON.stringify(dataToSend));
         newdata['customApperance']['globalParameters']['backgroundColor'] = e.target.value; 
-        dispatch(customize.setDataToSend(newdata)); 
+        configureStore.dispatch(customize.setDataToSend(newdata)); 
 
     };
     
     const handler2 = (e) => {
       document.getElementById('title').style.color =  e.target.value; 
       document.getElementById('description').style.color =  e.target.value;
-      dispatch(customize.setTitleColor(e.target.value));
+      configureStore.dispatch(customize.setTitleColor(e.target.value));
       let newdata =  JSON.parse(JSON.stringify(dataToSend));
       newdata['customApperance']['globalParameters']['titleColor'] = e.target.value; 
-      dispatch(customize.setDataToSend(newdata)); 
+      configureStore.dispatch(customize.setDataToSend(newdata)); 
     };
     
     const handler3 = (e) => {
       document.getElementById('accent').style.color =  e.target.value; 
       document.getElementById('accent1').style.borderBottom =  `4px solid ${e.target.value}`; 
-      dispatch(customize.setAccentColor(e.target.value));
+      configureStore.dispatch(customize.setAccentColor(e.target.value));
       let newdata =  JSON.parse(JSON.stringify(dataToSend));
       newdata['customApperance']['globalParameters']['accentColor'] = e.target.value; 
-      dispatch(customize.setDataToSend(newdata)); 
+      configureStore.dispatch(customize.setDataToSend(newdata)); 
     };
     
     const changeTitleFunc = (title) =>{
@@ -99,25 +107,19 @@ const CustomizePageController = function () {
     }
     
     const changeTitle = (e) =>{
-      dispatch(customize.setTitle(e.target.value)); 
+      configureStore.dispatch(customize.setTitle(e.target.value)); 
       changeTitleFunc(e.target.value);
-      dispatch(customize.setDataToSend({title : e.target.value}));       
+      configureStore.dispatch(customize.setDataToSend({title : e.target.value}));       
     }
     const changeDescriptionFunc = (description) =>{
       document.getElementById('description').innerHTML =  description; 
     }
     const changeDescription = (e) =>{
-      dispatch(customize.setDescription(e.target.value)); 
+      configureStore.dispatch(customize.setDescription(e.target.value)); 
       changeDescriptionFunc(e.target.value);
-      dispatch(customize.setDataToSend({description : e.target.value})); 
+      configureStore.dispatch(customize.setDataToSend({description : e.target.value})); 
     }
 
-    const saveHandler =async () =>{
-      let formData = new FormData();
-      objectToFormData(dataToSend, 'dataToSend' , formData)
-      console.log(dataToSend);
-      await customzie(formData);
-    }
 
   const makeCircle =  (val) =>{ 
        
@@ -130,17 +132,17 @@ const CustomizePageController = function () {
         document.getElementById('avatar').style.MozBorderRadius  =  '0'; 
         document.getElementById('avatar').style.WebkitBorderRadius  =  '0'; 
     }
-    dispatch(customize.setAvatarShapeCircle(val));
+    configureStore.dispatch(customize.setAvatarShapeCircle(val));
   }
   
   const handleRadio =  (e) =>{
 
       if (e.target.value === 'circle'){
           makeCircle(true); 
-          dispatch(customize.setDataToSend({isAvatarCircle : true})); 
+          configureStore.dispatch(customize.setDataToSend({isAvatarCircle : true})); 
       }else{
           makeCircle(false); 
-          dispatch(customize.setDataToSend({isAvatarCircle : false})); 
+          configureStore.dispatch(customize.setDataToSend({isAvatarCircle : false})); 
       }
     }
     const showHeaderImageFunc = (val) =>{
@@ -193,83 +195,85 @@ const CustomizePageController = function () {
         }
       }
 
-    
+     /**
+      ********************************** SLiders *****************************
+      */
       const handleCheckBoxes = (e) =>{
         const checked = e.target.checked;
         if(e.target.value === '1'){
           showHeaderImageFunc(checked);
-          dispatch(customize.setShowHeaderImage(checked));
+          configureStore.dispatch(customize.setShowHeaderImage(checked));
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['globalParameters']['showHeaderImage'] = checked;  
-          dispatch(customize.setDataToSend(newdata));   
+          configureStore.dispatch(customize.setDataToSend(newdata));   
         }
         else if(e.target.value === '2'){
           stretchHeaderImageFunc(checked); 
-          dispatch(customize.setStretchHeaderImage(checked));  
+          configureStore.dispatch(customize.setStretchHeaderImage(checked));  
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['globalParameters']['stretchHeaderImage'] = checked; 
-          dispatch(customize.setDataToSend(newdata)); 
+          configureStore.dispatch(customize.setDataToSend(newdata)); 
         }
         else if(e.target.value === '3'){
           showAvatarFunc(checked);
-          dispatch(customize.setShowAvatar(checked)); 
+          configureStore.dispatch(customize.setShowAvatar(checked)); 
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['globalParameters']['showAvatar'] = checked; 
-          dispatch(customize.setDataToSend(newdata));  
+          configureStore.dispatch(customize.setDataToSend(newdata));  
         }
         else if(e.target.value === '4'){
           showTitleFunc(checked);
-          dispatch(customize.setShowTitle(checked));  
+          configureStore.dispatch(customize.setShowTitle(checked));  
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['globalParameters']['showTitle'] = checked; 
-          dispatch(customize.setDataToSend(newdata));  
+          configureStore.dispatch(customize.setDataToSend(newdata));  
         }
         else if(e.target.value === '5'){
           showDescriptionFunc(checked);   
-          dispatch(customize.setShowDescription(checked)); 
+          configureStore.dispatch(customize.setShowDescription(checked)); 
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['globalParameters']['showDescription'] = checked; 
-          dispatch(customize.setDataToSend(newdata));  
+          configureStore.dispatch(customize.setDataToSend(newdata));  
         }
         else if(e.target.value === '6'){
           showDescriptionFunc(checked);   
-          dispatch(customize.setUseNewPostTypes(checked)); 
-          // dispatch(customize.setDataToSend({useNewPostTypes : checked}));        
+          configureStore.dispatch(customize.setUseNewPostTypes(checked)); 
+          // configureStore.dispatch(customize.setDataToSend({useNewPostTypes : checked}));        
         } 
         else if(e.target.value === '7'){
           showDescriptionFunc(checked);  
-          dispatch(customize.setSlidingHeader(checked)); 
+          configureStore.dispatch(customize.setSlidingHeader(checked)); 
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['customParameters']['slidingHeader'] = checked; 
-          dispatch(customize.setDataToSend(newdata));  
+          configureStore.dispatch(customize.setDataToSend(newdata));  
         } 
         else if(e.target.value === '8'){
           showDescriptionFunc(checked);   
-          dispatch(customize.setShowNavigation(checked));  
+          configureStore.dispatch(customize.setShowNavigation(checked));  
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['customParameters']['showNavigation'] = checked; 
-          dispatch(customize.setDataToSend(newdata));  
+          configureStore.dispatch(customize.setDataToSend(newdata));  
         } 
         else if(e.target.value === '9'){
           showDescriptionFunc(checked);   
-          dispatch(customize.setEndlessScrolling(checked));  
+          configureStore.dispatch(customize.setEndlessScrolling(checked));  
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['customParameters']['endlessScrolling'] = checked; 
-          dispatch(customize.setDataToSend(newdata));  
+          configureStore.dispatch(customize.setDataToSend(newdata));  
         } 
         else if(e.target.value === '10'){
           showDescriptionFunc(checked);   
-          dispatch(customize.setSyntaxHighlighting(checked)); 
+          configureStore.dispatch(customize.setSyntaxHighlighting(checked)); 
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['customParameters']['syntaxHighlighting'] = checked; 
-          dispatch(customize.setDataToSend(newdata));   
+          configureStore.dispatch(customize.setDataToSend(newdata));   
         }     
         else if(e.target.value === '11'){
           showDescriptionFunc(checked);   
-          dispatch(customize.setRelatedPosts(checked));
+          configureStore.dispatch(customize.setRelatedPosts(checked));
           let newdata =  JSON.parse(JSON.stringify(dataToSend));
           newdata['customApperance']['customParameters']['relatedPosts'] = checked; 
-          dispatch(customize.setDataToSend(newdata));   
+          configureStore.dispatch(customize.setDataToSend(newdata));   
         } 
       }
       return {
@@ -294,7 +298,7 @@ const CustomizePageController = function () {
         changeHeaderImageHandler,
         saveHandler,
         readData,
-      };      
+      };        
 };
 
-export default CustomizePageController;
+export default CustomizeController;

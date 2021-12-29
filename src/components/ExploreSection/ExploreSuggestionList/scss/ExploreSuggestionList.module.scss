@@ -4,7 +4,7 @@
   display: flex;
   position: relative;
   scroll-behavior: smooth;
-  margin-left: -60px;
+
   &::-webkit-scrollbar {
     width: 0;
     background-color: transparent;
@@ -30,7 +30,6 @@
     cursor: pointer;
   }
   .before {
-    
     position: sticky;
     width: 50px;
     height: 50px;
@@ -86,22 +85,18 @@
   }
 }
 
-
-
 @media (max-width: 1488px) {
-  .suggestion-list{
-    .before{
+  .suggestion-list {
+    .before {
       left: 8%;
     }
   }
-  
 }
 
 @media (max-width: 980px) {
-  .suggestion-list{
-    .before{
+  .suggestion-list {
+    .before {
       left: 10%;
     }
   }
-  
 }

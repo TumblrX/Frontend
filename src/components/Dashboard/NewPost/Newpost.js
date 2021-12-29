@@ -26,38 +26,38 @@ const Newpost = function ({ avatar }) {
             </IconContext.Provider>
             Text
           </Link>
-          <Link to="/new/photo" className={classes.icon}>
+          <Link to="/new/text" className={classes.icon}>
             <IconContext.Provider value={{ className: classes.photo }}>
               <AiFillCamera />
             </IconContext.Provider>
             Photo
           </Link>
-          <Link to="/new/quote" className={classes.icon}>
+          <Link to="/new/text" className={classes.icon}>
             <IconContext.Provider value={{ className: classes.quote }}>
               <ImQuotesLeft />
             </IconContext.Provider>
             Quote
           </Link>
-          <Link to="/new/link" className={classes.icon}>
+          <Link to="/new/text" className={classes.icon}>
             <IconContext.Provider value={{ className: classes.link }}>
               <FaLink />
             </IconContext.Provider>
             Link
           </Link>
-          <Link to="/new/chat" className={classes.icon}>
+          <Link to="/new/text" className={classes.icon}>
             <IconContext.Provider value={{ className: classes.chat }}>
               <BsFillChatDotsFill />
             </IconContext.Provider>
             Chat
           </Link>
-          <Link to="/new/audio" className={classes.icon}>
+          <Link to="/new/text" className={classes.icon}>
             <IconContext.Provider value={{ className: classes.audio }}>
               <ImHeadphones />
             </IconContext.Provider>
             Audio
           </Link>
-          <Link to="/new/video" className={classes.icon}>
-            <IconContext.Provider value={{ className: classes.video }}>
+          <Link to="/new/text" className={classes.icon}>
+              <IconContext.Provider value={{ className: classes.video }}>
               <TiVideo />
             </IconContext.Provider>
             Video

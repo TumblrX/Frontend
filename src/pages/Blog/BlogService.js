@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import { useDispatch } from 'react-redux';
 import {
-  setBlogHandle, setBlogTitle,
-  setAvatar, setId, setInitialLoading,
+  setBlogHandle, setBlogTitle, setNumOfFollowers, 
+  setAvatar, setId, setInitialLoading, setNumOfDrafts, setNumOfPosts,
 } from '../../redux/blog';
 import api from '../../api/api';
 import { useHistory } from 'react-router-dom';
@@ -24,6 +24,9 @@ const useBlogHandler = () => {
         dispatch(setBlogTitle(response.data.title));
         dispatch(setAvatar(response.data.avatar));
         dispatch(setId(response.data._id));
+        dispatch(setNumOfFollowers(response.data.NumOfFollowers));
+        dispatch(setNumOfDrafts(response.data.NumOfDrafts));
+        dispatch(setNumOfPosts(response.data.NumOfPosts));
         dispatch(setInitialLoading(false));
       } else {
         history.push('/notfound');

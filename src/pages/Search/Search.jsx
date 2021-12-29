@@ -2,6 +2,7 @@
 import React from "react";
 import ExploreAside from "../../components/ExploreAside/ExploreAside";
 import styles from "../Explore/scss/explore.module.scss";
+
 import SearchSection from "../../components/SearchSection/SearchSection";
 function Search() {
   return (
