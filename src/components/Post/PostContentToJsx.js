@@ -4,7 +4,7 @@ import classes from './Post.module.scss';
 const PostContentToJsx = function (content){
   return content.map((contentBlock) => {
     // Text Content Block
-    if(!contentBlock.type) return;
+    if(!contentBlock) return;
     if (contentBlock.type === 'text') {
       let { subtype, text, formatting } = contentBlock;
       // if(formatting){
