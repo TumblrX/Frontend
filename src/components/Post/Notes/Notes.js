@@ -45,7 +45,7 @@ const Notes = ({increamentNotesCount,closeHandler, postId}) => {
       </header>
       <div className={classes.content}>
         <ul>
-          {notes.map((note)=><NoteItem note={note}/>)}
+          {notes.map((note)=><NoteItem key={note._id} note={note}/>)}
         </ul>
       </div>
       <footer className={classes.footer}>
