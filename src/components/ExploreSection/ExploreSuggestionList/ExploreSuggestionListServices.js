@@ -13,7 +13,8 @@ const getTags = () => {
   api
     .get("api/user/get-tags", config)
     .then((res) => {
-      // console.log("HIIIIIIIII", Object.values(res.data.tagsPhotos).length);
+      console.log(res);
+      console.log("HFDSKJFL:fds;afldsafjkl",Object.values(res.data.tagsPhotos))
       confiugreStore.dispatch(setDataItems(Object.values(res.data.tagsPhotos)));
       confiugreStore.dispatch(setTag(Object.keys(res.data.tagsPhotos)));
     })

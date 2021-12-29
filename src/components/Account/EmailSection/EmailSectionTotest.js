@@ -11,32 +11,42 @@ import styles from "../Account.module.css";
  */
 const changeEmail = async function (sentData) {
   let token = localStorage.getItem("token");
-  let response = false;
+  let status = 500;
   let config = {
     headers: {
       Authorization: token,
     },
   };
   try {
-    await axios.post("/api/user/change-email", sentData, config);
-    response = true;
-  } catch (err) {}
-  return response;
+    const response = await axios.post(
+      "/api/user/change-email",
+      sentData,
+      config
+    );
+    return response.data.status;
+  } catch (err) {
+    return status;
+  }
 };
 
 const changeFindMeByEmail = async function (sentData) {
   let token = localStorage.getItem("token");
-  let response = false;
+  let status = 500;
   let config = {
     headers: {
       Authorization: token,
     },
   };
   try {
-    await axios.post("/api/user/settings-save", sentData, config);
-    response = true;
-  } catch (err) {}
-  return response;
+    const response = await axios.post(
+      "/api/user/settings-save",
+      sentData,
+      config
+    );
+    return response.data.status;
+  } catch (err) {
+    return status;
+  }
 };
 
 export { changeEmail, changeFindMeByEmail };

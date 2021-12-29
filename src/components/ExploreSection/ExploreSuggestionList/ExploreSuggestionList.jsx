@@ -16,7 +16,6 @@ import { configureStore } from "@reduxjs/toolkit";
  */
 function ExploreSuggestionList() {
   const { items, tags } = useSelector((state) => state.suggestedList);
-  let tago = [];
   useEffect(getTags, []);
 
   return (
