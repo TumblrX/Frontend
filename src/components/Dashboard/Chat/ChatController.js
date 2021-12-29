@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import configureStore from '../../../redux/store';
-import { addMessage, setNewMessage, setSound ,deleteMessages, setMessages} from '../../../redux/ChatReducer';
+import { resetChat,addMessage, setNewMessage, setSound ,deleteMessages, setMessages} from '../../../redux/ChatReducer';
 import { setIsChat } from '../../../redux/DashBoardReducer';
 import { sendMessage, getChat } from './ChatServices';
 
@@ -10,6 +10,7 @@ const dropDown = () => {
 };
 const close = () => {
   configureStore.dispatch(setIsChat(false));
+  configureStore.dispatch(resetChat());
   document.getElementById('Chat').style.display = 'none';
 };
 const open = () => {

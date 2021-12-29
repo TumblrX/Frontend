@@ -60,7 +60,7 @@ const Post = function ({ data, place }) {
   };
   const increamentNotesCount = () =>{
     setNotesCounter(x=>x+1);
-    console.log(notesCounter);
+    // console.log(notesCounter);
   };
   let postJsx = [];
   if(!isReblogged){
@@ -225,7 +225,7 @@ const Post = function ({ data, place }) {
             </IconContext.Provider>
             { userBlogs.findIndex((blog) => { return blog.id === blogAttribution._id }) !== -1 && 
             (<div onClick={place ==='blog'? deleteBlogPostHandler.bind(this, id) : place === 'likes' ? deleteLikedHandler.bind(this, id) : deletePostHandler.bind(this, id) }>
-              {console.log(place)}
+              {/* {console.log(place)} */}
               <RiDeleteBinLine />
             </div>)}
           </IconContext.Provider>

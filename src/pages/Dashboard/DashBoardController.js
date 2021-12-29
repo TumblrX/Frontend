@@ -8,7 +8,7 @@ import { handleSideView, handleExit,  handleFollow,
   fetchPost, fetchRadar, fetchExploreBlogs
 } from './DashBoardService';
 import configureStore from '../../redux/store';
-import { incrementPageNum } from '../../redux/DashBoardReducer';
+import { incrementPageNum, setIsLoading} from '../../redux/DashBoardReducer';
 
 
 const showPosts = (posts, pageNum, isInfinte, pageNumPosts) => {
@@ -36,9 +36,7 @@ const showPosts = (posts, pageNum, isInfinte, pageNumPosts) => {
 };
 
 const getOnePost = (radar) => {
-  const i = Math.floor(Math.random() * (radar.length - 1));
-  const post = radar[i];
-  // setInterval(() => { }, 5000);
+  const post = radar[0];
   if(post){
     return (
       <div className={`${styles.post} `}>
@@ -83,23 +81,28 @@ const showBlogsForYou = (exploreBlogs) => {
 };
   
 const componentOnMount = async (pageNum, pageNumPosts) =>{
+  console.log('mount called')
   await fetchRadar();
   await fetchExploreBlogs();
+  // await fetchPost(pageNum, pageNumPosts)
   let num =pageNum;
   const fetch = async () => {
     num += 1;
     await fetchPost(num, pageNumPosts );
     await configureStore.dispatch(incrementPageNum())
     window.addEventListener("scroll", checkScroll);
+    configureStore.dispatch(setIsLoading(false))
   }
   const checkScroll = () => {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
       window.removeEventListener("scroll", checkScroll);
+      configureStore.dispatch(setIsLoading(true))
       fetch()
     }
   };
   
   if((localStorage["InfinteScrolling"] === 'true')){
+    console.log('event ADDED')
     window.addEventListener("scroll", checkScroll);
   }
 }

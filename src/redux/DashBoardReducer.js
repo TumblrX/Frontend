@@ -19,9 +19,13 @@ export const DashboardReducer = createSlice({
     nextButton: true,
     isChat: false,
     stopFetch:false,
-    freind: {}
+    freind: {},
+    isLoading: false
   },
   reducers: {
+    setIsLoading : (state, action) => {
+      state.isLoading = action.payload;
+    },
     setIsChat: (state, action) => {
       state.isChat = action.payload;
       // console.log('chat ->', state.isChat);
@@ -100,7 +104,7 @@ export const {
   setExploreBlogs, setIsMounted, setPageNum,setRadar,
   setPostsMounted, setExploreBlogsMounted, setRadarMounted, 
   removeBlog, setChatMounted, setNextButton, setIsChat,
-  setFreind,pushPosts,setStopFetch,
+  setFreind,pushPosts,setStopFetch,setIsLoading,
 } = DashboardReducer.actions;
 export const dashboardActions = DashboardReducer.actions;
 export default DashboardReducer.reducer;

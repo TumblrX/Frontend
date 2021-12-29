@@ -10,9 +10,9 @@ const checkEqualArr =  (a , b) =>{
 const fetchPost = async (pageNum, pageNumPosts, posts) => {
   try {
     const response = await api.get(`/api/user/dashboard?limit=${pageNumPosts}&page=${pageNum}`);
-    // console.log('fetch post is called -->', response.data);
+    console.log('fetch post is called -->', response.data);
     if (response.data.hasOwnProperty('for-youPosts')) {
-      if(localStorage["InfinteScrolling"] === 'true'){
+      if(localStorage["InfinteScrolling"] === 'true') {
         await configureStore.dispatch(pushPosts(response.data['for-youPosts']));
       }else {
         const next = await checkEqualArr(posts, response.data['for-youPosts']);

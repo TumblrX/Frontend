@@ -21,8 +21,12 @@ const Chat = function ({mySocket}) {
   const id = localStorage.getItem('userId');
   
 
-  useEffect(()=>{  setLocalfriend(friend);  console.log(localFriend)   }, [friend]);
-  useEffect(()=>{ scroll()    }, [messages]);
+  useEffect(()=>{  
+    // setLocalfriend(friend);  
+    // console.log(localFriend)   
+    
+  }, []);
+  useEffect(()=>{  scroll()    }, [messages]);
   // useEffect(()=>{
     // socketConnect(mySocket, io);
   //   mySocket.current.on("privateMessage", async (data) => {
