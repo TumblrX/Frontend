@@ -1,4 +1,4 @@
-import { dispatch , useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import * as customize from '../../redux/Customize';
 import customzie from './CustomizeService';
 import getSettings from './GetSettingsServce';
@@ -6,20 +6,18 @@ import configureStore from '../../redux/store';
 
 const CustomizeController = function () {
 
-  const { dataToSend , settings  } = useSelector((state) => state.customize);
+  const { dataToSend  } = useSelector((state) => state.customize);
 
   const readData = async () =>{
     const response = await getSettings();
-    console.log(response.response.data.data);
     if (!(response.response.data.data.avatar[0] === 'h') ){
-      response.response.data.data.avatar = `http://tumblrx.me:3000/${response.response.data.data.avatar}`;
-      // response.response.data.data.avatar = `${process.env.REACT_APP_API_URL}/${response.response.data.data.avatar}`;
+      response.response.data.data.avatar = `${process.env.REACT_APP_API_URL}/${response.response.data.data.avatar}`;
+      // response.response.data.data.avatar = `http://tumblrx.me:3000/${response.response.data.data.avatar}`;
     }
     if(!(response.response.data.data.headerImage[0] === 'h')){    
-      response.response.data.data.headerImage = `http://tumblrx.me:3000/${response.response.data.data.headerImage}`;
-      // response.response.data.data.headerImage = `${process.env.REACT_APP_API_URL}/${response.response.data.data.headerImage}`;
+      response.response.data.data.headerImage = `${process.env.REACT_APP_API_URL}/${response.response.data.data.headerImage}`;
+      // response.response.data.data.headerImage = `http://tumblrx.me:3000/${response.response.data.data.headerImage}`;
     }
-    console.log(response.response.data.data);
     configureStore.dispatch(customize.setSettings(response.response.data.data));
   }
    const  objectToFormData = (object,objectName,formData) =>{
@@ -49,8 +47,6 @@ const CustomizeController = function () {
           objectToFormData(dataToSend[key], key , formData)
         }
       }
-    console.log(dataToSend);
-    console.log(Array.from(formData));
     await customzie(formData); 
     await readData();
   }
