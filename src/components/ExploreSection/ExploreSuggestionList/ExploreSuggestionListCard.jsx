@@ -11,7 +11,7 @@ import styles from "./scss/ExploreSuggestionList.module.scss";
  */
 function ExploreSuggestionListCard(props) {
   return (
-    <div className={styles["suggestion-card"]}>
+    <div className={styles["suggestion-card"]} style={{backgroundColor:`${props.background}`}}>
       <div className={styles["card-tag"]}>#{props.tag}</div>
       <div className={styles["card-imgs-container"]}>
         <img
@@ -31,7 +31,7 @@ function ExploreSuggestionListCard(props) {
           }}
         />
       </div>
-      <button>Follow</button>
+      <button style={{color:`${props.color}`}}>Follow</button>
     </div>
   );
 }
