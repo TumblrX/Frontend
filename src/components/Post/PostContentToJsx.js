@@ -2,8 +2,10 @@
 import getYoutubeVideoId from '../../helpers/getYoutubeVideoId';
 import classes from './Post.module.scss';
 const PostContentToJsx = function (content){
+  if ( content === null ) return ;
   return content.map((contentBlock) => {
     // Text Content Block
+    if(contentBlock === null) return 
     if (contentBlock.type === 'text') {
       let { subtype, text, formatting } = contentBlock;
       // if(formatting){
