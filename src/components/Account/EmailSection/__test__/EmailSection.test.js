@@ -45,9 +45,9 @@ describe("test changing let people find me through email button ", () => {
     mockAxios.post.mockImplementationOnce(() =>
       Promise.resolve({
         status: "200",
-        data:{
-          status:"200"
-        }
+        data: {
+          status: "200",
+        },
       })
     );
     let sentData = {
