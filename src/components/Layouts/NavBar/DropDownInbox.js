@@ -14,7 +14,7 @@ const DropDownInbox = function (props) {
   const dispatch = useDispatch();
   useEffect(async () => { componentOnMount(); },  [conversations])
   return (
-    <div className={classes.smile}>
+    <div className={classes.smile} id={`dropDownInbox`}>
       <div className={classes.header} >
         {
           <>
