@@ -90,6 +90,14 @@ const DropDownProfile = function (props) {
         <NavLink to="/new/blog">+ New</NavLink>
       </div>
       <ul className={classes['tumblrs-list']}>
+        { 
+          localStorage.getItem('blogs') != undefined &&
+          localStorage.getItem('blogs') && JSON.parse((localStorage.getItem('blogs'))) &&
+          JSON.parse((localStorage.getItem('blogs'))).map((blog, index) =>{
+            return <NavLink to={`/blog/${blog}`}>blog{index +1 }</NavLink>
+          })          
+        }
+              
         <NavLink to="/blog/username">Posts</NavLink>
         <NavLink to="/blog/username/followers">Followers</NavLink>
         <NavLink to="/blog/username/activity">Activity</NavLink>
