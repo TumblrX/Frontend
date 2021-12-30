@@ -14,10 +14,11 @@ import { Link } from 'react-router-dom';
 import classes from './NoteItem.module.scss';
 const NoteItem = ({note, deleteCommentHandler}) => {
   const {blogId, type } =note;
+  console.log(blogId);
   return (
     <li  className={classes.item}>
       <Link to={`blog/${blogId.handle}`}>
-        <img src={`http://tumblrx.me:3000/${blogId.avatar}`} alt='avatar' className={blogId.isAvatarCircle ? classes.cavatar : classes.avatar }/>
+        <img src={`${process.env.REACT_APP_API_URL}/${blogId.avatar}`} alt='avatar' className={blogId.isAvatarCircle ? classes.cavatar : classes.avatar }/>
         <span className={classes.icon}>
           {type==='reblog'? 
           <IconContext.Provider value={{ color: '#00CF35' }}>

@@ -76,8 +76,8 @@ const PostContentToJsx = function (content){
           <img
             src={contentBlock.url}
             alt={contentBlock.altText}
-            width={contentBlock.width}
-            height={contentBlock.height}
+            // width={contentBlock.width}
+            // height={contentBlock.height}
           />
           <figcaption>{contentBlock.caption}</figcaption>
         </figure>
