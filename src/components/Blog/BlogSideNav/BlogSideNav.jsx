@@ -46,7 +46,7 @@ const BlogSideNav = function () {
           <span className={styles.span2}>{NumOfDrafts}</span>
         </div>
       </Link>
-      <Link to={`/settings/${blogHandle}`}>
+      <Link to={"/customize"}>
         <div className={styles.navBarSlot}>
           <span>Edit Appearance</span>
           <span className={styles.spansvg}>
