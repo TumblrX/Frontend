@@ -46,24 +46,23 @@ const DropDownInbox = function (props) {
             <span> Enter Blog Name ... </span> 
           </div>
         ) : (isSearch && blogs.length !==0 )?(
-
-              blogs.map((blog, index) =>(
-              <div className={classes.conversation} key={index} onClick={ ()=> {  handleOpenChat(blog) }}>
-                <div className={classes.ConversationAvatar}  >
-                  { 
-                    blog?.avatar === 'none' ? ( 
-                      <img src={noAvatar} alt="icon" className={classes.avatar} /> 
-                    ) : blog?.avatar.includes("http")?(
-                      <img src={`${blog.avatar}`} alt="icon" className={classes.avatar} />
-                    ) : (
-                      <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="icon" className={classes.avatar} />
-                    )
-                  }
-                </div>
-                <div className={classes.title}>
-                  <h4 className={classes.h4}>   {blog.hasOwnProperty('handle') && blog.handle} </h4>
-                </div>
-              </div>
+          blogs.map((blog, index) =>(
+          <div className={classes.conversation} key={index} onClick={ ()=> {  handleOpenChat(blog) }}>
+            <div className={classes.ConversationAvatar}  >
+              { 
+                blog?.avatar === 'none' ? ( 
+                  <img src={noAvatar} alt="icon" className={classes.avatar} /> 
+                ) : blog?.avatar.includes("http")?(
+                  <img src={`${blog.avatar}`} alt="icon" className={classes.avatar} />
+                ) : (
+                  <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="icon" className={classes.avatar} />
+                )
+              }
+            </div>
+            <div className={classes.title}>
+              <h4 className={classes.h4}>   {blog.hasOwnProperty('handle') && blog.handle} </h4>
+            </div>
+          </div>
           ))
         ) : conversations.length ===0 ?  (
           <div className={classes.content}>  
