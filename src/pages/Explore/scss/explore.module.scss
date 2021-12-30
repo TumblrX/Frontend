@@ -26,3 +26,14 @@ body {
     border: none;
   }
 }
+
+@media (max-width: 550px) {
+  .explore-container {
+    justify-content: flex-start;
+    border: none;
+  }
+  .explore-container-second-prespective {
+    justify-content: flex-start;
+    border: none;
+  }
+}
