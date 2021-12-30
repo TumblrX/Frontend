@@ -9,7 +9,7 @@ import ExploreAside from "../../components/ExploreAside/ExploreAside.jsx";
 const Explore = function () {
   return (
     <div>
-      <div className={styles["explore-container"]}>
+      <div className={styles["explore-container"]} view="wide">
         <ExploreSection/>
         <ExploreAside tagName="Check out these Blogs"/>
       </div>

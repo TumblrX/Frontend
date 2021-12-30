@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import styles from "./scss/ExploreNavbar.module.scss";
 import { Link } from "react-router-dom";
-import { componentDidMount } from "./ExploreNavBarController";
+import { componentDidMount, changeView } from "./ExploreNavBarController";
 
 /**
  * Component to render the Explore Navbar in Explore page
@@ -50,7 +50,12 @@ function ExploreNavbar() {
       <div
         style={{ display: "flex", width: "50%", justifyContent: "flex-end" }}
       >
-        <span className={styles["grid-icons"]} tabIndex="-1">
+        <span
+          className={styles["grid-icons"]}
+          tabIndex="-1"
+          onClick={changeView}
+          clicked="true"
+        >
           <svg
             viewBox="0 0 24 24"
             width="24"
@@ -63,7 +68,12 @@ function ExploreNavbar() {
             <rect width="8" height="6" x="3" y="15" rx="1"></rect>
           </svg>
         </span>
-        <span className={styles["grid-icons"]} tabIndex="-1">
+        <span
+          className={styles["grid-icons"]}
+          tabIndex="-1"
+          onClick={changeView}
+          cliced="false"
+        >
           <svg
             viewBox="0 0 24 24"
             width="23"

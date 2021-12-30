@@ -1,4 +1,5 @@
-.explore-aside {
+.explore-aside,
+.explore-aside-second-prespective {
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -119,9 +120,16 @@
   }
 }
 
+.explore-aside-second-prespective {
+  width: 22%;
+}
+
 /* // Medium devices (tablets, 768px and up)768 */
 @media (max-width: 990px) {
   .explore-aside {
+    display: none;
+  }
+  .explore-aside-second-prespective{
     display: none;
   }
 }
