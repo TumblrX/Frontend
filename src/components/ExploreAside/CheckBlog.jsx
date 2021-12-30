@@ -13,7 +13,7 @@ function CheckBlog(props) {
       <div className={styles["header"]}>
         <div>{props.tagName}</div>
       </div>
-      <ul>
+      <ul className="check-blog-list">
         {checkBlogs.map((blog, index) => {
           return (
             <li
