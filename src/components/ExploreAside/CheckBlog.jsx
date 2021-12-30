@@ -27,6 +27,10 @@ function CheckBlog(props) {
                 <img
                   src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`}
                   alt=""
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = blog.avatar;
+                  }}
                 />
               </div>
               <div>
