@@ -4,6 +4,8 @@
     @media screen and (max-width:$max-width){
         display: none;
     }
+    max-height: 300px;
+    overflow-y: scroll;
     background-color:#fff;
     width:380px;
     color:$dropdown-profile-icons-color;
@@ -62,6 +64,41 @@
             text-align: center;
             height: 80%;
             padding:10px 5px;
+        }
+    }
+    .conversation {
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            background-color: #ddd;
+        }
+        .ConversationAvatar{
+            flex: 1;
+            width: 30px;
+            height: 30px;
+            .avatar{
+                width:   30px;
+                height: 30px;
+                border-radius: 50%;
+            }
+        }
+        .title{
+            flex: 4;
+            .h4{
+                font: bold;
+                font-size: 13px;
+            }
+            .p{
+                display: flex;
+                font: italic;
+                font-size: 10px;
+            }
+            .span{
+                display: inline;
+            }
         }
     }
 }

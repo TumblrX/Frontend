@@ -12,27 +12,42 @@ const DropDownActivity = function (props) {
     <div className={classes.activity}>
       <div className={classes.header}>
         <span>{localStorage.getItem('handle')}</span>
-        <NavLink to="/blog/username/activity">---------</NavLink>
-      </div>
-      <div className={classes.content}>
-        <NavLink to="/dashboard">All</NavLink>
-        <NavLink to="/dashboard">Reblogs</NavLink>
-        <NavLink to="/dashboard">Follow</NavLink>        
+        <span> notifications ....  </span>
       </div>
       <div>
-      {notifications.length 
-          && notifications.map(noti =>{
-            return <div> <img  alt ='iiiii' src={noti.fromBlog.avatar} style={{width:'10px'}} /> {noti.fromBlog.title} {noti.type}     </div>
-          }) 
-        }
-      </div>
-      <div className={classes.footer}>
-        <GiElectric />
-        
-        <span>
-          Check out this tab when you make a post to see Likes, Reblogs,
-          and new followers.
-        </span>
+      {
+        notifications.length >0 ? (
+            notifications?.map((noti, index) =>(
+              <div className={classes.conversation} key={index} >
+                <div className={classes.ConversationAvatar} >
+                  { 
+                    noti.fromBlog?.avatar === 'none' ? ( 
+                      <img src={noti.fromBlog.avatar} alt="icon" className={classes.avatar} /> 
+                    ) : noti.fromBlog?.avatar.includes("http") ? (
+                      <img src={`${noti.fromBlog.avatar}`} alt="icon" className={classes.avatar} />
+                    ) : (
+                      <img src={`${process.env.REACT_APP_API_URL}/${noti.fromBlog.avatar}`} alt="icon" className={classes.avatar} />
+                    )
+                  }
+                </div>
+                <div className={classes.title}>
+                  <h4 className={classes.h4}>   {noti.fromBlog.title} </h4>
+                  <p  className={classes.p}>   
+                    {noti.type}
+                  </p>
+                </div>
+              </div>
+            ))
+        ) : (
+        <div className={classes.footer}>
+          <GiElectric />
+            <span>
+              Check out this tab when you make a post to see Likes, Reblogs,
+              and new followers.
+            </span>
+          </div>
+        )
+      }
       </div>
     </div>
   );
