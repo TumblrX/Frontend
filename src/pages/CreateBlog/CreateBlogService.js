@@ -10,6 +10,9 @@ const sendData = async (userData, history, handleURLUsed) => {
   try {
     const response = await api.post('/api/blog/create', userData);
     console.log('succeed');
+    let newblog = JSON.parse((localStorage.getItem('blogs')));
+    newblog.push(userData.handle);
+    localStorage.blogs  = JSON.stringify(newblog);
     history.push(`/blog/${userData.handle}`);
   } catch (err) {
     if(err.response.status===400){

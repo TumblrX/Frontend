@@ -10,13 +10,24 @@ import { follow } from "../Blog/Followers/followerSection/followservice";
  * @returns {void} return nothing
  */
 const onXClick = (ele) => {
-  configureStore.dispatch(removeSpecificBlog(ele));
+  const checkBlogList = document.querySelectorAll(".check-blog-list>li");
+  for (let i = 0; i < 4; i++) {
+    if (ele.target.parentElement === checkBlogList[i]) {
+      configureStore.dispatch(removeSpecificBlog(i));
+    }
+  }
   fetchOneBlog();
 };
 
 const onFollowClick = (ele) => {
+  const checkBlogList = document.querySelectorAll(".check-blog-list>li");
+  for (let i = 0; i < 4; i++) {
+    if (ele.target.parentElement === checkBlogList[i]) {
+      configureStore.dispatch(removeSpecificBlog(i));
+    }
+  }
   const id = ele.target.parentElement.id;
-  configureStore.dispatch(removeSpecificBlog(ele));
+
   fetchOneBlog();
   follow({ _id: id });
 };

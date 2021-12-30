@@ -60,8 +60,8 @@ const registerController = function () {
                           localStorage.userId = response.userId;
                           localStorage.InfinteScrolling = response.InfinteScrolling;
                           localStorage.handle = response.handle;
-                          localStorage.blogs = response.blogs;
                           localStorage.blog1 = response.blogs[0];
+                          localStorage.blogs = JSON.stringify(response.blogs);
                           localStorage.token = response.token; 
                           const response2 = await getUserInfo();
                           dispatch(setUserInfo(response2.data));

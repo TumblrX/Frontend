@@ -6,6 +6,7 @@ export const suggestList = createSlice({
   initialState: {
     items: [],
     tags: [],
+    followingList: [],
   },
   reducers: {
     setDataItems: (state, action) => {
@@ -17,11 +18,15 @@ export const suggestList = createSlice({
       state.tags = action.payload;
       console.log(state.tags);
     },
+    setFollowingList: (state, action) => {
+      state.followingList = action.payload;
+    },
     truncateItems: (state, action) => {
       state.items = [];
     },
   },
 });
 // Action creators are generated for each case reducer function
-export const { setDataItems, setTag, truncateItems } = suggestList.actions;
+export const { setDataItems, setTag, truncateItems, setFollowingList } =
+  suggestList.actions;
 export default suggestList.reducer;

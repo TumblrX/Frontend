@@ -13,7 +13,7 @@ import { fetchBlogs } from "./CheckBlogServices";
 function ExploreAside(props) {
   return (
     <aside className={styles["explore-aside"]}>
-      <div className={styles["following-list"]}>
+      {/* <div className={styles["following-list"]}>
         <div className={styles["header"]}>
           <div>Following</div>
           <div className={styles["edit-button"]}>Edit</div>
@@ -65,7 +65,7 @@ function ExploreAside(props) {
           </li>
         </ul>
         <div className={styles["show-more-tags"]}>Show More Tags</div>
-      </div>
+      </div> */}
       <div className={styles["check-out-blogs"]}>
         <CheckBlog tagName={props.tagName} />
         <div className={styles["show-more-tags"]} onClick={fetchBlogs}>Show More Tags</div>

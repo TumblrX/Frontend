@@ -12,9 +12,9 @@ import { handleOpenSearch, handleSearch, handleOpenChat, componentOnMount } from
 const DropDownInbox = function (props) {
   const { conversations, blogs, isSearch, newMessage } = useSelector((state) => state.DropDownInbox);
   const dispatch = useDispatch();
-  useEffect(async () => { componentOnMount(); },  [conversations])
+  useEffect(async () => { componentOnMount(); },  [])
   return (
-    <div className={classes.smile}>
+    <div className={classes.smile} id={`dropDownInbox`}>
       <div className={classes.header} >
         {
           <>
@@ -52,11 +52,11 @@ const DropDownInbox = function (props) {
                 <div className={classes.ConversationAvatar}  >
                   { 
                     blog?.avatar === 'none' ? ( 
-                      <img src={noAvatar} alt="noavatar" className={classes.avatar} /> 
+                      <img src={noAvatar} alt="icon" className={classes.avatar} /> 
                     ) : blog?.avatar.includes("http")?(
-                      <img src={`${blog.avatar}`} alt="post avatar" className={classes.avatar} />
+                      <img src={`${blog.avatar}`} alt="icon" className={classes.avatar} />
                     ) : (
-                      <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="post avatar" className={classes.avatar} />
+                      <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="icon" className={classes.avatar} />
                     )
                   }
                 </div>
@@ -74,9 +74,15 @@ const DropDownInbox = function (props) {
           conversations.map((conversation, index) =>(
               <div className={classes.conversation} key={index} onClick={ ()=> {  handleOpenChat(conversation) }}>
                 <div className={classes.ConversationAvatar} id={`side${index}`} >
-                  {conversation.avatar ==='none'  && <img src={noAvatar} alt="avatar" className={classes.avatar} />}
-                  {conversation.avatar !=='none'  && <img src={`${process.env.REACT_APP_API_URL}/${conversation.avatar}`} alt="avatar" className={classes.avatar} />}
-                  
+                  { 
+                    conversation?.avatar === 'none' ? ( 
+                      <img src={noAvatar} alt="icon" className={classes.avatar} /> 
+                    ) : conversation?.avatar.includes("http") ? (
+                      <img src={`${conversation.avatar}`} alt="icon" className={classes.avatar} />
+                    ) : (
+                      <img src={`${process.env.REACT_APP_API_URL}/${conversation.avatar}`} alt="icon" className={classes.avatar} />
+                    )
+                  }
                 </div>
                 <div className={classes.title}>
                   <h4 className={classes.h4}>   {conversation.hasOwnProperty('blogHandle') && conversation.blogHandle} </h4>

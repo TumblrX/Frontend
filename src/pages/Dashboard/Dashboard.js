@@ -19,6 +19,7 @@ import Loading from '../../components/Blog/Loading/Loading'
 import { fetchUserBlogs } from '../../redux/userBlogs-actions';
 import { io } from 'socket.io-client';
 import { dataTime, scroll} from '../../components/Dashboard/Chat/ChatController'
+import getSettings from '../Customize/GetSettingsServce';
 
 
 const Dashboard = function () {
@@ -93,7 +94,7 @@ const Dashboard = function () {
         <div className={styles.Navbar} />
         <div className={`${styles.container} ${styles.row}`}>
           <div className={styles.posts}>
-            <Newpost avatar='none'/>
+            <Newpost avatar={localStorage["avatar"]}/>
             { 
               !postsMounted? (
                 <Loading />

@@ -9,6 +9,8 @@ import { handleSideView, handleExit,  handleFollow,
 } from './DashBoardService';
 import configureStore from '../../redux/store';
 import { incrementPageNum, setIsLoading} from '../../redux/DashBoardReducer';
+import getSettings from '../Customize/GetSettingsServce';
+import { RiContactsBookUploadLine } from 'react-icons/ri';
 
 
 const showPosts = (posts, pageNum, isInfinte, pageNumPosts) => {
@@ -80,6 +82,12 @@ const componentOnMount = async (pageNum, pageNumPosts) =>{
   console.log('mount called')
   await fetchRadar();
   await fetchExploreBlogs();
+  let { response , result } = await getSettings();
+  if(result){
+    localStorage.avatar = response.data.data.avatar
+  }else {
+    localStorage.avatar = 'none'
+  }
   // await fetchPost(pageNum, pageNumPosts)
   let num =pageNum;
   const fetch = async () => {
