@@ -11,11 +11,13 @@ import { BsFillKeyboardFill, BsFillPaletteFill } from 'react-icons/bs';
 import classes from './DropDownProfile.module.scss';
 import { Redirect } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import ListItem from '../../NewPost/ListItem';
 
 const DropDownProfile = function (props) {
 
   const [logoutt , setLogoutt] = useState(false);
-
+  const userBlogs = useSelector((state) => state.userBlogs.userBlogs);
   const logout = function (){
     localStorage.removeItem('userId');
     localStorage.removeItem('InfinteScrolling');
@@ -91,19 +93,10 @@ const DropDownProfile = function (props) {
       </div>
       <ul className={classes['tumblrs-list']}>
         { 
-          localStorage.getItem('blogs') != undefined &&
-          localStorage.getItem('blogs') && JSON.parse((localStorage.getItem('blogs'))) &&
-          JSON.parse((localStorage.getItem('blogs'))).map((blog, index) =>{
-            return <NavLink to={`/blog/${blog}`}>blog{index +1 }</NavLink>
+          userBlogs.map((blog, index) =>{
+            return <NavLink to={`/blog/${blog.handle}`}><ListItem userBlog={blog}/></NavLink>
           })          
         }
-              
-        <NavLink to="/blog/username">Posts</NavLink>
-        <NavLink to="/blog/username/followers">Followers</NavLink>
-        <NavLink to="/blog/username/activity">Activity</NavLink>
-        <NavLink to="/blog/username/drafts">Drafts</NavLink>
-        <NavLink to="/blog/username/queue">Queue</NavLink>
-        <NavLink to="/customize">Edit Apperance</NavLink>
       </ul>
       <div className={classes.links}>
         <NavLink to="/about">About</NavLink>

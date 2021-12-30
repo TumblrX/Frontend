@@ -2,7 +2,9 @@
 import React from "react";
 import img1 from "../../../assets/Images/avatar.png";
 import styles from "./scss/ExploreSuggestionList.module.scss";
-
+import { followUnfollowTag } from "./ExploreSuggestionListServices";
+import { useSelector } from "react-redux";
+import { unfollow } from "../../Blog/Followers/followerSection/followservice";
 /**
  * Component to render the suggestion list card  in Explore page
  * @author Abdalla Mahmoud
@@ -10,8 +12,12 @@ import styles from "./scss/ExploreSuggestionList.module.scss";
  * @component
  */
 function ExploreSuggestionListCard(props) {
+  const { followingList } = useSelector((state) => state.suggestedList);
   return (
-    <div className={styles["suggestion-card"]} style={{backgroundColor:`${props.background}`}}>
+    <div
+      className={styles["suggestion-card"]}
+      style={{ backgroundColor: `${props.background}` }}
+    >
       <div className={styles["card-tag"]}>#{props.tag}</div>
       <div className={styles["card-imgs-container"]}>
         <img
@@ -31,7 +37,14 @@ function ExploreSuggestionListCard(props) {
           }}
         />
       </div>
-      <button style={{color:`${props.color}`}}>Follow</button>
+      <button
+        data-tesid="follow-tag"
+        style={{ color: `${props.color}` }}
+        onClick={followUnfollowTag}
+      >
+        {followingList.includes(props.tag) && <>UnFollow </>}
+        {!followingList.includes(props.tag) && <>Follow </>}
+      </button>
     </div>
   );
 }

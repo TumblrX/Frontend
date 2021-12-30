@@ -172,7 +172,11 @@ const formAction = (
   );
   var regExp = /[a-zA-Z]/g;
   if (event.target === saveButtons[1]) {
-    if (newPassword.length < 10 || !regExp.test(newPassword)) {
+    if (confirmedPassword.length === 0) {
+      document.querySelector(
+        `.${styles["error-current-password"]}`
+      ).style.visibility = "unset";
+    } else if (newPassword.length < 10 || !regExp.test(newPassword)) {
       // one condition for test
 
       document.getElementsByClassName(

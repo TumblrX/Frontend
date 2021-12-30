@@ -25,13 +25,39 @@ body {
   min-width: 533px;
   height: fit-content;
   overflow-x: hidden;
+
+  .exlpore-post {
+    .second-prespective-image {
+      display: none;
+    }
+  }
   audio {
     width: 100%;
     margin-right: 0px;
   }
 }
 .explore-section-second-prespective {
-  width: 43%;
+  box-sizing: content-box;
+  min-width: 625px;
+  max-width: 625px;
+  .exlpore-post {
+    display: flex;
+    justify-content: space-between;
+    .second-prespective-post {
+      max-width: 540px;
+      min-width: 540px;
+      margin-left: 20px;
+    }
+    .second-prespective-image {
+      display: block;
+      min-width: 64px;
+      max-width: 64px;
+      height: 64px;
+      img {
+        border-radius: 5px;
+      }
+    }
+  }
   border-right: 1px solid white;
   margin-right: 10px;
   padding-right: 20px;
@@ -79,5 +105,20 @@ body {
   }
   .posts-grid {
     min-width: 500px;
+  }
+  .explore-section-second-prespective {
+    min-width: 625px;
+    max-width: 625px;
+    .exlpore-post {
+      justify-content: center;
+      .second-prespective-post {
+        max-width: 540px;
+        min-width: 540px;
+        margin-left: 20px;
+      }
+      .second-prespective-image {
+        display: none;
+      }
+    }
   }
 }
