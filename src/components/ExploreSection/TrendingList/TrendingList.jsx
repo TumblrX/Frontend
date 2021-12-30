@@ -25,7 +25,7 @@ function TrendingList() {
         <ul className={styles["odd-items"]}>
           {items.map((value, index) => {
             if (value.length === 0) return <></>;
-            if (index % 2 === 1)
+            if (index % 2 === 0)
               return (
                 <TrendCard
                   background={backgroundColors[index % 9]}
@@ -39,7 +39,7 @@ function TrendingList() {
         <ul className={styles["even-items"]}>
           {items.map((value, index) => {
             if (value.length === 0) return <></>;
-            if (index % 2 === 0)
+            if (index % 2 === 1)
               return (
                 <TrendCard
                   background={backgroundColors[index % 9]}
