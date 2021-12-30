@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cypress/instrument-cra": "^1.4.0",
     "@mui/base": "^5.0.0-alpha.61",
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -36,7 +37,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
