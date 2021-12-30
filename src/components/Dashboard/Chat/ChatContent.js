@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getChat } from './ChatServices';
 import { setMessages } from '../../../redux/ChatReducer';
 import { chatMessages } from './ChatController';
+import moment from 'moment'
 
 const ChatContent = function () {
   const { messages, friend } = useSelector((state) => state.Chat);
@@ -24,9 +25,9 @@ const ChatContent = function () {
               localStorage["avatar"] ==='none'? (
                 <img src={logo} alt="noavatar" className={styles.avatar} /> 
               ) : localStorage["avatar"].includes('http') ? (
-                <img src={`${localStorage["avatar"]}`} alt="avatar" className={styles.avatar} />
+                <img src={`${localStorage["avatar"]}`} alt="icon" className={styles.avatar} />
               ) : (
-                <img src={`${process.env.REACT_APP_API_URL}/${localStorage["avatar"]}`} alt="post avatar" className={styles.avatar} />
+                <img src={`${process.env.REACT_APP_API_URL}/${localStorage["avatar"]}`} alt="icon" className={styles.avatar} />
               )
             }
           </div>
@@ -45,38 +46,41 @@ const ChatContent = function () {
                   friend?.avatar === 'none' ? ( 
                     <img src={logo} alt="noavatar" className={styles.avatar} /> 
                   ) : friend?.avatar.includes("http")?(
-                    <img src={`${friend.avatar}`} alt="avatar" className={styles.avatar} />
+                    <img src={`${friend.avatar}`} alt="icon" className={styles.avatar} />
                   ) : (
-                    <img src={`${process.env.REACT_APP_API_URL}/${friend.avatar}`} alt="post avatar" className={styles.avatar} />
+                    <img src={`${process.env.REACT_APP_API_URL}/${friend.avatar}`} alt="icon" className={styles.avatar} />
                   )
                 ): (
                   localStorage["avatar"] ==='none'? (
                     <img src={logo} alt="noavatar" className={styles.avatar} /> 
                   ) : localStorage["avatar"].includes('http') ? (
-                    <img src={`${localStorage["avatar"]}`} alt="avatar" className={styles.avatar} />
+                    <img src={`${localStorage["avatar"]}`} alt="icon" className={styles.avatar} />
                   ) : (
-                    <img src={`${process.env.REACT_APP_API_URL}/${localStorage["avatar"]}`} alt="post avatar" className={styles.avatar} />
+                    <img src={`${process.env.REACT_APP_API_URL}/${localStorage["avatar"]}`} alt="icon" className={styles.avatar} />
                   )
                 )
               }
               </div>
             </div>
             <div className={styles.msgContent}>
-              <h3>
-                {
-                  m.senderId === friend.id ? ( 
-                    <> {friend.handle} </>    
-                  ): (
-                    <> {localStorage.getItem('handle')} </>   
-                  )
-                }
-              </h3>
+              <div>
+                <h3>
+                  {
+                    m.senderId === friend.id ? ( 
+                      <> {friend.handle} </>    
+                    ): (
+                      <> {localStorage.getItem('handle')} </>   
+                    )
+                  }
+                </h3>
+              </div>
               <div id={`msg${index}`}>
                 {m.text}
               </div>
+                <span className={styles.createdAt}>{ moment(m.createdAt).fromNow() } </span>
             </div>
           </div>
-
+          <hr />
         </div>
         ) : (
           <></>

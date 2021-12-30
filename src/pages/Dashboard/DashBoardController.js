@@ -104,7 +104,8 @@ const componentOnMount = async (pageNum, pageNumPosts) =>{
   }
   const checkScroll = async () => {
     // offsetHeight
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+    if (localStorage["InfinteScrolling"] === 'true' && 
+    ((window.innerHeight + window.scrollY) >= document.body.scrollHeight)) {
       console.log('event removed')
       await window.removeEventListener('scroll', checkScroll);
       await configureStore.dispatch(setIsLoading(true))

@@ -14,6 +14,7 @@
     "draft-js": "^0.11.7",
     "immutable": "^4.0.0",
     "jsdoc": "^3.6.7",
+    "moment": "^2.29.1",
     "node-sass": "^6.0.1",
     "pusher": "^5.0.0",
     "pusher-js": "^7.0.3",
