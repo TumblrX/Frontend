@@ -14,6 +14,13 @@ import sectionStyles from "../../pages/Explore/scss/explore.module.scss";
  * @returns {void} return nothing
  */
 const onResize = () => {
+  let container = document.querySelector(
+    `.${sectionStyles["explore-container"]}`
+  );
+  if (container === null) {
+    return;
+    // that means that the container has the second class .
+  }
   if (window.innerWidth <= 910) {
     configureStore.dispatch(setFlexesNumbers(1));
   } else if (window.innerWidth <= 1364) {
@@ -143,4 +150,4 @@ const changeView = function () {
   }
 };
 
-export { componentDidMount, onResize, checkScrollo,changeView };
+export { componentDidMount, onResize, checkScrollo, changeView };
