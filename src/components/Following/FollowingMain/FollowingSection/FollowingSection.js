@@ -21,14 +21,15 @@ const FollowingSection = ({ data, index, blogId }) => {
           <div className={styles.sideSide}>
             <div className={styles.avatarContainer}>
               <div className={styles.avatar}>
-                <object data="https://assets.tumblr.com/images/default_avatar/cone_open_128.png" width="37" height="37">
-                  <img
-                    className={styles.img}
-                    src={avatar}
-                    alt="Avatar"
-                    loading="eager"
-                  />
-                </object>
+              {
+                avatar === 'none' ? (
+                  <img src="https://assets.tumblr.com/images/default_avatar/cone_open_128.png" alt="noavatar" className={styles.img} />
+                ) : avatar.includes("http") ? (
+                  <img src={`${avatar}`} alt="avatar" className={styles.img} />
+                ) : (
+                  <img src={`${process.env.REACT_APP_API_URL}/${avatar}`} alt="post avatar" className={styles.img} />
+                ) 
+              }
               </div>
             </div>
             <div className={styles.titlesContainer}>
@@ -80,7 +81,7 @@ const FollowingSection = ({ data, index, blogId }) => {
                   </span>
                 </button>
               </span>
-              <div className={styles.dropDown} id="list">
+              <div className={`${styles.dropDown} dropmenu`} id="list">
                 <div className={styles.dropDownContainer}>
                   <div className={styles.anotherContainer}>
                   <button className={styles.block} id={`block${index}`} onClick={() => handleBlock(_id,index,blogId)}>block</button>

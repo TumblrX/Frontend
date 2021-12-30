@@ -2,7 +2,7 @@
 import configureStore from '../../../redux/store';
 import { resetChat,addMessage, setNewMessage, setSound ,deleteMessages, setMessages} from '../../../redux/ChatReducer';
 import { setIsChat } from '../../../redux/DashBoardReducer';
-import { sendMessage, getChat } from './ChatServices';
+import { sendMessage, getChat, deleteChat } from './ChatServices';
 
 const dropDown = () => {
   document.getElementById('Chat').style.display = 'none';
@@ -59,9 +59,12 @@ const handleSound = () => {
   console.log('sound is called');
 };
 
-const handleDelete = () => {
+const handleDelete = async (id) => {
   console.log('delete is called');
-  configureStore.dispatch(deleteMessages());
+  const response = await deleteChat(id) 
+  if(response){
+    configureStore.dispatch(deleteMessages());
+  }
 };
 
 const socketConnect = (mySocket, io) => {

@@ -7,7 +7,7 @@ const updateNotifications = () => {
     console.log(token)
     var pusher = new Pusher('17be877238a3f6068adf', {
       cluster: 'eu',
-      authEndpoint: "http://tumblrx.me:3000/api/notification/auth",
+      authEndpoint: `${process.env.REACT_APP_API_URL}/api/notification/auth`,
       auth: {
         headers: {
           authorization: token,

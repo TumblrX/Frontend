@@ -30,13 +30,16 @@ export const blogDrafts = createSlice({
       const draftId = payload;
       state.drafts = state.drafts.filter((draft)=>draft.id !== draftId);
       state.numberOfDrafts=state.numberOfDrafts-1;
-    }
+    },
+    setIsInfinte: (state, action) => {
+      state.isInfinte = action.payload;
+    },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
   incrementPageNum, decrementPageNum,
-  setDrafts, setInitialLoading, setNumOfDrafts,
+  setDrafts, setInitialLoading, setNumOfDrafts, setIsInfinte,
 } = blogDrafts.actions;
 export const blogDraftsActions= blogDrafts.actions;
 export default blogDrafts.reducer;

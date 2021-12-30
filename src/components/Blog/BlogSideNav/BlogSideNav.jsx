@@ -4,6 +4,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './BlogSideNav.module.scss';
 import { useSelector } from 'react-redux';
+import getOnePost  from '../RadarService/RadarService';
+import Loading from '../Loading/Loading';
 // import userPhoto from "../../assets/Images/myphoto.jpg";
 
 /**
@@ -15,7 +17,7 @@ import { useSelector } from 'react-redux';
 
 const BlogSideNav = function () {
   const { blogTitle, blogHandle, NumOfDrafts,
-    NumOfFollowers, NumOfPosts } = useSelector((state) => state.Blog);
+    NumOfFollowers, NumOfPosts, Radar, RadarIsMounted, } = useSelector((state) => state.Blog);
   return (
     <aside className={styles.aside}>
       <div className={styles.navBarFirst}>
@@ -58,7 +60,12 @@ const BlogSideNav = function () {
           </span>
         </div>
       </Link>
-      <div className={styles.Radar}>Radar</div>
+      <div className={styles.Radar}>
+        Radar
+      </div>
+      {
+        RadarIsMounted ? getOnePost(Radar) : <Loading/>  
+      }
     </aside>
   );
 };

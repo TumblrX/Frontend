@@ -12,6 +12,8 @@ export const blog = createSlice({
     NumOfDrafts: 0,
     NumOfFollowers: 0,
     NumOfPosts: 0,
+    Radar: [],
+    RadarIsMounted: false,
   },
   reducers: {
     setBlogHandle: (state, action) => {
@@ -38,11 +40,17 @@ export const blog = createSlice({
     setNumOfPosts: (state, action) => {
       state.NumOfPosts = action.payload;
     },
+    setRadar: (state, action) => {
+      state.Radar = action.payload;
+    },
+    setRadarIsMounted: (state, action) => {
+      state.RadarIsMounted = action.payload;
+    },
   },
 });
 // Action creators are generated for each case reducer function
 export const {
   setBlogHandle, setBlogTitle, setNumOfDrafts, setNumOfPosts,
-  setAvatar, setId, setInitialLoading, setNumOfFollowers,
+  setAvatar, setId, setInitialLoading, setNumOfFollowers, setRadar, setRadarIsMounted
 } = blog.actions;
 export default blog.reducer;

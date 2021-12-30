@@ -9,16 +9,15 @@ import { handleSideView, handleExit,  handleFollow,
 } from './DashBoardService';
 import configureStore from '../../redux/store';
 import { incrementPageNum, setIsLoading} from '../../redux/DashBoardReducer';
+import getSettings from '../Customize/GetSettingsServce';
+import { RiContactsBookUploadLine } from 'react-icons/ri';
 
 
 const showPosts = (posts, pageNum, isInfinte, pageNumPosts) => {
   return posts?.map((post, index) => ( 
     <div className={`${styles.post} ${styles.row}`} key={index}>
       <div className={styles.logo}>
-        { 
-          // uploads/blog/defaultavatar.png
-          // <img src={`http://tumblrx.me:3000/uploads/blog/defaultavatar.png`} alt="noavatar" className={styles.avatar} /> 
-          
+        {           
           post?.blogAttribution.avatar === 'none' ? ( 
             <img src={noAvatar} alt="noavatar" className={styles.avatar} /> 
           ) :post?.blogAttribution.avatar.includes("http") ? (
@@ -62,8 +61,7 @@ const showBlogsForYou = (exploreBlogs) => {
           ) : blog?.avatar.includes("http")?(
             <img src={`${blog.avatar}`} alt="post avatar" className={styles.avatar} />
           ) : (
-            // <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="post avatar" className={styles.avatar} />
-            <img src={`http://tumblrx.me:3000/${blog.avatar}`} alt="post avatar" className={styles.avatar} />
+            <img src={`${process.env.REACT_APP_API_URL}/${blog.avatar}`} alt="post avatar" className={styles.avatar} />
           )
         }
       </div>
@@ -84,26 +82,37 @@ const componentOnMount = async (pageNum, pageNumPosts) =>{
   console.log('mount called')
   await fetchRadar();
   await fetchExploreBlogs();
+  let { response , result } = await getSettings();
+  if(result){
+    localStorage.avatar = response.data.data.avatar
+  }else {
+    localStorage.avatar = 'none'
+  }
   // await fetchPost(pageNum, pageNumPosts)
   let num =pageNum;
   const fetch = async () => {
     num += 1;
+    console.log('num =',num)
     await fetchPost(num, pageNumPosts );
-    await configureStore.dispatch(incrementPageNum())
-    window.addEventListener("scroll", checkScroll);
-    configureStore.dispatch(setIsLoading(false))
+    // await configureStore.dispatch(incrementPageNum())
+    console.log('event added ')
   }
-  const checkScroll = () => {
+  const checkScroll = async () => {
+    // offsetHeight
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-      window.removeEventListener("scroll", checkScroll);
-      configureStore.dispatch(setIsLoading(true))
-      fetch()
+      console.log('event removed')
+      await window.removeEventListener('scroll', checkScroll);
+      await configureStore.dispatch(setIsLoading(true))
+      await fetch()
+      await window.addEventListener('scroll', checkScroll);
+      await configureStore.dispatch(setIsLoading(false))
+      console.log('end')
     }
   };
   
   if((localStorage["InfinteScrolling"] === 'true')){
-    console.log('event ADDED')
-    window.addEventListener("scroll", checkScroll);
+    console.log('event ADDED initially')
+    window.addEventListener('scroll', checkScroll);
   }
 }
 
