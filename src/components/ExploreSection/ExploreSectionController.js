@@ -1,6 +1,7 @@
 import { retrivePosts } from "./ExploreSectionServices";
 import { setFlexesNumbers } from "../../redux/ExploreRecuder";
 import configureStore from "../../redux/store";
+import sectionStyles from "../../pages/Explore/scss/explore.module.scss"
 
 /**
  * this function is used to update the state when resizing the window
@@ -10,6 +11,14 @@ import configureStore from "../../redux/store";
  * @returns {void} return nothing
  */
 const onResize = () => {
+  let container = document.querySelector(
+    `.${sectionStyles["explore-container"]}`
+  );
+  if(container===null){
+    return 
+    // that means that the container has the second class . 
+    
+  }
   if (window.innerWidth <= 910) {
     configureStore.dispatch(setFlexesNumbers(1));
   } else if (window.innerWidth <= 1364) {

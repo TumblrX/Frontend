@@ -9,8 +9,19 @@ body {
   margin-top: 60px;
 }
 
+.explore-container-second-prespective {
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid white;
+  display: flex;
+  margin-top: 60px;
+}
 @media (max-width: 990px) {
   .explore-container {
+    justify-content: center;
+    border: none;
+  }
+  .explore-container-second-prespective {
     justify-content: center;
     border: none;
   }
