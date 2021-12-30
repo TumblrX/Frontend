@@ -23,7 +23,7 @@ const LoginController = function () {
     try{
       if (e.target && e.target.email.value !== '' && e.target.password.value !== '') {
         const response = await login(e.target.email.value, e.target.password.value);
-        if (response.result === true) {         
+        if (response.result === true) {       
           localStorage.userId = response.userId;
           localStorage.InfinteScrolling = response.InfinteScrolling;
           localStorage.handle = response.handle;

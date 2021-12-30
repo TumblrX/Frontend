@@ -6,7 +6,7 @@ import configureStore from '../../redux/store';
 
 const CustomizeController = function () {
 
-  const { dataToSend  } = useSelector((state) => state.customize);
+  const { dataToSend ,settings } = useSelector((state) => state.customize);
 
   const readData = async () =>{
     const response = await getSettings();
@@ -48,6 +48,11 @@ const CustomizeController = function () {
         }
       }
     await customzie(formData); 
+    try {
+      localStorage.avatar = settings.avatar;
+    } catch (error) {
+      console.log('error refresh')
+    }
     await readData();
   }
 

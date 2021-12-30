@@ -10,6 +10,7 @@ import { handleSideView, handleExit,  handleFollow,
 import configureStore from '../../redux/store';
 import { incrementPageNum, setIsLoading} from '../../redux/DashBoardReducer';
 import getSettings from '../Customize/GetSettingsServce';
+import getUserInfo from '../LoginPage/UserInfoService';
 import { RiContactsBookUploadLine } from 'react-icons/ri';
 
 
@@ -87,6 +88,10 @@ const componentOnMount = async (pageNum, pageNumPosts) =>{
     localStorage.avatar = response.data.data.avatar
   }else {
     localStorage.avatar = 'none'
+  }
+  const info =await getUserInfo();
+  if (info){
+    localStorage.blog1= info.data.primary_blog
   }
   // await fetchPost(pageNum, pageNumPosts)
   let num =pageNum;
