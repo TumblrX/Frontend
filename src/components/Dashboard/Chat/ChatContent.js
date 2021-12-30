@@ -39,7 +39,7 @@ const ChatContent = function () {
         <div className={styles.messegesBody} key={index} >
           <div className={styles.msg}>
             <div className={styles.msgAvatar}>
-              <div className={styles.avatar_img}>
+              <div className={styles.avatar_img} id={`icon${index}`}>
               { 
                 m.senderId === friend.id ? (
                   friend?.avatar === 'none' ? ( 
@@ -71,7 +71,7 @@ const ChatContent = function () {
                   )
                 }
               </h3>
-              <div>
+              <div id={`msg${index}`}>
                 {m.text}
               </div>
             </div>

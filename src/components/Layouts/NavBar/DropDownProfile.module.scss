@@ -8,11 +8,12 @@
     background-color:#fff;
     width:240px;
     border-radius: 3px;
-    overflow: hidden;
+    overflow: scroll;
     position:absolute;
     top:1.5rem;
     right:-4rem;
     z-index: 999;
+    height: 600px;
     .account{
         background-color: $dropdown-profile-background-color;
         display: flex;
@@ -80,8 +81,8 @@
         display: flex;
         flex-direction: column;
         font-weight: 400;
-        margin:0 12px 0 50px;
-
+        margin:0 0 50px;
+        margin-bottom: 0;
         a{
             padding:2px
         }

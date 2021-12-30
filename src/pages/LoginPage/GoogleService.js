@@ -12,8 +12,8 @@ const responseGoogle = async (response) => {
         if (!res2.data.InfinteScrolling)
             localStorage.InfinteScrolling = 'false';
         localStorage.handle = res2.data.name;
-        localStorage.blogs = res2.data.blogs;
         localStorage.blog1 = res2.data.blogs[0];
+        localStorage.blogs = JSON.stringify(res2.data.blogs);
         localStorage.token = res2.data.token;  
         const response2 = await getUserInfo();
         configureStore.dispatch(setUserInfo(response2.data));
