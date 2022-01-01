@@ -97,6 +97,7 @@ const DropDownProfile = function (props) {
             return <NavLink to={`/blog/${blog.handle}`}><ListItem userBlog={blog}/></NavLink>
           })          
         }
+        <NavLink to="/customize">Edit Apperance</NavLink>
       </ul>
       <div className={classes.links}>
         <NavLink to="/about">About</NavLink>
