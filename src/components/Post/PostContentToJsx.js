@@ -6,6 +6,10 @@ const PostContentToJsx = function (content){
   return content.map((contentBlock) => {
     // Text Content Block
     if(!contentBlock) return;
+    let NewURL;
+    if(contentBlock.url){
+      NewURL = contentBlock.url.replace('http://tumblrx.me:3000','https://tumblrx.me:9000');
+    }
     if (contentBlock.type === 'text') {
       let { subtype, text, formatting } = contentBlock;
       // if(formatting){
@@ -74,7 +78,7 @@ const PostContentToJsx = function (content){
       return (
         <figure className={classes.image}>
           <img
-            src={contentBlock.url}
+            src={NewURL}
             alt={contentBlock.altText}
             // width={contentBlock.width}
             // height={contentBlock.height}
@@ -98,13 +102,13 @@ const PostContentToJsx = function (content){
     } else if (contentBlock.type === 'audio') {
       let audio;
       if (contentBlock.provider === 'soundcloud') {
-        audio = <iframe width="100%" height="166" src={contentBlock.url} frameBorder="no" />;
+        audio = <iframe width="100%" height="166" src={NewURL} frameBorder="no" />;
       } else {
         // Here provider is tumblrx
         audio = (
           <audio
           controls
-          src={contentBlock.url}>
+          src={NewURL}>
             Your browser does not support the
             <code>audio</code> element.
           </audio>
@@ -124,7 +128,7 @@ const PostContentToJsx = function (content){
         // Here provider is tumblrx
         video = (
           <video controls width="100%" height="315">
-            <source src={contentBlock.url}
+            <source src={NewURL}
             type="video/webm"/>
               Sorry, your browser doesn't support embedded videos.
           </video>
