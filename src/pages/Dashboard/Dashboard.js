@@ -111,7 +111,7 @@ const Dashboard = function () {
           </div>
           <div className={styles.explore}>
             <div className={styles.checkBlogs}>
-            <h1 className={styles.white}> Check Theses Blogs </h1>
+            <h1 className={styles.white}> Devops Engineer Works well </h1>
               <hr />
               { 
                 !exploreBlogsMounted? ( 
