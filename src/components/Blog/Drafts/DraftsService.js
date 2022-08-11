@@ -17,7 +17,7 @@ const useDraftHandler = () => {
    */
   const fetchBlogDrafts = async (blogId) => {
     try {
-      const response = await api.get(`api/blog/${blogId}/posts/draft`);
+      const response = await api.get(`/api/blog/${blogId}/posts/draft`);
       console.log(response.data.data);
       if (response.data.data) {
         dispatch(setDrafts(response.data.data));

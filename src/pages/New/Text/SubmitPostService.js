@@ -5,7 +5,7 @@ const submitPost = async function (blogId, fd) {
   console.log(Array.from(fd));
   if (!blogId) return false;
   try {
-    await api.post(`api/blog/${blogId}/posts`, fd);
+    await api.post(`/api/blog/${blogId}/posts`, fd);
   } catch (err) {
     if (err.response) {
       console.log(err.response);

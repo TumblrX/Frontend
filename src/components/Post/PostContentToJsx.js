@@ -8,7 +8,10 @@ const PostContentToJsx = function (content){
     if(!contentBlock) return;
     let NewURL;
     if(contentBlock.url){
-      NewURL = contentBlock.url.replace('http://tumblrx.me:3000','https://tumblrx.me:9000');
+      NewURL = contentBlock.url.replace(
+				'http://tumblrx.me:3000/',
+				process.env.REACT_APP_API_URL,
+			);
     }
     if (contentBlock.type === 'text') {
       let { subtype, text, formatting } = contentBlock;

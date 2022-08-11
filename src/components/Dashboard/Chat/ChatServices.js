@@ -25,7 +25,7 @@ const sendMessage = async (textMessage, user2Id) => {
 
   const getChat = async (user2Id) => {
     try {
-      const response = await api.get(`api/user/chat/reterive-chat/${user2Id}`);     
+      const response = await api.get(`/api/user/chat/reterive-chat/${user2Id}`);     
       return response.data.messages;
     } catch (err) {
       if (err.response) {
@@ -44,7 +44,7 @@ const sendMessage = async (textMessage, user2Id) => {
   const deleteChat = async (user2Id) => {
     try {
       console.log('delete id', user2Id)
-      const response = api.delete(`api/user/chat/delete-chat/${user2Id}`)
+      const response = api.delete(`/api/user/chat/delete-chat/${user2Id}`)
 
       console.log('delete succeed')
       return true;

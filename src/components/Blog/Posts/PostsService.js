@@ -17,7 +17,7 @@ const usePostHandler = () => {
    */
   const fetchBlogPosts = async (blogId) => {
     try {
-      const response = await api.get(`api/blog/${blogId}/posts`);
+      const response = await api.get(`/api/blog/${blogId}/posts`);
       console.log(response.data.data);
       if (response.data.data) {
         dispatch(setPosts(response.data.data));
