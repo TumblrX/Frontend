@@ -1,6 +1,7 @@
+# TumblrX
+
 ![cover]()
 
-# TumblrX
 
 ## 📝 Table of Contents
 
@@ -34,6 +35,7 @@ it is a social media app to:
 - show **dashboard** with all your posts and comments
 - **explore section** to show all trending posts and blogs
 - **search section** to search for posts and blogs
+- blog section where you can show your blog & customize it 
 - **real time chat** with other users
 - **real time notifications** show you all updates on your blog
 - manage your blog && account settings and edit them
