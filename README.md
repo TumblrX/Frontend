@@ -47,6 +47,9 @@ it is a social media app to:
 - Axios
 - Socket.io
 - pusher-js
+- Docker
+- Jest
+- Webpack
 
 ## 🏁Getting Started <a name = "start"></a>
 
@@ -107,5 +110,6 @@ npm run
   - history page
     ![history page responsive](./screenshots/12.png)
 
+## file structure<a name = "file structure"></a>
 
-```
+## ✨ contributers<a name = "contributers"></a>
