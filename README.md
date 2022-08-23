@@ -1,6 +1,5 @@
-# TumblrX
+# TumblrX ![cover](./public/favicon.ico)
 
-![cover]()
 
 ## 📝 Table of Contents
 
@@ -10,6 +9,7 @@
 - [getting started](#start)
 - [Demo](#demo)
 - [screenshots](#screenshots)
+- [Contributers](#contributers)
 
 ### 🚩About<a name = "about"></a>
 
@@ -82,6 +82,13 @@ npm run
 
 <div name = "demo" align="center" width=1189>
 
+
+
+
+https://user-images.githubusercontent.com/60351557/186261764-8945dbad-7159-44d2-acb4-09598dfe535c.mp4
+
+
+
 </div>
 
 ## 🎥 screenshots<a name = "screenshots"></a>
@@ -130,57 +137,52 @@ npm run
   ![Settings](./screenshots/09.png)
 
   ![Settings](./screenshots/10.png)
+  
   <hr />
 
 - Responsive
 
   - Sign up
+  
     ![Sign up](./screenshots/11.png)
 
       <hr />
 
   - DashBoard
+  
     ![Home page](./screenshots/12.png)
 
-      <hr />
 
     ![Explore](./screenshots/13.png)
 
-      <hr />
 
-    ![Video page](./screenshots/14.png)
-
-      <hr />
-
-  - Edit Appearance
-    ![Edit Appearance](./screenshots/15.png)
+    ![Dashboard](./screenshots/14.png)
 
       <hr />
-
+      
   - Blog
+  
     ![Blog](./screenshots/16.png)
 
       <hr />
 
-  - search
-    ![search](./screenshots/15.png)
+  - Edit Appearance
+  
+    ![Edit Appearance](./screenshots/15.png)
 
-      <hr />
+
 
 ## ✨ contributers<a name = "contributers"></a>
 
-## contributors
 
 <div align="center" width=1189> 
 
 [![](https://github.com/omar214.png?size=100)](https://github.com/omar214)
 [![](https://github.com/Taher-Mohamed-Ahmed-Saad.png?size=100)](https://github.com/Taher-Mohamed-Ahmed-Saad)
 [![](https://github.com/YousefElshabrawy.png?size=100)](https://github.com/YousefElshabrawy)
-[![](https://github.com/Thebrownboy.png?size=100)](https://github.com/Thebrownboy)
 [![](https://github.com/Ahmedmma72.png?size=100)](https://github.com/Ahmedmma72)
 [![](https://github.com/AhmedNossir.png?size=100)](https://github.com/AhmedNossir)
-
+<img src="https://github.com/Thebrownboy.png" alt="drawing" width="100"/>
 </div>
-<img src="https://avatars.githubusercontent.com/u/60502276?v=4" alt="drawing" width="100"/>
 
-## file structure<a name = "file structure"></a>
+<!--  ## file structure<a name = "file structure"></a> -->
