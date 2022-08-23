@@ -152,7 +152,8 @@ const Post = function ({ data, place }) {
         postJsx.push(
           <header className={classes.header}>
             <div className={classes.blogName}>
-              <img src={`${process.env.REACT_APP_API_URL}/${blogAttribution.avatar}`} className={classes.avatar}/>
+              {/* <img src={`${process.env.REACT_APP_API_URL}/${blogAttribution.avatar}`} className={classes.avatar}/> */}
+              <img src={`${mock.avatar}`} className={classes.avatar}/>
               <Link to={`/blog/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
             </div>
           </header>
@@ -174,7 +175,8 @@ const Post = function ({ data, place }) {
       postJsx.push(
         <header className={classes.header}>
         <div className={classes.blogName}>
-          <img src={`${process.env.REACT_APP_API_URL}/${blogAttribution.avatar}`} className={classes.avatar}/>
+          {/* <img src={`${process.env.REACT_APP_API_URL}/${blogAttribution.avatar}`} className={classes.avatar}/> */}
+          <img src={`${blogAttribution.avatar}`} className={classes.avatar}/>
           <Link to={`/blog/${blogAttribution.handle}`}>{blogAttribution.handle}</Link>
         </div>
         </header>
