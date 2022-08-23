@@ -182,12 +182,12 @@ https://user-images.githubusercontent.com/60351557/186261764-8945dbad-7159-44d2-
 
 <div align="center" width=1189> 
 
-[![](https://github.com/omar214.png?size=100)](https://github.com/omar214)
-[![](https://github.com/Taher-Mohamed-Ahmed-Saad.png?size=100)](https://github.com/Taher-Mohamed-Ahmed-Saad)
-[![](https://github.com/YousefElshabrawy.png?size=100)](https://github.com/YousefElshabrawy)
-[![](https://github.com/Ahmedmma72.png?size=100)](https://github.com/Ahmedmma72)
-[![](https://github.com/AhmedNossir.png?size=100)](https://github.com/AhmedNossir)
-<img src="https://github.com/Thebrownboy.png" alt="drawing" width="100"/>
+[![](https://github.com/omar214.png?size=150)](https://github.com/omar214)
+[![](https://github.com/Taher-Mohamed-Ahmed-Saad.png?size=150)](https://github.com/Taher-Mohamed-Ahmed-Saad)
+[![](https://github.com/YousefElshabrawy.png?size=150)](https://github.com/YousefElshabrawy)
+[![](https://github.com/Ahmedmma72.png?size=150)](https://github.com/Ahmedmma72)
+[![](https://github.com/AhmedNossir.png?size=150)](https://github.com/AhmedNossir)
+<img src="https://github.com/Thebrownboy.png" alt="drawing" width="150"/>
 </div>
 
 <!--  ## file structure<a name = "file structure"></a> -->
