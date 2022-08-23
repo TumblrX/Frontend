@@ -2,7 +2,6 @@
 
 ![cover]()
 
-
 ## 📝 Table of Contents
 
 - [About](#about)
@@ -35,7 +34,7 @@ it is a social media app to:
 - show **dashboard** with all your posts and comments
 - **explore section** to show all trending posts and blogs
 - **search section** to search for posts and blogs
-- blog section where you can show your blog & customize it 
+- blog section where you can show your blog & customize it
 - **real time chat** with other users
 - **real time notifications** show you all updates on your blog
 - manage your blog && account settings and edit them
@@ -47,7 +46,7 @@ it is a social media app to:
 - Redux Toolkit
 - sass modules
 - Axios
-- Socket.io
+- Socket io
 - pusher-js
 - Docker
 - Jest
@@ -87,31 +86,101 @@ npm run
 
 ## 🎥 screenshots<a name = "screenshots"></a>
 
-- Sign up
-  ![Sign up](./screenshots/1.png)
-- Home page
-  ![Home page](./screenshots/2.png)
-- Light Theme
-  ![Light Theme](./screenshots/3.png)
-  ![Light Theme](./screenshots/31.png)
-- Video Page
-  ![Video page](./screenshots/5.png)
-- Comments
-  ![Comments](./screenshots/6.png)
-- upload video
-  ![upload video](./screenshots/7.png)
-- Responsive Design
-  - sign up
-    ![sign up responsive](./screenshots/8.png)
-  - home page
-    ![home page responsive](./screenshots/9.png)
-  - video page
-    ![video page responsive](./screenshots/11.png)
-  - home page
-    ![upload responsive](./screenshots/10.png)
-  - history page
-    ![history page responsive](./screenshots/12.png)
+- Home Page
+  ![Home page](./screenshots/01.png)
 
-## file structure<a name = "file structure"></a>
+  <hr />
+
+- Sign Up
+  ![Sign up](./screenshots/02.png)
+
+  <hr />
+
+- Dashboard
+  ![DashBoard](./screenshots/03.png)
+
+    <hr />
+
+- Explore Section
+  ![Explore Section](./screenshots/05.png)
+
+    <hr />
+
+- Add Post
+  ![Add post](./screenshots/005.png)
+
+    <hr />
+
+- Comments
+  ![Comments](./screenshots/06.png)
+
+    <hr />
+
+- Blog View
+  ![Blog View](./screenshots/08.png)
+
+    <hr />
+
+- Edit Blog View
+  ![Edit Blog View](./screenshots/07.png)
+
+    <hr />
+
+- Settings
+  ![Settings](./screenshots/09.png)
+
+  ![Settings](./screenshots/10.png)
+  <hr />
+
+- Responsive
+
+  - Sign up
+    ![Sign up](./screenshots/11.png)
+
+      <hr />
+
+  - DashBoard
+    ![Home page](./screenshots/12.png)
+
+      <hr />
+
+    ![Explore](./screenshots/13.png)
+
+      <hr />
+
+    ![Video page](./screenshots/14.png)
+
+      <hr />
+
+  - Edit Appearance
+    ![Edit Appearance](./screenshots/15.png)
+
+      <hr />
+
+  - Blog
+    ![Blog](./screenshots/16.png)
+
+      <hr />
+
+  - search
+    ![search](./screenshots/15.png)
+
+      <hr />
 
 ## ✨ contributers<a name = "contributers"></a>
+
+## contributors
+
+<div align="center" width=1189> 
+
+[![](https://github.com/omar214.png?size=100)](https://github.com/omar214)
+[![](https://github.com/Taher-Mohamed-Ahmed-Saad.png?size=100)](https://github.com/Taher-Mohamed-Ahmed-Saad)
+[![](https://github.com/YousefElshabrawy.png?size=100)](https://github.com/YousefElshabrawy)
+[![](https://github.com/Thebrownboy.png?size=100)](https://github.com/Thebrownboy)
+[![](https://github.com/Ahmedmma72.png?size=100)](https://github.com/Ahmedmma72)
+[![](https://github.com/AhmedNossir.png?size=100)](https://github.com/AhmedNossir)
+
+</div>
+<img src="https://avatars.githubusercontent.com/u/60502276?v=4" alt="drawing" width="100"/>
+
+## file structure<a name = "file structure"></a>
