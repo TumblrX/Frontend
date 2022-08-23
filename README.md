@@ -123,6 +123,11 @@ https://user-images.githubusercontent.com/60351557/186261764-8945dbad-7159-44d2-
 
     <hr />
 
+- Chat
+  ![Chat](./screenshots/chat.jpeg)
+
+    <hr />
+
 - Blog View
   ![Blog View](./screenshots/08.png)
 
